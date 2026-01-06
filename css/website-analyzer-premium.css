@@ -1,20 +1,23 @@
 /* ============================================================
-   AI 賦能診斷區塊樣式 - 升級版 Premium
-   視覺設計天才 × 色彩學天才 聯合打造
+   AI 賦能診斷區塊樣式 - Premium 版本
+   ✅ 符合 WCAG 3.0 / APCA 對比度標準
+   ✅ 使用 Hermès 暖橘配色系統
+   ✅ 8px Grid 間距規範
    ============================================================ */
 
-/* === 核心區塊 === */
+/* === 核心區塊 - 保持暖橘主題 === */
 .analyzer-section-premium {
     position: relative;
-    padding: 100px 0 80px;
+    padding: 80px 0 64px;
+    /* 8px grid: 80 = 10*8, 64 = 8*8 */
     background: linear-gradient(180deg,
-            #1a1a2e 0%,
-            #16213e 50%,
-            #0f0f23 100%);
+            var(--bg-section) 0%,
+            #EDE5D8 50%,
+            var(--bg-light) 100%);
     overflow: hidden;
 }
 
-/* === 動態背景特效 === */
+/* === 裝飾性背景 - 使用暖色調 === */
 .analyzer-bg-effects {
     position: absolute;
     inset: 0;
@@ -25,72 +28,57 @@
 .analyzer-glow {
     position: absolute;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-    animation: glow-pulse 8s ease-in-out infinite;
+    filter: blur(120px);
+    opacity: 0.25;
 }
 
 .analyzer-glow-1 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, #e67e22 0%, transparent 70%);
-    top: -150px;
-    left: -100px;
-    animation-delay: 0s;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+    top: -100px;
+    left: -50px;
 }
 
 .analyzer-glow-2 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, #f39c12 0%, transparent 70%);
-    bottom: -100px;
-    right: -100px;
-    animation-delay: 4s;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+    bottom: -80px;
+    right: -80px;
 }
 
-@keyframes glow-pulse {
-
-    0%,
-    100% {
-        opacity: 0.3;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 0.5;
-        transform: scale(1.1);
-    }
-}
-
-/* 粒子效果背景 */
+/* 粒子效果 - 暖色調微粒 */
 .analyzer-particles {
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.15), transparent),
-        radial-gradient(2px 2px at 40px 70px, rgba(230, 126, 34, 0.2), transparent),
-        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
-        radial-gradient(2px 2px at 130px 80px, rgba(243, 156, 18, 0.15), transparent),
-        radial-gradient(1px 1px at 160px 30px, rgba(255, 255, 255, 0.08), transparent);
-    background-size: 200px 100px;
-    animation: particles-float 20s linear infinite;
+        radial-gradient(2px 2px at 100px 50px, rgba(210, 105, 30, 0.15), transparent),
+        radial-gradient(2px 2px at 200px 100px, rgba(205, 133, 63, 0.12), transparent),
+        radial-gradient(1px 1px at 300px 80px, rgba(176, 90, 21, 0.1), transparent);
+    background-size: 350px 150px;
+    animation: particles-drift 25s linear infinite;
 }
 
-@keyframes particles-float {
+@keyframes particles-drift {
     0% {
-        transform: translateY(0);
+        transform: translateY(0) translateX(0);
     }
 
     100% {
-        transform: translateY(-100px);
+        transform: translateY(-50px) translateX(20px);
     }
 }
 
-/* === 標題區 === */
+/* === 標題區 - APCA 對比度優化 === */
 .analyzer-hero-header {
     text-align: center;
-    max-width: 800px;
+    max-width: 720px;
+    /* 8px grid */
     margin: 0 auto 48px;
+    /* 48 = 6*8 */
+    position: relative;
+    z-index: 1;
 }
 
 .analyzer-badge-group {
@@ -98,120 +86,121 @@
     justify-content: center;
     gap: 12px;
     margin-bottom: 24px;
+    /* 24 = 3*8 */
 }
 
+/* Badge: 深色背景 + 白色加粗文字 (避免橘色問題) */
 .analyzer-badge-free {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
+    /* 使用深綠色確保白色文字有足夠對比 Lc > 60 */
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    /* 14px */
+    font-weight: 700;
+    /* 加粗確保可讀性 */
     padding: 8px 16px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
-    animation: badge-bounce 2s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .analyzer-badge-ai {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 600;
+    /* 使用深橘色 (--color-primary-dark) 確保對比度 */
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 700;
     padding: 8px 16px;
     border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-@keyframes badge-bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
+/* 主標題: 深棕色確保 APCA Lc > 75 */
 .analyzer-main-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    /* 28px - 40px */
     font-weight: 800;
-    color: #ffffff;
-    margin: 0 0 20px;
+    color: var(--text-primary);
+    /* #1A0F0A - 極深棕 */
+    margin: 0 0 16px;
     line-height: 1.3;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* 高亮數字使用深橘色 */
 .title-highlight {
-    background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary-dark);
+    /* #B85A15 深橘 */
     position: relative;
+    display: inline-block;
 }
 
 .title-highlight::after {
     content: '';
     position: absolute;
-    bottom: 2px;
+    bottom: 4px;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+    background: var(--color-accent);
     border-radius: 2px;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
+/* 副標題: 深棕色確保 APCA Lc > 75 */
 .analyzer-subtitle {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.125rem;
+    /* 18px */
+    color: var(--text-secondary);
+    /* #2D1810 */
     margin: 0;
     line-height: 1.7;
 }
 
 .analyzer-subtitle strong {
-    color: #f39c12;
+    color: var(--color-primary-dark);
+    font-weight: 600;
 }
 
-/* === 升級版輸入區 === */
+/* === 輸入區 - 暖色調玻璃態 === */
 .analyzer-input-premium {
-    max-width: 720px;
+    max-width: 640px;
+    /* 8px grid */
     margin: 0 auto 32px;
+    /* 32 = 4*8 */
+    position: relative;
+    z-index: 1;
 }
 
 .analyzer-input-container {
     display: flex;
     align-items: center;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    border-radius: 60px;
+    background: var(--bg-card);
+    /* #FFFAF5 暖白 */
+    border: 2px solid var(--border-default);
+    border-radius: 56px;
+    /* 56 = 7*8 */
     padding: 8px 8px 8px 24px;
     transition: all 0.3s ease;
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-card);
 }
 
 .analyzer-input-container:focus-within {
-    border-color: #e67e22;
-    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--color-primary);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        0 0 0 4px rgba(230, 126, 34, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        var(--shadow-card),
+        0 0 0 4px rgba(210, 105, 30, 0.12);
 }
 
 .input-icon {
     flex-shrink: 0;
     width: 24px;
     height: 24px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-muted);
+    /* #5D4037 */
     margin-right: 12px;
 }
 
@@ -220,66 +209,51 @@
     height: 100%;
 }
 
+/* 輸入框文字: 深棕色確保高對比 */
 .analyzer-input-container input {
     flex: 1;
     background: transparent;
     border: none;
     outline: none;
-    font-size: 1.1rem;
-    color: #ffffff;
+    font-size: 1rem;
+    /* 16px */
+    color: var(--text-primary);
+    /* #1A0F0A */
     padding: 16px 0;
     min-width: 0;
 }
 
 .analyzer-input-container input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
+    /* #5D4037 - 確保 Lc > 45 */
 }
 
-/* CTA 按鈕 - 超級吸睛 */
+/* === CTA 按鈕 - 深橘色背景避免橘色問題 === */
 .analyzer-submit-btn {
     flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
-    color: white;
+    /* 使用較深的橘色確保白色文字對比度 Lc > 60 */
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, #A04B0F 100%);
+    color: #FFFFFF;
     font-size: 1rem;
     font-weight: 700;
-    padding: 16px 28px;
+    /* 加粗文字提高可讀性 */
+    padding: 16px 24px;
     border: none;
-    border-radius: 50px;
+    border-radius: 48px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow:
-        0 4px 15px rgba(230, 126, 34, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.analyzer-submit-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent);
-    transition: left 0.5s ease;
+    /* 使用 1px 邊框替代重陰影 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(176, 90, 21, 0.25);
 }
 
 .analyzer-submit-btn:hover {
+    background: linear-gradient(135deg, #A04B0F 0%, #8B3E0C 100%);
     transform: translateY(-2px);
-    box-shadow:
-        0 8px 25px rgba(230, 126, 34, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.analyzer-submit-btn:hover::before {
-    left: 100%;
+    box-shadow: 0 4px 12px rgba(176, 90, 21, 0.35);
 }
 
 .analyzer-submit-btn:active {
@@ -303,20 +277,24 @@
     transform: translateX(4px);
 }
 
-/* === 信任標籤 === */
+/* === 信任標籤 - 深色文字確保對比度 === */
 .analyzer-trust-signals {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
+    /* 24 = 3*8 */
     margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
 }
 
 .trust-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
+    /* #2D1810 - 深棕確保 Lc > 60 */
     font-size: 0.9rem;
 }
 
@@ -328,55 +306,61 @@
     font-weight: 500;
 }
 
-/* === 錯誤狀態 - 升級版 === */
+/* === 錯誤狀態 === */
 .analyzer-section-premium .analyzer-error {
     display: none;
     text-align: center;
     padding: 12px 20px;
     margin-top: 16px;
-    color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.1);
-    border: 1px solid rgba(255, 107, 107, 0.3);
+    /* 使用深紅色確保對比度 */
+    color: #B71C1C;
+    background: rgba(198, 40, 40, 0.08);
+    border: 1px solid rgba(198, 40, 40, 0.2);
     border-radius: 12px;
     font-size: 0.9rem;
+    font-weight: 500;
 }
 
-/* === 載入狀態 - 升級版 === */
+/* === 載入狀態 === */
 .analyzer-section-premium .analyzer-loading {
     display: none;
     flex-direction: column;
     align-items: center;
     gap: 16px;
     padding: 32px;
+    position: relative;
+    z-index: 1;
 }
 
 .analyzer-section-premium .progress-container {
     width: 100%;
     max-width: 400px;
-    height: 6px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    height: 8px;
+    /* 8px grid */
+    background: rgba(93, 64, 55, 0.15);
+    border-radius: 4px;
     overflow: hidden;
 }
 
 .analyzer-section-premium .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, #e67e22, #f39c12);
-    border-radius: 3px;
+    background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+    border-radius: 4px;
     transition: width 0.3s ease;
-    box-shadow: 0 0 10px rgba(230, 126, 34, 0.5);
 }
 
 .analyzer-section-premium .progress-text {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
+    /* #2D1810 */
     font-size: 0.95rem;
 }
 
 /* === 響應式設計 === */
 @media (max-width: 768px) {
     .analyzer-section-premium {
-        padding: 60px 0 50px;
+        padding: 56px 16px 48px;
+        /* 8px grid */
     }
 
     .analyzer-hero-header {
@@ -390,17 +374,18 @@
     }
 
     .analyzer-main-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+        /* 24px */
     }
 
     .analyzer-subtitle {
         font-size: 1rem;
-        padding: 0 16px;
+        padding: 0 8px;
     }
 
     .analyzer-input-container {
         flex-direction: column;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 16px;
         gap: 12px;
     }
@@ -418,7 +403,7 @@
     .analyzer-submit-btn {
         width: 100%;
         justify-content: center;
-        padding: 18px 24px;
+        padding: 16px 24px;
     }
 
     .analyzer-trust-signals {
@@ -428,7 +413,7 @@
     }
 }
 
-/* === 保留原有報告樣式的兼容性 === */
+/* === Container z-index === */
 .analyzer-section-premium .container {
     position: relative;
     z-index: 1;
