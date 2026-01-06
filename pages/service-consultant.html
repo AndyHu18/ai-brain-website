@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 顧問 | AI 智能大腦</title>
+    <meta name="description" content="從零到一的數位轉型夥伴 - 不知道 AI 怎麼導入？我們從頭陪您到尾，從評估到上線全程輔導。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/service-page-hero.css">
+    <link rel="stylesheet" href="../css/n8n-workflow.css">
+    <link rel="stylesheet" href="../css/n8n-responsive.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-transparent">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
+            <div class="nav-menu">
+                <a href="../index.html#services" class="nav-link">服務項目</a>
+                <a href="../index.html#solutions" class="nav-link">解決方案</a>
+                <a href="../index.html#technology" class="nav-link">技術能力</a>
+                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="service-hero" id="hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+                <source src="../assets/videos/services/service_consultant.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+            <span class="sound-icon sound-off">🔇</span>
+            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+        </button>
+        <div class="hero-content">
+            <span class="service-badge">服務方案 06</span>
+            <h1 class="hero-title"><span class="emoji">🧠</span> AI 顧問</h1>
+            <p class="hero-tagline">從零到一的數位轉型夥伴</p>
+            <div class="hero-cta-group">
+                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
+                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator"><span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <div class="grid-background"></div>
+    <div id="particles"></div>
+
+    <main class="workflow-container" id="workflow-demo">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" class="back-btn">← 返回首頁</a>
+                <h2>🧠 AI 顧問</h2>
+                <span class="demo-badge">🎬 流程示範</span>
+            </div>
+            <div class="controls">
+                <button id="btn-start" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    啟動流程
+                </button>
+                <button id="btn-reset" class="btn btn-secondary">重置</button>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-header">
+                <h2>💡 這個功能能幫您做什麼？</h2>
+                <p class="intro-subtitle">不知道 AI 怎麼導入？我們從頭陪您到尾，從評估到上線全程輔導</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🔬</span>
+                    <h3>免費企業健檢</h3>
+                    <p>先幫您看看哪裡可以用 AI 省錢、省時間</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📐</span>
+                    <h3>量身訂做方案</h3>
+                    <p>不推銷不需要的東西，只給您真正需要的</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">👥</span>
+                    <h3>教會您的團隊</h3>
+                    <p>導入後教到會，不是丟一套系統就跑</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flow-explanation">
+            <h3>📍 流程節點說明（點擊「啟動流程」看 AI 怎麼工作）</h3>
+            <div class="node-explanations">
+                <div class="node-exp"><span class="exp-num">1</span><strong>企業診斷</strong> — 分析現況，找出痛點</div>
+                <div class="node-exp"><span class="exp-num">2</span><strong>藍圖規劃</strong> — 設計 AI 導入路線圖</div>
+                <div class="node-exp"><span class="exp-num">3</span><strong>技術選型</strong> — 挑選最適合的工具</div>
+                <div class="node-exp"><span class="exp-num">4</span><strong>團隊培訓</strong> — 教會您的員工使用</div>
+                <div class="node-exp"><span class="exp-num">5</span><strong>持續優化</strong> — 上線後持續追蹤改善</div>
+            </div>
+        </section>
+
+        <div class="status-bar">
+            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
+                        id="workflow-status">等待啟動</strong></span></div>
+            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
+            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
+                點擊模擬</button>
+            <div id="workflow-canvas" class="workflow-canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-container" class="nodes-container"></div>
+            </div>
+        </div>
+
+        <aside class="log-panel">
+            <div class="log-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6M9 13h6M9 17h6" />
+                </svg>
+                <span>📋 即時執行紀錄</span>
+            </div>
+            <div id="log-content" class="log-content">
+                <div class="log-entry info"><span class="log-time">--:--:--</span><span class="log-msg">AI
+                        顧問就緒，點擊「啟動流程」開始...</span></div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">AI 智能大腦</div>
+                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script-navigation.js"></script>
+    <script>
+        // 🧠 AI 顧問 - 工作流程配置
+        const SERVICE_CONFIG = {
+            name: 'AI 顧問',
+            nodes: [
+                {
+                    id: 'enterprise-scan',
+                    title: '🔬 企業診斷',
+                    description: '分析企業現況與痛點',
+                    icon: 'scan',
+                    color: '#D4A537',
+                    position: { x: 50, y: 30 },
+                    bubbleMessages: [
+                        '📊 收集企業數據...',
+                        '🔍 分析作業流程...',
+                        '⚠️ 識別效率瓶頸...',
+                        '✅ 診斷報告完成！'
+                    ]
+                },
+                {
+                    id: 'ai-blueprint',
+                    title: '📐 藍圖規劃',
+                    description: 'AI 導入策略與路線圖',
+                    icon: 'blueprint',
+                    color: '#3498DB',
+                    position: { x: 280, y: 30 },
+                    bubbleMessages: [
+                        '🎯 定義轉型目標...',
+                        '📅 規劃實施階段...',
+                        '💰 估算投資報酬...',
+                        '✅ AI 藍圖已設計！'
+                    ]
+                },
+                {
+                    id: 'tech-select',
+                    title: '⚙️ 技術選型',
+                    description: '選擇最適合的 AI 工具',
+                    icon: 'cog',
+                    color: '#9B59B6',
+                    position: { x: 510, y: 30 },
+                    bubbleMessages: [
+                        '🔧 評估技術方案...',
+                        '📋 比較工具優劣...',
+                        '✅ 選定最佳組合...',
+                        '✅ 技術架構確認！'
+                    ]
+                },
+                {
+                    id: 'team-train',
+                    title: '👥 團隊培訓',
+                    description: '培訓內部團隊操作',
+                    icon: 'team',
+                    color: '#27AE60',
+                    position: { x: 740, y: 30 },
+                    bubbleMessages: [
+                        '📚 製作培訓教材...',
+                        '🎓 進行實操培訓...',
+                        '📝 驗收學習成果...',
+                        '✅ 團隊已能獨立運作！'
+                    ]
+                },
+                {
+                    id: 'continuous-opt',
+                    title: '📈 持續優化',
+                    description: '定期追蹤與效能優化',
+                    icon: 'chart',
+                    color: '#E74C3C',
+                    position: { x: 970, y: 30 },
+                    bubbleMessages: [
+                        '📊 追蹤關鍵指標...',
+                        '🔄 收集使用回饋...',
+                        '⚡ 優化系統效能...',
+                        '✅ ROI 提升 300%！'
+                    ]
+                }
+            ],
+            connections: [
+                { from: 'enterprise-scan', to: 'ai-blueprint' },
+                { from: 'ai-blueprint', to: 'tech-select' },
+                { from: 'tech-select', to: 'team-train' },
+                { from: 'team-train', to: 'continuous-opt' }
+            ],
+            executionOrder: ['enterprise-scan', 'ai-blueprint', 'tech-select', 'team-train', 'continuous-opt'],
+            resultPreview: {
+                type: 'report',
+                content: {
+                    title: 'AI 導入成效報告',
+                    stats: [
+                        { value: '300%', label: 'ROI 提升' },
+                        { value: '65%', label: '效率提升' },
+                        { value: '40萬', label: '年省成本' },
+                        { value: '98%', label: '滿意度' }
+                    ]
+                }
+            }
+        };
+    </script>
+    <script src="../js/workflow-engine.js"></script>
+    <script>
+        const video = document.getElementById('heroVideo');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundOff = soundToggle.querySelector('.sound-off');
+        const soundOn = soundToggle.querySelector('.sound-on');
+        soundToggle.addEventListener('click', () => {
+            video.muted = !video.muted;
+            soundOff.style.display = video.muted ? 'inline' : 'none';
+            soundOn.style.display = video.muted ? 'none' : 'inline';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+/**
+ * @file    : css/layout.css
+ * @purpose : 佈局系統 - Container、Navbar、Footer
+ * @depends : ['css/variables.css']
+ */
+
+/* ========================================
+   Container
+   ======================================== */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+/* ========================================
+   Navbar
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    /* 增加層次感：漸層背景 + 微妙陰影 */
+    background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F3 100%);
+    box-shadow:
+        0 1px 0 rgba(210, 105, 30, 0.08),
+        0 4px 12px rgba(62, 39, 35, 0.04);
+    border-bottom: 1px solid rgba(210, 105, 30, 0.12);
+    transition: var(--transition-base);
+}
+
+.nav-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.logo-text {
+    font-size: var(--font-size-2xl);
+    /* 加大 Logo */
+    font-weight: 900;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.nav-link {
+    color: var(--text-primary);
+    /* 提高對比度 */
+    font-size: var(--font-size-lg);
+    /* 加大字體 */
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+    background: rgba(210, 105, 30, 0.08);
+}
+
+.nav-cta {
+    background: var(--color-primary);
+    color: var(--text-light) !important;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
+}
+
+.nav-cta:hover {
+    background: var(--color-primary-light);
+    color: var(--text-light) !important;
+}
+
+/* Mobile Toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+}
+
+.nav-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    background: #3D2B1F;
+    /* 暖棕色而非純黑 */
+    color: var(--bg-light);
+    padding: var(--spacing-3xl) 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.footer-brand {
+    font-size: var(--font-size-2xl);
+    font-weight: 900;
+    color: var(--color-accent);
+}
+
+.footer-tagline {
+    color: rgba(253, 249, 243, 0.7);
+    margin-bottom: 0;
+}
+
+.footer-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--color-primary);
+    margin: var(--spacing-md) 0;
+}
+
+.footer-copyright {
+    font-size: var(--font-size-sm);
+    color: rgba(253, 249, 243, 0.5);
+    margin-bottom: 0;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-light);
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}

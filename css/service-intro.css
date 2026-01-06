@@ -1,0 +1,156 @@
+/**
+ * Service Intro & Flow Explanation Styles
+ * 服務介紹區塊與流程說明樣式
+ * @module service-intro
+ */
+
+/* === Intro Section === */
+.intro-section {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.intro-header {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+.intro-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.intro-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.benefit-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* === Flow Explanation Section === */
+.flow-explanation {
+    background: var(--text-primary);
+    color: white;
+    padding: 3rem 2rem;
+}
+
+.flow-explanation h3 {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.node-explanations {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.node-exp {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.node-exp:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.exp-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 50%;
+}
+
+.node-exp strong {
+    color: var(--primary-light);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 3rem 1rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .flow-explanation {
+        padding: 2rem 1rem;
+    }
+
+    .node-explanations {
+        flex-direction: column;
+    }
+
+    .node-exp {
+        flex-direction: row;
+        text-align: left;
+    }
+}

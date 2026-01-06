@@ -1,0 +1,183 @@
+/**
+ * @file    : css/service-fullscreen-layout.css
+ * @purpose : 全屏服務區塊 - 佈局與結構
+ * @depends : ['css/variables.css']
+ * @lines   : ~150
+ */
+
+/* ============================================================
+   全屏服務區塊 - 基礎結構
+   ============================================================ */
+.service-fullscreen {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--bg-light);
+}
+
+/* 背景圖片容器 */
+.service-bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.service-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.15;
+    filter: blur(2px);
+    transition: opacity var(--transition-slow);
+}
+
+.service-fullscreen:hover .service-bg-image {
+    opacity: 0.2;
+}
+
+/* 漸層遮罩 */
+.service-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(135deg,
+            rgba(253, 249, 243, 0.95) 0%,
+            rgba(245, 239, 230, 0.85) 50%,
+            rgba(253, 249, 243, 0.90) 100%);
+}
+
+/* ============================================================
+   內容區塊 - 兩欄式佈局
+   ============================================================ */
+.service-fullscreen-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: var(--spacing-3xl);
+    align-items: center;
+}
+
+/* 左側：文字內容 */
+.service-text-column {
+    max-width: 600px;
+}
+
+/* 右側：視覺圖片 */
+.service-image-column {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-feature-image {
+    width: 100%;
+    max-width: 550px;
+    border-radius: var(--radius-2xl);
+    box-shadow:
+        0 25px 50px rgba(62, 39, 35, 0.15),
+        0 10px 20px rgba(210, 105, 30, 0.1);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.service-feature-image:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 35px 60px rgba(62, 39, 35, 0.2),
+        0 15px 30px rgba(210, 105, 30, 0.15);
+}
+
+/* 裝飾圓點 */
+.service-image-column::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+    opacity: 0.3;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.service-image-column::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* ============================================================
+   反轉佈局（圖左文右）
+   ============================================================ */
+.service-reversed .service-fullscreen-content {
+    direction: rtl;
+}
+
+.service-reversed .service-text-column,
+.service-reversed .service-image-column {
+    direction: ltr;
+}
+
+.service-reversed .service-target {
+    border-left: none;
+    border-right: 4px solid var(--color-primary);
+}
+
+/* ============================================================
+   響應式設計
+   ============================================================ */
+@media (max-width: 1024px) {
+    .service-fullscreen-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        padding: var(--spacing-2xl);
+    }
+
+    .service-text-column {
+        max-width: 100%;
+        order: 2;
+    }
+
+    .service-image-column {
+        order: 1;
+    }
+
+    .service-feature-image {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-fullscreen {
+        min-height: auto;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .service-fullscreen-content {
+        padding: var(--spacing-lg);
+    }
+
+    .service-feature-image {
+        max-width: 100%;
+    }
+}

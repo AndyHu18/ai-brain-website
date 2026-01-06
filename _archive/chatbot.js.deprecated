@@ -1,0 +1,254 @@
+/**
+ * AI 智能大腦公司 - Gemini 聊天客服
+ * 使用 Gemini API 實現智能客服功能
+ */
+
+// Gemini API 設定
+const GEMINI_API_KEY = 'AIzaSyApMiwmJpbo0vX58K_n4sfCN6bqBDDd4Tk';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+
+// 客服人設 System Instructions
+const SYSTEM_INSTRUCTION = `你是「AI 智能大腦公司」的專業 AI 客服顧問，名字叫「小腦」。
+
+## 公司介紹
+AI 智能大腦公司是一家專注於企業級 AI 導入的技術服務商。我們提供以下四大核心服務：
+
+1. **智能語音服務** - 24/7 AI 電話客服、語音預約系統、客戶意圖識別
+2. **智能數據分析** - 財報自動解讀、多源數據整合、風險預警
+3. **流程自動化** - 企業工作流編排、跨系統資料同步、排程任務
+4. **內容智能生成** - 影音轉錄摘要、品牌內容批量產出、SEO 優化
+
+## 成功案例
+- 上市公司財報分析系統：5分鐘完成150頁財報專業解讀
+- AI 語音預約代理：支援中文自然對話，零漏接
+- 影音內容智能轉錄平台：本地處理保護隱私
+- 企業自動化框架：工業級穩定性
+
+## 你的回應規則
+1. 使用繁體中文回應
+2. 語氣專業、友善、有溫度
+3. 回答要簡潔有力，避免過長
+4. 若用戶詢問價格，請說「我們提供客製化方案，建議留下聯繫方式，專人為您報價」
+5. 若用戶想深入了解某項服務，提供更多細節並引導填寫諮詢表單
+6. 若問題超出服務範圍，禮貌說明並引導回公司服務
+7. 任何與 AI 相關的需求都可以接洽討論
+
+## 開場白
+首次互動時，請簡短自我介紹並詢問如何協助。`;
+
+// 對話歷史
+let conversationHistory = [];
+
+/**
+ * 初始化聊天客服
+ */
+function initChatbot() {
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose = document.getElementById('chatClose');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+
+    if (!chatToggle || !chatWindow) return;
+
+    // 開啟/關閉聊天視窗
+    chatToggle.addEventListener('click', () => {
+        chatWindow.classList.toggle('active');
+        chatToggle.classList.toggle('active');
+
+        // 首次開啟時發送歡迎訊息
+        if (chatWindow.classList.contains('active') && conversationHistory.length === 0) {
+            setTimeout(() => {
+                addMessage('您好！我是 AI 智能大腦的客服顧問「小腦」。請問有什麼我可以協助您的嗎？', 'bot');
+            }, 500);
+        }
+    });
+
+    // 關閉按鈕
+    chatClose?.addEventListener('click', () => {
+        chatWindow.classList.remove('active');
+        chatToggle.classList.remove('active');
+    });
+
+    // 送出訊息
+    chatForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        // 顯示用戶訊息
+        addMessage(message, 'user');
+        chatInput.value = '';
+
+        // 顯示載入中
+        const loadingId = addMessage('思考中...', 'bot', true);
+
+        // 發送到 Gemini API
+        try {
+            const response = await sendToGemini(message);
+            removeMessage(loadingId);
+            addMessage(response, 'bot');
+        } catch (error) {
+            removeMessage(loadingId);
+            addMessage('抱歉，系統暫時無法回應。請稍後再試或直接填寫諮詢表單，我們會盡快與您聯繫。', 'bot');
+            console.error('Gemini API Error:', error);
+        }
+    });
+}
+
+/**
+ * 發送訊息到 Gemini API
+ */
+async function sendToGemini(userMessage) {
+    // 建立對話歷史
+    conversationHistory.push({
+        role: 'user',
+        parts: [{ text: userMessage }]
+    });
+
+    const requestBody = {
+        system_instruction: {
+            parts: [{ text: SYSTEM_INSTRUCTION }]
+        },
+        contents: conversationHistory,
+        generationConfig: {
+            temperature: 0.7,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 1024,
+        }
+    };
+
+    const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody)
+    });
+
+    if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const botMessage = data.candidates?.[0]?.content?.parts?.[0]?.text || '抱歉，我無法理解您的問題。';
+
+    // 加入對話歷史
+    conversationHistory.push({
+        role: 'model',
+        parts: [{ text: botMessage }]
+    });
+
+    return botMessage;
+}
+
+/**
+ * 新增訊息到聊天視窗
+ */
+function addMessage(text, sender, isLoading = false) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageId = 'msg-' + Date.now();
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `chat-message ${sender}`;
+    messageDiv.id = messageId;
+
+    if (isLoading) {
+        messageDiv.classList.add('loading');
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <span class="loading-dots">
+                    <span></span><span></span><span></span>
+                </span>
+            </div>
+        `;
+    } else {
+        messageDiv.innerHTML = `
+            <div class="message-content">${formatMessage(text)}</div>
+        `;
+    }
+
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return messageId;
+}
+
+/**
+ * 移除訊息
+ */
+function removeMessage(messageId) {
+    const message = document.getElementById(messageId);
+    if (message) {
+        message.remove();
+    }
+}
+
+/**
+ * 格式化訊息（處理換行和粗體）
+ */
+function formatMessage(text) {
+    return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+}
+
+// 頁面載入時初始化
+document.addEventListener('DOMContentLoaded', () => {
+    initChatbot();
+    initHintRotation();
+});
+
+/**
+ * 輪播提示文字功能
+ */
+function initHintRotation() {
+    const chatHint = document.getElementById('chatHint');
+    const chatHintText = document.getElementById('chatHintText');
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatNotification = document.querySelector('.chat-notification');
+
+    if (!chatHint || !chatHintText) return;
+
+    // 輪播提示文字列表
+    const hintMessages = [
+        '有問題嗎？問我！',
+        '想了解 AI 服務？',
+        '24/7 線上諮詢',
+        '免費 AI 導入評估',
+        '點我開始對話'
+    ];
+
+    let currentIndex = 0;
+
+    // 每 4 秒切換一次提示文字
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % hintMessages.length;
+        chatHintText.style.opacity = '0';
+
+        setTimeout(() => {
+            chatHintText.textContent = hintMessages[currentIndex];
+            chatHintText.style.opacity = '1';
+        }, 300);
+    }, 4000);
+
+    // 點擊提示氣泡也能開啟聊天
+    chatHint.addEventListener('click', () => {
+        chatToggle.click();
+    });
+
+    // 聊天視窗開啟時隱藏提示與通知
+    const observer = new MutationObserver(() => {
+        if (chatWindow.classList.contains('active')) {
+            chatHint.style.display = 'none';
+            if (chatNotification) chatNotification.style.display = 'none';
+        } else {
+            chatHint.style.display = 'block';
+            // 視窗關閉後不再顯示通知
+        }
+    });
+
+    observer.observe(chatWindow, { attributes: true, attributeFilter: ['class'] });
+}

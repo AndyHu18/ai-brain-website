@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客服機器人 | AI 智能大腦</title>
+    <meta name="description" content="24 小時不喊累的金牌客服 - 客人的問題 AI 秒回，不用再請客服人員守 LINE。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/service-page-hero.css">
+    <link rel="stylesheet" href="../css/n8n-workflow.css">
+    <link rel="stylesheet" href="../css/n8n-responsive.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-transparent">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
+            <div class="nav-menu">
+                <a href="../index.html#services" class="nav-link">服務項目</a>
+                <a href="../index.html#solutions" class="nav-link">解決方案</a>
+                <a href="../index.html#technology" class="nav-link">技術能力</a>
+                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="service-hero" id="hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+                <source src="../assets/videos/services/service_chatbot.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+            <span class="sound-icon sound-off">🔇</span>
+            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+        </button>
+        <div class="hero-content">
+            <span class="service-badge">服務方案 03</span>
+            <h1 class="hero-title"><span class="emoji">🤖</span> 客服機器人</h1>
+            <p class="hero-tagline">24 小時不喊累的金牌客服</p>
+            <div class="hero-cta-group">
+                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
+                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator"><span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <div class="grid-background"></div>
+    <div id="particles"></div>
+
+    <main class="workflow-container" id="workflow-demo">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" class="back-btn">← 返回首頁</a>
+                <h2>🤖 客服機器人</h2>
+                <span class="demo-badge">🎬 流程示範</span>
+            </div>
+            <div class="controls">
+                <button id="btn-start" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    啟動流程
+                </button>
+                <button id="btn-reset" class="btn btn-secondary">重置</button>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-header">
+                <h2>💡 這個功能能幫您做什麼？</h2>
+                <p class="intro-subtitle">客人的問題 AI 秒回，不用再請客服人員守 LINE</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">⏰</span>
+                    <h3>24 小時秒回</h3>
+                    <p>半夜凌晨客人問問題？AI 照樣秒回不用等</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">💰</span>
+                    <h3>省下客服薪水</h3>
+                    <p>一個 AI 抵兩個客服，每月省三萬</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📚</span>
+                    <h3>記住所有產品</h3>
+                    <p>幾百種商品資訊全記住，答案永遠正確</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flow-explanation">
+            <h3>📍 流程節點說明</h3>
+            <div class="node-explanations">
+                <div class="node-exp"><span class="exp-num">1</span><strong>訊息接收</strong> — 接收 LINE/FB 客戶訊息</div>
+                <div class="node-exp"><span class="exp-num">2</span><strong>意圖分析</strong> — AI 理解客戶在問什麼</div>
+                <div class="node-exp"><span class="exp-num">3</span><strong>知識查詢</strong> — 從產品資料庫找答案</div>
+                <div class="node-exp"><span class="exp-num">4</span><strong>回覆生成</strong> — 用自然口吻組合回覆</div>
+                <div class="node-exp"><span class="exp-num">5</span><strong>訊息發送</strong> — 發回給客戶</div>
+            </div>
+        </section>
+
+        <div class="status-bar">
+            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
+                        id="workflow-status">等待啟動</strong></span></div>
+            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
+            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
+                點擊模擬</button>
+            <div id="workflow-canvas" class="workflow-canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-container" class="nodes-container"></div>
+            </div>
+        </div>
+
+        <aside class="log-panel">
+            <div class="log-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6M9 13h6M9 17h6" />
+                </svg>
+                <span>📋 即時執行紀錄</span>
+            </div>
+            <div id="log-content" class="log-content">
+                <div class="log-entry info"><span class="log-time">--:--:--</span><span
+                        class="log-msg">客服機器人就緒，點擊啟動流程開始...</span></div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">AI 智能大腦</div>
+                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script-navigation.js"></script>
+    <script>
+        const SERVICE_CONFIG = {
+            name: '客服機器人',
+            nodes: [
+                { id: 'msg-receive', title: '💬 訊息接收', description: '接收 LINE/FB 訊息', icon: 'message', color: '#27AE60', position: { x: 50, y: 30 }, bubbleMessages: ['📩 收到訊息...', '👤 識別客戶...', '✅ 訊息已接收！'] },
+                { id: 'intent-analyze', title: '🧠 意圖分析', description: 'AI 理解客戶需求', icon: 'brain', color: '#E67E22', position: { x: 280, y: 30 }, bubbleMessages: ['🔍 分析語意...', '🎯 識別意圖...', '✅ 客戶想問商品規格！'] },
+                { id: 'knowledge-search', title: '📚 知識查詢', description: '搜尋知識庫/FAQ', icon: 'database', color: '#3498DB', position: { x: 510, y: 30 }, bubbleMessages: ['🔎 搜尋資料庫...', '📋 比對 FAQ...', '✅ 找到 3 筆相關資訊！'] },
+                { id: 'reply-gen', title: '✍️ 回覆生成', description: 'AI 生成自然回覆', icon: 'text', color: '#9B59B6', position: { x: 740, y: 30 }, bubbleMessages: ['🤖 組合回覆...', '💬 語氣調整...', '✅ 回覆準備好了！'] },
+                { id: 'msg-send', title: '📤 訊息發送', description: '發送回覆給客戶', icon: 'send', color: '#E74C3C', position: { x: 970, y: 30 }, bubbleMessages: ['📨 發送訊息...', '✅ 已送達！', '🎉 客服完成！'] }
+            ],
+            connections: [
+                { from: 'msg-receive', to: 'intent-analyze' },
+                { from: 'intent-analyze', to: 'knowledge-search' },
+                { from: 'knowledge-search', to: 'reply-gen' },
+                { from: 'reply-gen', to: 'msg-send' }
+            ],
+            executionOrder: ['msg-receive', 'intent-analyze', 'knowledge-search', 'reply-gen', 'msg-send'],
+            resultPreview: { type: 'line', content: { icon: '🤖', sender: 'AI 客服', message: '您好！這款商品目前有現貨，規格有 S/M/L 三種尺寸。需要幫您下單嗎？', link: false } }
+        };
+    </script>
+    <script src="../js/workflow-engine.js"></script>
+    <script>
+        const video = document.getElementById('heroVideo');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundOff = soundToggle.querySelector('.sound-off');
+        const soundOn = soundToggle.querySelector('.sound-on');
+        soundToggle.addEventListener('click', () => {
+            video.muted = !video.muted;
+            soundOff.style.display = video.muted ? 'inline' : 'none';
+            soundOn.style.display = video.muted ? 'none' : 'inline';
+        });
+    </script>
+</body>
+
+</html>

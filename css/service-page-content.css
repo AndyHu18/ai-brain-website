@@ -1,0 +1,193 @@
+/**
+ * Service Page Content Styles
+ * 服務詳情頁面內容區塊樣式
+ * @module service-page-content
+ */
+
+/* Service Details Section */
+.service-details {
+    padding: 6rem 0;
+    background: var(--bg-secondary);
+}
+
+.detail-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.detail-block:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.detail-block.highlight {
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(255, 154, 75, 0.08) 100%);
+    border-left: 4px solid var(--primary-color);
+}
+
+.detail-block.experience {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.detail-block.tech {
+    background: var(--text-primary);
+    color: white;
+}
+
+.detail-block.tech h2,
+.detail-block.tech p {
+    color: white;
+}
+
+.detail-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-gradient);
+    border-radius: var(--radius-md);
+}
+
+.detail-block.tech .detail-icon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.detail-content {
+    flex: 1;
+}
+
+.detail-content.wide {
+    max-width: 100%;
+}
+
+.detail-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.detail-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.problem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.problem-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.problem-list li::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.experience-text p {
+    margin-bottom: 1rem;
+}
+
+.experience-text strong {
+    color: var(--primary-color);
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* CTA Section */
+.service-cta {
+    background: var(--primary-gradient);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.service-cta h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.service-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-large {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-block {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-icon {
+        margin: 0 auto;
+    }
+
+    .problem-list li {
+        text-align: left;
+    }
+}

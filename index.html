@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能大腦公司 | 企業級 AI 導入專家</title>
+    <meta name="description" content="專注於將人工智慧技術轉化為可落地的商業解決方案，協助企業降低營運成本、提升服務效率、創造競爭優勢。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sections-hero.css">
+    <link rel="stylesheet" href="css/sections-services.css">
+    <link rel="stylesheet" href="css/sections-solutions.css">
+    <link rel="stylesheet" href="css/sections-tech-contact.css">
+    <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css">
+    <link rel="stylesheet" href="css/chatbot/chatbot-window.css">
+    <link rel="stylesheet" href="css/chatbot/chatbot-messages.css">
+    <link rel="stylesheet" href="css/digital-workforce-layout.css">
+    <link rel="stylesheet" href="css/digital-workforce-cards.css">
+    <link rel="stylesheet" href="css/service-fullscreen-layout.css">
+    <link rel="stylesheet" href="css/service-fullscreen-content.css">
+    <link rel="stylesheet" href="css/animations-keyframes.css">
+    <link rel="stylesheet" href="css/animations-stagger.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">AI 智能大腦</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#services" class="nav-link">服務項目</a>
+                <a href="#solutions" class="nav-link">解決方案</a>
+                <a href="#technology" class="nav-link">技術能力</a>
+                <a href="#contact" class="nav-link nav-cta">聯繫我們</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-fallback-bg"></div>
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+                <source src="assets/videos/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <!-- 聲音控制按鈕 -->
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+            <span class="sound-icon sound-off">SOUND OFF</span>
+            <span class="sound-icon sound-on" style="display: none;">SOUND ON</span>
+        </button>
+        <div class="hero-content">
+            <div class="hero-badge">企業級 AI 導入專家</div>
+            <h1 class="hero-title">
+                <span class="hero-title-main">AI 智能大腦</span>
+                <span class="hero-title-sub">將 AI 轉化為您的競爭優勢</span>
+            </h1>
+            <p class="hero-description">
+                我們專注於將人工智慧技術轉化為可落地的商業解決方案<br>
+                協助企業降低營運成本、提升服務效率、創造競爭優勢
+            </p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn btn-primary">立即諮詢</a>
+                <a href="#solutions" class="btn btn-secondary">了解更多</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">全年無休服務</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5 分鐘</span>
+                    <span class="stat-label">快速部署</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">系統穩定性</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         全屏服務區塊 1: 自動流量小編
+         ============================================================ -->
+    <section class="service-fullscreen" id="service-content-editor">
+        <!-- 背景圖片 -->
+        <div class="service-bg-container">
+            <img src="assets/images/service_traffic_editor.png" alt="自動流量小編 AI" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+
+        <!-- 內容區 -->
+        <div class="service-fullscreen-content">
+            <!-- 左側：文字內容 -->
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 01</span>
+
+                <h2 class="service-main-title">
+                    <span class="emoji">📝</span>自動流量小編
+                </h2>
+
+                <p class="service-tagline">讓網站自己會抓客戶</p>
+
+                <!-- 適用對象 -->
+                <div class="service-target">
+                    <span class="service-target-icon">👤</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        想做內容行銷，但沒時間寫文章、請不起專業 SEO 團隊的老闆。
+                    </div>
+                </div>
+
+                <!-- 解決的問題 -->
+                <p class="service-problem">
+                    <strong>解決：</strong>官網長期停更、廣告費越來越貴、搜尋不到您的店
+                </p>
+
+                <!-- 體驗描述 -->
+                <div class="service-experience">
+                    <p>
+                        這就像請了一位 24 小時盯著網路熱點的小編。它會自動觀察現在流行什麼，幫您寫出專業又好讀的文章並自動發布。您不用學後台，只需要在手機上點一下『確認』，流量就開始累積。
+                    </p>
+                </div>
+
+                <!-- 技術底氣 -->
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        基於工業級瀏覽器自動化技術，穩定性遠超一般外掛。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-content-editor.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+
+            <!-- 右側：視覺圖片 -->
+            <div class="service-image-column">
+                <img src="assets/images/service_traffic_editor.png" alt="AI 自動流量小編 - SEO 自動化流量引擎"
+                    class="service-feature-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         全屏服務區塊 2: 智慧接線生
+         ============================================================ -->
+    <section class="service-fullscreen service-reversed" id="service-voice-receptionist">
+        <!-- 背景圖片 -->
+        <div class="service-bg-container">
+            <img src="assets/images/service_voice_receptionist.png" alt="智慧接線生 AI" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+
+        <!-- 內容區 -->
+        <div class="service-fullscreen-content">
+            <!-- 左側：視覺圖片（反轉佈局） -->
+            <div class="service-image-column">
+                <img src="assets/images/service_voice_receptionist.png" alt="AI 智慧接線生 - 24小時語音服務"
+                    class="service-feature-image">
+            </div>
+
+            <!-- 右側：文字內容 -->
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 02</span>
+
+                <h2 class="service-main-title">
+                    <span class="emoji">📞</span>智慧接線生
+                </h2>
+
+                <p class="service-tagline">24 小時守護每一通訂單</p>
+
+                <!-- 適用對象 -->
+                <div class="service-target">
+                    <span class="service-target-icon">🏥</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        櫃檯忙不過來、離峰時間電話無人接聽的診所、餐廳或工作室。
+                    </div>
+                </div>
+
+                <!-- 解決的問題 -->
+                <p class="service-problem">
+                    <strong>解決：</strong>忙時漏接電話（就是漏掉業績）、重複回答基礎問題導致生產力下降
+                </p>
+
+                <!-- 體驗描述 -->
+                <div class="service-experience">
+                    <p>
+                        給您的店一位永不疲倦的數位櫃檯。它能聽懂在地口音，幫客戶掛號、預約、回答營業時間。這不是那種讓人煩躁的語音選單，而是像真人一樣的對答。讓您睡覺時，生意依然在進行。
+                    </p>
+                </div>
+
+                <!-- 技術底氣 -->
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        採用最新的即時語音通訊技術，對話流暢無延遲。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-voice-receptionist.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         全屏服務區塊 3: 品牌分身術
+         ============================================================ -->
+    <section class="service-fullscreen" id="service-brand-clone">
+        <div class="service-bg-container">
+            <img src="assets/images/service_brand_clone.png" alt="品牌分身術 AI" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+        <div class="service-fullscreen-content">
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 03</span>
+                <h2 class="service-main-title">
+                    <span class="emoji">🎭</span>品牌分身術
+                </h2>
+                <p class="service-tagline">讓 AI 代你發文</p>
+                <div class="service-target">
+                    <span class="service-target-icon">👔</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        需要經營 Facebook、Instagram、LINE 官方帳號，但沒時間每天發文的個人品牌或小公司。
+                    </div>
+                </div>
+                <p class="service-problem">
+                    <strong>解決：</strong>內容產出跟不上，品牌聲量逐漸消失
+                </p>
+                <div class="service-experience">
+                    <p>
+                        想像一下，你只需要告訴 AI「這週主打新品」，它就會自動幫你排好整週的發文、選好圖、抓好發布時間。語氣跟你本人一模一樣，粉絲根本分不出來。
+                    </p>
+                </div>
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        結合自然語言處理與品牌語調分析，確保每篇貼文都是「你」。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-brand-clone.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+            <div class="service-image-column">
+                <img src="assets/images/service_brand_clone.png" alt="品牌分身術 - AI 代發文" class="service-feature-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         全屏服務區塊 4: 客服機器人
+         ============================================================ -->
+    <section class="service-fullscreen service-reversed" id="service-chatbot">
+        <div class="service-bg-container">
+            <img src="assets/images/service_chatbot.png" alt="客服機器人 AI" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+        <div class="service-fullscreen-content">
+            <div class="service-image-column">
+                <img src="assets/images/service_chatbot.png" alt="客服機器人 - 線上小幫手" class="service-feature-image">
+            </div>
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 04</span>
+                <h2 class="service-main-title">
+                    <span class="emoji">🤖</span>客服機器人
+                </h2>
+                <p class="service-tagline">您專屬的線上小幫手</p>
+                <div class="service-target">
+                    <span class="service-target-icon">🛒</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        電商賣家、服務業者，每天重複回答相同問題到心累的老闆。
+                    </div>
+                </div>
+                <p class="service-problem">
+                    <strong>解決：</strong>客服人力成本高、回覆速度慢、夜間無人值班
+                </p>
+                <div class="service-experience">
+                    <p>
+                        客戶在凌晨三點問「還有貨嗎？」，AI 秒回。問「怎麼退換貨？」，AI 秒答。它不會累、不會忘、不會不耐煩，而且每次回答都帶著您品牌的溫度。
+                    </p>
+                </div>
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        支援 LINE、Facebook Messenger、網站即時客服，無縫整合。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-chatbot.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         全屏服務區塊 5: 會議記錄工
+         ============================================================ -->
+    <section class="service-fullscreen" id="service-meeting-notes">
+        <div class="service-bg-container">
+            <img src="assets/images/service_meeting_notes.png" alt="會議記錄工 AI" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+        <div class="service-fullscreen-content">
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 05</span>
+                <h2 class="service-main-title">
+                    <span class="emoji">📝</span>會議記錄工
+                </h2>
+                <p class="service-tagline">開完會，紀錄就好了</p>
+                <div class="service-target">
+                    <span class="service-target-icon">🏢</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        每週開好幾場會，但會議紀錄總是拖、總是漏、總是沒人想寫的團隊。
+                    </div>
+                </div>
+                <p class="service-problem">
+                    <strong>解決：</strong>會議記錄拖延症、重點遺漏、Action Items 追蹤困難
+                </p>
+                <div class="service-experience">
+                    <p>
+                        會議一結束，AI 已經幫你把討論重點、決議事項、誰該做什麼整理好。直接寄到群組，每個人打開就知道自己該幹嘛。再也不用問「剛剛說什麼？」
+                    </p>
+                </div>
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        語音轉文字加上智慧摘要，連講台語也聽得懂。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-meeting-notes.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+            <div class="service-image-column">
+                <img src="assets/images/service_meeting_notes.png" alt="會議記錄工 - 自動摘要" class="service-feature-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         全屏服務區塊 6: AI 顧問
+         ============================================================ -->
+    <section class="service-fullscreen service-reversed" id="service-consultant">
+        <div class="service-bg-container">
+            <img src="assets/images/service_consultant.png" alt="AI 顧問" class="service-bg-image">
+            <div class="service-bg-overlay"></div>
+        </div>
+        <div class="service-fullscreen-content">
+            <div class="service-image-column">
+                <img src="assets/images/service_consultant.png" alt="AI 顧問 - 數位轉型夥伴" class="service-feature-image">
+            </div>
+            <div class="service-text-column">
+                <span class="service-number-badge">服務方案 06</span>
+                <h2 class="service-main-title">
+                    <span class="emoji">🧠</span>AI 顧問
+                </h2>
+                <p class="service-tagline">從零到一的數位轉型夥伴</p>
+                <div class="service-target">
+                    <span class="service-target-icon">🏭</span>
+                    <div class="service-target-text">
+                        <strong>適合誰？</strong>
+                        想導入 AI 但不知從何下手，或曾經導入失敗想重新來過的企業決策者。
+                    </div>
+                </div>
+                <p class="service-problem">
+                    <strong>解決：</strong>AI 投資報酬率不明、導入專案失敗率高、缺乏長期策略規劃
+                </p>
+                <div class="service-experience">
+                    <p>
+                        我們不只賣工具，我們陪你走過整條路。從診斷現況、規劃藍圖、選擇技術、培訓團隊到持續優化。三個月後，你的團隊就能自己跑，我們退到幕後。
+                    </p>
+                </div>
+                <div class="service-tech-badge">
+                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-text">
+                        企業級 AI 導入方法論，確保每一分投資都看得到回報。
+                    </span>
+                </div>
+
+                <!-- 了解更多按鈕 -->
+                <a href="pages/service-consultant.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">核心服務</span>
+                <h2 class="section-title">我們能為您做什麼</h2>
+                <p class="section-subtitle">四大 AI 解決方案，覆蓋企業數位轉型全場景</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/service_voice_ai_1767594948863.png" alt="智能語音服務">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">VOICE</div>
+                        <h3 class="service-title">智能語音服務</h3>
+                        <p class="service-tagline">AI 接聽每一通來電</p>
+                        <ul class="service-features">
+                            <li>24/7 全年無休電話客服</li>
+                            <li>自然語言即時對話</li>
+                            <li>預約系統自動化</li>
+                            <li>客戶意圖精準識別</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/service_data_analytics_1767594972042.png" alt="智能數據分析">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">DATA</div>
+                        <h3 class="service-title">智能數據分析</h3>
+                        <p class="service-tagline">讓 AI 讀懂複雜報表</p>
+                        <ul class="service-features">
+                            <li>財務報表自動解讀</li>
+                            <li>多源數據整合分析</li>
+                            <li>風險指標即時預警</li>
+                            <li>結構化報告輸出</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/service_automation_1767594989725.png" alt="流程自動化">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">AUTO</div>
+                        <h3 class="service-title">流程自動化</h3>
+                        <p class="service-tagline">重複工作交給機器</p>
+                        <ul class="service-features">
+                            <li>企業級工作流編排</li>
+                            <li>跨系統資料同步</li>
+                            <li>排程任務自動執行</li>
+                            <li>異常狀態即時通知</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="assets/images/service_content_ai_1767595006859.png" alt="內容智能生成">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">CONTENT</div>
+                        <h3 class="service-title">內容智能生成</h3>
+                        <p class="service-tagline">AI 驅動的內容產線</p>
+                        <ul class="service-features">
+                            <li>影音內容轉錄摘要</li>
+                            <li>多模態資料處理</li>
+                            <li>品牌內容批量產出</li>
+                            <li>SEO 優化自動化</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">成功案例</span>
+                <h2 class="section-title">解決方案實績</h2>
+                <p class="section-subtitle">已驗證的企業級 AI 應用方案</p>
+            </div>
+            <div class="solutions-list">
+                <!-- Solution 1 -->
+                <div class="solution-item">
+                    <div class="solution-number">01</div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">上市公司財報智能分析系統</h3>
+                        <p class="solution-tagline">讓 AI 在 5 分鐘內完成 150 頁財報的專業解讀</p>
+                        <div class="solution-details">
+                            <div class="solution-col">
+                                <h4>適用場景</h4>
+                                <ul>
+                                    <li>投資機構研究部門</li>
+                                    <li>會計師事務所</li>
+                                    <li>企業財務規劃</li>
+                                </ul>
+                            </div>
+                            <div class="solution-col">
+                                <h4>核心價值</h4>
+                                <ul>
+                                    <li>4 個 AI 專家協作分析</li>
+                                    <li>自動驗算防止數據錯誤</li>
+                                    <li>IFRSs 準則合規輸出</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Solution 2 -->
+                <div class="solution-item">
+                    <div class="solution-number">02</div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">AI 語音預約代理</h3>
+                        <p class="solution-tagline">打電話給 AI，用自然對話完成服務預約</p>
+                        <div class="solution-details">
+                            <div class="solution-col">
+                                <h4>適用場景</h4>
+                                <ul>
+                                    <li>連鎖餐飲訂位服務</li>
+                                    <li>醫療診所預約掛號</li>
+                                    <li>美容美髮預約系統</li>
+                                </ul>
+                            </div>
+                            <div class="solution-col">
+                                <h4>核心價值</h4>
+                                <ul>
+                                    <li>24 小時全年無休服務</li>
+                                    <li>支援中文自然對話</li>
+                                    <li>零漏接降低商機損失</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Solution 3 -->
+                <div class="solution-item">
+                    <div class="solution-number">03</div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">影音內容智能轉錄平台</h3>
+                        <p class="solution-tagline">將長時數影片轉化為可檢索、可閱讀的結構化內容</p>
+                        <div class="solution-details">
+                            <div class="solution-col">
+                                <h4>適用場景</h4>
+                                <ul>
+                                    <li>媒體內容產製團隊</li>
+                                    <li>企業教育訓練部門</li>
+                                    <li>學術研究機構</li>
+                                </ul>
+                            </div>
+                            <div class="solution-col">
+                                <h4>核心價值</h4>
+                                <ul>
+                                    <li>本地處理保護資料隱私</li>
+                                    <li>AI 專家團深度內容分析</li>
+                                    <li>自動生成重點摘要</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Solution 4 -->
+                <div class="solution-item">
+                    <div class="solution-number">04</div>
+                    <div class="solution-content">
+                        <h3 class="solution-title">企業自動化框架</h3>
+                        <p class="solution-tagline">程式化控制複雜工作流，實現真正的流程自動化</p>
+                        <div class="solution-details">
+                            <div class="solution-col">
+                                <h4>適用場景</h4>
+                                <ul>
+                                    <li>跨部門資料整合</li>
+                                    <li>電商訂單自動處理</li>
+                                    <li>內容發布自動化</li>
+                                </ul>
+                            </div>
+                            <div class="solution-col">
+                                <h4>核心價值</h4>
+                                <ul>
+                                    <li>工業級穩定性</li>
+                                    <li>無需外部 API Key 運作</li>
+                                    <li>完整部署與維護文檔</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology" id="technology">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">專業技術</span>
+                <h2 class="section-title">技術能力</h2>
+                <p class="section-subtitle">業界領先的 AI 技術棧</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-category">
+                    <div class="tech-icon">AI ENGINE</div>
+                    <h3 class="tech-title">AI 引擎</h3>
+                    <ul class="tech-list">
+                        <li>Google Gemini 3.0</li>
+                        <li>CrewAI 多代理</li>
+                        <li>faster-whisper STT</li>
+                        <li>Imagen 圖像生成</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-icon">BACKEND</div>
+                    <h3 class="tech-title">後端架構</h3>
+                    <ul class="tech-list">
+                        <li>Python / Node.js</li>
+                        <li>FastAPI / Flask</li>
+                        <li>PostgreSQL</li>
+                        <li>Supabase</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-icon">FRONTEND</div>
+                    <h3 class="tech-title">前端體驗</h3>
+                    <ul class="tech-list">
+                        <li>Next.js / React</li>
+                        <li>即時串流 SSE</li>
+                        <li>響應式設計</li>
+                        <li>專業 UI 元件</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <div class="tech-icon">DEPLOY</div>
+                    <h3 class="tech-title">部署方案</h3>
+                    <ul class="tech-list">
+                        <li>Docker 容器化</li>
+                        <li>Vercel / Railway</li>
+                        <li>桌面應用 .exe</li>
+                        <li>私有雲部署</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-content">
+                    <span class="section-badge">商務合作</span>
+                    <h2 class="contact-title">準備好讓 AI 為您的業務加速了嗎？</h2>
+                    <p class="contact-description">
+                        歡迎洽談企業 AI 導入方案，我們將為您量身打造最適合的解決方案
+                    </p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">EMAIL</span>
+                            <span>contact@ai-brain.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">TEL</span>
+                            <span>+886-2-1234-5678</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">公司名稱</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">電子郵件</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">感興趣的服務</label>
+                            <select id="service" name="service">
+                                <option value="">請選擇</option>
+                                <option value="voice">智能語音服務</option>
+                                <option value="analytics">智能數據分析</option>
+                                <option value="automation">流程自動化</option>
+                                <option value="content">內容智能生成</option>
+                                <option value="custom">客製化方案</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">需求描述</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">送出諮詢</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">AI 智能大腦</div>
+                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chat-widget-container">
+        <!-- 輪播提示文字氣泡 -->
+        <div class="chat-hint" id="chatHint">
+            <span class="chat-hint-text" id="chatHintText">有問題嗎？問我！</span>
+            <div class="chat-hint-arrow"></div>
+        </div>
+        <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+            <span class="chat-toggle-icon">AI</span>
+            <span class="chat-notification">1</span>
+        </button>
+    </div>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">AI</div>
+                <div class="chat-header-text">
+                    <h4>AI 智能客服</h4>
+                    <span>通常幾秒內回覆</span>
+                </div>
+            </div>
+            <button class="chat-close" id="chatClose" aria-label="Close chat">x</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be added here dynamically -->
+        </div>
+        <div class="chat-input-area">
+            <form class="chat-form" id="chatForm">
+                <input type="text" class="chat-input" id="chatInput" placeholder="輸入您的問題..." autocomplete="off">
+                <button type="submit" class="chat-send" aria-label="Send message">
+                    <span class="chat-send-icon">→</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script-navigation.js"></script>
+    <script src="script-interactions.js"></script>
+    <!-- Chatbot 模組化載入 (依賴順序: config → api → core → ui → hints) -->
+    <script src="chatbot-config.js"></script>
+    <script src="chatbot-api.js"></script>
+    <script src="chatbot-core.js"></script>
+    <script src="chatbot-ui.js"></script>
+    <script src="chatbot-hints.js"></script>
+</body>
+
+</html>

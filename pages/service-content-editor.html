@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動流量小編 | AI 智能大腦</title>
+    <meta name="description" content="讓網站自己會抓客戶 - AI 驅動的 SEO 自動化內容引擎，24 小時盯著網路熱點，自動發布專業文章。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- 共用 CSS -->
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <!-- 服務頁面專用 CSS -->
+    <link rel="stylesheet" href="../css/service-page-hero.css">
+    <!-- n8n 工作流程樣式 -->
+    <link rel="stylesheet" href="../css/n8n-workflow.css">
+    <link rel="stylesheet" href="../css/n8n-responsive.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-transparent">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">AI 智能大腦</span>
+            </a>
+            <div class="nav-menu">
+                <a href="../index.html#services" class="nav-link">服務項目</a>
+                <a href="../index.html#solutions" class="nav-link">解決方案</a>
+                <a href="../index.html#technology" class="nav-link">技術能力</a>
+                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video -->
+    <section class="service-hero" id="hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+                <source src="../assets/videos/services/service_content_editor.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <!-- 聲音控制 -->
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+            <span class="sound-icon sound-off">🔇</span>
+            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+        </button>
+        <div class="hero-content">
+            <span class="service-badge">服務方案 01</span>
+            <h1 class="hero-title">
+                <span class="emoji">📝</span> 自動流量小編
+            </h1>
+            <p class="hero-tagline">讓網站自己會抓客戶</p>
+            <div class="hero-cta-group">
+                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
+                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- n8n 風格工作流程展示區 -->
+    <div class="grid-background"></div>
+    <div id="particles"></div>
+
+    <main class="workflow-container" id="workflow-demo">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" class="back-btn">← 返回首頁</a>
+                <h2>📝 自動流量小編</h2>
+                <span class="demo-badge">🎬 流程示範</span>
+            </div>
+            <div class="controls">
+                <button id="btn-start" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    啟動流程
+                </button>
+                <button id="btn-reset" class="btn btn-secondary">重置</button>
+            </div>
+        </header>
+
+        <!-- 老闆看得懂的功能介紹 -->
+        <section class="intro-section">
+            <div class="intro-header">
+                <h2>💡 這個功能能幫您做什麼？</h2>
+                <p class="intro-subtitle">不用請小編、不用加班寫文章，AI 自動幫您的網站源源不絕產出內容</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">💰</span>
+                    <h3>省人力成本</h3>
+                    <p>一個 AI 小編 = 省下一位月薪 3-5 萬的內容編輯</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">⏰</span>
+                    <h3>24 小時不休息</h3>
+                    <p>半夜有熱門話題？AI 馬上寫文章搶流量</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📈</span>
+                    <h3>SEO 自動優化</h3>
+                    <p>每篇文章都針對 Google 搜尋優化，客戶自己找上門</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 流程說明區 -->
+        <section class="flow-explanation">
+            <h3>📍 流程節點說明（點擊「啟動流程」看 AI 怎麼工作）</h3>
+            <div class="node-explanations">
+                <div class="node-exp"><span class="exp-num">1</span><strong>熱點掃描</strong> — AI 自動監控 Google 熱門搜尋、PTT、社群話題
+                </div>
+                <div class="node-exp"><span class="exp-num">2</span><strong>關鍵字分析</strong> — 找出競爭度低、搜尋量高的黃金關鍵字</div>
+                <div class="node-exp"><span class="exp-num">3</span><strong>AI 內容生成</strong> — Gemini AI 撰寫 2000 字專業文章
+                </div>
+                <div class="node-exp"><span class="exp-num">4</span><strong>自動發布</strong> — 直接登入您的網站後台發布文章</div>
+                <div class="node-exp"><span class="exp-num">5</span><strong>老闆通知</strong> — LINE 推播通知您審核，一鍵確認上線</div>
+            </div>
+        </section>
+
+        <!-- 狀態列 -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-dot idle"></span>
+                <span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+            </div>
+            <div class="status-item">
+                <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+            </div>
+            <div class="status-item">
+                <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+            </div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <!-- 第一個節點的啟動按鈕 -->
+            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">
+                ▶ 點擊模擬
+            </button>
+            <div id="workflow-canvas" class="workflow-canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-container" class="nodes-container"></div>
+            </div>
+        </div>
+
+        <aside class="log-panel">
+            <div class="log-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6M9 13h6M9 17h6" />
+                </svg>
+                <span>📋 即時執行紀錄</span>
+            </div>
+            <div id="log-content" class="log-content">
+                <div class="log-entry info">
+                    <span class="log-time">--:--:--</span>
+                    <span class="log-msg">自動流量小編就緒，點擊「啟動流程」開始...</span>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">AI 智能大腦</div>
+                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script-navigation.js"></script>
+    <script>
+        // 📝 自動流量小編 - 工作流程配置
+        const SERVICE_CONFIG = {
+            name: '自動流量小編',
+            nodes: [
+                {
+                    id: 'trend-scan',
+                    title: '🔍 熱點掃描',
+                    description: '監控 Google Trends、社群話題、產業新聞',
+                    icon: 'search',
+                    color: '#E67E22',
+                    position: { x: 120, y: 30 },
+                    bubbleMessages: [
+                        '📡 連接 Google Trends API...',
+                        '🔥 掃描今日熱門話題...',
+                        '📊 分析搜尋趨勢曲線...',
+                        '✅ 發現 5 個熱門關鍵字！'
+                    ]
+                },
+                {
+                    id: 'keyword-ai',
+                    title: '🎯 關鍵字分析',
+                    description: 'AI 分析關鍵字競爭度與搜尋意圖',
+                    icon: 'target',
+                    color: '#9B59B6',
+                    position: { x: 320, y: 30 },
+                    bubbleMessages: [
+                        '🧠 載入 SEO 分析模型...',
+                        '📈 計算關鍵字競爭度...',
+                        '🔎 分析使用者搜尋意圖...',
+                        '✅ 最佳關鍵字已選定！'
+                    ]
+                },
+                {
+                    id: 'content-gen',
+                    title: '✍️ AI 內容生成',
+                    description: 'Gemini 3.0 生成 SEO 優化文章',
+                    icon: 'write',
+                    color: '#3498DB',
+                    position: { x: 520, y: 30 },
+                    bubbleMessages: [
+                        '📝 生成文章大綱...',
+                        '✨ AI 撰寫專業內容...',
+                        '🔧 優化 SEO 標題與描述...',
+                        '✅ 2000 字高品質文章完成！'
+                    ]
+                },
+                {
+                    id: 'cms-publish',
+                    title: '📤 自動發布',
+                    description: '自動登入 CMS 後台發布文章',
+                    icon: 'upload',
+                    color: '#27AE60',
+                    position: { x: 720, y: 30 },
+                    bubbleMessages: [
+                        '🔐 登入 WordPress 後台...',
+                        '📋 填入文章標題與內容...',
+                        '🖼️ 上傳特色圖片...',
+                        '✅ 文章已排程發布！'
+                    ]
+                },
+                {
+                    id: 'notify-owner',
+                    title: '📱 老闆通知',
+                    description: '發送 LINE 通知給老闆確認',
+                    icon: 'notify',
+                    color: '#E74C3C',
+                    position: { x: 920, y: 30 },
+                    bubbleMessages: [
+                        '📲 發送 LINE 預覽連結...',
+                        '👀 等待老闆審核...',
+                        '✅ 老闆已點擊確認！',
+                        '🎉 文章正式上線！'
+                    ]
+                }
+            ],
+            connections: [
+                { from: 'trend-scan', to: 'keyword-ai' },
+                { from: 'keyword-ai', to: 'content-gen' },
+                { from: 'content-gen', to: 'cms-publish' },
+                { from: 'cms-publish', to: 'notify-owner' }
+            ],
+            executionOrder: ['trend-scan', 'keyword-ai', 'content-gen', 'cms-publish', 'notify-owner'],
+            resultPreview: {
+                type: 'line',
+                content: {
+                    icon: '🤖',
+                    sender: 'AI 小編',
+                    message: '老闆您好！新文章「2024 最新 SEO 趨勢」已發布到官網，等您確認後即可正式上線！',
+                    link: false
+                }
+            }
+        };
+    </script>
+    <script src="../js/workflow-engine.js"></script>
+    <script>
+        // 聲音控制
+        const video = document.getElementById('heroVideo');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundOff = soundToggle.querySelector('.sound-off');
+        const soundOn = soundToggle.querySelector('.sound-on');
+
+        soundToggle.addEventListener('click', () => {
+            video.muted = !video.muted;
+            soundOff.style.display = video.muted ? 'inline' : 'none';
+            soundOn.style.display = video.muted ? 'none' : 'inline';
+        });
+    </script>
+</body>
+
+</html>

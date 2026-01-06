@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品牌分身術 | AI 智能大腦</title>
+    <meta name="description" content="一次寫好，AI 自動調成 IG、FB、LINE 的語氣發出去。品牌一致性自動維護。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/service-page-hero.css">
+    <link rel="stylesheet" href="../css/n8n-workflow.css">
+    <link rel="stylesheet" href="../css/n8n-responsive.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-transparent">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
+            <div class="nav-menu">
+                <a href="../index.html#services" class="nav-link">服務項目</a>
+                <a href="../index.html#solutions" class="nav-link">解決方案</a>
+                <a href="../index.html#technology" class="nav-link">技術能力</a>
+                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="service-hero" id="hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+                <source src="../assets/videos/services/service_brand_clone.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+            <span class="sound-icon sound-off">🔇</span>
+            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+        </button>
+        <div class="hero-content">
+            <span class="service-badge">服務方案 02</span>
+            <h1 class="hero-title"><span class="emoji">🎭</span> 品牌分身術</h1>
+            <p class="hero-tagline">一次寫好，多平台自動發</p>
+            <div class="hero-cta-group">
+                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
+                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator"><span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <div class="grid-background"></div>
+    <div id="particles"></div>
+
+    <main class="workflow-container" id="workflow-demo">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" class="back-btn">← 返回首頁</a>
+                <h2>🎭 品牌分身術</h2>
+                <span class="demo-badge">🎬 流程示範</span>
+            </div>
+            <div class="controls">
+                <button id="btn-start" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    啟動流程
+                </button>
+                <button id="btn-reset" class="btn btn-secondary">重置</button>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-header">
+                <h2>💡 這個功能能幫您做什麼？</h2>
+                <p class="intro-subtitle">一次寫好，AI 自動調成 IG、FB、LINE 的語氣發出去</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🎯</span>
+                    <h3>一次搞定多平台</h3>
+                    <p>寫一次貼文，自動改成適合 IG、FB、LINE 的風格</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">👤</span>
+                    <h3>學會您的語氣</h3>
+                    <p>AI 會學習您的寫作風格，維持品牌一致性</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🖼️</span>
+                    <h3>自動配圖</h3>
+                    <p>貼文寫好，AI 自動搭配適合的圖片</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="flow-explanation">
+            <h3>📍 流程節點說明</h3>
+            <div class="node-explanations">
+                <div class="node-exp"><span class="exp-num">1</span><strong>品牌學習</strong> — AI 分析您的寫作風格</div>
+                <div class="node-exp"><span class="exp-num">2</span><strong>內容規劃</strong> — 自動規劃一週貼文主題</div>
+                <div class="node-exp"><span class="exp-num">3</span><strong>貼文生成</strong> — 生成各平台的貼文內容</div>
+                <div class="node-exp"><span class="exp-num">4</span><strong>圖片匹配</strong> — 自動配圖和設計</div>
+                <div class="node-exp"><span class="exp-num">5</span><strong>多平台發布</strong> — 同步發到各社群平台</div>
+            </div>
+        </section>
+
+        <div class="status-bar">
+            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
+                        id="workflow-status">等待啟動</strong></span></div>
+            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
+            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+        </div>
+
+        <div class="canvas-wrapper">
+            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
+                點擊模擬</button>
+            <div id="workflow-canvas" class="workflow-canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-container" class="nodes-container"></div>
+            </div>
+        </div>
+
+        <aside class="log-panel">
+            <div class="log-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6M9 13h6M9 17h6" />
+                </svg>
+                <span>📋 即時執行紀錄</span>
+            </div>
+            <div id="log-content" class="log-content">
+                <div class="log-entry info"><span class="log-time">--:--:--</span><span
+                        class="log-msg">品牌分身術就緒，點擊啟動流程開始...</span></div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">AI 智能大腦</div>
+                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script-navigation.js"></script>
+    <script>
+        const SERVICE_CONFIG = {
+            name: '品牌分身術',
+            nodes: [
+                { id: 'brand-learn', title: '📖 品牌學習', description: '分析品牌語調與風格', icon: 'book', color: '#E67E22', position: { x: 50, y: 30 }, bubbleMessages: ['📑 讀取歷史貼文...', '🎭 分析語調風格...', '✅ 品牌特色已學習！'] },
+                { id: 'content-plan', title: '📅 內容規劃', description: '自動規劃一週貼文', icon: 'calendar', color: '#3498DB', position: { x: 280, y: 30 }, bubbleMessages: ['📊 分析熱門話題...', '📝 規劃主題...', '✅ 一週內容已規劃！'] },
+                { id: 'post-gen', title: '✍️ 貼文生成', description: 'AI 生成各平台貼文', icon: 'text', color: '#9B59B6', position: { x: 510, y: 30 }, bubbleMessages: ['💭 撰寫貼文內容...', '🔄 適配各平台風格...', '✅ IG/FB/LINE 貼文完成！'] },
+                { id: 'image-match', title: '🖼️ 圖片匹配', description: '自動搭配適合圖片', icon: 'image', color: '#16A085', position: { x: 740, y: 30 }, bubbleMessages: ['🔍 分析貼文意象...', '🎨 搜尋匹配圖片...', '✅ 已配好精美圖片！'] },
+                { id: 'multi-publish', title: '📤 多平台發布', description: '同步發布到各社群', icon: 'share', color: '#E74C3C', position: { x: 970, y: 30 }, bubbleMessages: ['📱 連接 IG...', '💬 發布 FB...', '💚 發布 LINE...', '✅ 全平台發布成功！'] }
+            ],
+            connections: [
+                { from: 'brand-learn', to: 'content-plan' },
+                { from: 'content-plan', to: 'post-gen' },
+                { from: 'post-gen', to: 'image-match' },
+                { from: 'image-match', to: 'multi-publish' }
+            ],
+            executionOrder: ['brand-learn', 'content-plan', 'post-gen', 'image-match', 'multi-publish'],
+            resultPreview: { type: 'article', content: { icon: '📱', title: '週一早安貼文已發布！', excerpt: '「新的一週，新的開始！今天要分享給大家的是...」', views: '128' } }
+        };
+    </script>
+    <script src="../js/workflow-engine.js"></script>
+    <script>
+        const video = document.getElementById('heroVideo');
+        const soundToggle = document.getElementById('soundToggle');
+        const soundOff = soundToggle.querySelector('.sound-off');
+        const soundOn = soundToggle.querySelector('.sound-on');
+        soundToggle.addEventListener('click', () => {
+            video.muted = !video.muted;
+            soundOff.style.display = video.muted ? 'inline' : 'none';
+            soundOn.style.display = video.muted ? 'none' : 'inline';
+        });
+    </script>
+</body>
+
+</html>

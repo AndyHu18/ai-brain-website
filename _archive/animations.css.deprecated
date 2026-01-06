@@ -1,0 +1,223 @@
+/**
+ * @file    : css/animations.css
+ * @purpose : 所有動畫效果
+ * @depends : ['css/variables.css']
+ */
+
+/* ========================================
+   Keyframe Animations
+   ======================================== */
+
+/* Bounce Animation (Scroll Indicator) */
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    40% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* Pulse Animation (Notification Badge) */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Hint Bounce Animation */
+@keyframes hintBounce {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+}
+
+/* Loading Dots Animation */
+@keyframes loadingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ========================================
+   Animation Classes
+   ======================================== */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.4s ease forwards;
+}
+
+/* ========================================
+   Hero Content Animations
+   ======================================== */
+.hero-content>* {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-badge {
+    animation-delay: 0.1s;
+}
+
+.hero-title {
+    animation-delay: 0.2s;
+}
+
+.hero-description {
+    animation-delay: 0.3s;
+}
+
+.hero-cta-group {
+    animation-delay: 0.4s;
+}
+
+.hero-stats {
+    animation-delay: 0.5s;
+}
+
+/* ========================================
+   Scroll Indicator Animation
+   ======================================== */
+.hero-scroll-indicator {
+    animation: bounce 2s infinite;
+}
+
+/* ========================================
+   Staggered Animations (for grids)
+   ======================================== */
+.services-grid .service-card,
+.tech-grid .tech-category,
+.solutions-list .solution-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.services-grid .service-card.visible,
+.tech-grid .tech-category.visible,
+.solutions-list .solution-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays - Services */
+.services-grid .service-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.services-grid .service-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.services-grid .service-card:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.services-grid .service-card:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* Stagger delays - Tech */
+.tech-grid .tech-category:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.tech-grid .tech-category:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.tech-grid .tech-category:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.tech-grid .tech-category:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* Stagger delays - Solutions */
+.solutions-list .solution-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.solutions-list .solution-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.solutions-list .solution-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.solutions-list .solution-item:nth-child(4) {
+    transition-delay: 0.4s;
+}

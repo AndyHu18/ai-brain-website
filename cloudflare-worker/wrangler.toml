@@ -1,0 +1,70 @@
+# =============================================================================
+# AI 智能大腦公司 - Cloudflare Worker 設定
+# Gemini API 代理服務
+# =============================================================================
+
+# 專案名稱（會成為 Worker 的子域名，例如：ai-brain-api-proxy.your-subdomain.workers.dev）
+name = "ai-brain-api-proxy"
+
+# 主入口檔案
+main = "worker.js"
+
+# Cloudflare Workers 相容性日期
+# 參考: https://developers.cloudflare.com/workers/configuration/compatibility-dates/
+compatibility_date = "2024-12-01"
+
+# =============================================================================
+# 環境變數設定說明
+# =============================================================================
+# 
+# ⚠️ 重要：請勿將 API Key 直接寫在此檔案中！
+# 
+# 使用 Wrangler CLI 安全設定 Secret：
+# 
+#   npx wrangler secret put GEMINI_API_KEY
+# 
+# 系統會提示您輸入 API Key 值，此值會被加密儲存。
+#
+# =============================================================================
+
+# 開發環境設定（本地測試用）
+[vars]
+# 在 vars 區塊可以放置非敏感的環境變數
+# 例如：LOG_LEVEL = "debug"
+
+# =============================================================================
+# 生產環境設定（選用）
+# =============================================================================
+# 
+# 若需要區分 staging/production 環境：
+#
+# [env.staging]
+# name = "ai-brain-api-proxy-staging"
+# vars = { LOG_LEVEL = "debug" }
+# 
+# [env.production] 
+# name = "ai-brain-api-proxy"
+# vars = { LOG_LEVEL = "info" }
+#
+# 部署指令：
+#   npx wrangler deploy --env staging
+#   npx wrangler deploy --env production
+#
+# =============================================================================
+
+# =============================================================================
+# 進階設定（選用）
+# =============================================================================
+
+# 路由設定（若使用自訂域名）
+# routes = [
+#   { pattern = "api.your-domain.com/*", zone_name = "your-domain.com" }
+# ]
+
+# 觸發器設定（Cron Jobs）
+# [triggers]
+# crons = ["0 0 * * *"]  # 每日 00:00 執行
+
+# 限制設定
+# [limits]
+# cpu_ms = 50  # CPU 時間限制（毫秒）
