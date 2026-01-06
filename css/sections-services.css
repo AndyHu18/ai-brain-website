@@ -103,13 +103,11 @@
    ======================================== */
 .service-card-featured {
     position: relative;
-    background: linear-gradient(135deg,
-            rgba(45, 35, 25, 1) 0%,
-            rgba(30, 25, 20, 1) 100%);
+    /* 保持與其他卡片相同的淺色背景 */
     border: 2px solid var(--color-primary);
     box-shadow:
         0 0 20px rgba(255, 165, 0, 0.15),
-        0 8px 32px rgba(0, 0, 0, 0.3);
+        0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .service-card-featured::before {
