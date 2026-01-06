@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智慧接線生 | AI 智能大腦</title>
-    <meta name="description" content="24 小時守護每一通訂單 - AI 驅動的智能語音接線服務，永不漏接任何商機。">
+    <meta name="description" content="24 小時守護每一通訂單 - 不用請櫃檯人員、不用擔心漏接電話，AI 24 小時幫您接聽每一通來電。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" href="../css/base.css">
@@ -16,7 +17,9 @@
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/animations.css">
     <link rel="stylesheet" href="../css/service-page-hero.css">
-    <link rel="stylesheet" href="../css/service-page-content.css">
+    <!-- n8n 工作流程樣式 + 手機適配 -->
+    <link rel="stylesheet" href="../css/n8n-workflow.css">
+    <link rel="stylesheet" href="../css/n8n-responsive.css">
 </head>
 
 <body>
@@ -49,7 +52,7 @@
             <h1 class="hero-title"><span class="emoji">📞</span> 智慧接線生</h1>
             <p class="hero-tagline">24 小時守護每一通訂單</p>
             <div class="hero-cta-group">
-                <a href="#details" class="btn btn-primary">了解詳情</a>
+                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
                 <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
             </div>
         </div>
@@ -58,85 +61,92 @@
         </div>
     </section>
 
-    <section class="service-details" id="details">
-        <div class="container">
-            <div class="detail-block">
-                <div class="detail-icon">🏥</div>
-                <div class="detail-content">
-                    <h2>適合誰？</h2>
-                    <p>櫃檯忙不過來、離峰時間電話無人接聽的診所、餐廳或工作室。</p>
+    <div class="grid-background"></div>
+    <div id="particles"></div>
+
+    <main class="workflow-container" id="workflow-demo">
+        <header class="header">
+            <div class="logo">
+                <a href="../index.html" class="back-btn">← 返回首頁</a>
+                <h2>📞 智慧接線生</h2>
+                <span class="demo-badge">🎬 流程示範</span>
+            </div>
+            <div class="controls">
+                <button id="btn-start" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                        <path d="M8 5v14l11-7z" />
+                    </svg>
+                    啟動流程
+                </button>
+                <button id="btn-reset" class="btn btn-secondary">重置</button>
+            </div>
+        </header>
+
+        <section class="intro-section">
+            <div class="intro-header">
+                <h2>💡 這個功能能幫您做什麼？</h2>
+                <p class="intro-subtitle">不用請櫃檯人員、不用擔心漏接電話，AI 24 小時幫您接聽每一通來電</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">📞</span>
+                    <h3>零漏接電話</h3>
+                    <p>半夜、假日都有人接，不讓任何一筆訂單跑掉</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🗣️</span>
+                    <h3>聽懂台語國語</h3>
+                    <p>阿公阿嬤打來也能溝通，在地口音沒問題</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">📅</span>
+                    <h3>自動幫客戶預約</h3>
+                    <p>直接幫客戶掛號、預約，不用人工轉接</p>
                 </div>
             </div>
+        </section>
 
-            <div class="detail-block highlight">
-                <div class="detail-icon">🎯</div>
-                <div class="detail-content">
-                    <h2>解決什麼問題？</h2>
-                    <ul class="problem-list">
-                        <li>忙時漏接電話（就是漏掉業績）</li>
-                        <li>重複回答基礎問題導致生產力下降</li>
-                        <li>下班後、假日時段無人接聽</li>
-                    </ul>
-                </div>
+        <section class="flow-explanation">
+            <h3>📍 流程節點說明</h3>
+            <div class="node-explanations">
+                <div class="node-exp"><span class="exp-num">1</span><strong>來電接聽</strong> — 自動接起電話</div>
+                <div class="node-exp"><span class="exp-num">2</span><strong>語音辨識</strong> — 聽懂客戶說什麼</div>
+                <div class="node-exp"><span class="exp-num">3</span><strong>意圖理解</strong> — AI 判斷客戶想做什麼</div>
+                <div class="node-exp"><span class="exp-num">4</span><strong>預約登記</strong> — 自動幫客戶預約</div>
+                <div class="node-exp"><span class="exp-num">5</span><strong>語音回覆</strong> — 用自然語音回答客戶</div>
             </div>
+        </section>
 
-            <div class="detail-block experience">
-                <div class="detail-content wide">
-                    <h2>這是什麼體驗？</h2>
-                    <div class="experience-text">
-                        <p>
-                            給您的店一位<strong>永不疲倦的數位櫃檯</strong>。它能聽懂在地口音，
-                            幫客戶掛號、預約、回答營業時間。
-                        </p>
-                        <p>
-                            這不是那種讓人煩躁的語音選單，而是像真人一樣的對答。
-                            <strong>讓您睡覺時，生意依然在進行。</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="status-bar">
+            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
+                        id="workflow-status">等待啟動</strong></span></div>
+            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
+            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+        </div>
 
-            <div class="detail-block tech">
-                <div class="detail-icon">⚙️</div>
-                <div class="detail-content">
-                    <h2>技術實力</h2>
-                    <p>採用<strong>最新的即時語音通訊技術</strong>，對話流暢無延遲。支援台語、國語混用，
-                        精準理解各種口音與表達方式。</p>
-                </div>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🌙</div>
-                    <h3>24/7 服務</h3>
-                    <p>全年無休，凌晨三點也能接聽</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗣️</div>
-                    <h3>自然對話</h3>
-                    <p>像真人一樣自然的語音互動</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📅</div>
-                    <h3>自動預約</h3>
-                    <p>直接幫客戶完成預約掛號</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>通話紀錄</h3>
-                    <p>每通電話都有完整記錄與摘要</p>
-                </div>
+        <div class="canvas-wrapper">
+            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
+                點擊模擬</button>
+            <div id="workflow-canvas" class="workflow-canvas">
+                <svg id="connections-svg" class="connections-layer"></svg>
+                <div id="nodes-container" class="nodes-container"></div>
             </div>
         </div>
-    </section>
 
-    <section class="service-cta">
-        <div class="container">
-            <h2>準備好讓生意 24 小時不停歇了嗎？</h2>
-            <p>立即預約免費諮詢，體驗 AI 接線服務的魔力</p>
-            <a href="../index.html#contact" class="btn btn-primary btn-large">預約諮詢</a>
-        </div>
-    </section>
+        <aside class="log-panel">
+            <div class="log-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 9h6M9 13h6M9 17h6" />
+                </svg>
+                <span>📋 即時執行紀錄</span>
+            </div>
+            <div id="log-content" class="log-content">
+                <div class="log-entry info"><span class="log-time">--:--:--</span><span
+                        class="log-msg">智慧接線生就緒，點擊啟動流程開始...</span></div>
+            </div>
+        </aside>
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -150,6 +160,76 @@
     </footer>
 
     <script src="../script-navigation.js"></script>
+    <script>
+        // 📞 智慧接線生 - 工作流程配置
+        const SERVICE_CONFIG = {
+            name: '智慧接線生',
+            nodes: [
+                {
+                    id: 'call-receive',
+                    title: '📞 來電接聽',
+                    description: 'Twilio 接收來電',
+                    icon: 'phone',
+                    color: '#16A085',
+                    position: { x: 50, y: 30 },
+                    bubbleMessages: ['📞 來電進線中...', '🔌 建立連線...', '✅ 通話已建立！']
+                },
+                {
+                    id: 'voice-stt',
+                    title: '🎧 語音辨識',
+                    description: 'Gemini Live 語音轉文字',
+                    icon: 'mic',
+                    color: '#9B59B6',
+                    position: { x: 280, y: 30 },
+                    bubbleMessages: ['🎤 接收語音...', '🗣️ 辨識台語/國語...', '✅ 辨識完成！']
+                },
+                {
+                    id: 'intent-detect',
+                    title: '🧠 意圖理解',
+                    description: 'AI 分析客戶意圖',
+                    icon: 'brain',
+                    color: '#E67E22',
+                    position: { x: 510, y: 30 },
+                    bubbleMessages: ['🔍 分析對話內容...', '💡 識別客戶意圖...', '✅ 客戶想預約掛號！']
+                },
+                {
+                    id: 'booking-action',
+                    title: '📅 預約登記',
+                    description: '自動操作預約系統',
+                    icon: 'calendar',
+                    color: '#3498DB',
+                    position: { x: 740, y: 30 },
+                    bubbleMessages: ['📆 開啟預約系統...', '✍️ 填寫客戶資料...', '✅ 1/15 下午 2:00 預約成功！']
+                },
+                {
+                    id: 'voice-tts',
+                    title: '🔊 語音回覆',
+                    description: 'AI 語音回答客戶',
+                    icon: 'speaker',
+                    color: '#E74C3C',
+                    position: { x: 970, y: 30 },
+                    bubbleMessages: ['🎵 生成語音回覆...', '🗣️ 播放確認訊息...', '✅ 對話完成，掛斷！']
+                }
+            ],
+            connections: [
+                { from: 'call-receive', to: 'voice-stt' },
+                { from: 'voice-stt', to: 'intent-detect' },
+                { from: 'intent-detect', to: 'booking-action' },
+                { from: 'booking-action', to: 'voice-tts' }
+            ],
+            executionOrder: ['call-receive', 'voice-stt', 'intent-detect', 'booking-action', 'voice-tts'],
+            resultPreview: {
+                type: 'line',
+                content: {
+                    icon: '📞',
+                    sender: 'AI 接線生',
+                    message: '您好！已為您預約 1/15 下午 2:00，届時會有專人為您服務！',
+                    link: false
+                }
+            }
+        };
+    </script>
+    <script src="../js/workflow-engine.js"></script>
     <script>
         const video = document.getElementById('heroVideo');
         const soundToggle = document.getElementById('soundToggle');
