@@ -131,6 +131,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderServicesSection(services) {
+        if (!services || services.length === 0) return '';
         let cards = services.map(s => `
             <div class="service-card">
                 <h5>${s.name}</h5>
@@ -150,6 +151,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderOpportunitiesTable(opportunities) {
+        if (!opportunities || opportunities.length === 0) return '';
         let rows = opportunities.map(o => `
             <tr>
                 <td>${o.area}</td>
@@ -177,6 +179,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderDepartmentsSection(departments) {
+        if (!departments || departments.length === 0) return '';
         let cards = departments.map(d => `
             <div class="department-card">
                 <h5>${d.department}</h5>
@@ -202,6 +205,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderPositionsSection(positions) {
+        if (!positions || positions.length === 0) return '';
         let items = positions.map(p => `
             <div class="position-card">
                 <h5>${p.levelName}</h5>
@@ -220,6 +224,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderOptimizationsSection(optimizations) {
+        if (!optimizations || optimizations.length === 0) return '';
         let items = optimizations.map(o => `
             <div class="optimization-card">
                 <span class="priority-${o.priority}">${o.priority === 'high' ? '高優先' : o.priority === 'medium' ? '中優先' : '低優先'}</span>
@@ -241,6 +246,7 @@ const WebsiteAnalyzer = (function () {
     }
 
     function renderSalesFunnelSection(funnel) {
+        if (!funnel || funnel.length === 0) return '';
         let stages = funnel.map((s, idx) => `
             <div class="funnel-stage">
                 <div class="stage-number">${idx + 1}</div>
