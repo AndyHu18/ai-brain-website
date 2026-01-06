@@ -37,8 +37,22 @@ const WebsiteAnalyzer = (function () {
         console.log('📍[WebsiteAnalyzer] 初始化完成');
     }
 
+    // 進度條階段
+    const PROGRESS_STAGES = [
+        { percent: 10, text: '正在連接網站...' },
+        { percent: 25, text: '抓取網站內容...' },
+        { percent: 45, text: 'AI 正在分析服務項目...' },
+        { percent: 65, text: 'AI 正在識別自動化機會...' },
+        { percent: 80, text: 'AI 正在生成優化建議...' },
+        { percent: 95, text: '正在整理報告...' }
+    ];
+
+    // 重試設定
+    const MAX_RETRIES = 2;
+    const RETRY_DELAY = 2000;
+
     /**
-     * 處理分析請求
+     * 處理分析請求（含重試機制）
      */
     async function handleAnalyze() {
         const url = urlInput.value.trim();
@@ -50,32 +64,99 @@ const WebsiteAnalyzer = (function () {
         showLoading();
         hideError();
         hideResult();
+        startProgressAnimation();
 
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ url })
-            });
+        let lastError = null;
+        for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+            try {
+                if (attempt > 0) {
+                    updateProgress(5, `重試中 (${attempt}/${MAX_RETRIES})...`);
+                    await sleep(RETRY_DELAY);
+                }
 
-            const data = await response.json();
+                const data = await fetchWithProgress(url);
 
-            if (!response.ok) {
-                throw new Error(data.error || `HTTP ${response.status}`);
+                // 驗證資料完整性
+                if (data.analysis && validateAnalysisData(data.analysis)) {
+                    updateProgress(100, '分析完成！');
+                    await sleep(300);
+                    renderReport(data);
+                    return;
+                } else {
+                    throw new Error('分析結果資料不完整，正在重試...');
+                }
+            } catch (error) {
+                console.error(`📍[WebsiteAnalyzer] 嘗試 ${attempt + 1} 失敗:`, error);
+                lastError = error;
             }
-
-            // API 直接返回 Report 格式
-            if (data.analysis) {
-                renderReport(data);
-            } else {
-                throw new Error('分析結果格式錯誤');
-            }
-        } catch (error) {
-            console.error('📍[WebsiteAnalyzer] 錯誤:', error);
-            showError(error.message || '網路錯誤，請稍後再試');
-        } finally {
-            hideLoading();
         }
+
+        // 所有重試都失敗
+        showError(lastError?.message || '分析失敗，請稍後再試');
+        hideLoading();
+    }
+
+    /**
+     * 帶進度的 API 請求
+     */
+    async function fetchWithProgress(url) {
+        updateProgress(PROGRESS_STAGES[0].percent, PROGRESS_STAGES[0].text);
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+        });
+
+        updateProgress(PROGRESS_STAGES[2].percent, PROGRESS_STAGES[2].text);
+
+        const data = await response.json();
+
+        updateProgress(PROGRESS_STAGES[4].percent, PROGRESS_STAGES[4].text);
+
+        if (!response.ok) {
+            throw new Error(data.error || `HTTP ${response.status}`);
+        }
+
+        updateProgress(PROGRESS_STAGES[5].percent, PROGRESS_STAGES[5].text);
+        return data;
+    }
+
+    /**
+     * 驗證分析資料完整性
+     */
+    function validateAnalysisData(analysis) {
+        // 至少要有一個區塊有資料
+        const hasServices = analysis.services?.length > 0;
+        const hasOpps = analysis.aiOpportunities?.length > 0;
+        const hasDepts = analysis.departmentInsights?.length > 0;
+        const hasSummary = analysis.summary?.length > 50;
+
+        return hasServices || hasOpps || hasDepts || hasSummary;
+    }
+
+    /**
+     * 更新進度條
+     */
+    function updateProgress(percent, text) {
+        const progressBar = document.getElementById('analyzer-progress-bar');
+        const progressText = document.getElementById('analyzer-progress-text');
+        if (progressBar) progressBar.style.width = percent + '%';
+        if (progressText) progressText.textContent = text;
+    }
+
+    /**
+     * 開始進度動畫
+     */
+    function startProgressAnimation() {
+        updateProgress(0, '準備分析...');
+    }
+
+    /**
+     * 延遲工具函數
+     */
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     /**
@@ -124,7 +205,20 @@ const WebsiteAnalyzer = (function () {
         // Section 6: 銷售漏斗 (流程圖式)
         html += renderSalesFunnelSection(analysis.salesFunnelAI);
 
-        html += '</div></div>';
+        html += '</div>';
+
+        // 完整分析連結
+        const fullAnalyzerUrl = 'https://ai-website-analyzer-andyhu18s-projects.vercel.app';
+        html += `
+            <div class="report-cta">
+                <p class="cta-text">想要更詳細的分析報告？使用我們的專業分析工具獲取完整洞察。</p>
+                <a href="${fullAnalyzerUrl}" target="_blank" rel="noopener" class="cta-button">
+                    前往完整分析工具 →
+                </a>
+            </div>
+        `;
+
+        html += '</div>';
         resultContainer.innerHTML = html;
         resultContainer.style.display = 'block';
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });

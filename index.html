@@ -109,8 +109,10 @@
             </div>
 
             <div class="analyzer-loading" id="analyzer-loading">
-                <div class="spinner"></div>
-                <span>AI 正在分析網站，請稍候...</span>
+                <div class="progress-container">
+                    <div class="progress-bar" id="analyzer-progress-bar"></div>
+                </div>
+                <span class="progress-text" id="analyzer-progress-text">準備分析...</span>
             </div>
 
             <div id="analyzer-result" style="display: none;"></div>
