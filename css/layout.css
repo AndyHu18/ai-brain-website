@@ -108,45 +108,159 @@
 }
 
 /* ========================================
-   Footer
+   Footer - Warm Luxury Style
    ======================================== */
 .footer {
-    background: #3D2B1F;
-    /* 暖棕色而非純黑 */
+    position: relative;
+    background: linear-gradient(180deg, #4A3428 0%, #3D2B1F 50%, #2E1F16 100%);
     color: var(--bg-light);
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
     text-align: center;
+    overflow: hidden;
+}
+
+/* 背景網格效果 */
+.footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(200, 170, 130, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 170, 130, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* 頂部漸層邊框 */
+.footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--color-primary) 20%,
+            var(--color-accent) 50%,
+            var(--color-primary) 80%,
+            transparent 100%);
 }
 
 .footer-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .footer-brand {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-3xl);
     font-weight: 900;
-    color: var(--color-accent);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 20px rgba(230, 126, 34, 0.3);
 }
 
 .footer-tagline {
-    color: rgba(253, 249, 243, 0.7);
+    font-size: var(--font-size-lg);
+    color: rgba(253, 249, 243, 0.85);
+    font-weight: 300;
+    letter-spacing: 0.1em;
     margin-bottom: 0;
 }
 
 .footer-divider {
-    width: 60px;
+    width: 80px;
     height: 2px;
-    background: var(--color-primary);
-    margin: var(--spacing-md) 0;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    margin: var(--spacing-lg) 0;
+    border-radius: 1px;
 }
 
 .footer-copyright {
     font-size: var(--font-size-sm);
     color: rgba(253, 249, 243, 0.5);
     margin-bottom: 0;
+}
+
+/* ========================================
+   Footer Quick Nav
+   ======================================== */
+.footer-quick-nav {
+    margin-bottom: var(--spacing-3xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(200, 170, 130, 0.2);
+}
+
+.footer-section-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section-subtitle {
+    font-size: var(--font-size-base);
+    color: rgba(253, 249, 243, 0.6);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.footer-nav-card {
+    background: rgba(255, 250, 245, 0.08);
+    border: 1px solid rgba(200, 170, 130, 0.25);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.footer-nav-card:hover {
+    background: rgba(255, 250, 245, 0.15);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.footer-nav-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.footer-nav-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(253, 249, 243, 0.95);
+    margin-bottom: 6px;
+}
+
+.footer-nav-card p {
+    font-size: 0.85rem;
+    color: rgba(253, 249, 243, 0.6);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.footer-nav-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
 }
 
 /* ========================================
@@ -175,5 +289,29 @@
 
     .container {
         padding: 0 var(--spacing-md);
+    }
+
+    /* Footer Quick Nav 響應式 */
+    .footer-nav-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .footer-nav-card {
+        padding: 16px;
+    }
+
+    .footer-nav-icon {
+        font-size: 1.6rem;
+    }
+
+    .footer-nav-card h4 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-nav-grid {
+        grid-template-columns: 1fr;
     }
 }

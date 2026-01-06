@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="css/service-fullscreen-content.css">
     <link rel="stylesheet" href="css/animations-keyframes.css">
     <link rel="stylesheet" href="css/animations-stagger.css">
+    <link rel="stylesheet" href="css/service-quick-nav.css">
+    <link rel="stylesheet" href="css/solutions-video-showcase.css">
 </head>
 
 <body>
@@ -78,20 +80,6 @@
             <div class="hero-cta-group">
                 <a href="#contact" class="btn btn-primary">立即諮詢</a>
                 <a href="#solutions" class="btn btn-secondary">了解更多</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">24/7</span>
-                    <span class="stat-label">全年無休服務</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5 分鐘</span>
-                    <span class="stat-label">快速部署</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">99.9%</span>
-                    <span class="stat-label">系統穩定性</span>
-                </div>
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -153,7 +141,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-content-editor.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-content-editor.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
 
             <!-- 右側：視覺圖片 -->
@@ -222,7 +210,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-voice-receptionist.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-voice-receptionist.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
         </div>
     </section>
@@ -265,7 +253,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-brand-clone.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-brand-clone.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
             <div class="service-image-column">
                 <img src="assets/images/service_brand_clone.png" alt="品牌分身術 - AI 代發文" class="service-feature-image">
@@ -314,7 +302,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-chatbot.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-chatbot.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
         </div>
     </section>
@@ -357,7 +345,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-meeting-notes.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-meeting-notes.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
             <div class="service-image-column">
                 <img src="assets/images/service_meeting_notes.png" alt="會議記錄工 - 自動摘要" class="service-feature-image">
@@ -406,7 +394,7 @@
                 </div>
 
                 <!-- 了解更多按鈕 -->
-                <a href="pages/service-consultant.html" class="btn btn-primary service-cta-btn">了解更多 →</a>
+                <a href="pages/service-consultant.html" class="btn btn-primary service-cta-btn">了解更多</a>
             </div>
         </div>
     </section>
@@ -417,8 +405,47 @@
             <div class="section-header">
                 <span class="section-badge">核心服務</span>
                 <h2 class="section-title">我們能為您做什麼</h2>
-                <p class="section-subtitle">四大 AI 解決方案，覆蓋企業數位轉型全場景</p>
+                <p class="section-subtitle">五大 AI 解決方案，覆蓋企業數位轉型全場景</p>
             </div>
+
+            <!-- 四大解決方案影片展示 -->
+            <div class="solutions-video-showcase" id="solutionsVideoShowcase">
+                <div class="solutions-video-wrapper">
+                    <!-- 載入中骨架屏 -->
+                    <div class="solutions-video-skeleton" id="videoSkeleton">
+                        <div class="skeleton-loader">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="skeleton-text">AI 影片載入中</span>
+                    </div>
+
+                    <!-- 影片元素 -->
+                    <video class="solutions-video" id="solutionsVideo" loop playsinline muted>
+                        <source src="assets/videos/ai-solutions-showcase.mp4" type="video/mp4">
+                    </video>
+
+                    <!-- 標題疊加層 -->
+                    <div class="solutions-video-overlay">
+                        <h3 class="solutions-video-title">五大 AI 解決方案</h3>
+                        <p class="solutions-video-subtitle">企業數位轉型全場景覆蓋</p>
+                    </div>
+
+                    <!-- 影片控制列 -->
+                    <div class="solutions-video-controls">
+                        <button class="video-play-btn" id="videoPlayBtn">
+                            <span class="icon play-icon">▶</span>
+                            <span class="btn-text">播放影片</span>
+                        </button>
+                        <button class="video-sound-btn" id="videoSoundBtn" aria-label="Toggle sound">
+                            <span class="sound-off">🔇</span>
+                            <span class="sound-on">🔊</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
@@ -481,6 +508,23 @@
                             <li>多模態資料處理</li>
                             <li>品牌內容批量產出</li>
                             <li>SEO 優化自動化</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 第五區：AI 智囊團 -->
+                <div class="service-card service-card-featured">
+                    <div class="service-image">
+                        <img src="assets/images/service_think_tank.png" alt="AI 智囊團">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">THINK</div>
+                        <h3 class="service-title">AI 智囊團</h3>
+                        <p class="service-tagline">深度思考，超越極限</p>
+                        <ul class="service-features">
+                            <li>多層次推理分析</li>
+                            <li>跨領域知識融合</li>
+                            <li>情境模擬預測</li>
+                            <li>策略優化建議</li>
                         </ul>
                     </div>
                 </div>
@@ -711,9 +755,54 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer with Quick Nav -->
     <footer class="footer">
         <div class="container">
+            <!-- 六大服務快速導覽 -->
+            <div class="footer-quick-nav">
+                <h3 class="footer-section-title">六大 AI 服務方案</h3>
+                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
+                <div class="footer-nav-grid">
+                    <a href="pages/service-content-editor.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">📝</div>
+                        <h4>自動流量小編</h4>
+                        <p>讓網站自己會抓客戶</p>
+                        <span class="footer-nav-tag">SEO 自動化</span>
+                    </a>
+                    <a href="pages/service-voice-assistant.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">📞</div>
+                        <h4>智慧接線生</h4>
+                        <p>24 小時守護每一通訂單</p>
+                        <span class="footer-nav-tag">語音 AI</span>
+                    </a>
+                    <a href="pages/service-brand-clone.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">🎭</div>
+                        <h4>品牌分身術</h4>
+                        <p>讓 AI 代你發文</p>
+                        <span class="footer-nav-tag">社群經營</span>
+                    </a>
+                    <a href="pages/service-chatbot.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">🤖</div>
+                        <h4>客服機器人</h4>
+                        <p>您專屬的線上小幫手</p>
+                        <span class="footer-nav-tag">智能客服</span>
+                    </a>
+                    <a href="pages/service-meeting-notes.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">📋</div>
+                        <h4>會議記錄工</h4>
+                        <p>開完會，紀錄就好了</p>
+                        <span class="footer-nav-tag">效率工具</span>
+                    </a>
+                    <a href="pages/service-consultant.html" class="footer-nav-card">
+                        <div class="footer-nav-icon">🧠</div>
+                        <h4>AI 顧問</h4>
+                        <p>數位轉型夥伴</p>
+                        <span class="footer-nav-tag">企業轉型</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 品牌資訊 -->
             <div class="footer-content">
                 <div class="footer-brand">AI 智能大腦</div>
                 <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
@@ -762,6 +851,7 @@
 
     <script src="script-navigation.js"></script>
     <script src="script-interactions.js"></script>
+    <script src="script-solutions-video.js"></script>
     <!-- Chatbot 模組化載入 (依賴順序: config → api → core → ui → hints) -->
     <script src="chatbot-config.js"></script>
     <script src="chatbot-api.js"></script>

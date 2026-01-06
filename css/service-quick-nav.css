@@ -1,0 +1,136 @@
+/**
+ * @file    : css/service-quick-nav.css
+ * @purpose : 六大服務快速導覽卡片樣式 - 暖色系設計
+ * @depends : ['css/variables.css']
+ */
+
+/* ========================================
+   Container
+   ======================================== */
+.service-quick-nav {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, #FDF8F3 0%, #F9F3EB 100%);
+    position: relative;
+}
+
+/* 背景網格效果 */
+.service-quick-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(200, 170, 130, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 170, 130, 0.15) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+/* ========================================
+   Grid Layout
+   ======================================== */
+.quick-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+}
+
+/* ========================================
+   Card Style
+   ======================================== */
+.quick-nav-card {
+    background: rgba(255, 250, 245, 0.9);
+    border: 1px solid rgba(200, 170, 130, 0.4);
+    border-radius: 16px;
+    padding: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    backdrop-filter: blur(10px);
+}
+
+.quick-nav-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(230, 126, 34, 0.25);
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Icon */
+.quick-nav-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 2px 8px rgba(230, 126, 34, 0.2));
+}
+
+/* Title */
+.quick-nav-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+/* Description */
+.quick-nav-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+/* Tag */
+.quick-nav-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: transform 0.2s ease;
+}
+
+.quick-nav-card:hover .quick-nav-tag {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+    .quick-nav-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .quick-nav-card {
+        padding: 20px;
+    }
+
+    .quick-nav-icon {
+        font-size: 2.5rem;
+    }
+
+    .quick-nav-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .quick-nav-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-quick-nav {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .quick-nav-card {
+        padding: 16px;
+    }
+}

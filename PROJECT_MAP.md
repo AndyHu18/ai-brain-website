@@ -81,8 +81,9 @@ ai-brain-website/
 │   ├── layout.css                  # 佈局
 │   ├── components.css              # 元件
 │   ├── sections-hero.css           # Hero 區塊
-│   ├── sections-services.css       # 服務區塊
-│   ├── service-page.css            # 🆕 服務詳情頁專用
+│   ├── sections-services.css       # 服務區塊 (含 AI 智囊團特色樣式)
+│   ├── solutions-video-showcase.css # 🆕 影片展示區塊
+│   ├── service-page.css            # 服務詳情頁專用
 │   ├── service-fullscreen-layout.css
 │   ├── service-fullscreen-content.css
 │   ├── digital-workforce-layout.css
@@ -145,12 +146,12 @@ ai-brain-website/
 |------|------|------|
 | Hero Section | 🟢 Stable | 影片背景 + 文案 |
 | 導覽列 | 🟢 Stable | 滾動變色 + 響應式 |
-| 服務卡片 (首頁) | 🟢 Stable | 6 個全螢幕服務展示 + 按鈕連結 |
-| 服務詳情頁 | 🟢 **NEW** | 6 個獨立頁面 + 影片背景 |
+| 五大 AI 解決方案 | 🟢 **UPDATED** | 影片展示 + 5 卡片 (含 AI 智囊團) |
+| 服務詳情頁 | 🟢 Stable | 6 個獨立頁面 + 影片背景 |
 | 解決方案 | 🟢 Stable | 成功案例展示 |
 | 聯繫表單 | 🟢 Stable | 表單 UI |
-| AI 聊天客服 | 🟢 Refactored | 已拆分為 3 個模組 |
-| Veo 影片 | 🟢 **NEW** | 6 個 AI 生成影片 |
+| AI 聊天客服 | 🟢 Stable | 已拆分為 3 個模組 |
+| Veo 影片 | 🟢 **NEW** | 首頁展示 + 6 服務影片 |
 | 測試框架 | 🟢 Ready | 40 個測試案例 |
 
 ---
@@ -215,4 +216,4 @@ python generate_service_videos.py
 
 ---
 
-*最後更新：2026-01-06 01:38*
+*最後更新：2026-01-06 11:58*
