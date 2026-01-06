@@ -227,7 +227,7 @@ const WebsiteAnalyzer = (function () {
     function renderServicesSection(services) {
         if (!services || services.length === 0) return '';
         let cards = services.map(s => `
-            <div class="service-card">
+            <div class="analyzer-service-card">
                 <h5>${s.name}</h5>
                 <p>${s.description}</p>
                 <span class="service-category">${s.category}</span>
