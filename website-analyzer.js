@@ -58,16 +58,17 @@ const WebsiteAnalyzer = (function () {
                 body: JSON.stringify({ url })
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
             const data = await response.json();
 
-            if (data.success && data.report) {
-                renderReport(data.report);
+            if (!response.ok) {
+                throw new Error(data.error || `HTTP ${response.status}`);
+            }
+
+            // API 直接返回 Report 格式
+            if (data.analysis) {
+                renderReport(data);
             } else {
-                throw new Error(data.error || '分析失敗');
+                throw new Error('分析結果格式錯誤');
             }
         } catch (error) {
             console.error('📍[WebsiteAnalyzer] 錯誤:', error);
@@ -81,32 +82,56 @@ const WebsiteAnalyzer = (function () {
      * 渲染報告
      */
     function renderReport(report) {
-        const sections = report.sections || [];
+        const analysis = report.analysis;
         let html = `
             <div class="analyzer-report">
                 <div class="report-header">
                     <h3>AI 賦能分析報告</h3>
-                    <p class="report-target">目標網站：${report.targetUrl || urlInput.value}</p>
+                    <p class="report-target">目標網站：${report.websiteUrl}</p>
                 </div>
                 <div class="report-sections">
         `;
 
-        sections.forEach((section, index) => {
-            html += `
-                <div class="report-section">
-                    <div class="section-header">
-                        <span class="section-number">${String(index + 1).padStart(2, '0')}</span>
-                        <h4>${section.title}</h4>
-                    </div>
-                    <div class="section-content">${formatContent(section.content)}</div>
-                </div>
-            `;
-        });
+        // Section 1: 服務項目
+        html += renderSection('01', '網站服務項目識別',
+            analysis.services.map(s => `<strong>${s.name}</strong>：${s.description}`).join('<br>'));
+
+        // Section 2: AI 機會
+        html += renderSection('02', 'AI 自動化潛力',
+            analysis.aiOpportunities.map(o => `<strong>${o.area}</strong>：${o.application} (效益: ${o.estimatedBenefit})`).join('<br>'));
+
+        // Section 3: 部門賦能
+        html += renderSection('03', '不同部門的賦能機會',
+            analysis.departmentInsights.map(d => `<strong>${d.department}</strong>：${d.opportunities.join('、')}`).join('<br>'));
+
+        // Section 4: 職位層級
+        html += renderSection('04', '職位層級賦能建議',
+            analysis.positionOpportunities.map(p => `<strong>${p.levelName}</strong>：${p.opportunities.join('、')}`).join('<br>'));
+
+        // Section 5: 網站優化
+        html += renderSection('05', '網站 AI 賦能與優化建議',
+            analysis.websiteOptimizations.map(o => `<strong>${o.type}</strong>：${o.suggestion}`).join('<br>'));
+
+        // Section 6: 銷售漏斗
+        html += renderSection('06', '銷售漏斗與成交跟進',
+            analysis.salesFunnelAI.map(s => `<strong>${s.stage}</strong>：${s.aiApplication}`).join('<br>'));
 
         html += '</div></div>';
         resultContainer.innerHTML = html;
         resultContainer.style.display = 'block';
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function renderSection(num, title, content) {
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">${num}</span>
+                    <h4>${title}</h4>
+                </div>
+                <div class="section-content">${content}</div>
+            </div>
+        `;
     }
 
     /**
