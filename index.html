@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/animations-stagger.css">
     <link rel="stylesheet" href="css/service-quick-nav.css">
     <link rel="stylesheet" href="css/solutions-video-showcase.css">
+    <link rel="stylesheet" href="css/website-analyzer.css">
 </head>
 
 <body>
@@ -88,6 +89,33 @@
         </div>
     </section>
 
+    <!-- ============================================================
+         AI 賦能診斷區塊
+         ============================================================ -->
+    <section class="analyzer-section" id="ai-analyzer">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">免費體驗</span>
+                <h2 class="section-title">AI 賦能診斷</h2>
+                <p class="section-subtitle">輸入您的網站網址，AI 將分析您的業務並提供賦能建議</p>
+            </div>
+
+            <div class="analyzer-input-wrapper">
+                <div class="analyzer-input-group">
+                    <input type="text" id="analyzer-url-input" placeholder="請輸入網站網址，例如：apple.com" autocomplete="off">
+                    <button class="btn btn-primary" id="analyzer-submit-btn">開始分析</button>
+                </div>
+                <div class="analyzer-error" id="analyzer-error"></div>
+            </div>
+
+            <div class="analyzer-loading" id="analyzer-loading">
+                <div class="spinner"></div>
+                <span>AI 正在分析網站，請稍候...</span>
+            </div>
+
+            <div id="analyzer-result" style="display: none;"></div>
+        </div>
+    </section>
 
     <!-- ============================================================
          全屏服務區塊 1: 自動流量小編
@@ -858,6 +886,7 @@
     <script src="chatbot-core.js"></script>
     <script src="chatbot-ui.js"></script>
     <script src="chatbot-hints.js"></script>
+    <script src="website-analyzer.js"></script>
 </body>
 
 </html>

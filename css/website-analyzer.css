@@ -1,0 +1,189 @@
+/* ============================================================
+   AI 賦能診斷區塊樣式
+   ============================================================ */
+
+.analyzer-section {
+    padding: var(--spacing-section) 0;
+    background: linear-gradient(135deg, 
+        rgba(230, 126, 34, 0.05) 0%,
+        rgba(243, 156, 18, 0.03) 100%);
+    position: relative;
+}
+
+.analyzer-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--color-primary-light), 
+        transparent);
+}
+
+/* 輸入區域 */
+.analyzer-input-wrapper {
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.analyzer-input-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    background: var(--color-surface);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+
+.analyzer-input-group input {
+    flex: 1;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--color-text);
+    outline: none;
+}
+
+.analyzer-input-group input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.analyzer-input-group .btn {
+    white-space: nowrap;
+    padding: var(--spacing-md) var(--spacing-xl);
+}
+
+/* 載入狀態 */
+.analyzer-loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+}
+
+.analyzer-loading .spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 錯誤狀態 */
+.analyzer-error {
+    display: none;
+    text-align: center;
+    padding: var(--spacing-md);
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* 報告樣式 */
+.analyzer-report {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.report-header {
+    background: linear-gradient(135deg, 
+        var(--color-primary) 0%, 
+        var(--color-primary-light) 100%);
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.report-header h3 {
+    margin: 0 0 var(--spacing-xs);
+    font-size: 1.5rem;
+}
+
+.report-target {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.report-sections {
+    padding: var(--spacing-lg);
+}
+
+.report-section {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.report-section:last-child {
+    border-bottom: none;
+}
+
+.report-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.report-section .section-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: rgba(230, 126, 34, 0.1);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+}
+
+.report-section h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.report-section .section-content {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+.report-section .bullet {
+    color: var(--color-primary);
+    margin-right: var(--spacing-xs);
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+    .analyzer-input-group {
+        flex-direction: column;
+    }
+    
+    .analyzer-input-group .btn {
+        width: 100%;
+    }
+    
+    .report-header {
+        padding: var(--spacing-md);
+    }
+    
+    .report-sections {
+        padding: var(--spacing-sm);
+    }
+    
+    .report-section {
+        padding: var(--spacing-md);
+    }
+}
