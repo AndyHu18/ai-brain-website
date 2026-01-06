@@ -83,38 +83,46 @@ const WebsiteAnalyzer = (function () {
      */
     function renderReport(report) {
         const analysis = report.analysis;
+        const generatedTime = new Date(report.generatedAt).toLocaleString('zh-TW');
+
         let html = `
             <div class="analyzer-report">
                 <div class="report-header">
                     <h3>AI 賦能分析報告</h3>
-                    <p class="report-target">目標網站：${report.websiteUrl}</p>
+                    <p class="report-title">${report.websiteTitle}</p>
+                    <p class="report-meta">網址：${report.websiteUrl} | 生成時間：${generatedTime}</p>
                 </div>
-                <div class="report-sections">
         `;
 
-        // Section 1: 服務項目
-        html += renderSection('01', '網站服務項目識別',
-            analysis.services.map(s => `<strong>${s.name}</strong>：${s.description}`).join('<br>'));
+        // 摘要
+        if (analysis.summary) {
+            html += `
+                <div class="report-summary">
+                    <h4>執行摘要</h4>
+                    <p>${analysis.summary}</p>
+                </div>
+            `;
+        }
 
-        // Section 2: AI 機會
-        html += renderSection('02', 'AI 自動化潛力',
-            analysis.aiOpportunities.map(o => `<strong>${o.area}</strong>：${o.application} (效益: ${o.estimatedBenefit})`).join('<br>'));
+        html += '<div class="report-sections">';
 
-        // Section 3: 部門賦能
-        html += renderSection('03', '不同部門的賦能機會',
-            analysis.departmentInsights.map(d => `<strong>${d.department}</strong>：${d.opportunities.join('、')}`).join('<br>'));
+        // Section 1: 服務項目 (卡片式)
+        html += renderServicesSection(analysis.services);
 
-        // Section 4: 職位層級
-        html += renderSection('04', '職位層級賦能建議',
-            analysis.positionOpportunities.map(p => `<strong>${p.levelName}</strong>：${p.opportunities.join('、')}`).join('<br>'));
+        // Section 2: AI 機會 (表格式)
+        html += renderOpportunitiesTable(analysis.aiOpportunities);
 
-        // Section 5: 網站優化
-        html += renderSection('05', '網站 AI 賦能與優化建議',
-            analysis.websiteOptimizations.map(o => `<strong>${o.type}</strong>：${o.suggestion}`).join('<br>'));
+        // Section 3: 部門賦能 (卡片式)
+        html += renderDepartmentsSection(analysis.departmentInsights);
 
-        // Section 6: 銷售漏斗
-        html += renderSection('06', '銷售漏斗與成交跟進',
-            analysis.salesFunnelAI.map(s => `<strong>${s.stage}</strong>：${s.aiApplication}`).join('<br>'));
+        // Section 4: 職位層級 (列表式)
+        html += renderPositionsSection(analysis.positionOpportunities);
+
+        // Section 5: 網站優化 (優先級卡片)
+        html += renderOptimizationsSection(analysis.websiteOptimizations);
+
+        // Section 6: 銷售漏斗 (流程圖式)
+        html += renderSalesFunnelSection(analysis.salesFunnelAI);
 
         html += '</div></div>';
         resultContainer.innerHTML = html;
@@ -122,27 +130,134 @@ const WebsiteAnalyzer = (function () {
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function renderSection(num, title, content) {
+    function renderServicesSection(services) {
+        let cards = services.map(s => `
+            <div class="service-card">
+                <h5>${s.name}</h5>
+                <p>${s.description}</p>
+                <span class="service-category">${s.category}</span>
+            </div>
+        `).join('');
         return `
             <div class="report-section">
                 <div class="section-header">
-                    <span class="section-number">${num}</span>
-                    <h4>${title}</h4>
+                    <span class="section-number">01</span>
+                    <h4>網站服務項目識別</h4>
                 </div>
-                <div class="section-content">${content}</div>
+                <div class="services-grid">${cards}</div>
             </div>
         `;
     }
 
-    /**
-     * 格式化內容（處理換行和項目符號）
-     */
-    function formatContent(content) {
-        if (!content) return '';
-        return content
-            .replace(/\n/g, '<br>')
-            .replace(/•/g, '<span class="bullet">•</span>')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    function renderOpportunitiesTable(opportunities) {
+        let rows = opportunities.map(o => `
+            <tr>
+                <td>${o.area}</td>
+                <td>${o.application}</td>
+                <td class="benefit">${o.estimatedBenefit}</td>
+                <td><span class="difficulty-${o.difficulty}">${o.difficulty === 'low' ? '低' : o.difficulty === 'medium' ? '中' : '高'}</span></td>
+            </tr>
+        `).join('');
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h4>AI 自動化機會分析</h4>
+                </div>
+                <div class="table-wrapper">
+                    <table class="opportunities-table">
+                        <thead>
+                            <tr><th>領域</th><th>AI 應用</th><th>預估效益</th><th>難度</th></tr>
+                        </thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderDepartmentsSection(departments) {
+        let cards = departments.map(d => `
+            <div class="department-card">
+                <h5>${d.department}</h5>
+                <div class="dept-opportunities">
+                    <p class="dept-label">機會：</p>
+                    <ul>${d.opportunities.map(o => `<li>${o}</li>`).join('')}</ul>
+                </div>
+                <div class="dept-tools">
+                    <p class="dept-label">推薦工具：</p>
+                    <div class="tools-tags">${d.tools.map(t => `<span class="tool-tag">${t}</span>`).join('')}</div>
+                </div>
+            </div>
+        `).join('');
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h4>部門賦能機會</h4>
+                </div>
+                <div class="departments-grid">${cards}</div>
+            </div>
+        `;
+    }
+
+    function renderPositionsSection(positions) {
+        let items = positions.map(p => `
+            <div class="position-card">
+                <h5>${p.levelName}</h5>
+                <ul>${p.opportunities.map(o => `<li><span class="arrow">→</span> ${o}</li>`).join('')}</ul>
+            </div>
+        `).join('');
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <h4>職位層級賦能建議</h4>
+                </div>
+                <div class="positions-list">${items}</div>
+            </div>
+        `;
+    }
+
+    function renderOptimizationsSection(optimizations) {
+        let items = optimizations.map(o => `
+            <div class="optimization-card">
+                <span class="priority-${o.priority}">${o.priority === 'high' ? '高優先' : o.priority === 'medium' ? '中優先' : '低優先'}</span>
+                <div class="opt-content">
+                    <h5>${o.type}</h5>
+                    <p>${o.suggestion}</p>
+                </div>
+            </div>
+        `).join('');
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h4>網站 AI 優化建議</h4>
+                </div>
+                <div class="optimizations-list">${items}</div>
+            </div>
+        `;
+    }
+
+    function renderSalesFunnelSection(funnel) {
+        let stages = funnel.map((s, idx) => `
+            <div class="funnel-stage">
+                <div class="stage-number">${idx + 1}</div>
+                <h5>${s.stage}</h5>
+                <p class="stage-app">${s.aiApplication}</p>
+                <p class="stage-desc">${s.description}</p>
+            </div>
+        `).join('');
+        return `
+            <div class="report-section">
+                <div class="section-header">
+                    <span class="section-number">06</span>
+                    <h4>銷售漏斗 AI 應用</h4>
+                </div>
+                <div class="funnel-flow">${stages}</div>
+            </div>
+        `;
     }
 
     function showLoading() {
