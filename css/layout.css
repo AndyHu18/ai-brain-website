@@ -253,6 +253,17 @@
     line-height: 1.4;
 }
 
+/* 當前頁面高亮狀態 */
+.footer-nav-card-current {
+    background: rgba(210, 105, 30, 0.25);
+    border-color: var(--color-primary);
+    pointer-events: none;
+}
+
+.footer-nav-card-current .footer-nav-tag {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 .footer-nav-tag {
     display: inline-block;
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
