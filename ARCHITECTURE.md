@@ -1,8 +1,8 @@
 # 🏗️ AI 智能大腦公司官網 - 專案憲法
 
-> **版本**: v1.2.1  
+> **版本**: v1.3.0  
 > **建立日期**: 2026-01-05  
-> **最後更新**: 2026-01-07 (修復 Chatbot ID 碰撞問題)
+> **最後更新**: 2026-01-07 (Phase 1+2 程式碼重構完成)
 
 ---
 
@@ -94,66 +94,62 @@ const API_URL = 'https://your-worker.workers.dev/api/chat';
 
 ```
 ai-brain-website/
-├── index.html                 # 主頁面（唯一 HTML）
+├── index.html                 # 主頁面
 ├── script-navigation.js       # 導航互動邏輯
 ├── script-interactions.js     # 頁面互動邏輯
 │
-├── chatbot-core.js            # API 通訊 (< 200 行)
-├── chatbot-ui.js              # UI 互動 (< 200 行)
-├── chatbot-hints.js           # 提示輪播 (< 200 行)
-├── chatbot-api.js             # API 封裝 (< 200 行)
-├── chatbot-config.js          # 配置項 (< 200 行)
+├── chatbot-core.js            # API 通訊
+├── chatbot-ui.js              # UI 互動
+├── chatbot-hints.js           # 提示輪播
+├── chatbot-api.js             # API 封裝
+├── chatbot-config.js          # 配置項
 │
 ├── pages/                     # 服務頁面
-│   ├── service-content-editor.html    # 自動流量小編
-│   ├── service-brand-clone.html       # 品牌分身術
-│   ├── service-chatbot.html           # 客服機器人
-│   ├── service-meeting-notes.html     # 會議記錄工
-│   ├── service-voice-assistant.html   # 智慧接線生
-│   ├── service-consultant.html        # AI 顧問
-│   └── service-voice-receptionist.html # (舊版)
+│   ├── service-content-editor.html
+│   ├── service-brand-clone.html
+│   ├── service-chatbot.html
+│   ├── service-meeting-notes.html
+│   ├── service-voice-receptionist.html
+│   └── service-consultant.html
 │
-├── js/
-│   └── workflow-engine.js     # n8n 工作流程引擎
+├── js/                        # JavaScript 模組
+│   ├── pdf-generator/         # PDF 生成器（7 個模組）
+│   │   ├── config.js, dependencies.js, utils.js
+│   │   ├── cover-page.js, sections.js, company-intro.js
+│   │   └── index.js
+│   ├── website-analyzer/      # 網站分析器（6 個模組）
+│   │   ├── config.js, api.js, ui.js
+│   │   ├── render-sections.js, render-report.js
+│   │   └── index.js
+│   ├── workflow-engine/       # 工作流引擎（5 個模組）
+│   │   ├── config.js, icons.js, previews.js
+│   │   ├── engine.js
+│   │   └── index.js
+│   ├── maturity-quiz/         # 成熟度測驗（4 個模組）
+│   │   ├── questions-config.js, results-config.js
+│   │   ├── quiz-logic.js
+│   │   └── index.js
+│   ├── hero-workflow-demo.js
+│   └── icons.js
 │
-├── css/
-│   ├── variables.css          # CSS 變數（必須首先載入）
-│   ├── base.css               # 基礎樣式
-│   ├── layout.css             # 佈局
-│   ├── components.css         # 通用元件
-│   ├── animations-*.css       # 動畫（已拆分）
-│   ├── sections-*.css         # 區塊樣式（已拆分）
-│   ├── service-page-*.css     # 服務頁面樣式
-│   ├── n8n-workflow.css       # n8n 工作流程樣式（來源專案）
-│   ├── n8n-responsive.css     # n8n 響應式補充
-│   └── chatbot/               # 聊天客服（已拆分）
+├── css/                       # 樣式模組
+│   ├── variables.css          # CSS 變數
+│   ├── base.css, layout.css, components.css
+│   ├── p1-marketing/          # 行銷頁面樣式（14 個模組）
+│   ├── n8n-workflow/          # n8n 工作流樣式（12 個模組）
+│   └── chatbot/               # 聊天客服樣式
 │
 ├── adr/                       # 架構決策紀錄
-│   ├── ADR-001-*.md
-│   ├── ADR-002-*.md
-│   └── ...
-│
 ├── tests/                     # 測試套件
-│   ├── package.json
-│   ├── *.test.js
-│   └── node_modules/
-│
 ├── cloudflare-worker/         # API 代理
-│   ├── worker.js
-│   ├── wrangler.toml
-│   └── README.md
+├── assets/                    # 資源檔案
+├── _archive/                  # 廢棄檔案存檔
 │
-├── assets/
-│   ├── images/
-│   └── videos/
-│       └── services/          # 服務頁面視頻
-│
-├── _archive/                  # 廢棄檔案存檔（禁止物理刪除）
-│
-├── ARCHITECTURE.md            # 專案憲法（本文件）
+├── ARCHITECTURE.md            # 專案憲法
 ├── PROJECT_MAP.md             # 專案地圖
 ├── HANDOVER_NOTES.md          # 交接紀錄
 ├── TASKS.md                   # 任務追蹤
+├── TASKS_REFACTOR.md          # 重構任務追蹤
 └── README.md                  # 快速入門
 ```
 
@@ -225,7 +221,21 @@ css/
  */
 ```
 
-### 全域變數暴露
+### 全域變數註冊表
+
+| 變數名 | 來源檔案 | 用途 | 子模組 |
+|--------|----------|------|--------|
+| `window.ChatbotCore` | `chatbot-core.js` | API 通訊 | - |
+| `window.ChatbotUI` | `chatbot-ui.js` | UI 控制 | - |
+| `window.ChatbotHints` | `chatbot-hints.js` | 提示輪播 | - |
+| `window.PDFGenerator` | `js/pdf-generator/index.js` | PDF 生成 | config, dependencies, utils, cover-page, sections, company-intro |
+| `window.PDFConfig` | `js/pdf-generator/config.js` | PDF 配置 | - |
+| `window.WebsiteAnalyzer` | `js/website-analyzer/index.js` | 網站分析 | config, api, ui, render-sections, render-report |
+| `window.WorkflowEngine` | `js/workflow-engine/engine.js` | 工作流引擎類別 | config, icons, previews |
+| `window.workflowEngine` | `js/workflow-engine/index.js` | 工作流引擎實例 | - |
+| `window.MaturityQuiz` | `js/maturity-quiz/index.js` | 成熟度測驗 | questions-config, results-config, quiz-logic |
+
+### 全域變數暴露規則
 
 ```javascript
 // ✅ 正確：明確暴露到 window
