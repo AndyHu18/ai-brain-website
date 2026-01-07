@@ -128,13 +128,12 @@ css/n8n-workflow/
 ```
 
 #### 執行步驟
-- [ ] Step 1.2.1：創建 `css/n8n-workflow/` 目錄
-- [ ] Step 1.2.2：抽取 CSS 變數到 `_variables.css`
-- [ ] Step 1.2.3：逐一拆分各區塊
-- [ ] Step 1.2.4：創建 `_index.css` 整合
-- [ ] Step 1.2.5：更新所有服務頁面的 CSS 引用
-- [ ] Step 1.2.6：**驗證閘門**
-- [ ] Step 1.2.7：Git commit `refactor(css): split n8n-workflow.css into modules`
+- [x] Step 1.2.1：創建 `css/n8n-workflow/` 目錄
+- [x] Step 1.2.2：拆分各區塊 CSS（12 個模組）
+- [x] Step 1.2.3：創建 `_index.css` 整合
+- [x] Step 1.2.4：更新所有 6 個服務頁面的 CSS 引用
+- [x] Step 1.2.5：**驗證閘門**（已通過視覺驗證）
+- [x] Step 1.2.6：Git commit `refactor(css): split n8n-workflow.css into modules`
 
 ---
 
@@ -366,7 +365,7 @@ js/workflow-engine/
 |-------|------|----------|------|
 | Phase 0 | 準備工作 | 1 小時 | ✅ 完成 |
 | Phase 1.1 | 拆分 p1-marketing.css | 2 小時 | ✅ 完成 |
-| Phase 1.2 | 拆分 n8n-workflow.css | 1.5 小時 | ⬜ 待執行 |
+| Phase 1.2 | 拆分 n8n-workflow.css | 1.5 小時 | ✅ 完成 |
 | Phase 1.3 | 拆分 maturity-quiz.js | 1 小時 | ⬜ 待執行 |
 | Phase 1 驗證 | 完整功能測試 | 0.5 小時 | ⬜ 待執行 |
 | **合計 Phase 0-1** | | **6 小時** | |
@@ -382,8 +381,8 @@ js/workflow-engine/
 - [ ] 0.4 更新 ARCHITECTURE.md（Phase 1 完成後執行）
 
 ### Phase 1 進度
-- [x] 1.1 拆分 css/p1-marketing.css（14 個模組，待 Git commit）
-- [ ] 1.2 拆分 css/n8n-workflow.css
+- [x] 1.1 拆分 css/p1-marketing.css（14 個模組）
+- [x] 1.2 拆分 css/n8n-workflow.css（12 個模組）
 - [ ] 1.3 拆分 js/maturity-quiz.js
 - [ ] 最終驗證
 

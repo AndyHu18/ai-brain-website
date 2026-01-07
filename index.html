@@ -1115,7 +1115,11 @@
     <script src="website-analyzer.js?v=4"></script>
     <script src="js/hero-workflow-demo.js"></script>
     <script src="js/icons.js"></script>
-    <script src="js/maturity-quiz.js"></script>
+    <!-- AI 成熟度測驗模組化載入 (依賴順序: questions → results → logic → index) -->
+    <script src="js/maturity-quiz/questions-config.js"></script>
+    <script src="js/maturity-quiz/results-config.js"></script>
+    <script src="js/maturity-quiz/quiz-logic.js"></script>
+    <script src="js/maturity-quiz/index.js"></script>
     <script>
         // 初始化成熟度測驗
         if (document.getElementById('quiz-container')) {
