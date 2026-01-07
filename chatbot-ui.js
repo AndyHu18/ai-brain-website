@@ -18,6 +18,23 @@ const ChatbotUI = {
     chatToggle: null,
     /** @type {HTMLElement|null} 訊息容器 */
     chatMessages: null,
+    /** @type {number} 訊息 ID 計數器 - 防止同毫秒 ID 碰撞 */
+    _messageIdCounter: 0,
+
+    /**
+     * 生成唯一訊息 ID（使用 UUID 或降級方案）
+     * @returns {string} 唯一 ID
+     */
+    _generateUniqueId() {
+        this._messageIdCounter++;
+        // 優先使用 crypto.randomUUID()，若不支援則使用降級方案
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return 'msg-' + crypto.randomUUID();
+        }
+        // 降級方案：時間戳 + 計數器 + 隨機數
+        const random = Math.random().toString(36).substring(2, 9);
+        return `msg-${Date.now()}-${this._messageIdCounter}-${random}`;
+    },
 
     /**
      * 初始化聊天客服 UI
@@ -132,11 +149,16 @@ const ChatbotUI = {
      * @returns {string} 訊息 ID
      */
     addMessage(text, sender, isLoading = false) {
-        const messageId = 'msg-' + Date.now();
+        // 使用真正唯一的 ID（防止 ID 碰撞）
+        const messageId = this._generateUniqueId();
 
         const messageDiv = document.createElement('div');
         messageDiv.className = `chat-message ${sender}`;
         messageDiv.id = messageId;
+        // 添加 data 屬性作為備用識別方式
+        messageDiv.dataset.msgId = messageId;
+        messageDiv.dataset.sender = sender;
+        messageDiv.dataset.isLoading = isLoading ? 'true' : 'false';
 
         if (isLoading) {
             messageDiv.classList.add('loading');
@@ -156,17 +178,45 @@ const ChatbotUI = {
         this.chatMessages.appendChild(messageDiv);
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
 
+        // 詳細日誌追蹤
+        console.log(`📍[ChatbotUI] addMessage: id=${messageId}, sender=${sender}, isLoading=${isLoading}, text=${isLoading ? '(loading)' : text.substring(0, 30)}...`);
+
         return messageId;
     },
 
     /**
      * 移除訊息
      * @param {string} messageId - 訊息 ID
+     * @returns {boolean} 是否成功移除
      */
     removeMessage(messageId) {
-        const message = document.getElementById(messageId);
+        console.log(`📍[ChatbotUI] removeMessage: 嘗試移除 id=${messageId}`);
+
+        // 方法 1: 使用 getElementById
+        let message = document.getElementById(messageId);
+
+        // 方法 2: 如果找不到，使用 data 屬性查找
+        if (!message) {
+            console.warn(`📍[ChatbotUI] removeMessage: getElementById 找不到，嘗試 data 屬性查找`);
+            message = this.chatMessages.querySelector(`[data-msg-id="${messageId}"]`);
+        }
+
         if (message) {
+            // 驗證這是正確的訊息（檢查 loading 狀態）
+            const isLoading = message.dataset.isLoading === 'true';
+            console.log(`📍[ChatbotUI] removeMessage: 找到訊息，isLoading=${isLoading}，正在移除...`);
             message.remove();
+            return true;
+        } else {
+            console.error(`📍[ChatbotUI] removeMessage: 無法找到訊息 id=${messageId}`);
+            // 嘗試直接查找 loading 訊息並移除
+            const loadingMessages = this.chatMessages.querySelectorAll('.chat-message.loading');
+            if (loadingMessages.length > 0) {
+                console.log(`📍[ChatbotUI] removeMessage: 找到 ${loadingMessages.length} 個 loading 訊息，移除第一個`);
+                loadingMessages[0].remove();
+                return true;
+            }
+            return false;
         }
     },
 

@@ -75,68 +75,264 @@ const PDFGenerator = (function () {
         try {
             await loadDependencies();
 
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({
-                orientation: 'portrait',
-                unit: 'mm',
-                format: 'a4'
-            });
+            // 嘗試找到現有的報告區域進行截圖
+            const reportElement = document.getElementById('analyzer-result');
 
-            // 載入中文字體支援
-            doc.setFont('helvetica');
-
-            let yPosition = CONFIG.margin;
-
-            // ============================================================
-            // 第一頁：報告封面
-            // ============================================================
-            yPosition = drawCoverPage(doc, reportData, yPosition);
-
-            // ============================================================
-            // 第二頁開始：分析內容
-            // ============================================================
-            doc.addPage();
-            yPosition = CONFIG.margin;
-
-            // 執行摘要
-            if (reportData.analysis?.summary) {
-                yPosition = drawSection(doc, '執行摘要', reportData.analysis.summary, yPosition);
+            if (reportElement && reportElement.innerHTML.trim() !== '') {
+                // 方案 A：使用 html2canvas 截圖現有的 HTML 報告
+                return await generatePDFFromHTML(reportElement, reportData);
+            } else {
+                // 方案 B：使用純 jsPDF 繪製（英文 fallback）
+                return await generatePDFNative(reportData);
             }
-
-            // 服務項目
-            if (reportData.analysis?.services?.length > 0) {
-                yPosition = drawServicesSection(doc, reportData.analysis.services, yPosition);
-            }
-
-            // AI 機會
-            if (reportData.analysis?.aiOpportunities?.length > 0) {
-                yPosition = drawOpportunitiesSection(doc, reportData.analysis.aiOpportunities, yPosition);
-            }
-
-            // 部門賦能
-            if (reportData.analysis?.departmentInsights?.length > 0) {
-                yPosition = drawDepartmentsSection(doc, reportData.analysis.departmentInsights, yPosition);
-            }
-
-            // ============================================================
-            // 最後一頁：公司介紹
-            // ============================================================
-            doc.addPage();
-            yPosition = CONFIG.margin;
-            yPosition = drawCompanyIntro(doc, yPosition);
-
-            // 下載 PDF
-            const filename = `AI分析報告_${reportData.websiteTitle || '網站'}_${formatDate(new Date())}.pdf`;
-            doc.save(filename);
-
-            console.log('📍[PDFGenerator] PDF 生成成功:', filename);
-            return true;
 
         } catch (error) {
             console.error('📍[PDFGenerator] PDF 生成失敗:', error);
             throw error;
         }
     }
+
+    /**
+     * 使用 html2canvas 從 HTML 元素生成 PDF（支援中文）
+     */
+    async function generatePDFFromHTML(element, reportData) {
+        console.log('📍[PDFGenerator] 使用 html2canvas 截圖模式...');
+
+        const { jsPDF } = window.jspdf;
+        const html2canvas = window.html2canvas;
+
+        // 暫時隱藏不需要放入 PDF 的區塊
+        const elementsToHide = [
+            '.report-email-cta',           // Email 表單
+            '.report-cta',                 // 完整分析連結
+            '.report-download-section',    // PDF 下載按鈕本身
+            '.download-hint'               // 下載提示
+        ];
+
+        const hiddenElements = [];
+        elementsToHide.forEach(selector => {
+            const els = element.querySelectorAll(selector);
+            els.forEach(el => {
+                hiddenElements.push({ el, display: el.style.display });
+                el.style.display = 'none';
+            });
+        });
+
+        // 暫時調整樣式以適應 PDF
+        const originalBg = element.style.background;
+        element.style.background = '#1A0F0A';
+
+        // 截圖（提高 scale 讓文字更大更清晰）
+        const canvas = await html2canvas(element, {
+            scale: 3,  // 高解析度，文字更清晰
+            useCORS: true,
+            backgroundColor: '#1A0F0A',
+            logging: false
+        });
+
+        // 還原隱藏的元素
+        hiddenElements.forEach(({ el, display }) => {
+            el.style.display = display || '';
+        });
+
+        // 還原背景樣式
+        element.style.background = originalBg;
+
+        // 創建 PDF
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        const pageWidth = CONFIG.pageWidth;
+        const pageHeight = CONFIG.pageHeight;
+        const margin = CONFIG.margin;
+
+        // 計算圖片尺寸
+        const imgWidth = pageWidth - (margin * 2);
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        // 處理多頁
+        let yOffset = 0;
+        const pageContentHeight = pageHeight - (margin * 2);
+        let currentPage = 0;
+
+        while (yOffset < imgHeight) {
+            if (currentPage > 0) {
+                doc.addPage();
+            }
+
+            // 計算本頁需要渲染的區域
+            const sourceY = (yOffset / imgHeight) * canvas.height;
+            const sourceHeight = Math.min(
+                (pageContentHeight / imgHeight) * canvas.height,
+                canvas.height - sourceY
+            );
+
+            // 創建裁切後的 canvas
+            const pageCanvas = document.createElement('canvas');
+            pageCanvas.width = canvas.width;
+            pageCanvas.height = sourceHeight;
+            const ctx = pageCanvas.getContext('2d');
+            ctx.drawImage(
+                canvas,
+                0, sourceY, canvas.width, sourceHeight,
+                0, 0, canvas.width, sourceHeight
+            );
+
+            // 添加到 PDF
+            const imgData = pageCanvas.toDataURL('image/jpeg', 0.95);
+            const renderHeight = (sourceHeight / canvas.height) * imgHeight;
+            doc.addImage(imgData, 'JPEG', margin, margin, imgWidth, renderHeight);
+
+            yOffset += pageContentHeight;
+            currentPage++;
+        }
+
+        // 添加公司介紹頁
+        doc.addPage();
+        drawCompanyIntroFallback(doc, CONFIG.margin);
+
+        // 下載
+        const filename = `AI分析報告_${reportData.websiteTitle || '網站'}_${formatDate(new Date())}.pdf`;
+        doc.save(filename);
+
+        console.log('📍[PDFGenerator] PDF (html2canvas) 生成成功:', filename);
+        return true;
+    }
+
+    /**
+     * 純 jsPDF 繪製（英文 fallback，無中文支援）
+     */
+    async function generatePDFNative(reportData) {
+        console.log('📍[PDFGenerator] 使用原生繪製模式...');
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'mm',
+            format: 'a4'
+        });
+
+        doc.setFont('helvetica');
+
+        let yPosition = CONFIG.margin;
+
+        // 第一頁：報告封面
+        yPosition = drawCoverPage(doc, reportData, yPosition);
+
+        // 第二頁開始：分析內容
+        doc.addPage();
+        yPosition = CONFIG.margin;
+
+        if (reportData.analysis?.summary) {
+            yPosition = drawSection(doc, 'Executive Summary', reportData.analysis.summary, yPosition);
+        }
+
+        if (reportData.analysis?.services?.length > 0) {
+            yPosition = drawServicesSection(doc, reportData.analysis.services, yPosition);
+        }
+
+        if (reportData.analysis?.aiOpportunities?.length > 0) {
+            yPosition = drawOpportunitiesSection(doc, reportData.analysis.aiOpportunities, yPosition);
+        }
+
+        if (reportData.analysis?.departmentInsights?.length > 0) {
+            yPosition = drawDepartmentsSection(doc, reportData.analysis.departmentInsights, yPosition);
+        }
+
+        // 最後一頁：公司介紹
+        doc.addPage();
+        yPosition = CONFIG.margin;
+        yPosition = drawCompanyIntro(doc, yPosition);
+
+        // 下載 PDF
+        const filename = `AI_Report_${reportData.websiteTitle || 'Website'}_${formatDate(new Date())}.pdf`;
+        doc.save(filename);
+
+        console.log('📍[PDFGenerator] PDF (native) 生成成功:', filename);
+        return true;
+    }
+
+    /**
+     * 公司介紹頁 Fallback（英文版本）
+     */
+    function drawCompanyIntroFallback(doc, yPosition) {
+        const pageWidth = CONFIG.pageWidth;
+        const pageHeight = CONFIG.pageHeight;
+        const company = CONFIG.company;
+
+        // 深色背景
+        doc.setFillColor(...CONFIG.brandDark);
+        doc.rect(0, 0, pageWidth, pageHeight, 'F');
+
+        // 裝飾
+        doc.setFillColor(210, 105, 30);
+        doc.setGState(new doc.GState({ opacity: 0.15 }));
+        doc.circle(pageWidth - 20, 50, 80, 'F');
+        doc.setGState(new doc.GState({ opacity: 1 }));
+
+        // 標題
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(10);
+        doc.text('About Us', CONFIG.margin, yPosition);
+
+        yPosition += 15;
+        doc.setFontSize(24);
+        doc.text('AI Brain Company', CONFIG.margin, yPosition);
+
+        yPosition += 10;
+        doc.setTextColor(...CONFIG.brandPrimary);
+        doc.setFontSize(14);
+        doc.text('Enterprise AI Solutions', CONFIG.margin, yPosition);
+
+        // 分隔線
+        yPosition += 15;
+        doc.setDrawColor(...CONFIG.brandPrimary);
+        doc.setLineWidth(0.5);
+        doc.line(CONFIG.margin, yPosition, CONFIG.margin + 60, yPosition);
+
+        // 服務列表
+        yPosition += 20;
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(13);
+        doc.text('Our Core Services', CONFIG.margin, yPosition);
+
+        yPosition += 12;
+        const services = [
+            'Content Editor AI',
+            'Voice Receptionist AI',
+            'Brand Clone AI',
+            'Customer Service Bot',
+            'Meeting Notes AI',
+            'AI Consulting'
+        ];
+        doc.setFontSize(10);
+        doc.setTextColor(...CONFIG.brandPrimary);
+        services.forEach((service, i) => {
+            const col = i % 2;
+            const row = Math.floor(i / 2);
+            doc.text(`> ${service}`, CONFIG.margin + (col * 90), yPosition + (row * 12));
+        });
+
+        // 聯絡資訊
+        yPosition += 50;
+        doc.setTextColor(200, 200, 200);
+        doc.setFontSize(10);
+        doc.text(`Website: ${company.website}`, CONFIG.margin, yPosition);
+
+        // CTA
+        yPosition += 25;
+        doc.setFillColor(...CONFIG.brandPrimary);
+        doc.roundedRect(CONFIG.margin, yPosition, 80, 14, 4, 4, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(11);
+        doc.text('Free Consultation', CONFIG.margin + 40, yPosition + 10, { align: 'center' });
+
+        return yPosition;
+    }
+
 
     /**
      * 繪製封面頁

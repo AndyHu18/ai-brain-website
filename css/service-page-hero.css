@@ -88,6 +88,99 @@
 }
 
 /* ============================================================
+   P0 優化：Harry Dry 極簡 Hero + Sabri Suby 風險逆轉
+   ============================================================ */
+
+/* 價值錨點（Chris Do 價值定價） */
+.value-anchor {
+    display: inline-block;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-shadow: 0 2px 12px rgba(210, 105, 30, 0.5);
+}
+
+.value-compare {
+    display: inline-block;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin-left: var(--spacing-sm);
+}
+
+/* 主 CTA 按鈕強化 */
+.btn-hero-main {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    padding: var(--spacing-md) var(--spacing-2xl);
+    min-width: 280px;
+    box-shadow: 0 8px 32px rgba(210, 105, 30, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-hero-main:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(210, 105, 30, 0.5);
+}
+
+/* 風險逆轉保證（Sabri Suby 不對稱賭注） */
+.hero-guarantee {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: rgba(39, 174, 96, 0.2);
+    border: 1px solid rgba(39, 174, 96, 0.4);
+    border-radius: var(--radius-lg);
+    display: inline-block;
+}
+
+.hero-guarantee strong {
+    color: #4ADE80;
+    /* 綠色，APCA 合規 */
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+/* 次要資訊連結 */
+.hero-sub-info {
+    margin-top: var(--spacing-lg);
+}
+
+.hero-sub-info .text-link {
+    color: rgba(255, 255, 255, 0.87);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    transition: color 0.2s ease;
+}
+
+.hero-sub-info .text-link:hover {
+    color: var(--color-accent);
+}
+
+/* 響應式：手機版 */
+@media (max-width: 768px) {
+
+    .value-anchor,
+    .value-compare {
+        display: block;
+        text-align: center;
+    }
+
+    .value-compare {
+        margin-left: 0;
+        margin-top: var(--spacing-xs);
+    }
+
+    .btn-hero-main {
+        min-width: 90%;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .hero-guarantee {
+        padding: var(--spacing-xs) var(--spacing-md);
+    }
+}
+
+/* ============================================================
    Hero Value Block (定價與效益區塊)
    ============================================================ */
 .hero-value-block {
@@ -163,7 +256,7 @@
 .pricing-offer .offer-label {
     display: block;
     font-size: var(--font-size-sm);
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.87);
     font-weight: 500;
     margin-bottom: var(--spacing-xs);
     letter-spacing: 0.02em;
@@ -173,7 +266,7 @@
     display: block;
     font-size: var(--font-size-xl);
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.75);
     /* 刪除線 */
     text-decoration: line-through;
     text-decoration-color: rgba(255, 100, 100, 0.8);

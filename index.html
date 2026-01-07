@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/hero-workflow.css">
     <link rel="stylesheet" href="css/trust-section.css">
     <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/p1-marketing.css?v=6">
 </head>
 
 <body>
@@ -124,6 +125,20 @@
             <span>SCROLL</span>
             <div class="scroll-arrow"></div>
         </div>
+    </section>
+
+    <!-- ============================================================
+         P2 優化：AI 成熟度測驗入口
+         ============================================================ -->
+    <section class="quiz-entry-section" id="maturity-quiz">
+        <div class="section-header">
+            <h2>1 分鐘測出：您的企業適合哪種 AI？</h2>
+            <p class="section-subtitle">回答 5 個簡單問題，獲得最適合您的 AI 導入建議</p>
+        </div>
+        <div class="quiz-container" id="quiz-container">
+            <!-- 測驗由 JS 動態渲染 -->
+        </div>
+        <p class="quiz-entry-time">只需約 1 分鐘</p>
     </section>
 
     <!-- ============================================================
@@ -547,7 +562,7 @@
 
                 <!-- CTA 按鈕 -->
                 <div class="service-cta-group">
-                    <a href="pages/service-consultant.html#pricing" class="btn btn-primary service-cta-btn">預約免費諮詢</a>
+                    <a href="pages/service-consultant.html" class="btn btn-primary service-cta-btn">預約免費諮詢</a>
                     <a href="pages/service-consultant.html" class="btn btn-secondary service-cta-btn">了解更多</a>
                 </div>
             </div>
@@ -1100,6 +1115,13 @@
     <script src="website-analyzer.js?v=4"></script>
     <script src="js/hero-workflow-demo.js"></script>
     <script src="js/icons.js"></script>
+    <script src="js/maturity-quiz.js"></script>
+    <script>
+        // 初始化成熟度測驗
+        if (document.getElementById('quiz-container')) {
+            MaturityQuiz.init('quiz-container');
+        }
+    </script>
 </body>
 
 </html>
