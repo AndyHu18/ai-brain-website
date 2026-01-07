@@ -1,0 +1,390 @@
+/**
+ * @file    : css/icons.css
+ * @purpose : SVG Icon 系統 - 符合 /visionnew 規範的專業圖標解決方案
+ * @version : 2.0.0
+ * @spec    : stroke-width: 1.5px 統一標準 + 8px 網格 + APCA 對比度
+ */
+
+/* ========================================
+   SVG Icon Base System
+   - stroke-width: 1.5px 統一標準
+   - 8px 網格對齊
+   ======================================== */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* 統一 SVG 樣式 */
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* 尺寸變體 - 8px 網格 */
+.icon-xs {
+    width: 16px;
+    /* 8px × 2 */
+    height: 16px;
+}
+
+.icon-sm {
+    width: 20px;
+    /* 接近 8px × 2.5，用於行內 */
+    height: 20px;
+}
+
+.icon-md {
+    width: 24px;
+    /* 8px × 3 */
+    height: 24px;
+}
+
+.icon-lg {
+    width: 32px;
+    /* 8px × 4 */
+    height: 32px;
+}
+
+.icon-xl {
+    width: 48px;
+    /* 8px × 6 */
+    height: 48px;
+}
+
+/* ========================================
+   Icon 容器 - 帶背景的圖標徽章
+   ======================================== */
+.icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--color-primary-accessible, #9A4A10) 0%, var(--color-primary-dark, #7A3A08) 100%);
+    border-radius: var(--radius-lg, 12px);
+    color: var(--text-light, #FFFFFF);
+}
+
+.icon-badge .icon {
+    stroke: currentColor;
+}
+
+.icon-badge-outline {
+    background: transparent;
+    border: 1.5px solid var(--color-primary-accessible, #9A4A10);
+    color: var(--color-primary-accessible, #9A4A10);
+}
+
+.icon-badge-subtle {
+    background: rgba(154, 74, 16, 0.08);
+    color: var(--color-primary-accessible, #9A4A10);
+}
+
+/* ========================================
+   Icon 色彩系統 - APCA 合規
+   ======================================== */
+.icon-primary {
+    color: var(--color-primary-accessible, #9A4A10);
+}
+
+.icon-muted {
+    color: var(--text-muted, #5D4037);
+}
+
+.icon-light {
+    color: var(--text-light, #FFFFFF);
+}
+
+.icon-success {
+    color: #2E7D32;
+    /* 適度飽和度的綠色 */
+}
+
+.icon-warning {
+    color: #F57C00;
+    /* 警告橘 */
+}
+
+/* ========================================
+   Checkmark Icon - CSS 實現
+   stroke-width 視覺等效於 1.5px
+   ======================================== */
+.icon-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm, 8px);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.icon-check::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--color-primary-accessible, #9A4A10);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* 圓形背景版本 */
+.icon-check-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: var(--spacing-sm, 8px);
+    background: var(--color-primary-accessible, #9A4A10);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.icon-check-circle::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 5px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--text-light, #FFFFFF);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* ========================================
+   Service Icon Badge - 服務頁面專用
+   替代原有的文字標籤和 emoji
+   ======================================== */
+.service-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--color-primary-accessible, #9A4A10) 0%, var(--color-primary-dark, #7A3A08) 100%);
+    border-radius: var(--radius-md, 8px);
+    color: var(--text-light, #FFFFFF);
+    flex-shrink: 0;
+}
+
+.service-icon-badge svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   Footer Nav Icon - 導覽圖標
+   ======================================== */
+.footer-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-sm, 8px);
+    background: linear-gradient(135deg, var(--color-primary-accessible, #9A4A10) 0%, var(--color-primary-dark, #7A3A08) 100%);
+    border-radius: var(--radius-lg, 12px);
+    color: var(--text-light, #FFFFFF);
+    font-size: 0;
+    /* 隱藏文字，只顯示 SVG */
+}
+
+.footer-nav-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* 兼容舊版文字標籤：如果沒有 SVG，顯示文字 */
+.footer-nav-icon:empty::before,
+.footer-nav-icon:not(:has(svg)) {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* ========================================
+   Benefit Icon - 效益卡片圖標
+   ======================================== */
+.benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: var(--spacing-md, 16px);
+    background: rgba(154, 74, 16, 0.08);
+    border-radius: var(--radius-xl, 16px);
+    color: var(--color-primary-accessible, #9A4A10);
+    font-size: 0;
+    /* 隱藏文字 */
+}
+
+.benefit-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   Trust Icon - 信任區塊圖標
+   ======================================== */
+.trust-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--spacing-lg, 24px);
+    background: linear-gradient(135deg, var(--color-primary-accessible, #9A4A10) 0%, var(--color-primary-dark, #7A3A08) 100%);
+    border-radius: var(--radius-xl, 16px);
+    color: var(--text-light, #FFFFFF);
+    font-size: 0;
+}
+
+.trust-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   Tech Icon - 技術區塊圖標
+   ======================================== */
+.service-tech-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--color-primary-accessible, #9A4A10) 0%, var(--color-primary-dark, #7A3A08) 100%);
+    border-radius: var(--radius-sm, 4px);
+    color: var(--text-light, #FFFFFF);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: var(--spacing-sm, 8px);
+    flex-shrink: 0;
+}
+
+.service-tech-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   Target Icon - 適用對象圖標
+   ======================================== */
+.service-target-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(154, 74, 16, 0.1);
+    border-radius: var(--radius-sm, 4px);
+    color: var(--color-primary-accessible, #9A4A10);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-right: var(--spacing-sm, 8px);
+    flex-shrink: 0;
+}
+
+.service-target-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   Sound Toggle Icon
+   ======================================== */
+.sound-toggle .sound-icon {
+    display: none;
+    font-size: 0;
+    /* 隱藏文字 */
+}
+
+.sound-toggle .sound-icon.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-toggle svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* ========================================
+   間距補償 - Emoji 移除後的視覺平衡
+   ======================================== */
+.icon-gap {
+    margin-right: var(--spacing-sm, 8px);
+}
+
+.icon-gap-lg {
+    margin-right: var(--spacing-md, 16px);
+}
+
+/* ========================================
+   Accessibility (A11y)
+   ======================================== */
+.icon[aria-hidden="true"] {
+    pointer-events: none;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

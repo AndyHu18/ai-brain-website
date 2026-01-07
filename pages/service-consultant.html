@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/animations-keyframes.css">
+    <link rel="stylesheet" href="../css/animations-stagger.css">
     <link rel="stylesheet" href="../css/service-page-hero.css">
     <link rel="stylesheet" href="../css/n8n-workflow.css">
     <link rel="stylesheet" href="../css/n8n-responsive.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/pricing-comparison.css">
 </head>
 
 <body>
@@ -43,16 +46,40 @@
             <div class="hero-video-overlay"></div>
         </div>
         <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">🔇</span>
-            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+            <span class="sound-icon sound-off">OFF</span>
+            <span class="sound-icon sound-on" style="display: none;">ON</span>
         </button>
         <div class="hero-content">
             <span class="service-badge">服務方案 06</span>
-            <h1 class="hero-title"><span class="emoji">🧠</span> AI 顧問</h1>
+            <h1 class="hero-title">AI 顧問</h1>
             <p class="hero-tagline">從零到一的數位轉型夥伴</p>
+
+            <div class="hero-pricing-anchor">
+                <div class="pricing-compare">
+                    <span class="compare-label">顧問公司導入專案</span>
+                    <span class="compare-price">NT$300,000<small>+ /專案</small></span>
+                </div>
+                <div class="pricing-arrow">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="pricing-offer">
+                    <span class="offer-label">專屬顧問服務</span>
+                    <span class="offer-price">NT$88,000<small>起 /專案</small></span>
+                </div>
+            </div>
+            <p class="hero-savings">節省超過 <strong>70%</strong>，且 <strong>首次諮詢免費</strong></p>
+
             <div class="hero-cta-group">
-                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
-                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+                <a href="#pricing" class="btn btn-primary">預約免費諮詢</a>
+                <a href="#workflow-demo" class="btn btn-secondary">看導入流程</a>
+            </div>
+
+            <div class="hero-trust-signals">
+                <span class="trust-signal">首次諮詢免費</span>
+                <span class="trust-signal">不滿意全額退款</span>
+                <span class="trust-signal">本月限額 3 企業</span>
             </div>
         </div>
         <div class="hero-scroll-indicator"><span>SCROLL</span>
@@ -67,8 +94,8 @@
         <header class="header">
             <div class="logo">
                 <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>🧠 AI 顧問</h2>
-                <span class="demo-badge">🎬 流程示範</span>
+                <h2>AI 顧問</h2>
+                <span class="demo-badge">流程示範</span>
             </div>
             <div class="controls">
                 <button id="btn-start" class="btn btn-primary">
@@ -83,22 +110,22 @@
 
         <section class="intro-section">
             <div class="intro-header">
-                <h2>💡 這個功能能幫您做什麼？</h2>
+                <h2>這個功能能幫您做什麼？</h2>
                 <p class="intro-subtitle">不知道 AI 怎麼導入？我們從頭陪您到尾，從評估到上線全程輔導</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <span class="benefit-icon">🔬</span>
+                    <span class="benefit-icon">ANALYZE</span>
                     <h3>免費企業健檢</h3>
                     <p>先幫您看看哪裡可以用 AI 省錢、省時間</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">📐</span>
+                    <span class="benefit-icon">PLAN</span>
                     <h3>量身訂做方案</h3>
                     <p>不推銷不需要的東西，只給您真正需要的</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">👥</span>
+                    <span class="benefit-icon">TEAM</span>
                     <h3>教會您的團隊</h3>
                     <p>導入後教到會，不是丟一套系統就跑</p>
                 </div>
@@ -106,7 +133,7 @@
         </section>
 
         <section class="flow-explanation">
-            <h3>📍 流程節點說明（點擊「啟動流程」看 AI 怎麼工作）</h3>
+            <h3>流程節點說明（點擊「啟動流程」看 AI 怎麼工作）</h3>
             <div class="node-explanations">
                 <div class="node-exp"><span class="exp-num">1</span><strong>企業診斷</strong> — 分析現況，找出痛點</div>
                 <div class="node-exp"><span class="exp-num">2</span><strong>藍圖規劃</strong> — 設計 AI 導入路線圖</div>
@@ -138,7 +165,7 @@
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M9 9h6M9 13h6M9 17h6" />
                 </svg>
-                <span>📋 即時執行紀錄</span>
+                <span>即時執行紀錄</span>
             </div>
             <div id="log-content" class="log-content">
                 <div class="log-entry info"><span class="log-time">--:--:--</span><span class="log-msg">AI
@@ -146,6 +173,64 @@
             </div>
         </aside>
     </main>
+
+    <!-- 價格對比區塊 -->
+    <section class="pricing-comparison" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">投資報酬</span>
+                <h2 class="section-title">聰明企業都這樣選</h2>
+                <p class="section-subtitle">一次導入，持續受益多年</p>
+            </div>
+            <div class="comparison-table">
+                <div class="comparison-card traditional">
+                    <div class="card-header">
+                        <span class="card-label">傳統做法</span>
+                        <h3>大型顧問公司</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$300,000</span>
+                        <span class="price-period">+ /專案</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="negative">順問費高昂，門檻高</li>
+                        <li class="negative">導入週期長達 6-12 個月</li>
+                        <li class="negative">標準化方案，彈性低</li>
+                        <li class="negative">後續支援需額外費用</li>
+                        <li class="negative">與實際委外人員溝通层層</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>頂级專案：</span>
+                        <strong>NT$500,000 ~ 1,500,000</strong>
+                    </div>
+                </div>
+                <div class="comparison-card ai-solution featured">
+                    <div class="featured-badge">推薦方案</div>
+                    <div class="card-header">
+                        <span class="card-label">專屬顧問服務</span>
+                        <h3>AI 顧問</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$88,000</span>
+                        <span class="price-period">起 /專案</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="positive">首次諮詢完全免費</li>
+                        <li class="positive">2-4 週快速導入</li>
+                        <li class="positive">針對您的業務完全客製</li>
+                        <li class="positive">含 3 個月免費持續支援</li>
+                        <li class="positive">直接與專家對話，零溝通成本</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>平均 ROI：</span>
+                        <strong>300%+</strong>
+                        <small class="savings">（平均 8 個月回本）</small>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary btn-full">預約免費諮詢</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -155,37 +240,37 @@
                 <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
                 <div class="footer-nav-grid">
                     <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📝</div>
+                        <div class="footer-nav-icon">CONTENT</div>
                         <h4>自動流量小編</h4>
                         <p>讓網站自己會抓客戶</p>
                         <span class="footer-nav-tag">SEO 自動化</span>
                     </a>
                     <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📞</div>
+                        <div class="footer-nav-icon">VOICE</div>
                         <h4>智慧接線生</h4>
                         <p>24 小時守護每一通訂單</p>
                         <span class="footer-nav-tag">語音 AI</span>
                     </a>
                     <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🎭</div>
+                        <div class="footer-nav-icon">BRAND</div>
                         <h4>品牌分身術</h4>
                         <p>讓 AI 代你發文</p>
                         <span class="footer-nav-tag">社群經營</span>
                     </a>
                     <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🤖</div>
+                        <div class="footer-nav-icon">BOT</div>
                         <h4>客服機器人</h4>
                         <p>您專屬的線上小幫手</p>
                         <span class="footer-nav-tag">智能客服</span>
                     </a>
                     <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📋</div>
-                        <h4>會議記錄工</h4>
+                        <div class="footer-nav-icon">NOTES</div>
+                        <h4>智慧會議秘書</h4>
                         <p>開完會，紀錄就好了</p>
                         <span class="footer-nav-tag">效率工具</span>
                     </a>
                     <a href="service-consultant.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">🧠</div>
+                        <div class="footer-nav-icon">THINK</div>
                         <h4>AI 顧問</h4>
                         <p>數位轉型夥伴</p>
                         <span class="footer-nav-tag">企業轉型</span>
@@ -212,72 +297,72 @@
             nodes: [
                 {
                     id: 'enterprise-scan',
-                    title: '🔬 企業診斷',
+                    title: '企業診斷',
                     description: '分析企業現況與痛點',
                     icon: 'scan',
                     color: '#D4A537',
                     position: { x: 50, y: 30 },
                     bubbleMessages: [
-                        '📊 收集企業數據...',
-                        '🔍 分析作業流程...',
-                        '⚠️ 識別效率瓶頸...',
-                        '✅ 診斷報告完成！'
+                        '[CHART] 收集企業數據...',
+                        '[SEARCH] 分析作業流程...',
+                        '[WARN] 識別效率瓶頸...',
+                        '[OK] 診斷報告完成！'
                     ]
                 },
                 {
                     id: 'ai-blueprint',
-                    title: '📐 藍圖規劃',
+                    title: '藍圖規劃',
                     description: 'AI 導入策略與路線圖',
                     icon: 'blueprint',
                     color: '#3498DB',
                     position: { x: 280, y: 30 },
                     bubbleMessages: [
-                        '📋 定義轉型目標...',
-                        '📅 規劃實施階段...',
-                        '💰 估算投資報酬...',
-                        '✅ AI 藍圖已設計！'
+                        '[NOTES] 定義轉型目標...',
+                        '[DATE] 規劃實施階段...',
+                        '[SAVE] 估算投資報酬...',
+                        '[OK] AI 藍圖已設計！'
                     ]
                 },
                 {
                     id: 'tech-select',
-                    title: '⚙️ 技術選型',
+                    title: '技術選型',
                     description: '選擇最適合的 AI 工具',
                     icon: 'cog',
                     color: '#9B59B6',
                     position: { x: 510, y: 30 },
                     bubbleMessages: [
-                        '🔧 評估技術方案...',
-                        '📋 比較工具優劣...',
-                        '✅ 選定最佳組合...',
-                        '✅ 技術架構確認！'
+                        '[BUILD] 評估技術方案...',
+                        '[NOTES] 比較工具優劣...',
+                        '[OK] 選定最佳組合...',
+                        '[OK] 技術架構確認！'
                     ]
                 },
                 {
                     id: 'team-train',
-                    title: '👥 團隊培訓',
+                    title: '團隊培訓',
                     description: '培訓內部團隊操作',
                     icon: 'team',
                     color: '#27AE60',
                     position: { x: 740, y: 30 },
                     bubbleMessages: [
-                        '📚 製作培訓教材...',
-                        '🎓 進行實操培訓...',
-                        '📝 驗收學習成果...',
-                        '✅ 團隊已能獨立運作！'
+                        '[LEARN] 製作培訓教材...',
+                        '[CERT] 進行實操培訓...',
+                        '[CONTENT] 驗收學習成果...',
+                        '[OK] 團隊已能獨立運作！'
                     ]
                 },
                 {
                     id: 'continuous-opt',
-                    title: '📈 持續優化',
+                    title: '持續優化',
                     description: '定期追蹤與效能優化',
                     icon: 'chart',
                     color: '#E74C3C',
                     position: { x: 970, y: 30 },
                     bubbleMessages: [
-                        '📊 追蹤關鍵指標...',
-                        '🔄 收集使用回饋...',
-                        '⚡ 優化系統效能...',
-                        '✅ ROI 提升 300%！'
+                        '[CHART] 追蹤關鍵指標...',
+                        '[SYNC] 收集使用回饋...',
+                        '[FAST] 優化系統效能...',
+                        '[OK] ROI 提升 300%！'
                     ]
                 }
             ],
@@ -314,6 +399,7 @@
             soundOn.style.display = video.muted ? 'none' : 'inline';
         });
     </script>
+    <script src="../js/icons.js"></script>
 </body>
 
 </html>

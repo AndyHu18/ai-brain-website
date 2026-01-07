@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/animations-keyframes.css">
+    <link rel="stylesheet" href="../css/animations-stagger.css">
     <link rel="stylesheet" href="../css/service-page-hero.css">
     <link rel="stylesheet" href="../css/n8n-workflow.css">
     <link rel="stylesheet" href="../css/n8n-responsive.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/pricing-comparison.css">
 </head>
 
 <body>
@@ -43,16 +46,40 @@
             <div class="hero-video-overlay"></div>
         </div>
         <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">🔇</span>
-            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+            <span class="sound-icon sound-off">OFF</span>
+            <span class="sound-icon sound-on" style="display: none;">ON</span>
         </button>
         <div class="hero-content">
             <span class="service-badge">服務方案 02</span>
-            <h1 class="hero-title"><span class="emoji">🎭</span> 品牌分身術</h1>
+            <h1 class="hero-title">品牌分身術</h1>
             <p class="hero-tagline">一次寫好，多平台自動發</p>
+
+            <div class="hero-pricing-anchor">
+                <div class="pricing-compare">
+                    <span class="compare-label">社群代操公司</span>
+                    <span class="compare-price">NT$40,000<small>/月</small></span>
+                </div>
+                <div class="pricing-arrow">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="pricing-offer">
+                    <span class="offer-label">智能內容管家</span>
+                    <span class="offer-price">NT$12,800<small>/月起</small></span>
+                </div>
+            </div>
+            <p class="hero-savings">每月節省 <strong>NT$27,200</strong>，年省超過 <strong>32 萬</strong></p>
+
             <div class="hero-cta-group">
-                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
-                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
+                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
+            </div>
+
+            <div class="hero-trust-signals">
+                <span class="trust-signal">7 天免費試用</span>
+                <span class="trust-signal">不滿意全額退款</span>
+                <span class="trust-signal">本月限額 5 家</span>
             </div>
         </div>
         <div class="hero-scroll-indicator"><span>SCROLL</span>
@@ -67,8 +94,8 @@
         <header class="header">
             <div class="logo">
                 <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>🎭 品牌分身術</h2>
-                <span class="demo-badge">🎬 流程示範</span>
+                <h2>品牌分身術</h2>
+                <span class="demo-badge">流程示範</span>
             </div>
             <div class="controls">
                 <button id="btn-start" class="btn btn-primary">
@@ -83,22 +110,22 @@
 
         <section class="intro-section">
             <div class="intro-header">
-                <h2>💡 這個功能能幫您做什麼？</h2>
+                <h2>這個功能能幫您做什麼？</h2>
                 <p class="intro-subtitle">一次寫好，AI 自動調成 IG、FB、LINE 的語氣發出去</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <span class="benefit-icon">📲</span>
+                    <span class="benefit-icon">SEND</span>
                     <h3>一次搞定多平台</h3>
                     <p>寫一次貼文，自動改成適合 IG、FB、LINE 的風格</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">👤</span>
+                    <span class="benefit-icon">USER</span>
                     <h3>學會您的語氣</h3>
                     <p>AI 會學習您的寫作風格，維持品牌一致性</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">🖼️</span>
+                    <span class="benefit-icon">IMAGE</span>
                     <h3>自動配圖</h3>
                     <p>貼文寫好，AI 自動搭配適合的圖片</p>
                 </div>
@@ -106,7 +133,7 @@
         </section>
 
         <section class="flow-explanation">
-            <h3>📍 流程節點說明</h3>
+            <h3>流程節點說明</h3>
             <div class="node-explanations">
                 <div class="node-exp"><span class="exp-num">1</span><strong>品牌學習</strong> — AI 分析您的寫作風格</div>
                 <div class="node-exp"><span class="exp-num">2</span><strong>內容規劃</strong> — 自動規劃一週貼文主題</div>
@@ -138,7 +165,7 @@
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M9 9h6M9 13h6M9 17h6" />
                 </svg>
-                <span>📋 即時執行紀錄</span>
+                <span>即時執行紀錄</span>
             </div>
             <div id="log-content" class="log-content">
                 <div class="log-entry info"><span class="log-time">--:--:--</span><span
@@ -146,6 +173,64 @@
             </div>
         </aside>
     </main>
+
+    <!-- 價格對比區塊 -->
+    <section class="pricing-comparison" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">投資報酬</span>
+                <h2 class="section-title">聰明企業都這樣選</h2>
+                <p class="section-subtitle">一個月的成本，換來一整年的效率提升</p>
+            </div>
+            <div class="comparison-table">
+                <div class="comparison-card traditional">
+                    <div class="card-header">
+                        <span class="card-label">傳統做法</span>
+                        <h3>社群代操公司</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$40,000</span>
+                        <span class="price-period">/月</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="negative">需等待反覆溝通修改</li>
+                        <li class="negative">風格可能不太像您</li>
+                        <li class="negative">有又P時需額外加件</li>
+                        <li class="negative">發文次數有限制</li>
+                        <li class="negative">縮短合約可能要賠款</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$480,000+</strong>
+                    </div>
+                </div>
+                <div class="comparison-card ai-solution featured">
+                    <div class="featured-badge">推薦方案</div>
+                    <div class="card-header">
+                        <span class="card-label">專屬社群方案</span>
+                        <h3>品牌分身術</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$12,800</span>
+                        <span class="price-period">/月起</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="positive">即時生成，無需等待</li>
+                        <li class="positive">學會您的寫作風格</li>
+                        <li class="positive">無限次數發文</li>
+                        <li class="positive">自動配圖和設計</li>
+                        <li class="positive">隨時取消不綬約</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$153,600</strong>
+                        <small class="savings">（年省 NT$326,400）</small>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary btn-full">開始 7 天免費試用</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -155,37 +240,37 @@
                 <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
                 <div class="footer-nav-grid">
                     <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📝</div>
+                        <div class="footer-nav-icon">CONTENT</div>
                         <h4>自動流量小編</h4>
                         <p>讓網站自己會抓客戶</p>
                         <span class="footer-nav-tag">SEO 自動化</span>
                     </a>
                     <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📞</div>
+                        <div class="footer-nav-icon">VOICE</div>
                         <h4>智慧接線生</h4>
                         <p>24 小時守護每一通訂單</p>
                         <span class="footer-nav-tag">語音 AI</span>
                     </a>
                     <a href="service-brand-clone.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">🎭</div>
+                        <div class="footer-nav-icon">BRAND</div>
                         <h4>品牌分身術</h4>
                         <p>讓 AI 代你發文</p>
                         <span class="footer-nav-tag">社群經營</span>
                     </a>
                     <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🤖</div>
+                        <div class="footer-nav-icon">BOT</div>
                         <h4>客服機器人</h4>
                         <p>您專屬的線上小幫手</p>
                         <span class="footer-nav-tag">智能客服</span>
                     </a>
                     <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📋</div>
-                        <h4>會議記錄工</h4>
+                        <div class="footer-nav-icon">NOTES</div>
+                        <h4>智慧會議秘書</h4>
                         <p>開完會，紀錄就好了</p>
                         <span class="footer-nav-tag">效率工具</span>
                     </a>
                     <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🧠</div>
+                        <div class="footer-nav-icon">THINK</div>
                         <h4>AI 顧問</h4>
                         <p>數位轉型夥伴</p>
                         <span class="footer-nav-tag">企業轉型</span>
@@ -209,11 +294,11 @@
         const SERVICE_CONFIG = {
             name: '品牌分身術',
             nodes: [
-                { id: 'brand-learn', title: '📖 品牌學習', description: '分析品牌語調與風格', icon: 'book', color: '#E67E22', position: { x: 50, y: 30 }, bubbleMessages: ['📑 讀取歷史貼文...', '🎭 分析語調風格...', '✅ 品牌特色已學習！'] },
-                { id: 'content-plan', title: '📅 內容規劃', description: '自動規劃一週貼文', icon: 'calendar', color: '#3498DB', position: { x: 280, y: 30 }, bubbleMessages: ['📊 分析熱門話題...', '📝 規劃主題...', '✅ 一週內容已規劃！'] },
-                { id: 'post-gen', title: '✍️ 貼文生成', description: 'AI 生成各平台貼文', icon: 'text', color: '#9B59B6', position: { x: 510, y: 30 }, bubbleMessages: ['💭 撰寫貼文內容...', '🔄 適配各平台風格...', '✅ IG/FB/LINE 貼文完成！'] },
-                { id: 'image-match', title: '🖼️ 圖片匹配', description: '自動搭配適合圖片', icon: 'image', color: '#16A085', position: { x: 740, y: 30 }, bubbleMessages: ['🔍 分析貼文意象...', '🎨 搜尋匹配圖片...', '✅ 已配好精美圖片！'] },
-                { id: 'multi-publish', title: '📤 多平台發布', description: '同步發布到各社群', icon: 'share', color: '#E74C3C', position: { x: 970, y: 30 }, bubbleMessages: ['📱 連接 IG...', '💬 發布 FB...', '💚 發布 LINE...', '✅ 全平台發布成功！'] }
+                { id: 'brand-learn', title: '品牌學習', description: '分析品牌語調與風格', icon: 'book', color: '#E67E22', position: { x: 50, y: 30 }, bubbleMessages: ['[DOC] 讀取歷史貼文...', '[BRAND] 分析語調風格...', '[OK] 品牌特色已學習！'] },
+                { id: 'content-plan', title: '內容規劃', description: '自動規劃一週貼文', icon: 'calendar', color: '#3498DB', position: { x: 280, y: 30 }, bubbleMessages: ['[CHART] 分析熱門話題...', '[CONTENT] 規劃主題...', '[OK] 一週內容已規劃！'] },
+                { id: 'post-gen', title: '貼文生成', description: 'AI 生成各平台貼文', icon: 'text', color: '#9B59B6', position: { x: 510, y: 30 }, bubbleMessages: ['[THINK] 撰寫貼文內容...', '[SYNC] 適配各平台風格...', '[OK] IG/FB/LINE 貼文完成！'] },
+                { id: 'image-match', title: '圖片匹配', description: '自動搭配適合圖片', icon: 'image', color: '#16A085', position: { x: 740, y: 30 }, bubbleMessages: ['[SEARCH] 分析貼文意象...', '[DESIGN] 搜尋匹配圖片...', '[OK] 已配好精美圖片！'] },
+                { id: 'multi-publish', title: '多平台發布', description: '同步發布到各社群', icon: 'share', color: '#E74C3C', position: { x: 970, y: 30 }, bubbleMessages: ['[PHONE] 連接 IG...', '[CHAT] 發布 FB...', '[DONE] 發布 LINE...', '[OK] 全平台發布成功！'] }
             ],
             connections: [
                 { from: 'brand-learn', to: 'content-plan' },
@@ -222,7 +307,7 @@
                 { from: 'image-match', to: 'multi-publish' }
             ],
             executionOrder: ['brand-learn', 'content-plan', 'post-gen', 'image-match', 'multi-publish'],
-            resultPreview: { type: 'article', content: { icon: '📱', title: '週一早安貼文已發布！', excerpt: '「新的一週，新的開始！今天要分享給大家的是...」', views: '128' } }
+            resultPreview: { type: 'article', content: { icon: 'PHONE', title: '週一早安貼文已發布！', excerpt: '「新的一週，新的開始！今天要分享給大家的是...」', views: '128' } }
         };
     </script>
     <script src="../js/workflow-engine.js"></script>
@@ -237,6 +322,7 @@
             soundOn.style.display = video.muted ? 'none' : 'inline';
         });
     </script>
+    <script src="../js/icons.js"></script>
 </body>
 
 </html>

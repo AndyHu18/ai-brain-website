@@ -4,9 +4,9 @@
  * @depends : ['css/variables.css']
  */
 
-/* Technology Section */
+/* Technology Section - 大呼吸感佈局 */
 .technology {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: var(--bg-light);
 }
 
@@ -29,6 +29,26 @@
     transform: translateY(-5px);
     border-color: var(--border-accent);
     box-shadow: var(--shadow-lg);
+}
+
+/* Tech Image */
+.tech-image {
+    width: 100%;
+    height: 120px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.tech-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tech-category:hover .tech-image img {
+    transform: scale(1.05);
 }
 
 .tech-icon {
@@ -59,9 +79,9 @@
     color: var(--text-secondary);
 }
 
-/* Contact Section */
+/* Contact Section - 大呼吸感佈局 */
 .contact {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: var(--bg-section);
 }
 

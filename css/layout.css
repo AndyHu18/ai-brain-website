@@ -15,7 +15,8 @@
 }
 
 /* ========================================
-   Navbar
+   Navbar - 2026 AI 科技風格升級
+   毛玻璃效果 + Sticky 過渡 + 發光 CTA
    ======================================== */
 .navbar {
     position: fixed;
@@ -23,13 +24,40 @@
     left: 0;
     right: 0;
     z-index: 100;
-    /* 增加層次感：漸層背景 + 微妙陰影 */
-    background: linear-gradient(180deg, #FFFFFF 0%, #FDF9F3 100%);
+    /* 🌑 深色毛玻璃 - 高端 AI 科技風格 */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(180deg,
+            rgba(30, 25, 22, 0.92) 0%,
+            /* 深咖啡黑 */
+            rgba(45, 35, 28, 0.88) 100%
+            /* 溫暖深棕 */
+        );
+    /* 底部金線 - 高級感 */
+    border-bottom: 1px solid rgba(210, 165, 90, 0.35);
     box-shadow:
-        0 1px 0 rgba(210, 105, 30, 0.08),
-        0 4px 12px rgba(62, 39, 35, 0.04);
-    border-bottom: 1px solid rgba(210, 105, 30, 0.12);
-    transition: var(--transition-base);
+        0 4px 20px rgba(0, 0, 0, 0.25),
+        0 0 40px rgba(210, 105, 30, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sticky 狀態 - 滾動後更深 */
+.navbar-scrolled {
+    background: linear-gradient(180deg,
+            rgba(25, 20, 18, 0.96) 0%,
+            rgba(40, 30, 24, 0.94) 100%);
+    box-shadow:
+        0 6px 30px rgba(0, 0, 0, 0.35),
+        0 0 50px rgba(210, 105, 30, 0.15);
+}
+
+.navbar-scrolled .nav-container {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+}
+
+.navbar-scrolled .logo-text {
+    font-size: calc(var(--font-size-2xl) - 4px);
 }
 
 .nav-container {
@@ -39,6 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: padding 0.3s ease;
 }
 
 .nav-logo {
@@ -47,46 +76,146 @@
     gap: var(--spacing-sm);
 }
 
+/* Logo 文字 - AI 強烈漸層 (橘→金→深紅) */
 .logo-text {
     font-size: var(--font-size-2xl);
-    /* 加大 Logo */
     font-weight: 900;
-    color: var(--color-primary);
     letter-spacing: -0.02em;
+    /* 強烈三色漸層效果 */
+    background: linear-gradient(135deg,
+            #D2691E 0%,
+            /* 琥珀橘 */
+            #FFB347 35%,
+            /* 亮金橘 */
+            #FF8C00 65%,
+            /* 深橘 */
+            #B8860B 100%
+            /* 暗金 */
+        );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* 額外文字陰影增強可見度 */
+    filter: drop-shadow(0 1px 2px rgba(210, 105, 30, 0.3));
+    transition: all 0.3s ease;
+}
+
+.logo-text:hover {
+    filter: drop-shadow(0 2px 4px rgba(210, 105, 30, 0.4)) brightness(1.1);
 }
 
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
+    /* 擴大間距 - 呼吸感 */
 }
 
 .nav-link {
-    color: var(--text-primary);
-    /* 提高對比度 */
-    font-size: var(--font-size-lg);
-    /* 加大字體 */
+    /* 🌒 深色背景需要淺色文字 */
+    color: rgba(255, 250, 245, 0.9);
+    font-size: var(--font-size-base);
     font-weight: 600;
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-md);
-    transition: var(--transition-fast);
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+    position: relative;
 }
 
 .nav-link:hover {
-    color: var(--color-primary);
-    background: rgba(210, 105, 30, 0.08);
+    color: var(--color-accent);
+    background: rgba(210, 165, 90, 0.15);
 }
 
-.nav-cta {
+/* 導航連結底線動畫 */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
     background: var(--color-primary);
-    color: var(--text-light) !important;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+
+.nav-link:hover::after {
+    width: 60%;
+}
+
+/* CTA 按鈕 - 2026 AI 能量核心 (專家優化版) */
+.nav-cta {
+    /* 🎨 加深漸層起始色 (APCA 對比優化) */
+    background: linear-gradient(135deg, #C05000 0%, #A87000 100%);
+    color: #FFFFFF !important;
+    /* 📐 增大 padding 提升可發現性 */
+    padding: calc(var(--spacing-sm) + 2px) calc(var(--spacing-xl) + 4px);
+    /* 🔲 圓角方形 - 2026 科技感 */
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: calc(var(--font-size-base) + 1px);
+    letter-spacing: 0.03em;
+    /* 三層發光 + 內發光 */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 10px rgba(192, 80, 0, 0.5),
+        0 4px 20px rgba(192, 80, 0, 0.35),
+        0 8px 32px rgba(192, 80, 0, 0.2);
+    border: 1px solid rgba(255, 200, 100, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    /* ✨ 呼吸微動畫 */
+    animation: nav-cta-breathe 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 呼吸發光動畫 - 能量核心效果 */
+@keyframes nav-cta-breathe {
+
+    0%,
+    100% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 0 10px rgba(192, 80, 0, 0.5),
+            0 4px 20px rgba(192, 80, 0, 0.35),
+            0 8px 32px rgba(192, 80, 0, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            0 0 18px rgba(255, 140, 0, 0.6),
+            0 4px 28px rgba(255, 140, 0, 0.4),
+            0 8px 40px rgba(192, 80, 0, 0.25);
+    }
+}
+
+.nav-cta::after {
+    display: none;
+}
+
+/* 🎯 Focus 狀態 - 無障礙合規 */
+.nav-cta:focus-visible {
+    outline: 3px solid rgba(255, 200, 100, 0.8);
+    outline-offset: 3px;
+    animation: none;
 }
 
 .nav-cta:hover {
-    background: var(--color-primary-light);
-    color: var(--text-light) !important;
+    background: linear-gradient(135deg, #E06000 0%, #C05000 100%);
+    color: #FFFFFF !important;
+    transform: translateY(-3px) scale(1.03);
+    /* 懸停時停止呼吸，改為穩定強發光 */
+    animation: none;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        0 0 20px rgba(255, 140, 0, 0.7),
+        0 6px 30px rgba(224, 96, 0, 0.45),
+        0 12px 50px rgba(192, 80, 0, 0.3);
 }
 
 /* Mobile Toggle */
@@ -103,7 +232,8 @@
 .nav-toggle span {
     width: 24px;
     height: 2px;
-    background: var(--text-primary);
+    /* 🌒 深色背景需要淺色漢堡線 */
+    background: rgba(255, 250, 245, 0.9);
     transition: var(--transition-fast);
 }
 
@@ -285,9 +415,15 @@
         left: 0;
         right: 0;
         flex-direction: column;
-        background: var(--bg-light);
+        /* 🌑 手機版也使用深色毛玻璃 */
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        background: linear-gradient(180deg,
+                rgba(30, 25, 22, 0.95) 0%,
+                rgba(45, 35, 28, 0.92) 100%);
         padding: var(--spacing-lg);
-        border-bottom: 1px solid var(--border-subtle);
+        border-bottom: 1px solid rgba(210, 165, 90, 0.35);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
     }
 
     .nav-menu.active {

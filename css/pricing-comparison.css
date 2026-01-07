@@ -1,0 +1,297 @@
+/**
+ * @file    : css/pricing-comparison.css
+ * @purpose : 價格對比區塊樣式 - 高端定價策略視覺呈現
+ * @depends : ['css/variables.css']
+ * @lines   : ~180
+ * 
+ * /visionnew 合規：
+ * - APCA 對比度 ≥ Lc 75
+ * - 8px 網格系統
+ * - 無 Emoji、無彩虹漸層、無厚重陰影
+ * - 非線性動畫 (cubic-bezier)
+ */
+
+/* ========================================
+   價格對比區塊容器
+   ======================================== */
+.pricing-comparison {
+    /* 負空間原則：Section 間距 120px */
+    padding: var(--spacing-5xl) 0;
+    background: var(--bg-section);
+    position: relative;
+}
+
+/* ========================================
+   對比表格容器
+   ======================================== */
+.comparison-table {
+    display: grid;
+    /* 雙欄佈局 */
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: var(--spacing-3xl);
+}
+
+/* ========================================
+   對比卡片基礎樣式
+   ======================================== */
+.comparison-card {
+    /* 分層表面系統 Level 1 */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* 使用細邊框取代陰影 */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-xl);
+    /* 8px 網格：32px 內距 */
+    padding: var(--spacing-xl);
+    /* 非線性動畫 */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* ========================================
+   傳統方案卡片 (左側 - 暗淡處理)
+   ======================================== */
+.comparison-card.traditional {
+    /* 視覺權重降低 */
+    opacity: 0.85;
+}
+
+.comparison-card.traditional .card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.comparison-card.traditional .card-label {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.comparison-card.traditional h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--text-secondary);
+    /* 微觀排版：標題負字距 */
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.comparison-card.traditional .card-price {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.comparison-card.traditional .price-amount {
+    font-size: var(--font-size-3xl);
+    font-weight: 900;
+    color: var(--text-muted);
+    /* 刪除線效果 */
+    text-decoration: line-through;
+    text-decoration-color: var(--color-primary);
+}
+
+.comparison-card.traditional .price-period {
+    font-size: var(--font-size-base);
+    color: var(--text-muted);
+}
+
+/* ========================================
+   AI 方案卡片 (右側 - 突出顯示)
+   ======================================== */
+.comparison-card.featured {
+    /* 使用品牌橘色邊框 */
+    border: 2px solid var(--color-primary);
+    /* 極淡環境光陰影 */
+    box-shadow: 0 8px 32px rgba(210, 105, 30, 0.08);
+    /* 微幅放大 */
+    transform: scale(1.02);
+}
+
+.comparison-card.featured:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 12px 40px rgba(210, 105, 30, 0.12);
+}
+
+.featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* APCA 合規深橘色 */
+    background: linear-gradient(135deg, var(--color-primary-accessible) 0%, var(--color-primary-dark) 100%);
+    color: var(--text-on-primary);
+    padding: var(--spacing-xs) var(--spacing-lg);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 4px 12px rgba(154, 74, 16, 0.3);
+}
+
+.comparison-card.featured .card-header {
+    border-bottom: 1px solid rgba(210, 105, 30, 0.2);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    /* 頂部額外間距給 badge */
+    padding-top: var(--spacing-sm);
+}
+
+.comparison-card.featured .card-label {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.comparison-card.featured h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 900;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.comparison-card.featured .card-price {
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.comparison-card.featured .price-amount {
+    font-size: var(--font-size-3xl);
+    font-weight: 900;
+    /* APCA 合規深橘色 */
+    color: var(--color-primary-accessible);
+}
+
+.comparison-card.featured .price-period {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   功能列表
+   ======================================== */
+.card-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg) 0;
+}
+
+.card-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+    font-size: var(--font-size-base);
+    /* 行高 1.6 符合正文規範 */
+    line-height: 1.6;
+}
+
+/* 負面項目（傳統方案）*/
+.card-features li.negative {
+    color: var(--text-muted);
+}
+
+.card-features li.negative::before {
+    content: '×';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--text-muted);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 正面項目（AI 方案）*/
+.card-features li.positive {
+    color: var(--text-secondary);
+}
+
+.card-features li.positive::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    /* APCA 合規深橘色 */
+    background: var(--color-primary-accessible);
+    color: var(--text-on-primary);
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ========================================
+   年度成本區塊
+   ======================================== */
+.card-annual {
+    padding: var(--spacing-md);
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: var(--radius-md);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-annual span {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.card-annual strong {
+    display: block;
+    font-size: var(--font-size-xl);
+    font-weight: 900;
+    color: var(--text-primary);
+    margin-top: var(--spacing-xs);
+}
+
+.card-annual small {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.card-annual small.savings {
+    color: var(--color-primary-accessible);
+    font-weight: 600;
+}
+
+/* AI 方案的年度成本區塊 */
+.comparison-card.featured .card-annual {
+    background: rgba(210, 105, 30, 0.08);
+}
+
+/* ========================================
+   響應式設計
+   ======================================== */
+@media (max-width: 768px) {
+    .comparison-table {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .comparison-card.featured {
+        /* 手機版取消放大，避免溢出 */
+        transform: none;
+        /* 移至頂部 */
+        order: -1;
+    }
+
+    .comparison-card.featured:hover {
+        transform: translateY(-4px);
+    }
+}

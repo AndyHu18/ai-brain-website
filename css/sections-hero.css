@@ -11,6 +11,8 @@
 .hero {
     position: relative;
     min-height: 100vh;
+    /* 增加頂部內距，避開固定導航欄 (約 94px) */
+    padding-top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +71,8 @@
     font-weight: 600;
     border-radius: var(--radius-full);
     border: 1px solid var(--border-accent);
-    margin-bottom: var(--spacing-lg);
+    /* 增加下方間距：從 lg(16px) 到 xl(24px) */
+    margin-bottom: var(--spacing-xl);
 }
 
 .hero-title-main {
@@ -105,7 +108,9 @@
     gap: var(--spacing-md);
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: var(--spacing-3xl);
+    /* 增加上下間距：提供更多呼吸空間 */
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
 }
 
 .hero-stats {
@@ -177,4 +182,43 @@
     border-right: 2px solid var(--color-primary);
     border-bottom: 2px solid var(--color-primary);
     transform: rotate(45deg);
+}
+
+/* ========================================
+   Hero 信任保證列
+   ======================================== */
+.hero-trust-row {
+    display: flex;
+    justify-content: center;
+    /* 增加項目間距：從 xl(24px) 到 2xl(32px) */
+    gap: var(--spacing-2xl);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.hero-trust-row .trust-item {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    /* 增加 checkmark 與文字的間距 */
+    gap: var(--spacing-sm);
+}
+
+/* 表單信任提示 */
+.form-trust-note {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-md);
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .hero-trust-row {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
 }

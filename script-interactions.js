@@ -60,8 +60,9 @@ function initVideoFallback() {
         });
 
         // 檢查影片來源是否存在
+        // 注意: file:// 協議不支援 fetch，跳過檢查
         const source = video.querySelector('source');
-        if (source) {
+        if (source && !window.location.protocol.startsWith('file')) {
             fetch(source.src, { method: 'HEAD' })
                 .catch(() => {
                     video.dispatchEvent(new Event('error'));

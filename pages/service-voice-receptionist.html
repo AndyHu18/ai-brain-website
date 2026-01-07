@@ -15,11 +15,14 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/animations-keyframes.css">
+    <link rel="stylesheet" href="../css/animations-stagger.css">
     <link rel="stylesheet" href="../css/service-page-hero.css">
     <!-- n8n 工作流程樣式 + 手機適配 -->
     <link rel="stylesheet" href="../css/n8n-workflow.css">
     <link rel="stylesheet" href="../css/n8n-responsive.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/pricing-comparison.css">
 </head>
 
 <body>
@@ -44,16 +47,40 @@
             <div class="hero-video-overlay"></div>
         </div>
         <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">🔇</span>
-            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+            <span class="sound-icon sound-off">OFF</span>
+            <span class="sound-icon sound-on" style="display: none;">ON</span>
         </button>
         <div class="hero-content">
             <span class="service-badge">服務方案 02</span>
-            <h1 class="hero-title"><span class="emoji">📞</span> 智慧接線生</h1>
+            <h1 class="hero-title">智慧接線生</h1>
             <p class="hero-tagline">24 小時守護每一通訂單</p>
+
+            <div class="hero-pricing-anchor">
+                <div class="pricing-compare">
+                    <span class="compare-label">24H 接線服務</span>
+                    <span class="compare-price">NT$80,000<small>/月</small></span>
+                </div>
+                <div class="pricing-arrow">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="pricing-offer">
+                    <span class="offer-label">智能語音系統</span>
+                    <span class="offer-price">NT$28,800<small>/月起</small></span>
+                </div>
+            </div>
+            <p class="hero-savings">每月節省 <strong>NT$51,200</strong>，年省超過 <strong>61 萬</strong></p>
+
             <div class="hero-cta-group">
-                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
-                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
+                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
+            </div>
+
+            <div class="hero-trust-signals">
+                <span class="trust-signal">7 天免費試用</span>
+                <span class="trust-signal">不滿意全額退款</span>
+                <span class="trust-signal">本月限額 5 家</span>
             </div>
         </div>
         <div class="hero-scroll-indicator"><span>SCROLL</span>
@@ -68,8 +95,8 @@
         <header class="header">
             <div class="logo">
                 <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>📞 智慧接線生</h2>
-                <span class="demo-badge">🎬 流程示範</span>
+                <h2>智慧接線生</h2>
+                <span class="demo-badge">流程示範</span>
             </div>
             <div class="controls">
                 <button id="btn-start" class="btn btn-primary">
@@ -84,22 +111,22 @@
 
         <section class="intro-section">
             <div class="intro-header">
-                <h2>💡 這個功能能幫您做什麼？</h2>
+                <h2>這個功能能幫您做什麼？</h2>
                 <p class="intro-subtitle">不用請櫃檯人員、不用擔心漏接電話，AI 24 小時幫您接聽每一通來電</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <span class="benefit-icon">📞</span>
+                    <span class="benefit-icon">VOICE</span>
                     <h3>零漏接電話</h3>
                     <p>半夜、假日都有人接，不讓任何一筆訂單跑掉</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">🗣️</span>
+                    <span class="benefit-icon">SPEAK</span>
                     <h3>聽懂台語國語</h3>
                     <p>阿公阿嬤打來也能溝通，在地口音沒問題</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">📅</span>
+                    <span class="benefit-icon">DATE</span>
                     <h3>自動幫客戶預約</h3>
                     <p>直接幫客戶掛號、預約，不用人工轉接</p>
                 </div>
@@ -107,7 +134,7 @@
         </section>
 
         <section class="flow-explanation">
-            <h3>📍 流程節點說明</h3>
+            <h3>流程節點說明</h3>
             <div class="node-explanations">
                 <div class="node-exp"><span class="exp-num">1</span><strong>來電接聽</strong> — 自動接起電話</div>
                 <div class="node-exp"><span class="exp-num">2</span><strong>語音辨識</strong> — 聽懂客戶說什麼</div>
@@ -139,7 +166,7 @@
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M9 9h6M9 13h6M9 17h6" />
                 </svg>
-                <span>📋 即時執行紀錄</span>
+                <span>即時執行紀錄</span>
             </div>
             <div id="log-content" class="log-content">
                 <div class="log-entry info"><span class="log-time">--:--:--</span><span
@@ -147,6 +174,64 @@
             </div>
         </aside>
     </main>
+
+    <!-- 價格對比區塊 -->
+    <section class="pricing-comparison" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">投資報酬</span>
+                <h2 class="section-title">聰明企業都這樣選</h2>
+                <p class="section-subtitle">一個月的成本，換來一整年的效率提升</p>
+            </div>
+            <div class="comparison-table">
+                <div class="comparison-card traditional">
+                    <div class="card-header">
+                        <span class="card-label">傳統做法</span>
+                        <h3>24H 接線外包/人力</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$80,000</span>
+                        <span class="price-period">/月</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="negative">電話高峰時期會漏接</li>
+                        <li class="negative">外包人員不熟惉您的業務</li>
+                        <li class="negative">無法自動預約、需幫轉接</li>
+                        <li class="negative">可能聽不懂台語</li>
+                        <li class="negative">每通電話都有成本</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$960,000+</strong>
+                    </div>
+                </div>
+                <div class="comparison-card ai-solution featured">
+                    <div class="featured-badge">推薦方案</div>
+                    <div class="card-header">
+                        <span class="card-label">專屬語音方案</span>
+                        <h3>智慧接線生</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$28,800</span>
+                        <span class="price-period">/月起</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="positive">24H 零漏接、無限通數</li>
+                        <li class="positive">學會您的業務流程</li>
+                        <li class="positive">自動預約、直接訂單</li>
+                        <li class="positive">支援台語、國語、英語</li>
+                        <li class="positive">靈活計費，隨時取消</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$345,600</strong>
+                        <small class="savings">（年省 NT$614,400）</small>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary btn-full">開始 7 天免費試用</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -156,37 +241,37 @@
                 <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
                 <div class="footer-nav-grid">
                     <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📝</div>
+                        <div class="footer-nav-icon">CONTENT</div>
                         <h4>自動流量小編</h4>
                         <p>讓網站自己會抓客戶</p>
                         <span class="footer-nav-tag">SEO 自動化</span>
                     </a>
                     <a href="service-voice-receptionist.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">📞</div>
+                        <div class="footer-nav-icon">VOICE</div>
                         <h4>智慧接線生</h4>
                         <p>24 小時守護每一通訂單</p>
                         <span class="footer-nav-tag">語音 AI</span>
                     </a>
                     <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🎭</div>
+                        <div class="footer-nav-icon">BRAND</div>
                         <h4>品牌分身術</h4>
                         <p>讓 AI 代你發文</p>
                         <span class="footer-nav-tag">社群經營</span>
                     </a>
                     <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🤖</div>
+                        <div class="footer-nav-icon">BOT</div>
                         <h4>客服機器人</h4>
                         <p>您專屬的線上小幫手</p>
                         <span class="footer-nav-tag">智能客服</span>
                     </a>
                     <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📋</div>
-                        <h4>會議記錄工</h4>
+                        <div class="footer-nav-icon">NOTES</div>
+                        <h4>智慧會議秘書</h4>
                         <p>開完會，紀錄就好了</p>
                         <span class="footer-nav-tag">效率工具</span>
                     </a>
                     <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🧠</div>
+                        <div class="footer-nav-icon">THINK</div>
                         <h4>AI 顧問</h4>
                         <p>數位轉型夥伴</p>
                         <span class="footer-nav-tag">企業轉型</span>
@@ -213,12 +298,12 @@
             nodes: [
                 {
                     id: 'call-receive',
-                    title: '📞 來電接聽',
+                    title: '來電接聽',
                     description: 'Twilio 接收來電',
                     icon: 'phone',
                     color: '#16A085',
                     position: { x: 50, y: 30 },
-                    bubbleMessages: ['📞 來電進線中...', '🔌 建立連線...', '✅ 通話已建立！']
+                    bubbleMessages: ['[VOICE] 來電進線中...', '[LINK] 建立連線...', '[OK] 通話已建立！']
                 },
                 {
                     id: 'voice-stt',
@@ -227,34 +312,34 @@
                     icon: 'mic',
                     color: '#9B59B6',
                     position: { x: 280, y: 30 },
-                    bubbleMessages: ['🎤 接收語音...', '🗣️ 辨識台語/國語...', '✅ 辨識完成！']
+                    bubbleMessages: ['[MIC] 接收語音...', '[SPEAK] 辨識台語/國語...', '[OK] 辨識完成！']
                 },
                 {
                     id: 'intent-detect',
-                    title: '🧠 意圖理解',
+                    title: '意圖理解',
                     description: 'AI 分析客戶意圖',
                     icon: 'brain',
                     color: '#E67E22',
                     position: { x: 510, y: 30 },
-                    bubbleMessages: ['🔍 分析對話內容...', '💡 識別客戶意圖...', '✅ 客戶想預約掛號！']
+                    bubbleMessages: ['[SEARCH] 分析對話內容...', '[IDEA] 識別客戶意圖...', '[OK] 客戶想預約掛號！']
                 },
                 {
                     id: 'booking-action',
-                    title: '📅 預約登記',
+                    title: '預約登記',
                     description: '自動操作預約系統',
                     icon: 'calendar',
                     color: '#3498DB',
                     position: { x: 740, y: 30 },
-                    bubbleMessages: ['📆 開啟預約系統...', '✍️ 填寫客戶資料...', '✅ 1/15 下午 2:00 預約成功！']
+                    bubbleMessages: ['[SCHEDULE] 開啟預約系統...', '[EDIT] 填寫客戶資料...', '[OK] 1/15 下午 2:00 預約成功！']
                 },
                 {
                     id: 'voice-tts',
-                    title: '🔊 語音回覆',
+                    title: '語音回覆',
                     description: 'AI 語音回答客戶',
                     icon: 'speaker',
                     color: '#E74C3C',
                     position: { x: 970, y: 30 },
-                    bubbleMessages: ['🎵 生成語音回覆...', '🗣️ 播放確認訊息...', '✅ 對話完成，掛斷！']
+                    bubbleMessages: ['[SOUND] 生成語音回覆...', '[SPEAK] 播放確認訊息...', '[OK] 對話完成，掛斷！']
                 }
             ],
             connections: [
@@ -267,7 +352,7 @@
             resultPreview: {
                 type: 'line',
                 content: {
-                    icon: '📞',
+                    icon: 'PHONE',
                     sender: 'AI 接線生',
                     message: '您好！已為您預約 1/15 下午 2:00，届時會有專人為您服務！',
                     link: false
@@ -287,6 +372,7 @@
             soundOn.style.display = video.muted ? 'none' : 'inline';
         });
     </script>
+    <script src="../js/icons.js"></script>
 </body>
 
 </html>

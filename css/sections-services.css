@@ -6,10 +6,10 @@
  */
 
 /* ========================================
-   Services Section
+   Services Section - 大呼吸感佈局
    ======================================== */
 .services {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-4xl) 0;
     background: var(--bg-light);
 }
 

@@ -141,43 +141,185 @@
 }
 
 /* ========================================
-   服務 CTA 按鈕 - 大器全寬設計
-   WCAG AA 對比度 (4.5:1 以上)
+   效益與定價區塊
    ======================================== */
-.service-cta-btn {
-    /* 佈局：80% 寬度，更大器 */
+.service-value-block {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: rgba(39, 174, 96, 0.08);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid #27ae60;
+}
+
+.service-benefit,
+.service-price {
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.service-benefit {
+    margin-bottom: var(--spacing-sm);
+}
+
+.service-benefit strong,
+.service-price strong {
+    color: var(--text-primary);
+}
+
+/* 服務 CTA 按鈕組 */
+.service-cta-group {
     display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.service-cta-group .btn.btn-secondary.service-cta-btn {
+    width: auto;
+    min-width: 120px;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) var(--spacing-xl);
+}
+
+.service-cta-group .btn.btn-secondary.service-cta-btn::before,
+.service-cta-group .btn.btn-secondary.service-cta-btn::after {
+    display: none;
+}
+
+.service-cta-group .btn.btn-secondary.service-cta-btn:hover {
+    background: var(--color-primary);
+    color: var(--text-light);
+}
+
+/* 調整主 CTA 在按鈕組中的樣式 */
+.service-cta-group .btn.btn-primary.service-cta-btn {
+    width: auto;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .service-cta-group {
+        flex-direction: column;
+    }
+
+    .service-cta-group .btn.btn-primary.service-cta-btn,
+    .service-cta-group .btn.btn-secondary.service-cta-btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   服務 CTA 按鈕 - 方案 C：雙色漸層 + 圖標
+   APCA Lc 80+ 高對比 | 強行動呼籲設計
+   使用高特異性選擇器覆蓋 .btn.btn-primary
+   ======================================== */
+.btn.btn-primary.service-cta-btn {
+    /* 佈局：70% 寬度 (文字欄的 2/3) */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-md);
-    width: 80%;
-    max-width: 400px;
+    width: 70%;
+    max-width: 380px;
+    min-height: 56px;
+    /* 確保觸摸目標 >= 44px */
     margin-top: var(--spacing-2xl);
     padding: var(--spacing-lg) var(--spacing-2xl);
 
-    /* 漸層背景 */
-    background: linear-gradient(135deg, #C45A00 0%, #A04800 100%);
+    /* 🎨 方案 C：金→橘→深棕 三段漸層 */
+    background: linear-gradient(135deg,
+            #FFB347 0%,
+            /* 金橘 - 頂部高光 */
+            #E67E22 30%,
+            /* 標準橘 */
+            #C45A00 60%,
+            /* 深橘 */
+            #8B3A00 100%
+            /* 深棕 - 底部陰影 */
+        );
     color: #FFFFFF;
     font-size: var(--font-size-lg);
     font-weight: 700;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     border-radius: var(--radius-xl);
     text-decoration: none;
+    border: none;
 
-    /* 陰影與發光 */
+    /* 🌟 多層發光效果 */
     box-shadow:
-        0 6px 20px rgba(196, 90, 0, 0.35),
-        0 0 0 0 rgba(196, 90, 0, 0);
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        /* 頂部高光線 */
+        inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+        /* 底部陰影線 */
+        0 4px 15px rgba(255, 140, 0, 0.35),
+        /* 外發光 */
+        0 0 40px rgba(255, 165, 0, 0.15);
+    /* 柔和光暈 */
 
     /* 動畫基底 */
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-/* Shimmer 光澤掃過效果 */
-.service-cta-btn::before {
+/* 火箭圖標 (按鈕左側) - 使用 SVG 背景 */
+.btn.btn-primary.service-cta-btn::before {
     content: '';
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: var(--spacing-xs);
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z'/%3E%3Cpath d='M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z'/%3E%3Cpath d='M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0'/%3E%3Cpath d='M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z'/%3E%3Cpath d='M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z'/%3E%3Cpath d='M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0'/%3E%3Cpath d='M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5'/%3E%3C/svg%3E") center / contain no-repeat;
+    animation: rocketFloat 2s ease-in-out infinite;
+}
+
+@keyframes rocketFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-3px) rotate(5deg);
+    }
+}
+
+/* ➡️ 箭頭 (按鈕右側) */
+.btn.btn-primary.service-cta-btn::after {
+    content: '→';
+    display: inline-block;
+    margin-left: var(--spacing-sm);
+    font-size: 1.2em;
+    font-weight: 900;
+    animation: arrowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(6px);
+        opacity: 0.8;
+    }
+}
+
+/* ✨ Shimmer 光澤掃過 (隱藏層) */
+.btn.btn-primary.service-cta-btn .shimmer-layer {
     position: absolute;
     top: 0;
     left: -100%;
@@ -185,7 +327,7 @@
     height: 100%;
     background: linear-gradient(90deg,
             transparent,
-            rgba(255, 255, 255, 0.25),
+            rgba(255, 255, 255, 0.3),
             transparent);
     animation: shimmer 3s ease-in-out infinite;
 }
@@ -202,53 +344,46 @@
     }
 }
 
-/* 箭頭脈動效果 */
-.service-cta-btn::after {
-    content: '→';
-    display: inline-block;
-    margin-left: var(--spacing-sm);
-    font-size: 1.2em;
-    animation: arrowPulse 1.5s ease-in-out infinite;
+/* 🎯 Hover 狀態：放大 + 強發光 + 顏色亮化 */
+.btn.btn-primary.service-cta-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: linear-gradient(135deg,
+            #FFD280 0%,
+            /* 更亮的金 */
+            #FF9F43 30%,
+            /* 亮橘 */
+            #E67E22 60%,
+            /* 標準橘 */
+            #B85A08 100%
+            /* 深橘 */
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+        0 8px 25px rgba(255, 140, 0, 0.5),
+        0 0 50px rgba(255, 180, 50, 0.25);
+    letter-spacing: 0.1em;
 }
 
-@keyframes arrowPulse {
+.btn.btn-primary.service-cta-btn:hover::before {
+    animation: rocketLaunch 0.5s ease-out forwards;
+}
 
-    0%,
-    100% {
-        transform: translateX(0);
-        opacity: 1;
+@keyframes rocketLaunch {
+    0% {
+        transform: translateY(0) rotate(-5deg);
     }
 
     50% {
-        transform: translateX(6px);
-        opacity: 0.7;
-    }
-}
-
-/* Hover 狀態：放大 + 強發光 */
-.service-cta-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow:
-        0 10px 30px rgba(196, 90, 0, 0.5),
-        0 0 25px rgba(255, 150, 50, 0.3);
-    background: linear-gradient(135deg, #D66A10 0%, #B85A08 100%);
-}
-
-.service-cta-btn:hover::before {
-    animation: shimmerFast 1s ease-in-out;
-}
-
-@keyframes shimmerFast {
-    0% {
-        left: -100%;
+        transform: translateY(-8px) rotate(15deg);
     }
 
     100% {
-        left: 100%;
+        transform: translateY(-3px) rotate(10deg);
     }
 }
 
-.service-cta-btn:hover::after {
+.btn.btn-primary.service-cta-btn:hover::after {
     animation: arrowBounce 0.4s ease-out;
 }
 
@@ -258,24 +393,26 @@
     }
 
     50% {
-        transform: translateX(10px);
+        transform: translateX(12px);
     }
 
     100% {
-        transform: translateX(6px);
+        transform: translateX(8px);
     }
 }
 
-/* Focus 無障礙狀態 */
-.service-cta-btn:focus {
-    outline: 3px solid #FF8C00;
+/* 🎹 Focus 無障礙狀態 */
+.btn.btn-primary.service-cta-btn:focus {
+    outline: 3px solid #FFD700;
     outline-offset: 4px;
 }
 
-/* Active 點擊狀態 */
-.service-cta-btn:active {
+/* 👆 Active 點擊狀態 */
+.btn.btn-primary.service-cta-btn:active {
     transform: translateY(0) scale(0.98);
-    box-shadow: 0 4px 15px rgba(196, 90, 0, 0.4);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, 0.2),
+        0 2px 10px rgba(255, 140, 0, 0.3);
 }
 
 /* 響應式調整 */
@@ -294,7 +431,7 @@
     }
 
     /* 手機版：全寬按鈕，更易點擊 */
-    .service-cta-btn {
+    .btn.btn-primary.service-cta-btn {
         width: 100%;
         max-width: none;
         font-size: var(--font-size-base);

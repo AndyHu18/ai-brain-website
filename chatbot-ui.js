@@ -64,9 +64,10 @@ const ChatbotUI = {
         this.chatWindow.classList.toggle('active');
         this.chatToggle.classList.toggle('active');
 
-        // 首次開啟時發送歡迎訊息
-        if (this.chatWindow.classList.contains('active') &&
-            ChatbotCore.getHistoryLength() === 0) {
+        // 首次開啟時發送歡迎訊息（使用 sessionStorage 避免每次刷新都重複）
+        const hasShownWelcome = sessionStorage.getItem('chatbot_welcome_shown');
+        if (this.chatWindow.classList.contains('active') && !hasShownWelcome) {
+            sessionStorage.setItem('chatbot_welcome_shown', 'true');
             setTimeout(() => {
                 this.addMessage(
                     '您好！我是 AI 智能大腦的客服顧問「小腦」。請問有什麼我可以協助您的嗎？',

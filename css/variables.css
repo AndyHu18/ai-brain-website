@@ -9,17 +9,25 @@
        配色系統 - Hermès 經典暖橘
        ======================================== */
 
-   /* 背景色系 */
-   --bg-light: #FDF9F3;
-   /* 米白主背景 */
-   --bg-lighter: #FFFFFF;
-   /* 純白 */
+   /* 背景色系 - 優化：避免純白，使用高級灰 */
+   --bg-light: #FCFCFC;
+   /* 極淡灰主背景 - 比純白更高級 */
+   --bg-lighter: #FEFEFE;
+   /* 近白 */
    --bg-section: #F5EFE6;
    /* 燕麥色區塊背景 */
    --bg-card: #FFFAF5;
    /* 卡片背景 */
    --bg-input: #FAF7F2;
    /* 輸入框背景 */
+
+   /* AI 科技感輔色 - 深鈦灰 */
+   --tech-titanium: #2D3436;
+   /* 深鈦灰 - 權威感 */
+   --tech-midnight: #1A1E23;
+   /* 午夜藍灰 - 深度感 */
+   --tech-slate: #4A5568;
+   /* 石板灰 - 輔助 */
 
    /* 主色 - 愛馬仕橘 */
    --color-primary: #D2691E;
@@ -37,6 +45,12 @@
    --color-accent-dark: #A0522D;
    /* 深金 */
 
+   /* APCA 合規色彩 - 確保對比度達標 */
+   --color-primary-accessible: #9A4A10;
+   /* 深橘 - APCA Lc 75+ 與白色文字 */
+   --text-on-primary: #FFFFFF;
+   /* 白色文字用於深橘背景 */
+
    /* 文字色 - 高對比度版本 */
    --text-primary: #1A0F0A;
    /* 極深棕 - 主標題（提高對比度）*/
@@ -53,7 +67,7 @@
    --border-accent: rgba(210, 105, 30, 0.3);
 
    /* ========================================
-       間距系統 (8px Grid)
+       間距系統 (8px Grid) - 大呼吸感佈局
        ======================================== */
    --spacing-xs: 4px;
    --spacing-sm: 8px;
@@ -62,6 +76,10 @@
    --spacing-xl: 32px;
    --spacing-2xl: 48px;
    --spacing-3xl: 64px;
+   --spacing-4xl: 80px;
+   /* 新增：區塊間大間距 */
+   --spacing-5xl: 120px;
+   /* 新增：超大呼吸感間距 */
 
    /* ========================================
        字體系統
@@ -105,6 +123,11 @@
    --shadow-xl: 0 20px 25px rgba(62, 39, 35, 0.15);
    --shadow-card: 0 4px 20px rgba(210, 105, 30, 0.08);
 
+   /* AI 發光效果 - 能量感 */
+   --glow-primary: 0 0 20px rgba(210, 105, 30, 0.4);
+   --glow-primary-intense: 0 0 30px rgba(210, 105, 30, 0.6);
+   --glow-accent: 0 0 15px rgba(205, 133, 63, 0.3);
+
    /* ========================================
        過渡動畫
        ======================================== */
@@ -117,4 +140,57 @@
        ======================================== */
    --container-max: 1200px;
    --container-wide: 1400px;
+
+   /* ========================================
+       分析報告設計系統（軟編碼）
+       ======================================== */
+
+   /* 報告字體尺寸 - 主要調整區（/visionnew 高端規範）*/
+   --report-font-title: 2.75rem;
+   /* 報告主標題 - 44px，視覺權威 */
+   --report-font-section: 1.875rem;
+   /* 區塊標題 - 30px，清晰層級 */
+   --report-font-card-title: 1.375rem;
+   /* 卡片標題 - 22px，醒目 */
+   --report-font-body: 1.25rem;
+   /* 正文內容 - 20px，舒適閱讀 */
+   --report-font-meta: 1.1rem;
+   /* 輔助資訊 - 17.6px */
+   --report-font-tag: 1rem;
+   /* 標籤文字 - 16px */
+
+   /* 報告表格字體（新增）*/
+   --report-font-table-header: 1.15rem;
+   /* 表頭 - 18.4px */
+   --report-font-table-cell: 1.1rem;
+   /* 表格內容 - 17.6px */
+   --report-font-department-title: 1.5rem;
+   /* 部門標題 - 24px */
+   --report-font-list-item: 1.15rem;
+   /* 列表項目 - 18.4px */
+
+   /* 報告間距 */
+   --report-spacing-section: 48px;
+   /* 區塊間距 */
+   --report-spacing-card: 24px;
+   /* 卡片內距 */
+   --report-spacing-element: 16px;
+   /* 元素間距 */
+
+   /* 報告色彩 - APCA 合規（Lc 75+）*/
+   --report-bg-header: linear-gradient(135deg, #0D0705 0%, #1A0F0A 40%, #2D1810 100%);
+   --report-bg-section: #FFFCF9;
+   --report-bg-card: #FFFFFF;
+   --report-border-accent: rgba(210, 105, 30, 0.15);
+   --report-highlight: #D2691E;
+
+   /* 報告裝飾 */
+   --report-glow-soft: 0 0 40px rgba(210, 105, 30, 0.08);
+   --report-shadow-card: 0 4px 24px rgba(26, 15, 10, 0.06);
+
+   /* PDF 專用 */
+   --pdf-brand-primary: #D2691E;
+   --pdf-brand-dark: #1A0F0A;
+   --pdf-text-primary: #1A0F0A;
+   --pdf-text-secondary: #5D4037;
 }

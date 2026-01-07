@@ -1439,3 +1439,55 @@ body {
     color: #666;
     margin-top: 4px;
 }
+
+/* =============================================
+   Preview Icon - Emoji 替代文字標籤
+   符合 /visionnew 規範
+   ============================================= */
+
+.preview-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 6px;
+    background: linear-gradient(135deg, rgba(230, 126, 34, 0.15), rgba(212, 165, 55, 0.15));
+    border: 1px solid rgba(230, 126, 34, 0.3);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--warm-orange, #E67E22);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-right: 4px;
+}
+
+/* 日誌訊息中的圖標標籤 */
+.log-msg .preview-icon,
+.log-entry .preview-icon {
+    font-size: 0.65rem;
+    padding: 1px 4px;
+    vertical-align: middle;
+}
+
+/* Line 預覽頭像圖標 */
+.line-header-icon .preview-icon {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--warm-orange, #E67E22);
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 文章圖片區塊圖標 */
+.article-image .preview-icon {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    padding: 8px 16px;
+}

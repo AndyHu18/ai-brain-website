@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Logo 技術方案展示 v2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #E67E22;
+            --color-primary-light: #F39C12;
+            --color-primary-dark: #D35400;
+            --color-bg-dark: #0A0A0A;
+            --color-bg-card: #141414;
+            --color-text: #F5F5F5;
+            --color-text-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--color-bg-dark);
+            background-image:
+                radial-gradient(ellipse at 20% 30%, rgba(230, 126, 34, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(243, 156, 18, 0.05) 0%, transparent 50%);
+            color: var(--color-text);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--color-primary), #F39C12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(39, 174, 96, 0.2);
+            color: #27AE60;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .showcase-card {
+            background: var(--color-bg-card);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 80px rgba(230, 126, 34, 0.12);
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .logo-preview {
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, rgba(230, 126, 34, 0.06) 0%, transparent 70%);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .pros-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pros-list li {
+            padding: 6px 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .pros-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27AE60;
+            font-weight: bold;
+        }
+
+        .hover-hint {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        /* ============================================================
+           方案 A v2：CSS 3D + 多層陰影 + 漸層光照
+           修正：增加多層box-shadow模擬環境光、使用漸層創造立體感
+           ============================================================ */
+        .css3d-scene {
+            perspective: 1000px;
+            perspective-origin: 50% 50%;
+        }
+
+        .css3d-container {
+            transform-style: preserve-3d;
+            animation: css3d-float 5s ease-in-out infinite;
+        }
+
+        .css3d-brain {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            transform-style: preserve-3d;
+            animation: css3d-rotate 12s linear infinite;
+        }
+
+        /* 主體：使用多層漸層模擬 3D 光照 */
+        .css3d-core {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 42% 42%;
+            /* 關鍵：多層漸層模擬球體光照 */
+            background:
+                radial-gradient(ellipse 60% 40% at 30% 25%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse 80% 60% at 40% 35%, rgba(243, 156, 18, 0.8) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 50%, #E67E22 0%, #D35400 60%, #A04000 100%);
+            /* 關鍵：多層陰影創造深度 */
+            box-shadow:
+                /* 內陰影 - 頂部高光 */
+                inset 0 -30px 60px rgba(0, 0, 0, 0.4),
+                inset 0 20px 40px rgba(255, 255, 255, 0.1),
+                /* 外陰影 - 環境光 */
+                0 8px 32px rgba(230, 126, 34, 0.4),
+                0 20px 60px rgba(230, 126, 34, 0.2),
+                0 40px 100px rgba(0, 0, 0, 0.5);
+            transform: translateZ(20px);
+        }
+
+        /* 3D 環 - 使用 translateZ 創造真實深度 */
+        .css3d-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid;
+            border-color: rgba(243, 156, 18, 0.7);
+            box-shadow:
+                0 0 20px rgba(230, 126, 34, 0.5),
+                inset 0 0 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .css3d-ring-1 {
+            width: 180px;
+            height: 180px;
+            top: -20px;
+            left: -20px;
+            transform: rotateX(75deg) translateZ(-30px);
+            animation: ring-orbit 8s linear infinite;
+        }
+
+        .css3d-ring-2 {
+            width: 200px;
+            height: 200px;
+            top: -30px;
+            left: -30px;
+            transform: rotateX(75deg) rotateY(30deg) translateZ(-50px);
+            border-color: rgba(230, 126, 34, 0.4);
+            animation: ring-orbit 12s linear infinite reverse;
+        }
+
+        /* 3D 粒子軌跡 */
+        .css3d-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, #F39C12, transparent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #F39C12, 0 0 20px rgba(243, 156, 18, 0.5);
+        }
+
+        .css3d-particle-1 {
+            top: 10%;
+            left: 20%;
+            animation: particle-float 3s ease-in-out infinite;
+        }
+
+        .css3d-particle-2 {
+            top: 70%;
+            left: 85%;
+            animation: particle-float 4s ease-in-out infinite 0.5s;
+        }
+
+        .css3d-particle-3 {
+            top: 85%;
+            left: 30%;
+            animation: particle-float 3.5s ease-in-out infinite 1s;
+        }
+
+        .css3d-text {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            transform: translateX(-50%) translateZ(-10px);
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #F39C12 0%, #E67E22 50%, #D35400 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(230, 126, 34, 0.5);
+            white-space: nowrap;
+        }
+
+        /* 底部陰影 - 創造接地感 */
+        .css3d-shadow {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(90deg);
+            width: 120px;
+            height: 40px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+            filter: blur(10px);
+        }
+
+        @keyframes css3d-rotate {
+            0% {
+                transform: rotateY(0deg) rotateX(10deg);
+            }
+
+            100% {
+                transform: rotateY(360deg) rotateX(10deg);
+            }
+        }
+
+        @keyframes css3d-float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes ring-orbit {
+            0% {
+                transform: rotateX(75deg) rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotateX(75deg) rotateZ(360deg);
+            }
+        }
+
+        @keyframes particle-float {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateY(-15px) scale(1.3);
+            }
+        }
+
+        /* ============================================================
+           方案 B v2：SVG 等軸測 3D + 漸層填充 + 陰影濾鏡
+           修正：從純線條改為等軸測立體幾何體、加入 defs 漸層與濾鏡
+           ============================================================ */
+        .svg-logo-v2 {
+            width: 220px;
+            height: 260px;
+            filter: drop-shadow(0 20px 40px rgba(230, 126, 34, 0.3));
+        }
+
+        /* ============================================================
+           方案 C v2：Three.js + 環境貼圖 + PBR 材質 + 方向光
+           修正：增加 DirectionalLight + 環境貼圖 + 降低 roughness
+           ============================================================ */
+        #threejs-canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <h1 class="page-title">🧠 3D Logo 技術方案展示</h1>
+        <p class="page-subtitle">根據專業最佳實踐優化的三種 3D Logo 方案</p>
+        <span class="version-badge">v2.0 - 深度感優化版</span>
+    </header>
+
+    <div class="showcase-grid">
+        <!-- 方案 A v2：CSS 3D + 多層陰影 + 漸層光照 -->
+        <article class="showcase-card">
+            <span class="tech-badge">方案 A：純 CSS 3D v2</span>
+            <div class="logo-preview">
+                <div class="css3d-scene">
+                    <div class="css3d-container">
+                        <div class="css3d-brain">
+                            <div class="css3d-core"></div>
+                            <div class="css3d-ring css3d-ring-1"></div>
+                            <div class="css3d-ring css3d-ring-2"></div>
+                            <div class="css3d-shadow"></div>
+                        </div>
+                        <div class="css3d-particle css3d-particle-1"></div>
+                        <div class="css3d-particle css3d-particle-2"></div>
+                        <div class="css3d-particle css3d-particle-3"></div>
+                        <div class="css3d-text">AI 智能大腦</div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="card-title">CSS 3D + 多層光照模擬</h3>
+            <p class="card-desc">使用多層 radial-gradient 模擬球體高光與陰影，搭配 box-shadow 創造環境光效果。環旋轉使用 rotateX 創造真實軌道傾斜。</p>
+            <ul class="pros-list">
+                <li>多層漸層模擬真實光照</li>
+                <li>5 層 box-shadow 創造深度</li>
+                <li>底部陰影增加接地感</li>
+                <li>粒子軌跡增添科技感</li>
+            </ul>
+        </article>
+
+        <!-- 方案 B v2：SVG 等軸測 3D + 漸層 -->
+        <article class="showcase-card">
+            <span class="tech-badge">方案 B：SVG 等軸測 3D</span>
+            <div class="logo-preview">
+                <svg class="svg-logo-v2" viewBox="0 0 200 240">
+                    <defs>
+                        <!-- 主體漸層 - 模擬頂部光照 -->
+                        <linearGradient id="brainGradTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#F5A623" />
+                            <stop offset="40%" stop-color="#E67E22" />
+                            <stop offset="100%" stop-color="#C0520E" />
+                        </linearGradient>
+                        <!-- 側面漸層 - 較暗 -->
+                        <linearGradient id="brainGradSide" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#D35400" />
+                            <stop offset="100%" stop-color="#8B3A00" />
+                        </linearGradient>
+                        <!-- 高光漸層 -->
+                        <radialGradient id="highlight" cx="30%" cy="30%" r="50%">
+                            <stop offset="0%" stop-color="rgba(255,255,255,0.6)" />
+                            <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+                        </radialGradient>
+                        <!-- 發光濾鏡 -->
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                        <!-- 陰影濾鏡 -->
+                        <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feOffset dx="0" dy="8" in="SourceAlpha" />
+                            <feGaussianBlur stdDeviation="6" />
+                            <feComponentTransfer>
+                                <feFuncA type="linear" slope="0.4" />
+                            </feComponentTransfer>
+                            <feMerge>
+                                <feMergeNode />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+
+                    <!-- 底部陰影 -->
+                    <ellipse cx="100" cy="195" rx="50" ry="12" fill="rgba(0,0,0,0.3)" filter="url(#dropShadow)">
+                        <animate attributeName="rx" values="50;55;50" dur="3s" repeatCount="indefinite" />
+                    </ellipse>
+
+                    <!-- 等軸測立體六面體基座 -->
+                    <g transform="translate(100, 160)">
+                        <!-- 頂面 -->
+                        <polygon points="0,-25 35,-8 0,10 -35,-8" fill="url(#brainGradTop)" filter="url(#glow)" />
+                        <!-- 左側面 -->
+                        <polygon points="-35,-8 0,10 0,35 -35,18" fill="url(#brainGradSide)" />
+                        <!-- 右側面 -->
+                        <polygon points="35,-8 0,10 0,35 35,18" fill="#A04000" />
+                    </g>
+
+                    <!-- 3D 球體（使用多層圓形模擬） -->
+                    <g transform="translate(100, 85)" filter="url(#glow)">
+                        <!-- 主球體 -->
+                        <ellipse cx="0" cy="0" rx="55" ry="50" fill="url(#brainGradTop)" />
+                        <!-- 高光層 -->
+                        <ellipse cx="-15" cy="-15" rx="35" ry="30" fill="url(#highlight)" />
+                        <!-- 底部陰影 -->
+                        <ellipse cx="5" cy="15" rx="40" ry="25" fill="rgba(0,0,0,0.2)" />
+
+                        <!-- 神經元連結 - 動態 -->
+                        <g stroke="#F39C12" stroke-width="2" fill="none" opacity="0.8">
+                            <path d="M-30,-20 Q0,-40 30,-15" stroke-dasharray="60" stroke-dashoffset="60">
+                                <animate attributeName="stroke-dashoffset" values="60;0;60" dur="3s"
+                                    repeatCount="indefinite" />
+                            </path>
+                            <path d="M-35,10 Q0,30 35,5" stroke-dasharray="70" stroke-dashoffset="70">
+                                <animate attributeName="stroke-dashoffset" values="70;0;70" dur="4s"
+                                    repeatCount="indefinite" />
+                            </path>
+                        </g>
+
+                        <!-- 神經元節點 -->
+                        <circle cx="-30" cy="-20" r="5" fill="#F5A623">
+                            <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="30" cy="-15" r="5" fill="#F5A623">
+                            <animate attributeName="r" values="5;7;5" dur="2.5s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="0" cy="0" r="8" fill="#FFD700">
+                            <animate attributeName="r" values="8;10;8" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
+
+                    <!-- 環繞軌道 -->
+                    <ellipse cx="100" cy="85" rx="70" ry="20" fill="none" stroke="rgba(243,156,18,0.5)" stroke-width="2"
+                        stroke-dasharray="10,5" transform="rotate(-15, 100, 85)">
+                        <animateTransform attributeName="transform" type="rotate" from="-15 100 85" to="345 100 85"
+                            dur="15s" repeatCount="indefinite" />
+                    </ellipse>
+
+                    <!-- 軌道上的粒子 -->
+                    <circle r="4" fill="#F39C12" filter="url(#glow)">
+                        <animateMotion dur="8s" repeatCount="indefinite">
+                            <mpath href="#orbitPath" />
+                        </animateMotion>
+                    </circle>
+                    <path id="orbitPath" d="M30,85 A70,20 -15 1,1 170,85 A70,20 -15 1,1 30,85" fill="none" />
+
+                    <!-- 文字 -->
+                    <text x="100" y="230" text-anchor="middle" fill="url(#brainGradTop)" font-size="18"
+                        font-weight="900" font-family="'Noto Sans TC', sans-serif">AI 智能大腦</text>
+                </svg>
+            </div>
+            <h3 class="card-title">SVG 等軸測 3D + 漸層光照</h3>
+            <p class="card-desc">使用等軸測投影原理繪製立體幾何體，搭配 linearGradient 模擬三面不同光照強度，創造真實 3D 深度感。</p>
+            <ul class="pros-list">
+                <li>等軸測幾何創造立體感</li>
+                <li>三面不同漸層模擬光照</li>
+                <li>SVG 濾鏡增強發光效果</li>
+                <li>向量無損、可無限縮放</li>
+            </ul>
+        </article>
+
+        <!-- 方案 C v2：Three.js + 環境貼圖 + PBR -->
+        <article class="showcase-card">
+            <span class="tech-badge">方案 C：Three.js PBR v2</span>
+            <div class="logo-preview" id="threejs-container">
+                <span style="color: var(--color-text-muted); font-size: 0.9rem;">⏳ 載入 3D 引擎中...</span>
+            </div>
+            <p class="hover-hint">✨ 可用滑鼠拖曳旋轉</p>
+            <h3 class="card-title">Three.js + PBR 材質 + 環境光</h3>
+            <p class="card-desc">使用 MeshStandardMaterial 的 PBR 物理渲染，搭配 DirectionalLight 方向光投射陰影，加入環境貼圖創造金屬反射質感。</p>
+            <ul class="pros-list">
+                <li>PBR 物理渲染材質</li>
+                <li>方向光 + 環境光多光源</li>
+                <li>降低 roughness 增加反光</li>
+                <li>環境貼圖模擬真實反射</li>
+            </ul>
+        </article>
+    </div>
+
+    <!-- Three.js 腳本 v2 -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.176.0/build/three.module.min.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.176.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+        const container = document.getElementById('threejs-container');
+        container.innerHTML = '';
+
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        // 場景
+        const scene = new THREE.Scene();
+
+        // 相機
+        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+        camera.position.set(0, 1, 6);
+
+        // 渲染器 - 開啟色調映射
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+            powerPreference: 'high-performance'
+        });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        container.appendChild(renderer.domElement);
+
+        // 軌道控制
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2;
+
+        // ===== 關鍵修正：多光源系統 =====
+
+        // 1. 環境光（填充暗部）
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+        scene.add(ambientLight);
+
+        // 2. 半球光（模擬天空/地面反射）
+        const hemiLight = new THREE.HemisphereLight(0xF39C12, 0x444444, 0.6);
+        hemiLight.position.set(0, 10, 0);
+        scene.add(hemiLight);
+
+        // 3. 主方向光（投射陰影）
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        dirLight.position.set(5, 8, 5);
+        dirLight.castShadow = true;
+        dirLight.shadow.mapSize.width = 1024;
+        dirLight.shadow.mapSize.height = 1024;
+        dirLight.shadow.camera.near = 1;
+        dirLight.shadow.camera.far = 20;
+        dirLight.shadow.bias = -0.002;
+        scene.add(dirLight);
+
+        // 4. 補光（減少硬陰影）
+        const fillLight = new THREE.DirectionalLight(0xE67E22, 0.8);
+        fillLight.position.set(-3, 2, -3);
+        scene.add(fillLight);
+
+        // 5. 邊緣光（輪廓高光）
+        const rimLight = new THREE.PointLight(0xF39C12, 1, 10);
+        rimLight.position.set(-3, 3, -2);
+        scene.add(rimLight);
+
+        // ===== 關鍵修正：PBR 材質 =====
+        const brainGroup = new THREE.Group();
+
+        // 創建假環境貼圖（漸層球）
+        const envScene = new THREE.Scene();
+        const envGeo = new THREE.SphereGeometry(50, 32, 32);
+        const envMat = new THREE.MeshBasicMaterial({
+            side: THREE.BackSide,
+            color: 0x111111
+        });
+        const envMesh = new THREE.Mesh(envGeo, envMat);
+        envScene.add(envMesh);
+
+        const cubeRenderTarget = new THREE.WebGLCubeRenderTarget(256);
+        const cubeCamera = new THREE.CubeCamera(0.1, 100, cubeRenderTarget);
+        cubeCamera.update(renderer, envScene);
+
+        // 主體球 - 降低 roughness、增加 metalness
+        const mainGeo = new THREE.SphereGeometry(1.2, 64, 64);
+        const mainMat = new THREE.MeshStandardMaterial({
+            color: 0xE67E22,
+            metalness: 0.6,      // 增加金屬感
+            roughness: 0.15,     // 降低粗糙度 = 更多反光
+            emissive: 0xE67E22,
+            emissiveIntensity: 0.15,
+            envMap: cubeRenderTarget.texture,
+            envMapIntensity: 0.5
+        });
+        const mainSphere = new THREE.Mesh(mainGeo, mainMat);
+        mainSphere.scale.set(1, 0.85, 0.9);
+        mainSphere.castShadow = true;
+        mainSphere.receiveShadow = true;
+        brainGroup.add(mainSphere);
+
+        // 內核發光球
+        const coreGeo = new THREE.SphereGeometry(0.4, 32, 32);
+        const coreMat = new THREE.MeshBasicMaterial({
+            color: 0xFFD700,
+            transparent: true,
+            opacity: 0.9
+        });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        brainGroup.add(core);
+
+        // 神經元粒子 - 更亮的顏色
+        const particlesGeo = new THREE.BufferGeometry();
+        const particleCount = 80;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+
+        for (let i = 0; i < particleCount; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const r = 1.5 + Math.random() * 0.6;
+
+            positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.85;
+            positions[i * 3 + 2] = r * Math.cos(phi) * 0.9;
+
+            // 金色漸變
+            colors[i * 3] = 0.95 + Math.random() * 0.05;
+            colors[i * 3 + 1] = 0.6 + Math.random() * 0.2;
+            colors[i * 3 + 2] = 0.1;
+        }
+
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+        const particlesMat = new THREE.PointsMaterial({
+            size: 0.06,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.9,
+            sizeAttenuation: true
+        });
+
+        const particles = new THREE.Points(particlesGeo, particlesMat);
+        brainGroup.add(particles);
+
+        // 環繞軌道 - 更亮
+        const ringGeo = new THREE.TorusGeometry(1.8, 0.025, 16, 100);
+        const ringMat = new THREE.MeshStandardMaterial({
+            color: 0xF39C12,
+            metalness: 0.8,
+            roughness: 0.1,
+            emissive: 0xE67E22,
+            emissiveIntensity: 0.3
+        });
+
+        const ring1 = new THREE.Mesh(ringGeo, ringMat);
+        ring1.rotation.x = Math.PI / 2.2;
+        brainGroup.add(ring1);
+
+        const ring2 = new THREE.Mesh(ringGeo, ringMat.clone());
+        ring2.rotation.x = Math.PI / 2.8;
+        ring2.rotation.y = Math.PI / 3.5;
+        brainGroup.add(ring2);
+
+        // 底部陰影接收面
+        const floorGeo = new THREE.PlaneGeometry(10, 10);
+        const floorMat = new THREE.ShadowMaterial({ opacity: 0.3 });
+        const floor = new THREE.Mesh(floorGeo, floorMat);
+        floor.rotation.x = -Math.PI / 2;
+        floor.position.y = -2;
+        floor.receiveShadow = true;
+        scene.add(floor);
+
+        scene.add(brainGroup);
+
+        // 動畫循環
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+
+            // 內核脈動
+            const pulse = 1 + Math.sin(time * 3) * 0.1;
+            core.scale.setScalar(pulse);
+
+            // 粒子旋轉
+            particles.rotation.y = time * 0.3;
+            particles.rotation.x = Math.sin(time * 0.5) * 0.1;
+
+            // 環繞軌道
+            ring1.rotation.z = time * 0.4;
+            ring2.rotation.z = -time * 0.25;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // 響應式
+        window.addEventListener('resize', () => {
+            const newWidth = container.clientWidth;
+            const newHeight = container.clientHeight;
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(newWidth, newHeight);
+        });
+    </script>
+</body>
+
+</html>

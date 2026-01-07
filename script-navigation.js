@@ -13,19 +13,17 @@ function initNavigation() {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
-    // 滾動時導航列效果
+    // 滾動時導航列效果 - 使用 CSS class 切換
     let lastScrollY = 0;
     window.addEventListener('scroll', () => {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY > 100) {
-            // 滾動後：增強陰影層次
-            navbar.style.background = 'linear-gradient(180deg, #FFFFFF 0%, #FDF9F3 100%)';
-            navbar.style.boxShadow = '0 2px 0 rgba(210, 105, 30, 0.1), 0 6px 20px rgba(62, 39, 35, 0.08)';
+        if (currentScrollY > 50) {
+            // 滾動後：添加 scrolled class，觸發 CSS 過渡
+            navbar.classList.add('navbar-scrolled');
         } else {
-            // 頂部：柔和層次
-            navbar.style.background = 'linear-gradient(180deg, #FFFFFF 0%, #FDF9F3 100%)';
-            navbar.style.boxShadow = '0 1px 0 rgba(210, 105, 30, 0.08), 0 4px 12px rgba(62, 39, 35, 0.04)';
+            // 頂部：移除 scrolled class
+            navbar.classList.remove('navbar-scrolled');
         }
 
         lastScrollY = currentScrollY;
@@ -85,6 +83,7 @@ function initSmoothScroll() {
 
 /**
  * 滾動動畫 (Intersection Observer)
+ * 增加 rootMargin 讓元素提早觸發動畫
  */
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
@@ -93,8 +92,9 @@ function initScrollAnimations() {
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        // 📍 關鍵改動：提前 300px 開始偵測，讓內容在用戶滑到前就開始顯示
+        rootMargin: '0px 0px 300px 0px',
+        threshold: 0.01  // 只需 1% 可見就觸發
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -110,7 +110,8 @@ function initScrollAnimations() {
     animatedElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        // 縮短延遲時間，讓動畫更快完成
+        el.style.transition = `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`;
         observer.observe(el);
     });
 }

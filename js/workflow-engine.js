@@ -242,7 +242,7 @@ class WorkflowEngine {
 
         this.updateStatus('執行中', 'running');
         this.startTimer();
-        this.addLog(`🚀 ${this.config.name} 流程啟動`, 'running');
+        this.addLog(`[START] ${this.config.name} 流程啟動`, 'running');
 
         try {
             for (let i = 0; i < this.config.executionOrder.length; i++) {
@@ -256,7 +256,7 @@ class WorkflowEngine {
             }
             this.complete();
         } catch (error) {
-            this.addLog(`❌ 錯誤: ${error.message}`, 'error');
+            this.addLog(`[ERROR] 錯誤: ${error.message}`, 'error');
             this.updateStatus('執行失敗', 'error');
         }
     }
@@ -277,7 +277,7 @@ class WorkflowEngine {
             this.showBubble(bubbleEl, nodeData.bubbleMessages);
         }
 
-        this.addLog(`⚡ 執行: ${nodeData.title}`, 'running');
+        this.addLog(`[EXEC] 執行: ${nodeData.title}`, 'running');
 
         const execTime = CONFIG.nodeExecutionDelay / CONFIG.animationSpeed;
         const startMs = Date.now();
@@ -293,7 +293,7 @@ class WorkflowEngine {
 
         this.completeIncomingConnections(nodeId);
         this.completedNodes.add(nodeId);
-        this.addLog(`✅ 完成: ${nodeData.title} (${duration}s)`, 'success');
+        this.addLog(`[DONE] 完成: ${nodeData.title} (${duration}s)`, 'success');
     }
 
     showBubble(bubbleEl, messages) {
@@ -364,7 +364,7 @@ class WorkflowEngine {
         this.isRunning = false;
         this.stopTimer();
         this.updateStatus('流程完成', 'success');
-        this.addLog(`🎉 ${this.config.name} 流程展示完成！`, 'success');
+        this.addLog(`[SUCCESS] ${this.config.name} 流程展示完成！`, 'success');
 
         // 顯示結果預覽
         if (this.config.resultPreview) {
@@ -419,7 +419,7 @@ class WorkflowEngine {
         return `
             <div class="preview-line">
                 <div class="line-header">
-                    <div class="line-header-icon">${content.icon || '🤖'}</div>
+                    <div class="line-header-icon"><span class="preview-icon">${content.icon || 'AI'}</span></div>
                     <div class="line-header-info">
                         <h4>${content.sender || 'AI 助理'}</h4>
                         <span>官方帳號</span>
@@ -440,7 +440,7 @@ class WorkflowEngine {
         return `
             <div class="preview-email">
                 <div class="email-header">
-                    <h4>📧 ${content.subject || '新郵件'}</h4>
+                    <h4><span class="preview-icon">EMAIL</span> ${content.subject || '新郵件'}</h4>
                     <span>剛剛</span>
                 </div>
                 <div class="email-meta">
@@ -457,13 +457,13 @@ class WorkflowEngine {
     createArticlePreview(content) {
         return `
             <div class="preview-article">
-                <div class="article-image">${content.icon || '📝'}</div>
+                <div class="article-image"><span class="preview-icon">${content.icon || 'DOC'}</span></div>
                 <div class="article-content">
                     <h4>${content.title || '新文章'}</h4>
                     <p>${content.excerpt || '文章摘要...'}</p>
                     <div class="article-meta">
-                        <span>🕐 剛剛發布</span>
-                        <span>👁️ ${content.views || '0'} 次瀏覽</span>
+                        <span><span class="preview-icon">TIME</span> 剛剛發布</span>
+                        <span><span class="preview-icon">VIEW</span> ${content.views || '0'} 次瀏覽</span>
                     </div>
                 </div>
             </div>
@@ -474,7 +474,7 @@ class WorkflowEngine {
         return `
             <div class="preview-report">
                 <div class="report-header">
-                    <h4>📊 ${content.title || '執行報告'}</h4>
+                    <h4><span class="preview-icon">CHART</span> ${content.title || '執行報告'}</h4>
                 </div>
                 <div class="report-stats">
                     ${(content.stats || []).map(stat => `

@@ -1,0 +1,588 @@
+/**
+ * @file    : css/website-analyzer-report.css
+ * @purpose : 分析報告視覺升級樣式（使用軟編碼變數）
+ * @version : 2.0.0
+ * @depends : variables.css
+ */
+
+/* ============================================================
+   報告容器 - 升級版
+   ============================================================ */
+.analyzer-report {
+    background: var(--report-bg-section);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--report-glow-soft), var(--report-shadow-card);
+    border: 1px solid var(--report-border-accent);
+}
+
+/* ============================================================
+   報告標題區 - APCA Lc 75+ 合規設計（/visionnew 規範）
+   ============================================================ */
+.report-header {
+    background: linear-gradient(135deg, #0D0705 0%, #1A0F0A 50%, #2D1810 100%) !important;
+    color: #FFFFFF !important;
+    padding: 64px 48px !important;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.report-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 減少橘色光暈透明度，避免污染白色文字對比度 */
+    background: radial-gradient(ellipse at 70% 80%, rgba(210, 105, 30, 0.12) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.report-header h3 {
+    margin: 0 0 20px;
+    font-size: var(--report-font-title) !important;
+    font-weight: 800;
+    /* 增加到 800 確保 APCA 合規 */
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    position: relative;
+    z-index: 1;
+    color: #FFFFFF;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* 增加文字陰影提升對比 */
+}
+
+.report-title {
+    font-size: 1.6rem !important;
+    font-weight: 700;
+    /* 增加到 700 */
+    margin: 0 0 12px;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.report-meta {
+    margin: 0;
+    opacity: 0.9;
+    /* 提高透明度 */
+    font-size: var(--report-font-meta) !important;
+    font-weight: 500;
+    /* 增加 weight */
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================================
+   執行摘要 - 強調區塊（/visionnew 規範）
+   ============================================================ */
+.report-summary {
+    background: linear-gradient(135deg, rgba(210, 105, 30, 0.08), rgba(205, 133, 63, 0.04));
+    padding: 32px !important;
+    margin: var(--report-spacing-card);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--report-highlight);
+    position: relative;
+}
+
+.report-summary::before {
+    content: '摘';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(210, 105, 30, 0.06);
+    line-height: 1;
+}
+
+.report-summary h4 {
+    margin: 0 0 var(--report-spacing-element);
+    color: var(--report-highlight);
+    font-size: 1.75rem !important;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.report-summary p {
+    margin: 0;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    font-size: var(--report-font-body) !important;
+}
+
+/* ============================================================
+   報告區塊 - 升級版（/visionnew 規範）
+   ============================================================ */
+.report-sections {
+    padding: 32px !important;
+}
+
+.report-section {
+    padding: 32px 0 !important;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.report-section:last-child {
+    border-bottom: none;
+}
+
+.report-section .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--report-spacing-element);
+    margin-bottom: 28px !important;
+}
+
+.report-section .section-number {
+    font-size: 1rem !important;
+    font-weight: 700;
+    color: white;
+    background: var(--report-highlight);
+    padding: 8px 16px !important;
+    border-radius: var(--radius-md);
+    min-width: 48px !important;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(210, 105, 30, 0.25);
+}
+
+.report-section h4 {
+    margin: 0;
+    font-size: var(--report-font-section) !important;
+    color: var(--text-primary);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   服務項目卡片 - 升級版
+   ============================================================ */
+.services-grid {
+    display: grid;
+    gap: var(--report-spacing-element);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.analyzer-service-card {
+    background: var(--report-bg-card);
+    border: 1px solid var(--report-border-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--report-spacing-card);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.analyzer-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--report-highlight), var(--color-accent));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.analyzer-service-card:hover {
+    box-shadow: var(--report-shadow-card);
+    transform: translateY(-4px);
+    border-color: var(--report-highlight);
+}
+
+.analyzer-service-card:hover::before {
+    opacity: 1;
+}
+
+.analyzer-service-card h5 {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--report-font-card-title);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.analyzer-service-card p {
+    margin: 0 0 var(--report-spacing-element);
+    font-size: var(--report-font-body);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.service-category {
+    display: inline-block;
+    background: rgba(210, 105, 30, 0.1);
+    color: var(--report-highlight);
+    font-size: var(--report-font-tag);
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+/* ============================================================
+   PDF 下載按鈕
+   ============================================================ */
+.report-download-section {
+    display: flex;
+    justify-content: center;
+    gap: var(--report-spacing-element);
+    padding: var(--report-spacing-card);
+    background: linear-gradient(135deg, rgba(26, 15, 10, 0.03), rgba(210, 105, 30, 0.05));
+    border-top: 1px solid var(--report-border-accent);
+}
+
+.pdf-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--pdf-brand-dark), #2D1810);
+    color: white;
+    padding: 14px 28px;
+    border-radius: var(--radius-lg);
+    border: none;
+    font-size: var(--report-font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(26, 15, 10, 0.2);
+}
+
+.pdf-download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(26, 15, 10, 0.3);
+    background: linear-gradient(135deg, #2D1810, var(--pdf-brand-dark));
+}
+
+.pdf-download-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.pdf-download-btn .btn-text {
+    letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   PDF 生成中狀態
+   ============================================================ */
+.pdf-generating {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.pdf-generating::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: pdf-spin 0.8s linear infinite;
+}
+
+@keyframes pdf-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================
+   公司介紹區塊（PDF 專用，但在網頁也可見）
+   ============================================================ */
+.company-intro-section {
+    background: linear-gradient(135deg, var(--pdf-brand-dark), #2D1810);
+    color: white;
+    padding: var(--report-spacing-section) var(--report-spacing-card);
+    margin: var(--report-spacing-card);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.company-intro-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(210, 105, 30, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.company-intro-header {
+    display: flex;
+    align-items: center;
+    gap: var(--report-spacing-element);
+    margin-bottom: var(--report-spacing-card);
+    position: relative;
+    z-index: 1;
+}
+
+.company-logo-placeholder {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--report-highlight), var(--color-accent));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: white;
+    box-shadow: 0 4px 16px rgba(210, 105, 30, 0.3);
+}
+
+.company-intro-header h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.company-intro-header p {
+    margin: 4px 0 0;
+    opacity: 0.85;
+    font-size: var(--report-font-meta);
+}
+
+.company-intro-content {
+    position: relative;
+    z-index: 1;
+}
+
+.company-intro-content p {
+    line-height: 1.8;
+    font-size: var(--report-font-body);
+    margin: 0 0 var(--report-spacing-element);
+    opacity: 0.95;
+}
+
+.company-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--report-spacing-element);
+}
+
+.company-service-tag {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: var(--report-font-tag);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s;
+}
+
+.company-service-tag:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.company-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--report-spacing-card);
+    color: var(--report-highlight);
+    font-weight: 600;
+    font-size: var(--report-font-body);
+    text-decoration: none;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s;
+}
+
+.company-cta-link:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================
+   表格字體升級（/visionnew 規範）
+   ============================================================ */
+.opportunities-table {
+    font-size: var(--report-font-table-cell) !important;
+}
+
+.opportunities-table th {
+    font-size: var(--report-font-table-header) !important;
+    padding: 14px 16px !important;
+    font-weight: 600;
+}
+
+.opportunities-table td {
+    font-size: var(--report-font-table-cell) !important;
+    padding: 14px 16px !important;
+    line-height: 1.6;
+}
+
+.opportunities-table .benefit {
+    font-size: var(--report-font-table-cell) !important;
+    font-weight: 600;
+}
+
+/* ============================================================
+   部門賦能卡片字體升級（/visionnew 規範）
+   ============================================================ */
+.department-card h5 {
+    font-size: var(--report-font-department-title) !important;
+    margin-bottom: 16px !important;
+}
+
+.department-card ul {
+    font-size: var(--report-font-list-item) !important;
+    line-height: 1.8;
+}
+
+.dept-label {
+    font-size: 1rem !important;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.tool-tag {
+    font-size: 0.95rem !important;
+    padding: 6px 14px !important;
+}
+
+/* ============================================================
+   職位層級卡片字體升級（/visionnew 規範）
+   ============================================================ */
+.position-card h5 {
+    font-size: 1.35rem !important;
+    margin-bottom: 12px !important;
+}
+
+.position-card li {
+    font-size: var(--report-font-list-item) !important;
+    line-height: 2;
+}
+
+.position-card .arrow {
+    font-weight: 700;
+}
+
+/* ============================================================
+   優化建議字體升級（/visionnew 規範）
+   ============================================================ */
+.optimization-card h5,
+.opt-content h5 {
+    font-size: 1.25rem !important;
+}
+
+.optimization-card p,
+.opt-content p {
+    font-size: var(--report-font-body) !important;
+    line-height: 1.7;
+}
+
+.priority-high,
+.priority-medium,
+.priority-low {
+    font-size: 0.95rem !important;
+    padding: 6px 14px !important;
+    font-weight: 600;
+}
+
+/* ============================================================
+   銷售漏斗字體升級（/visionnew 規範）
+   ============================================================ */
+.funnel-stage h5 {
+    font-size: 1.2rem !important;
+}
+
+.stage-app {
+    font-size: 1.05rem !important;
+}
+
+.stage-desc {
+    font-size: 1rem !important;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   底部 PDF 下載區塊
+   ============================================================ */
+.report-download-bottom {
+    background: linear-gradient(135deg, rgba(26, 15, 10, 0.06), rgba(210, 105, 30, 0.08)) !important;
+    border-top: 2px solid var(--report-border-accent);
+    margin-top: 0;
+    padding: 40px !important;
+}
+
+.pdf-download-btn-bottom {
+    padding: 18px 36px !important;
+    font-size: 1.15rem !important;
+}
+
+.download-hint {
+    margin: 16px 0 0;
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* ============================================================
+   響應式優化
+   ============================================================ */
+@media (max-width: 768px) {
+    .report-header {
+        padding: var(--report-spacing-card);
+    }
+
+    .report-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .report-title {
+        font-size: 1.1rem;
+    }
+
+    .report-sections {
+        padding: var(--report-spacing-element);
+    }
+
+    .report-section h4 {
+        font-size: 1.25rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .report-download-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pdf-download-btn {
+        justify-content: center;
+    }
+
+    .company-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .company-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analyzer-service-card {
+        padding: var(--report-spacing-element);
+    }
+}

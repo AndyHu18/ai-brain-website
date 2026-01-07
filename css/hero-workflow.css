@@ -1,0 +1,382 @@
+/**
+ * @file    : css/hero-workflow.css
+ * @purpose : Hero Section 嵌入式工作流程展示樣式（完整版）
+ * @depends : ['css/variables.css']
+ * @version : 2.0 - 增加連接線、資料流動畫、結果預覽
+ */
+
+/* ========================================
+   Hero Workflow Preview Container
+   ======================================== */
+.hero-workflow-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: var(--spacing-2xl) auto 0;
+    padding: 0 var(--spacing-md);
+    z-index: 10;
+}
+
+.hero-workflow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: linear-gradient(135deg, rgba(230, 126, 34, 0.15), rgba(212, 165, 55, 0.15));
+    border: 1px solid rgba(230, 126, 34, 0.3);
+    border-radius: var(--radius-full);
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-workflow-badge::before {
+    content: '▶';
+    font-size: 0.75rem;
+    animation: pulse-play 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-play {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* ========================================
+   Workflow Canvas - 完整版
+   ======================================== */
+.hero-workflow-canvas {
+    position: relative;
+    background: rgba(253, 249, 243, 0.95);
+    border: 1px solid rgba(200, 170, 130, 0.4);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(210, 105, 30, 0.1);
+    overflow: visible;
+    min-height: 180px;
+}
+
+/* ========================================
+   SVG 連接線層 - 關鍵修正
+   ======================================== */
+.hero-connections-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+}
+
+/* 連接線基礎樣式 */
+.hero-connection-path {
+    fill: none;
+    stroke: rgba(200, 170, 130, 0.6);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke 0.4s ease, filter 0.4s ease;
+}
+
+/* 連接線執行中 - 資料流動動畫 */
+.hero-connection-path.active {
+    stroke: url(#hero-gradient-active);
+    stroke-dasharray: 8 6;
+    animation: hero-data-flow 0.5s linear infinite;
+    filter: drop-shadow(0 0 4px rgba(230, 126, 34, 0.5));
+}
+
+/* 連接線完成 */
+.hero-connection-path.completed {
+    stroke: var(--color-success, #27AE60);
+    stroke-dasharray: none;
+    filter: drop-shadow(0 0 3px rgba(39, 174, 96, 0.4));
+}
+
+@keyframes hero-data-flow {
+    to {
+        stroke-dashoffset: -14;
+    }
+}
+
+/* 資料粒子 - 流動的小點 */
+.hero-data-particle {
+    fill: var(--color-primary, #E67E22);
+    filter: drop-shadow(0 0 6px var(--color-primary, #E67E22));
+}
+
+/* ========================================
+   節點容器 - 水平排列且有間距
+   ======================================== */
+.hero-nodes-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding: var(--spacing-md) 0;
+    z-index: 2;
+}
+
+/* ========================================
+   精簡節點樣式
+   ======================================== */
+.hero-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: white;
+    border: 2px solid rgba(200, 170, 130, 0.4);
+    border-radius: var(--radius-lg);
+    flex: 1;
+    min-width: 100px;
+    max-width: 140px;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 節點頂部色條 */
+.hero-node::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--node-color, var(--color-primary));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.hero-node.idle {
+    opacity: 1;
+    /* 使用邊框顏色區分狀態，而非透明度 */
+    border-color: rgba(200, 170, 130, 0.4);
+}
+
+.hero-node.running {
+    opacity: 1;
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 24px rgba(230, 126, 34, 0.4);
+    animation: hero-node-pulse 1s ease-in-out infinite;
+    transform: scale(1.02);
+}
+
+.hero-node.completed {
+    opacity: 1;
+    border-color: var(--color-success, #27AE60);
+    box-shadow: 0 4px 16px rgba(39, 174, 96, 0.3);
+    transform: scale(1);
+}
+
+@keyframes hero-node-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 24px rgba(230, 126, 34, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 4px 32px rgba(230, 126, 34, 0.6);
+    }
+}
+
+/* 節點圖示 - SVG Icon 支援 */
+.hero-node-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(230, 126, 34, 0.05));
+    border-radius: var(--radius-md);
+    color: var(--color-primary, #E67E22);
+}
+
+.hero-node-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* 節點標題 */
+.hero-node-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* 節點狀態指示器 */
+.hero-node-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}
+
+.hero-node-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.hero-node.running .hero-node-status-dot {
+    background: var(--color-primary);
+    animation: pulse-dot 0.8s ease-in-out infinite;
+}
+
+.hero-node.completed .hero-node-status-dot {
+    background: var(--color-success, #27AE60);
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.4);
+        opacity: 0.7;
+    }
+}
+
+/* ========================================
+   末端結果預覽 - LINE 通知視覺
+   ======================================== */
+.hero-result-preview {
+    position: absolute;
+    bottom: -70px;
+    right: 20px;
+    background: white;
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(39, 174, 96, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    transition: all 0.4s ease;
+    z-index: 100;
+    min-width: 200px;
+}
+
+.hero-result-preview.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* 結果圖示 - SVG Icon 支援 */
+.hero-result-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(39, 174, 96, 0.1);
+    border-radius: 50%;
+    color: var(--color-success, #27AE60);
+}
+
+.hero-result-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.hero-result-content h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.hero-result-content p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ========================================
+   響應式設計
+   ======================================== */
+@media (max-width: 900px) {
+    .hero-nodes-container {
+        gap: 20px;
+    }
+
+    .hero-node {
+        min-width: 80px;
+        max-width: 110px;
+        padding: var(--spacing-sm);
+    }
+
+    .hero-node-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .hero-node-title {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-workflow-container {
+        margin-top: var(--spacing-xl);
+    }
+
+    .hero-nodes-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-md);
+        justify-content: center;
+    }
+
+    .hero-node {
+        min-width: 70px;
+        max-width: 90px;
+    }
+
+    .hero-connections-svg {
+        display: none;
+    }
+
+    .hero-result-preview {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: var(--spacing-md);
+        width: 100%;
+        justify-content: center;
+    }
+}

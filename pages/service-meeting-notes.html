@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>會議記錄工 | AI 智能大腦</title>
+    <title>智慧會議秘書 | AI 智能大腦</title>
     <meta name="description" content="開完會紀錄就好了 - 不用再花時間打會議紀錄，開完會 AI 就把紀錄寄給大家了。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,10 +15,13 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/animations-keyframes.css">
+    <link rel="stylesheet" href="../css/animations-stagger.css">
     <link rel="stylesheet" href="../css/service-page-hero.css">
     <link rel="stylesheet" href="../css/n8n-workflow.css">
     <link rel="stylesheet" href="../css/n8n-responsive.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/pricing-comparison.css">
 </head>
 
 <body>
@@ -43,16 +46,42 @@
             <div class="hero-video-overlay"></div>
         </div>
         <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">🔇</span>
-            <span class="sound-icon sound-on" style="display: none;">🔊</span>
+            <span class="sound-icon sound-off">OFF</span>
+            <span class="sound-icon sound-on" style="display: none;">ON</span>
         </button>
         <div class="hero-content">
             <span class="service-badge">服務方案 04</span>
-            <h1 class="hero-title"><span class="emoji">📝</span> 會議記錄工</h1>
+            <h1 class="hero-title">智慧會議秘書</h1>
             <p class="hero-tagline">開完會紀錄就好了</p>
+
+            <!-- 價值錨定區塊 -->
+            <div class="hero-pricing-anchor">
+                <div class="pricing-compare">
+                    <span class="compare-label">傳統逐字稿外包</span>
+                    <span class="compare-price">NT$15,000<small>/月</small></span>
+                </div>
+                <div class="pricing-arrow">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="pricing-offer">
+                    <span class="offer-label">智慧會議助手</span>
+                    <span class="offer-price">NT$4,800<small>/月起</small></span>
+                </div>
+            </div>
+            <p class="hero-savings">每月節省 <strong>NT$10,200</strong>，年省超過 <strong>12 萬</strong></p>
+
             <div class="hero-cta-group">
-                <a href="#workflow-demo" class="btn btn-primary">看 AI 怎麼做</a>
-                <a href="../index.html#contact" class="btn btn-secondary">立即諮詢</a>
+                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
+                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
+            </div>
+
+            <!-- 風險逆轉信任標籤 -->
+            <div class="hero-trust-signals">
+                <span class="trust-signal">7 天免費試用</span>
+                <span class="trust-signal">不滿意全額退款</span>
+                <span class="trust-signal">本月限額 5 家</span>
             </div>
         </div>
         <div class="hero-scroll-indicator"><span>SCROLL</span>
@@ -67,8 +96,8 @@
         <header class="header">
             <div class="logo">
                 <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>📝 會議記錄工</h2>
-                <span class="demo-badge">🎬 流程示範</span>
+                <h2>智慧會議秘書</h2>
+                <span class="demo-badge">流程示範</span>
             </div>
             <div class="controls">
                 <button id="btn-start" class="btn btn-primary">
@@ -83,22 +112,22 @@
 
         <section class="intro-section">
             <div class="intro-header">
-                <h2>💡 這個功能能幫您做什麼？</h2>
+                <h2>這個功能能幫您做什麼？</h2>
                 <p class="intro-subtitle">不用再花時間打會議紀錄，開完會 AI 就把紀錄寄給大家了</p>
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <span class="benefit-icon">🎙️</span>
+                    <span class="benefit-icon">MIC</span>
                     <h3>聽懂台語國語</h3>
                     <p>老一輩用台語開會？AI 照樣聽得懂</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">📋</span>
+                    <span class="benefit-icon">NOTES</span>
                     <h3>自動分派待辦</h3>
                     <p>誰負責什麼、什麼時候要完成，AI 幫你列好</p>
                 </div>
                 <div class="benefit-card">
-                    <span class="benefit-icon">📧</span>
+                    <span class="benefit-icon">EMAIL</span>
                     <h3>自動寄給大家</h3>
                     <p>會議結束，紀錄自動寄到每個人信箱</p>
                 </div>
@@ -106,7 +135,7 @@
         </section>
 
         <section class="flow-explanation">
-            <h3>📍 流程節點說明</h3>
+            <h3>流程節點說明</h3>
             <div class="node-explanations">
                 <div class="node-exp"><span class="exp-num">1</span><strong>錄音接收</strong> — 接收會議錄音檔案</div>
                 <div class="node-exp"><span class="exp-num">2</span><strong>語音轉文字</strong> — 把錄音轉成逐字稿</div>
@@ -138,14 +167,76 @@
                     <rect x="3" y="3" width="18" height="18" rx="2" />
                     <path d="M9 9h6M9 13h6M9 17h6" />
                 </svg>
-                <span>📋 即時執行紀錄</span>
+                <span>即時執行紀錄</span>
             </div>
             <div id="log-content" class="log-content">
                 <div class="log-entry info"><span class="log-time">--:--:--</span><span
-                        class="log-msg">會議記錄工就緒，點擊啟動流程開始...</span></div>
+                        class="log-msg">智慧會議秘書就緒，點擊啟動流程開始...</span></div>
             </div>
         </aside>
     </main>
+
+    <!-- 價格對比區塊 -->
+    <section class="pricing-comparison" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">投資報酬</span>
+                <h2 class="section-title">聰明企業都這樣選</h2>
+                <p class="section-subtitle">一個月的成本，換來一整年的效率提升</p>
+            </div>
+
+            <div class="comparison-table">
+                <!-- 傳統方案 -->
+                <div class="comparison-card traditional">
+                    <div class="card-header">
+                        <span class="card-label">傳統做法</span>
+                        <h3>外包逐字稿服務</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$15,000</span>
+                        <span class="price-period">/月</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="negative">需等待 2-3 天交稿</li>
+                        <li class="negative">不支援台語辨識</li>
+                        <li class="negative">每次會議都要付費</li>
+                        <li class="negative">無法自動分派待辦</li>
+                        <li class="negative">需手動轉發給同事</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$180,000+</strong>
+                    </div>
+                </div>
+
+                <!-- AI 方案 -->
+                <div class="comparison-card ai-solution featured">
+                    <div class="featured-badge">推薦方案</div>
+                    <div class="card-header">
+                        <span class="card-label">專屬會議服務</span>
+                        <h3>智慧會議秘書</h3>
+                    </div>
+                    <div class="card-price">
+                        <span class="price-amount">NT$4,800</span>
+                        <span class="price-period">/月起</span>
+                    </div>
+                    <ul class="card-features">
+                        <li class="positive">會議結束立即產出</li>
+                        <li class="positive">支援國語、台語、英語</li>
+                        <li class="positive">無限次會議記錄</li>
+                        <li class="positive">AI 自動分派待辦事項</li>
+                        <li class="positive">自動寄送給所有與會者</li>
+                    </ul>
+                    <div class="card-annual">
+                        <span>年度成本：</span>
+                        <strong>NT$57,600</strong>
+                        <small class="savings">（年省 NT$122,400）</small>
+                    </div>
+                    <a href="../index.html#contact" class="btn btn-primary btn-full">開始 7 天免費試用</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -155,37 +246,37 @@
                 <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
                 <div class="footer-nav-grid">
                     <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📝</div>
+                        <div class="footer-nav-icon">CONTENT</div>
                         <h4>自動流量小編</h4>
                         <p>讓網站自己會抓客戶</p>
                         <span class="footer-nav-tag">SEO 自動化</span>
                     </a>
                     <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📞</div>
+                        <div class="footer-nav-icon">VOICE</div>
                         <h4>智慧接線生</h4>
                         <p>24 小時守護每一通訂單</p>
                         <span class="footer-nav-tag">語音 AI</span>
                     </a>
                     <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🎭</div>
+                        <div class="footer-nav-icon">BRAND</div>
                         <h4>品牌分身術</h4>
                         <p>讓 AI 代你發文</p>
                         <span class="footer-nav-tag">社群經營</span>
                     </a>
                     <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🤖</div>
+                        <div class="footer-nav-icon">BOT</div>
                         <h4>客服機器人</h4>
                         <p>您專屬的線上小幫手</p>
                         <span class="footer-nav-tag">智能客服</span>
                     </a>
                     <a href="service-meeting-notes.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">📋</div>
-                        <h4>會議記錄工</h4>
+                        <div class="footer-nav-icon">NOTES</div>
+                        <h4>智慧會議秘書</h4>
                         <p>開完會，紀錄就好了</p>
                         <span class="footer-nav-tag">效率工具</span>
                     </a>
                     <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🧠</div>
+                        <div class="footer-nav-icon">THINK</div>
                         <h4>AI 顧問</h4>
                         <p>數位轉型夥伴</p>
                         <span class="footer-nav-tag">企業轉型</span>
@@ -207,13 +298,13 @@
     <script src="../script-service-nav.js"></script>
     <script>
         const SERVICE_CONFIG = {
-            name: '會議記錄工',
+            name: '智慧會議秘書',
             nodes: [
-                { id: 'audio-receive', title: '🎙️ 錄音接收', description: '接收會議錄音檔案', icon: 'mic', color: '#E74C3C', position: { x: 50, y: 30 }, bubbleMessages: ['📁 接收音訊...', '🔊 檢查格式...', '✅ 錄音已接收！'] },
-                { id: 'speech-to-text', title: '📝 語音轉文字', description: 'Gemini 辨識國語/台語', icon: 'text', color: '#9B59B6', position: { x: 280, y: 30 }, bubbleMessages: ['🗣️ 啟動辨識...', '📄 轉換文字...', '✅ 逐字稿完成！'] },
-                { id: 'smart-summary', title: '🧠 智慧摘要', description: 'AI 提取會議重點', icon: 'brain', color: '#E67E22', position: { x: 510, y: 30 }, bubbleMessages: ['🔍 分析脈絡...', '📌 提取重點...', '✅ 5 點重點已整理！'] },
-                { id: 'action-extract', title: '📋 待辦提取', description: '自動識別 Action Items', icon: 'todo', color: '#3498DB', position: { x: 740, y: 30 }, bubbleMessages: ['👤 識別發言者...', '📅 設定截止日...', '✅ 8 項待辦已分派！'] },
-                { id: 'email-send', title: '📧 郵件發送', description: '自動寄送會議紀錄', icon: 'email', color: '#27AE60', position: { x: 970, y: 30 }, bubbleMessages: ['📝 組合紀錄...', '📤 發送郵件...', '✅ 會議紀錄已寄出！'] }
+                { id: 'audio-receive', title: '錄音接收', description: '接收會議錄音檔案', icon: 'mic', color: '#E74C3C', position: { x: 50, y: 30 }, bubbleMessages: ['[FILE] 接收音訊...', '[ON] 檢查格式...', '[OK] 錄音已接收！'] },
+                { id: 'speech-to-text', title: '語音轉文字', description: 'Gemini 辨識國語/台語', icon: 'text', color: '#9B59B6', position: { x: 280, y: 30 }, bubbleMessages: ['[SPEAK] 啟動辨識...', '[PAGE] 轉換文字...', '[OK] 逐字稿完成！'] },
+                { id: 'smart-summary', title: '智慧摘要', description: 'AI 提取會議重點', icon: 'brain', color: '#E67E22', position: { x: 510, y: 30 }, bubbleMessages: ['[SEARCH] 分析脈絡...', '[PIN] 提取重點...', '[OK] 5 點重點已整理！'] },
+                { id: 'action-extract', title: '待辦提取', description: '自動識別 Action Items', icon: 'todo', color: '#3498DB', position: { x: 740, y: 30 }, bubbleMessages: ['[USER] 識別發言者...', '[DATE] 設定截止日...', '[OK] 8 項待辦已分派！'] },
+                { id: 'email-send', title: '郵件發送', description: '自動寄送會議紀錄', icon: 'email', color: '#27AE60', position: { x: 970, y: 30 }, bubbleMessages: ['[CONTENT] 組合紀錄...', '[SEND] 發送郵件...', '[OK] 會議紀錄已寄出！'] }
             ],
             connections: [
                 { from: 'audio-receive', to: 'speech-to-text' },
@@ -237,6 +328,7 @@
             soundOn.style.display = video.muted ? 'none' : 'inline';
         });
     </script>
+    <script src="../js/icons.js"></script>
 </body>
 
 </html>

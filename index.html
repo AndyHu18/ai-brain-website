@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="css/solutions-video-showcase.css">
     <link rel="stylesheet" href="css/website-analyzer.css">
     <link rel="stylesheet" href="css/website-analyzer-premium.css">
+    <link rel="stylesheet" href="css/website-analyzer-report.css?v=3">
+    <link rel="stylesheet" href="css/logo-3d.css">
+    <link rel="stylesheet" href="css/hero-workflow.css">
+    <link rel="stylesheet" href="css/trust-section.css">
+    <link rel="stylesheet" href="css/icons.css">
 </head>
 
 <body>
@@ -39,13 +44,31 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
+                <!-- 3D Saturn Logo - 土星樣式 AI 智能核心 -->
+                <div class="saturn-scene">
+                    <div class="saturn-wrapper">
+                        <!-- 球體 (土星本體) -->
+                        <div class="saturn-planet">
+                            <div class="saturn-glow"></div>
+                        </div>
+                        <!-- 星環 -->
+                        <div class="saturn-ring"></div>
+                        <!-- 盤旋衛星 -->
+                        <div class="saturn-orbit">
+                            <div class="saturn-moon"></div>
+                        </div>
+                        <div class="saturn-orbit saturn-orbit-2">
+                            <div class="saturn-moon saturn-moon-2"></div>
+                        </div>
+                    </div>
+                </div>
                 <span class="logo-text">AI 智能大腦</span>
             </a>
             <div class="nav-menu">
                 <a href="#services" class="nav-link">服務項目</a>
                 <a href="#solutions" class="nav-link">解決方案</a>
                 <a href="#technology" class="nav-link">技術能力</a>
-                <a href="#contact" class="nav-link nav-cta">聯繫我們</a>
+                <a href="#contact" class="nav-link nav-cta">免費諮詢 →</a>
             </div>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
@@ -70,18 +93,31 @@
             <span class="sound-icon sound-on" style="display: none;">SOUND ON</span>
         </button>
         <div class="hero-content">
-            <div class="hero-badge">企業級 AI 導入專家</div>
+            <div class="hero-badge">首次諮詢免費</div>
             <h1 class="hero-title">
                 <span class="hero-title-main">AI 智能大腦</span>
-                <span class="hero-title-sub">將 AI 轉化為您的競爭優勢</span>
+                <span class="hero-title-sub">每天忙到沒時間思考？<br>讓 AI 接手重複工作，把時間還給決策</span>
             </h1>
-            <p class="hero-description">
-                我們專注於將人工智慧技術轉化為可落地的商業解決方案<br>
-                協助企業降低營運成本、提升服務效率、創造競爭優勢
-            </p>
             <div class="hero-cta-group">
-                <a href="#contact" class="btn btn-primary">立即諮詢</a>
-                <a href="#solutions" class="btn btn-secondary">了解更多</a>
+                <a href="#contact" class="btn btn-primary">免費試用 7 天 →</a>
+                <a href="#services" class="btn btn-secondary">看 AI 能幫什麼</a>
+            </div>
+            <!-- 信任保證列 -->
+            <div class="hero-trust-row">
+                <span class="trust-item"><span class="checkmark"></span> 每月 NT$4,800 起</span>
+                <span class="trust-item"><span class="checkmark"></span> 免費試用 7 天</span>
+                <span class="trust-item"><span class="checkmark"></span> 隨時可取消</span>
+            </div>
+
+            <!-- 自動流量小編 n8n 工作流程展示 -->
+            <div class="hero-workflow-container">
+                <div class="hero-workflow-badge">AI 自動化流程示範</div>
+                <div class="hero-workflow-canvas" id="hero-workflow-canvas">
+                    <svg class="hero-connections-svg" id="hero-connections-svg"></svg>
+                    <div class="hero-nodes-container" id="hero-nodes-container">
+                        <!-- 節點由 JS 動態渲染 -->
+                    </div>
+                </div>
             </div>
         </div>
         <div class="hero-scroll-indicator">
@@ -105,7 +141,7 @@
             <!-- 強化標題區 -->
             <div class="analyzer-hero-header">
                 <div class="analyzer-badge-group">
-                    <span class="analyzer-badge-free">🎁 免費體驗</span>
+                    <span class="analyzer-badge-free">免費體驗</span>
                     <span class="analyzer-badge-ai">AI 驅動</span>
                 </div>
                 <h2 class="analyzer-main-title">
@@ -141,15 +177,15 @@
             <!-- 信任標籤 -->
             <div class="analyzer-trust-signals">
                 <div class="trust-item">
-                    <span class="trust-icon">⚡</span>
+                    <span class="trust-icon">FAST</span>
                     <span class="trust-text">30 秒出報告</span>
                 </div>
                 <div class="trust-item">
-                    <span class="trust-icon">🔒</span>
+                    <span class="trust-icon">SAFE</span>
                     <span class="trust-text">資料安全加密</span>
                 </div>
                 <div class="trust-item">
-                    <span class="trust-icon">🎯</span>
+                    <span class="trust-icon">DEEP</span>
                     <span class="trust-text">6 大維度深度分析</span>
                 </div>
             </div>
@@ -172,7 +208,7 @@
     <section class="service-fullscreen" id="service-content-editor">
         <!-- 背景圖片 -->
         <div class="service-bg-container">
-            <img src="assets/images/service_traffic_editor.png" alt="自動流量小編 AI" class="service-bg-image">
+            <img src="assets/images/service_traffic_editor_v2.png" alt="自動流量小編 AI" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
 
@@ -182,18 +218,16 @@
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 01</span>
 
-                <h2 class="service-main-title">
-                    <span class="emoji">📝</span>自動流量小編
-                </h2>
+                <h2 class="service-main-title">自動流量小編</h2>
 
                 <p class="service-tagline">讓網站自己會抓客戶</p>
 
                 <!-- 適用對象 -->
                 <div class="service-target">
-                    <span class="service-target-icon">👤</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
-                        想做內容行銷，但沒時間寫文章、請不起專業 SEO 團隊的老闆。
+                        想做內容行銷，但沒時間寫文章、請不起專業 SEO 團隊的企業決策者。
                     </div>
                 </div>
 
@@ -211,19 +245,28 @@
 
                 <!-- 技術底氣 -->
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         基於工業級瀏覽器自動化技術，穩定性遠超一般外掛。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-content-editor.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"><strong>核心價值：</strong>相當於 1 位月薪 3-5 萬的內容小編</p>
+                    <p class="service-price"><strong>方案投資：</strong>每月 NT$18,800 起</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-content-editor.html" class="btn btn-primary service-cta-btn">免費試用 7 天</a>
+                    <a href="pages/service-content-editor.html" class="btn btn-secondary service-cta-btn">看 Demo</a>
+                </div>
             </div>
 
             <!-- 右側：視覺圖片 -->
             <div class="service-image-column">
-                <img src="assets/images/service_traffic_editor.png" alt="AI 自動流量小編 - SEO 自動化流量引擎"
+                <img src="assets/images/service_traffic_editor_v2.png" alt="AI 自動流量小編 - SEO 自動化流量引擎"
                     class="service-feature-image">
             </div>
         </div>
@@ -235,7 +278,7 @@
     <section class="service-fullscreen service-reversed" id="service-voice-receptionist">
         <!-- 背景圖片 -->
         <div class="service-bg-container">
-            <img src="assets/images/service_voice_receptionist.png" alt="智慧接線生 AI" class="service-bg-image">
+            <img src="assets/images/service_voice_receptionist_v2.png" alt="智慧接線生 AI" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
 
@@ -243,7 +286,7 @@
         <div class="service-fullscreen-content">
             <!-- 左側：視覺圖片（反轉佈局） -->
             <div class="service-image-column">
-                <img src="assets/images/service_voice_receptionist.png" alt="AI 智慧接線生 - 24小時語音服務"
+                <img src="assets/images/service_voice_receptionist_v2.png" alt="AI 智慧接線生 - 24小時語音服務"
                     class="service-feature-image">
             </div>
 
@@ -251,15 +294,13 @@
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 02</span>
 
-                <h2 class="service-main-title">
-                    <span class="emoji">📞</span>智慧接線生
-                </h2>
+                <h2 class="service-main-title">智慧接線生</h2>
 
                 <p class="service-tagline">24 小時守護每一通訂單</p>
 
                 <!-- 適用對象 -->
                 <div class="service-target">
-                    <span class="service-target-icon">🏥</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
                         櫃檯忙不過來、離峰時間電話無人接聽的診所、餐廳或工作室。
@@ -280,14 +321,23 @@
 
                 <!-- 技術底氣 -->
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         採用最新的即時語音通訊技術，對話流暢無延遲。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-voice-receptionist.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"><strong>核心價值：</strong>相當於 1 位 24hr 全年無休電話客服</p>
+                    <p class="service-price"><strong>方案投資：</strong>每月 NT$28,800 起</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-voice-receptionist.html" class="btn btn-primary service-cta-btn">免費試用 7 天</a>
+                    <a href="pages/service-voice-receptionist.html" class="btn btn-secondary service-cta-btn">看 Demo</a>
+                </div>
             </div>
         </div>
     </section>
@@ -297,18 +347,16 @@
          ============================================================ -->
     <section class="service-fullscreen" id="service-brand-clone">
         <div class="service-bg-container">
-            <img src="assets/images/service_brand_clone.png" alt="品牌分身術 AI" class="service-bg-image">
+            <img src="assets/images/service_brand_clone_v2.png" alt="品牌分身術 AI" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
         <div class="service-fullscreen-content">
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 03</span>
-                <h2 class="service-main-title">
-                    <span class="emoji">🎭</span>品牌分身術
-                </h2>
+                <h2 class="service-main-title">品牌分身術</h2>
                 <p class="service-tagline">讓 AI 代你發文</p>
                 <div class="service-target">
-                    <span class="service-target-icon">👔</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
                         需要經營 Facebook、Instagram、LINE 官方帳號，但沒時間每天發文的個人品牌或小公司。
@@ -323,17 +371,26 @@
                     </p>
                 </div>
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         結合自然語言處理與品牌語調分析，確保每篇貼文都是「你」。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-brand-clone.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"><strong>核心價值：</strong>每月省 15+ 小時社群經營時間</p>
+                    <p class="service-price"><strong>方案投資：</strong>每月 NT$12,800 起</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-brand-clone.html" class="btn btn-primary service-cta-btn">免費試用 7 天</a>
+                    <a href="pages/service-brand-clone.html" class="btn btn-secondary service-cta-btn">看 Demo</a>
+                </div>
             </div>
             <div class="service-image-column">
-                <img src="assets/images/service_brand_clone.png" alt="品牌分身術 - AI 代發文" class="service-feature-image">
+                <img src="assets/images/service_brand_clone_v2.png" alt="品牌分身術 - AI 代發文" class="service-feature-image">
             </div>
         </div>
     </section>
@@ -343,24 +400,22 @@
          ============================================================ -->
     <section class="service-fullscreen service-reversed" id="service-chatbot">
         <div class="service-bg-container">
-            <img src="assets/images/service_chatbot.png" alt="客服機器人 AI" class="service-bg-image">
+            <img src="assets/images/service_chatbot_v2.png" alt="客服機器人 AI" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
         <div class="service-fullscreen-content">
             <div class="service-image-column">
-                <img src="assets/images/service_chatbot.png" alt="客服機器人 - 線上小幫手" class="service-feature-image">
+                <img src="assets/images/service_chatbot_v2.png" alt="客服機器人 - 線上小幫手" class="service-feature-image">
             </div>
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 04</span>
-                <h2 class="service-main-title">
-                    <span class="emoji">🤖</span>客服機器人
-                </h2>
+                <h2 class="service-main-title">客服機器人</h2>
                 <p class="service-tagline">您專屬的線上小幫手</p>
                 <div class="service-target">
-                    <span class="service-target-icon">🛒</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
-                        電商賣家、服務業者，每天重複回答相同問題到心累的老闆。
+                        電商賣家、服務業者，每天重複回答相同問題的忙碌企業主。
                     </div>
                 </div>
                 <p class="service-problem">
@@ -372,35 +427,42 @@
                     </p>
                 </div>
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         支援 LINE、Facebook Messenger、網站即時客服，無縫整合。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-chatbot.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"><strong>核心價值：</strong>減少 80% 重複問答，客服更高效</p>
+                    <p class="service-price"><strong>方案投資：</strong>每月 NT$8,800 起</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-chatbot.html" class="btn btn-primary service-cta-btn">免費試用 7 天</a>
+                    <a href="pages/service-chatbot.html" class="btn btn-secondary service-cta-btn">看 Demo</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         全屏服務區塊 5: 會議記錄工
+         全屏服務區塊 5: 智慧會議秘書
          ============================================================ -->
     <section class="service-fullscreen" id="service-meeting-notes">
         <div class="service-bg-container">
-            <img src="assets/images/service_meeting_notes.png" alt="會議記錄工 AI" class="service-bg-image">
+            <img src="assets/images/service_meeting_notes_v2.png" alt="智慧會議秘書 AI" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
         <div class="service-fullscreen-content">
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 05</span>
-                <h2 class="service-main-title">
-                    <span class="emoji">📝</span>會議記錄工
-                </h2>
+                <h2 class="service-main-title">智慧會議秘書</h2>
                 <p class="service-tagline">開完會，紀錄就好了</p>
                 <div class="service-target">
-                    <span class="service-target-icon">🏢</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
                         每週開好幾場會，但會議紀錄總是拖、總是漏、總是沒人想寫的團隊。
@@ -415,17 +477,26 @@
                     </p>
                 </div>
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         語音轉文字加上智慧摘要，連講台語也聽得懂。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-meeting-notes.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"><strong>核心價值：</strong>每場會議省 30 分鐘記錄時間</p>
+                    <p class="service-price"><strong>方案投資：</strong>每月 NT$4,800 起</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-meeting-notes.html" class="btn btn-primary service-cta-btn">免費試用 7 天</a>
+                    <a href="pages/service-meeting-notes.html" class="btn btn-secondary service-cta-btn">看 Demo</a>
+                </div>
             </div>
             <div class="service-image-column">
-                <img src="assets/images/service_meeting_notes.png" alt="會議記錄工 - 自動摘要" class="service-feature-image">
+                <img src="assets/images/service_meeting_notes_v2.png" alt="智慧會議秘書 - 自動摘要" class="service-feature-image">
             </div>
         </div>
     </section>
@@ -435,21 +506,19 @@
          ============================================================ -->
     <section class="service-fullscreen service-reversed" id="service-consultant">
         <div class="service-bg-container">
-            <img src="assets/images/service_consultant.png" alt="AI 顧問" class="service-bg-image">
+            <img src="assets/images/service_consultant_v2.png" alt="AI 顧問" class="service-bg-image">
             <div class="service-bg-overlay"></div>
         </div>
         <div class="service-fullscreen-content">
             <div class="service-image-column">
-                <img src="assets/images/service_consultant.png" alt="AI 顧問 - 數位轉型夥伴" class="service-feature-image">
+                <img src="assets/images/service_consultant_v2.png" alt="AI 顧問 - 數位轉型夥伴" class="service-feature-image">
             </div>
             <div class="service-text-column">
                 <span class="service-number-badge">服務方案 06</span>
-                <h2 class="service-main-title">
-                    <span class="emoji">🧠</span>AI 顧問
-                </h2>
+                <h2 class="service-main-title">AI 顧問</h2>
                 <p class="service-tagline">從零到一的數位轉型夥伴</p>
                 <div class="service-target">
-                    <span class="service-target-icon">🏭</span>
+                    <span class="service-target-icon">TARGET</span>
                     <div class="service-target-text">
                         <strong>適合誰？</strong>
                         想導入 AI 但不知從何下手，或曾經導入失敗想重新來過的企業決策者。
@@ -464,14 +533,23 @@
                     </p>
                 </div>
                 <div class="service-tech-badge">
-                    <span class="service-tech-icon">⚙️</span>
+                    <span class="service-tech-icon">TECH</span>
                     <span class="service-tech-text">
                         企業級 AI 導入方法論，確保每一分投資都看得到回報。
                     </span>
                 </div>
 
-                <!-- 了解更多按鈕 -->
-                <a href="pages/service-consultant.html" class="btn btn-primary service-cta-btn">了解更多</a>
+                <!-- 效益與定價 -->
+                <div class="service-value-block">
+                    <p class="service-benefit"> <strong>核心價值：</strong>降低 AI 導入失敗風險，少走冤枉路</p>
+                    <p class="service-price"> <strong>方案投資：</strong>NT$88,000 起/專案，首次諮詢免費</p>
+                </div>
+
+                <!-- CTA 按鈕 -->
+                <div class="service-cta-group">
+                    <a href="pages/service-consultant.html#pricing" class="btn btn-primary service-cta-btn">預約免費諮詢</a>
+                    <a href="pages/service-consultant.html" class="btn btn-secondary service-cta-btn">了解更多</a>
+                </div>
             </div>
         </div>
     </section>
@@ -516,8 +594,8 @@
                             <span class="btn-text">播放影片</span>
                         </button>
                         <button class="video-sound-btn" id="videoSoundBtn" aria-label="Toggle sound">
-                            <span class="sound-off">🔇</span>
-                            <span class="sound-on">🔊</span>
+                            <span class="sound-off">OFF</span>
+                            <span class="sound-on">ON</span>
                         </button>
                     </div>
                 </div>
@@ -526,7 +604,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="assets/images/service_voice_ai_1767594948863.png" alt="智能語音服務">
+                        <img src="assets/images/service_voice_enterprise.png" alt="智能語音服務">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">VOICE</div>
@@ -542,7 +620,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="assets/images/service_data_analytics_1767594972042.png" alt="智能數據分析">
+                        <img src="assets/images/service_data_enterprise.png" alt="智能數據分析">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">DATA</div>
@@ -558,7 +636,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="assets/images/service_automation_1767594989725.png" alt="流程自動化">
+                        <img src="assets/images/service_automation_enterprise.png" alt="流程自動化">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">AUTO</div>
@@ -574,7 +652,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <img src="assets/images/service_content_ai_1767595006859.png" alt="內容智能生成">
+                        <img src="assets/images/service_content_enterprise.png" alt="內容智能生成">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">CONTENT</div>
@@ -591,7 +669,7 @@
                 <!-- 第五區：AI 智囊團 -->
                 <div class="service-card service-card-featured">
                     <div class="service-image">
-                        <img src="assets/images/service_think_tank.png" alt="AI 智囊團">
+                        <img src="assets/images/service_thinktank_enterprise.png" alt="AI 智囊團">
                     </div>
                     <div class="service-content">
                         <div class="service-icon">THINK</div>
@@ -605,6 +683,61 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+    </section>
+
+    <!-- ============================================================
+         為什麼信任我們區塊
+         ============================================================ -->
+    <section class="trust-section" id="why-trust-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">品牌承諾</span>
+                <h2 class="section-title">為什麼選擇我們？</h2>
+                <p class="section-subtitle">我們不只是 AI 供應商，而是您的數位轉型夥伴</p>
+            </div>
+
+            <!-- 信任網格 -->
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">SHIELD</div>
+                    <h3 class="trust-title">技術實力</h3>
+                    <p class="trust-description">
+                        基於 Google、OpenAI 等頂級 AI 模型，結合台灣本地化調校，確保穩定可靠。
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">FOCUS</div>
+                    <h3 class="trust-title">專注中小企業</h3>
+                    <p class="trust-description">
+                        我們專為 5-50 人企業設計方案，不需要龐大 IT 團隊也能輕鬆上手。
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">LOCAL</div>
+                    <h3 class="trust-title">在地服務</h3>
+                    <p class="trust-description">
+                        台灣團隊、台灣時區，有問題隨時找得到人，不用跨時區等客服。
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">SECURE</div>
+                    <h3 class="trust-title">資料安全</h3>
+                    <p class="trust-description">
+                        企業級資料加密，您的商業機密永遠只屬於您自己。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 服務承諾 -->
+            <div class="trust-promise">
+                <div class="promise-badge">我們的承諾</div>
+                <ul class="promise-list">
+                    <li><span class="checkmark"></span> 免費試用 7 天，不滿意隨時取消</li>
+                    <li><span class="checkmark"></span> 無綁約壓力，按月計費隨時調整</li>
+                    <li><span class="checkmark"></span> 專人一對一導入，確保順利上線</li>
+                    <li><span class="checkmark"></span> 持續優化服務，讓 AI 越用越聰明</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -620,6 +753,9 @@
             <div class="solutions-list">
                 <!-- Solution 1 -->
                 <div class="solution-item">
+                    <div class="solution-image">
+                        <img src="assets/images/solution_finance.png" alt="財報智能分析系統">
+                    </div>
                     <div class="solution-number">01</div>
                     <div class="solution-content">
                         <h3 class="solution-title">上市公司財報智能分析系統</h3>
@@ -646,6 +782,9 @@
                 </div>
                 <!-- Solution 2 -->
                 <div class="solution-item">
+                    <div class="solution-image">
+                        <img src="assets/images/solution_voice.png" alt="AI 語音預約代理">
+                    </div>
                     <div class="solution-number">02</div>
                     <div class="solution-content">
                         <h3 class="solution-title">AI 語音預約代理</h3>
@@ -672,6 +811,9 @@
                 </div>
                 <!-- Solution 3 -->
                 <div class="solution-item">
+                    <div class="solution-image">
+                        <img src="assets/images/solution_video.png" alt="影音內容智能轉錄平台">
+                    </div>
                     <div class="solution-number">03</div>
                     <div class="solution-content">
                         <h3 class="solution-title">影音內容智能轉錄平台</h3>
@@ -698,6 +840,9 @@
                 </div>
                 <!-- Solution 4 -->
                 <div class="solution-item">
+                    <div class="solution-image">
+                        <img src="assets/images/solution_automation.png" alt="企業自動化框架">
+                    </div>
                     <div class="solution-number">04</div>
                     <div class="solution-content">
                         <h3 class="solution-title">企業自動化框架</h3>
@@ -736,6 +881,9 @@
             </div>
             <div class="tech-grid">
                 <div class="tech-category">
+                    <div class="tech-image">
+                        <img src="assets/images/tech_ai_engine.png" alt="AI 引擎">
+                    </div>
                     <div class="tech-icon">AI ENGINE</div>
                     <h3 class="tech-title">AI 引擎</h3>
                     <ul class="tech-list">
@@ -746,6 +894,9 @@
                     </ul>
                 </div>
                 <div class="tech-category">
+                    <div class="tech-image">
+                        <img src="assets/images/tech_backend.png" alt="後端架構">
+                    </div>
                     <div class="tech-icon">BACKEND</div>
                     <h3 class="tech-title">後端架構</h3>
                     <ul class="tech-list">
@@ -756,6 +907,9 @@
                     </ul>
                 </div>
                 <div class="tech-category">
+                    <div class="tech-image">
+                        <img src="assets/images/tech_frontend.png" alt="前端體驗">
+                    </div>
                     <div class="tech-icon">FRONTEND</div>
                     <h3 class="tech-title">前端體驗</h3>
                     <ul class="tech-list">
@@ -766,6 +920,9 @@
                     </ul>
                 </div>
                 <div class="tech-category">
+                    <div class="tech-image">
+                        <img src="assets/images/tech_deploy.png" alt="部署方案">
+                    </div>
                     <div class="tech-icon">DEPLOY</div>
                     <h3 class="tech-title">部署方案</h3>
                     <ul class="tech-list">
@@ -784,10 +941,11 @@
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-content">
-                    <span class="section-badge">商務合作</span>
-                    <h2 class="contact-title">準備好讓 AI 為您的業務加速了嗎？</h2>
+                    <span class="section-badge">免費諮詢</span>
+                    <h2 class="contact-title">免費 30 分鐘諮詢</h2>
                     <p class="contact-description">
-                        歡迎洽談企業 AI 導入方案，我們將為您量身打造最適合的解決方案
+                        讓我們聊聊 AI 能怎麼幫你省時間、省人力<br>
+                        沒有銷售壓力，純粹解答問題
                     </p>
                     <div class="contact-info">
                         <div class="contact-item">
@@ -803,29 +961,32 @@
                 <div class="contact-form-wrapper">
                     <form class="contact-form" id="contactForm">
                         <div class="form-group">
-                            <label for="name">公司名稱</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">您的公司/店名</label>
+                            <input type="text" id="name" name="name" placeholder="例：小明咖啡店" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">電子郵件</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">方便聯繫的 Email</label>
+                            <input type="email" id="email" name="email" placeholder="example@company.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="service">感興趣的服務</label>
+                            <label for="service">最想解決的問題</label>
                             <select id="service" name="service">
-                                <option value="">請選擇</option>
-                                <option value="voice">智能語音服務</option>
-                                <option value="analytics">智能數據分析</option>
-                                <option value="automation">流程自動化</option>
-                                <option value="content">內容智能生成</option>
-                                <option value="custom">客製化方案</option>
+                                <option value="">選擇最困擾您的事...</option>
+                                <option value="voice">電話接不完 / 漏接訂單</option>
+                                <option value="content">沒時間寫文章經營網站</option>
+                                <option value="social">社群發文跟不上</option>
+                                <option value="customer">客服問題重複回答很累</option>
+                                <option value="meeting">會議記錄總是拖延</option>
+                                <option value="custom">其他 / 想了解更多</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message">需求描述</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
+                            <label for="message">想補充的任何事情（選填）</label>
+                            <textarea id="message" name="message" rows="3"
+                                placeholder="例：我們是 5 人小團隊，想知道 AI 能幫什麼..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">送出諮詢</button>
+                        <button type="submit" class="btn btn-primary btn-full">預約免費諮詢 →</button>
+                        <p class="form-trust-note">SECURE 資料保密 ∙ 不會有銷售騷擾電話</p>
                     </form>
                 </div>
             </div>
@@ -841,37 +1002,37 @@
                 <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
                 <div class="footer-nav-grid">
                     <a href="pages/service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📝</div>
+                        <div class="footer-nav-icon">CONTENT</div>
                         <h4>自動流量小編</h4>
                         <p>讓網站自己會抓客戶</p>
                         <span class="footer-nav-tag">SEO 自動化</span>
                     </a>
                     <a href="pages/service-voice-assistant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📞</div>
+                        <div class="footer-nav-icon">VOICE</div>
                         <h4>智慧接線生</h4>
                         <p>24 小時守護每一通訂單</p>
                         <span class="footer-nav-tag">語音 AI</span>
                     </a>
                     <a href="pages/service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🎭</div>
+                        <div class="footer-nav-icon">BRAND</div>
                         <h4>品牌分身術</h4>
                         <p>讓 AI 代你發文</p>
                         <span class="footer-nav-tag">社群經營</span>
                     </a>
                     <a href="pages/service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🤖</div>
+                        <div class="footer-nav-icon">CHAT</div>
                         <h4>客服機器人</h4>
                         <p>您專屬的線上小幫手</p>
                         <span class="footer-nav-tag">智能客服</span>
                     </a>
                     <a href="pages/service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">📋</div>
-                        <h4>會議記錄工</h4>
+                        <div class="footer-nav-icon">NOTES</div>
+                        <h4>智慧會議秘書</h4>
                         <p>開完會，紀錄就好了</p>
                         <span class="footer-nav-tag">效率工具</span>
                     </a>
                     <a href="pages/service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">🧠</div>
+                        <div class="footer-nav-icon">CONSULT</div>
                         <h4>AI 顧問</h4>
                         <p>數位轉型夥伴</p>
                         <span class="footer-nav-tag">企業轉型</span>
@@ -930,12 +1091,15 @@
     <script src="script-interactions.js"></script>
     <script src="script-solutions-video.js"></script>
     <!-- Chatbot 模組化載入 (依賴順序: config → api → core → ui → hints) -->
-    <script src="chatbot-config.js"></script>
-    <script src="chatbot-api.js"></script>
-    <script src="chatbot-core.js"></script>
-    <script src="chatbot-ui.js"></script>
-    <script src="chatbot-hints.js"></script>
-    <script src="website-analyzer.js"></script>
+    <script src="chatbot-config.js?v=2"></script>
+    <script src="chatbot-api.js?v=2"></script>
+    <script src="chatbot-core.js?v=2"></script>
+    <script src="chatbot-ui.js?v=2"></script>
+    <script src="chatbot-hints.js?v=2"></script>
+    <script src="pdf-generator.js?v=2"></script>
+    <script src="website-analyzer.js?v=4"></script>
+    <script src="js/hero-workflow-demo.js"></script>
+    <script src="js/icons.js"></script>
 </body>
 
 </html>
