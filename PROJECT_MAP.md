@@ -147,11 +147,11 @@ ai-brain-website/
 | Hero Section | 🟢 Stable | 影片背景 + 文案 |
 | 導覽列 | 🟢 Stable | 滾動變色 + 響應式 |
 | 五大 AI 解決方案 | 🟢 Stable | 影片展示 + 5 卡片 |
-| AI 分析報告 | 🟢 **UPDATED** | APCA Lc 75+ 合規、字體升級、PDF 雙按鈕 |
+| AI 分析報告 | 🟢 Stable | APCA Lc 75+ 合規、字體升級、PDF 雙按鈕 |
 | 服務詳情頁 | 🟢 Stable | 6 個獨立頁面 + 影片背景 |
 | 解決方案 | 🟢 Stable | 成功案例展示 |
 | 聯繫表單 | 🟢 Stable | 表單 UI |
-| AI 聊天客服 | 🟢 Stable | 已拆分為 3 個模組 |
+| AI 聊天客服 | 🟢 **FIXED** | 修復 Message ID 碰撞問題 (crypto.randomUUID) |
 | Veo 影片 | 🟢 Stable | 首頁展示 + 6 服務影片 |
 | 測試框架 | 🟢 Ready | 40 個測試案例 |
 
@@ -217,4 +217,4 @@ python generate_service_videos.py
 
 ---
 
-*最後更新：2026-01-07 11:05*
+*最後更新：2026-01-07 16:42*
