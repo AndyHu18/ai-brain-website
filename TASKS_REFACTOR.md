@@ -367,7 +367,7 @@ js/workflow-engine/
 | Phase 1.1 | 拆分 p1-marketing.css | 2 小時 | ✅ 完成 |
 | Phase 1.2 | 拆分 n8n-workflow.css | 1.5 小時 | ✅ 完成 |
 | Phase 1.3 | 拆分 maturity-quiz.js | 1 小時 | ✅ 完成 |
-| Phase 1 驗證 | 完整功能測試 | 0.5 小時 | ⬜ 待執行 |
+| Phase 1 驗證 | 完整功能測試 | 0.5 小時 | ✅ 完成 |
 | **合計 Phase 0-1** | | **6 小時** | |
 
 ---
@@ -384,7 +384,7 @@ js/workflow-engine/
 - [x] 1.1 拆分 css/p1-marketing.css（14 個模組）
 - [x] 1.2 拆分 css/n8n-workflow.css（12 個模組）
 - [x] 1.3 拆分 js/maturity-quiz.js（4 個模組）
-- [ ] 最終驗證
+- [x] 最終驗證（首頁 + 3 個服務頁面）
 
 ### Phase 2 進度（觸發時勾選）
 - [ ] 2.1 拆分 pdf-generator.js
