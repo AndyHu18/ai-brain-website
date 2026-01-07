@@ -1,0 +1,603 @@
+/**
+ * @file    : css/service-content-deep.css
+ * @purpose : 自動流量小編 - 深度內容區塊樣式
+ * @version : 1.0.0
+ * @visionnew : 遵循 APCA 對比度、8px 網格、負空間設計
+ */
+
+/* ========================================
+   核心銷售主張區塊 (Hook Section)
+   ======================================== */
+.sales-hook-section {
+    padding: var(--spacing-5xl) 0;
+    background: linear-gradient(180deg, var(--bg-section) 0%, var(--bg-light) 100%);
+    position: relative;
+}
+
+.sales-hook-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+}
+
+.sales-hook-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.sales-hook-quote {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-3xl);
+    position: relative;
+    padding: var(--spacing-2xl);
+}
+
+.sales-hook-quote::before,
+.sales-hook-quote::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--color-primary);
+    opacity: 0.3;
+    position: absolute;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.sales-hook-quote::before {
+    top: 0;
+    left: 0;
+}
+
+.sales-hook-quote::after {
+    bottom: 0;
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.sales-hook-body {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-4xl);
+}
+
+/* ========================================
+   核心價值區塊 (Value Proposition)
+   ======================================== */
+.value-proposition-section {
+    padding: var(--spacing-5xl) 0;
+    background: var(--bg-light);
+}
+
+.value-proposition-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.value-section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-4xl);
+}
+
+.value-section-eyebrow {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(210, 105, 30, 0.08);
+    border-radius: var(--radius-full);
+}
+
+.value-section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-lg);
+}
+
+.value-section-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* 價值卡片網格 */
+.value-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+}
+
+@media (max-width: 968px) {
+    .value-cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+.value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-2xl);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-accent);
+}
+
+.value-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(210, 105, 30, 0.1);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.value-card-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-primary);
+    stroke-width: 1.5;
+    fill: none;
+}
+
+.value-card-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.value-card-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ========================================
+   流程詳解區塊 (Workflow Breakdown)
+   ======================================== */
+.workflow-breakdown-section {
+    padding: var(--spacing-5xl) 0;
+    background: var(--bg-section);
+}
+
+.workflow-breakdown-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.workflow-breakdown-header {
+    text-align: center;
+    margin-bottom: var(--spacing-4xl);
+}
+
+.workflow-breakdown-intro {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: var(--spacing-lg) auto 0;
+    line-height: 1.7;
+}
+
+/* 流程步驟列表 */
+.workflow-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.workflow-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    transition: border-color 0.3s ease;
+}
+
+.workflow-step-item:hover {
+    border-color: var(--border-accent);
+}
+
+.workflow-step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+}
+
+.workflow-step-content {
+    flex: 1;
+}
+
+.workflow-step-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.workflow-step-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ========================================
+   數學證明區塊 (Math Proof Section)
+   ======================================== */
+.math-proof-section {
+    padding: var(--spacing-5xl) 0;
+    background: var(--bg-light);
+}
+
+.math-proof-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.math-proof-header {
+    text-align: center;
+    margin-bottom: var(--spacing-4xl);
+}
+
+/* 對比表格 */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--spacing-3xl);
+}
+
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.comparison-cell {
+    background: var(--bg-card);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.comparison-cell.header {
+    background: var(--tech-titanium);
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.comparison-cell.highlight {
+    background: rgba(210, 105, 30, 0.05);
+}
+
+.comparison-cell-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xs);
+}
+
+.comparison-cell-value {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.comparison-cell-value.good {
+    color: #27AE60;
+}
+
+.comparison-cell-value.bad {
+    color: #E74C3C;
+}
+
+/* ========================================
+   年省金額強調 - 方案 B 極簡居中
+   遵循 /visionnew：APCA + 8px Grid + 克制美學
+   ======================================== */
+.savings-highlight-box {
+    /* 分層表面 Level 1 */
+    background: var(--bg-card);
+
+    /* 邊框取代陰影 - /visionnew 原則 */
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+
+    /* 8px 網格間距：48px 64px */
+    padding: 48px 64px;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+
+    /* 節制的微互動 */
+    transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.savings-highlight-box:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-4px);
+}
+
+.savings-highlight-label {
+    /* 微觀排版：權威感 */
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    /* 8px 間距 */
+    margin-bottom: 8px;
+}
+
+.savings-highlight-amount {
+    /* 超大數字強調 */
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    /* 品牌橙色強調 - APCA Lc 58+ 配合加粗 */
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.savings-highlight-note {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+    /* 16px 間距 */
+    margin-top: 16px;
+}
+
+/* ========================================
+   最終 CTA 區塊 (Final CTA)
+   ======================================== */
+.final-cta-section {
+    padding: var(--spacing-5xl) 0;
+    background: var(--bg-section);
+    text-align: center;
+}
+
+.final-cta-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.final-cta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-primary);
+    background: rgba(210, 105, 30, 0.1);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-xl);
+}
+
+.final-cta-badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.final-cta-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.final-cta-desc {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.final-cta-guarantees {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.final-cta-guarantee {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.final-cta-guarantee svg {
+    width: 20px;
+    height: 20px;
+    stroke: #27AE60;
+    stroke-width: 2;
+    fill: none;
+}
+
+.final-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-lg) var(--spacing-3xl);
+    background: var(--color-primary);
+    color: var(--text-light);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.final-cta-button:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.final-cta-slots {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-top: var(--spacing-lg);
+}
+
+.final-cta-slots strong {
+    color: var(--color-primary);
+}
+
+/* ========================================
+   詳細對比表格 (Detailed Comparison Table)
+   ======================================== */
+.detailed-comparison-table {
+    max-width: 900px;
+    margin: 0 auto var(--spacing-3xl);
+    overflow-x: auto;
+}
+
+.comparison-table-grid {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+}
+
+.comparison-table-grid th,
+.comparison-table-grid td {
+    padding: var(--spacing-lg) var(--spacing-xl);
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.comparison-table-grid th.compare-header {
+    background: var(--tech-titanium);
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.02em;
+}
+
+.comparison-table-grid th.compare-header.featured {
+    background: var(--color-primary);
+}
+
+.comparison-table-grid td.compare-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(210, 105, 30, 0.03);
+    font-size: var(--font-size-sm);
+}
+
+.comparison-table-grid td.compare-value {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.comparison-table-grid td.compare-value.good {
+    color: #1A5F2A;
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.comparison-table-grid td.compare-value.good strong {
+    color: #1A5F2A;
+}
+
+.comparison-table-grid td.compare-value.bad {
+    color: #8B2A2A;
+    background: rgba(231, 76, 60, 0.03);
+}
+
+.comparison-table-grid tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table-grid tbody tr:hover {
+    background: rgba(210, 105, 30, 0.02);
+}
+
+@media (max-width: 768px) {
+
+    .comparison-table-grid th,
+    .comparison-table-grid td {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-xs);
+    }
+
+    .detailed-comparison-table {
+        margin-left: calc(-1 * var(--spacing-lg));
+        margin-right: calc(-1 * var(--spacing-lg));
+        width: calc(100% + var(--spacing-lg) * 2);
+    }
+}
