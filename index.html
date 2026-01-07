@@ -1119,7 +1119,13 @@
     <script src="js/pdf-generator/sections.js"></script>
     <script src="js/pdf-generator/company-intro.js"></script>
     <script src="js/pdf-generator/index.js"></script>
-    <script src="website-analyzer.js?v=4"></script>
+    <!-- 網站分析器模組化載入 (依賴順序: config → api → ui → render-sections → render-report → index) -->
+    <script src="js/website-analyzer/config.js"></script>
+    <script src="js/website-analyzer/api.js"></script>
+    <script src="js/website-analyzer/ui.js"></script>
+    <script src="js/website-analyzer/render-sections.js"></script>
+    <script src="js/website-analyzer/render-report.js"></script>
+    <script src="js/website-analyzer/index.js"></script>
     <script src="js/hero-workflow-demo.js"></script>
     <script src="js/icons.js"></script>
     <!-- AI 成熟度測驗模組化載入 (依賴順序: questions → results → logic → index) -->
