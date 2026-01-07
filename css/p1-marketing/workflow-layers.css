@@ -1,0 +1,110 @@
+/**
+ * 分層技術展示 (Paul Roetzer - Layered Workflow)
+ * @module p1-marketing/workflow-layers
+ */
+
+.workflow-layers {
+    margin-bottom: var(--spacing-lg);
+}
+
+.workflow-layer-toggle {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.layer-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.layer-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.layer-btn.active {
+    background: var(--primary-gradient);
+    border-color: var(--color-accent);
+    color: white;
+}
+
+.workflow-simple {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.simple-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.simple-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    min-width: 100px;
+    text-align: center;
+    transition: border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.simple-step:hover {
+    border-color: rgba(210, 105, 30, 0.4);
+    background: rgba(210, 105, 30, 0.05);
+}
+
+.simple-step .step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+}
+
+.simple-step .step-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--color-accent);
+}
+
+.simple-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.simple-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: rgba(255, 255, 255, 0.4);
+}
+
+.simple-note {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}

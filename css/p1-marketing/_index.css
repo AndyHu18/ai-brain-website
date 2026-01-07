@@ -1,0 +1,25 @@
+/**
+ * P1 Marketing Optimization Styles - Main Entry
+ * 行銷 P1 優化專用樣式 - 主入口
+ * 
+ * 此檔案通過 @import 載入所有子模組
+ * 原始檔案已移動至 _archive/p1-marketing.css.deprecated
+ * 
+ * @module p1-marketing
+ * @version 2.0.0 (Refactored 2026-01-07)
+ */
+
+/* 區塊模組導入 */
+@import url('./not-for-section.css');
+@import url('./origin-story.css');
+@import url('./real-scenario.css');
+@import url('./workflow-layers.css');
+@import url('./industries.css');
+@import url('./guarantee.css');
+@import url('./voice-collection.css');
+@import url('./human-ai-boundary.css');
+@import url('./output-preview.css');
+@import url('./content-nurture.css');
+@import url('./scarcity.css');
+@import url('./maturity-quiz.css');
+@import url('./responsive.css');

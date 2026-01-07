@@ -1,0 +1,72 @@
+/**
+ * 品牌聲音採集區塊 (Voice Collection Section)
+ * @module p1-marketing/voice-collection
+ */
+
+.voice-collection-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: rgba(45, 35, 28, 0.5);
+}
+
+.voice-collection-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.voice-collection-section .section-header h2 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.voice-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.voice-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(210, 105, 30, 0.1);
+    border: 1px solid rgba(210, 105, 30, 0.2);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.voice-step:hover {
+    background: rgba(210, 105, 30, 0.15);
+    border-color: rgba(210, 105, 30, 0.4);
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    color: white;
+    font-size: var(--font-size-base);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-content h4 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.step-content p {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: var(--font-size-sm);
+    margin: 0;
+    line-height: 1.5;
+}

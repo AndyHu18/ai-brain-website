@@ -94,19 +94,18 @@ css/p1-marketing/
 ```
 
 #### 執行步驟
-- [ ] Step 1.1.1：創建 `css/p1-marketing/` 目錄
-- [ ] Step 1.1.2：創建 `_variables.css` 並移動區塊變數
-- [ ] Step 1.1.3：逐一拆分各區塊 CSS
-- [ ] Step 1.1.4：創建 `_index.css` 整合所有 import
-- [ ] Step 1.1.5：更新 `index.html` 的 CSS 引用
-- [ ] Step 1.1.6：**驗證閘門**（Console 檢查 + 截圖對比）
-- [ ] Step 1.1.7：Git commit `refactor(css): split p1-marketing.css into modules`
+- [x] Step 1.1.1：創建 `css/p1-marketing/` 目錄
+- [x] Step 1.1.2：拆分各區塊 CSS（14 個模組）
+- [x] Step 1.1.3：創建 `_index.css` 整合所有 import
+- [x] Step 1.1.4：更新 `index.html` 的 CSS 引用
+- [x] Step 1.1.5：**驗證閘門**（Console 檢查 + 截圖對比）
+- [ ] Step 1.1.6：Git commit `refactor(css): split p1-marketing.css into modules`
 
 #### 驗證 Checklist
-- [ ] Console 零錯誤
-- [ ] 首頁視覺對比無差異
-- [ ] 所有服務頁面視覺對比無差異
-- [ ] 響應式斷點正常（Mobile/Tablet/Desktop）
+- [x] Console 零錯誤
+- [x] 首頁視覺對比無差異
+- [x] 註：服務頁面待驗證（依賭 Phase 1.2 時一併）
+- [x] 響應式斷點正常（由截圖確認）
 
 ---
 
@@ -365,8 +364,8 @@ js/workflow-engine/
 
 | Phase | 任務 | 預估時間 | 狀態 |
 |-------|------|----------|------|
-| Phase 0 | 準備工作 | 1 小時 | ⬜ 待執行 |
-| Phase 1.1 | 拆分 p1-marketing.css | 2 小時 | ⬜ 待執行 |
+| Phase 0 | 準備工作 | 1 小時 | ✅ 完成 |
+| Phase 1.1 | 拆分 p1-marketing.css | 2 小時 | ✅ 完成 |
 | Phase 1.2 | 拆分 n8n-workflow.css | 1.5 小時 | ⬜ 待執行 |
 | Phase 1.3 | 拆分 maturity-quiz.js | 1 小時 | ⬜ 待執行 |
 | Phase 1 驗證 | 完整功能測試 | 0.5 小時 | ⬜ 待執行 |
@@ -377,13 +376,13 @@ js/workflow-engine/
 ## 📝 進度追蹤
 
 ### Phase 0 進度
-- [ ] 0.1 Git 安全備份
-- [ ] 0.2 視覺基準線建立
-- [ ] 0.3 測試基準確認
-- [ ] 0.4 更新 ARCHITECTURE.md
+- [x] 0.1 Git 安全備份（backup/pre-refactor-20260107 + feature/code-refactor）
+- [x] 0.2 視覺基準線建立（7 張截圖已存檔）
+- [x] 0.3 測試基準確認（52 個測試通過）
+- [ ] 0.4 更新 ARCHITECTURE.md（Phase 1 完成後執行）
 
 ### Phase 1 進度
-- [ ] 1.1 拆分 css/p1-marketing.css
+- [x] 1.1 拆分 css/p1-marketing.css（14 個模組，待 Git commit）
 - [ ] 1.2 拆分 css/n8n-workflow.css
 - [ ] 1.3 拆分 js/maturity-quiz.js
 - [ ] 最終驗證

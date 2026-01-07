@@ -1,0 +1,67 @@
+/**
+ * 響應式調整 (Responsive Overrides)
+ * @module p1-marketing/responsive
+ */
+
+@media (max-width: 768px) {
+    .not-for-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .origin-story-card {
+        padding: var(--spacing-lg);
+    }
+
+    .origin-story-card::before {
+        font-size: 3rem;
+        top: -10px;
+    }
+
+    .simple-flow {
+        flex-direction: column;
+    }
+
+    .simple-arrow {
+        transform: rotate(90deg);
+    }
+
+    .boundary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .guarantee-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nurturing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quiz-container {
+        padding: var(--spacing-lg);
+    }
+
+    .result-recommendation .btn {
+        width: 100%;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .industries-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guarantee-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .layer-btn {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-xs);
+    }
+}

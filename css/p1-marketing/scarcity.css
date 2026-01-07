@@ -1,0 +1,128 @@
+/**
+ * 動態稀缺性 (Eddie Shleyner - Dynamic Scarcity)
+ * @module p1-marketing/scarcity
+ */
+
+.scarcity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.scarcity-badge .scarcity-icon {
+    font-size: 0.9rem;
+}
+
+.scarcity-badge [data-scarcity-slots] {
+    font-weight: 900;
+    color: #F87171;
+    min-width: 1.5em;
+    text-align: center;
+}
+
+/* 緊急度等級樣式 */
+.scarcity-normal {
+    color: #F59E0B !important;
+}
+
+.scarcity-low {
+    color: #F87171 !important;
+    animation: number-pulse 1s ease-in-out infinite;
+}
+
+.scarcity-critical {
+    color: #EF4444 !important;
+    animation: number-pulse 0.5s ease-in-out infinite;
+}
+
+@keyframes number-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 12px 2px rgba(239, 68, 68, 0.3);
+    }
+}
+
+/* 稀缺性強調區塊 */
+.scarcity-section {
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg,
+            rgba(239, 68, 68, 0.1) 0%,
+            rgba(45, 35, 28, 0.9) 100%);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    margin: var(--spacing-lg) 0;
+}
+
+.scarcity-section h3 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.scarcity-section .scarcity-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #F87171;
+    line-height: 1.2;
+}
+
+.scarcity-section .scarcity-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-size-base);
+}
+
+.scarcity-section .scarcity-reason {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-sm);
+}
+
+/* 分層技術展示 (Paul Roetzer - Layered Workflow Display) */
+.layered-workflow-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: rgba(45, 35, 28, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.layered-workflow-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.layered-workflow-section .section-header h3 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}

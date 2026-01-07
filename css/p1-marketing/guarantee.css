@@ -1,0 +1,76 @@
+/**
+ * 產出保證區塊 (Output Guarantee Section)
+ * @module p1-marketing/guarantee
+ */
+
+.output-guarantee-section {
+    padding: var(--spacing-xl) var(--spacing-lg);
+    background: linear-gradient(180deg,
+            rgba(39, 174, 96, 0.05) 0%,
+            rgba(45, 35, 28, 0.8) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.output-guarantee-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.output-guarantee-section .section-header h2 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.output-guarantee-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+.guarantee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    max-width: 700px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.guarantee-item {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: var(--radius-lg);
+}
+
+.guarantee-number {
+    display: block;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: #4ADE80;
+    line-height: 1.2;
+}
+
+.guarantee-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-weight: 500;
+    margin-top: var(--spacing-xs);
+}
+
+.guarantee-badge {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: rgba(39, 174, 96, 0.2);
+    border: 2px solid rgba(39, 174, 96, 0.5);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.guarantee-badge strong {
+    color: #4ADE80;
+    font-size: var(--font-size-base);
+}

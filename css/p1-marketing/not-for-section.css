@@ -1,0 +1,107 @@
+/**
+ * 負面過濾區塊 (Daniel Priestley - Not For Section)
+ * @module p1-marketing/not-for-section
+ */
+
+.not-for-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background: linear-gradient(180deg,
+            rgba(139, 69, 19, 0.1) 0%,
+            rgba(45, 35, 28, 0.95) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.not-for-section .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.not-for-section .section-header h2 {
+    color: #F59E0B;
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+.not-for-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: var(--font-size-base);
+}
+
+.not-for-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.not-for-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.not-for-item:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.not-for-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.2);
+    border-radius: 50%;
+    color: #EF4444;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.not-for-content h4 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.not-for-content p {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.not-for-alternative {
+    text-align: center;
+    padding: var(--spacing-md);
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: var(--radius-lg);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.not-for-alternative p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-base);
+    margin: 0;
+}
+
+.not-for-alternative a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.not-for-alternative a:hover {
+    color: var(--color-primary);
+}

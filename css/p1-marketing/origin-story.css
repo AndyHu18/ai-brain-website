@@ -1,0 +1,82 @@
+/**
+ * 嚮導起源故事 (Donald Miller - Origin Story)
+ * @module p1-marketing/origin-story
+ */
+
+.origin-story-section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+}
+
+.origin-story-card {
+    max-width: 700px;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg,
+            rgba(210, 105, 30, 0.15) 0%,
+            rgba(45, 35, 28, 0.9) 100%);
+    border: 1px solid rgba(210, 105, 30, 0.3);
+    border-radius: var(--radius-xl);
+    position: relative;
+}
+
+.origin-story-card::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 5rem;
+    color: rgba(210, 105, 30, 0.3);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.origin-story-card h2 {
+    color: var(--color-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+.story-content {
+    text-align: center;
+}
+
+.story-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.story-observation {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: var(--font-size-sm) !important;
+}
+
+.story-problem {
+    font-size: var(--font-size-lg) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.story-insight {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.story-decision {
+    margin-top: var(--spacing-lg) !important;
+}
+
+.story-decision strong {
+    color: var(--color-accent);
+}
+
+.story-promise {
+    background: rgba(39, 174, 96, 0.15);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 3px solid #27AE60;
+    text-align: left;
+}
