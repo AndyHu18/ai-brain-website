@@ -318,7 +318,12 @@
             resultPreview: { type: 'line', content: { icon: 'AI', sender: 'AI 客服', message: '您好！這款商品目前有現貨，規格有 S/M/L 三種尺寸。需要幫您下單嗎？', link: false } }
         };
     </script>
-    <script src="../js/workflow-engine.js"></script>
+    <!-- 工作流引擎模組化載入 -->
+    <script src="../js/workflow-engine/config.js"></script>
+    <script src="../js/workflow-engine/icons.js"></script>
+    <script src="../js/workflow-engine/previews.js"></script>
+    <script src="../js/workflow-engine/engine.js"></script>
+    <script src="../js/workflow-engine/index.js"></script>
     <script>
         const video = document.getElementById('heroVideo');
         const soundToggle = document.getElementById('soundToggle');
