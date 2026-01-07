@@ -368,7 +368,10 @@ js/workflow-engine/
 | Phase 1.2 | 拆分 n8n-workflow.css | 1.5 小時 | ✅ 完成 |
 | Phase 1.3 | 拆分 maturity-quiz.js | 1 小時 | ✅ 完成 |
 | Phase 1 驗證 | 完整功能測試 | 0.5 小時 | ✅ 完成 |
-| **合計 Phase 0-1** | | **6 小時** | |
+| Phase 2.1 | 拆分 pdf-generator.js | 0.5 小時 | ✅ 完成 |
+| Phase 2.2 | 拆分 website-analyzer.js | 0.5 小時 | ✅ 完成 |
+| Phase 2.3 | 拆分 workflow-engine.js | 0.5 小時 | ✅ 完成 |
+| **合計 Phase 0-2** | | **7.5 小時** | |
 
 ---
 
@@ -387,10 +390,10 @@ js/workflow-engine/
 - [x] 最終驗證（首頁 + 3 個服務頁面）
 
 ### Phase 2 進度（觸發時勾選）
-- [ ] 2.1 拆分 pdf-generator.js
-- [ ] 2.2 拆分 website-analyzer.js
-- [ ] 2.3 拆分 workflow-engine.js
-- [ ] 2.4 拆分 chatbot-ui.js
+- [x] 2.1 拆分 pdf-generator.js（7 個模組）
+- [x] 2.2 拆分 website-analyzer.js（6 個模組）
+- [x] 2.3 拆分 workflow-engine.js（5 個模組）
+- [x] 2.4 chatbot-ui.js（245 行 - 已評估，功能內聚性高，保留不拆分）
 
 ### Phase 3 進度（評估後勾選）
 - [ ] 3.1 index.html 模組化方案選定
