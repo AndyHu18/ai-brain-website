@@ -23,9 +23,9 @@
  * ⚠️ 生產環境部署時，請更新 WORKER_URL 並清除 localStorage
  */
 const API_CONFIG = {
-    // Cloudflare Worker URL（生產環境使用）
-    // 格式：https://ai-brain-api-proxy.{your-subdomain}.workers.dev
-    WORKER_URL: 'https://ai-brain-api-proxy.your-subdomain.workers.dev',
+    // Vercel Serverless Function（生產環境使用相對路徑）
+    // 留空表示使用相對路徑 /api/chat
+    WORKER_URL: '',
 
     // 直接 Gemini API URL（開發環境使用）
     GEMINI_API_URL: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
@@ -84,9 +84,9 @@ AI 智能大腦公司是一家專注於企業級 AI 導入的技術服務商。�
  * @returns {boolean} 是否使用開發模式（直接調用 Gemini API）
  */
 function isDevMode() {
-    const hasDevKey = !!localStorage.getItem('GEMINI_API_KEY');
-    const isPlaceholderUrl = API_CONFIG.WORKER_URL.includes('your-subdomain');
-    return hasDevKey || isPlaceholderUrl;
+    // 只有當 localStorage 有 API Key 時才是開發模式
+    // 生產環境使用 Vercel Serverless Function（WORKER_URL 為空 = 使用相對路徑）
+    return !!localStorage.getItem('GEMINI_API_KEY');
 }
 
 /**
