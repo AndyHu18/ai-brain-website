@@ -1111,7 +1111,14 @@
     <script src="chatbot-core.js?v=2"></script>
     <script src="chatbot-ui.js?v=2"></script>
     <script src="chatbot-hints.js?v=2"></script>
-    <script src="pdf-generator.js?v=2"></script>
+    <!-- PDF 生成器模組化載入 (依賴順序: config → dependencies → utils → cover-page → sections → company-intro → index) -->
+    <script src="js/pdf-generator/config.js"></script>
+    <script src="js/pdf-generator/dependencies.js"></script>
+    <script src="js/pdf-generator/utils.js"></script>
+    <script src="js/pdf-generator/cover-page.js"></script>
+    <script src="js/pdf-generator/sections.js"></script>
+    <script src="js/pdf-generator/company-intro.js"></script>
+    <script src="js/pdf-generator/index.js"></script>
     <script src="website-analyzer.js?v=4"></script>
     <script src="js/hero-workflow-demo.js"></script>
     <script src="js/icons.js"></script>
