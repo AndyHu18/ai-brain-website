@@ -1,0 +1,120 @@
+/**
+ * n8n 工作流 - Reset 與基礎樣式
+ * @module n8n-workflow/base-reset
+ */
+
+/* === Reset & Base === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* === 背景網格效果 - 暖色調 === */
+.grid-background {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(200, 170, 130, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 170, 130, 0.2) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* === 粒子效果 === */
+#particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--warm-orange);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float-particle 15s infinite linear;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-10vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* === 按鈕樣式 === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--warm-orange), var(--warm-gold));
+    color: white;
+    box-shadow: var(--shadow-glow-orange);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(230, 126, 34, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: var(--glass-highlight);
+    border-color: var(--warm-orange);
+}

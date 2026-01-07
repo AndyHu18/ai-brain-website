@@ -1,0 +1,69 @@
+/**
+ * n8n 工作流 - 狀態列
+ * @module n8n-workflow/status-bar
+ */
+
+/* === 狀態列 === */
+.status-bar {
+    display: flex;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(15px);
+    flex-wrap: wrap;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.status-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+
+.status-dot.idle {
+    background: var(--status-idle);
+    animation: none;
+}
+
+.status-dot.running {
+    background: var(--status-running);
+}
+
+.status-dot.success {
+    background: var(--status-success);
+    animation: none;
+}
+
+.status-dot.error {
+    background: var(--status-error);
+    animation: none;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.2);
+    }
+}

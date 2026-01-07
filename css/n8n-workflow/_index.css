@@ -1,0 +1,20 @@
+/**
+ * AI 服務方案視覺模擬器 - 主入口
+ * n8n 工作流視覺化模組化 CSS
+ * 
+ * @module n8n-workflow
+ * @version 2.0.0 (Refactored 2026-01-07)
+ */
+
+/* 區塊模組導入 */
+@import url('./variables.css');
+@import url('./base-reset.css');
+@import url('./container-header.css');
+@import url('./intro-section.css');
+@import url('./status-bar.css');
+@import url('./canvas.css');
+@import url('./nodes.css');
+@import url('./connections.css');
+@import url('./bubbles.css');
+@import url('./result-preview.css');
+@import url('./responsive.css');

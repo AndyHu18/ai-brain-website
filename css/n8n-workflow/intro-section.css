@@ -1,0 +1,117 @@
+/**
+ * n8n 工作流 - 介紹區塊
+ * @module n8n-workflow/intro-section
+ */
+
+/* === 老闆看得懂的介紹區域 === */
+.intro-section {
+    background: linear-gradient(135deg, #FFF9F0, #FFF5E6);
+    border: 2px solid rgba(230, 126, 34, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.intro-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.intro-header h2 {
+    color: #3D2C1E;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.intro-subtitle {
+    color: #6B5344;
+    font-size: 1.2rem;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.benefit-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-3px);
+}
+
+.benefit-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.benefit-card h3 {
+    color: var(--warm-orange);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.benefit-card p {
+    color: #6B5344;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* === 流程說明區 === */
+.flow-explanation {
+    background: #FFFCF8;
+    border: 1px solid rgba(200, 170, 130, 0.4);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+
+.flow-explanation h3 {
+    color: #3D2C1E;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+}
+
+.node-explanations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.node-exp {
+    background: white;
+    border: 1px solid rgba(200, 170, 130, 0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 1rem;
+    color: #3D2C1E;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.exp-num {
+    background: var(--warm-orange);
+    color: white;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.node-exp strong {
+    color: var(--warm-orange);
+}
