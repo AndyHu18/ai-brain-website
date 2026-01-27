@@ -6,7 +6,7 @@ from google.genai import types
 import time
 from pathlib import Path
 
-API_KEY = 'AIzaSyApMiwmJpbo0vX58K_n4sfCN6bqBDDd4Tk'
+API_KEY = 'AIzaSyDSqc62QRFNF2X0Xb2ZUg2CFjc1g-hEi4Y'
 OUTPUT_DIR = Path(__file__).parent.parent / "assets" / "videos" / "services"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 

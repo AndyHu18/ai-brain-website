@@ -25,10 +25,10 @@ from google import genai
 from google.genai import types
 
 # API Key (主要)
-API_KEY = "AIzaSyApMiwmJpbo0vX58K_n4sfCN6bqBDDd4Tk"
+API_KEY = "AIzaSyDSqc62QRFNF2X0Xb2ZUg2CFjc1g-hEi4Y"
 # 備用 API Key
-BACKUP_API_KEY = "AIzaSyAL0_cJPEpN9hWBNDfFcgfbrkjvbWI01ks"
-BACKUP_API_KEY_2 = "AIzaSyACKhhmtMMjdOrjP1o7H9ZoFl5vSt_Wxkc"
+BACKUP_API_KEY = "AIzaSyBTEjyrvCQ6ZgSELcb81pxGQMCfYlu1Jy8"
+BACKUP_API_KEY_2 = "AIzaSyDXJ8_LEsUVDKdX2y3VrvA2YhI2MVN30V44"
 
 # 輸出設定
 OUTPUT_DIR = Path("../assets/videos")

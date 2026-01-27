@@ -19,7 +19,7 @@ if sys.stdout is not None:
 # ============================================================
 # Configuration
 # ============================================================
-API_KEY = "AIzaSyAL0_cJPEpN9hWBNDfFcgfbrkjvbWI01ks"  # Backup key (main key quota exceeded)
+API_KEY = "AIzaSyDSqc62QRFNF2X0Xb2ZUg2CFjc1g-hEi4Y"  # Backup key (main key quota exceeded)
 OUTPUT_DIR = Path(__file__).parent.parent / "assets" / "videos" / "services"
 MODEL = "veo-3.1-fast-generate-preview"
 

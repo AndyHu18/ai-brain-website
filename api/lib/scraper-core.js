@@ -156,12 +156,98 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
     return lastError;
 }
 
+// ============ 智能調度器 ============
+
+const { fetchWithBrowserless, isBrowserlessAvailable } = require('./scraper-browserless');
+
+/** 內容最小有效長度（觸發 Browserless 的閾值） */
+const MIN_CONTENT_FOR_ANALYSIS = 500;
+
+/**
+ * 智能抓取調度器
+ * 策略：先嘗試快速 HTTP，失敗或內容不足時自動切換到 Browserless
+ * 
+ * @param {string} url - 目標網址
+ * @param {Object} options - 選項
+ * @param {boolean} options.forceBrowserless - 強制使用 Browserless
+ * @returns {Promise<{ok: boolean, html?: string, source?: string, error?: string}>}
+ */
+async function smartScrape(url, options = {}) {
+    const startTime = Date.now();
+    const normalizedUrl = normalizeUrl(url);
+
+    console.log('📍[SmartScrape] 開始智能抓取:', normalizedUrl);
+
+    // 驗證 URL
+    if (!isValidUrl(normalizedUrl)) {
+        return { ok: false, error: 'INVALID_URL', message: '無效的網址格式' };
+    }
+
+    // 策略 1: 快速 HTTP（除非強制使用 Browserless）
+    if (!options.forceBrowserless) {
+        console.log('📍[SmartScrape] 嘗試快速 HTTP 抓取...');
+        const httpResult = await fetchWithRetry(normalizedUrl);
+
+        if (httpResult.ok && httpResult.html) {
+            // 檢查內容是否足夠
+            const textContent = httpResult.html
+                .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+                .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+                .replace(/<[^>]+>/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            if (textContent.length >= MIN_CONTENT_FOR_ANALYSIS) {
+                console.log('📍[SmartScrape] HTTP 成功，內容足夠:', textContent.length, '字元');
+                return {
+                    ok: true,
+                    html: httpResult.html,
+                    source: 'http',
+                    duration: Date.now() - startTime
+                };
+            }
+
+            console.log('📍[SmartScrape] HTTP 成功但內容不足:', textContent.length, '字元，切換到 Browserless');
+        } else {
+            console.log('📍[SmartScrape] HTTP 失敗:', httpResult.errorMessage || '未知錯誤');
+        }
+    }
+
+    // 策略 2: Browserless 無頭瀏覽器
+    if (isBrowserlessAvailable()) {
+        console.log('📍[SmartScrape] 使用 Browserless 無頭瀏覽器...');
+        const apiKey = process.env.BROWSERLESS_API_KEY;
+        const browserResult = await fetchWithBrowserless(normalizedUrl, apiKey);
+
+        if (browserResult.ok) {
+            console.log('📍[SmartScrape] Browserless 成功');
+            return {
+                ...browserResult,
+                duration: Date.now() - startTime
+            };
+        }
+
+        console.log('📍[SmartScrape] Browserless 失敗:', browserResult.message);
+        return browserResult;
+    }
+
+    // 無 Browserless 可用，返回 HTTP 錯誤
+    console.log('📍[SmartScrape] Browserless 不可用，返回 HTTP 結果');
+    return {
+        ok: false,
+        error: 'CONTENT_INSUFFICIENT',
+        message: '網站內容不足或為 JavaScript 渲染網站，建議設定 Browserless API Key'
+    };
+}
+
 // ============ 匯出 ============
 
 module.exports = {
     isValidUrl,
     normalizeUrl,
     fetchWithRetry,
+    smartScrape,
     REQUEST_TIMEOUT,
-    MAX_RETRIES
+    MAX_RETRIES,
+    MIN_CONTENT_FOR_ANALYSIS
 };

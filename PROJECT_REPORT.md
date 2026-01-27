@@ -451,7 +451,7 @@ npx wrangler deploy
 ## 十一、聯繫資訊
 
 - **專案主頁**: [https://ai-brain-website.vercel.app](https://ai-brain-website.vercel.app)
-- **分析工具**: [https://ai-website-analyzer.vercel.app](https://ai-website-analyzer.vercel.app)
+- **分析工具**: [https://ai-website-analyzer-beta.vercel.app](https://ai-website-analyzer-beta.vercel.app)
 
 ---
 

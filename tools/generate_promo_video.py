@@ -12,7 +12,7 @@ import os
 from google import genai
 
 # === 📍 配置 ===
-API_KEY = "AIzaSyAL0_cJPEpN9hWBNDfFcgfbrkjvbWI01ks"  # 備用 API Key
+API_KEY = "AIzaSyDSqc62QRFNF2X0Xb2ZUg2CFjc1g-hEi4Y"  # 備用 API Key
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "assets", "videos")
 
 # === 🎬 影片提示詞設計 ===

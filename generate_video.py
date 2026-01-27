@@ -9,7 +9,7 @@ from google import genai
 from google.genai import types
 
 # API Key
-API_KEY = "AIzaSyApMiwmJpbo0vX58K_n4sfCN6bqBDDd4Tk"
+API_KEY = "AIzaSyDSqc62QRFNF2X0Xb2ZUg2CFjc1g-hEi4Y"
 
 # 初始化客戶端
 client = genai.Client(api_key=API_KEY)
