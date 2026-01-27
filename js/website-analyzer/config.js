@@ -4,8 +4,8 @@
  */
 
 const WebsiteAnalyzerConfig = {
-    // API 端點
-    API_URL: 'https://ai-website-analyzer-andyhu18s-projects.vercel.app/api/analyze',
+    // API 端點 - 使用本地 Serverless Function
+    API_URL: '/api/analyze',
 
     // 重試設定
     MAX_RETRIES: 2,
@@ -28,7 +28,7 @@ const WebsiteAnalyzerConfig = {
     ],
 
     // 完整分析器 URL
-    FULL_ANALYZER_URL: 'https://ai-website-analyzer-andyhu18s-projects.vercel.app'
+    FULL_ANALYZER_URL: 'https://ai-website-analyzer-beta.vercel.app'
 };
 
 // 暴露到全域
