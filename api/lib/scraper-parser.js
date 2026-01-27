@@ -5,7 +5,7 @@
  * @usedBy  : ['api/analyze.js']
  */
 
-const { isValidUrl, normalizeUrl, smartScrape } = require('./scraper-core');
+const { isValidUrl, normalizeUrl, fetchWithRetry } = require('./scraper-core');
 
 // ============ 常數設定 ============
 
@@ -166,26 +166,33 @@ function extractServiceBlocks(html) {
  * @param {string} url - 目標網址
  * @returns {Promise<{ok: boolean, data?: object, error?: string, message?: string}>}
  */
-async function scrapeWebsite(url, options = {}) {
+async function scrapeWebsite(url) {
     const startTime = Date.now();
     console.log('📍[Scraper] 開始抓取:', url);
 
-    // 使用智能調度器抓取（自動選擇 HTTP 或 Browserless）
-    const fetchResult = await smartScrape(url, options);
+    // URL 正規化與驗證
+    const normalizedUrl = normalizeUrl(url);
+    console.log('📍[Scraper] 正規化 URL:', normalizedUrl);
+
+    if (!isValidUrl(normalizedUrl)) {
+        return { ok: false, error: 'INVALID_URL', message: '無效的網址格式' };
+    }
+
+    // 執行請求
+    const fetchResult = await fetchWithRetry(normalizedUrl);
 
     if (!fetchResult.ok || !fetchResult.html) {
-        console.error('📍[Scraper] 抓取失敗:', fetchResult.message);
+        console.error('📍[Scraper] 抓取失敗:', fetchResult.errorMessage);
         return {
             ok: false,
-            error: fetchResult.error || 'FETCH_FAILED',
-            message: fetchResult.message || '無法抓取網站'
+            error: fetchResult.errorType || 'FETCH_FAILED',
+            message: fetchResult.errorMessage || '無法抓取網站'
         };
     }
 
     const html = fetchResult.html;
     const fetchDuration = Date.now() - startTime;
-    const source = fetchResult.source || 'unknown';
-    console.log(`📍[Scraper] 取得 HTML 長度: ${html.length} (${source}, ${fetchDuration}ms)`);
+    console.log('📍[Scraper] 取得 HTML 長度:', html.length, `(${fetchDuration}ms)`);
 
     // 解析內容
     const textContent = extractTextContent(html).slice(0, MAX_TEXT_LENGTH);
