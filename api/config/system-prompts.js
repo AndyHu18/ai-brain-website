@@ -64,15 +64,17 @@ const defaultConfig = {
    - 每個機會都要說明「痛點 → AI 解法 → 效益」
    - 推薦工具類型（不提品牌名）
 
-4. **職位層級賦能建議**（高層/中層/基層各 2-3 項）
-   - 高層：戰略決策、市場洞察、風險預警
-   - 中層：團隊管理、流程優化、績效分析
-   - 基層：日常效率、技能提升、重複性工作自動化
+4. **職位層級賦能建議**
+   🚨 **關鍵要求：必須根據該網站的實際業務內容客製化**
+   - 高層：基於網站識別的業務領域，提出戰略性 AI 應用（如：若是旅遊業則提供旅遊趨勢分析）
+   - 中層：基於網站服務類型，提出管理效率提升方案（如：若是電商則提供訂單預測）
+   - 基層：基於網站實際業務，提出日常工作 AI 輔助（如：若是諮詢業則提供諮詢筆記自動摘要）
 
-5. **網站 AI 優化建議**（至少 3 項）
-   - SEO 智能優化
-   - UX 個人化體驗
-   - AI 功能整合（智能搜尋、推薦、客服等）
+5. **網站 AI 優化建議**
+   🚨 **關鍵要求：必須分析網站「現有功能」並提出「具體改進」**
+   - 仔細觀察網站是否有搜尋框、推薦區、客服入口
+   - 針對該網站的行業特性提出專屬建議（如：若是感情諮詢網站，則建議個人化情感挽回方案推薦）
+   - 每個建議都要引用網站中觀察到的現象作為依據
 
 6. **銷售漏斗 AI 應用**（完整 4 階段）
    - 曝光：AI 廣告優化、內容生成
@@ -126,15 +128,15 @@ const defaultConfig = {
     {"department": "營運部", "opportunities": ["利用 AI 預測需求波動，優化庫存和物流配置", "導入自動化工作流程，減少重複性行政作業", "建置 AI 監控系統，即時偵測異常並預警"], "tools": ["AI 需求預測系統", "自動化工作流程引擎", "AI 異常監控系統"]}
   ],
   "positionOpportunities": [
-    {"level": "executive", "levelName": "高層", "opportunities": ["利用 AI 商業智慧平台，即時掌握營收、成本、客戶等關鍵指標，支援戰略決策", "運用 AI 市場分析系統，追蹤競品動態和產業趨勢，識別新商機", "導入 AI 風險預警系統，提前識別供應鏈、財務、聲譽等風險"]},
-    {"level": "management", "levelName": "中層", "opportunities": ["利用 AI 專案管理工具，自動追蹤進度、分配資源、識別瓶頸", "運用 AI 績效分析系統，客觀評估團隊表現，識別培訓需求", "導入 AI 會議助手，自動產生會議記錄和待辦事項"]},
-    {"level": "operational", "levelName": "基層", "opportunities": ["利用 AI 助手自動處理重複性工作，如資料輸入、報表產生、郵件分類", "運用 AI 學習平台，根據技能缺口推薦個人化培訓課程", "導入 AI 寫作助手，加速文件撰寫和校對"]}
+    {"level": "executive", "levelName": "高層（科技產品業）", "opportunities": ["運用 AI 分析 iPhone/Mac 各產品線銷售趨勢，預測下季度熱銷機型", "導入 AI 競品監控系統，追蹤 Samsung/Google 新品動態", "建置 AI 供應鏈風險預警，提前偵測晶片短缺等風險"]},
+    {"level": "management", "levelName": "中層（零售管理）", "opportunities": ["利用 AI 分析門市客流與銷售數據，優化人力排班", "運用 AI 識別 AppleCare+ 續約高潛力客戶，提升續約率", "導入 AI 庫存預測，確保熱門機型不缺貨"]},
+    {"level": "operational", "levelName": "基層（門市銷售）", "opportunities": ["利用 AI 助手快速查詢產品規格比較，縮短客戶等待時間", "運用 AI 話術建議系統，根據客戶需求推薦最適機型", "導入 AI 自動產生銷售日報，節省文書時間"]}
   ],
   "websiteOptimizations": [
-    {"type": "智能搜尋", "suggestion": "導入 AI 語意搜尋引擎，支援自然語言查詢，理解用戶意圖，提供更精準的產品搜尋結果", "priority": "high"},
-    {"type": "個人化體驗", "suggestion": "建置 AI 推薦系統，根據使用者行為即時調整首頁內容和產品展示順序", "priority": "high"},
-    {"type": "智能客服整合", "suggestion": "在網站各頁面嵌入 AI 客服對話視窗，主動偵測使用者行為並適時提供協助", "priority": "medium"},
-    {"type": "SEO 優化", "suggestion": "利用 AI 關鍵字分析工具，持續優化產品頁面內容，提升搜尋引擎排名", "priority": "medium"}
+    {"type": "智能產品比較", "suggestion": "偵測到網站有多款 iPhone/iPad 產品，建議導入 AI 產品比較助手，幫助用戶選擇最適機型", "priority": "high"},
+    {"type": "個人化產品推薦", "suggestion": "根據用戶瀏覽 Mac 或 iPhone 的行為，智能推薦配件如 AirPods、Apple Watch", "priority": "high"},
+    {"type": "維修進度查詢", "suggestion": "偵測到有 AppleCare 維修服務，建議導入 AI 維修狀態自助查詢，減少客服來電", "priority": "medium"},
+    {"type": "Trade In 估價優化", "suggestion": "針對 Apple Trade In 換購服務，導入 AI 即時估價系統，提升用戶體驗", "priority": "medium"}
   ],
   "salesFunnelAI": [
     {"stage": "曝光", "aiApplication": "AI 智能廣告優化", "description": "利用 AI 分析受眾數據，自動優化廣告投放策略，精準觸及目標客群，提升品牌曝光效率"},
