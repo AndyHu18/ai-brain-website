@@ -48,6 +48,56 @@ function extractTextContent(html) {
 }
 
 /**
+ * 從 Markdown 內容中提取標題（#, ##, ###）
+ */
+function extractMarkdownHeadings(markdown) {
+    const headings = [];
+    const lines = markdown.split('\n');
+
+    for (const line of lines) {
+        const match = line.match(/^(#{1,3})\s+(.+)/);
+        if (match) {
+            const level = match[1].length;
+            const text = match[2].trim();
+            if (text.length > 0 && text.length < 200) {
+                headings.push(`H${level}: ${text}`);
+            }
+        }
+    }
+
+    // 最多取 20 個標題
+    return headings.slice(0, 20);
+}
+
+/**
+ * 從 Markdown 內容中識別可能的服務/產品區塊
+ */
+function extractMarkdownServiceBlocks(markdown) {
+    const services = [];
+    const lines = markdown.split('\n');
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        // 找到二級或三級標題
+        const match = line.match(/^#{2,3}\s+(.+)/);
+        if (match) {
+            const title = match[1].trim();
+            // 如果標題像是服務/產品名稱（不是通用詞）
+            if (title.length > 2 && title.length < 100 &&
+                !title.match(/^(home|about|contact|privacy|terms|menu|navigation)/i)) {
+                // 取得後面 2 行作為描述
+                const desc = lines.slice(i + 1, i + 3).join(' ').slice(0, 150);
+                if (desc.length > 10) {
+                    services.push(`${title}: ${desc}`);
+                }
+            }
+        }
+    }
+
+    return services.slice(0, 10);
+}
+
+/**
  * 提取 meta 標籤內容
  */
 function extractMeta(html, name) {
@@ -229,14 +279,18 @@ async function scrapeWebsite(url) {
     // 截取到最大長度
     const textContent = allContent.slice(0, MAX_TEXT_LENGTH);
 
+    // 從 Markdown 提取結構化資訊（如果是 Jina 來源）
+    const headings = source === 'jina' ? extractMarkdownHeadings(allContent) : [];
+    const serviceBlocks = source === 'jina' ? extractMarkdownServiceBlocks(allContent) : [];
+
     const content = {
         url: normalizedUrl,
         title: mainResult.title || '未知網站',
         description: '',
         textContent,
         navigation: [],
-        headings: [],
-        serviceBlocks: [],
+        headings: headings,
+        serviceBlocks: serviceBlocks,
         fetchedAt: new Date().toISOString(),
         source: source,
         subPagesCount: subPagesData.length
@@ -245,6 +299,8 @@ async function scrapeWebsite(url) {
     console.log('📍[Scraper] 解析完成:', {
         title: content.title,
         textLength: textContent.length,
+        headingsCount: headings.length,
+        serviceBlocksCount: serviceBlocks.length,
         source: source,
         subPages: subPagesData.length
     });

@@ -28,6 +28,16 @@ const API_RETRY_DELAY = 2000;
 function buildFullPrompt(content, config) {
     const systemPrompt = buildAnalysisPrompt(config);
 
+    // 診斷日誌：記錄實際傳入 AI 的資料
+    console.log('📍[Analyzer] Prompt 資料診斷:', {
+        textContentLength: content.textContent?.length || 0,
+        headingsCount: content.headings?.length || 0,
+        navigationCount: content.navigation?.length || 0,
+        serviceBlocksCount: content.serviceBlocks?.length || 0,
+        source: content.source || 'unknown',
+        subPagesCount: content.subPagesCount || 0
+    });
+
     const headings = content.headings || [];
     const serviceBlocks = content.serviceBlocks || [];
 
