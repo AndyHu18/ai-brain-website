@@ -151,9 +151,9 @@ async function callGeminiAPI(prompt, apiKey, retries = MAX_API_RETRIES) {
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: prompt }] }],
                     generationConfig: {
-                        temperature: 0.4,
-                        maxOutputTokens: 8192,
-                        topP: 0.8,
+                        temperature: 0.3,
+                        maxOutputTokens: 16384,
+                        topP: 0.85,
                         topK: 40
                     }
                 })
