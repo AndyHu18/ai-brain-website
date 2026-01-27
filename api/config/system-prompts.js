@@ -8,11 +8,11 @@
 // ============ 預設 Prompt 配置 ============
 
 const defaultConfig = {
-    /**
-     * 分析提示詞 - 核心商業分析指導
-     * 注意：禁止提及特定 AI 工具名稱（引導諮詢）
-     */
-    analysisPrompt: `你是一位專業的 AI 商業顧問，擁有 10 年以上的企業數位轉型與 AI 導入經驗。
+  /**
+   * 分析提示詞 - 核心商業分析指導
+   * 注意：禁止提及特定 AI 工具名稱（引導諮詢）
+   */
+  analysisPrompt: `你是一位專業的 AI 商業顧問，擁有 10 年以上的企業數位轉型與 AI 導入經驗。
 
 你的任務是根據【網站資訊】區塊提供的實際內容，生成一份精準的「AI 賦能報告」。
 
@@ -40,12 +40,20 @@ const defaultConfig = {
    - ✅ 正確：「建議導入客製化智能客服系統，可大幅提升服務效率」
    - ❌ 錯誤：「使用 ChatGPT 就可以做到」
 
-6. **如無法確定則留空**：資訊不足時，該欄位返回空陣列 []，絕對不要猜測`,
+6. **如無法確定則留空**：資訊不足時，該欄位返回空陣列 []，絕對不要猜測
 
-    /**
-     * 範例提示詞 - Few-Shot Learning
-     */
-    examplesPrompt: `
+7. **🔴 必須生成完整 6 大區塊**：無論網站大小，以下區塊全部必填（不可為空陣列）：
+   - services: 至少 3 項服務
+   - aiOpportunities: 至少 3 項 AI 機會  
+   - departmentInsights: 至少 3 個部門（如：行銷部、業務部、客服部、營運部）
+   - positionOpportunities: 必須包含 3 個層級（executive/高層、management/中層、operational/基層）
+   - websiteOptimizations: 至少 2 項優化建議
+   - salesFunnelAI: 必須包含 4 個階段（曝光、興趣、考慮、購買）`,
+
+  /**
+   * 範例提示詞 - Few-Shot Learning
+   */
+  examplesPrompt: `
 ═══════════════════════════════════════════════════════════════
 【輸出範例 - Few-Shot Learning】
 ═══════════════════════════════════════════════════════════════
@@ -85,25 +93,25 @@ const defaultConfig = {
  * 合併自定義配置
  */
 function mergeConfig(customConfig) {
-    if (!customConfig) return defaultConfig;
-    return {
-        ...defaultConfig,
-        ...customConfig
-    };
+  if (!customConfig) return defaultConfig;
+  return {
+    ...defaultConfig,
+    ...customConfig
+  };
 }
 
 /**
  * 建構完整分析提示詞
  */
 function buildAnalysisPrompt(customConfig) {
-    const config = mergeConfig(customConfig);
-    return config.analysisPrompt + '\n' + config.examplesPrompt;
+  const config = mergeConfig(customConfig);
+  return config.analysisPrompt + '\n' + config.examplesPrompt;
 }
 
 // ============ 匯出 ============
 
 module.exports = {
-    defaultConfig,
-    mergeConfig,
-    buildAnalysisPrompt
+  defaultConfig,
+  mergeConfig,
+  buildAnalysisPrompt
 };

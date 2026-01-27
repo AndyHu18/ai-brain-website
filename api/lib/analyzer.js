@@ -62,18 +62,28 @@ ${contentText}
 【輸出格式】
 ═══════════════════════════════════════════════════════════════
 
-請以 JSON 格式輸出，結構如下：
+請以 JSON 格式輸出，結構如下（🔴 所有區塊必填，不可為空陣列）：
 {
   "services": [{"name": "具體服務名", "description": "描述", "category": "類別"}],
   "aiOpportunities": [{"area": "領域", "application": "具體應用", "estimatedBenefit": "預期效益", "difficulty": "low|medium|high"}],
-  "departmentInsights": [{"department": "部門名", "opportunities": ["機會1"], "tools": ["ChatGPT", "具體工具"]}],
-  "positionOpportunities": [{"level": "executive|management|operational", "levelName": "層級名稱", "opportunities": ["機會1"]}],
-  "websiteOptimizations": [{"type": "類型", "suggestion": "建議", "priority": "high|medium|low"}],
-  "salesFunnelAI": [{"stage": "階段", "aiApplication": "AI應用", "description": "描述"}],
+  "departmentInsights": [{"department": "行銷部|業務部|客服部|營運部", "opportunities": ["機會1", "機會2"], "tools": ["智能客服系統", "AI 內容生成系統"]}],
+  "positionOpportunities": [
+    {"level": "executive", "levelName": "高層", "opportunities": ["決策支援", "市場分析"]},
+    {"level": "management", "levelName": "中層", "opportunities": ["團隊管理", "流程優化"]},
+    {"level": "operational", "levelName": "基層", "opportunities": ["日常效率", "技能提升"]}
+  ],
+  "websiteOptimizations": [{"type": "SEO|UX|功能", "suggestion": "建議", "priority": "high|medium|low"}],
+  "salesFunnelAI": [
+    {"stage": "曝光", "aiApplication": "AI 廣告優化", "description": "描述"},
+    {"stage": "興趣", "aiApplication": "AI 內容推薦", "description": "描述"},
+    {"stage": "考慮", "aiApplication": "AI 智能客服", "description": "描述"},
+    {"stage": "購買", "aiApplication": "AI 個人化推薦", "description": "描述"}
+  ],
   "summary": "整體摘要（需包含網站行業識別和主要發現）"
 }
 
-【重要】只輸出 JSON，不要任何其他文字或 markdown 標記。`;
+【重要】只輸出 JSON，不要任何其他文字或 markdown 標記。
+【強制】所有 6 個區塊必須填充內容，不可返回空陣列。`;
 }
 
 // ============ 回應解析 ============
