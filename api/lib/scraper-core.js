@@ -156,6 +156,107 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
     return lastError;
 }
 
+// ============ Jina Reader 抓取 ============
+
+/** Jina Reader 端點 */
+const JINA_READER_BASE = 'https://r.jina.ai';
+
+/** Jina Reader 超時（毫秒） */
+const JINA_TIMEOUT = 15000;
+
+/**
+ * 指數退避重試機制
+ * @param {Function} fn - 要執行的函數
+ * @param {number} maxRetries - 最大重試次數
+ * @returns {Promise<any>}
+ */
+async function retryWithBackoff(fn, maxRetries = 2) {
+    let lastError;
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+        try {
+            return await fn();
+        } catch (error) {
+            lastError = error;
+            if (attempt < maxRetries) {
+                // 指數退避 + Jitter：1s, 2s, 4s...
+                const delay = Math.pow(2, attempt) * 1000 + Math.random() * 500;
+                console.log(`📍[Jina] 重試 ${attempt + 1}/${maxRetries}，等待 ${Math.round(delay)}ms`);
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+    }
+    throw lastError;
+}
+
+/**
+ * 使用 Jina Reader 抓取網頁（返回乾淨 Markdown）
+ * @param {string} url - 目標網址
+ * @returns {Promise<{ok: boolean, content?: string, title?: string, error?: string}>}
+ */
+async function fetchWithJina(url) {
+    const normalizedUrl = normalizeUrl(url);
+    const jinaUrl = `${JINA_READER_BASE}/${normalizedUrl}`;
+
+    console.log('📍[Jina] 開始抓取:', normalizedUrl);
+
+    try {
+        const result = await retryWithBackoff(async () => {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), JINA_TIMEOUT);
+
+            const response = await fetch(jinaUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'text/plain',
+                    'User-Agent': getRandomUserAgent()
+                },
+                signal: controller.signal
+            });
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                if (response.status === 429) {
+                    throw new Error('Rate limit exceeded');
+                }
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            return await response.text();
+        });
+
+        // Jina 返回格式：Title: xxx\nURL Source: xxx\nMarkdown Content: xxx\n\n...
+        const lines = result.split('\n');
+        let title = '';
+        let content = result;
+
+        // 嘗試提取標題
+        const titleLine = lines.find(l => l.startsWith('Title:'));
+        if (titleLine) {
+            title = titleLine.replace('Title:', '').trim();
+        }
+
+        console.log('📍[Jina] 抓取成功，內容長度:', result.length);
+
+        return {
+            ok: true,
+            content: content,
+            title: title,
+            source: 'jina'
+        };
+
+    } catch (error) {
+        console.error('📍[Jina] 抓取失敗:', error.message);
+
+        // 返回錯誤，讓調用方決定是否降級
+        return {
+            ok: false,
+            error: error.name === 'AbortError' ? 'TIMEOUT' : 'JINA_FAILED',
+            message: error.message
+        };
+    }
+}
+
 // ============ 智能調度器 ============
 
 // 懶加載 Browserless 模組（避免 puppeteer-core 在無需時載入）
@@ -262,6 +363,7 @@ module.exports = {
     isValidUrl,
     normalizeUrl,
     fetchWithRetry,
+    fetchWithJina,
     smartScrape,
     REQUEST_TIMEOUT,
     MAX_RETRIES,

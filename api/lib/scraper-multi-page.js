@@ -136,12 +136,54 @@ function getUniqueSubPages(urls, mainUrl) {
         .slice(0, MAX_SUBPAGES);
 }
 
+// ============ 多頁並行抓取 ============
+
+/** 請求間隔（毫秒）- 避免觸發 Rate Limit */
+const REQUEST_DELAY = 600;
+
+/**
+ * 串行抓取多個頁面（控制 Rate Limit）
+ * @param {string[]} urls - URL 列表
+ * @param {Function} fetcher - 抓取函數 (url) => Promise<{ok, content}>
+ * @returns {Promise<Array<{url: string, content: string}>>}
+ */
+async function fetchMultiplePages(urls, fetcher) {
+    const results = [];
+
+    for (let i = 0; i < urls.length; i++) {
+        const url = urls[i];
+        console.log(`📍[MultiPage] 抓取 ${i + 1}/${urls.length}:`, url);
+
+        try {
+            const result = await fetcher(url);
+            if (result.ok && result.content) {
+                results.push({
+                    url: url,
+                    content: result.content
+                });
+            }
+        } catch (error) {
+            console.warn(`📍[MultiPage] 抓取失敗:`, url, error.message);
+        }
+
+        // 添加延遲避免 Rate Limit（最後一個不需要延遲）
+        if (i < urls.length - 1) {
+            await new Promise(resolve => setTimeout(resolve, REQUEST_DELAY));
+        }
+    }
+
+    console.log(`📍[MultiPage] 成功抓取 ${results.length}/${urls.length} 頁`);
+    return results;
+}
+
 // ============ 匯出 ============
 
 module.exports = {
     discoverSubPages,
     mergePageContents,
     getUniqueSubPages,
+    fetchMultiplePages,
     IMPORTANT_PATHS,
-    MAX_SUBPAGES
+    MAX_SUBPAGES,
+    REQUEST_DELAY
 };

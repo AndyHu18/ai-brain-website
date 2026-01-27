@@ -1,11 +1,12 @@
 /**
  * @file    : api/lib/scraper-parser.js
- * @purpose : 網站抓取模組 - HTML 解析與內容提取
- * @depends : ['api/lib/scraper-core.js']
+ * @purpose : 網站抓取模組 - Jina Reader 整合 + 多頁抓取
+ * @depends : ['api/lib/scraper-core.js', 'api/lib/scraper-multi-page.js']
  * @usedBy  : ['api/analyze.js']
  */
 
-const { isValidUrl, normalizeUrl, fetchWithRetry } = require('./scraper-core');
+const { isValidUrl, normalizeUrl, fetchWithJina, fetchWithRetry } = require('./scraper-core');
+const { discoverSubPages, mergePageContents, fetchMultiplePages } = require('./scraper-multi-page');
 
 // ============ 常數設定 ============
 
@@ -178,44 +179,74 @@ async function scrapeWebsite(url) {
         return { ok: false, error: 'INVALID_URL', message: '無效的網址格式' };
     }
 
-    // 執行請求
-    const fetchResult = await fetchWithRetry(normalizedUrl);
+    // Step 1: 使用 Jina Reader 抓取首頁
+    console.log('📍[Scraper] Step 1: 使用 Jina Reader 抓取首頁');
+    let mainResult = await fetchWithJina(normalizedUrl);
+    let source = 'jina';
 
-    if (!fetchResult.ok || !fetchResult.html) {
-        console.error('📍[Scraper] 抓取失敗:', fetchResult.errorMessage);
-        return {
-            ok: false,
-            error: fetchResult.errorType || 'FETCH_FAILED',
-            message: fetchResult.errorMessage || '無法抓取網站'
-        };
+    // 如果 Jina 失敗，降級到原始 HTTP
+    if (!mainResult.ok) {
+        console.log('📍[Scraper] Jina 失敗，降級到 HTTP');
+        const httpResult = await fetchWithRetry(normalizedUrl);
+        if (httpResult.ok && httpResult.html) {
+            mainResult = {
+                ok: true,
+                content: extractTextContent(httpResult.html),
+                title: extractTitle(httpResult.html)
+            };
+            source = 'http';
+        } else {
+            return {
+                ok: false,
+                error: 'FETCH_FAILED',
+                message: '無法抓取網站（Jina 和 HTTP 都失敗）'
+            };
+        }
     }
 
-    const html = fetchResult.html;
+    const mainContent = mainResult.content;
     const fetchDuration = Date.now() - startTime;
-    console.log('📍[Scraper] 取得 HTML 長度:', html.length, `(${fetchDuration}ms)`);
+    console.log(`📍[Scraper] 首頁抓取完成 (${source}, ${fetchDuration}ms)，長度:`, mainContent.length);
 
-    // 解析內容
-    const textContent = extractTextContent(html).slice(0, MAX_TEXT_LENGTH);
-    const headings = extractHeadings(html);
-    const navigation = extractNavigation(html);
-    const serviceBlocks = extractServiceBlocks(html);
+    // Step 2: 識別並抓取子頁面
+    console.log('📍[Scraper] Step 2: 識別子頁面');
+    const subPageUrls = discoverSubPages(mainContent, normalizedUrl);
+
+    let allContent = mainContent;
+    let subPagesData = [];
+
+    if (subPageUrls.length > 0) {
+        console.log('📍[Scraper] 發現', subPageUrls.length, '個子頁面');
+        subPagesData = await fetchMultiplePages(subPageUrls, fetchWithJina);
+
+        if (subPagesData.length > 0) {
+            const mergedSubContent = mergePageContents(subPagesData);
+            allContent = mainContent + '\n\n--- 子頁面內容 ---\n' + mergedSubContent;
+            console.log('📍[Scraper] 合併後總內容長度:', allContent.length);
+        }
+    }
+
+    // 截取到最大長度
+    const textContent = allContent.slice(0, MAX_TEXT_LENGTH);
 
     const content = {
         url: normalizedUrl,
-        title: extractTitle(html),
-        description: extractMeta(html, 'description'),
+        title: mainResult.title || '未知網站',
+        description: '',
         textContent,
-        navigation,
-        headings,
-        serviceBlocks,
-        fetchedAt: new Date().toISOString()
+        navigation: [],
+        headings: [],
+        serviceBlocks: [],
+        fetchedAt: new Date().toISOString(),
+        source: source,
+        subPagesCount: subPagesData.length
     };
 
     console.log('📍[Scraper] 解析完成:', {
         title: content.title,
         textLength: textContent.length,
-        headingsCount: headings.length,
-        navCount: navigation.length
+        source: source,
+        subPages: subPagesData.length
     });
 
     // 檢查內容是否足夠
