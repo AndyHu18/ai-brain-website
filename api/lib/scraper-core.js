@@ -158,7 +158,22 @@ async function fetchWithRetry(url, retries = MAX_RETRIES) {
 
 // ============ 智能調度器 ============
 
-const { fetchWithBrowserless, isBrowserlessAvailable } = require('./scraper-browserless');
+// 懶加載 Browserless 模組（避免 puppeteer-core 在無需時載入）
+let browserlessModule = null;
+function getBrowserlessModule() {
+    if (!browserlessModule) {
+        try {
+            browserlessModule = require('./scraper-browserless');
+        } catch (error) {
+            console.warn('📍[SmartScrape] Browserless 模組載入失敗:', error.message);
+            browserlessModule = {
+                fetchWithBrowserless: async () => ({ ok: false, error: 'MODULE_LOAD_FAILED', message: 'Browserless 模組無法載入' }),
+                isBrowserlessAvailable: () => false
+            };
+        }
+    }
+    return browserlessModule;
+}
 
 /** 內容最小有效長度（觸發 Browserless 的閾值） */
 const MIN_CONTENT_FOR_ANALYSIS = 500;
@@ -214,6 +229,7 @@ async function smartScrape(url, options = {}) {
     }
 
     // 策略 2: Browserless 無頭瀏覽器
+    const { isBrowserlessAvailable, fetchWithBrowserless } = getBrowserlessModule();
     if (isBrowserlessAvailable()) {
         console.log('📍[SmartScrape] 使用 Browserless 無頭瀏覽器...');
         const apiKey = process.env.BROWSERLESS_API_KEY;
