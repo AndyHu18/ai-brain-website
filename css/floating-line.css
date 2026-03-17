@@ -1,0 +1,107 @@
+/* ── Floating LINE CTA ── */
+.floating-line-cta {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 99;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.floating-line-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.fab-btn-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #06c755;
+  box-shadow: 0 4px 20px rgba(6, 199, 85, 0.4);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.fab-btn-line:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 28px rgba(6, 199, 85, 0.55);
+}
+
+/* ── FAB Typewriter Label ── */
+.fab-label-line {
+  position: absolute;
+  white-space: nowrap;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  bottom: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #06c755;
+  box-shadow: 0 2px 12px rgba(6, 199, 85, 0.35);
+}
+
+.fab-label-line.typing {
+  opacity: 1;
+}
+
+.fab-label-line .fab-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 1px;
+  animation: fabCursorBlink 0.6s step-end infinite;
+}
+
+@keyframes fabCursorBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── RWD ── */
+@media (max-width: 768px) {
+  .floating-line-cta {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-line-cta {
+    bottom: 16px;
+    left: 16px;
+  }
+  .fab-btn-line {
+    width: 52px;
+    height: 52px;
+  }
+  .fab-label-line {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+  }
+}

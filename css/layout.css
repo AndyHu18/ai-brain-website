@@ -53,18 +53,18 @@
 }
 
 .navbar-scrolled .nav-container {
-  padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm);
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .navbar-scrolled .logo-text {
-  font-size: calc(var(--font-size-2xl) - 4px);
+  font-size: 1.5rem;
 }
 
 .nav-container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: 10px var(--spacing-xl);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,7 +79,7 @@
 
 /* Logo 文字 - AI 強烈漸層 (橘→金→深紅) */
 .logo-text {
-  font-size: var(--font-size-2xl);
+  font-size: 1.75rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   /* 強烈三色漸層效果 */
@@ -112,9 +112,9 @@
 .nav-link {
   /* 🌒 深色背景需要淺色文字 */
   color: rgba(255, 250, 245, 0.9);
-  font-size: var(--font-size-base);
+  font-size: 0.95rem;
   font-weight: 600;
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: 6px 12px;
   border-radius: var(--radius-md);
   transition: all 0.2s ease;
   letter-spacing: 0.02em;
@@ -149,12 +149,12 @@
   /* 🎨 加深漸層起始色 (APCA 對比優化) */
   background: linear-gradient(135deg, #c05000 0%, #a87000 100%);
   color: #ffffff !important;
-  /* 📐 增大 padding 提升可發現性 */
-  padding: calc(var(--spacing-sm) + 2px) calc(var(--spacing-xl) + 4px);
+  /* 📐 精簡 padding */
+  padding: 7px 20px;
   /* 🔲 圓角方形 - 2026 科技感 */
   border-radius: 10px;
   font-weight: 700;
-  font-size: calc(var(--font-size-base) + 1px);
+  font-size: 0.95rem;
   letter-spacing: 0.03em;
   /* 三層發光 + 內發光 */
   box-shadow:
@@ -431,13 +431,13 @@
   }
 
   .nav-link {
-    font-size: calc(var(--font-size-base) - 1px);
-    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.9rem;
+    padding: 4px 8px;
   }
 
   .nav-cta {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    font-size: var(--font-size-base);
+    padding: 6px 16px;
+    font-size: 0.9rem;
   }
 }
 
