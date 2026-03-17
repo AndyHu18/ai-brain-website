@@ -8,10 +8,10 @@
    Container
    ======================================== */
 .container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--spacing-xl);
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
 }
 
 /* ========================================
@@ -19,446 +19,483 @@
    毛玻璃效果 + Sticky 過渡 + 發光 CTA
    ======================================== */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    /* 🌑 深色毛玻璃 - 高端 AI 科技風格 */
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    background: linear-gradient(180deg,
-            rgba(30, 25, 22, 0.92) 0%,
-            /* 深咖啡黑 */
-            rgba(45, 35, 28, 0.88) 100%
-            /* 溫暖深棕 */
-        );
-    /* 底部金線 - 高級感 */
-    border-bottom: 1px solid rgba(210, 165, 90, 0.35);
-    box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.25),
-        0 0 40px rgba(210, 105, 30, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  /* 🌑 深色毛玻璃 - 高端 AI 科技風格 */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: linear-gradient(
+    180deg,
+    rgba(30, 25, 22, 0.92) 0%,
+    /* 深咖啡黑 */ rgba(45, 35, 28, 0.88) 100% /* 溫暖深棕 */
+  );
+  /* 底部金線 - 高級感 */
+  border-bottom: 1px solid rgba(210, 165, 90, 0.35);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    0 0 40px rgba(210, 105, 30, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Sticky 狀態 - 滾動後更深 */
 .navbar-scrolled {
-    background: linear-gradient(180deg,
-            rgba(25, 20, 18, 0.96) 0%,
-            rgba(40, 30, 24, 0.94) 100%);
-    box-shadow:
-        0 6px 30px rgba(0, 0, 0, 0.35),
-        0 0 50px rgba(210, 105, 30, 0.15);
+  background: linear-gradient(
+    180deg,
+    rgba(25, 20, 18, 0.96) 0%,
+    rgba(40, 30, 24, 0.94) 100%
+  );
+  box-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.35),
+    0 0 50px rgba(210, 105, 30, 0.15);
 }
 
 .navbar-scrolled .nav-container {
-    padding-top: var(--spacing-sm);
-    padding-bottom: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm);
 }
 
 .navbar-scrolled .logo-text {
-    font-size: calc(var(--font-size-2xl) - 4px);
+  font-size: calc(var(--font-size-2xl) - 4px);
 }
 
 .nav-container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: var(--spacing-md) var(--spacing-xl);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: padding 0.3s ease;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: padding 0.3s ease;
 }
 
 .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 /* Logo 文字 - AI 強烈漸層 (橘→金→深紅) */
 .logo-text {
-    font-size: var(--font-size-2xl);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    /* 強烈三色漸層效果 */
-    background: linear-gradient(135deg,
-            #D2691E 0%,
-            /* 琥珀橘 */
-            #FFB347 35%,
-            /* 亮金橘 */
-            #FF8C00 65%,
-            /* 深橘 */
-            #B8860B 100%
-            /* 暗金 */
-        );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    /* 額外文字陰影增強可見度 */
-    filter: drop-shadow(0 1px 2px rgba(210, 105, 30, 0.3));
-    transition: all 0.3s ease;
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  /* 強烈三色漸層效果 */
+  background: linear-gradient(
+    135deg,
+    #d2691e 0%,
+    /* 琥珀橘 */ #ffb347 35%,
+    /* 亮金橘 */ #ff8c00 65%,
+    /* 深橘 */ #b8860b 100% /* 暗金 */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* 額外文字陰影增強可見度 */
+  filter: drop-shadow(0 1px 2px rgba(210, 105, 30, 0.3));
+  transition: all 0.3s ease;
 }
 
 .logo-text:hover {
-    filter: drop-shadow(0 2px 4px rgba(210, 105, 30, 0.4)) brightness(1.1);
+  filter: drop-shadow(0 2px 4px rgba(210, 105, 30, 0.4)) brightness(1.1);
 }
 
 .nav-menu {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xl);
-    /* 擴大間距 - 呼吸感 */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  /* 擴大間距 - 呼吸感 */
 }
 
 .nav-link {
-    /* 🌒 深色背景需要淺色文字 */
-    color: rgba(255, 250, 245, 0.9);
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    transition: all 0.2s ease;
-    letter-spacing: 0.02em;
-    position: relative;
+  /* 🌒 深色背景需要淺色文字 */
+  color: rgba(255, 250, 245, 0.9);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+  position: relative;
 }
 
 .nav-link:hover {
-    color: var(--color-accent);
-    background: rgba(210, 165, 90, 0.15);
+  color: var(--color-accent);
+  background: rgba(210, 165, 90, 0.15);
 }
 
 /* 導航連結底線動畫 */
 .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-    border-radius: 1px;
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 1px;
 }
 
 .nav-link:hover::after {
-    width: 60%;
+  width: 60%;
 }
 
 /* CTA 按鈕 - 2026 AI 能量核心 (專家優化版) */
 .nav-cta {
-    /* 🎨 加深漸層起始色 (APCA 對比優化) */
-    background: linear-gradient(135deg, #C05000 0%, #A87000 100%);
-    color: #FFFFFF !important;
-    /* 📐 增大 padding 提升可發現性 */
-    padding: calc(var(--spacing-sm) + 2px) calc(var(--spacing-xl) + 4px);
-    /* 🔲 圓角方形 - 2026 科技感 */
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: calc(var(--font-size-base) + 1px);
-    letter-spacing: 0.03em;
-    /* 三層發光 + 內發光 */
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.15),
-        0 0 10px rgba(192, 80, 0, 0.5),
-        0 4px 20px rgba(192, 80, 0, 0.35),
-        0 8px 32px rgba(192, 80, 0, 0.2);
-    border: 1px solid rgba(255, 200, 100, 0.35);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    /* ✨ 呼吸微動畫 */
-    animation: nav-cta-breathe 3s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
+  /* 🎨 加深漸層起始色 (APCA 對比優化) */
+  background: linear-gradient(135deg, #c05000 0%, #a87000 100%);
+  color: #ffffff !important;
+  /* 📐 增大 padding 提升可發現性 */
+  padding: calc(var(--spacing-sm) + 2px) calc(var(--spacing-xl) + 4px);
+  /* 🔲 圓角方形 - 2026 科技感 */
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: calc(var(--font-size-base) + 1px);
+  letter-spacing: 0.03em;
+  /* 三層發光 + 內發光 */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 10px rgba(192, 80, 0, 0.5),
+    0 4px 20px rgba(192, 80, 0, 0.35),
+    0 8px 32px rgba(192, 80, 0, 0.2);
+  border: 1px solid rgba(255, 200, 100, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  /* ✨ 呼吸微動畫 */
+  animation: nav-cta-breathe 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
 }
 
 /* 呼吸發光動畫 - 能量核心效果 */
 @keyframes nav-cta-breathe {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 0 10px rgba(192, 80, 0, 0.5),
+      0 4px 20px rgba(192, 80, 0, 0.35),
+      0 8px 32px rgba(192, 80, 0, 0.2);
+  }
 
-    0%,
-    100% {
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.15),
-            0 0 10px rgba(192, 80, 0, 0.5),
-            0 4px 20px rgba(192, 80, 0, 0.35),
-            0 8px 32px rgba(192, 80, 0, 0.2);
-    }
-
-    50% {
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.2),
-            0 0 18px rgba(255, 140, 0, 0.6),
-            0 4px 28px rgba(255, 140, 0, 0.4),
-            0 8px 40px rgba(192, 80, 0, 0.25);
-    }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 0 18px rgba(255, 140, 0, 0.6),
+      0 4px 28px rgba(255, 140, 0, 0.4),
+      0 8px 40px rgba(192, 80, 0, 0.25);
+  }
 }
 
 .nav-cta::after {
-    display: none;
+  display: none;
 }
 
 /* 🎯 Focus 狀態 - 無障礙合規 */
 .nav-cta:focus-visible {
-    outline: 3px solid rgba(255, 200, 100, 0.8);
-    outline-offset: 3px;
-    animation: none;
+  outline: 3px solid rgba(255, 200, 100, 0.8);
+  outline-offset: 3px;
+  animation: none;
 }
 
 .nav-cta:hover {
-    background: linear-gradient(135deg, #E06000 0%, #C05000 100%);
-    color: #FFFFFF !important;
-    transform: translateY(-3px) scale(1.03);
-    /* 懸停時停止呼吸，改為穩定強發光 */
-    animation: none;
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.25),
-        0 0 20px rgba(255, 140, 0, 0.7),
-        0 6px 30px rgba(224, 96, 0, 0.45),
-        0 12px 50px rgba(192, 80, 0, 0.3);
+  background: linear-gradient(135deg, #e06000 0%, #c05000 100%);
+  color: #ffffff !important;
+  transform: translateY(-3px) scale(1.03);
+  /* 懸停時停止呼吸，改為穩定強發光 */
+  animation: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 0 20px rgba(255, 140, 0, 0.7),
+    0 6px 30px rgba(224, 96, 0, 0.45),
+    0 12px 50px rgba(192, 80, 0, 0.3);
 }
 
 /* Mobile Toggle */
 .nav-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--spacing-sm);
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-toggle span {
-    width: 24px;
-    height: 2px;
-    /* 🌒 深色背景需要淺色漢堡線 */
-    background: rgba(255, 250, 245, 0.9);
-    transition: var(--transition-fast);
+  width: 24px;
+  height: 2px;
+  /* 🌒 深色背景需要淺色漢堡線 */
+  background: rgba(255, 250, 245, 0.9);
+  transition: var(--transition-fast);
 }
 
 /* ========================================
    Footer - Warm Luxury Style
    ======================================== */
 .footer {
-    position: relative;
-    background: linear-gradient(180deg, #4A3428 0%, #3D2B1F 50%, #2E1F16 100%);
-    color: var(--bg-light);
-    padding: var(--spacing-3xl) 0 var(--spacing-xl);
-    text-align: center;
-    overflow: hidden;
+  position: relative;
+  background: linear-gradient(180deg, #4a3428 0%, #3d2b1f 50%, #2e1f16 100%);
+  color: var(--bg-light);
+  padding: var(--spacing-3xl) 0 var(--spacing-xl);
+  text-align: center;
+  overflow: hidden;
 }
 
 /* 背景網格效果 */
 .footer::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(200, 170, 130, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200, 170, 130, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(200, 170, 130, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 170, 130, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
 }
 
 /* 頂部漸層邊框 */
 .footer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            var(--color-primary) 20%,
-            var(--color-accent) 50%,
-            var(--color-primary) 80%,
-            transparent 100%);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-primary) 20%,
+    var(--color-accent) 50%,
+    var(--color-primary) 80%,
+    transparent 100%
+  );
 }
 
 .footer-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
 }
 
 .footer-brand {
-    font-size: var(--font-size-3xl);
-    font-weight: 900;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 20px rgba(230, 126, 34, 0.3);
+  font-size: var(--font-size-3xl);
+  font-weight: 900;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 20px rgba(230, 126, 34, 0.3);
 }
 
 .footer-tagline {
-    font-size: var(--font-size-lg);
-    color: rgba(253, 249, 243, 0.85);
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    margin-bottom: 0;
+  font-size: var(--font-size-lg);
+  color: rgba(253, 249, 243, 0.85);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin-bottom: 0;
 }
 
 .footer-divider {
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-    margin: var(--spacing-lg) 0;
-    border-radius: 1px;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  margin: var(--spacing-lg) 0;
+  border-radius: 1px;
 }
 
 .footer-copyright {
-    font-size: var(--font-size-sm);
-    color: rgba(253, 249, 243, 0.5);
-    margin-bottom: 0;
+  font-size: var(--font-size-sm);
+  color: rgba(253, 249, 243, 0.5);
+  margin-bottom: 0;
 }
 
 /* ========================================
    Footer Quick Nav
    ======================================== */
 .footer-quick-nav {
-    margin-bottom: var(--spacing-3xl);
-    padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid rgba(200, 170, 130, 0.2);
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 1px solid rgba(200, 170, 130, 0.2);
 }
 
 .footer-section-title {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--color-accent);
-    text-align: center;
-    margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
 }
 
 .footer-section-subtitle {
-    font-size: var(--font-size-base);
-    color: rgba(253, 249, 243, 0.6);
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-base);
+  color: rgba(253, 249, 243, 0.6);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
 }
 
 .footer-nav-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .footer-nav-card {
-    background: rgba(255, 250, 245, 0.08);
-    border: 1px solid rgba(200, 170, 130, 0.25);
-    border-radius: 12px;
-    padding: 20px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: block;
+  background: rgba(255, 250, 245, 0.08);
+  border: 1px solid rgba(200, 170, 130, 0.25);
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
 }
 
 .footer-nav-card:hover {
-    background: rgba(255, 250, 245, 0.15);
-    border-color: var(--color-primary);
-    transform: translateY(-3px);
+  background: rgba(255, 250, 245, 0.15);
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
 }
 
 .footer-nav-icon {
-    font-size: 2rem;
-    margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
 .footer-nav-card h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: rgba(253, 249, 243, 0.95);
-    margin-bottom: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: rgba(253, 249, 243, 0.95);
+  margin-bottom: 6px;
 }
 
 .footer-nav-card p {
-    font-size: 0.85rem;
-    color: rgba(253, 249, 243, 0.6);
-    margin-bottom: 12px;
-    line-height: 1.4;
+  font-size: 0.85rem;
+  color: rgba(253, 249, 243, 0.6);
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 /* 當前頁面高亮狀態 */
 .footer-nav-card-current {
-    background: rgba(210, 105, 30, 0.25);
-    border-color: var(--color-primary);
-    pointer-events: none;
+  background: rgba(210, 105, 30, 0.25);
+  border-color: var(--color-primary);
+  pointer-events: none;
 }
 
 .footer-nav-card-current .footer-nav-tag {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .footer-nav-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    color: white;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 600;
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 /* ========================================
    Responsive
    ======================================== */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        /* 🌑 手機版也使用深色毛玻璃 */
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        background: linear-gradient(180deg,
-                rgba(30, 25, 22, 0.95) 0%,
-                rgba(45, 35, 28, 0.92) 100%);
-        padding: var(--spacing-lg);
-        border-bottom: 1px solid rgba(210, 165, 90, 0.35);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
 
-    .nav-menu.active {
-        display: flex;
-    }
+/* Tablet (768px~1024px) — 壓縮導航間距，保持完整顯示 */
+@media (max-width: 1024px) {
+  .nav-menu {
+    gap: var(--spacing-md);
+  }
 
-    .nav-toggle {
-        display: flex;
-    }
+  .nav-link {
+    font-size: calc(var(--font-size-base) - 1px);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 
-    .container {
-        padding: 0 var(--spacing-md);
-    }
+  .nav-cta {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-base);
+  }
+}
 
-    /* Footer Quick Nav 響應式 */
-    .footer-nav-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
+/* Mobile (<768px) — 漢堡選單 */
+@media (max-width: 767px) {
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    /* 🌑 手機版深色毛玻璃 */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    background: linear-gradient(
+      180deg,
+      rgba(30, 25, 22, 0.95) 0%,
+      rgba(45, 35, 28, 0.92) 100%
+    );
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid rgba(210, 165, 90, 0.35);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
 
-    .footer-nav-card {
-        padding: 16px;
-    }
+  .nav-menu.active {
+    display: flex;
+  }
 
-    .footer-nav-icon {
-        font-size: 1.6rem;
-    }
+  .nav-toggle {
+    display: flex;
+  }
 
-    .footer-nav-card h4 {
-        font-size: 1rem;
-    }
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  /* Footer Quick Nav — 2 欄 */
+  .footer-nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .footer-nav-card {
+    padding: 16px;
+  }
+
+  .footer-nav-icon {
+    font-size: 1.6rem;
+  }
+
+  .footer-nav-card h4 {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .footer-nav-grid {
-        grid-template-columns: 1fr;
-    }
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+  }
 }

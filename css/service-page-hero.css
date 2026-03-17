@@ -580,7 +580,10 @@
   .navbar-transparent .nav-logo::before {
     display: none;
   }
+}
 
+/* Mobile (<768px) — 漢堡選單 */
+@media (max-width: 767px) {
   .navbar-transparent .nav-menu {
     display: none;
     position: absolute;

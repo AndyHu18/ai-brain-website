@@ -15,6 +15,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/agent-demo.css" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-window.css" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
     <style>
       *,
       *::before,
@@ -159,6 +162,8 @@
         border: none;
         cursor: pointer;
         padding: 8px;
+        min-width: 44px;
+        min-height: 44px;
       }
 
       .nav-toggle span {
@@ -278,14 +283,9 @@
         position: sticky;
         top: 64px;
         z-index: 90;
-        background: linear-gradient(
-          180deg,
-          rgba(252, 249, 245, 0.98) 0%,
-          rgba(252, 249, 245, 0.92) 100%
-        );
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(210, 105, 30, 0.1);
-        box-shadow: 0 2px 16px rgba(210, 105, 30, 0.06);
+        background: linear-gradient(180deg, #2d2319 0%, #3a2c1f 100%);
+        border-bottom: 1px solid rgba(210, 105, 30, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -297,30 +297,48 @@
       .section-nav-inner {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 8px 24px;
+        padding: 12px 24px;
         display: flex;
-        gap: 6px;
+        gap: 8px;
         justify-content: center;
       }
 
       .section-nav a {
         white-space: nowrap;
-        padding: 10px 20px;
+        padding: 10px 22px;
         text-decoration: none;
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.6);
         font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.03em;
+        font-weight: 500;
+        letter-spacing: 0.02em;
         border-radius: 100px;
-        border: 1.5px solid transparent;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .section-nav a .sn-num {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        opacity: 0.8;
+      }
+
+      .section-nav a .sn-label {
+        font-weight: 600;
       }
 
       .section-nav a:hover {
-        color: var(--color-primary);
-        background: rgba(210, 105, 30, 0.06);
-        border-color: rgba(210, 105, 30, 0.15);
+        color: #fff;
+        background: rgba(210, 105, 30, 0.12);
+        border-color: rgba(210, 105, 30, 0.4);
+      }
+
+      .section-nav a:hover .sn-num {
+        opacity: 1;
       }
 
       .section-nav a.active {
@@ -331,7 +349,12 @@
           var(--color-primary-dark) 100%
         );
         border-color: transparent;
-        box-shadow: 0 2px 8px rgba(210, 105, 30, 0.3);
+        box-shadow: 0 2px 12px rgba(210, 105, 30, 0.4);
+      }
+
+      .section-nav a.active .sn-num {
+        color: rgba(255, 255, 255, 0.85);
+        opacity: 1;
       }
 
       /* ── Content Sections ── */
@@ -531,6 +554,7 @@
         padding: 24px;
         margin-top: 28px;
         border: 1px solid var(--border-light);
+        overflow: hidden;
       }
 
       .price-visual-title {
@@ -574,22 +598,48 @@
         position: absolute;
         top: 0;
         height: 100%;
-        background: #d9cfc4;
+        background: linear-gradient(135deg, #8b4553, #a35565);
         border-radius: 6px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        overflow: hidden;
+        justify-content: flex-end;
+        overflow: visible;
+        box-shadow: 0 2px 6px rgba(139, 69, 83, 0.25);
+        transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
       .pv-range-text {
-        font-size: 0.75rem;
-        color: var(--text-secondary);
-        font-weight: 500;
+        position: absolute;
+        left: 100%;
+        margin-left: 10px;
+        font-size: 0.85rem;
+        color: #8b4553;
+        font-weight: 700;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      /* Wide bars or bars near right edge: text inside bar, right-aligned */
+      .pv-range-text.pv-text-inside {
+        position: static;
+        left: auto;
+        margin-left: auto;
+        padding: 0 10px;
+        color: #fff;
+      }
+
+      /* Narrow bars near right edge: text to the left of bar */
+      .pv-range-text.pv-text-left {
+        left: auto;
+        right: 100%;
+        margin-left: 0;
+        margin-right: 10px;
+      }
+
+      .price-visual.pv-animated .pv-range-text {
+        opacity: 1;
       }
 
       .pv-ours-row .pv-label {
@@ -614,18 +664,26 @@
         border-radius: 6px;
         display: flex;
         align-items: center;
-        justify-content: center;
         box-shadow: 0 2px 8px rgba(210, 105, 30, 0.3);
-        min-width: 60px;
-        overflow: hidden;
+        min-width: 0;
+        overflow: visible;
+        transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
 
       .pv-ours-text {
-        font-size: 0.82rem;
-        color: #fff;
+        position: absolute;
+        left: 100%;
+        margin-left: 8px;
+        font-size: 0.85rem;
+        color: var(--color-primary);
         font-weight: 700;
         white-space: nowrap;
-        padding: 0 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.6s;
+      }
+
+      .price-visual.pv-animated .pv-ours-text {
+        opacity: 1;
       }
 
       .pv-save {
@@ -637,6 +695,16 @@
         padding: 4px 10px;
         border-radius: 100px;
         white-space: nowrap;
+        opacity: 0;
+        transform: scale(0.8);
+        transition:
+          opacity 0.4s ease 1.4s,
+          transform 0.4s ease 1.4s;
+      }
+
+      .price-visual.pv-animated .pv-save {
+        opacity: 1;
+        transform: scale(1);
       }
 
       /* Premium price visual - for marketing section (show high value) */
@@ -646,11 +714,11 @@
       }
 
       .price-visual-premium .price-visual-title {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.9);
       }
 
       .price-visual-premium .pv-label {
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.85);
       }
 
       .price-visual-premium .pv-ours-row .pv-label {
@@ -677,26 +745,29 @@
           0 2px 16px rgba(196, 151, 90, 0.5),
           0 0 40px rgba(240, 212, 138, 0.15);
         min-width: 80px;
+        overflow: hidden;
       }
 
       .price-visual-premium .pv-ours-text {
+        position: static;
+        margin-left: 0;
         color: #1a1e23;
         font-weight: 800;
         font-size: 0.85rem;
         text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+        padding: 0 12px;
       }
 
       .price-visual-premium .pv-range {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: none;
         overflow: visible;
       }
 
       .price-visual-premium .pv-range-text {
-        color: rgba(255, 255, 255, 0.45);
-        font-size: 0.72rem;
-        position: absolute;
-        left: 105%;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.78rem;
       }
 
       .pv-premium-badge {
@@ -714,7 +785,7 @@
       .pv-incomplete-tag {
         flex-shrink: 0;
         font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.35);
+        color: rgba(255, 255, 255, 0.8);
         white-space: nowrap;
         font-style: italic;
       }
@@ -1242,8 +1313,20 @@
         }
       }
 
-      /* Mobile (≤768px) */
-      @media (max-width: 768px) {
+      /* Tablet — 壓縮導航間距 */
+      @media (max-width: 1024px) {
+        .nav-links {
+          gap: 8px;
+        }
+
+        .nav-links a {
+          font-size: 0.85rem;
+          padding: 6px 10px;
+        }
+      }
+
+      /* Mobile (<768px) */
+      @media (max-width: 767px) {
         .nav-links {
           display: none;
           position: absolute;
@@ -1284,8 +1367,13 @@
         }
 
         .section-nav-inner {
-          padding: 6px 16px;
+          padding: 10px 16px;
           justify-content: flex-start;
+        }
+
+        .section-nav a {
+          padding: 8px 16px;
+          font-size: 0.82rem;
         }
 
         .decision-grid {
@@ -1492,13 +1580,13 @@
 
         /* Section nav scroll hint */
         .section-nav-inner {
-          padding: 4px 12px;
-          gap: 4px;
+          padding: 8px 12px;
+          gap: 6px;
           justify-content: flex-start;
         }
 
         .section-nav a {
-          padding: 8px 14px;
+          padding: 7px 12px;
           font-size: 0.78rem;
         }
 
@@ -1981,6 +2069,551 @@
         }
       }
 
+      /* ── CMS Radar Chart ── */
+      .radar-compare {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 32px;
+      }
+      .radar-compare-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--text-primary);
+      }
+      .radar-compare-desc {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin-bottom: 28px;
+      }
+      .radar-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+      }
+      .radar-svg-wrap {
+        flex-shrink: 0;
+      }
+      .radar-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .radar-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.05rem;
+      }
+      .radar-legend-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        flex-shrink: 0;
+      }
+      .radar-legend-dot.wp {
+        background: rgba(139, 69, 83, 0.7);
+      }
+      .radar-legend-dot.comp {
+        background: rgba(210, 105, 30, 0.7);
+      }
+      .radar-legend-label {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+      }
+      .radar-legend-sub {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      .radar-dims {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-light);
+      }
+      .radar-dim {
+        text-align: center;
+        padding: 12px 8px;
+        background: rgba(210, 105, 30, 0.03);
+        border-radius: 8px;
+      }
+      .radar-dim-icon {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+      .radar-dim-name {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .radar-dim-wp,
+      .radar-dim-comp {
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      .radar-dim-wp {
+        color: #8b4553;
+      }
+      .radar-dim-comp {
+        color: var(--color-primary);
+      }
+      @media (max-width: 768px) {
+        .radar-compare {
+          padding: 24px 20px;
+        }
+        .radar-wrapper {
+          gap: 24px;
+        }
+        .radar-dims {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 8px;
+        }
+      }
+      @media (max-width: 480px) {
+        .radar-dims {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .radar-compare {
+          padding: 20px 16px;
+        }
+      }
+
+      /* ── Marketing Funnel ── */
+      /* ── Marketing Multiplier Chart ── */
+      .multiplier-section {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-bottom: 32px;
+      }
+      .multiplier-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        color: var(--text-primary);
+      }
+      .multiplier-desc {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin-bottom: 28px;
+      }
+      .multiplier-formula {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .multiplier-formula-item {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding: 6px 14px;
+        background: rgba(210, 105, 30, 0.08);
+        border-radius: 6px;
+      }
+      .multiplier-formula-op {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--text-secondary);
+      }
+      .multiplier-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .multiplier-row {
+        display: grid;
+        grid-template-columns: 130px 1fr 1fr;
+        gap: 16px;
+        align-items: center;
+      }
+      .multiplier-label {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+      .multiplier-label-sub {
+        font-size: 0.82rem;
+        color: var(--text-secondary);
+        margin-top: 2px;
+      }
+      .multiplier-bar-cell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .multiplier-bar {
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        min-width: 48px;
+      }
+      .multiplier-bar.basic {
+        background: linear-gradient(135deg, #9a6070, #b07585);
+      }
+      .multiplier-bar.marketing {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+      }
+      .multiplier-bar-tag {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        white-space: nowrap;
+      }
+      .multiplier-header {
+        display: grid;
+        grid-template-columns: 130px 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-light);
+      }
+      .multiplier-header-label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-align: center;
+      }
+      .multiplier-header-label.basic-h {
+        color: #8b4553;
+      }
+      .multiplier-header-label.mkt-h {
+        color: var(--color-primary);
+      }
+      .multiplier-result {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin-top: 24px;
+        padding: 18px 24px;
+        background: rgba(45, 122, 58, 0.06);
+        border-radius: 10px;
+        flex-wrap: wrap;
+      }
+      .multiplier-result-col {
+        text-align: center;
+      }
+      .multiplier-result-label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .multiplier-result-label.basic-h {
+        color: #8b4553;
+      }
+      .multiplier-result-label.mkt-h {
+        color: var(--color-primary);
+      }
+      .multiplier-result-val {
+        font-size: 1.6rem;
+        font-weight: 900;
+      }
+      .multiplier-result-val.basic-v {
+        color: #8b4553;
+      }
+      .multiplier-result-val.mkt-v {
+        color: var(--color-primary);
+      }
+      .multiplier-result-arrow {
+        font-size: 1.5rem;
+        color: #2d7a3a;
+        font-weight: 900;
+      }
+      .multiplier-result-growth {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #2d7a3a;
+      }
+      .multiplier-result-growth-sub {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #2d7a3a;
+      }
+      @media (max-width: 768px) {
+        .multiplier-row {
+          grid-template-columns: 100px 1fr 1fr;
+          gap: 10px;
+        }
+        .multiplier-header {
+          grid-template-columns: 100px 1fr 1fr;
+          gap: 10px;
+        }
+        .multiplier-label {
+          font-size: 0.9rem;
+        }
+        .multiplier-label-sub {
+          font-size: 0.75rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .multiplier-section {
+          padding: 24px 16px;
+        }
+        .multiplier-row {
+          grid-template-columns: 80px 1fr 1fr;
+          gap: 6px;
+        }
+        .multiplier-header {
+          grid-template-columns: 80px 1fr 1fr;
+          gap: 6px;
+        }
+        .multiplier-label {
+          font-size: 0.82rem;
+        }
+        .multiplier-label-sub {
+          display: none;
+        }
+        .multiplier-bar {
+          height: 34px;
+          font-size: 0.82rem;
+        }
+        .multiplier-formula-item {
+          font-size: 0.82rem;
+          padding: 4px 10px;
+        }
+        .multiplier-result {
+          gap: 12px;
+          padding: 14px 16px;
+        }
+        .multiplier-result-val {
+          font-size: 1.3rem;
+        }
+        .multiplier-result-growth {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* ── AI Staircase Chart ── */
+      .staircase-section {
+        background: linear-gradient(135deg, #1a1e23 0%, #2d3436 100%);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+        border: 1px solid rgba(210, 105, 30, 0.15);
+      }
+      .staircase-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+      .staircase-desc {
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 28px;
+      }
+      .staircase-chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        height: 260px;
+        padding-bottom: 28px;
+        position: relative;
+      }
+      .staircase-chart::after {
+        content: "";
+        position: absolute;
+        bottom: 28px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .stair-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .stair-bar-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      .stair-bar {
+        width: 64px;
+        border-radius: 10px 10px 4px 4px;
+        position: relative;
+        transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding-bottom: 12px;
+        overflow: visible;
+      }
+      .stair-bar-l1 {
+        background: linear-gradient(
+          180deg,
+          rgba(210, 105, 30, 0.4) 0%,
+          rgba(210, 105, 30, 0.15) 100%
+        );
+        border: 1px solid rgba(210, 105, 30, 0.3);
+      }
+      .stair-bar-l2 {
+        background: linear-gradient(
+          180deg,
+          rgba(210, 105, 30, 0.55) 0%,
+          rgba(210, 105, 30, 0.25) 100%
+        );
+        border: 1px solid rgba(210, 105, 30, 0.4);
+      }
+      .stair-bar-l3 {
+        background: linear-gradient(
+          180deg,
+          rgba(210, 105, 30, 0.7) 0%,
+          rgba(210, 105, 30, 0.35) 100%
+        );
+        border: 1px solid rgba(210, 105, 30, 0.5);
+      }
+      .stair-bar-l4 {
+        background: linear-gradient(
+          180deg,
+          var(--color-primary) 0%,
+          rgba(210, 105, 30, 0.6) 100%
+        );
+        border: 1px solid var(--color-primary);
+        box-shadow: 0 0 20px rgba(210, 105, 30, 0.3);
+      }
+      .stair-price {
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #fff;
+        white-space: nowrap;
+      }
+      .stair-info {
+        text-align: center;
+      }
+      .stair-level {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .stair-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        white-space: nowrap;
+      }
+      .stair-save {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #4ade80;
+        margin-top: 4px;
+      }
+      .stair-cap {
+        position: absolute;
+        top: -32px;
+        font-size: 0.88rem;
+        color: rgba(255, 255, 255, 0.6);
+        white-space: nowrap;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.4s ease 1.2s,
+          transform 0.4s ease 1.2s;
+      }
+      .staircase-section.stair-animated .stair-cap {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .stair-summary {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+      }
+      .stair-summary-item {
+        text-align: center;
+      }
+      .stair-summary-val {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--color-accent-light);
+      }
+      .stair-summary-label {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 2px;
+      }
+      @media (max-width: 600px) {
+        .staircase-section {
+          padding: 20px 8px;
+        }
+        .staircase-chart {
+          height: 170px;
+          gap: 2px;
+        }
+        .stair-col {
+          gap: 6px;
+          min-width: 0;
+        }
+        .stair-bar {
+          width: 36px;
+        }
+        .stair-price {
+          font-size: 0.8rem;
+        }
+        .stair-level {
+          font-size: 0.68rem;
+        }
+        .stair-name {
+          font-size: 0.7rem;
+          white-space: normal;
+          text-align: center;
+          line-height: 1.2;
+        }
+        .stair-save {
+          font-size: 0.65rem;
+        }
+        .stair-cap {
+          font-size: 0.58rem;
+          top: -20px;
+        }
+        .stair-summary {
+          gap: 12px;
+          flex-direction: column;
+          align-items: center;
+        }
+        .stair-summary-val {
+          font-size: 1.2rem;
+        }
+        .stair-summary-label {
+          font-size: 0.85rem;
+        }
+      }
+
       /* ── Final Responsive Overrides (must be last to win cascade) ── */
       @media (max-width: 900px) {
         .marketing-modules {
@@ -2086,6 +2719,489 @@
         }
         .price-amount {
           font-size: 1.7rem;
+        }
+      }
+      /* ── Podcast Player ── */
+      .podcast-section {
+        padding: 80px 24px;
+        background: linear-gradient(
+          135deg,
+          #1a1e23 0%,
+          #2d3436 50%,
+          #1a1e23 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+      .podcast-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(210, 105, 30, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(205, 133, 63, 0.06) 0%,
+            transparent 50%
+          );
+        animation: podcastBgShift 15s ease-in-out infinite;
+      }
+      @keyframes podcastBgShift {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-3%, 2%);
+        }
+      }
+      .podcast-container {
+        max-width: 720px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .podcast-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .podcast-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .podcast-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.02em;
+      }
+      .podcast-subtitle {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 2px;
+      }
+
+      /* Now Playing Card */
+      .podcast-now-playing {
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .podcast-cover {
+        width: 100%;
+        height: 80px;
+        border-radius: 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(210, 105, 30, 0.2),
+          rgba(205, 133, 63, 0.1)
+        );
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 0 16px 8px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+      .podcast-wave-container {
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
+        height: 60px;
+        width: 100%;
+        justify-content: center;
+      }
+      .podcast-wave-bar {
+        width: 8px;
+        min-height: 4px;
+        height: 8px;
+        border-radius: 4px;
+        background: linear-gradient(
+          to top,
+          var(--color-primary),
+          var(--color-accent-light)
+        );
+        transition: height 0.15s ease;
+        opacity: 0.5;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar {
+        animation: waveAnim 0.8s ease-in-out infinite alternate;
+        opacity: 1;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(2) {
+        animation-delay: 0.05s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(3) {
+        animation-delay: 0.1s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(4) {
+        animation-delay: 0.15s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(5) {
+        animation-delay: 0.2s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(6) {
+        animation-delay: 0.25s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(7) {
+        animation-delay: 0.3s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(8) {
+        animation-delay: 0.35s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(9) {
+        animation-delay: 0.4s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(10) {
+        animation-delay: 0.45s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(11) {
+        animation-delay: 0.5s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(12) {
+        animation-delay: 0.55s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(13) {
+        animation-delay: 0.6s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(14) {
+        animation-delay: 0.55s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(15) {
+        animation-delay: 0.5s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(16) {
+        animation-delay: 0.45s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(17) {
+        animation-delay: 0.4s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(18) {
+        animation-delay: 0.35s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(19) {
+        animation-delay: 0.3s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(20) {
+        animation-delay: 0.25s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(21) {
+        animation-delay: 0.2s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(22) {
+        animation-delay: 0.15s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(23) {
+        animation-delay: 0.1s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(24) {
+        animation-delay: 0.05s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(25) {
+        animation-delay: 0s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(26) {
+        animation-delay: 0.05s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(27) {
+        animation-delay: 0.1s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(28) {
+        animation-delay: 0.15s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(29) {
+        animation-delay: 0.2s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(30) {
+        animation-delay: 0.25s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(31) {
+        animation-delay: 0.3s;
+      }
+      .podcast-wave-container.playing .podcast-wave-bar:nth-child(32) {
+        animation-delay: 0.35s;
+      }
+      @keyframes waveAnim {
+        0% {
+          height: 6px;
+        }
+        100% {
+          height: 55px;
+        }
+      }
+
+      .podcast-info {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .podcast-ep-label {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+      }
+      .podcast-ep-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+      .podcast-ep-desc {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Controls */
+      .podcast-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+      .podcast-btn {
+        border: none;
+        background: none;
+        color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        transition: all 0.2s;
+        padding: 8px;
+        border-radius: 50%;
+      }
+      .podcast-btn:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .podcast-btn-play {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        ) !important;
+        color: #fff !important;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 20px rgba(210, 105, 30, 0.4);
+        transition: all 0.2s;
+      }
+      .podcast-btn-play:hover {
+        transform: scale(1.08);
+        box-shadow: 0 6px 28px rgba(210, 105, 30, 0.5);
+      }
+
+      /* Progress Bar */
+      .podcast-progress-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .podcast-time {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-variant-numeric: tabular-nums;
+        min-width: 36px;
+      }
+      .podcast-progress {
+        flex: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        outline: none;
+        cursor: pointer;
+      }
+      .podcast-progress::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        box-shadow: 0 0 8px rgba(210, 105, 30, 0.5);
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .podcast-progress::-webkit-slider-thumb:hover {
+        transform: scale(1.3);
+      }
+
+      /* Playlist */
+      .podcast-playlist {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .podcast-track {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .podcast-track:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .podcast-track.active {
+        background: rgba(210, 105, 30, 0.12);
+        color: #fff;
+      }
+      .track-ep {
+        font-size: 0.7rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 3px 8px;
+        border-radius: 6px;
+        flex-shrink: 0;
+        min-width: 40px;
+        text-align: center;
+      }
+      .podcast-track.active .track-ep {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        color: #fff;
+      }
+      .track-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .track-title {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .track-dur {
+        font-size: 0.75rem;
+        opacity: 0.5;
+        font-variant-numeric: tabular-nums;
+      }
+      .track-eq {
+        display: flex;
+        gap: 2px;
+        align-items: flex-end;
+        height: 16px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .podcast-track.active.playing .track-eq {
+        opacity: 1;
+      }
+      .track-eq span {
+        width: 3px;
+        border-radius: 2px;
+        background: var(--color-primary);
+        animation: trackEq 0.6s ease-in-out infinite alternate;
+      }
+      .track-eq span:nth-child(1) {
+        height: 8px;
+        animation-delay: 0s;
+      }
+      .track-eq span:nth-child(2) {
+        height: 14px;
+        animation-delay: 0.15s;
+      }
+      .track-eq span:nth-child(3) {
+        height: 6px;
+        animation-delay: 0.3s;
+      }
+      @keyframes trackEq {
+        0% {
+          height: 4px;
+        }
+        100% {
+          height: 16px;
+        }
+      }
+
+      /* Podcast RWD */
+      @media (max-width: 768px) {
+        .podcast-section {
+          padding: 60px 16px;
+        }
+        .podcast-title {
+          font-size: 1.2rem;
+        }
+        .podcast-now-playing {
+          padding: 20px;
+        }
+        .podcast-cover {
+          height: 60px;
+        }
+        .podcast-wave-bar {
+          width: 5px;
+          gap: 2px;
+        }
+        @keyframes waveAnim {
+          0% {
+            height: 4px;
+          }
+          100% {
+            height: 40px;
+          }
+        }
+      }
+      @media (max-width: 375px) {
+        .podcast-title {
+          font-size: 1.05rem;
+        }
+        .podcast-ep-title {
+          font-size: 1.05rem;
+        }
+        .podcast-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+        }
+        .podcast-icon svg {
+          width: 22px;
+          height: 22px;
         }
       }
     </style>
@@ -2200,12 +3316,28 @@
     <!-- Sticky Section Nav -->
     <div class="section-nav" id="sectionNav">
       <div class="section-nav-inner">
-        <a href="#static" data-section="static">01 形象站</a>
-        <a href="#cms" data-section="cms">02 可管理站</a>
-        <a href="#ecommerce" data-section="ecommerce">03 電商</a>
-        <a href="#marketing" data-section="marketing">04 行銷導向</a>
-        <a href="#ai-cs" data-section="ai-cs">05 AI 客服</a>
-        <a href="#content" data-section="content">06 素材轉製</a>
+        <a href="#static" data-section="static"
+          ><span class="sn-num">01</span><span class="sn-label">形象站</span></a
+        >
+        <a href="#cms" data-section="cms"
+          ><span class="sn-num">02</span
+          ><span class="sn-label">可管理站</span></a
+        >
+        <a href="#ecommerce" data-section="ecommerce"
+          ><span class="sn-num">03</span><span class="sn-label">電商</span></a
+        >
+        <a href="#marketing" data-section="marketing"
+          ><span class="sn-num">04</span
+          ><span class="sn-label">行銷導向</span></a
+        >
+        <a href="#ai-cs" data-section="ai-cs"
+          ><span class="sn-num">05</span
+          ><span class="sn-label">AI 客服</span></a
+        >
+        <a href="#content" data-section="content"
+          ><span class="sn-num">06</span
+          ><span class="sn-label">素材轉製</span></a
+        >
       </div>
     </div>
 
@@ -2261,7 +3393,7 @@
               <div class="price-visual-row">
                 <span class="pv-label">個人接案</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 12%; width: 10%">
+                  <div class="pv-range" style="left: 12%; width: 9%">
                     <span class="pv-range-text">8.5K～15K</span>
                   </div>
                 </div>
@@ -2269,7 +3401,7 @@
               <div class="price-visual-row">
                 <span class="pv-label">工作室</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 28%; width: 44%">
+                  <div class="pv-range" style="left: 29%; width: 43%">
                     <span class="pv-range-text">20K～50K</span>
                   </div>
                 </div>
@@ -2372,7 +3504,7 @@
               <div class="price-visual-row">
                 <span class="pv-label">個人接案</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 8%; width: 8%">
+                  <div class="pv-range" style="left: 8%; width: 7%">
                     <span class="pv-range-text">16K～30K</span>
                   </div>
                 </div>
@@ -2499,6 +3631,74 @@
                   >
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Radar Comparison Chart -->
+        <div class="radar-compare fade-up">
+          <div class="radar-compare-title">
+            WordPress vs 組件式後台：五維對比
+          </div>
+          <p class="radar-compare-desc">
+            選擇方案前，先看看兩者在不同面向的表現差異
+          </p>
+          <div class="radar-wrapper">
+            <div class="radar-svg-wrap">
+              <svg
+                id="radarChart"
+                width="280"
+                height="280"
+                viewBox="0 0 280 280"
+              ></svg>
+            </div>
+            <div class="radar-legend">
+              <div class="radar-legend-item">
+                <div class="radar-legend-dot wp"></div>
+                <div>
+                  <div class="radar-legend-label">WordPress</div>
+                  <div class="radar-legend-sub">生態系完整，適合內容經營</div>
+                </div>
+              </div>
+              <div class="radar-legend-item">
+                <div class="radar-legend-dot comp"></div>
+                <div>
+                  <div class="radar-legend-label">組件式後台</div>
+                  <div class="radar-legend-sub">長期維護省錢，擴展性最好</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="radar-dims">
+            <div class="radar-dim">
+              <div class="radar-dim-icon">&#9881;</div>
+              <div class="radar-dim-name">操作門檻</div>
+              <div class="radar-dim-wp">WP 低</div>
+              <div class="radar-dim-comp">組件 高</div>
+            </div>
+            <div class="radar-dim">
+              <div class="radar-dim-icon">&#9881;</div>
+              <div class="radar-dim-name">擴展性</div>
+              <div class="radar-dim-wp">WP 中</div>
+              <div class="radar-dim-comp">組件 高</div>
+            </div>
+            <div class="radar-dim">
+              <div class="radar-dim-icon">&#9881;</div>
+              <div class="radar-dim-name">維護成本</div>
+              <div class="radar-dim-wp">WP 高</div>
+              <div class="radar-dim-comp">組件 低</div>
+            </div>
+            <div class="radar-dim">
+              <div class="radar-dim-icon">&#9881;</div>
+              <div class="radar-dim-name">客製自由度</div>
+              <div class="radar-dim-wp">WP 低</div>
+              <div class="radar-dim-comp">組件 高</div>
+            </div>
+            <div class="radar-dim">
+              <div class="radar-dim-icon">&#9881;</div>
+              <div class="radar-dim-name">生態系統</div>
+              <div class="radar-dim-wp">WP 高</div>
+              <div class="radar-dim-comp">組件 高</div>
             </div>
           </div>
         </div>
@@ -2712,6 +3912,173 @@
           </div>
         </div>
 
+        <!-- Marketing Multiplier Chart -->
+        <div class="multiplier-section fade-up" id="multiplierChart">
+          <div class="multiplier-title">行銷網站影響的五大營收乘數</div>
+          <p class="multiplier-desc">
+            營收不只靠流量，而是五個關鍵因素相乘的結果
+          </p>
+          <div class="multiplier-formula">
+            <span class="multiplier-formula-item">訪客量</span>
+            <span class="multiplier-formula-op">&times;</span>
+            <span class="multiplier-formula-item">成交率</span>
+            <span class="multiplier-formula-op">&times;</span>
+            <span class="multiplier-formula-item">客單價</span>
+            <span class="multiplier-formula-op">&times;</span>
+            <span class="multiplier-formula-item">回購率</span>
+            <span class="multiplier-formula-op">&times;</span>
+            <span class="multiplier-formula-item">轉介紹</span>
+          </div>
+          <div class="multiplier-header">
+            <div></div>
+            <div class="multiplier-header-label basic-h">一般網站</div>
+            <div class="multiplier-header-label mkt-h">行銷導向網站</div>
+          </div>
+          <div class="multiplier-rows">
+            <div class="multiplier-row">
+              <div>
+                <div class="multiplier-label">訪客量</div>
+                <div class="multiplier-label-sub">SEO + 廣告 + 社群</div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar basic"
+                  data-width="40%"
+                  style="width: 0%"
+                >
+                  1,000
+                </div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar marketing"
+                  data-width="85%"
+                  style="width: 0%"
+                >
+                  3,000
+                </div>
+                <span class="multiplier-bar-tag">3x</span>
+              </div>
+            </div>
+            <div class="multiplier-row">
+              <div>
+                <div class="multiplier-label">成交率</div>
+                <div class="multiplier-label-sub">CTA + 信任感 + 流程</div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar basic"
+                  data-width="25%"
+                  style="width: 0%"
+                >
+                  2%
+                </div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar marketing"
+                  data-width="70%"
+                  style="width: 0%"
+                >
+                  8%
+                </div>
+                <span class="multiplier-bar-tag">4x</span>
+              </div>
+            </div>
+            <div class="multiplier-row">
+              <div>
+                <div class="multiplier-label">客單價</div>
+                <div class="multiplier-label-sub">組合包 + 升級方案</div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar basic"
+                  data-width="35%"
+                  style="width: 0%"
+                >
+                  $1,000
+                </div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar marketing"
+                  data-width="60%"
+                  style="width: 0%"
+                >
+                  $1,800
+                </div>
+                <span class="multiplier-bar-tag">1.8x</span>
+              </div>
+            </div>
+            <div class="multiplier-row">
+              <div>
+                <div class="multiplier-label">回購率</div>
+                <div class="multiplier-label-sub">再行銷 + 會員經營</div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar basic"
+                  data-width="20%"
+                  style="width: 0%"
+                >
+                  1.2 次
+                </div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar marketing"
+                  data-width="55%"
+                  style="width: 0%"
+                >
+                  3.5 次
+                </div>
+                <span class="multiplier-bar-tag">2.9x</span>
+              </div>
+            </div>
+            <div class="multiplier-row">
+              <div>
+                <div class="multiplier-label">轉介紹</div>
+                <div class="multiplier-label-sub">口碑 + 分享機制</div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar basic"
+                  data-width="18%"
+                  style="width: 0%"
+                >
+                  1.0x
+                </div>
+              </div>
+              <div class="multiplier-bar-cell">
+                <div
+                  class="multiplier-bar marketing"
+                  data-width="48%"
+                  style="width: 0%"
+                >
+                  1.5x
+                </div>
+                <span class="multiplier-bar-tag">1.5x</span>
+              </div>
+            </div>
+          </div>
+          <div class="multiplier-result">
+            <div class="multiplier-result-col">
+              <div class="multiplier-result-label basic-h">一般網站年營收</div>
+              <div class="multiplier-result-val basic-v">$24,000</div>
+            </div>
+            <div class="multiplier-result-arrow">&rarr;</div>
+            <div class="multiplier-result-col">
+              <div class="multiplier-result-label mkt-h">行銷網站年營收</div>
+              <div class="multiplier-result-val mkt-v">$907,200</div>
+            </div>
+            <div class="multiplier-result-arrow">=</div>
+            <div class="multiplier-result-col">
+              <div class="multiplier-result-growth">37.8 倍</div>
+              <div class="multiplier-result-growth-sub">五個乘數相乘的威力</div>
+            </div>
+          </div>
+        </div>
+
         <div class="decision-box fade-up">
           <img
             src="images/pricing/P08-decision-guide.jpg"
@@ -2820,8 +4187,8 @@
               <div class="price-visual-row">
                 <span class="pv-label">個人接案</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 0; width: 5%">
-                    <span class="pv-range-text">40K～80K</span>
+                  <div class="pv-range" style="left: 3%; width: 3%">
+                    <span class="pv-range-text pv-range-outside">40K～80K</span>
                   </div>
                 </div>
                 <span class="pv-incomplete-tag">僅設計，無行銷</span>
@@ -2829,8 +4196,10 @@
               <div class="price-visual-row">
                 <span class="pv-label">工作室</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 0; width: 10%">
-                    <span class="pv-range-text">80K～150K</span>
+                  <div class="pv-range" style="left: 5%; width: 6%">
+                    <span class="pv-range-text pv-range-outside"
+                      >80K～150K</span
+                    >
                   </div>
                 </div>
                 <span class="pv-incomplete-tag">缺 AI 與數據</span>
@@ -2838,7 +4207,7 @@
               <div class="price-visual-row">
                 <span class="pv-label">設計公司</span>
                 <div class="pv-track">
-                  <div class="pv-range" style="left: 0; width: 55%">
+                  <div class="pv-range" style="left: 10%; width: 90%">
                     <span class="pv-range-text">150K～1,500K</span>
                   </div>
                 </div>
@@ -2976,6 +4345,97 @@
             </div>
           </div>
         </div>
+
+        <!-- AI Staircase Chart -->
+        <div class="staircase-section fade-up" id="stairChart">
+          <div class="staircase-title">四個等級，對應不同需求深度</div>
+          <p class="staircase-desc">越高等級，取代越多人力、省越多長期成本</p>
+          <div class="staircase-chart">
+            <div class="stair-col">
+              <div class="stair-bar-wrap">
+                <div
+                  class="stair-bar stair-bar-l1"
+                  data-height="60"
+                  style="height: 0px"
+                >
+                  <span class="stair-cap">自動回覆 FAQ</span>
+                  <span class="stair-price">$3K</span>
+                </div>
+              </div>
+              <div class="stair-info">
+                <div class="stair-level">Level 1</div>
+                <div class="stair-name">基礎文字客服</div>
+                <div class="stair-save">省 63%~98%</div>
+              </div>
+            </div>
+            <div class="stair-col">
+              <div class="stair-bar-wrap">
+                <div
+                  class="stair-bar stair-bar-l2"
+                  data-height="110"
+                  style="height: 0px"
+                >
+                  <span class="stair-cap">+ 專屬知識庫</span>
+                  <span class="stair-price">$6K</span>
+                </div>
+              </div>
+              <div class="stair-info">
+                <div class="stair-level">Level 2</div>
+                <div class="stair-name">進階文字客服</div>
+                <div class="stair-save">省 60%~97%</div>
+              </div>
+            </div>
+            <div class="stair-col">
+              <div class="stair-bar-wrap">
+                <div
+                  class="stair-bar stair-bar-l3"
+                  data-height="165"
+                  style="height: 0px"
+                >
+                  <span class="stair-cap">+ 電話語音 AI</span>
+                  <span class="stair-price">$12K</span>
+                </div>
+              </div>
+              <div class="stair-info">
+                <div class="stair-level">Level 3</div>
+                <div class="stair-name">AI 語音客服</div>
+                <div class="stair-save">省 52%~96%</div>
+              </div>
+            </div>
+            <div class="stair-col">
+              <div class="stair-bar-wrap">
+                <div
+                  class="stair-bar stair-bar-l4"
+                  data-height="210"
+                  style="height: 0px"
+                >
+                  <span class="stair-cap">+ 引導成交銷售</span>
+                  <span class="stair-price">$15K</span>
+                </div>
+              </div>
+              <div class="stair-info">
+                <div class="stair-level">Level 4</div>
+                <div class="stair-name">AI 客服兼銷售</div>
+                <div class="stair-save">省 50%~97%</div>
+              </div>
+            </div>
+          </div>
+          <div class="stair-summary">
+            <div class="stair-summary-item">
+              <div class="stair-summary-val">$3K ~ $15K</div>
+              <div class="stair-summary-label">我們的價格範圍</div>
+            </div>
+            <div class="stair-summary-item">
+              <div class="stair-summary-val">$8K ~ $500K</div>
+              <div class="stair-summary-label">市場行情範圍</div>
+            </div>
+            <div class="stair-summary-item">
+              <div class="stair-summary-val">24/7</div>
+              <div class="stair-summary-label">全年無休在線</div>
+            </div>
+          </div>
+        </div>
+
         <div class="addon-section fade-up" style="margin-top: 32px">
           <div class="addon-title">AI 客服可加購服務</div>
           <div class="addon-grid">
@@ -3140,11 +4600,11 @@
     <!-- Agent Demo -->
     <section class="agd-section-wrapper" id="agent-demo">
       <div class="agd-section-header fade-up">
-        <span class="agd-badge">AI 智能分析</span>
-        <h2 class="agd-section-title">看 AI 如何幫你選方案</h2>
+        <span class="agd-badge">AI 驅動的客戶體驗</span>
+        <h2 class="agd-section-title">你的網站，也能這樣服務客戶</h2>
         <p class="agd-section-subtitle">
-          模擬真實諮詢流程：三位 AI 代理人協作分析，從需求診斷到預算規劃，60
-          秒內給出專業建議
+          這不只是展示 — 這正是我們能幫你建進網站裡的能力。<br />
+          想像你的客戶進入你的網站，AI 就自動幫他分析需求、推薦商品、規劃預算。
         </p>
       </div>
       <div class="agent-demo-section">
@@ -3186,6 +4646,239 @@
       </div>
     </section>
 
+    <!-- Podcast Player -->
+    <section class="podcast-section" id="podcast">
+      <div class="podcast-container fade-up">
+        <div class="podcast-header">
+          <div class="podcast-icon">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </svg>
+          </div>
+          <div>
+            <h2 class="podcast-title">AI 智能大腦 — 服務深度解析</h2>
+            <p class="podcast-subtitle">聽聽我們的專家怎麼說每項服務的價值</p>
+          </div>
+        </div>
+
+        <!-- Now Playing -->
+        <div class="podcast-now-playing" id="podcastPlayer">
+          <div class="podcast-cover">
+            <div class="podcast-wave-container" id="waveContainer">
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+              <div class="podcast-wave-bar"></div>
+            </div>
+          </div>
+          <div class="podcast-info">
+            <span class="podcast-ep-label" id="epLabel">EP.1</span>
+            <h3 class="podcast-ep-title" id="epTitle">整體優勢總覽</h3>
+            <p class="podcast-ep-desc" id="epDesc">
+              為什麼選擇 AI 智能大腦？聽聽我們的核心競爭力
+            </p>
+          </div>
+          <div class="podcast-controls">
+            <button
+              class="podcast-btn podcast-btn-prev"
+              id="btnPrev"
+              title="上一集"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+              </svg>
+            </button>
+            <button
+              class="podcast-btn podcast-btn-play"
+              id="btnPlay"
+              title="播放"
+            >
+              <svg
+                class="icon-play"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <svg
+                class="icon-pause"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style="display: none"
+              >
+                <rect x="6" y="4" width="4" height="16" />
+                <rect x="14" y="4" width="4" height="16" />
+              </svg>
+            </button>
+            <button
+              class="podcast-btn podcast-btn-next"
+              id="btnNext"
+              title="下一集"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+              </svg>
+            </button>
+          </div>
+          <div class="podcast-progress-wrap">
+            <span class="podcast-time" id="timeNow">0:00</span>
+            <input
+              type="range"
+              class="podcast-progress"
+              id="progressBar"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+            />
+            <span class="podcast-time" id="timeDur">0:00</span>
+          </div>
+        </div>
+
+        <!-- Playlist -->
+        <ul class="podcast-playlist" id="podcastPlaylist">
+          <li
+            class="podcast-track active"
+            data-src="audio/01-overall-final.mp3"
+            data-ep="EP.1"
+            data-title="整體優勢總覽"
+            data-desc="為什麼選擇 AI 智能大腦？聽聽我們的核心競爭力"
+          >
+            <span class="track-ep">EP.1</span>
+            <div class="track-info">
+              <span class="track-title">整體優勢總覽</span
+              ><span class="track-dur">2:18</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+          <li
+            class="podcast-track"
+            data-src="audio/02-cms-final.mp3"
+            data-ep="EP.2"
+            data-title="CMS 內容管理系統"
+            data-desc="自己就能改網站內容，不用再等工程師"
+          >
+            <span class="track-ep">EP.2</span>
+            <div class="track-info">
+              <span class="track-title">CMS 內容管理系統</span
+              ><span class="track-dur">1:20</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+          <li
+            class="podcast-track"
+            data-src="audio/03-ecommerce-final.mp3"
+            data-ep="EP.3"
+            data-title="電商功能"
+            data-desc="線上開店的完整解決方案"
+          >
+            <span class="track-ep">EP.3</span>
+            <div class="track-info">
+              <span class="track-title">電商功能</span
+              ><span class="track-dur">1:07</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+          <li
+            class="podcast-track"
+            data-src="audio/04-marketing-final.mp3"
+            data-ep="EP.4"
+            data-title="行銷導向功能"
+            data-desc="SEO、數據分析、自動化行銷一次搞定"
+          >
+            <span class="track-ep">EP.4</span>
+            <div class="track-info">
+              <span class="track-title">行銷導向功能</span
+              ><span class="track-dur">1:31</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+          <li
+            class="podcast-track"
+            data-src="audio/05-ai-cs-final.mp3"
+            data-ep="EP.5"
+            data-title="AI 智能客服"
+            data-desc="24/7 不打烊的智能客服系統"
+          >
+            <span class="track-ep">EP.5</span>
+            <div class="track-info">
+              <span class="track-title">AI 智能客服</span
+              ><span class="track-dur">1:27</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+          <li
+            class="podcast-track"
+            data-src="audio/06-content-final.mp3"
+            data-ep="EP.6"
+            data-title="素材轉製服務"
+            data-desc="把你的素材變成專業的網站內容"
+          >
+            <span class="track-ep">EP.6</span>
+            <div class="track-info">
+              <span class="track-title">素材轉製服務</span
+              ><span class="track-dur">1:09</span>
+            </div>
+            <div class="track-eq"><span></span><span></span><span></span></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section" id="contact">
       <div class="fade-up">
@@ -3213,6 +4906,55 @@
     <div class="floating-cta" id="floatingCta">
       <a href="#contact">免費諮詢 →</a>
     </div>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chat-widget-container">
+      <div class="chat-hint" id="chatHint">
+        <span class="chat-hint-text" id="chatHintText">有問題嗎？問我！</span>
+        <div class="chat-hint-arrow"></div>
+      </div>
+      <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+        <span class="chat-toggle-icon">AI</span>
+        <span class="chat-notification">1</span>
+      </button>
+    </div>
+
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">AI</div>
+          <div class="chat-header-text">
+            <h4>AI 智能客服</h4>
+            <span>通常幾秒內回覆</span>
+          </div>
+        </div>
+        <button class="chat-close" id="chatClose" aria-label="Close chat">
+          x
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-area">
+        <form class="chat-form" id="chatForm">
+          <input
+            type="text"
+            class="chat-input"
+            id="chatInput"
+            placeholder="輸入您的問題..."
+            autocomplete="off"
+          />
+          <button type="submit" class="chat-send" aria-label="Send message">
+            <span class="chat-send-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Chatbot 模組化載入 -->
+    <script src="chatbot-config.js?v=3"></script>
+    <script src="chatbot-api.js?v=2"></script>
+    <script src="chatbot-core.js?v=2"></script>
+    <script src="chatbot-ui.js?v=2"></script>
+    <script src="chatbot-hints.js?v=2"></script>
 
     <script>
       // Navbar scroll shadow
@@ -3299,6 +5041,57 @@
 
       // Start typing — hero is always visible on load
       setTimeout(typeNextChar, 500);
+
+      // ── Animated price comparison bars ──
+      document.querySelectorAll(".price-visual").forEach((visual) => {
+        // Store original widths and set to 0
+        const bars = visual.querySelectorAll(".pv-ours-bar, .pv-range");
+        bars.forEach((bar) => {
+          const w = bar.style.width;
+          if (w) {
+            bar.dataset.targetWidth = w;
+            bar.style.width = "0%";
+            // Position label based on bar position and width
+            const widthPct = parseInt(w, 10);
+            const leftPct = parseInt(bar.style.left, 10) || 0;
+            const rightEdge = leftPct + widthPct;
+            const label = bar.querySelector(".pv-range-text");
+            if (label) {
+              if (widthPct >= 60 || (rightEdge >= 70 && widthPct >= 25)) {
+                // Wide bar or near right edge with enough room: text inside
+                label.classList.add("pv-text-inside");
+              } else if (rightEdge >= 70) {
+                // Narrow bar near right edge: text to the left
+                label.classList.add("pv-text-left");
+              }
+            }
+          }
+        });
+
+        const pvObserver = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              pvObserver.unobserve(entry.target);
+              // Small delay then animate bars sequentially
+              const rows = entry.target.querySelectorAll(".price-visual-row");
+              rows.forEach((row, i) => {
+                const bar = row.querySelector(".pv-ours-bar, .pv-range");
+                if (bar && bar.dataset.targetWidth) {
+                  setTimeout(() => {
+                    bar.style.width = bar.dataset.targetWidth;
+                  }, i * 300);
+                }
+              });
+              // Add animated class for text/badge fade-ins
+              setTimeout(() => {
+                entry.target.classList.add("pv-animated");
+              }, 200);
+            }
+          },
+          { threshold: 0.3 },
+        );
+        pvObserver.observe(visual);
+      });
     </script>
     <script src="js/agent-demo-engine.js"></script>
     <script>
@@ -3315,6 +5108,379 @@
           { threshold: 0.1 },
         );
         io.observe(container);
+      })();
+    </script>
+
+    <!-- Charts Animation -->
+    <script>
+      // ── Radar Chart (SVG) ──
+      (function () {
+        const svg = document.getElementById("radarChart");
+        if (!svg) return;
+
+        const cx = 140,
+          cy = 140,
+          maxR = 110;
+        const dims = [
+          "操作門檻",
+          "擴展性",
+          "維護成本低",
+          "客製自由度",
+          "生態系統",
+        ];
+        // Scores out of 10
+        const wpScores = [9, 5, 3, 4, 9]; // WordPress
+        const compScores = [8, 9, 9, 9, 6]; // 組件式
+
+        const angleStep = (2 * Math.PI) / dims.length;
+        const startAngle = -Math.PI / 2;
+
+        function polarToXY(score, i) {
+          const angle = startAngle + i * angleStep;
+          const r = (score / 10) * maxR;
+          return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
+        }
+
+        function makePath(scores) {
+          return (
+            scores
+              .map((s, i) => {
+                const [x, y] = polarToXY(s, i);
+                return (
+                  (i === 0 ? "M" : "L") + x.toFixed(1) + "," + y.toFixed(1)
+                );
+              })
+              .join(" ") + " Z"
+          );
+        }
+
+        // Grid rings
+        [0.25, 0.5, 0.75, 1].forEach((pct) => {
+          const r = maxR * pct;
+          const points = dims.map((_, i) => {
+            const angle = startAngle + i * angleStep;
+            return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
+          });
+          const d =
+            points
+              .map(
+                (p, i) =>
+                  (i === 0 ? "M" : "L") +
+                  p[0].toFixed(1) +
+                  "," +
+                  p[1].toFixed(1),
+              )
+              .join(" ") + " Z";
+          const path = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path",
+          );
+          path.setAttribute("d", d);
+          path.setAttribute("fill", "none");
+          path.setAttribute("stroke", "#e8e0d8");
+          path.setAttribute("stroke-width", pct === 1 ? "1.5" : "0.8");
+          svg.appendChild(path);
+        });
+
+        // Axis lines
+        dims.forEach((_, i) => {
+          const [x, y] = polarToXY(10, i);
+          const line = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "line",
+          );
+          line.setAttribute("x1", cx);
+          line.setAttribute("y1", cy);
+          line.setAttribute("x2", x.toFixed(1));
+          line.setAttribute("y2", y.toFixed(1));
+          line.setAttribute("stroke", "#e8e0d8");
+          line.setAttribute("stroke-width", "0.8");
+          svg.appendChild(line);
+        });
+
+        // Labels
+        dims.forEach((label, i) => {
+          const [x, y] = polarToXY(11.5, i);
+          const text = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "text",
+          );
+          text.setAttribute("x", x.toFixed(1));
+          text.setAttribute("y", y.toFixed(1));
+          text.setAttribute("text-anchor", "middle");
+          text.setAttribute("dominant-baseline", "middle");
+          text.setAttribute("font-size", "13");
+          text.setAttribute("font-weight", "700");
+          text.setAttribute("fill", "#374151");
+          text.textContent = label;
+          svg.appendChild(text);
+        });
+
+        // WordPress polygon
+        const wpPath = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path",
+        );
+        wpPath.setAttribute("d", makePath(wpScores.map(() => 0)));
+        wpPath.setAttribute("fill", "rgba(139, 69, 83, 0.25)");
+        wpPath.setAttribute("stroke", "rgba(139, 69, 83, 0.85)");
+        wpPath.setAttribute("stroke-width", "2.5");
+        wpPath.id = "radarWP";
+        svg.appendChild(wpPath);
+
+        // Component polygon
+        const compPath = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path",
+        );
+        compPath.setAttribute("d", makePath(compScores.map(() => 0)));
+        compPath.setAttribute("fill", "rgba(210, 105, 30, 0.22)");
+        compPath.setAttribute("stroke", "rgba(210, 105, 30, 0.85)");
+        compPath.setAttribute("stroke-width", "2.5");
+        compPath.id = "radarComp";
+        svg.appendChild(compPath);
+
+        // Dots
+        wpScores.forEach((s, i) => {
+          const dot = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          const [x, y] = polarToXY(s, i);
+          dot.setAttribute("cx", cx);
+          dot.setAttribute("cy", cy);
+          dot.setAttribute("r", "4");
+          dot.setAttribute("fill", "#8b4553");
+          dot.classList.add("radar-dot-wp");
+          dot.dataset.tx = x.toFixed(1);
+          dot.dataset.ty = y.toFixed(1);
+          svg.appendChild(dot);
+        });
+
+        compScores.forEach((s, i) => {
+          const dot = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle",
+          );
+          const [x, y] = polarToXY(s, i);
+          dot.setAttribute("cx", cx);
+          dot.setAttribute("cy", cy);
+          dot.setAttribute("r", "4");
+          dot.setAttribute("fill", "#d2691e");
+          dot.classList.add("radar-dot-comp");
+          dot.dataset.tx = x.toFixed(1);
+          dot.dataset.ty = y.toFixed(1);
+          svg.appendChild(dot);
+        });
+
+        // Animate on scroll
+        const radarObs = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              radarObs.disconnect();
+              let progress = 0;
+              const dur = 60;
+              function step() {
+                progress++;
+                const t = Math.min(progress / dur, 1);
+                const ease = 1 - Math.pow(1 - t, 3);
+
+                const wpAnimated = wpScores.map((s) => s * ease);
+                const compAnimated = compScores.map((s) => s * ease);
+
+                wpPath.setAttribute("d", makePath(wpAnimated));
+                compPath.setAttribute("d", makePath(compAnimated));
+
+                document.querySelectorAll(".radar-dot-wp").forEach((dot, i) => {
+                  const [x, y] = polarToXY(wpAnimated[i], i);
+                  dot.setAttribute("cx", x.toFixed(1));
+                  dot.setAttribute("cy", y.toFixed(1));
+                });
+                document
+                  .querySelectorAll(".radar-dot-comp")
+                  .forEach((dot, i) => {
+                    const [x, y] = polarToXY(compAnimated[i], i);
+                    dot.setAttribute("cx", x.toFixed(1));
+                    dot.setAttribute("cy", y.toFixed(1));
+                  });
+
+                if (t < 1) requestAnimationFrame(step);
+              }
+              requestAnimationFrame(step);
+            }
+          },
+          { threshold: 0.3 },
+        );
+        radarObs.observe(svg.closest(".radar-compare"));
+      })();
+
+      // ── Multiplier Chart Animation ──
+      (function () {
+        const chart = document.getElementById("multiplierChart");
+        if (!chart) return;
+        const bars = chart.querySelectorAll(".multiplier-bar");
+
+        const mulObs = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              mulObs.disconnect();
+              bars.forEach((bar, i) => {
+                const targetW = bar.dataset.width;
+                setTimeout(() => {
+                  bar.style.width = targetW;
+                }, i * 120);
+              });
+            }
+          },
+          { threshold: 0.2 },
+        );
+        mulObs.observe(chart);
+      })();
+
+      // ── Staircase Chart Animation ──
+      (function () {
+        const stair = document.getElementById("stairChart");
+        if (!stair) return;
+        const bars = stair.querySelectorAll(".stair-bar");
+
+        const stairObs = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              stairObs.disconnect();
+              bars.forEach((bar, i) => {
+                const h = bar.dataset.height;
+                setTimeout(() => {
+                  bar.style.height = h + "px";
+                }, i * 200);
+              });
+              setTimeout(() => {
+                stair.classList.add("stair-animated");
+              }, 800);
+            }
+          },
+          { threshold: 0.3 },
+        );
+        stairObs.observe(stair);
+      })();
+    </script>
+    <!-- Podcast Player JS -->
+    <script>
+      (() => {
+        const audio = new Audio();
+        const tracks = document.querySelectorAll(".podcast-track");
+        const btnPlay = document.getElementById("btnPlay");
+        const btnPrev = document.getElementById("btnPrev");
+        const btnNext = document.getElementById("btnNext");
+        const progressBar = document.getElementById("progressBar");
+        const timeNow = document.getElementById("timeNow");
+        const timeDur = document.getElementById("timeDur");
+        const epLabel = document.getElementById("epLabel");
+        const epTitle = document.getElementById("epTitle");
+        const epDesc = document.getElementById("epDesc");
+        const waveContainer = document.getElementById("waveContainer");
+        const iconPlay = btnPlay.querySelector(".icon-play");
+        const iconPause = btnPlay.querySelector(".icon-pause");
+        let currentIndex = 0;
+
+        const formatTime = (s) => {
+          const m = Math.floor(s / 60);
+          const sec = Math.floor(s % 60);
+          return m + ":" + String(sec).padStart(2, "0");
+        };
+
+        const loadTrack = (idx) => {
+          currentIndex = idx;
+          const track = tracks[idx];
+          audio.src = track.dataset.src;
+          epLabel.textContent = track.dataset.ep;
+          epTitle.textContent = track.dataset.title;
+          epDesc.textContent = track.dataset.desc;
+          tracks.forEach((t, i) => {
+            t.classList.toggle("active", i === idx);
+            t.classList.remove("playing");
+          });
+          progressBar.value = 0;
+          timeNow.textContent = "0:00";
+        };
+
+        const togglePlay = () => {
+          if (audio.paused) {
+            audio.play();
+          } else {
+            audio.pause();
+          }
+        };
+
+        const updatePlayState = (playing) => {
+          iconPlay.style.display = playing ? "none" : "block";
+          iconPause.style.display = playing ? "block" : "none";
+          waveContainer.classList.toggle("playing", playing);
+          tracks[currentIndex].classList.toggle("playing", playing);
+        };
+
+        audio.addEventListener("play", () => updatePlayState(true));
+        audio.addEventListener("pause", () => updatePlayState(false));
+        audio.addEventListener("ended", () => {
+          updatePlayState(false);
+          if (currentIndex < tracks.length - 1) {
+            loadTrack(currentIndex + 1);
+            audio.play();
+          }
+        });
+        audio.addEventListener("loadedmetadata", () => {
+          timeDur.textContent = formatTime(audio.duration);
+        });
+        audio.addEventListener("timeupdate", () => {
+          if (audio.duration) {
+            progressBar.value = (audio.currentTime / audio.duration) * 100;
+            timeNow.textContent = formatTime(audio.currentTime);
+          }
+        });
+
+        progressBar.addEventListener("input", () => {
+          if (audio.duration) {
+            audio.currentTime = (progressBar.value / 100) * audio.duration;
+          }
+        });
+
+        btnPlay.addEventListener("click", togglePlay);
+        btnPrev.addEventListener("click", () => {
+          const idx = currentIndex > 0 ? currentIndex - 1 : tracks.length - 1;
+          loadTrack(idx);
+          audio.play();
+        });
+        btnNext.addEventListener("click", () => {
+          const idx = currentIndex < tracks.length - 1 ? currentIndex + 1 : 0;
+          loadTrack(idx);
+          audio.play();
+        });
+
+        tracks.forEach((track, idx) => {
+          track.addEventListener("click", () => {
+            loadTrack(idx);
+            audio.play();
+          });
+        });
+
+        // Random wave heights for visual interest when idle
+        const bars = waveContainer.querySelectorAll(".podcast-wave-bar");
+        bars.forEach((bar) => {
+          bar.style.height = 4 + Math.random() * 20 + "px";
+        });
+
+        // Update wave bars based on audio (simple visualization)
+        const updateWave = () => {
+          if (!audio.paused) {
+            bars.forEach((bar) => {
+              const base = 8 + Math.random() * 45;
+              bar.style.height = base + "px";
+            });
+          }
+          requestAnimationFrame(updateWave);
+        };
+        updateWave();
+
+        loadTrack(0);
       })();
     </script>
   </body>
