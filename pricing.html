@@ -1,0 +1,3322 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>服務方案與價格 | AI 智能大腦</title>
+    <meta
+      name="description"
+      content="從形象官網到 AI 客服，一站式網站建置方案。透明定價，含 RWD、SEO、5 次修改。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/agent-demo.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-light: #fcfcfc;
+        --bg-section: #f5efe6;
+        --bg-card: #fffaf5;
+        --color-primary: #d2691e;
+        --color-primary-light: #e07b3a;
+        --color-primary-dark: #b85a15;
+        --color-accent: #cd853f;
+        --color-accent-light: #dda15e;
+        --tech-titanium: #2d3436;
+        --tech-midnight: #1a1e23;
+        --tech-slate: #4a5568;
+        --text-primary: #1a1e23;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --border-light: #e8e0d8;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 20px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        color: var(--text-primary);
+        background: var(--bg-light);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── Navigation ── */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(252, 252, 252, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-light);
+        transition: box-shadow 0.3s;
+      }
+
+      .navbar.scrolled {
+        box-shadow: var(--shadow-sm);
+      }
+
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .nav-logo-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 900;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 8px;
+        transition: all 0.2s;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--color-primary);
+        background: rgba(210, 105, 30, 0.06);
+      }
+
+      .nav-cta {
+        background: var(--color-primary) !important;
+        color: #fff !important;
+        padding: 8px 20px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        transition: background 0.2s !important;
+      }
+
+      .nav-cta:hover {
+        background: var(--color-primary-dark) !important;
+      }
+
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .nav-toggle span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--text-primary);
+        margin: 5px 0;
+        border-radius: 2px;
+        transition: 0.3s;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 140px 24px 80px;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          var(--bg-section) 0%,
+          var(--bg-light) 100%
+        );
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        background: rgba(210, 105, 30, 0.1);
+        color: var(--color-primary);
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 100px;
+        margin-bottom: 24px;
+      }
+
+      .typewriter-cursor {
+        display: inline-block;
+        color: var(--color-primary);
+        font-weight: 300;
+        animation: blink 0.7s step-end infinite;
+        margin-left: 2px;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .typewriter-highlight {
+        transition: opacity 0.5s ease;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        font-weight: 900;
+        line-height: 1.3;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      }
+
+      .hero h1 .highlight {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-sub {
+        font-size: 1.15rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+      }
+
+      .hero-features {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      .hero-feature {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+
+      .hero-feature-icon {
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        flex-shrink: 0;
+      }
+
+      /* ── Section Nav (sticky) ── */
+      .section-nav {
+        position: sticky;
+        top: 64px;
+        z-index: 90;
+        background: linear-gradient(
+          180deg,
+          rgba(252, 249, 245, 0.98) 0%,
+          rgba(252, 249, 245, 0.92) 100%
+        );
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(210, 105, 30, 0.1);
+        box-shadow: 0 2px 16px rgba(210, 105, 30, 0.06);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .section-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .section-nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 8px 24px;
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+      }
+
+      .section-nav a {
+        white-space: nowrap;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        border-radius: 100px;
+        border: 1.5px solid transparent;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .section-nav a:hover {
+        color: var(--color-primary);
+        background: rgba(210, 105, 30, 0.06);
+        border-color: rgba(210, 105, 30, 0.15);
+      }
+
+      .section-nav a.active {
+        color: #fff;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-dark) 100%
+        );
+        border-color: transparent;
+        box-shadow: 0 2px 8px rgba(210, 105, 30, 0.3);
+      }
+
+      /* ── Content Sections ── */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section:nth-child(even) {
+        background: var(--bg-section);
+      }
+
+      .section-header {
+        margin-bottom: 48px;
+      }
+
+      .section-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 12px;
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .section-desc {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        max-width: 700px;
+        line-height: 1.85;
+      }
+
+      /* ── Pricing Cards ── */
+      .pricing-grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .pricing-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pricing-card:hover {
+        border-color: var(--color-accent-light);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+      }
+
+      .pricing-card.featured {
+        border-color: var(--color-primary);
+        box-shadow:
+          0 0 0 1px var(--color-primary),
+          var(--shadow-md);
+      }
+
+      .pricing-card.featured::before {
+        content: "推薦";
+        position: absolute;
+        top: 16px;
+        right: -28px;
+        background: var(--color-primary);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 36px;
+        transform: rotate(45deg);
+      }
+
+      .pricing-card.full-width {
+        grid-column: 1 / -1;
+      }
+
+      .card-label {
+        display: inline-block;
+        padding: 4px 12px;
+        background: rgba(210, 105, 30, 0.08);
+        color: var(--color-primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        border-radius: 6px;
+        margin-bottom: 16px;
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .card-desc {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+        line-height: 1.75;
+      }
+
+      .card-price {
+        margin-bottom: 24px;
+      }
+
+      .price-currency {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .price-amount {
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+
+      .price-amount.free {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .price-unit {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .price-note {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      .card-features {
+        list-style: none;
+        margin-bottom: 28px;
+      }
+
+      .card-features li {
+        padding: 8px 0;
+        font-size: 0.93rem;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .card-features li::before {
+        content: "✓";
+        color: var(--color-primary);
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      /* ── Price Comparison Visual ── */
+      .price-visual {
+        background: #f9f6f2;
+        border-radius: var(--radius-md);
+        padding: 24px;
+        margin-top: 28px;
+        border: 1px solid var(--border-light);
+      }
+
+      .price-visual-title {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        margin-bottom: 20px;
+        letter-spacing: 0.04em;
+      }
+
+      .price-visual-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .price-visual-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .pv-label {
+        width: 72px;
+        flex-shrink: 0;
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        text-align: right;
+      }
+
+      .pv-track {
+        flex: 1;
+        height: 28px;
+        background: #eee8e0;
+        border-radius: 6px;
+        position: relative;
+        overflow: visible;
+      }
+
+      .pv-range {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background: #d9cfc4;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .pv-range-text {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+      }
+
+      .pv-ours-row .pv-label {
+        color: var(--color-primary);
+        font-weight: 700;
+      }
+
+      .pv-ours-row .pv-track {
+        background: rgba(210, 105, 30, 0.08);
+      }
+
+      .pv-ours-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(210, 105, 30, 0.3);
+        min-width: 60px;
+        overflow: hidden;
+      }
+
+      .pv-ours-text {
+        font-size: 0.82rem;
+        color: #fff;
+        font-weight: 700;
+        white-space: nowrap;
+        padding: 0 10px;
+      }
+
+      .pv-save {
+        flex-shrink: 0;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #2d7a3a;
+        background: rgba(45, 122, 58, 0.08);
+        padding: 4px 10px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
+
+      /* Premium price visual - for marketing section (show high value) */
+      .price-visual-premium {
+        background: linear-gradient(135deg, #1a1e23 0%, #2d3436 100%);
+        border: 1px solid rgba(196, 151, 90, 0.3);
+      }
+
+      .price-visual-premium .price-visual-title {
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .price-visual-premium .pv-label {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .price-visual-premium .pv-ours-row .pv-label {
+        color: #f0d48a;
+        font-size: 0.9rem;
+      }
+
+      .price-visual-premium .pv-track {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .price-visual-premium .pv-ours-row .pv-track {
+        background: rgba(196, 151, 90, 0.12);
+      }
+
+      .price-visual-premium .pv-ours-bar {
+        background: linear-gradient(
+          135deg,
+          #c4975a 0%,
+          #f0d48a 40%,
+          #c4975a 100%
+        );
+        box-shadow:
+          0 2px 16px rgba(196, 151, 90, 0.5),
+          0 0 40px rgba(240, 212, 138, 0.15);
+        min-width: 80px;
+      }
+
+      .price-visual-premium .pv-ours-text {
+        color: #1a1e23;
+        font-weight: 800;
+        font-size: 0.85rem;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      .price-visual-premium .pv-range {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: visible;
+      }
+
+      .price-visual-premium .pv-range-text {
+        color: rgba(255, 255, 255, 0.45);
+        font-size: 0.72rem;
+        position: absolute;
+        left: 105%;
+      }
+
+      .pv-premium-badge {
+        flex-shrink: 0;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: #f0d48a;
+        background: rgba(196, 151, 90, 0.15);
+        border: 1px solid rgba(196, 151, 90, 0.3);
+        padding: 4px 12px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
+
+      .pv-incomplete-tag {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.35);
+        white-space: nowrap;
+        font-style: italic;
+      }
+
+      /* ── Profit Banner ── */
+      .profit-inline {
+        margin: 12px 0 0;
+        text-align: center;
+      }
+      .profit-highlight {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #7a4a1e;
+        letter-spacing: 0.06em;
+      }
+      .profit-sub-inline {
+        display: block;
+        font-size: 0.95rem;
+        color: #555;
+        margin-top: 6px;
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 600px) {
+        .profit-highlight {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* ── Guru Quotes ── */
+      .guru-quotes {
+        margin: 40px 0 32px;
+      }
+      .guru-quotes-title {
+        text-align: center;
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: #c4975a;
+        margin-bottom: 28px;
+        font-weight: 600;
+      }
+      .guru-quotes-title::before,
+      .guru-quotes-title::after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #c4975a, transparent);
+        vertical-align: middle;
+        margin: 0 16px;
+      }
+      .guru-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .guru-card {
+        position: relative;
+        background: linear-gradient(
+          145deg,
+          rgba(26, 30, 35, 0.95),
+          rgba(35, 39, 46, 0.95)
+        );
+        border: 1px solid rgba(196, 151, 90, 0.25);
+        border-radius: 16px;
+        padding: 28px 24px 22px;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+        overflow: hidden;
+      }
+      .guru-card::before {
+        content: "\201C";
+        position: absolute;
+        top: -8px;
+        left: 16px;
+        font-size: 5rem;
+        font-family: Georgia, serif;
+        background: linear-gradient(
+          135deg,
+          rgba(196, 151, 90, 0.15),
+          rgba(240, 212, 138, 0.08)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        pointer-events: none;
+      }
+      .guru-card:hover {
+        border-color: rgba(196, 151, 90, 0.4);
+        transform: translateY(-2px);
+      }
+      .guru-card-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #c4975a, transparent);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .guru-card:hover .guru-card-accent {
+        opacity: 1;
+      }
+      .guru-quote-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #ffffff;
+        font-style: italic;
+        margin-bottom: 16px;
+        position: relative;
+        overflow-wrap: break-word;
+        z-index: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+      .guru-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .guru-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a1e23;
+        background: linear-gradient(135deg, #c4975a, #f0d48a);
+        flex-shrink: 0;
+      }
+      .guru-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #ffffff;
+        letter-spacing: 0.02em;
+      }
+      .guru-title {
+        font-size: 0.78rem;
+        color: #d4b078;
+        margin-top: 2px;
+        letter-spacing: 0.03em;
+      }
+      .guru-takeaway {
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(196, 151, 90, 0.2);
+        font-size: 0.88rem;
+        color: #f5e6c8;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .guru-takeaway::before {
+        content: "→ ";
+        color: #f0c97a;
+      }
+
+      @media (max-width: 768px) {
+        .guru-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .guru-card {
+          padding: 24px 20px 18px;
+        }
+        .guru-quote-text {
+          font-size: 0.95rem;
+        }
+      }
+
+      /* ── Tags ── */
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tag {
+        padding: 6px 14px;
+        background: rgba(210, 105, 30, 0.06);
+        color: var(--color-primary-dark);
+        font-size: 0.85rem;
+        font-weight: 500;
+        border-radius: 100px;
+        border: 1px solid rgba(210, 105, 30, 0.12);
+      }
+
+      /* ── Decision Box ── */
+      .decision-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-bottom: 32px;
+      }
+
+      .decision-box h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--text-primary);
+      }
+
+      .decision-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .decision-item {
+        padding: 20px;
+        background: #fff;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-light);
+      }
+
+      .decision-item h4 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+      }
+
+      .decision-item p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .decision-item.positive h4 {
+        color: #2d7a3a;
+      }
+
+      .decision-item.negative h4 {
+        color: #a63d40;
+      }
+
+      .decision-item.neutral h4 {
+        color: var(--color-primary);
+      }
+
+      /* ── Included Features Strip ── */
+      .included-section {
+        padding: 80px 0;
+        background: var(--tech-midnight);
+        color: #fff;
+      }
+
+      .included-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-accent-light);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .included-heading {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 800;
+        margin-bottom: 48px;
+      }
+
+      .included-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .included-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-md);
+        padding: 28px 24px;
+      }
+
+      .included-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+      }
+
+      .included-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .included-card h3 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .included-card p {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.7;
+      }
+
+      /* ── Extras Section ── */
+      .extras-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .extras-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-md);
+        padding: 28px 24px;
+        text-align: center;
+      }
+
+      .extras-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .extras-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 8px;
+      }
+
+      .extras-card p {
+        font-size: 0.88rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .extras-note {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      /* ── CTA Section ── */
+      .cta-section {
+        padding: 100px 24px;
+        text-align: center;
+        background: linear-gradient(
+          180deg,
+          var(--bg-light) 0%,
+          var(--bg-section) 100%
+        );
+      }
+
+      .cta-section h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 16px;
+      }
+
+      .cta-section p {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        margin-bottom: 36px;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 32px;
+        border-radius: var(--radius-sm);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+      }
+
+      .btn-primary {
+        background: var(--color-primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1.5px solid var(--border-light);
+      }
+
+      .btn-outline:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+      }
+
+      /* ── Footer ── */
+      .footer {
+        padding: 32px 24px;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* ── Animations ── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── Responsive ── */
+
+      /* Tablet landscape / small desktop (≤1024px) */
+      @media (max-width: 1024px) {
+        .decision-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+        }
+
+        .decision-item {
+          padding: 16px;
+        }
+
+        .included-grid {
+          gap: 16px;
+        }
+
+        .extras-grid {
+          gap: 16px;
+        }
+      }
+
+      /* Tablet portrait (≤900px) */
+      @media (max-width: 900px) {
+        .pricing-grid-2,
+        .pricing-grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .decision-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+        }
+
+        .decision-item:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .included-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .included-card:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .extras-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .extras-card:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .marketing-modules {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
+
+        /* Price visual: tighter on tablet */
+        .pv-label {
+          width: 60px;
+          font-size: 0.78rem;
+        }
+
+        .price-visual {
+          padding: 20px;
+        }
+
+        .pv-save,
+        .pv-premium-badge,
+        .pv-incomplete-tag {
+          font-size: 0.72rem;
+          padding: 3px 8px;
+        }
+      }
+
+      /* Mobile (≤768px) */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 0;
+          right: 0;
+          background: rgba(252, 252, 252, 0.98);
+          backdrop-filter: blur(12px);
+          flex-direction: column;
+          padding: 16px 24px;
+          border-bottom: 1px solid var(--border-light);
+        }
+
+        .nav-links.open {
+          display: flex;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        .hero {
+          padding: 120px 20px 60px;
+        }
+
+        .hero-features {
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .section {
+          padding: 60px 0;
+        }
+
+        .pricing-card {
+          padding: 28px 24px;
+        }
+
+        .section-nav-inner {
+          padding: 6px 16px;
+          justify-content: flex-start;
+        }
+
+        .decision-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .decision-item:last-child {
+          grid-column: auto;
+        }
+
+        .included-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .included-card:last-child {
+          grid-column: auto;
+        }
+
+        .extras-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .extras-card:last-child {
+          grid-column: auto;
+        }
+
+        /* Price visual: stack label above bar on mobile */
+        .price-visual-row {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .pv-label {
+          width: auto;
+          text-align: left;
+          font-size: 0.8rem;
+        }
+
+        .pv-track {
+          flex-basis: 100%;
+          order: 1;
+        }
+
+        .pv-save,
+        .pv-premium-badge,
+        .pv-incomplete-tag {
+          order: 2;
+          font-size: 0.72rem;
+        }
+
+        .pv-ours-row .pv-label {
+          flex-basis: auto;
+        }
+
+        .price-visual {
+          padding: 16px;
+        }
+
+        /* Price amount responsive */
+        .price-amount {
+          font-size: 2rem;
+        }
+
+        /* Addon items: responsive spacing */
+        .addon-item {
+          gap: 6px;
+        }
+
+        /* Marketing modules 2-col on mobile */
+        .marketing-modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* Featured card ribbon adjustment */
+        .pricing-card.featured::before {
+          font-size: 0.7rem;
+          padding: 3px 32px;
+          top: 14px;
+          right: -30px;
+        }
+
+        .cta-section {
+          padding: 72px 20px;
+        }
+
+        /* Section header spacing */
+        .section-header {
+          margin-bottom: 36px;
+        }
+      }
+
+      /* Small mobile (≤480px) */
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+
+        .hero {
+          padding: 110px 16px 48px;
+        }
+
+        .hero-sub {
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .section {
+          padding: 48px 0;
+        }
+
+        .pricing-card {
+          padding: 24px 18px;
+        }
+
+        .price-amount {
+          font-size: 1.7rem;
+        }
+
+        .card-title {
+          font-size: 1.15rem;
+        }
+
+        .card-desc {
+          font-size: 0.9rem;
+        }
+
+        .card-features li {
+          font-size: 0.88rem;
+        }
+
+        /* Price visual fully stacked */
+        .pv-ours-bar {
+          min-width: 50px;
+        }
+
+        .pv-ours-text {
+          font-size: 0.75rem;
+          padding: 0 6px;
+        }
+
+        .pv-range-text {
+          font-size: 0.68rem;
+        }
+
+        /* Addon grid always 1-col */
+        .addon-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .addon-item {
+          padding: 8px 12px;
+        }
+
+        .addon-name {
+          font-size: 0.82rem;
+        }
+
+        .addon-price {
+          font-size: 0.8rem;
+        }
+
+        /* Marketing modules 1-col on tiny screens */
+        .marketing-modules {
+          grid-template-columns: 1fr;
+        }
+
+        /* Decision box */
+        .decision-box {
+          padding: 24px 18px;
+        }
+
+        /* CTA buttons stack */
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+          max-width: 300px;
+        }
+
+        /* Floating CTA smaller */
+        .floating-cta {
+          bottom: 16px;
+          right: 16px;
+        }
+
+        .floating-cta a {
+          padding: 12px 20px;
+          font-size: 0.88rem;
+        }
+
+        /* Included section */
+        .included-card {
+          padding: 22px 18px;
+        }
+
+        /* Extras card */
+        .extras-card {
+          padding: 22px 18px;
+        }
+
+        /* Section nav scroll hint */
+        .section-nav-inner {
+          padding: 4px 12px;
+          gap: 4px;
+          justify-content: flex-start;
+        }
+
+        .section-nav a {
+          padding: 8px 14px;
+          font-size: 0.78rem;
+        }
+
+        /* AI tiers cards */
+        .ai-card {
+          padding: 22px 18px;
+        }
+
+        .ai-card .card-price .price-amount {
+          font-size: 1.7rem;
+        }
+
+        .ai-market-row {
+          gap: 6px;
+        }
+
+        .ai-market-tag {
+          font-size: 0.72rem;
+          padding: 2px 6px;
+        }
+
+        /* Tag list */
+        .tag {
+          font-size: 0.8rem;
+          padding: 5px 12px;
+        }
+      }
+
+      /* ── Floating CTA ── */
+      .floating-cta {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 99;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s;
+        pointer-events: none;
+      }
+
+      .floating-cta.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+
+      .floating-cta a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 24px;
+        background: var(--color-primary);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-radius: 100px;
+        box-shadow: 0 4px 20px rgba(210, 105, 30, 0.35);
+        transition: all 0.2s;
+      }
+
+      .floating-cta a:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 28px rgba(210, 105, 30, 0.45);
+      }
+
+      /* ── Price Range Comparison Bar ── */
+      .price-compare {
+        margin-top: 20px;
+      }
+
+      .compare-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+      }
+
+      .compare-label {
+        width: 80px;
+        flex-shrink: 0;
+        color: var(--text-muted);
+        font-weight: 500;
+        text-align: right;
+      }
+
+      .compare-bar-bg {
+        flex: 1;
+        height: 6px;
+        background: rgba(0, 0, 0, 0.04);
+        border-radius: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .compare-bar {
+        height: 100%;
+        background: rgba(210, 105, 30, 0.2);
+        border-radius: 100px;
+        position: relative;
+      }
+
+      .compare-ours {
+        position: absolute;
+        left: 0;
+        top: -3px;
+        width: 12px;
+        height: 12px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .compare-range {
+        width: 120px;
+        flex-shrink: 0;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+      }
+
+      /* AI tiers layout */
+      .ai-tiers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      @media (max-width: 1000px) {
+        .ai-tiers {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .ai-tiers {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ai-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+      }
+
+      .ai-card:hover {
+        border-color: var(--color-accent-light);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-4px);
+      }
+
+      .ai-card .card-tier {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 8px;
+      }
+
+      .ai-card .card-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+
+      .ai-card .card-desc {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+
+      .ai-card .card-price .price-amount {
+        font-size: 2rem;
+      }
+
+      .ai-market-row {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+
+      .ai-market-tag {
+        font-size: 0.78rem;
+        padding: 3px 8px;
+        background: rgba(210, 105, 30, 0.06);
+        border-radius: 4px;
+        color: var(--text-muted);
+      }
+
+      /* Marketing pricing special */
+      .marketing-price-range {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+
+      .marketing-modules {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 24px;
+        padding: 20px;
+        background: rgba(210, 105, 30, 0.02);
+        border-radius: var(--radius-md, 12px);
+        border: 1px dashed rgba(210, 105, 30, 0.12);
+      }
+
+      .marketing-module {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 14px 16px;
+        background: #fff;
+        border-radius: var(--radius-md, 12px);
+        border: 1px solid rgba(210, 105, 30, 0.1);
+        transition: all 0.3s ease;
+        cursor: default;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+
+      .mm-icon {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .mm-label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--color-primary-dark);
+        text-align: center;
+      }
+
+      .marketing-module::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 2px;
+        transition: width 0.3s ease;
+      }
+
+      .marketing-module:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(210, 105, 30, 0.08) 0%,
+          rgba(205, 133, 63, 0.14) 100%
+        );
+        border-color: rgba(210, 105, 30, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(210, 105, 30, 0.1);
+      }
+
+      .marketing-module:hover .mm-icon {
+        transform: scale(1.08);
+      }
+
+      .marketing-module:hover::after {
+        width: 60%;
+      }
+
+      /* marketing-modules responsive handled in main responsive section */
+
+      /* ── Add-on Services ── */
+      .addon-section {
+        margin-top: 28px;
+        padding: 28px 24px 24px;
+        background: linear-gradient(
+          135deg,
+          #fdf8f0 0%,
+          #fef5e7 50%,
+          #fff9f0 100%
+        );
+        border-radius: 14px;
+        border: 1.5px solid #e0c9a8;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(184, 131, 56, 0.08);
+      }
+
+      .addon-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          #e8a849,
+          #d4a24a,
+          var(--color-primary)
+        );
+      }
+
+      .addon-title {
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        margin-bottom: 18px;
+        letter-spacing: 0.05em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .addon-title::before {
+        content: "＋";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 26px;
+        height: 26px;
+        background: linear-gradient(135deg, var(--color-primary), #d4a24a);
+        color: #fff;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: 800;
+        flex-shrink: 0;
+        box-shadow: 0 2px 6px rgba(184, 131, 56, 0.3);
+      }
+
+      .addon-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      /* addon-grid responsive handled in main responsive section */
+
+      .addon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 18px 14px 22px;
+        background: linear-gradient(135deg, #fff 0%, #fffcf7 100%);
+        border: 1px solid #e0d5c8;
+        min-width: 0;
+        border-left: 4px solid var(--color-primary);
+        border-radius: 10px;
+        gap: 10px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: default;
+        box-shadow: 0 2px 8px rgba(184, 131, 56, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .addon-item::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60px;
+        height: 60px;
+        background: radial-gradient(
+          circle at top right,
+          rgba(184, 131, 56, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .addon-item:hover {
+        border-color: var(--color-primary);
+        border-left-color: #d4a24a;
+        box-shadow: 0 6px 20px rgba(184, 131, 56, 0.2);
+        transform: translateY(-3px);
+        background: linear-gradient(135deg, #fff 40%, #fef5e7 100%);
+      }
+
+      .addon-name {
+        font-size: 0.88rem;
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.4;
+        letter-spacing: 0.02em;
+      }
+
+      .addon-price {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          #d4a24a 50%,
+          #e8a849 100%
+        );
+        padding: 6px 16px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        max-width: 100%;
+        box-shadow: 0 2px 8px rgba(184, 131, 56, 0.25);
+        transition: all 0.3s ease;
+      }
+
+      .addon-item:hover .addon-price {
+        box-shadow: 0 3px 12px rgba(184, 131, 56, 0.35);
+        transform: scale(1.03);
+      }
+
+      .addon-market {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: line-through;
+        margin-left: 2px;
+        font-weight: 400;
+      }
+
+      /* ── Section Images ── */
+      .hero-image {
+        margin-top: 48px;
+        text-align: center;
+      }
+
+      .hero-image img {
+        width: 100%;
+        max-width: 900px;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .section-image {
+        margin-bottom: 40px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .section-image img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .section-image img {
+          height: 200px;
+        }
+        .hero-image img {
+          border-radius: var(--radius-md);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section-image img {
+          height: 160px;
+        }
+        .hero-image {
+          margin-top: 32px;
+        }
+      }
+
+      /* ── Final Responsive Overrides (must be last to win cascade) ── */
+      @media (max-width: 900px) {
+        .marketing-modules {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
+        .pv-label {
+          width: 60px;
+          font-size: 0.78rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .addon-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .addon-item {
+          gap: 6px;
+        }
+        .marketing-modules {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .floating-cta {
+          bottom: 20px;
+          right: 20px;
+        }
+        .floating-cta a {
+          padding: 12px 20px;
+          font-size: 0.9rem;
+        }
+        .ai-tiers {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .price-visual-row {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .pv-label {
+          width: auto;
+          text-align: left;
+          font-size: 0.8rem;
+        }
+        .pv-track {
+          flex-basis: 100%;
+          order: 1;
+        }
+        .pv-save,
+        .pv-premium-badge,
+        .pv-incomplete-tag {
+          order: 2;
+          font-size: 0.72rem;
+        }
+        /* Premium price visual: move floating text inside bar on mobile */
+        .price-visual-premium .pv-range {
+          overflow: hidden;
+        }
+        .price-visual-premium .pv-range-text {
+          position: static;
+          display: block;
+          text-align: center;
+        }
+        .price-amount {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .addon-grid {
+          grid-template-columns: 1fr;
+        }
+        .addon-item {
+          padding: 8px 12px;
+        }
+        .addon-name {
+          font-size: 0.82rem;
+        }
+        .addon-price {
+          font-size: 0.8rem;
+        }
+        .marketing-modules {
+          grid-template-columns: 1fr;
+        }
+        .floating-cta {
+          bottom: 16px;
+          right: 16px;
+        }
+        .floating-cta a {
+          padding: 12px 20px;
+          font-size: 0.88rem;
+        }
+        .ai-tiers {
+          grid-template-columns: 1fr;
+        }
+        .ai-card {
+          padding: 22px 18px;
+        }
+        .ai-card .card-price .price-amount {
+          font-size: 1.7rem;
+        }
+        .ai-market-tag {
+          font-size: 0.72rem;
+          padding: 2px 6px;
+        }
+        .price-amount {
+          font-size: 1.7rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <div class="nav-logo-icon">AI</div>
+          <span>AI 智能大腦</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#static">形象站</a></li>
+          <li><a href="#cms">可管理站</a></li>
+          <li><a href="#ecommerce">電商功能</a></li>
+          <li><a href="#marketing">行銷導向</a></li>
+          <li><a href="#ai-cs">AI 客服</a></li>
+          <li><a href="#contact" class="nav-cta">免費諮詢</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="選單">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="fade-up">
+        <span class="hero-badge">透明定價，不綁約不灌水</span>
+        <h1>
+          <span id="typewriter-text"></span
+          ><span class="typewriter-cursor">|</span><br /><span
+            class="highlight typewriter-highlight"
+            style="opacity: 0"
+            >都在這裡</span
+          >
+        </h1>
+        <p class="hero-sub">
+          從基本形象站到 AI 智能客服，依你的階段選擇。<br />所有方案皆含 RWD
+          響應式 + 基礎 SEO + 5 次修改。
+        </p>
+        <div class="hero-features">
+          <div class="hero-feature">
+            <span class="hero-feature-icon"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" /></svg
+            ></span>
+            <span>RWD 全裝置適配</span>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
+            ></span>
+            <span>基礎 SEO 設定</span>
+          </div>
+          <div class="hero-feature">
+            <span class="hero-feature-icon"
+              ><svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                />
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                /></svg
+            ></span>
+            <span>含 5 次修改</span>
+          </div>
+        </div>
+        <div class="hero-image fade-up">
+          <img
+            src="images/pricing/P01-hero-devices.jpg"
+            alt="MacBook、iPad、iPhone 同時展示暖橘色調的現代網站"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Section Nav -->
+    <div class="section-nav" id="sectionNav">
+      <div class="section-nav-inner">
+        <a href="#static" data-section="static">01 形象站</a>
+        <a href="#cms" data-section="cms">02 可管理站</a>
+        <a href="#ecommerce" data-section="ecommerce">03 電商</a>
+        <a href="#marketing" data-section="marketing">04 行銷導向</a>
+        <a href="#ai-cs" data-section="ai-cs">05 AI 客服</a>
+        <a href="#content" data-section="content">06 素材轉製</a>
+      </div>
+    </div>
+
+    <!-- 01: Static -->
+    <section class="section" id="static">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">01</div>
+          <h2 class="section-title">靜態形象網站</h2>
+          <p class="section-desc">
+            讓人在網路上搜到你的時候，有一個基本的信任感。公司介紹、服務內容、聯絡方式，該放的資訊放上去，上線後除非大改，基本不需要動。載入快、幾乎零維護成本。
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P02-branding-confidence.jpg"
+            alt="自信的創業者站在品牌網站旁，傳遞專業信任感"
+            loading="eager"
+          />
+        </div>
+        <div class="pricing-grid fade-up">
+          <div class="pricing-card full-width">
+            <div class="card-label">最低門檻</div>
+            <h3 class="card-title">基本形象站</h3>
+            <p class="card-desc">
+              適合剛起步、需要線上存在感但暫時不需頻繁更新的企業或個人品牌。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">5,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <ul class="card-features">
+              <li>
+                含 5 頁（首頁、關於、服務、作品集、聯絡），額外每頁 +NT$ 1,500
+              </li>
+              <li>RWD 響應式設計，手機平板桌機自適應</li>
+              <li>基礎 SEO 設定（Meta、Sitemap、Search Console）</li>
+              <li>含 5 次修改，超出依工時另計</li>
+              <li>載入快速，幾乎零維護成本</li>
+            </ul>
+            <div class="price-visual">
+              <div class="price-visual-title">市場行情比較</div>
+              <div class="price-visual-row pv-ours-row">
+                <span class="pv-label">我們</span>
+                <div class="pv-track">
+                  <div class="pv-ours-bar" style="width: 8%">
+                    <span class="pv-ours-text">$5K</span>
+                  </div>
+                </div>
+                <span class="pv-save">省 67%~93%</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">個人接案</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 12%; width: 10%">
+                    <span class="pv-range-text">8.5K～15K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">工作室</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 28%; width: 44%">
+                    <span class="pv-range-text">20K～50K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">設計公司</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 64%; width: 36%">
+                    <span class="pv-range-text">45K～70K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="addon-section">
+              <div class="addon-title">可加購服務</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">Google 商家檔案設定</span>
+                  <span class="addon-price"
+                    >+$2,000 起
+                    <span class="addon-market">行情 3K~5K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">自訂表單設計</span>
+                  <span class="addon-price"
+                    >+$1,500 起
+                    <span class="addon-market">行情 2.5K~4K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">動態效果 / 互動設計</span>
+                  <span class="addon-price"
+                    >+$3,000 起
+                    <span class="addon-market">行情 4K~6K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">多語系版本</span>
+                  <span class="addon-price"
+                    >+$4,000/語言 起
+                    <span class="addon-market">行情 5K~8K</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02: CMS -->
+    <section class="section" id="cms">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">02</div>
+          <h2 class="section-title">可自行管理的網站</h2>
+          <p class="section-desc">
+            需要自己新增文章、更新產品資訊、調整頁面內容時，就需要後台管理系統。兩條路線各有優勢，依你的長期規劃選擇。
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P03-cms-easy-manage.jpg"
+            alt="輕鬆在咖啡廳用筆電管理網站內容"
+            loading="eager"
+          />
+        </div>
+        <div class="pricing-grid pricing-grid-2 fade-up">
+          <!-- WordPress -->
+          <div class="pricing-card">
+            <div class="card-label">經典方案</div>
+            <h3 class="card-title">WordPress</h3>
+            <p class="card-desc">
+              全球最普及的內容管理系統，模板豐富、操作門檻低。適合頻繁發文章、經營內容的情境。擴展性受模板限制，長期深度客製後升級相容性會下降。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">15,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <ul class="card-features">
+              <li>
+                含 7
+                頁（首頁、關於、服務、作品集、聯絡、文章列表、文章模板），額外每頁
+                +NT$ 2,000
+              </li>
+            </ul>
+            <div class="price-visual">
+              <div class="price-visual-title">市場行情比較</div>
+              <div class="price-visual-row pv-ours-row">
+                <span class="pv-label">我們</span>
+                <div class="pv-track">
+                  <div class="pv-ours-bar" style="width: 8%">
+                    <span class="pv-ours-text">$15K</span>
+                  </div>
+                </div>
+                <span class="pv-save">省 50%~93%</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">個人接案</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 8%; width: 8%">
+                    <span class="pv-range-text">16K～30K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">設計公司</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 40%; width: 60%">
+                    <span class="pv-range-text">80K～200K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="addon-section">
+              <div class="addon-title">可加購服務</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">會員 / 登入系統</span>
+                  <span class="addon-price"
+                    >+$5,000 起
+                    <span class="addon-market">行情 8K~12K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">電子報訂閱串接</span>
+                  <span class="addon-price"
+                    >+$2,000 起
+                    <span class="addon-market">行情 3K~5K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">SEO 進階優化</span>
+                  <span class="addon-price"
+                    >+$4,000 起
+                    <span class="addon-market">行情 5K~10K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">多語系版本</span>
+                  <span class="addon-price"
+                    >+$6,000/語言 起
+                    <span class="addon-market">行情 8K~12K</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 組件式後台 -->
+          <div class="pricing-card featured">
+            <div class="card-label">長期推薦</div>
+            <h3 class="card-title">組件式後台</h3>
+            <p class="card-desc">
+              用現有後台組件透過程式整合，不綁定模板框架。操作同樣方便，但長期維護成本低、擴展性好，加新功能不被舊架構卡住。長期經營反而省錢。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">13,500</span>
+              <span class="price-unit">起</span>
+            </div>
+            <ul class="card-features">
+              <li>
+                含 7
+                頁（首頁、關於、服務、作品集、聯絡、文章列表、文章模板），額外每頁
+                +NT$ 2,000
+              </li>
+            </ul>
+            <div class="price-visual">
+              <div class="price-visual-title">市場行情比較</div>
+              <div class="price-visual-row pv-ours-row">
+                <span class="pv-label">我們</span>
+                <div class="pv-track">
+                  <div class="pv-ours-bar" style="width: 6%">
+                    <span class="pv-ours-text">$13.5K</span>
+                  </div>
+                </div>
+                <span class="pv-save">省 33%~95%</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">個人接案</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 8%; width: 6%">
+                    <span class="pv-range-text">20K～35K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">設計公司</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 32%; width: 68%">
+                    <span class="pv-range-text">80K～250K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="addon-section">
+              <div class="addon-title">可加購服務</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">會員 / 登入系統</span>
+                  <span class="addon-price"
+                    >+$4,500 起
+                    <span class="addon-market">行情 8K~12K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">API 串接（第三方服務）</span>
+                  <span class="addon-price"
+                    >+$3,000/支 起
+                    <span class="addon-market">行情 5K~8K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">自動化排程任務</span>
+                  <span class="addon-price"
+                    >+$3,500 起
+                    <span class="addon-market">行情 5K~10K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">多語系版本</span>
+                  <span class="addon-price"
+                    >+$5,000/語言 起
+                    <span class="addon-market">行情 8K~12K</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: E-commerce -->
+    <section class="section" id="ecommerce">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">03</div>
+          <h2 class="section-title">電商功能</h2>
+          <p class="section-desc">
+            在任何網站基礎上加裝金流串接（綠界、藍新等），讓用戶直接完成線上付款。通常搭配廣告投放使用效果最好。
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P04-ecommerce-payment.jpg"
+            alt="手機顯示付款成功畫面，搭配精美包裝商品"
+            loading="eager"
+          />
+        </div>
+        <div class="pricing-grid fade-up">
+          <div class="pricing-card full-width">
+            <div class="card-label">加裝模組</div>
+            <h3 class="card-title">購物車 + 金流 + 訂單管理</h3>
+            <p class="card-desc">
+              包含購物車介面、訂單管理、金流串接、基礎交易流程。在現有網站上加裝，不需重做。
+            </p>
+            <div class="card-price">
+              <span class="price-note">額外支付</span><br />
+              <span class="price-currency">+ NT$</span>
+              <span class="price-amount">19,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="tag-list">
+              <span class="tag">綠界金流</span>
+              <span class="tag">藍新金流</span>
+              <span class="tag">訂單管理</span>
+              <span class="tag">購物車</span>
+            </div>
+            <div class="price-visual">
+              <div class="price-visual-title">市場行情比較</div>
+              <div class="price-visual-row pv-ours-row">
+                <span class="pv-label">我們</span>
+                <div class="pv-track">
+                  <div class="pv-ours-bar" style="width: 10%">
+                    <span class="pv-ours-text">$19K</span>
+                  </div>
+                </div>
+                <span class="pv-save">省 5%~91%</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">個人接案</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 10%; width: 10%">
+                    <span class="pv-range-text">20K～40K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">工作室</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 20%; width: 20%">
+                    <span class="pv-range-text">40K～80K</span>
+                  </div>
+                </div>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">設計公司</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 38%; width: 62%">
+                    <span class="pv-range-text">75K～200K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="addon-section">
+              <div class="addon-title">可加購服務</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">物流系統串接</span>
+                  <span class="addon-price"
+                    >+$5,000 起
+                    <span class="addon-market">行情 8K~12K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">優惠券 / 折扣碼系統</span>
+                  <span class="addon-price"
+                    >+$3,000 起
+                    <span class="addon-market">行情 5K~8K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">會員等級 / 紅利點數</span>
+                  <span class="addon-price"
+                    >+$6,000 起
+                    <span class="addon-market">行情 10K~15K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">庫存管理後台</span>
+                  <span class="addon-price"
+                    >+$4,000 起
+                    <span class="addon-market">行情 6K~10K</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: Marketing -->
+    <section class="section" id="marketing">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">04</div>
+          <h2 class="section-title">行銷導向網站</h2>
+          <p class="section-desc">
+            前面三種解決「有沒有」和「能不能交易」的問題。這個方案解決的是——怎麼讓更多訪客從「有興趣」走到「付款」。一套在背後持續影響用戶決策的流程。
+          </p>
+          <p class="profit-inline">
+            <span class="profit-highlight"
+              >網站是成本，行銷讓它變成印鈔機。</span
+            >
+            <span class="profit-sub-inline"
+              >賺錢的網站，行銷流程是必備的。</span
+            >
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P05-marketing-growth.jpg"
+            alt="行銷數據儀表板顯示上升的轉換漏斗和成長曲線"
+            loading="eager"
+          />
+        </div>
+
+        <div class="guru-quotes fade-up">
+          <div class="guru-quotes-title">網路行銷大師這樣說</div>
+          <div class="guru-grid">
+            <div class="guru-card">
+              <div class="guru-card-accent"></div>
+              <p class="guru-quote-text">
+                「不要找客戶來買你的產品，要設計一條路，讓客戶自己走向購買。」
+              </p>
+              <div class="guru-author">
+                <div class="guru-avatar">SG</div>
+                <div>
+                  <div class="guru-name">Seth Godin</div>
+                  <div class="guru-title">《紫牛》《許可行銷》作者</div>
+                </div>
+              </div>
+              <div class="guru-takeaway">
+                這就是為什麼你的網站需要一條完整的行銷漏斗
+              </div>
+            </div>
+
+            <div class="guru-card">
+              <div class="guru-card-accent"></div>
+              <p class="guru-quote-text">
+                「在網路上，每一個頁面都是你的業務員。頁面不會累、不會請假——但它需要被訓練。」
+              </p>
+              <div class="guru-author">
+                <div class="guru-avatar">DO</div>
+                <div>
+                  <div class="guru-name">David Ogilvy</div>
+                  <div class="guru-title">奧美創辦人・廣告教父</div>
+                </div>
+              </div>
+              <div class="guru-takeaway">
+                行銷流程就是「訓練」你的網站頁面去成交
+              </div>
+            </div>
+
+            <div class="guru-card">
+              <div class="guru-card-accent"></div>
+              <p class="guru-quote-text">
+                「轉換率優化不是讓更多人來，是讓已經來的人更多人買。這是最被低估的成長槓桿。」
+              </p>
+              <div class="guru-author">
+                <div class="guru-avatar">NP</div>
+                <div>
+                  <div class="guru-name">Neil Patel</div>
+                  <div class="guru-title">數位行銷權威・NP Digital 創辦人</div>
+                </div>
+              </div>
+              <div class="guru-takeaway">同樣的流量，行銷流程讓營收翻倍</div>
+            </div>
+
+            <div class="guru-card">
+              <div class="guru-card-accent"></div>
+              <p class="guru-quote-text">
+                「最好的行銷不像在行銷。它在對的時間、給對的人、看到對的內容。」
+              </p>
+              <div class="guru-author">
+                <div class="guru-avatar">GV</div>
+                <div>
+                  <div class="guru-name">Gary Vaynerchuk</div>
+                  <div class="guru-title">VaynerMedia 創辦人・社群行銷教父</div>
+                </div>
+              </div>
+              <div class="guru-takeaway">
+                這就是行銷自動化的價值：在每個接觸點精準推動決策
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-box fade-up">
+          <img
+            src="images/pricing/P08-decision-guide.jpg"
+            alt="決策引導"
+            style="
+              width: 100%;
+              max-width: 720px;
+              display: block;
+              margin: 0 auto 1.5rem;
+              border-radius: 12px;
+            "
+          />
+          <h3>這個方案適合我嗎？</h3>
+          <div class="decision-grid">
+            <div class="decision-item positive">
+              <h4>什麼情況適合？</h4>
+              <p>產品單價較高、市場有競爭、需要系統性地推動成交的時候。</p>
+            </div>
+            <div class="decision-item negative">
+              <h4>什麼情況不需要？</h4>
+              <p>行業競爭不激烈、產品單價不高，前面的方案就夠了。</p>
+            </div>
+            <div class="decision-item neutral">
+              <h4>怎麼判斷值不值得？</h4>
+              <p>月成交量 × 客單價 × 12 月 × 經營年數 — 遠大於投資就值得。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-grid fade-up">
+          <div class="pricing-card featured full-width">
+            <div class="card-label">高轉換方案</div>
+            <h3 class="card-title">完整行銷流程設計</h3>
+            <p class="card-desc">
+              依需求組合模組，打造從「有興趣」到「付款」的完整轉換路徑。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">+NT$</span>
+              <span class="price-amount">35,000 ～ 1,200,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="marketing-modules">
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/broadcast.jpg"
+                  alt="推廣廣播"
+                  class="mm-icon"
+                />
+                <span class="mm-label">推廣廣播</span>
+              </div>
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/edu-marketing.jpg"
+                  alt="教學內嵌行銷"
+                  class="mm-icon"
+                />
+                <span class="mm-label">教學內嵌行銷</span>
+              </div>
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/video.jpg"
+                  alt="影片展示"
+                  class="mm-icon"
+                />
+                <span class="mm-label">影片展示</span>
+              </div>
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/content-flow.jpg"
+                  alt="圖文行銷流程"
+                  class="mm-icon"
+                />
+                <span class="mm-label">圖文行銷流程</span>
+              </div>
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/ai-cs.jpg"
+                  alt="AI 客服"
+                  class="mm-icon"
+                />
+                <span class="mm-label">AI 客服</span>
+              </div>
+              <div class="marketing-module">
+                <img
+                  src="images/pricing/pricing-anchor.jpg"
+                  alt="價格錨定設計"
+                  class="mm-icon"
+                />
+                <span class="mm-label">價格錨定設計</span>
+              </div>
+            </div>
+            <div
+              class="price-visual price-visual-premium"
+              style="margin-top: 24px"
+            >
+              <div class="price-visual-title">為什麼值得這個投資？</div>
+              <div class="price-visual-row pv-ours-row">
+                <span class="pv-label">我們</span>
+                <div class="pv-track">
+                  <div class="pv-ours-bar" style="width: 95%">
+                    <span class="pv-ours-text">$35K ～ $1,200K 全流程覆蓋</span>
+                  </div>
+                </div>
+                <span class="pv-premium-badge">一站式</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">個人接案</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 0; width: 5%">
+                    <span class="pv-range-text">40K～80K</span>
+                  </div>
+                </div>
+                <span class="pv-incomplete-tag">僅設計，無行銷</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">工作室</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 0; width: 10%">
+                    <span class="pv-range-text">80K～150K</span>
+                  </div>
+                </div>
+                <span class="pv-incomplete-tag">缺 AI 與數據</span>
+              </div>
+              <div class="price-visual-row">
+                <span class="pv-label">設計公司</span>
+                <div class="pv-track">
+                  <div class="pv-range" style="left: 0; width: 55%">
+                    <span class="pv-range-text">150K～1,500K</span>
+                  </div>
+                </div>
+                <span class="pv-incomplete-tag">分包再分包</span>
+              </div>
+            </div>
+            <div class="addon-section">
+              <div class="addon-title">模組單項參考價</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">Landing Page 設計</span>
+                  <span class="addon-price">+$15,000 起</span>
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">A/B 測試架構</span>
+                  <span class="addon-price">+$12,000 起</span>
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">Email 自動化序列</span>
+                  <span class="addon-price">+$18,000 起</span>
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">數據儀表板建置</span>
+                  <span class="addon-price">+$20,000 起</span>
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">影片行銷企劃 + 製作</span>
+                  <span class="addon-price">+$35,000 起</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05: AI Customer Service -->
+    <section class="section" id="ai-cs">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">05</div>
+          <h2 class="section-title">AI 智能客服</h2>
+          <p class="section-desc">
+            24 小時在線、不請假、不下班。可搭配網站、LINE 官方帳號或 Facebook
+            Messenger 使用。依功能深度分成四個等級。
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P06-ai-chatbot-247.jpg"
+            alt="凌晨三點，人在睡覺但 AI 客服仍在手機上回覆客戶"
+            loading="eager"
+          />
+        </div>
+
+        <div class="ai-tiers fade-up">
+          <!-- Tier 1 -->
+          <div class="ai-card">
+            <span class="card-tier">Level 1</span>
+            <h3 class="card-title">AI 文字客服・基礎版</h3>
+            <p class="card-desc">
+              自動回答常見問題、基本引導用戶。減少重複性人工回覆。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">3,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="ai-market-row">
+              <span class="pv-save">省 63%~98%</span>
+              <span class="ai-market-tag">個人 8K～15K</span>
+              <span class="ai-market-tag">設計公司 50K～150K</span>
+            </div>
+          </div>
+          <!-- Tier 2 -->
+          <div class="ai-card">
+            <span class="card-tier">Level 2</span>
+            <h3 class="card-title">AI 文字客服・進階版</h3>
+            <p class="card-desc">
+              含企業專屬知識庫、特定回答邏輯，根據你的資料回答，非通用罐頭。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">6,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="ai-market-row">
+              <span class="pv-save">省 60%~97%</span>
+              <span class="ai-market-tag">個人 15K～25K</span>
+              <span class="ai-market-tag">設計公司 60K～200K</span>
+            </div>
+          </div>
+          <!-- Tier 3 -->
+          <div class="ai-card">
+            <span class="card-tier">Level 3</span>
+            <h3 class="card-title">AI 語音客服</h3>
+            <p class="card-desc">
+              電話端語音即時對話，來電由 AI 接聽回應，不需真人值班。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">12,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="ai-market-row">
+              <span class="pv-save">省 52%~96%</span>
+              <span class="ai-market-tag">個人 25K～40K</span>
+              <span class="ai-market-tag">設計公司 80K～300K</span>
+            </div>
+          </div>
+          <!-- Tier 4 -->
+          <div
+            class="ai-card"
+            style="
+              border-color: var(--color-primary);
+              box-shadow: 0 0 0 1px var(--color-primary);
+            "
+          >
+            <span class="card-tier" style="color: var(--color-primary)"
+              >Level 4 · 最完整</span
+            >
+            <h3 class="card-title">AI 客服兼銷售</h3>
+            <p class="card-desc">
+              不只回答問題，還能引導成交、推薦產品。24 小時在線的銷售人員。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">15,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <div class="ai-market-row">
+              <span class="pv-save">省 50%~97%</span>
+              <span class="ai-market-tag">個人 30K～50K</span>
+              <span class="ai-market-tag">設計公司 100K～500K</span>
+            </div>
+          </div>
+        </div>
+        <div class="addon-section fade-up" style="margin-top: 32px">
+          <div class="addon-title">AI 客服可加購服務</div>
+          <div class="addon-grid">
+            <div class="addon-item">
+              <span class="addon-name">多語言回應（英/日/韓）</span>
+              <span class="addon-price"
+                >+$2,000/語言 起
+                <span class="addon-market">行情 3K~5K</span></span
+              >
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">對話數據報表</span>
+              <span class="addon-price"
+                >+$3,000 起 <span class="addon-market">行情 5K~8K</span></span
+              >
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">LINE / FB Messenger 串接</span>
+              <span class="addon-price"
+                >+$2,500/平台 起
+                <span class="addon-market">行情 4K~6K</span></span
+              >
+            </div>
+            <div class="addon-item">
+              <span class="addon-name">知識庫定期更新（月）</span>
+              <span class="addon-price"
+                >+$1,500/月 起
+                <span class="addon-market">行情 3K~5K</span></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: Content Conversion -->
+    <section class="section" id="content">
+      <div class="container">
+        <div class="section-header fade-up">
+          <div class="section-number">06</div>
+          <h2 class="section-title">大量素材轉為網站素材</h2>
+          <p class="section-desc">
+            手上有過去的錄音、影片、文件？可以直接轉化為網站素材，不需從零準備內容。
+          </p>
+        </div>
+        <div class="section-image fade-up">
+          <img
+            src="images/pricing/P07-content-transform.jpg"
+            alt="雜亂的原始素材經轉化後變成整齊的網站內容"
+            loading="eager"
+          />
+        </div>
+        <div class="pricing-grid fade-up">
+          <div class="pricing-card full-width">
+            <div class="card-label">省時方案</div>
+            <h3 class="card-title">既有內容轉製</h3>
+            <p class="card-desc">
+              基礎處理費含 2 小時以內原始素材。超出部分每小時加收 NT$
+              500。在大量原始素材中整理出品質一致的內容，確保最終成果可直接使用。
+            </p>
+            <div class="card-price">
+              <span class="price-currency">NT$</span>
+              <span class="price-amount">1,000</span>
+              <span class="price-unit">起</span>
+            </div>
+            <ul class="card-features">
+              <li>基礎費含 2 小時以內原始素材處理</li>
+              <li>超出部分每小時加收 NT$ 500</li>
+              <li>整理成品質一致、可直接使用的網站內容</li>
+            </ul>
+            <div class="addon-section">
+              <div class="addon-title">可加購服務</div>
+              <div class="addon-grid">
+                <div class="addon-item">
+                  <span class="addon-name">AI 字幕自動生成</span>
+                  <span class="addon-price" style="color: #2d7a3a"
+                    >免費 <span class="addon-market">行情 800~1.5K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">影片剪輯精華版</span>
+                  <span class="addon-price"
+                    >+$2,000/支 起
+                    <span class="addon-market">行情 3K~5K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">圖文排版設計</span>
+                  <span class="addon-price"
+                    >+$800/頁 起
+                    <span class="addon-market">行情 1.5K~3K</span></span
+                  >
+                </div>
+                <div class="addon-item">
+                  <span class="addon-name">音頻轉 Podcast 上架</span>
+                  <span class="addon-price"
+                    >+$1,500/集 起
+                    <span class="addon-market">行情 2.5K~4K</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Included in All Plans -->
+    <section class="included-section">
+      <div class="container">
+        <div class="fade-up">
+          <p class="included-title">所有方案皆含</p>
+          <h2 class="included-heading">不額外收費的基礎配備</h2>
+        </div>
+        <div class="included-grid fade-up">
+          <div class="included-card">
+            <div class="included-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+                <rect x="6" y="7" width="4" height="6" rx="1" opacity="0.5" />
+                <rect x="14" y="8" width="3" height="5" rx="1" opacity="0.5" />
+              </svg>
+            </div>
+            <h3>RWD 響應式設計</h3>
+            <p>手機、平板、桌機自動適配，所有裝置都能正常瀏覽。</p>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="8" y1="11" x2="14" y2="11" opacity="0.5" />
+                <line x1="11" y1="8" x2="11" y2="14" opacity="0.5" />
+              </svg>
+            </div>
+            <h3>基礎 SEO 設定</h3>
+            <p>
+              網站結構優化、Meta 標題描述、Sitemap 提交、Google Search Console
+              串接、載入速度優化。
+            </p>
+          </div>
+          <div class="included-card">
+            <div class="included-icon">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                />
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                />
+              </svg>
+            </div>
+            <h3>5 次修改</h3>
+            <p>確認方向後含五次調整修改，超出部分依工時另計。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Demo -->
+    <section class="agd-section-wrapper" id="agent-demo">
+      <div class="agd-section-header fade-up">
+        <span class="agd-badge">AI 智能分析</span>
+        <h2 class="agd-section-title">看 AI 如何幫你選方案</h2>
+        <p class="agd-section-subtitle">
+          模擬真實諮詢流程：三位 AI 代理人協作分析，從需求診斷到預算規劃，60
+          秒內給出專業建議
+        </p>
+      </div>
+      <div class="agent-demo-section">
+        <canvas class="agd-particles"></canvas>
+        <div class="agd-toolbar">
+          <div class="agd-toolbar-item">
+            <span class="agd-toolbar-label">狀態</span>
+            <span class="agd-toolbar-value agd-status"
+              ><span class="agd-status-dot"></span><span>待機中</span></span
+            >
+          </div>
+          <div class="agd-toolbar-item">
+            <span class="agd-toolbar-label">經過時間</span>
+            <span class="agd-toolbar-value elapsed-time">0:00</span>
+          </div>
+          <div class="agd-toolbar-item">
+            <span class="agd-toolbar-label">代理人</span>
+            <span class="agd-toolbar-value m-agents">0 / 3</span>
+          </div>
+          <div class="agd-toolbar-item">
+            <span class="agd-toolbar-label">信心度</span>
+            <span class="agd-toolbar-value m-conf">—</span>
+          </div>
+        </div>
+        <div class="agd-main"></div>
+        <div class="agd-scroll-hint">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+          <span>向下滾動查看分析過程</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <div class="fade-up">
+        <h2>不確定需要哪個方案？</h2>
+        <p>聊聊你的需求，我幫你找最適合的組合。不推銷、不綁約。</p>
+        <div class="cta-buttons">
+          <a
+            href="https://line.me/ti/p/5gW0er9baG"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+            >LINE 免費諮詢 →</a
+          >
+          <a href="index.html" class="btn btn-outline">← 回首頁</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 AI 智能大腦. All rights reserved.</p>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floatingCta">
+      <a href="#contact">免費諮詢 →</a>
+    </div>
+
+    <script>
+      // Navbar scroll shadow
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 10);
+      });
+
+      // Mobile nav toggle
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.getElementById("navLinks");
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("open");
+      });
+
+      // Close mobile nav on link click
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => navLinks.classList.remove("open"));
+      });
+
+      // Floating CTA visibility
+      const floatingCta = document.getElementById("floatingCta");
+      const observer1 = new IntersectionObserver(
+        ([entry]) => {
+          floatingCta.classList.toggle("visible", !entry.isIntersecting);
+        },
+        { threshold: 0 },
+      );
+      observer1.observe(document.querySelector(".hero"));
+
+      // Fade-up on scroll
+      const fadeEls = document.querySelectorAll(".fade-up");
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              fadeObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
+      );
+      fadeEls.forEach((el) => fadeObserver.observe(el));
+
+      // Section nav active state
+      const sectionNavLinks = document.querySelectorAll(".section-nav a");
+      const sections = document.querySelectorAll(".section[id]");
+      const sectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              sectionNavLinks.forEach((link) => {
+                link.classList.toggle("active", link.dataset.section === id);
+              });
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: "-80px 0px -50% 0px" },
+      );
+      sections.forEach((s) => sectionObserver.observe(s));
+
+      // Typewriter effect for hero title
+      const typewriterText = "你需要的網站方案";
+      const typewriterEl = document.getElementById("typewriter-text");
+      const highlightEl = document.querySelector(".typewriter-highlight");
+      const cursorEl = document.querySelector(".typewriter-cursor");
+      let charIndex = 0;
+
+      function typeNextChar() {
+        if (charIndex < typewriterText.length) {
+          typewriterEl.textContent += typewriterText[charIndex];
+          charIndex++;
+          setTimeout(typeNextChar, 120);
+        } else {
+          // Typing done — show highlight line and hide cursor
+          highlightEl.style.opacity = "1";
+          setTimeout(() => {
+            cursorEl.style.display = "none";
+          }, 600);
+        }
+      }
+
+      // Start typing — hero is always visible on load
+      setTimeout(typeNextChar, 500);
+    </script>
+    <script src="js/agent-demo-engine.js"></script>
+    <script>
+      (function () {
+        const container = document.querySelector(".agent-demo-section");
+        if (!container) return;
+        const io = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              io.disconnect();
+              runAgentDemo(container);
+            }
+          },
+          { threshold: 0.1 },
+        );
+        io.observe(container);
+      })();
+    </script>
+  </body>
+</html>
