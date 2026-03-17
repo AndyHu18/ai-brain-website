@@ -6,7 +6,7 @@
     <title>服務方案與價格 | AI 智能大腦</title>
     <meta
       name="description"
-      content="從形象官網到 AI 客服，一站式網站建置方案。透明定價，含 RWD、SEO、5 次修改。"
+      content="AI 時代的網站會攬客、會回覆、會成交。從形象官網到 AI 智能客服，行銷效果放大十倍。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/agent-demo.css" />
+    <link rel="stylesheet" href="css/industry-analyzer.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-window.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
@@ -449,6 +450,33 @@
         color: var(--text-secondary);
         max-width: 700px;
         line-height: 1.85;
+      }
+
+      /* ── Transition CTA ── */
+      .transition-cta {
+        padding: 48px 0 16px;
+      }
+      .transition-cta-inner {
+        text-align: center;
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        border-left: 3px solid var(--accent, #c9a96e);
+        background: linear-gradient(
+          90deg,
+          rgba(201, 169, 110, 0.06) 0%,
+          transparent 100%
+        );
+        border-radius: 0 12px 12px 0;
+      }
+      .transition-cta-text {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--text-secondary, #666);
+      }
+      .transition-cta-text strong {
+        color: var(--text-primary, #1a1a1a);
+        font-weight: 700;
       }
 
       /* ── Pricing Cards ── */
@@ -1766,27 +1794,6 @@
         }
       }
 
-      /* ── Chat Widget positioning fix (variables.css not loaded) ── */
-      .chat-widget-container {
-        bottom: 24px;
-        right: 24px;
-      }
-
-      .chat-window {
-        bottom: 104px;
-        right: 24px;
-        border-radius: 16px;
-        background: #fffaf5;
-        border: 1px solid rgba(210, 105, 30, 0.3);
-        box-shadow: 0 20px 25px rgba(62, 39, 35, 0.15);
-      }
-
-      .chat-window.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0) scale(1);
-      }
-
       /* ── Price Range Comparison Bar ── */
       .price-compare {
         margin-top: 20px;
@@ -3002,6 +3009,86 @@
         cursor: pointer;
       }
 
+      /* ── Podcast Intro Teaser ── */
+      .sp-intro {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 8px;
+        padding: 14px 16px 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(45, 35, 25, 0.6) 0%,
+          rgba(58, 44, 31, 0.4) 100%
+        );
+        border-radius: 14px 14px 0 0;
+        border-bottom: 1px solid rgba(210, 105, 30, 0.15);
+        position: relative;
+        overflow: hidden;
+      }
+      .sp-intro::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: 3px;
+      }
+      .sp-intro-icon {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        margin-top: 1px;
+        filter: drop-shadow(0 0 6px rgba(210, 105, 30, 0.4));
+        animation: sp-pulse 2.5s ease-in-out infinite;
+      }
+      @keyframes sp-pulse {
+        0%,
+        100% {
+          opacity: 0.8;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.08);
+        }
+      }
+      .sp-intro-text {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .sp-intro-hook {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.92);
+        line-height: 1.5;
+        letter-spacing: 0.01em;
+      }
+      .sp-intro-sub {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.5);
+        line-height: 1.4;
+      }
+
+      /* When intro is paired with player, merge borders */
+      .sp-intro + .section-player {
+        margin-top: 0;
+        border-radius: 0 0 14px 14px;
+      }
+      .sp-intro-wrap {
+        margin-top: 28px;
+      }
+      .sp-intro-wrap .section-player {
+        margin-top: 0;
+        border-radius: 0 0 14px 14px;
+      }
+
       /* Section Player RWD */
       @media (max-width: 768px) {
         .section-player {
@@ -3029,6 +3116,20 @@
         .sp-time {
           font-size: 0.75rem;
         }
+        .sp-intro {
+          padding: 12px 14px 10px;
+          gap: 8px;
+          border-radius: 12px 12px 0 0;
+        }
+        .sp-intro-hook {
+          font-size: 0.85rem;
+        }
+        .sp-intro-sub {
+          font-size: 0.73rem;
+        }
+        .sp-intro-wrap .section-player {
+          border-radius: 0 0 12px 12px;
+        }
       }
       @media (max-width: 375px) {
         .sp-ep {
@@ -3037,6 +3138,9 @@
         }
         .sp-title {
           font-size: 0.78rem;
+        }
+        .sp-intro-hook {
+          font-size: 0.8rem;
         }
       }
     </style>
@@ -3068,18 +3172,17 @@
     <!-- Hero -->
     <section class="hero">
       <div class="fade-up">
-        <span class="hero-badge">透明定價，不綁約不灌水</span>
+        <span class="hero-badge">AI 網站新時代</span>
         <h1>
           <span id="typewriter-text"></span
           ><span class="typewriter-cursor">|</span><br /><span
             class="highlight typewriter-highlight"
             style="opacity: 0"
-            >都在這裡</span
+            >該換了</span
           >
         </h1>
         <p class="hero-sub">
-          從基本形象站到 AI 智能客服，依你的階段選擇。<br />所有方案皆含 RWD
-          響應式 + 基礎 SEO + 5 次修改。
+          AI 時代的網站會攬客、會回覆、會成交——同樣的預算，行銷效果放大十倍。
         </p>
         <div class="hero-features">
           <div class="hero-feature">
@@ -3098,7 +3201,7 @@
                 <line x1="8" y1="21" x2="16" y2="21" />
                 <line x1="12" y1="17" x2="12" y2="21" /></svg
             ></span>
-            <span>RWD 全裝置適配</span>
+            <span>AI 全天候攬客</span>
           </div>
           <div class="hero-feature">
             <span class="hero-feature-icon"
@@ -3115,7 +3218,7 @@
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" /></svg
             ></span>
-            <span>基礎 SEO 設定</span>
+            <span>RWD + SEO 標配</span>
           </div>
           <div class="hero-feature">
             <span class="hero-feature-icon"
@@ -3136,7 +3239,7 @@
                   d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
                 /></svg
             ></span>
-            <span>含 5 次修改</span>
+            <span>含 5 次免費修改</span>
           </div>
         </div>
         <div class="hero-image fade-up">
@@ -3176,6 +3279,91 @@
         >
       </div>
     </div>
+
+    <!-- Industry Analyzer -->
+    <section class="ia-section" id="industry-analyzer">
+      <div class="ia-inner fade-up">
+        <div class="ia-header">
+          <span class="ia-badge">AI 即時分析</span>
+          <h2 class="ia-title">
+            你的<span class="ia-highlight">行業</span>，適合什麼方案？
+          </h2>
+          <p class="ia-subtitle">
+            <span id="iaSubtitleText"></span><span class="ia-cursor"></span>
+          </p>
+        </div>
+
+        <!-- Auto Showcase Carousel -->
+        <div class="ia-showcase">
+          <div class="ia-showcase-header">
+            <div class="ia-showcase-dot"></div>
+            <span class="ia-showcase-label">即時模擬</span>
+            <span class="ia-showcase-industry" id="iaShowcaseIndustry"
+              >咖啡廳</span
+            >
+          </div>
+          <div class="ia-showcase-body" id="iaShowcaseBody"></div>
+        </div>
+
+        <!-- Industry Selection -->
+        <div class="ia-select">
+          <span class="ia-select-label">👆 快速選擇你的行業：</span>
+          <div class="ia-tags">
+            <button class="ia-tag" data-industry="餐飲">🍽 餐飲</button>
+            <button class="ia-tag" data-industry="美容美髮">💇 美容美髮</button>
+            <button class="ia-tag" data-industry="教育補習">📚 教育補習</button>
+            <button class="ia-tag" data-industry="電商零售">🛍 電商零售</button>
+            <button class="ia-tag" data-industry="醫療診所">🏥 醫療診所</button>
+            <button class="ia-tag" data-industry="法律事務所">
+              ⚖ 法律事務所
+            </button>
+            <button class="ia-tag" data-industry="房地產">🏠 房地產</button>
+            <button class="ia-tag" data-industry="健身瑜珈">🏋 健身瑜珈</button>
+            <button class="ia-tag" data-industry="寵物店">🐾 寵物店</button>
+            <button class="ia-tag" data-industry="攝影工作室">
+              📷 攝影工作室
+            </button>
+          </div>
+          <div class="ia-input-row">
+            <input
+              type="text"
+              class="ia-input"
+              id="iaInput"
+              placeholder="或輸入你的行業，例如：花店、健身房、會計師..."
+            />
+            <button class="ia-submit" id="iaSubmit">開始分析 →</button>
+          </div>
+        </div>
+
+        <!-- AI Result -->
+        <div class="ia-result" id="iaResult">
+          <div class="ia-result-header">
+            <div class="ia-result-avatar">AI</div>
+            <div class="ia-result-meta">
+              <div class="ia-result-name">AI 方案分析師</div>
+              <div class="ia-result-status" id="iaResultStatus">準備中</div>
+            </div>
+          </div>
+          <div class="ia-result-body" id="iaResultBody"></div>
+        </div>
+
+        <div class="ia-remaining">
+          每位訪客每日可分析 5 次 · 由 Claude AI 驅動
+        </div>
+      </div>
+    </section>
+
+    <!-- Transition CTA -->
+    <section class="transition-cta">
+      <div class="container">
+        <div class="transition-cta-inner fade-up">
+          <p class="transition-cta-text">
+            不管你現在是<strong>零網站</strong>、<strong>套版老站</strong>、還是<strong>花了大錢卻沒效果的網站</strong>——<br />
+            下面六種方案，總有一個能讓你的生意開始被看見。
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- 01: Static -->
     <section class="section" id="static">
@@ -3288,53 +3476,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div
-          class="section-player fade-up"
-          data-src="audio/01-overall-final.mp3"
-        >
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.1</span>
-              <span class="sp-title">整體優勢總覽</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                一站式服務到底差在哪？為什麼找不同廠商做，最後串接會出事？
+              </div>
+              <div class="sp-intro-sub">
+                兩位業界人士聊透明定價、程式碼直寫 vs 套模板的長期差異
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/01-overall-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.1</span>
+                <span class="sp-title">整體優勢總覽</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -3589,50 +3788,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div class="section-player fade-up" data-src="audio/02-cms-final.mp3">
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.2</span>
-              <span class="sp-title">CMS 內容管理系統</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                WordPress 還是組件式後台？選錯了，未來升級整個要打掉重來
+              </div>
+              <div class="sp-intro-sub">
+                後台自主權有多香？聽完你會想馬上把工程師的 LINE 封鎖
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/02-cms-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.2</span>
+                <span class="sp-title">CMS 內容管理系統</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -3745,53 +3958,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div
-          class="section-player fade-up"
-          data-src="audio/03-ecommerce-final.mp3"
-        >
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.3</span>
-              <span class="sp-title">電商功能</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                一個月多成交十筆就回本——電商模組到底值不值得裝？
+              </div>
+              <div class="sp-intro-sub">
+                綠界、藍新金流實戰分析，讓你的網站從展示窗變成 24 小時自動販賣機
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/03-ecommerce-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.3</span>
+                <span class="sp-title">電商功能</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -4223,53 +4447,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div
-          class="section-player fade-up"
-          data-src="audio/04-marketing-final.mp3"
-        >
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.4</span>
-              <span class="sp-title">行銷導向功能</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                同樣的流量，營收可以翻倍——行銷漏斗怎麼幫你把訪客變客戶？
+              </div>
+              <div class="sp-intro-sub">
+                Seth Godin 的購買路徑設計 × Neil Patel 的轉換率優化心法
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/04-marketing-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.4</span>
+                <span class="sp-title">行銷導向功能</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -4499,50 +4734,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div class="section-player fade-up" data-src="audio/05-ai-cs-final.mp3">
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.5</span>
-              <span class="sp-title">AI 智能客服</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                凌晨三點的客人你接得到嗎？AI 客服四個等級，最貴的會幫你成交
+              </div>
+              <div class="sp-intro-sub">
+                串接 LINE、FB Messenger，一個月就把人力成本省回來的投報率分析
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/05-ai-cs-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.5</span>
+                <span class="sp-title">AI 智能客服</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -4617,53 +4866,64 @@
         </div>
 
         <!-- Section Audio Player -->
-        <div
-          class="section-player fade-up"
-          data-src="audio/06-content-final.mp3"
-        >
-          <div class="sp-row-top">
-            <button class="sp-btn" title="播放">
-              <svg
-                class="sp-icon-play"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <polygon points="6 3 20 12 6 21" />
-              </svg>
-              <svg
-                class="sp-icon-pause"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                style="display: none"
-              >
-                <rect x="5" y="3" width="5" height="18" />
-                <rect x="14" y="3" width="5" height="18" />
-              </svg>
-            </button>
-            <div class="sp-info">
-              <span class="sp-ep">EP.6</span>
-              <span class="sp-title">素材轉製服務</span>
+        <div class="sp-intro-wrap fade-up">
+          <div class="sp-intro">
+            <span class="sp-intro-icon">🎧</span>
+            <div class="sp-intro-text">
+              <div class="sp-intro-hook">
+                你手上已經有好內容了——演講錄音、教學影片、舊簡報，只差有人幫你轉化
+              </div>
+              <div class="sp-intro-sub">
+                一千塊起步，免費 AI 字幕、兩千塊影片精華版，不用從零開始做素材
+              </div>
             </div>
-            <span class="sp-time">0:00</span>
           </div>
-          <div class="sp-row-bottom">
-            <div class="sp-wave"></div>
-            <div class="sp-progress-wrap">
-              <input
-                type="range"
-                class="sp-progress"
-                min="0"
-                max="100"
-                value="0"
-                step="0.1"
-              />
+          <div class="section-player" data-src="audio/06-content-final.mp3">
+            <div class="sp-row-top">
+              <button class="sp-btn" title="播放">
+                <svg
+                  class="sp-icon-play"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <polygon points="6 3 20 12 6 21" />
+                </svg>
+                <svg
+                  class="sp-icon-pause"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="display: none"
+                >
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              </button>
+              <div class="sp-info">
+                <span class="sp-ep">EP.6</span>
+                <span class="sp-title">素材轉製服務</span>
+              </div>
+              <span class="sp-time">0:00</span>
+            </div>
+            <div class="sp-row-bottom">
+              <div class="sp-wave"></div>
+              <div class="sp-progress-wrap">
+                <input
+                  type="range"
+                  class="sp-progress"
+                  min="0"
+                  max="100"
+                  value="0"
+                  step="0.1"
+                />
+              </div>
             </div>
           </div>
         </div>
+        <!-- /sp-intro-wrap -->
       </div>
     </section>
 
@@ -4829,7 +5089,18 @@
           </div>
         </div>
         <button class="chat-close" id="chatClose" aria-label="Close chat">
-          x
+          <svg
+            viewBox="0 0 24 24"
+            width="18"
+            height="18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
         </button>
       </div>
       <div class="chat-messages" id="chatMessages"></div>
@@ -4841,9 +5112,22 @@
             id="chatInput"
             placeholder="輸入您的問題..."
             autocomplete="off"
+            maxlength="500"
           />
           <button type="submit" class="chat-send" aria-label="Send message">
-            <span class="chat-send-icon">→</span>
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
           </button>
         </form>
       </div>
@@ -4919,7 +5203,7 @@
       sections.forEach((s) => sectionObserver.observe(s));
 
       // Typewriter effect for hero title
-      const typewriterText = "你需要的網站方案";
+      const typewriterText = "你的舊網站正在趕走客戶";
       const typewriterEl = document.getElementById("typewriter-text");
       const highlightEl = document.querySelector(".typewriter-highlight");
       const cursorEl = document.querySelector(".typewriter-cursor");
@@ -4994,6 +5278,7 @@
       });
     </script>
     <script src="js/agent-demo-engine.js"></script>
+    <script src="js/industry-analyzer.js"></script>
     <script>
       (function () {
         const container = document.querySelector(".agent-demo-section");

@@ -1,121 +1,154 @@
 /**
  * @file    : css/chatbot/chatbot-toggle.css
  * @purpose : 聊天按鈕、提示氣泡、通知徽章樣式
- * @depends : ['css/variables.css']
- * @lines   : ~90
  */
 
 /* ========================================
    Chat Widget Container
    ======================================== */
 .chat-widget-container {
-    position: fixed;
-    bottom: var(--spacing-xl);
-    right: var(--spacing-xl);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ========================================
    Chat Toggle Button
    ======================================== */
 .chat-toggle {
-    position: relative;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, var(--color-primary-light) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    box-shadow:
-        0 4px 15px rgba(210, 105, 30, 0.4),
-        inset 0 2px 4px rgba(255, 255, 255, 0.2),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-    transition: var(--transition-base);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #e8853a 0%, #d2691e 50%, #a0522d 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  box-shadow:
+    0 4px 20px rgba(210, 105, 30, 0.35),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .chat-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(210, 105, 30, 0.5);
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(210, 105, 30, 0.45);
 }
 
 .chat-toggle.active {
-    transform: rotate(45deg);
+  transform: rotate(0deg) scale(0.95);
+  background: linear-gradient(145deg, #a0522d 0%, #8b4513 100%);
 }
 
 .chat-toggle-icon {
-    font-size: var(--font-size-xl);
-    color: var(--text-light);
-    font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.05em;
 }
 
 /* ========================================
    Notification Badge
    ======================================== */
 .chat-notification {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #EF4444;
-    color: white;
-    font-size: var(--font-size-xs);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: pulse 2s infinite;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: badgePulse 2s infinite;
+  border: 2px solid #fffaf5;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
 }
 
 /* ========================================
    Chat Hint Bubble
    ======================================== */
 .chat-hint {
-    position: relative;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--text-light);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
-    font-weight: 600;
-    white-space: nowrap;
-    box-shadow:
-        0 4px 12px rgba(210, 105, 30, 0.35),
-        inset 0 1px 2px rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    animation: hintBounce 3s ease-in-out infinite;
-    cursor: pointer;
+  position: relative;
+  background: linear-gradient(135deg, #d2691e 0%, #a0522d 100%);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow:
+    0 4px 12px rgba(210, 105, 30, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: hintBounce 3s ease-in-out infinite;
+  cursor: pointer;
 }
 
 .chat-hint:hover {
-    background: var(--color-primary-light);
+  background: linear-gradient(135deg, #e8853a 0%, #d2691e 100%);
 }
 
 .chat-hint-arrow {
-    position: absolute;
-    right: -8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid var(--color-primary);
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #d2691e;
 }
 
 .chat-hint:hover .chat-hint-arrow {
-    border-left-color: var(--color-primary-light);
+  border-left-color: #e8853a;
 }
 
 .chat-hint-text {
-    display: inline-block;
-    transition: opacity 0.3s ease;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes hintBounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }

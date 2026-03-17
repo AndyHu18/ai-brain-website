@@ -1,105 +1,170 @@
 /**
  * @file    : css/chatbot/chatbot-messages.css
- * @purpose : 訊息氣泡、載入動畫、響應式樣式
+ * @purpose : 訊息氣泡、頭像、載入動畫、進場動畫、響應式樣式
  * @depends : ['css/variables.css']
- * @lines   : ~90
  */
 
 /* ========================================
    Chat Messages Container
    ======================================== */
 .chat-messages {
-    flex: 1;
-    padding: var(--spacing-md);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: linear-gradient(180deg, #fdf8f3 0%, #fffaf5 100%);
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(210, 105, 30, 0.2);
+  border-radius: 4px;
 }
 
 /* ========================================
    Message Bubbles
    ======================================== */
 .chat-message {
-    display: flex;
-    max-width: 85%;
+  display: flex;
+  max-width: 85%;
+  gap: 8px;
+  align-items: flex-end;
+  animation: msgFadeIn 0.3s ease-out;
 }
 
 .chat-message.user {
-    align-self: flex-end;
+  align-self: flex-end;
+  flex-direction: row-reverse;
 }
 
 .chat-message.bot {
-    align-self: flex-start;
+  align-self: flex-start;
+}
+
+/* Bot avatar next to messages */
+.msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d2691e 0%, #a0522d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(210, 105, 30, 0.25);
 }
 
 .message-content {
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-lg);
-    font-size: var(--font-size-sm);
-    line-height: 1.5;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  word-break: break-word;
 }
 
 .chat-message.user .message-content {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-    color: var(--text-light);
-    border-bottom-right-radius: 4px;
+  background: linear-gradient(135deg, #d2691e 0%, #a0522d 100%);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(210, 105, 30, 0.2);
 }
 
 .chat-message.bot .message-content {
-    background: var(--bg-section);
-    color: var(--text-secondary);
-    border: 1px solid var(--border-subtle);
-    border-bottom-left-radius: 4px;
+  background: #fff;
+  color: #3e2723;
+  border: 1px solid rgba(210, 105, 30, 0.12);
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(62, 39, 35, 0.06);
 }
 
 /* ========================================
    Loading Animation
    ======================================== */
 .chat-message.loading .message-content {
-    padding: var(--spacing-md);
+  padding: 14px 18px;
 }
 
 .loading-dots {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 5px;
 }
 
 .loading-dots span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    animation: loadingBounce 1.4s infinite ease-in-out both;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d2691e;
+  animation: loadingBounce 1.4s infinite ease-in-out both;
 }
 
 .loading-dots span:nth-child(1) {
-    animation-delay: -0.32s;
+  animation-delay: -0.32s;
 }
 
 .loading-dots span:nth-child(2) {
-    animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+/* ========================================
+   Animations
+   ======================================== */
+@keyframes msgFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
 
 /* ========================================
    Responsive
    ======================================== */
 @media (max-width: 480px) {
-    .chat-window {
-        right: var(--spacing-sm);
-        left: var(--spacing-sm);
-        bottom: calc(var(--spacing-xl) + 70px);
-        width: auto;
-        height: 60vh;
-    }
+  .chat-window {
+    right: 12px;
+    left: 12px;
+    bottom: 80px;
+    width: auto;
+    height: 60vh;
+  }
 
-    .chat-toggle {
-        width: 55px;
-        height: 55px;
-    }
+  .chat-toggle {
+    width: 55px;
+    height: 55px;
+  }
 
-    .chat-widget-container {
-        right: var(--spacing-md);
-        bottom: var(--spacing-md);
-    }
+  .chat-widget-container {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .msg-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .msg-avatar svg {
+    width: 16px;
+    height: 16px;
+  }
 }
