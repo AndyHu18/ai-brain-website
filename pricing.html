@@ -454,7 +454,7 @@
 
       /* ── Transition CTA ── */
       .transition-cta {
-        padding: 48px 0 16px;
+        padding: 24px 0 16px;
       }
       .transition-cta-inner {
         text-align: center;
@@ -3082,41 +3082,30 @@
         letter-spacing: 0.02em;
       }
       .sp-intro-sub {
-        font-size: 0.78rem;
+        font-size: 0.88rem;
         color: rgba(196, 151, 90, 0.85);
-        line-height: 1.4;
-        white-space: nowrap;
+        line-height: 1.5;
+        height: 1.5em;
         overflow: hidden;
         position: relative;
-        mask-image: linear-gradient(
-          90deg,
-          transparent 0%,
-          black 8%,
-          black 92%,
-          transparent 100%
-        );
-        -webkit-mask-image: linear-gradient(
-          90deg,
-          transparent 0%,
-          black 8%,
-          black 92%,
-          transparent 100%
-        );
       }
       .sp-intro-sub-inner {
-        display: inline-block;
-        padding-left: 100%;
-        animation: sp-marquee 16s linear infinite;
+        display: block;
+        animation: sp-scroll-up 8s ease-in-out infinite;
       }
-      .sp-intro:hover .sp-intro-sub-inner {
-        animation-play-state: paused;
-      }
-      @keyframes sp-marquee {
+      @keyframes sp-scroll-up {
         0% {
-          transform: translateX(0);
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        10%,
+        90% {
+          transform: translateY(0);
+          opacity: 1;
         }
         100% {
-          transform: translateX(-100%);
+          transform: translateY(-100%);
+          opacity: 0;
         }
       }
 
@@ -3169,7 +3158,7 @@
           font-size: 0.85rem;
         }
         .sp-intro-sub {
-          font-size: 0.73rem;
+          font-size: 0.82rem;
         }
         .sp-intro-wrap .section-player {
           border-radius: 0 0 12px 12px;

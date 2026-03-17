@@ -1,7 +1,7 @@
 /* ── Industry Analyzer ── */
 
 .ia-section {
-  padding: 80px 24px;
+  padding: 80px 24px 40px;
   background: #fff;
   position: relative;
   overflow: hidden;
@@ -520,7 +520,7 @@
 /* ── RWD ── */
 @media (max-width: 767px) {
   .ia-section {
-    padding: 56px 16px;
+    padding: 56px 16px 32px;
   }
 
   .ia-showcase {
@@ -566,6 +566,6 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .ia-section {
-    padding: 64px 20px;
+    padding: 64px 20px 36px;
   }
 }
