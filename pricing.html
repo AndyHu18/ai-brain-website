@@ -6,7 +6,7 @@
     <title>服務方案與價格 | AI 智能大腦</title>
     <meta
       name="description"
-      content="AI 時代的網站會攬客、會回覆、會成交。從形象官網到 AI 智能客服，行銷效果放大十倍。"
+      content="24 小時自動接待、即時回覆、主動推薦。從形象官網到 AI 智能客服，讓網站自己招攬客戶。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -2965,7 +2965,7 @@
           var(--color-primary),
           var(--color-accent-light)
         );
-        transition: height 0.07s ease-out;
+        transition: height 0.05s linear;
         opacity: 0.35;
       }
       .section-player.playing .sp-wave-bar {
@@ -3012,17 +3012,18 @@
       /* ── Podcast Intro Teaser ── */
       .sp-intro {
         display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        margin-bottom: 8px;
-        padding: 14px 16px 12px;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 0;
+        padding: 16px 20px 14px;
         background: linear-gradient(
           135deg,
-          rgba(45, 35, 25, 0.6) 0%,
-          rgba(58, 44, 31, 0.4) 100%
+          #1a1410 0%,
+          #2d2319 50%,
+          #1a1410 100%
         );
         border-radius: 14px 14px 0 0;
-        border-bottom: 1px solid rgba(210, 105, 30, 0.15);
+        border-bottom: 1px solid rgba(196, 151, 90, 0.25);
         position: relative;
         overflow: hidden;
       }
@@ -3033,47 +3034,90 @@
         left: 0;
         width: 3px;
         height: 100%;
-        background: linear-gradient(
-          180deg,
-          var(--color-primary),
-          var(--color-accent)
-        );
+        background: linear-gradient(180deg, #c4975a, #d2691e);
         border-radius: 3px;
       }
-      .sp-intro-icon {
-        font-size: 1.3rem;
-        flex-shrink: 0;
-        margin-top: 1px;
-        filter: drop-shadow(0 0 6px rgba(210, 105, 30, 0.4));
-        animation: sp-pulse 2.5s ease-in-out infinite;
+      .sp-intro::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(196, 151, 90, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
       }
-      @keyframes sp-pulse {
-        0%,
-        100% {
-          opacity: 0.8;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 1;
-          transform: scale(1.08);
-        }
+      .sp-intro-icon {
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(196, 151, 90, 0.15),
+          rgba(210, 105, 30, 0.1)
+        );
+        border-radius: 10px;
+        border: 1px solid rgba(196, 151, 90, 0.2);
       }
       .sp-intro-text {
         display: flex;
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
+        min-width: 0;
+        flex: 1;
       }
       .sp-intro-hook {
         font-size: 0.92rem;
         font-weight: 600;
-        color: rgba(255, 255, 255, 0.92);
+        color: #f5f0eb;
         line-height: 1.5;
-        letter-spacing: 0.01em;
+        letter-spacing: 0.02em;
       }
       .sp-intro-sub {
         font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(196, 151, 90, 0.85);
         line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(
+          90deg,
+          transparent 0%,
+          black 8%,
+          black 92%,
+          transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent 0%,
+          black 8%,
+          black 92%,
+          transparent 100%
+        );
+      }
+      .sp-intro-sub-inner {
+        display: inline-block;
+        padding-left: 100%;
+        animation: sp-marquee 16s linear infinite;
+      }
+      .sp-intro:hover .sp-intro-sub-inner {
+        animation-play-state: paused;
+      }
+      @keyframes sp-marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
 
       /* When intro is paired with player, merge borders */
@@ -3178,11 +3222,11 @@
           ><span class="typewriter-cursor">|</span><br /><span
             class="highlight typewriter-highlight"
             style="opacity: 0"
-            >該換了</span
+            >AI 做得到</span
           >
         </h1>
         <p class="hero-sub">
-          AI 時代的網站會攬客、會回覆、會成交——同樣的預算，行銷效果放大十倍。
+          24 小時自動接待、即時回覆、主動推薦——你的網站，從展示型升級為業務型。
         </p>
         <div class="hero-features">
           <div class="hero-feature">
@@ -3201,7 +3245,7 @@
                 <line x1="8" y1="21" x2="16" y2="21" />
                 <line x1="12" y1="17" x2="12" y2="21" /></svg
             ></span>
-            <span>AI 全天候攬客</span>
+            <span>AI 智能客服 不漏接</span>
           </div>
           <div class="hero-feature">
             <span class="hero-feature-icon"
@@ -3307,7 +3351,13 @@
 
         <!-- Industry Selection -->
         <div class="ia-select">
-          <span class="ia-select-label">👆 快速選擇你的行業：</span>
+          <div class="ia-select-header">
+            <span class="ia-select-arrow">▼</span>
+            <span class="ia-select-title">換你試試 — 選一個最像你的行業</span>
+          </div>
+          <p class="ia-select-hint">
+            上面的分析，你的行業也能做到。點一下就知道怎麼開始。
+          </p>
           <div class="ia-tags">
             <button class="ia-tag" data-industry="餐飲">🍽 餐飲</button>
             <button class="ia-tag" data-industry="美容美髮">💇 美容美髮</button>
@@ -3329,9 +3379,9 @@
               type="text"
               class="ia-input"
               id="iaInput"
-              placeholder="或輸入你的行業，例如：花店、健身房、會計師..."
+              placeholder="沒看到你的行業？直接輸入，例如：花店、補習班、會計師..."
             />
-            <button class="ia-submit" id="iaSubmit">開始分析 →</button>
+            <button class="ia-submit" id="iaSubmit">免費分析 →</button>
           </div>
         </div>
 
@@ -3347,9 +3397,7 @@
           <div class="ia-result-body" id="iaResultBody"></div>
         </div>
 
-        <div class="ia-remaining">
-          每位訪客每日可分析 5 次 · 由 Claude AI 驅動
-        </div>
+        <div class="ia-remaining">每位訪客每日可免費分析 5 次</div>
       </div>
     </section>
 
@@ -3359,7 +3407,7 @@
         <div class="transition-cta-inner fade-up">
           <p class="transition-cta-text">
             不管你現在是<strong>零網站</strong>、<strong>套版老站</strong>、還是<strong>花了大錢卻沒效果的網站</strong>——<br />
-            下面六種方案，總有一個能讓你的生意開始被看見。
+            下面六種 <strong>AI 驅動</strong>的建站方案，讓你的生意開始被看見。
           </p>
         </div>
       </div>
@@ -3484,7 +3532,9 @@
                 一站式服務到底差在哪？為什麼找不同廠商做，最後串接會出事？
               </div>
               <div class="sp-intro-sub">
-                兩位業界人士聊透明定價、程式碼直寫 vs 套模板的長期差異
+                <span class="sp-intro-sub-inner"
+                  >兩位業界人士聊透明定價、程式碼直寫 vs 套模板的長期差異</span
+                >
               </div>
             </div>
           </div>
@@ -3796,7 +3846,9 @@
                 WordPress 還是組件式後台？選錯了，未來升級整個要打掉重來
               </div>
               <div class="sp-intro-sub">
-                後台自主權有多香？聽完你會想馬上把工程師的 LINE 封鎖
+                <span class="sp-intro-sub-inner"
+                  >後台自主權有多香？聽完你會想馬上把工程師的 LINE 封鎖</span
+                >
               </div>
             </div>
           </div>
@@ -3966,7 +4018,10 @@
                 一個月多成交十筆就回本——電商模組到底值不值得裝？
               </div>
               <div class="sp-intro-sub">
-                綠界、藍新金流實戰分析，讓你的網站從展示窗變成 24 小時自動販賣機
+                <span class="sp-intro-sub-inner"
+                  >綠界、藍新金流實戰分析，讓你的網站從展示窗變成 24
+                  小時自動販賣機</span
+                >
               </div>
             </div>
           </div>
@@ -4455,7 +4510,9 @@
                 同樣的流量，營收可以翻倍——行銷漏斗怎麼幫你把訪客變客戶？
               </div>
               <div class="sp-intro-sub">
-                Seth Godin 的購買路徑設計 × Neil Patel 的轉換率優化心法
+                <span class="sp-intro-sub-inner"
+                  >Seth Godin 的購買路徑設計 × Neil Patel 的轉換率優化心法</span
+                >
               </div>
             </div>
           </div>
@@ -4742,7 +4799,10 @@
                 凌晨三點的客人你接得到嗎？AI 客服四個等級，最貴的會幫你成交
               </div>
               <div class="sp-intro-sub">
-                串接 LINE、FB Messenger，一個月就把人力成本省回來的投報率分析
+                <span class="sp-intro-sub-inner"
+                  >串接 LINE、FB
+                  Messenger，一個月就把人力成本省回來的投報率分析</span
+                >
               </div>
             </div>
           </div>
@@ -4874,7 +4934,10 @@
                 你手上已經有好內容了——演講錄音、教學影片、舊簡報，只差有人幫你轉化
               </div>
               <div class="sp-intro-sub">
-                一千塊起步，免費 AI 字幕、兩千塊影片精華版，不用從零開始做素材
+                <span class="sp-intro-sub-inner"
+                  >一千塊起步，免費 AI
+                  字幕、兩千塊影片精華版，不用從零開始做素材</span
+                >
               </div>
             </div>
           </div>
@@ -5203,7 +5266,7 @@
       sections.forEach((s) => sectionObserver.observe(s));
 
       // Typewriter effect for hero title
-      const typewriterText = "你的舊網站正在趕走客戶";
+      const typewriterText = "讓網站自己招攬客戶";
       const typewriterEl = document.getElementById("typewriter-text");
       const highlightEl = document.querySelector(".typewriter-highlight");
       const cursorEl = document.querySelector(".typewriter-cursor");
@@ -5582,6 +5645,11 @@
         };
 
         const playTrack = (player) => {
+          ensureAudioContext();
+          if (audioCtx && audioCtx.state === "suspended") {
+            audioCtx.resume();
+          }
+
           if (activePlayer && activePlayer !== player) {
             resetPlayer(activePlayer);
           }
@@ -5657,16 +5725,54 @@
           });
         });
 
-        // Live wave animation — bars jump randomly while playing
-        const updateWave = () => {
-          if (activePlayer && !audio.paused) {
-            activePlayer.querySelectorAll(".sp-wave-bar").forEach((bar) => {
-              bar.style.height = 4 + Math.random() * 24 + "px";
-            });
+        // Web Audio API — real frequency-driven wave animation
+        let audioCtx = null;
+        let analyser = null;
+        let sourceConnected = false;
+
+        const ensureAudioContext = () => {
+          if (audioCtx) return;
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = 64;
+          analyser.smoothingTimeConstant = 0.75;
+          const source = audioCtx.createMediaElementSource(audio);
+          source.connect(analyser);
+          analyser.connect(audioCtx.destination);
+          sourceConnected = true;
+        };
+
+        // Attach context on first user interaction (autoplay policy)
+        const initOnce = () => {
+          ensureAudioContext();
+          document.removeEventListener("click", initOnce);
+        };
+        document.addEventListener("click", initOnce);
+
+        const freqData = new Uint8Array(32);
+        let lastWaveTime = 0;
+
+        const updateWave = (timestamp) => {
+          if (activePlayer && !audio.paused && analyser) {
+            // Throttle to ~30fps for smoother visual transitions
+            if (timestamp - lastWaveTime > 33) {
+              lastWaveTime = timestamp;
+              analyser.getByteFrequencyData(freqData);
+              const bars = activePlayer.querySelectorAll(".sp-wave-bar");
+              const barCount = bars.length;
+              const step = freqData.length / barCount;
+              bars.forEach((bar, i) => {
+                const idx = Math.floor(i * step);
+                const val = freqData[idx] || 0;
+                // Map 0-255 to 4-30px height
+                const h = 4 + (val / 255) * 26;
+                bar.style.height = h + "px";
+              });
+            }
           }
           requestAnimationFrame(updateWave);
         };
-        updateWave();
+        requestAnimationFrame(updateWave);
       })();
     </script>
 
