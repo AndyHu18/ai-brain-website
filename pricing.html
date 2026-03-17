@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="css/agent-demo.css" />
     <link rel="stylesheet" href="css/industry-analyzer.css" />
+    <link rel="stylesheet" href="css/premium-content.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-window.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css" />
     <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
@@ -3176,6 +3177,62 @@
           font-size: 0.8rem;
         }
       }
+
+      /* Success Result Images */
+      .success-result {
+        margin-top: 32px;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      }
+      .success-result img {
+        width: 100%;
+        display: block;
+        border-radius: 16px;
+      }
+      .success-result .success-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px 24px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+        color: #fff;
+        border-radius: 0 0 16px 16px;
+      }
+      .success-result .success-caption .success-label {
+        display: inline-block;
+        background: #d2691e;
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 6px;
+        letter-spacing: 0.5px;
+      }
+      .success-result .success-caption .success-text {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      }
+      @media (max-width: 768px) {
+        .success-result {
+          margin-top: 24px;
+          border-radius: 12px;
+        }
+        .success-result img {
+          border-radius: 12px;
+        }
+        .success-result .success-caption {
+          padding: 14px 16px;
+          border-radius: 0 0 12px 12px;
+        }
+        .success-result .success-caption .success-text {
+          font-size: 0.82rem;
+        }
+      }
     </style>
   </head>
 
@@ -3214,7 +3271,7 @@
             >AI 做得到</span
           >
         </h1>
-        <p class="hero-sub">
+        <p class="hero-sub" style="opacity: 0; transition: opacity 0.8s ease">
           24 小時自動接待、即時回覆、主動推薦——你的網站，從展示型升級為業務型。
         </p>
         <div class="hero-features">
@@ -3348,19 +3405,19 @@
             上面的分析，你的行業也能做到。點一下就知道怎麼開始。
           </p>
           <div class="ia-tags">
-            <button class="ia-tag" data-industry="餐飲">🍽 餐飲</button>
-            <button class="ia-tag" data-industry="美容美髮">💇 美容美髮</button>
-            <button class="ia-tag" data-industry="教育補習">📚 教育補習</button>
-            <button class="ia-tag" data-industry="電商零售">🛍 電商零售</button>
-            <button class="ia-tag" data-industry="醫療診所">🏥 醫療診所</button>
+            <button class="ia-tag" data-industry="餐飲">餐飲</button>
+            <button class="ia-tag" data-industry="美容美髮">美容美髮</button>
+            <button class="ia-tag" data-industry="教育補習">教育補習</button>
+            <button class="ia-tag" data-industry="電商零售">電商零售</button>
+            <button class="ia-tag" data-industry="醫療診所">醫療診所</button>
             <button class="ia-tag" data-industry="法律事務所">
-              ⚖ 法律事務所
+              法律事務所
             </button>
-            <button class="ia-tag" data-industry="房地產">🏠 房地產</button>
-            <button class="ia-tag" data-industry="健身瑜珈">🏋 健身瑜珈</button>
-            <button class="ia-tag" data-industry="寵物店">🐾 寵物店</button>
+            <button class="ia-tag" data-industry="房地產">房地產</button>
+            <button class="ia-tag" data-industry="健身瑜珈">健身瑜珈</button>
+            <button class="ia-tag" data-industry="寵物店">寵物店</button>
             <button class="ia-tag" data-industry="攝影工作室">
-              📷 攝影工作室
+              攝影工作室
             </button>
           </div>
           <div class="ia-input-row">
@@ -3384,6 +3441,36 @@
             </div>
           </div>
           <div class="ia-result-body" id="iaResultBody"></div>
+        </div>
+
+        <!-- Premium Content Panel -->
+        <div class="pc-panel" id="iaPremiumPanel">
+          <div class="pc-panel-title">正在為你準備專屬內容包</div>
+          <div class="pc-panel-subtitle">
+            Podcast 討論 + 資訊圖 + PDF 報告，約需 30-60 秒
+          </div>
+          <div class="pc-tasks">
+            <div class="pc-task" data-task="podcast">
+              <div class="pc-task-icon">🎙️</div>
+              <div class="pc-task-name">專屬 Podcast</div>
+              <div class="pc-task-status">準備中...</div>
+              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
+            </div>
+            <div class="pc-task" data-task="infographic">
+              <div class="pc-task-icon">🖼️</div>
+              <div class="pc-task-name">資訊圖卡</div>
+              <div class="pc-task-status">準備中...</div>
+              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
+            </div>
+            <div class="pc-task" data-task="pdf">
+              <div class="pc-task-icon">📄</div>
+              <div class="pc-task-name">PDF 報告</div>
+              <div class="pc-task-status">等待圖片完成...</div>
+              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
+            </div>
+          </div>
+          <div class="pc-gallery"></div>
+          <div class="pc-actions"></div>
         </div>
 
         <div class="ia-remaining">每位訪客每日可免費分析 5 次</div>
@@ -3508,6 +3595,21 @@
                   >
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P09-success-visibility.jpg"
+            alt="客人絡繹不絕的店面，平板顯示成長數據"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              有了專業形象站，客人在 Google 搜到你時，會直接走進來。
             </div>
           </div>
         </div>
@@ -3826,6 +3928,21 @@
           </div>
         </div>
 
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P10-success-engagement.jpg"
+            alt="筆電數據上漲，手機通知不斷湧入"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              後台自己管，每天看到客戶留言和詢問通知不斷進來。
+            </div>
+          </div>
+        </div>
+
         <!-- Section Audio Player -->
         <div class="sp-intro-wrap fade-up">
           <div class="sp-intro">
@@ -3994,6 +4111,21 @@
                   >
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P11-success-orders.jpg"
+            alt="老闆開心打包出貨，桌上堆滿包裹"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              金流一串好，訂單自己來。最開心的煩惱就是包貨包不完。
             </div>
           </div>
         </div>
@@ -4490,6 +4622,21 @@
           </div>
         </div>
 
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P12-success-conversion.jpg"
+            alt="螢幕上漏斗轉換圖，行銷策略見效"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              同樣的流量，轉換率從 2% 拉到 8%。行銷流程讓網站變印鈔機。
+            </div>
+          </div>
+        </div>
+
         <!-- Section Audio Player -->
         <div class="sp-intro-wrap fade-up">
           <div class="sp-intro">
@@ -4779,6 +4926,21 @@
           </div>
         </div>
 
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P13-success-ai-overnight.jpg"
+            alt="老闆安睡，手機上 AI 客服自動回覆客戶"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              你睡覺，AI 幫你顧店。凌晨的客人也不會漏掉。
+            </div>
+          </div>
+        </div>
+
         <!-- Section Audio Player -->
         <div class="sp-intro-wrap fade-up">
           <div class="sp-intro">
@@ -4910,6 +5072,21 @@
                   >
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Result -->
+        <div class="success-result fade-up">
+          <img
+            src="images/pricing/P14-success-transformation.jpg"
+            alt="散亂素材變成精美網站的前後對比"
+            loading="lazy"
+          />
+          <div class="success-caption">
+            <span class="success-label">客戶實感</span>
+            <div class="success-text">
+              散亂的照片、影片、舊簡報，全部變成你的線上作品集。
             </div>
           </div>
         </div>
@@ -5267,8 +5444,10 @@
           charIndex++;
           setTimeout(typeNextChar, 120);
         } else {
-          // Typing done — show highlight line and hide cursor
+          // Typing done — show highlight line, fade in subtitle, hide cursor
           highlightEl.style.opacity = "1";
+          const heroSub = document.querySelector(".hero-sub");
+          if (heroSub) heroSub.style.opacity = "1";
           setTimeout(() => {
             cursorEl.style.display = "none";
           }, 600);
@@ -5829,5 +6008,37 @@
         if (lineLabel) fabTypewriter(lineLabel, LINE_PHRASES);
       })();
     </script>
+
+    <!-- Premium Floating Podcast Player -->
+    <div class="pc-float-player" id="pcFloatPlayer">
+      <div class="pc-float-label">🎧 專屬行銷討論已就緒</div>
+      <div class="pc-mini-player">
+        <div class="pc-mini-title">行業行銷專題</div>
+        <div class="pc-mini-controls">
+          <button class="pc-mini-play">▶</button>
+          <div class="pc-mini-progress-wrap">
+            <div class="pc-mini-progress">
+              <div class="pc-mini-progress-fill"></div>
+            </div>
+            <div class="pc-mini-time">
+              <span class="pc-time-current">0:00</span>
+              <span class="pc-time-total">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="pc-float-btn">🎙</button>
+    </div>
+
+    <!-- Lightbox for infographic images -->
+    <div class="pc-lightbox" id="pcLightbox">
+      <img src="" alt="資訊圖放大" />
+    </div>
+
+    <!-- Premium Content Scripts -->
+    <script src="js/premium-infographic.js"></script>
+    <script src="js/premium-podcast.js"></script>
+    <script src="js/premium-pdf.js"></script>
+    <script src="js/premium-content.js"></script>
   </body>
 </html>

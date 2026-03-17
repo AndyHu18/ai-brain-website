@@ -10,12 +10,12 @@
   const MODEL = "claude-sonnet-4-6";
 
   const SERVICES = [
-    { name: "靜態形象網站", icon: "🌐", color: "#3b82f6" },
-    { name: "CMS 可管理網站", icon: "📝", color: "#8b5cf6" },
-    { name: "電商金流串接", icon: "🛒", color: "#10b981" },
-    { name: "行銷導向網站", icon: "📈", color: "#f59e0b" },
-    { name: "AI 智能客服", icon: "🤖", color: "#e07b3a" },
-    { name: "素材轉製服務", icon: "🎬", color: "#ec4899" },
+    { name: "靜態形象網站", icon: "", color: "#3b82f6" },
+    { name: "CMS 可管理網站", icon: "", color: "#8b5cf6" },
+    { name: "電商金流串接", icon: "", color: "#10b981" },
+    { name: "行銷導向網站", icon: "", color: "#f59e0b" },
+    { name: "AI 智能客服", icon: "", color: "#e07b3a" },
+    { name: "素材轉製服務", icon: "", color: "#ec4899" },
   ];
 
   const INDUSTRIES = [
@@ -255,7 +255,7 @@
       const div = document.createElement("div");
       div.className = "ia-showcase-line";
       div.innerHTML = `
-        <div class="ia-showcase-icon" style="background:${svc.color}20;color:${svc.color}">${svc.icon}</div>
+        ${svc.icon ? `<div class="ia-showcase-icon" style="background:${svc.color}20;color:${svc.color}">${svc.icon}</div>` : ""}
         <div class="ia-showcase-text">${line.text}</div>
       `;
       showcaseBody.appendChild(div);
@@ -317,6 +317,11 @@
       // Typewriter effect
       resultStatus.textContent = "分析完成";
       await typewriteResult(text);
+
+      // Trigger Premium Content generation (podcast + infographic + PDF)
+      if (typeof PremiumContent !== "undefined") {
+        PremiumContent.start(industry, resultBody.innerHTML);
+      }
     } catch (err) {
       resultBody.innerHTML = `<div class="ia-error">⚠ ${escapeHtml(err.message)}<br>請稍後再試，或直接 LINE 諮詢我們！</div>`;
       resultStatus.textContent = "分析失敗";
