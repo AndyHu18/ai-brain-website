@@ -9,9 +9,8 @@ const PremiumInfographic = (function () {
   const GEMINI_API = "/api/gemini";
   const MODEL = "gemini-3-pro-image-preview";
 
-  /** Title max 6 chars, description max 15 chars */
-  const MAX_TITLE_LEN = 6;
-  const MAX_DESC_LEN = 15;
+  /** Title max 8 chars, no description (prevents mid-sentence cuts) */
+  const MAX_TITLE_LEN = 8;
 
   async function generate(industry, analysisHtml, onProgress) {
     const points = extractKeyPoints(analysisHtml);
@@ -58,7 +57,6 @@ const PremiumInfographic = (function () {
       if (title && title.length > 2) {
         points.push({
           title: title.slice(0, MAX_TITLE_LEN),
-          content: content.trim().slice(0, MAX_DESC_LEN),
         });
       }
     });
@@ -70,10 +68,10 @@ const PremiumInfographic = (function () {
    * Build structured prompt for dynamic marketing poster
    */
   function buildPrompt(industry, points) {
-    const p1 = points[0] || { title: "", content: "" };
-    const p2 = points[1] || { title: "", content: "" };
-    const p3 = points[2] || { title: "", content: "" };
-    const p4 = points[3] || { title: "", content: "" };
+    const p1 = points[0] || { title: "" };
+    const p2 = points[1] || { title: "" };
+    const p3 = points[2] || { title: "" };
+    const p4 = points[3] || { title: "" };
     const year = new Date().getFullYear();
 
     return (
@@ -89,32 +87,25 @@ const PremiumInfographic = (function () {
       '- Below it, medium gold font: "' +
       industry +
       ' AI\u667A\u80FD\u89E3\u6C7A\u65B9\u6848" ' +
-      "- Right side, floating holographic glassmorphism panels: " +
+      "- Right side, 4 floating holographic glassmorphism panels, each showing ONLY a short label (no descriptions): " +
       '  - Panel 1: "' +
       p1.title +
-      '" - "' +
-      p1.content +
       '" ' +
       '  - Panel 2: "' +
       p2.title +
-      '" - "' +
-      p2.content +
       '" ' +
       '  - Panel 3: "' +
       p3.title +
-      '" - "' +
-      p3.content +
       '" ' +
       '  - Panel 4: "' +
       p4.title +
-      '" - "' +
-      p4.content +
       '" ' +
       '- Bottom right, glowing button: "\u7ACB\u5373\u8AEE\u8A62" ' +
       '- Bottom left, small text: "\u00A9 ' +
       year +
       ' AI\u667A\u80FD\u5927\u8166" ' +
-      "Ultra-photorealistic subjects, cinematic lighting, futuristic luxurious commercial aesthetic. NO messy overlapping text. 9:16 mobile ratio (1080x1920)."
+      "Ultra-photorealistic subjects, cinematic lighting, futuristic luxurious commercial aesthetic. " +
+      "IMPORTANT: Each panel text must be SHORT (max 8 Chinese characters). NO long sentences. NO truncated text. 9:16 mobile ratio (1080x1920)."
     );
   }
 
