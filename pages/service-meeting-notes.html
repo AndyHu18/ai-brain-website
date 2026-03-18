@@ -1,397 +1,584 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>智慧會議秘書 | AI 智能大腦</title>
-    <meta name="description" content="開完會紀錄就好了 - 不用再花時間打會議紀錄，開完會 AI 就把紀錄寄給大家了。">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      name="description"
+      content="開完會紀錄就好了 - 不用再花時間打會議紀錄，開完會 AI 就把紀錄寄給大家了。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations-keyframes.css">
-    <link rel="stylesheet" href="../css/animations-stagger.css">
-    <link rel="stylesheet" href="../css/service-page-hero.css">
-    <link rel="stylesheet" href="../css/n8n-workflow/_index.css">
-    <link rel="stylesheet" href="../css/n8n-responsive.css">
-    <link rel="stylesheet" href="../css/icons.css">
-    <link rel="stylesheet" href="../css/pricing-comparison.css">
-    <link rel="stylesheet" href="../css/service-content-deep.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations-keyframes.css" />
+    <link rel="stylesheet" href="../css/animations-stagger.css" />
+    <link rel="stylesheet" href="../css/service-page-hero.css" />
+    <link rel="stylesheet" href="../css/n8n-workflow/_index.css" />
+    <link rel="stylesheet" href="../css/n8n-responsive.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pricing-comparison.css" />
+    <link rel="stylesheet" href="../css/service-content-deep.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-transparent">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
-            <div class="nav-menu">
-                <a href="../index.html#services" class="nav-link">服務項目</a>
-                <a href="../index.html#solutions" class="nav-link">解決方案</a>
-                <a href="../index.html#technology" class="nav-link">技術能力</a>
-                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo"
+          ><span class="logo-text">AI 智能大腦</span></a
+        >
+        <div class="nav-menu">
+          <a href="../index.html#services" class="nav-link">服務項目</a>
+          <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../index.html#technology" class="nav-link">技術能力</a>
+          <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <section class="service-hero" id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-                <source src="../assets/videos/services/service_meeting_notes.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">OFF</span>
-            <span class="sound-icon sound-on" style="display: none;">ON</span>
-        </button>
-        <div class="hero-content">
-            <span class="service-badge">服務方案 05</span>
-            <h1 class="hero-title">智慧會議秘書</h1>
-            <p class="hero-tagline">開完會紀錄就自動寫好了</p>
+      <div class="hero-video-container">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="heroVideo"
+        >
+          <source
+            src="../assets/videos/services/service_meeting_notes.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon sound-off">OFF</span>
+        <span class="sound-icon sound-on" style="display: none">ON</span>
+      </button>
+      <div class="hero-content">
+        <span class="service-badge">服務方案 05</span>
+        <h1 class="hero-title">智慧會議秘書</h1>
+        <p class="hero-tagline">開完會紀錄就自動寫好了</p>
 
-            <!-- 價值錨定區塊 -->
-            <div class="hero-pricing-anchor">
-                <div class="pricing-compare">
-                    <span class="compare-label">傳統逐字稿外包</span>
-                    <span class="compare-price">NT$15,000<small>/月</small></span>
-                </div>
-                <div class="pricing-arrow">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="pricing-offer">
-                    <span class="offer-label">智慧效率工具</span>
-                    <span class="offer-price">NT$4,800<small>/月起</small></span>
-                </div>
-            </div>
-            <p class="hero-savings">每月節省 <strong>NT$10,200</strong>，年省超過 <strong>12 萬</strong></p>
-
-            <div class="hero-cta-group">
-                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
-                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
-            </div>
-
-            <!-- 風險逆轉信任標籤 -->
-            <div class="hero-trust-signals">
-                <span class="trust-signal">單場會議免費實測</span>
-                <span class="trust-signal">隨時訂閱與取消</span>
-                <span class="trust-signal">本月限額 10 家</span>
-            </div>
+        <!-- 價值錨定區塊 -->
+        <div class="hero-pricing-anchor">
+          <div class="pricing-compare">
+            <span class="compare-label">傳統逐字稿外包</span>
+            <span class="compare-price">NT$15,000<small>/月</small></span>
+          </div>
+          <div class="pricing-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div class="pricing-offer">
+            <span class="offer-label">智慧效率工具</span>
+            <span class="offer-price">NT$4,800<small>/月起</small></span>
+          </div>
         </div>
-        <div class="hero-scroll-indicator"><span>SCROLL</span>
-            <div class="scroll-arrow"></div>
+        <p class="hero-savings">
+          每月節省 <strong>NT$10,200</strong>，年省超過 <strong>12 萬</strong>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#workflow-demo" class="btn btn-primary">進入閱讀</a>
         </div>
+
+        <!-- 風險逆轉信任標籤 -->
+        <div class="hero-trust-signals">
+          <span class="trust-signal">單場會議免費實測</span>
+          <span class="trust-signal">隨時訂閱與取消</span>
+          <span class="trust-signal">本月限額 10 家</span>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
     <!-- 震撼開場銷售主張區塊 -->
     <section class="sales-hook-section">
-        <div class="sales-hook-container">
-            <blockquote class="sales-hook-quote">
-                別把生命浪費在重聽錄音檔和打逐字稿上。現在，您可以把精力專注在決策，瑣事交給系統。
-            </blockquote>
-            <p class="sales-hook-body">
-                <strong>在 2026 年，最昂貴的成本是管理層的時間。</strong>當您的團隊還在為了整理會議紀錄、確認誰該負責哪項任務而耗費數小時時，您的系統已經在會議結束後的 1
-                分鐘內，將精準的行動摘要發送到每個人的信箱。
-            </p>
-        </div>
+      <div class="sales-hook-container">
+        <blockquote class="sales-hook-quote">
+          別把生命浪費在重聽錄音檔和打逐字稿上。現在，您可以把精力專注在決策，瑣事交給系統。
+        </blockquote>
+        <p class="sales-hook-body">
+          <strong>在 2026 年，最昂貴的成本是管理層的時間。</strong
+          >當您的團隊還在為了整理會議紀錄、確認誰該負責哪項任務而耗費數小時時，您的系統已經在會議結束後的
+          1 分鐘內，將精準的行動摘要發送到每個人的信箱。
+        </p>
+      </div>
     </section>
 
     <div class="grid-background"></div>
     <div id="particles"></div>
 
     <main class="workflow-container" id="workflow-demo">
-        <header class="header">
-            <div class="logo">
-                <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>智慧會議秘書</h2>
-                <span class="demo-badge">流程示範</span>
-            </div>
-            <div class="controls">
-                <button id="btn-start" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                    啟動流程
-                </button>
-                <button id="btn-reset" class="btn btn-secondary">重置</button>
-            </div>
-        </header>
-
-        <!-- 核心銷售主張 -->
-        <section class="intro-section">
-            <div class="intro-header">
-                <h2>為什麼您的企業需要「智慧會議秘書」？</h2>
-                <p class="intro-subtitle">
-                    會議的價值在於產出行動，而不是留下堆積如山的錄音。您不需要負擔昂貴且緩慢的逐字稿外包服務，您需要的是一套能聽懂專業術語、自動提取重點、並主動追蹤進度的智慧效率工具。</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                        </svg></span>
-                    <h3>多語系精準轉譯</h3>
-                    <p>具備先進的聲學辨識技術，完整支援國語、台語與英語。無論是多語言夾雜的日常會議，還是專業的商務談判，都能穩定產出清晰的紀錄</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                            <polyline points="22 4 12 14.01 9 11.01" />
-                        </svg></span>
-                    <h3>智慧行動導向</h3>
-                    <p>系統不只會記錄，更能思考。它能自動識別對話中的「決策點」與「待辦事項」，並標註負責人與期限，讓會議不再只是空談</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <line x1="12" y1="1" x2="12" y2="23" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg></span>
-                    <h3>行政成本大幅縮減</h3>
-                    <p>傳統外包逐字稿或請行政處理，每月成本 NT$15,000，本方案只需 NT$4,800，為您年省 12 萬營運成本</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五大效率處理節點 -->
-        <section class="flow-explanation">
-            <h3>五大效率處理節點：看系統如何解放您的雙手</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">
-                這是一套專為商務場景設計的紀錄流程，從錄音到執行無縫銜接</p>
-            <div class="node-explanations">
-                <div class="node-exp"><span class="exp-num">1</span><strong>錄音自動接收</strong> — 支援多種檔案格式上傳，即時啟動處理程序，無需人工守候
-                </div>
-                <div class="node-exp"><span class="exp-num">2</span><strong>多語逐字轉寫</strong> —
-                    高速將會議音檔轉換為文字，自動過濾無效贅字，保留最核心的對話邏輯</div>
-                <div class="node-exp"><span class="exp-num">3</span><strong>智慧重點摘要</strong> —
-                    自動提取會議中的核心議題、衝突點與共識，將數小時的會議濃縮成 1 分鐘就能讀完的精華</div>
-                <div class="node-exp"><span class="exp-num">4</span><strong>待辦事項提取</strong> — 自動識別 Action
-                    Items，清晰列出「誰負責、做什麼、何時完成」，確保任務不遺漏</div>
-                <div class="node-exp"><span class="exp-num">5</span><strong>全自動郵件分發</strong> —
-                    紀錄完成後，系統自動將格式精美的會議紀要發送給所有參與者，讓執行力即刻到位</div>
-            </div>
-        </section>
-
-        <div class="status-bar">
-            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
-                        id="workflow-status">等待啟動</strong></span></div>
-            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
-            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+      <header class="header">
+        <div class="logo">
+          <a href="../index.html" class="back-btn">← 返回首頁</a>
+          <h2>智慧會議秘書</h2>
+          <span class="demo-badge">流程示範</span>
         </div>
-
-        <div class="canvas-wrapper">
-            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
-                點擊模擬</button>
-            <div id="workflow-canvas" class="workflow-canvas">
-                <svg id="connections-svg" class="connections-layer"></svg>
-                <div id="nodes-container" class="nodes-container"></div>
-            </div>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            啟動流程
+          </button>
+          <button id="btn-reset" class="btn btn-secondary">重置</button>
         </div>
+      </header>
 
-        <aside class="log-panel">
-            <div class="log-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 9h6M9 13h6M9 17h6" />
-                </svg>
-                <span>即時執行紀錄</span>
-            </div>
-            <div id="log-content" class="log-content">
-                <div class="log-entry info"><span class="log-time">--:--:--</span><span
-                        class="log-msg">智慧會議秘書就緒，點擊啟動流程開始...</span></div>
-            </div>
-        </aside>
+      <!-- 核心銷售主張 -->
+      <section class="intro-section">
+        <div class="intro-header">
+          <h2>為什麼您的企業需要「智慧會議秘書」？</h2>
+          <p class="intro-subtitle">
+            會議的價值在於產出行動，而不是留下堆積如山的錄音。您不需要負擔昂貴且緩慢的逐字稿外包服務，您需要的是一套能聽懂專業術語、自動提取重點、並主動追蹤進度的智慧效率工具。
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                /></svg
+            ></span>
+            <h3>多語系精準轉譯</h3>
+            <p>
+              具備先進的聲學辨識技術，完整支援國語、台語與英語。無論是多語言夾雜的日常會議，還是專業的商務談判，都能穩定產出清晰的紀錄
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" /></svg
+            ></span>
+            <h3>智慧行動導向</h3>
+            <p>
+              系統不只會記錄，更能思考。它能自動識別對話中的「決策點」與「待辦事項」，並標註負責人與期限，讓會議不再只是空談
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path
+                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                /></svg
+            ></span>
+            <h3>行政成本大幅縮減</h3>
+            <p>
+              傳統外包逐字稿或請行政處理，每月成本 NT$15,000，本方案只需
+              NT$4,800，為您年省 12 萬營運成本
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五大效率處理節點 -->
+      <section class="flow-explanation">
+        <h3>五大效率處理節點：看系統如何解放您的雙手</h3>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+          "
+        >
+          這是一套專為商務場景設計的紀錄流程，從錄音到執行無縫銜接
+        </p>
+        <div class="node-explanations">
+          <div class="node-exp">
+            <span class="exp-num">1</span><strong>錄音自動接收</strong> —
+            支援多種檔案格式上傳，即時啟動處理程序，無需人工守候
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">2</span><strong>多語逐字轉寫</strong> —
+            高速將會議音檔轉換為文字，自動過濾無效贅字，保留最核心的對話邏輯
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">3</span><strong>智慧重點摘要</strong> —
+            自動提取會議中的核心議題、衝突點與共識，將數小時的會議濃縮成 1
+            分鐘就能讀完的精華
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">4</span><strong>待辦事項提取</strong> —
+            自動識別 Action
+            Items，清晰列出「誰負責、做什麼、何時完成」，確保任務不遺漏
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">5</span><strong>全自動郵件分發</strong> —
+            紀錄完成後，系統自動將格式精美的會議紀要發送給所有參與者，讓執行力即刻到位
+          </div>
+        </div>
+      </section>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot idle"></span
+          ><span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+        </div>
+        <div class="status-item">
+          <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+        </div>
+        <div class="status-item">
+          <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <button
+          id="start-node-btn"
+          class="start-node-btn"
+          onclick="document.getElementById('btn-start').click()"
+        >
+          ▶ 點擊模擬
+        </button>
+        <div id="workflow-canvas" class="workflow-canvas">
+          <svg id="connections-svg" class="connections-layer"></svg>
+          <div id="nodes-container" class="nodes-container"></div>
+        </div>
+      </div>
+
+      <aside class="log-panel">
+        <div class="log-header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="18"
+            height="18"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h6" />
+          </svg>
+          <span>即時執行紀錄</span>
+        </div>
+        <div id="log-content" class="log-content">
+          <div class="log-entry info">
+            <span class="log-time">--:--:--</span
+            ><span class="log-msg">智慧會議秘書就緒，點擊啟動流程開始...</span>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- 四欄式對比表格區塊 -->
     <section class="math-proof-section" id="pricing">
-        <div class="math-proof-container">
-            <div class="math-proof-header">
-                <span class="value-section-eyebrow">數學題</span>
-                <h2 class="value-section-title">會議效率的時間經濟學</h2>
-            </div>
-
-            <!-- 詳細對比表格 -->
-            <div class="detailed-comparison-table">
-                <table class="comparison-table-grid">
-                    <thead>
-                        <tr>
-                            <th class="compare-header">比較項目</th>
-                            <th class="compare-header traditional">傳統人工/外包逐字稿</th>
-                            <th class="compare-header featured">智慧會議秘書 (本方案)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-label">每月成本</td>
-                            <td class="compare-value bad">NT$15,000+</td>
-                            <td class="compare-value good"><strong>NT$4,800</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">交付時間</td>
-                            <td class="compare-value bad">需 1 - 3 個工作天</td>
-                            <td class="compare-value good"><strong>會議結束 1 分鐘內產出</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">內容價值</td>
-                            <td class="compare-value bad">單純的文字記錄，無摘要</td>
-                            <td class="compare-value good"><strong>自動提取決策與待辦事項</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">隱私安全性</td>
-                            <td class="compare-value bad">需經過第三方人員處理</td>
-                            <td class="compare-value good"><strong>系統加密自動處理，隱私無憂</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">年度總支出</td>
-                            <td class="compare-value bad">NT$180,000+</td>
-                            <td class="compare-value good"><strong>NT$57,600</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 年省金額強調 -->
-            <div class="savings-highlight-box">
-                <p class="savings-highlight-label">每年直接節省</p>
-                <p class="savings-highlight-amount">NT$122,400</p>
-                <p class="savings-highlight-note">這是一筆可以獎勵高效團隊的獎金</p>
-            </div>
+      <div class="math-proof-container">
+        <div class="math-proof-header">
+          <span class="value-section-eyebrow">數學題</span>
+          <h2 class="value-section-title">會議效率的時間經濟學</h2>
         </div>
+
+        <!-- 詳細對比表格 -->
+        <div class="detailed-comparison-table">
+          <table class="comparison-table-grid">
+            <thead>
+              <tr>
+                <th class="compare-header">比較項目</th>
+                <th class="compare-header traditional">傳統人工/外包逐字稿</th>
+                <th class="compare-header featured">智慧會議秘書 (本方案)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compare-label">每月成本</td>
+                <td class="compare-value bad">NT$15,000+</td>
+                <td class="compare-value good"><strong>NT$4,800</strong></td>
+              </tr>
+              <tr>
+                <td class="compare-label">交付時間</td>
+                <td class="compare-value bad">需 1 - 3 個工作天</td>
+                <td class="compare-value good">
+                  <strong>會議結束 1 分鐘內產出</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">內容價值</td>
+                <td class="compare-value bad">單純的文字記錄，無摘要</td>
+                <td class="compare-value good">
+                  <strong>自動提取決策與待辦事項</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">隱私安全性</td>
+                <td class="compare-value bad">需經過第三方人員處理</td>
+                <td class="compare-value good">
+                  <strong>系統加密自動處理，隱私無憂</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">年度總支出</td>
+                <td class="compare-value bad">NT$180,000+</td>
+                <td class="compare-value good"><strong>NT$57,600</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 年省金額強調 -->
+        <div class="savings-highlight-box">
+          <p class="savings-highlight-label">每年直接節省</p>
+          <p class="savings-highlight-amount">NT$122,400</p>
+          <p class="savings-highlight-note">這是一筆可以獎勵高效團隊的獎金</p>
+        </div>
+      </div>
     </section>
 
     <!-- 最終 CTA 區塊 -->
     <section class="final-cta-section">
-        <div class="final-cta-container">
-            <div class="final-cta-badge">
-                <span class="final-cta-badge-dot"></span>
-                本月限額 10 家
-            </div>
-            <h2 class="final-cta-title">效率革命實測</h2>
-            <p class="final-cta-desc">
-                我們不賣文字工具，我們賣的是<strong>團隊的執行力與自由</strong>。
-            </p>
-            <div class="final-cta-guarantees">
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>單場會議免費實測</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>60 秒內產出行動摘要</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>隨時訂閱與取消，按月計費</span>
-                </div>
-            </div>
-            <a href="../index.html#contact" class="final-cta-button">
-                立即領取您的智慧會議秘書
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </a>
-            <p class="final-cta-slots">目前僅剩 <strong>3 個</strong>試用名額</p>
+      <div class="final-cta-container">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-dot"></span>
+          本月限額 10 家
         </div>
+        <h2 class="final-cta-title">效率革命實測</h2>
+        <p class="final-cta-desc">
+          我們不賣文字工具，我們賣的是<strong>團隊的執行力與自由</strong>。
+        </p>
+        <div class="final-cta-guarantees">
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>單場會議免費實測</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>60 秒內產出行動摘要</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>隨時訂閱與取消，按月計費</span>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="final-cta-button">
+          立即領取您的智慧會議秘書
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="final-cta-slots">目前僅剩 <strong>3 個</strong>試用名額</p>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <!-- 六大服務快速導覽 -->
-            <div class="footer-quick-nav">
-                <h3 class="footer-section-title">六大 AI 服務方案</h3>
-                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
-                <div class="footer-nav-grid">
-                    <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">CONTENT</div>
-                        <h4>自動流量小編</h4>
-                        <p>讓網站自己會抓客戶</p>
-                        <span class="footer-nav-tag">SEO 自動化</span>
-                    </a>
-                    <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">VOICE</div>
-                        <h4>智慧接線生</h4>
-                        <p>24 小時守護每一通訂單</p>
-                        <span class="footer-nav-tag">語音 AI</span>
-                    </a>
-                    <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BRAND</div>
-                        <h4>品牌分身術</h4>
-                        <p>讓 AI 代你發文</p>
-                        <span class="footer-nav-tag">社群經營</span>
-                    </a>
-                    <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BOT</div>
-                        <h4>客服機器人</h4>
-                        <p>您專屬的線上小幫手</p>
-                        <span class="footer-nav-tag">智能客服</span>
-                    </a>
-                    <a href="service-meeting-notes.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">NOTES</div>
-                        <h4>智慧會議秘書</h4>
-                        <p>開完會，紀錄就好了</p>
-                        <span class="footer-nav-tag">效率工具</span>
-                    </a>
-                    <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">THINK</div>
-                        <h4>AI 顧問</h4>
-                        <p>數位轉型夥伴</p>
-                        <span class="footer-nav-tag">企業轉型</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 品牌資訊 -->
-            <div class="footer-content">
-                <div class="footer-brand">AI 智能大腦</div>
-                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
-                <div class="footer-divider"></div>
-                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
-            </div>
+      <div class="container">
+        <!-- 六大服務快速導覽 -->
+        <div class="footer-quick-nav">
+          <h3 class="footer-section-title">六大 AI 服務方案</h3>
+          <p class="footer-section-subtitle">
+            點擊查看各服務的 AI 工作流程視覺化展示
+          </p>
+          <div class="footer-nav-grid">
+            <a href="service-content-editor.html" class="footer-nav-card">
+              <div class="footer-nav-icon">CONTENT</div>
+              <h4>自動流量小編</h4>
+              <p>讓網站自己會抓客戶</p>
+              <span class="footer-nav-tag">SEO 自動化</span>
+            </a>
+            <a href="service-voice-receptionist.html" class="footer-nav-card">
+              <div class="footer-nav-icon">VOICE</div>
+              <h4>智慧接線生</h4>
+              <p>24 小時守護每一通訂單</p>
+              <span class="footer-nav-tag">語音 AI</span>
+            </a>
+            <a href="service-brand-clone.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BRAND</div>
+              <h4>品牌分身術</h4>
+              <p>讓 AI 代你發文</p>
+              <span class="footer-nav-tag">社群經營</span>
+            </a>
+            <a href="service-chatbot.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BOT</div>
+              <h4>客服機器人</h4>
+              <p>您專屬的線上小幫手</p>
+              <span class="footer-nav-tag">智能客服</span>
+            </a>
+            <a
+              href="service-meeting-notes.html"
+              class="footer-nav-card footer-nav-card-current"
+            >
+              <div class="footer-nav-icon">NOTES</div>
+              <h4>智慧會議秘書</h4>
+              <p>開完會，紀錄就好了</p>
+              <span class="footer-nav-tag">效率工具</span>
+            </a>
+            <a href="service-consultant.html" class="footer-nav-card">
+              <div class="footer-nav-icon">THINK</div>
+              <h4>AI 顧問</h4>
+              <p>數位轉型夥伴</p>
+              <span class="footer-nav-tag">企業轉型</span>
+            </a>
+          </div>
         </div>
+
+        <!-- 品牌資訊 -->
+        <div class="footer-content">
+          <div class="footer-brand">AI 智能大腦</div>
+          <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">
+            © 2026 AI 智能大腦公司 | Enterprise AI Solutions
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
     <script>
-        const SERVICE_CONFIG = {
-            name: '智慧會議秘書',
-            nodes: [
-                { id: 'audio-receive', title: '錄音接收', description: '接收會議錄音檔案', icon: 'mic', color: '#E74C3C', position: { x: 50, y: 30 }, bubbleMessages: ['[FILE] 接收音訊...', '[ON] 檢查格式...', '[OK] 錄音已接收！'] },
-                { id: 'speech-to-text', title: '語音轉文字', description: 'Gemini 辨識國語/台語', icon: 'text', color: '#9B59B6', position: { x: 280, y: 30 }, bubbleMessages: ['[SPEAK] 啟動辨識...', '[PAGE] 轉換文字...', '[OK] 逐字稿完成！'] },
-                { id: 'smart-summary', title: '智慧摘要', description: 'AI 提取會議重點', icon: 'brain', color: '#E67E22', position: { x: 510, y: 30 }, bubbleMessages: ['[SEARCH] 分析脈絡...', '[PIN] 提取重點...', '[OK] 5 點重點已整理！'] },
-                { id: 'action-extract', title: '待辦提取', description: '自動識別 Action Items', icon: 'todo', color: '#3498DB', position: { x: 740, y: 30 }, bubbleMessages: ['[USER] 識別發言者...', '[DATE] 設定截止日...', '[OK] 8 項待辦已分派！'] },
-                { id: 'email-send', title: '郵件發送', description: '自動寄送會議紀錄', icon: 'email', color: '#27AE60', position: { x: 970, y: 30 }, bubbleMessages: ['[CONTENT] 組合紀錄...', '[SEND] 發送郵件...', '[OK] 會議紀錄已寄出！'] }
+      const SERVICE_CONFIG = {
+        name: "智慧會議秘書",
+        nodes: [
+          {
+            id: "audio-receive",
+            title: "錄音接收",
+            description: "接收會議錄音檔案",
+            icon: "mic",
+            color: "#E74C3C",
+            position: { x: 50, y: 30 },
+            bubbleMessages: [
+              "[FILE] 接收音訊...",
+              "[ON] 檢查格式...",
+              "[OK] 錄音已接收！",
             ],
-            connections: [
-                { from: 'audio-receive', to: 'speech-to-text' },
-                { from: 'speech-to-text', to: 'smart-summary' },
-                { from: 'smart-summary', to: 'action-extract' },
-                { from: 'action-extract', to: 'email-send' }
+          },
+          {
+            id: "speech-to-text",
+            title: "語音轉文字",
+            description: "Gemini 辨識國語/台語",
+            icon: "text",
+            color: "#9B59B6",
+            position: { x: 280, y: 30 },
+            bubbleMessages: [
+              "[SPEAK] 啟動辨識...",
+              "[PAGE] 轉換文字...",
+              "[OK] 逐字稿完成！",
             ],
-            executionOrder: ['audio-receive', 'speech-to-text', 'smart-summary', 'action-extract', 'email-send'],
-            resultPreview: { type: 'email', content: { subject: '【會議紀錄】1/6 週會摘要', from: 'AI 會議秘書', to: '全體與會者', body: '本次會議共討論 5 項議題，產出 8 項待辦事項。' } }
-        };
+          },
+          {
+            id: "smart-summary",
+            title: "智慧摘要",
+            description: "AI 提取會議重點",
+            icon: "brain",
+            color: "#E67E22",
+            position: { x: 510, y: 30 },
+            bubbleMessages: [
+              "[SEARCH] 分析脈絡...",
+              "[PIN] 提取重點...",
+              "[OK] 5 點重點已整理！",
+            ],
+          },
+          {
+            id: "action-extract",
+            title: "待辦提取",
+            description: "自動識別 Action Items",
+            icon: "todo",
+            color: "#3498DB",
+            position: { x: 740, y: 30 },
+            bubbleMessages: [
+              "[USER] 識別發言者...",
+              "[DATE] 設定截止日...",
+              "[OK] 8 項待辦已分派！",
+            ],
+          },
+          {
+            id: "email-send",
+            title: "郵件發送",
+            description: "自動寄送會議紀錄",
+            icon: "email",
+            color: "#27AE60",
+            position: { x: 970, y: 30 },
+            bubbleMessages: [
+              "[CONTENT] 組合紀錄...",
+              "[SEND] 發送郵件...",
+              "[OK] 會議紀錄已寄出！",
+            ],
+          },
+        ],
+        connections: [
+          { from: "audio-receive", to: "speech-to-text" },
+          { from: "speech-to-text", to: "smart-summary" },
+          { from: "smart-summary", to: "action-extract" },
+          { from: "action-extract", to: "email-send" },
+        ],
+        executionOrder: [
+          "audio-receive",
+          "speech-to-text",
+          "smart-summary",
+          "action-extract",
+          "email-send",
+        ],
+        resultPreview: {
+          type: "email",
+          content: {
+            subject: "【會議紀錄】1/6 週會摘要",
+            from: "AI 會議秘書",
+            to: "全體與會者",
+            body: "本次會議共討論 5 項議題，產出 8 項待辦事項。",
+          },
+        },
+      };
     </script>
     <!-- 工作流引擎模組化載入 -->
     <script src="../js/workflow-engine/config.js"></script>
@@ -400,17 +587,16 @@
     <script src="../js/workflow-engine/engine.js"></script>
     <script src="../js/workflow-engine/index.js"></script>
     <script>
-        const video = document.getElementById('heroVideo');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundOff = soundToggle.querySelector('.sound-off');
-        const soundOn = soundToggle.querySelector('.sound-on');
-        soundToggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            soundOff.style.display = video.muted ? 'inline' : 'none';
-            soundOn.style.display = video.muted ? 'none' : 'inline';
-        });
+      const video = document.getElementById("heroVideo");
+      const soundToggle = document.getElementById("soundToggle");
+      const soundOff = soundToggle.querySelector(".sound-off");
+      const soundOn = soundToggle.querySelector(".sound-on");
+      soundToggle.addEventListener("click", () => {
+        video.muted = !video.muted;
+        soundOff.style.display = video.muted ? "inline" : "none";
+        soundOn.style.display = video.muted ? "none" : "inline";
+      });
     </script>
     <script src="../js/icons.js"></script>
-</body>
-
+  </body>
 </html>

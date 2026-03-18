@@ -454,7 +454,8 @@
 }
 
 /* 滾動後變為深色背景，確保對比度 */
-.navbar-transparent.scrolled {
+.navbar-transparent.scrolled,
+.navbar-transparent.navbar-scrolled {
   background: rgba(45, 35, 28, 0.98);
   backdrop-filter: blur(12px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -472,12 +473,15 @@
 }
 
 .navbar-transparent.scrolled .nav-link,
-.navbar-transparent.scrolled .logo-text {
+.navbar-transparent.scrolled .logo-text,
+.navbar-transparent.navbar-scrolled .nav-link,
+.navbar-transparent.navbar-scrolled .logo-text {
   color: rgba(253, 249, 243, 0.95);
   text-shadow: none;
 }
 
-.navbar-transparent.scrolled .nav-link:hover {
+.navbar-transparent.scrolled .nav-link:hover,
+.navbar-transparent.navbar-scrolled .nav-link:hover {
   color: var(--color-primary);
 }
 

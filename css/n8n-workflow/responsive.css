@@ -53,7 +53,7 @@
   /* --- 垂直 Stepper 佈局 --- */
   .canvas-wrapper {
     padding-top: 10px;
-    overflow: hidden;
+    overflow: visible;
     max-width: 100%;
   }
 
@@ -64,7 +64,6 @@
     min-height: auto !important;
     height: auto !important;
     overflow: visible;
-    overflow-x: clip;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,6 +158,20 @@
     max-width: 280px;
     padding: 8px 12px;
     font-size: 0.8rem;
+    z-index: 200;
+  }
+
+  /* 確保正在執行的節點在最上層 */
+  .node.running {
+    z-index: 100;
+  }
+
+  .node.completed {
+    z-index: 10;
+  }
+
+  .node.idle {
+    z-index: 5;
   }
 
   .node-bubble::after {
@@ -220,11 +233,16 @@
     display: none;
   }
 
-  /* 結果預覽 */
+  /* 結果預覽 — 改為相對定位並確保不被裁切 */
   .result-preview {
-    position: static;
-    transform: none;
+    position: relative !important;
+    transform: none !important;
+    right: auto !important;
+    top: auto !important;
     margin-top: var(--spacing-md);
+    z-index: 150;
+    opacity: 1;
+    visibility: visible;
   }
 
   .preview-line,

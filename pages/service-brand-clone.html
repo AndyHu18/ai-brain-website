@@ -1,396 +1,583 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>品牌分身術 | AI 智能大腦</title>
-    <meta name="description" content="一次寫好，AI 自動調成 IG、FB、LINE 的語氣發出去。品牌一致性自動維護。">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      name="description"
+      content="一次寫好，AI 自動調成 IG、FB、LINE 的語氣發出去。品牌一致性自動維護。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations-keyframes.css">
-    <link rel="stylesheet" href="../css/animations-stagger.css">
-    <link rel="stylesheet" href="../css/service-page-hero.css">
-    <link rel="stylesheet" href="../css/n8n-workflow/_index.css">
-    <link rel="stylesheet" href="../css/n8n-responsive.css">
-    <link rel="stylesheet" href="../css/icons.css">
-    <link rel="stylesheet" href="../css/pricing-comparison.css">
-    <link rel="stylesheet" href="../css/service-content-deep.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations-keyframes.css" />
+    <link rel="stylesheet" href="../css/animations-stagger.css" />
+    <link rel="stylesheet" href="../css/service-page-hero.css" />
+    <link rel="stylesheet" href="../css/n8n-workflow/_index.css" />
+    <link rel="stylesheet" href="../css/n8n-responsive.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pricing-comparison.css" />
+    <link rel="stylesheet" href="../css/service-content-deep.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-transparent">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
-            <div class="nav-menu">
-                <a href="../index.html#services" class="nav-link">服務項目</a>
-                <a href="../index.html#solutions" class="nav-link">解決方案</a>
-                <a href="../index.html#technology" class="nav-link">技術能力</a>
-                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo"
+          ><span class="logo-text">AI 智能大腦</span></a
+        >
+        <div class="nav-menu">
+          <a href="../index.html#services" class="nav-link">服務項目</a>
+          <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../index.html#technology" class="nav-link">技術能力</a>
+          <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <section class="service-hero" id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-                <source src="../assets/videos/services/service_brand_clone.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">OFF</span>
-            <span class="sound-icon sound-on" style="display: none;">ON</span>
-        </button>
-        <div class="hero-content">
-            <span class="service-badge">服務方案 03</span>
-            <h1 class="hero-title">品牌分身術</h1>
-            <p class="hero-tagline">一次寫好，多平台自動發布</p>
+      <div class="hero-video-container">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="heroVideo"
+        >
+          <source
+            src="../assets/videos/services/service_brand_clone.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon sound-off">OFF</span>
+        <span class="sound-icon sound-on" style="display: none">ON</span>
+      </button>
+      <div class="hero-content">
+        <span class="service-badge">服務方案 03</span>
+        <h1 class="hero-title">品牌分身術</h1>
+        <p class="hero-tagline">一次寫好，多平台自動發布</p>
 
-            <div class="hero-pricing-anchor">
-                <div class="pricing-compare">
-                    <span class="compare-label">社群代操公司</span>
-                    <span class="compare-price">NT$40,000<small>/月</small></span>
-                </div>
-                <div class="pricing-arrow">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="pricing-offer">
-                    <span class="offer-label">數位分身系統</span>
-                    <span class="offer-price">NT$12,800<small>/月起</small></span>
-                </div>
-            </div>
-            <p class="hero-savings">每月節省 <strong>NT$27,200</strong>，年省超過 <strong>32 萬</strong></p>
-
-            <div class="hero-cta-group">
-                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
-                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
-            </div>
-
-            <div class="hero-trust-signals">
-                <span class="trust-signal">3 天品牌語調測試</span>
-                <span class="trust-signal">隨時取消不綁約</span>
-                <span class="trust-signal">本月限額 5 家</span>
-            </div>
+        <div class="hero-pricing-anchor">
+          <div class="pricing-compare">
+            <span class="compare-label">社群代操公司</span>
+            <span class="compare-price">NT$40,000<small>/月</small></span>
+          </div>
+          <div class="pricing-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div class="pricing-offer">
+            <span class="offer-label">數位分身系統</span>
+            <span class="offer-price">NT$12,800<small>/月起</small></span>
+          </div>
         </div>
-        <div class="hero-scroll-indicator"><span>SCROLL</span>
-            <div class="scroll-arrow"></div>
+        <p class="hero-savings">
+          每月節省 <strong>NT$27,200</strong>，年省超過 <strong>32 萬</strong>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#workflow-demo" class="btn btn-primary">進入閱讀</a>
         </div>
+
+        <div class="hero-trust-signals">
+          <span class="trust-signal">3 天品牌語調測試</span>
+          <span class="trust-signal">隨時取消不綁約</span>
+          <span class="trust-signal">本月限額 5 家</span>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
     <!-- 震撼開場銷售主張區塊 -->
     <section class="sales-hook-section">
-        <div class="sales-hook-container">
-            <blockquote class="sales-hook-quote">
-                別再讓社群媒體綁架您的時間。現在，您可以『複製一個自己』在全網霸屏。
-            </blockquote>
-            <p class="sales-hook-body">
-                <strong>在 2026 年，品牌成功的關鍵不在於您有多會寫，而在於您出現的頻率。</strong>當您的競爭對手還在為了發 IG、FB、LINE
-                分別修改圖文時，您的網站已經透過這套「數位分身系統」，將您的影響力同步擴散到每一個客戶的眼前。
-            </p>
-        </div>
+      <div class="sales-hook-container">
+        <blockquote class="sales-hook-quote">
+          別再讓社群媒體綁架您的時間。現在，您可以『複製一個自己』在全網霸屏。
+        </blockquote>
+        <p class="sales-hook-body">
+          <strong
+            >在 2026
+            年，品牌成功的關鍵不在於您有多會寫，而在於您出現的頻率。</strong
+          >當您的競爭對手還在為了發 IG、FB、LINE
+          分別修改圖文時，您的網站已經透過這套「數位分身系統」，將您的影響力同步擴散到每一個客戶的眼前。
+        </p>
+      </div>
     </section>
 
     <div class="grid-background"></div>
     <div id="particles"></div>
 
     <main class="workflow-container" id="workflow-demo">
-        <header class="header">
-            <div class="logo">
-                <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>品牌分身術</h2>
-                <span class="demo-badge">流程示範</span>
-            </div>
-            <div class="controls">
-                <button id="btn-start" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                    啟動流程
-                </button>
-                <button id="btn-reset" class="btn btn-secondary">重置</button>
-            </div>
-        </header>
-
-        <!-- 核心銷售主張 -->
-        <section class="intro-section">
-            <div class="intro-header">
-                <h2>為什麼您的企業需要「品牌分身術」？</h2>
-                <p class="intro-subtitle">身為老闆，您最寶貴的是腦袋裡的專業見解，而不是把時間花在研究社群排版。您不需要昂貴且溝通心累的代操公司，您需要的是一套能精準捕捉您的語氣、24
-                    小時為您維護品牌形象的自動化分身。</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <rect x="8" y="8" width="12" height="12" rx="2" />
-                            <path d="M4 16V6a2 2 0 0 1 2-2h10" />
-                        </svg></span>
-                    <h3>品牌語調克隆</h3>
-                    <p>系統會深度學習您的過往文風與品牌風格，產出的貼文就像您親手撰寫，告別生硬的罐頭文字</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M17 2l4 4-4 4" />
-                            <path d="M3 11V9a4 4 0 0 1 4-4h14" />
-                            <path d="M7 22l-4-4 4-4" />
-                            <path d="M21 13v2a4 4 0 0 1-4 4H3" />
-                        </svg></span>
-                    <h3>全網自動佈署</h3>
-                    <p>自動規劃週計畫，並針對不同平台的屬性（IG 的圖感、FB 的互動、LINE 的即時性）自動調整內容，一鍵同步發布</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M9 12h6" />
-                            <path d="M12 9v6" />
-                        </svg></span>
-                    <h3>從社群焦慮中解脫</h3>
-                    <p>傳統社群代操每月 NT$40,000，本方案只需 NT$12,800，為您省下高達 32 萬的年度成本</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五大內容管理節點 -->
-        <section class="flow-explanation">
-            <h3>五大內容管理節點：看系統如何放大您的影響力</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">
-                這不是簡單的排程工具，這是一套具備品牌意識的自動化小編</p>
-            <div class="node-explanations">
-                <div class="node-exp"><span class="exp-num">1</span><strong>品牌語境學習</strong> —
-                    系統自動分析您的產品資料與既有文案，建立專屬您的「品牌語言模型」</div>
-                <div class="node-exp"><span class="exp-num">2</span><strong>內容自動規劃</strong> —
-                    根據產業趨勢與節慶，自動生成一週貼文主題，確保您的社群永不冷場</div>
-                <div class="node-exp"><span class="exp-num">3</span><strong>多平台貼文生成</strong> — 針對不同社群平台特性，自動產出對應格式的精準內容
-                </div>
-                <div class="node-exp"><span class="exp-num">4</span><strong>智慧圖片匹配</strong> —
-                    根據文字意境自動搭配合適的視覺影像，大幅縮短美編處理時間</div>
-                <div class="node-exp"><span class="exp-num">5</span><strong>跨平台同步發布</strong> —
-                    穩定對接各大社群平台，準時發布，讓您的品牌聲量始終如一</div>
-            </div>
-        </section>
-
-        <div class="status-bar">
-            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
-                        id="workflow-status">等待啟動</strong></span></div>
-            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
-            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+      <header class="header">
+        <div class="logo">
+          <a href="../index.html" class="back-btn">← 返回首頁</a>
+          <h2>品牌分身術</h2>
+          <span class="demo-badge">流程示範</span>
         </div>
-
-        <div class="canvas-wrapper">
-            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
-                點擊模擬</button>
-            <div id="workflow-canvas" class="workflow-canvas">
-                <svg id="connections-svg" class="connections-layer"></svg>
-                <div id="nodes-container" class="nodes-container"></div>
-            </div>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            啟動流程
+          </button>
+          <button id="btn-reset" class="btn btn-secondary">重置</button>
         </div>
+      </header>
 
-        <aside class="log-panel">
-            <div class="log-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 9h6M9 13h6M9 17h6" />
-                </svg>
-                <span>即時執行紀錄</span>
-            </div>
-            <div id="log-content" class="log-content">
-                <div class="log-entry info"><span class="log-time">--:--:--</span><span
-                        class="log-msg">品牌分身術就緒，點擊啟動流程開始...</span></div>
-            </div>
-        </aside>
+      <!-- 核心銷售主張 -->
+      <section class="intro-section">
+        <div class="intro-header">
+          <h2>為什麼您的企業需要「品牌分身術」？</h2>
+          <p class="intro-subtitle">
+            身為老闆，您最寶貴的是腦袋裡的專業見解，而不是把時間花在研究社群排版。您不需要昂貴且溝通心累的代操公司，您需要的是一套能精準捕捉您的語氣、24
+            小時為您維護品牌形象的自動化分身。
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="8" y="8" width="12" height="12" rx="2" />
+                <path d="M4 16V6a2 2 0 0 1 2-2h10" /></svg
+            ></span>
+            <h3>品牌語調克隆</h3>
+            <p>
+              系統會深度學習您的過往文風與品牌風格，產出的貼文就像您親手撰寫，告別生硬的罐頭文字
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M17 2l4 4-4 4" />
+                <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                <path d="M7 22l-4-4 4-4" />
+                <path d="M21 13v2a4 4 0 0 1-4 4H3" /></svg
+            ></span>
+            <h3>全網自動佈署</h3>
+            <p>
+              自動規劃週計畫，並針對不同平台的屬性（IG 的圖感、FB 的互動、LINE
+              的即時性）自動調整內容，一鍵同步發布
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9 12h6" />
+                <path d="M12 9v6" /></svg
+            ></span>
+            <h3>從社群焦慮中解脫</h3>
+            <p>
+              傳統社群代操每月 NT$40,000，本方案只需 NT$12,800，為您省下高達 32
+              萬的年度成本
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五大內容管理節點 -->
+      <section class="flow-explanation">
+        <h3>五大內容管理節點：看系統如何放大您的影響力</h3>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+          "
+        >
+          這不是簡單的排程工具，這是一套具備品牌意識的自動化小編
+        </p>
+        <div class="node-explanations">
+          <div class="node-exp">
+            <span class="exp-num">1</span><strong>品牌語境學習</strong> —
+            系統自動分析您的產品資料與既有文案，建立專屬您的「品牌語言模型」
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">2</span><strong>內容自動規劃</strong> —
+            根據產業趨勢與節慶，自動生成一週貼文主題，確保您的社群永不冷場
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">3</span><strong>多平台貼文生成</strong> —
+            針對不同社群平台特性，自動產出對應格式的精準內容
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">4</span><strong>智慧圖片匹配</strong> —
+            根據文字意境自動搭配合適的視覺影像，大幅縮短美編處理時間
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">5</span><strong>跨平台同步發布</strong> —
+            穩定對接各大社群平台，準時發布，讓您的品牌聲量始終如一
+          </div>
+        </div>
+      </section>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot idle"></span
+          ><span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+        </div>
+        <div class="status-item">
+          <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+        </div>
+        <div class="status-item">
+          <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <button
+          id="start-node-btn"
+          class="start-node-btn"
+          onclick="document.getElementById('btn-start').click()"
+        >
+          ▶ 點擊模擬
+        </button>
+        <div id="workflow-canvas" class="workflow-canvas">
+          <svg id="connections-svg" class="connections-layer"></svg>
+          <div id="nodes-container" class="nodes-container"></div>
+        </div>
+      </div>
+
+      <aside class="log-panel">
+        <div class="log-header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="18"
+            height="18"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h6" />
+          </svg>
+          <span>即時執行紀錄</span>
+        </div>
+        <div id="log-content" class="log-content">
+          <div class="log-entry info">
+            <span class="log-time">--:--:--</span
+            ><span class="log-msg">品牌分身術就緒，點擊啟動流程開始...</span>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- 四欄式對比表格區塊 -->
     <section class="math-proof-section" id="pricing">
-        <div class="math-proof-container">
-            <div class="math-proof-header">
-                <span class="value-section-eyebrow">數學題</span>
-                <h2 class="value-section-title">個人品牌的投資回報</h2>
-            </div>
-
-            <!-- 詳細對比表格 -->
-            <div class="detailed-comparison-table">
-                <table class="comparison-table-grid">
-                    <thead>
-                        <tr>
-                            <th class="compare-header">比較項目</th>
-                            <th class="compare-header traditional">傳統社群代操公司</th>
-                            <th class="compare-header featured">品牌分身術 (本方案)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-label">每月成本</td>
-                            <td class="compare-value bad">NT$40,000</td>
-                            <td class="compare-value good"><strong>NT$12,800</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">溝通成本</td>
-                            <td class="compare-value bad">需反覆校對、修改、溝通</td>
-                            <td class="compare-value good"><strong>系統自動學習，越用越懂您</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">反應速度</td>
-                            <td class="compare-value bad">需提前一週預約排程</td>
-                            <td class="compare-value good"><strong>隨時捕捉靈感，即刻佈署</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">發布平台</td>
-                            <td class="compare-value bad">數量有限，增加平台需加錢</td>
-                            <td class="compare-value good"><strong>多平台同步，影響力無死角</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">年度總支出</td>
-                            <td class="compare-value bad">NT$480,000</td>
-                            <td class="compare-value good"><strong>NT$153,600</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 年省金額強調 -->
-            <div class="savings-highlight-box">
-                <p class="savings-highlight-label">每年直接節省</p>
-                <p class="savings-highlight-amount">NT$326,400</p>
-                <p class="savings-highlight-note">這是請一位社群經理的年薪</p>
-            </div>
+      <div class="math-proof-container">
+        <div class="math-proof-header">
+          <span class="value-section-eyebrow">數學題</span>
+          <h2 class="value-section-title">個人品牌的投資回報</h2>
         </div>
+
+        <!-- 詳細對比表格 -->
+        <div class="detailed-comparison-table">
+          <table class="comparison-table-grid">
+            <thead>
+              <tr>
+                <th class="compare-header">比較項目</th>
+                <th class="compare-header traditional">傳統社群代操公司</th>
+                <th class="compare-header featured">品牌分身術 (本方案)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compare-label">每月成本</td>
+                <td class="compare-value bad">NT$40,000</td>
+                <td class="compare-value good"><strong>NT$12,800</strong></td>
+              </tr>
+              <tr>
+                <td class="compare-label">溝通成本</td>
+                <td class="compare-value bad">需反覆校對、修改、溝通</td>
+                <td class="compare-value good">
+                  <strong>系統自動學習，越用越懂您</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">反應速度</td>
+                <td class="compare-value bad">需提前一週預約排程</td>
+                <td class="compare-value good">
+                  <strong>隨時捕捉靈感，即刻佈署</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">發布平台</td>
+                <td class="compare-value bad">數量有限，增加平台需加錢</td>
+                <td class="compare-value good">
+                  <strong>多平台同步，影響力無死角</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">年度總支出</td>
+                <td class="compare-value bad">NT$480,000</td>
+                <td class="compare-value good"><strong>NT$153,600</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 年省金額強調 -->
+        <div class="savings-highlight-box">
+          <p class="savings-highlight-label">每年直接節省</p>
+          <p class="savings-highlight-amount">NT$326,400</p>
+          <p class="savings-highlight-note">這是請一位社群經理的年薪</p>
+        </div>
+      </div>
     </section>
 
     <!-- 最終 CTA 區塊 -->
     <section class="final-cta-section">
-        <div class="final-cta-container">
-            <div class="final-cta-badge">
-                <span class="final-cta-badge-dot"></span>
-                本月限額 5 家
-            </div>
-            <h2 class="final-cta-title">真實感知測試</h2>
-            <p class="final-cta-desc">
-                我們不賣流量幻覺，我們賣的是<strong>品牌的一致性與自由</strong>。
-            </p>
-            <div class="final-cta-guarantees">
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>3 天品牌語調測試</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>提供三篇範文驗證相似度</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>隨時取消不綁約</span>
-                </div>
-            </div>
-            <a href="../index.html#contact" class="final-cta-button">
-                立即複製您的數位分身
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </a>
-            <p class="final-cta-slots">目前僅剩 <strong>2 個</strong>名額</p>
+      <div class="final-cta-container">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-dot"></span>
+          本月限額 5 家
         </div>
+        <h2 class="final-cta-title">真實感知測試</h2>
+        <p class="final-cta-desc">
+          我們不賣流量幻覺，我們賣的是<strong>品牌的一致性與自由</strong>。
+        </p>
+        <div class="final-cta-guarantees">
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>3 天品牌語調測試</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>提供三篇範文驗證相似度</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>隨時取消不綁約</span>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="final-cta-button">
+          立即複製您的數位分身
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="final-cta-slots">目前僅剩 <strong>2 個</strong>名額</p>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <!-- 六大服務快速導覽 -->
-            <div class="footer-quick-nav">
-                <h3 class="footer-section-title">六大 AI 服務方案</h3>
-                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
-                <div class="footer-nav-grid">
-                    <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">CONTENT</div>
-                        <h4>自動流量小編</h4>
-                        <p>讓網站自己會抓客戶</p>
-                        <span class="footer-nav-tag">SEO 自動化</span>
-                    </a>
-                    <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">VOICE</div>
-                        <h4>智慧接線生</h4>
-                        <p>24 小時守護每一通訂單</p>
-                        <span class="footer-nav-tag">語音 AI</span>
-                    </a>
-                    <a href="service-brand-clone.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">BRAND</div>
-                        <h4>品牌分身術</h4>
-                        <p>讓 AI 代你發文</p>
-                        <span class="footer-nav-tag">社群經營</span>
-                    </a>
-                    <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BOT</div>
-                        <h4>客服機器人</h4>
-                        <p>您專屬的線上小幫手</p>
-                        <span class="footer-nav-tag">智能客服</span>
-                    </a>
-                    <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">NOTES</div>
-                        <h4>智慧會議秘書</h4>
-                        <p>開完會，紀錄就好了</p>
-                        <span class="footer-nav-tag">效率工具</span>
-                    </a>
-                    <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">THINK</div>
-                        <h4>AI 顧問</h4>
-                        <p>數位轉型夥伴</p>
-                        <span class="footer-nav-tag">企業轉型</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 品牌資訊 -->
-            <div class="footer-content">
-                <div class="footer-brand">AI 智能大腦</div>
-                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
-                <div class="footer-divider"></div>
-                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
-            </div>
+      <div class="container">
+        <!-- 六大服務快速導覽 -->
+        <div class="footer-quick-nav">
+          <h3 class="footer-section-title">六大 AI 服務方案</h3>
+          <p class="footer-section-subtitle">
+            點擊查看各服務的 AI 工作流程視覺化展示
+          </p>
+          <div class="footer-nav-grid">
+            <a href="service-content-editor.html" class="footer-nav-card">
+              <div class="footer-nav-icon">CONTENT</div>
+              <h4>自動流量小編</h4>
+              <p>讓網站自己會抓客戶</p>
+              <span class="footer-nav-tag">SEO 自動化</span>
+            </a>
+            <a href="service-voice-receptionist.html" class="footer-nav-card">
+              <div class="footer-nav-icon">VOICE</div>
+              <h4>智慧接線生</h4>
+              <p>24 小時守護每一通訂單</p>
+              <span class="footer-nav-tag">語音 AI</span>
+            </a>
+            <a
+              href="service-brand-clone.html"
+              class="footer-nav-card footer-nav-card-current"
+            >
+              <div class="footer-nav-icon">BRAND</div>
+              <h4>品牌分身術</h4>
+              <p>讓 AI 代你發文</p>
+              <span class="footer-nav-tag">社群經營</span>
+            </a>
+            <a href="service-chatbot.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BOT</div>
+              <h4>客服機器人</h4>
+              <p>您專屬的線上小幫手</p>
+              <span class="footer-nav-tag">智能客服</span>
+            </a>
+            <a href="service-meeting-notes.html" class="footer-nav-card">
+              <div class="footer-nav-icon">NOTES</div>
+              <h4>智慧會議秘書</h4>
+              <p>開完會，紀錄就好了</p>
+              <span class="footer-nav-tag">效率工具</span>
+            </a>
+            <a href="service-consultant.html" class="footer-nav-card">
+              <div class="footer-nav-icon">THINK</div>
+              <h4>AI 顧問</h4>
+              <p>數位轉型夥伴</p>
+              <span class="footer-nav-tag">企業轉型</span>
+            </a>
+          </div>
         </div>
+
+        <!-- 品牌資訊 -->
+        <div class="footer-content">
+          <div class="footer-brand">AI 智能大腦</div>
+          <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">
+            © 2026 AI 智能大腦公司 | Enterprise AI Solutions
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
     <script>
-        const SERVICE_CONFIG = {
-            name: '品牌分身術',
-            nodes: [
-                { id: 'brand-learn', title: '品牌學習', description: '分析品牌語調與風格', icon: 'book', color: '#E67E22', position: { x: 50, y: 30 }, bubbleMessages: ['[DOC] 讀取歷史貼文...', '[BRAND] 分析語調風格...', '[OK] 品牌特色已學習！'] },
-                { id: 'content-plan', title: '內容規劃', description: '自動規劃一週貼文', icon: 'calendar', color: '#3498DB', position: { x: 280, y: 30 }, bubbleMessages: ['[CHART] 分析熱門話題...', '[CONTENT] 規劃主題...', '[OK] 一週內容已規劃！'] },
-                { id: 'post-gen', title: '貼文生成', description: 'AI 生成各平台貼文', icon: 'text', color: '#9B59B6', position: { x: 510, y: 30 }, bubbleMessages: ['[THINK] 撰寫貼文內容...', '[SYNC] 適配各平台風格...', '[OK] IG/FB/LINE 貼文完成！'] },
-                { id: 'image-match', title: '圖片匹配', description: '自動搭配適合圖片', icon: 'image', color: '#16A085', position: { x: 740, y: 30 }, bubbleMessages: ['[SEARCH] 分析貼文意象...', '[DESIGN] 搜尋匹配圖片...', '[OK] 已配好精美圖片！'] },
-                { id: 'multi-publish', title: '多平台發布', description: '同步發布到各社群', icon: 'share', color: '#E74C3C', position: { x: 970, y: 30 }, bubbleMessages: ['[PHONE] 連接 IG...', '[CHAT] 發布 FB...', '[DONE] 發布 LINE...', '[OK] 全平台發布成功！'] }
+      const SERVICE_CONFIG = {
+        name: "品牌分身術",
+        nodes: [
+          {
+            id: "brand-learn",
+            title: "品牌學習",
+            description: "分析品牌語調與風格",
+            icon: "book",
+            color: "#E67E22",
+            position: { x: 50, y: 30 },
+            bubbleMessages: [
+              "[DOC] 讀取歷史貼文...",
+              "[BRAND] 分析語調風格...",
+              "[OK] 品牌特色已學習！",
             ],
-            connections: [
-                { from: 'brand-learn', to: 'content-plan' },
-                { from: 'content-plan', to: 'post-gen' },
-                { from: 'post-gen', to: 'image-match' },
-                { from: 'image-match', to: 'multi-publish' }
+          },
+          {
+            id: "content-plan",
+            title: "內容規劃",
+            description: "自動規劃一週貼文",
+            icon: "calendar",
+            color: "#3498DB",
+            position: { x: 280, y: 30 },
+            bubbleMessages: [
+              "[CHART] 分析熱門話題...",
+              "[CONTENT] 規劃主題...",
+              "[OK] 一週內容已規劃！",
             ],
-            executionOrder: ['brand-learn', 'content-plan', 'post-gen', 'image-match', 'multi-publish'],
-            resultPreview: { type: 'article', content: { icon: 'PHONE', title: '週一早安貼文已發布！', excerpt: '「新的一週，新的開始！今天要分享給大家的是...」', views: '128' } }
-        };
+          },
+          {
+            id: "post-gen",
+            title: "貼文生成",
+            description: "AI 生成各平台貼文",
+            icon: "text",
+            color: "#9B59B6",
+            position: { x: 510, y: 30 },
+            bubbleMessages: [
+              "[THINK] 撰寫貼文內容...",
+              "[SYNC] 適配各平台風格...",
+              "[OK] IG/FB/LINE 貼文完成！",
+            ],
+          },
+          {
+            id: "image-match",
+            title: "圖片匹配",
+            description: "自動搭配適合圖片",
+            icon: "image",
+            color: "#16A085",
+            position: { x: 740, y: 30 },
+            bubbleMessages: [
+              "[SEARCH] 分析貼文意象...",
+              "[DESIGN] 搜尋匹配圖片...",
+              "[OK] 已配好精美圖片！",
+            ],
+          },
+          {
+            id: "multi-publish",
+            title: "多平台發布",
+            description: "同步發布到各社群",
+            icon: "share",
+            color: "#E74C3C",
+            position: { x: 970, y: 30 },
+            bubbleMessages: [
+              "[PHONE] 連接 IG...",
+              "[CHAT] 發布 FB...",
+              "[DONE] 發布 LINE...",
+              "[OK] 全平台發布成功！",
+            ],
+          },
+        ],
+        connections: [
+          { from: "brand-learn", to: "content-plan" },
+          { from: "content-plan", to: "post-gen" },
+          { from: "post-gen", to: "image-match" },
+          { from: "image-match", to: "multi-publish" },
+        ],
+        executionOrder: [
+          "brand-learn",
+          "content-plan",
+          "post-gen",
+          "image-match",
+          "multi-publish",
+        ],
+        resultPreview: {
+          type: "article",
+          content: {
+            icon: "PHONE",
+            title: "週一早安貼文已發布！",
+            excerpt: "「新的一週，新的開始！今天要分享給大家的是...」",
+            views: "128",
+          },
+        },
+      };
     </script>
     <!-- 工作流引擎模組化載入 -->
     <script src="../js/workflow-engine/config.js"></script>
@@ -399,17 +586,16 @@
     <script src="../js/workflow-engine/engine.js"></script>
     <script src="../js/workflow-engine/index.js"></script>
     <script>
-        const video = document.getElementById('heroVideo');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundOff = soundToggle.querySelector('.sound-off');
-        const soundOn = soundToggle.querySelector('.sound-on');
-        soundToggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            soundOff.style.display = video.muted ? 'inline' : 'none';
-            soundOn.style.display = video.muted ? 'none' : 'inline';
-        });
+      const video = document.getElementById("heroVideo");
+      const soundToggle = document.getElementById("soundToggle");
+      const soundOff = soundToggle.querySelector(".sound-off");
+      const soundOn = soundToggle.querySelector(".sound-on");
+      soundToggle.addEventListener("click", () => {
+        video.muted = !video.muted;
+        soundOff.style.display = video.muted ? "inline" : "none";
+        soundOn.style.display = video.muted ? "none" : "inline";
+      });
     </script>
     <script src="../js/icons.js"></script>
-</body>
-
+  </body>
 </html>

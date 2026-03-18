@@ -635,11 +635,19 @@
   .workflow-breakdown-section,
   .math-proof-section,
   .final-cta-section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0;
   }
 }
 
 @media (max-width: 480px) {
+  .sales-hook-section,
+  .value-proposition-section,
+  .workflow-breakdown-section,
+  .math-proof-section,
+  .final-cta-section {
+    padding: var(--spacing-xl) 0;
+  }
+
   .sales-hook-quote {
     padding: var(--spacing-lg);
     font-size: clamp(1.2rem, 3vw, 1.5rem);

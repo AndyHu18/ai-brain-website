@@ -1,116 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>自動流量小編 | AI 智能大腦</title>
-    <meta name="description" content="讓網站自己會抓客戶 - AI 驅動的 SEO 自動化內容引擎，24 小時盯著網路熱點，自動發布專業文章。">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      name="description"
+      content="讓網站自己會抓客戶 - AI 驅動的 SEO 自動化內容引擎，24 小時盯著網路熱點，自動發布專業文章。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <!-- 共用 CSS -->
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations-keyframes.css">
-    <link rel="stylesheet" href="../css/animations-stagger.css">
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations-keyframes.css" />
+    <link rel="stylesheet" href="../css/animations-stagger.css" />
     <!-- 服務頁面專用 CSS -->
-    <link rel="stylesheet" href="../css/service-page-hero.css">
+    <link rel="stylesheet" href="../css/service-page-hero.css" />
     <!-- n8n 工作流程樣式 -->
-    <link rel="stylesheet" href="../css/n8n-workflow/_index.css">
-    <link rel="stylesheet" href="../css/n8n-responsive.css">
-    <link rel="stylesheet" href="../css/icons.css">
-    <link rel="stylesheet" href="../css/pricing-comparison.css">
-    <link rel="stylesheet" href="../css/service-content-deep.css">
-</head>
+    <link rel="stylesheet" href="../css/n8n-workflow/_index.css" />
+    <link rel="stylesheet" href="../css/n8n-responsive.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pricing-comparison.css" />
+    <link rel="stylesheet" href="../css/service-content-deep.css" />
+  </head>
 
-<body>
+  <body>
     <!-- Navigation -->
     <nav class="navbar navbar-transparent">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo">
-                <span class="logo-text">AI 智能大腦</span>
-            </a>
-            <div class="nav-menu">
-                <a href="../index.html#services" class="nav-link">服務項目</a>
-                <a href="../index.html#solutions" class="nav-link">解決方案</a>
-                <a href="../index.html#technology" class="nav-link">技術能力</a>
-                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo">
+          <span class="logo-text">AI 智能大腦</span>
+        </a>
+        <div class="nav-menu">
+          <a href="../index.html#services" class="nav-link">服務項目</a>
+          <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../index.html#technology" class="nav-link">技術能力</a>
+          <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </nav>
 
     <!-- Hero Section with Video -->
     <section class="service-hero" id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-                <source src="../assets/videos/services/service_content_editor.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <!-- 聲音控制 -->
-        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">OFF</span>
-            <span class="sound-icon sound-on" style="display: none;">ON</span>
-        </button>
-        <div class="hero-content">
-            <span class="service-badge">服務方案 01</span>
-            <h1 class="hero-title">自動流量小編</h1>
-            <p class="hero-tagline">內容產出不該是您的瓶頸</p>
+      <div class="hero-video-container">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="heroVideo"
+        >
+          <source
+            src="../assets/videos/services/service_content_editor.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <!-- 聲音控制 -->
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon sound-off">OFF</span>
+        <span class="sound-icon sound-on" style="display: none">ON</span>
+      </button>
+      <div class="hero-content">
+        <span class="service-badge">服務方案 01</span>
+        <h1 class="hero-title">自動流量小編</h1>
+        <p class="hero-tagline">內容產出不該是您的瓶頸</p>
 
-            <div class="hero-pricing-anchor">
-                <div class="pricing-compare">
-                    <span class="compare-label">SEO 代操公司</span>
-                    <span class="compare-price">NT$60,000<small>/月</small></span>
-                </div>
-                <div class="pricing-arrow">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="pricing-offer">
-                    <span class="offer-label">自動化內容引擎</span>
-                    <span class="offer-price">NT$18,800<small>/月起</small></span>
-                </div>
-            </div>
-            <p class="hero-savings">每月節省 <strong>NT$41,200</strong>，年省超過 <strong>49 萬</strong></p>
-
-            <div class="hero-cta-group">
-                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
-                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
-            </div>
-
-            <div class="hero-trust-signals">
-                <span class="trust-signal">7 天免費試用</span>
-                <span class="trust-signal">不滿意全額退款</span>
-                <span class="trust-signal">本月限額 5 家</span>
-            </div>
+        <div class="hero-pricing-anchor">
+          <div class="pricing-compare">
+            <span class="compare-label">SEO 代操公司</span>
+            <span class="compare-price">NT$60,000<small>/月</small></span>
+          </div>
+          <div class="pricing-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div class="pricing-offer">
+            <span class="offer-label">自動化內容引擎</span>
+            <span class="offer-price">NT$18,800<small>/月起</small></span>
+          </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <span>SCROLL</span>
-            <div class="scroll-arrow"></div>
+        <p class="hero-savings">
+          每月節省 <strong>NT$41,200</strong>，年省超過 <strong>49 萬</strong>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#workflow-demo" class="btn btn-primary">進入閱讀</a>
         </div>
+
+        <div class="hero-trust-signals">
+          <span class="trust-signal">7 天免費試用</span>
+          <span class="trust-signal">不滿意全額退款</span>
+          <span class="trust-signal">本月限額 5 家</span>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
     <!-- 震撼開場銷售主張區塊 -->
     <section class="sales-hook-section">
-        <div class="sales-hook-container">
-            <blockquote class="sales-hook-quote">
-                別再給 SEO 代操公司每個月送 6 萬塊了... 除非您真的很討厭錢。
-            </blockquote>
-            <p class="sales-hook-body">
-                <strong>內容產出不該是您的瓶頸。</strong>當您的競爭對手還在苦等小編交稿、開會討論主題時，您的網站已經透過這套「自動化內容引擎」，完成當日熱門話題的深度佈署。
-            </p>
-        </div>
+      <div class="sales-hook-container">
+        <blockquote class="sales-hook-quote">
+          別再給 SEO 代操公司每個月送 6 萬塊了... 除非您真的很討厭錢。
+        </blockquote>
+        <p class="sales-hook-body">
+          <strong>內容產出不該是您的瓶頸。</strong
+          >當您的競爭對手還在苦等小編交稿、開會討論主題時，您的網站已經透過這套「自動化內容引擎」，完成當日熱門話題的深度佈署。
+        </p>
+      </div>
     </section>
 
     <!-- n8n 風格工作流程展示區 -->
@@ -118,374 +140,461 @@
     <div id="particles"></div>
 
     <main class="workflow-container" id="workflow-demo">
-        <header class="header">
-            <div class="logo">
-                <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>自動流量小編</h2>
-                <span class="demo-badge">流程示範</span>
-            </div>
-            <div class="controls">
-                <button id="btn-start" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                    啟動流程
-                </button>
-                <button id="btn-reset" class="btn btn-secondary">重置</button>
-            </div>
-        </header>
-
-        <!-- 核心銷售主張 -->
-        <section class="intro-section">
-            <div class="intro-header">
-                <h2>為什麼您的企業需要「自動流量小編」？</h2>
-                <p class="intro-subtitle">在 2026 年，SEO 的戰場在於反應速度。您不需要一個會請假、會疲勞的內容團隊，您需要的是一套 24 小時在市場門口「監測需求」的自動化生產線。</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <line x1="12" y1="1" x2="12" y2="23" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg></span>
-                    <h3>人力成本套利</h3>
-                    <p>1 位內容小編月薪 3-5 萬 → 自動化引擎月費 NT$18,800，為您年省 49 萬純利潤</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg></span>
-                    <h3>熱點捕捉與反應</h3>
-                    <p>系統自動監控產業新聞與社群熱議。當話題剛出現，系統已生成 2000 字深度長文供您審核</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M23 6l-9.5 9.5-5-5L1 18" />
-                            <path d="M17 6h6v6" />
-                        </svg></span>
-                    <h3>專業語境建模</h3>
-                    <p>產出的內容具備邏輯結構、符合現代搜尋引擎「專家權威感」要求的深度文章</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五大自動化節點說明 -->
-        <section class="flow-explanation">
-            <h3>五大自動化節點：看系統如何為您工作</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">
-                這不是簡單的寫作工具，這是一套完整的「搜尋流量生產工作流」</p>
-            <div class="node-explanations">
-                <div class="node-exp"><span class="exp-num">1</span><strong>熱點掃描</strong> — 自動監控全網熱門趨勢與產業動態，鎖定具備流量潛力的話題
-                </div>
-                <div class="node-exp"><span class="exp-num">2</span><strong>關鍵字分析</strong> —
-                    篩選出競爭度低、搜尋意圖強的黃金關鍵字，精準鎖定目標客群</div>
-                <div class="node-exp"><span class="exp-num">3</span><strong>深度內容生成</strong> — 自動撰寫 2000
-                    字專業文章，並根據文章脈絡自動排版與配圖</div>
-                <div class="node-exp"><span class="exp-num">4</span><strong>自動化後端對接</strong> —
-                    系統直接與您的網站後台連動，自動上稿，無需手動複製貼上</div>
-                <div class="node-exp"><span class="exp-num">5</span><strong>LINE 即時審核</strong> —
-                    文章就緒後推播至您的手機，您只需一鍵確認，內容即刻發布上線</div>
-            </div>
-        </section>
-
-        <!-- 狀態列 -->
-        <div class="status-bar">
-            <div class="status-item">
-                <span class="status-dot idle"></span>
-                <span>狀態：<strong id="workflow-status">等待啟動</strong></span>
-            </div>
-            <div class="status-item">
-                <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
-            </div>
-            <div class="status-item">
-                <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
-            </div>
+      <header class="header">
+        <div class="logo">
+          <a href="../index.html" class="back-btn">← 返回首頁</a>
+          <h2>自動流量小編</h2>
+          <span class="demo-badge">流程示範</span>
         </div>
-
-        <div class="canvas-wrapper">
-            <!-- 第一個節點的啟動按鈕 -->
-            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">
-                ▶ 點擊模擬
-            </button>
-            <div id="workflow-canvas" class="workflow-canvas">
-                <svg id="connections-svg" class="connections-layer"></svg>
-                <div id="nodes-container" class="nodes-container"></div>
-            </div>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            啟動流程
+          </button>
+          <button id="btn-reset" class="btn btn-secondary">重置</button>
         </div>
+      </header>
 
-        <aside class="log-panel">
-            <div class="log-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 9h6M9 13h6M9 17h6" />
-                </svg>
-                <span>即時執行紀錄</span>
-            </div>
-            <div id="log-content" class="log-content">
-                <div class="log-entry info">
-                    <span class="log-time">--:--:--</span>
-                    <span class="log-msg">自動流量小編就緒，點擊「啟動流程」開始...</span>
-                </div>
-            </div>
-        </aside>
+      <!-- 核心銷售主張 -->
+      <section class="intro-section">
+        <div class="intro-header">
+          <h2>為什麼您的企業需要「自動流量小編」？</h2>
+          <p class="intro-subtitle">
+            在 2026 年，SEO
+            的戰場在於反應速度。您不需要一個會請假、會疲勞的內容團隊，您需要的是一套
+            24 小時在市場門口「監測需求」的自動化生產線。
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <line x1="12" y1="1" x2="12" y2="23" />
+                <path
+                  d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+                /></svg
+            ></span>
+            <h3>人力成本套利</h3>
+            <p>
+              1 位內容小編月薪 3-5 萬 → 自動化引擎月費 NT$18,800，為您年省 49
+              萬純利潤
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" /></svg
+            ></span>
+            <h3>熱點捕捉與反應</h3>
+            <p>
+              系統自動監控產業新聞與社群熱議。當話題剛出現，系統已生成 2000
+              字深度長文供您審核
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M23 6l-9.5 9.5-5-5L1 18" />
+                <path d="M17 6h6v6" /></svg
+            ></span>
+            <h3>專業語境建模</h3>
+            <p>
+              產出的內容具備邏輯結構、符合現代搜尋引擎「專家權威感」要求的深度文章
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五大自動化節點說明 -->
+      <section class="flow-explanation">
+        <h3>五大自動化節點：看系統如何為您工作</h3>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+          "
+        >
+          這不是簡單的寫作工具，這是一套完整的「搜尋流量生產工作流」
+        </p>
+        <div class="node-explanations">
+          <div class="node-exp">
+            <span class="exp-num">1</span><strong>熱點掃描</strong> —
+            自動監控全網熱門趨勢與產業動態，鎖定具備流量潛力的話題
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">2</span><strong>關鍵字分析</strong> —
+            篩選出競爭度低、搜尋意圖強的黃金關鍵字，精準鎖定目標客群
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">3</span><strong>深度內容生成</strong> —
+            自動撰寫 2000 字專業文章，並根據文章脈絡自動排版與配圖
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">4</span><strong>自動化後端對接</strong> —
+            系統直接與您的網站後台連動，自動上稿，無需手動複製貼上
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">5</span><strong>LINE 即時審核</strong> —
+            文章就緒後推播至您的手機，您只需一鍵確認，內容即刻發布上線
+          </div>
+        </div>
+      </section>
+
+      <!-- 狀態列 -->
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot idle"></span>
+          <span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+        </div>
+        <div class="status-item">
+          <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+        </div>
+        <div class="status-item">
+          <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <!-- 第一個節點的啟動按鈕 -->
+        <button
+          id="start-node-btn"
+          class="start-node-btn"
+          onclick="document.getElementById('btn-start').click()"
+        >
+          ▶ 點擊模擬
+        </button>
+        <div id="workflow-canvas" class="workflow-canvas">
+          <svg id="connections-svg" class="connections-layer"></svg>
+          <div id="nodes-container" class="nodes-container"></div>
+        </div>
+      </div>
+
+      <aside class="log-panel">
+        <div class="log-header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="18"
+            height="18"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h6" />
+          </svg>
+          <span>即時執行紀錄</span>
+        </div>
+        <div id="log-content" class="log-content">
+          <div class="log-entry info">
+            <span class="log-time">--:--:--</span>
+            <span class="log-msg"
+              >自動流量小編就緒，點擊「啟動流程」開始...</span
+            >
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- 四欄式對比表格區塊 -->
     <section class="math-proof-section" id="pricing">
-        <div class="math-proof-container">
-            <div class="math-proof-header">
-                <span class="value-section-eyebrow">數學題</span>
-                <h2 class="value-section-title">內容創作者的時間價值</h2>
-            </div>
-
-            <!-- 詳細對比表格 -->
-            <div class="detailed-comparison-table">
-                <table class="comparison-table-grid">
-                    <thead>
-                        <tr>
-                            <th class="compare-header">比較項目</th>
-                            <th class="compare-header traditional">傳統 SEO 代操公司</th>
-                            <th class="compare-header featured">自動流量小編 (本方案)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-label">每月成本</td>
-                            <td class="compare-value bad">NT$60,000</td>
-                            <td class="compare-value good"><strong>NT$18,800</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">反應時間</td>
-                            <td class="compare-value bad">3-5 天交稿</td>
-                            <td class="compare-value good"><strong>發現話題即刻產出</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">內容產量</td>
-                            <td class="compare-value bad">每月固定篇數</td>
-                            <td class="compare-value good"><strong>根據市場熱點，穩定產出</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">管理負擔</td>
-                            <td class="compare-value bad">需頻繁溝通、催稿</td>
-                            <td class="compare-value good"><strong>LINE 一鍵核准，零管理成本</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">年度總支出</td>
-                            <td class="compare-value bad">NT$720,000+</td>
-                            <td class="compare-value good"><strong>NT$225,600</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 年省金額強調 -->
-            <div class="savings-highlight-box">
-                <p class="savings-highlight-label">每年直接節省</p>
-                <p class="savings-highlight-amount">NT$494,400</p>
-                <p class="savings-highlight-note">這是一位專職小編的年薪</p>
-            </div>
+      <div class="math-proof-container">
+        <div class="math-proof-header">
+          <span class="value-section-eyebrow">數學題</span>
+          <h2 class="value-section-title">內容創作者的時間價值</h2>
         </div>
+
+        <!-- 詳細對比表格 -->
+        <div class="detailed-comparison-table">
+          <table class="comparison-table-grid">
+            <thead>
+              <tr>
+                <th class="compare-header">比較項目</th>
+                <th class="compare-header traditional">傳統 SEO 代操公司</th>
+                <th class="compare-header featured">自動流量小編 (本方案)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compare-label">每月成本</td>
+                <td class="compare-value bad">NT$60,000</td>
+                <td class="compare-value good"><strong>NT$18,800</strong></td>
+              </tr>
+              <tr>
+                <td class="compare-label">反應時間</td>
+                <td class="compare-value bad">3-5 天交稿</td>
+                <td class="compare-value good">
+                  <strong>發現話題即刻產出</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">內容產量</td>
+                <td class="compare-value bad">每月固定篇數</td>
+                <td class="compare-value good">
+                  <strong>根據市場熱點，穩定產出</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">管理負擔</td>
+                <td class="compare-value bad">需頻繁溝通、催稿</td>
+                <td class="compare-value good">
+                  <strong>LINE 一鍵核准，零管理成本</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">年度總支出</td>
+                <td class="compare-value bad">NT$720,000+</td>
+                <td class="compare-value good"><strong>NT$225,600</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 年省金額強調 -->
+        <div class="savings-highlight-box">
+          <p class="savings-highlight-label">每年直接節省</p>
+          <p class="savings-highlight-amount">NT$494,400</p>
+          <p class="savings-highlight-note">這是一位專職小編的年薪</p>
+        </div>
+      </div>
     </section>
 
     <!-- 最終 CTA 區塊 -->
     <section class="final-cta-section">
-        <div class="final-cta-container">
-            <div class="final-cta-badge">
-                <span class="final-cta-badge-dot"></span>
-                本月限額 5 家
-            </div>
-            <h2 class="final-cta-title">零風險實測</h2>
-            <p class="final-cta-desc">
-                我們不賣虛假的排名保證，我們提供的是<strong>真實的生產力增長</strong>。
-            </p>
-            <div class="final-cta-guarantees">
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>7 天免費試用</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>不滿意全額退款</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>技術無法對接分文不收</span>
-                </div>
-            </div>
-            <a href="../index.html#contact" class="final-cta-button">
-                立即啟動您的自動化流量引擎
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </a>
-            <p class="final-cta-slots">本月僅餘 <strong>2 個</strong>對接名額</p>
+      <div class="final-cta-container">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-dot"></span>
+          本月限額 5 家
         </div>
+        <h2 class="final-cta-title">零風險實測</h2>
+        <p class="final-cta-desc">
+          我們不賣虛假的排名保證，我們提供的是<strong>真實的生產力增長</strong>。
+        </p>
+        <div class="final-cta-guarantees">
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>7 天免費試用</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>不滿意全額退款</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>技術無法對接分文不收</span>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="final-cta-button">
+          立即啟動您的自動化流量引擎
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="final-cta-slots">本月僅餘 <strong>2 個</strong>對接名額</p>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <!-- 六大服務快速導覽 -->
-            <div class="footer-quick-nav">
-                <h3 class="footer-section-title">六大 AI 服務方案</h3>
-                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
-                <div class="footer-nav-grid">
-                    <a href="service-content-editor.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">CONTENT</div>
-                        <h4>自動流量小編</h4>
-                        <p>讓網站自己會抓客戶</p>
-                        <span class="footer-nav-tag">SEO 自動化</span>
-                    </a>
-                    <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">VOICE</div>
-                        <h4>智慧接線生</h4>
-                        <p>24 小時守護每一通訂單</p>
-                        <span class="footer-nav-tag">語音 AI</span>
-                    </a>
-                    <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BRAND</div>
-                        <h4>品牌分身術</h4>
-                        <p>讓 AI 代你發文</p>
-                        <span class="footer-nav-tag">社群經營</span>
-                    </a>
-                    <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BOT</div>
-                        <h4>客服機器人</h4>
-                        <p>您專屬的線上小幫手</p>
-                        <span class="footer-nav-tag">智能客服</span>
-                    </a>
-                    <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">NOTES</div>
-                        <h4>智慧會議秘書</h4>
-                        <p>開完會，紀錄就好了</p>
-                        <span class="footer-nav-tag">效率工具</span>
-                    </a>
-                    <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">THINK</div>
-                        <h4>AI 顧問</h4>
-                        <p>數位轉型夥伴</p>
-                        <span class="footer-nav-tag">企業轉型</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 品牌資訊 -->
-            <div class="footer-content">
-                <div class="footer-brand">AI 智能大腦</div>
-                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
-                <div class="footer-divider"></div>
-                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
-            </div>
+      <div class="container">
+        <!-- 六大服務快速導覽 -->
+        <div class="footer-quick-nav">
+          <h3 class="footer-section-title">六大 AI 服務方案</h3>
+          <p class="footer-section-subtitle">
+            點擊查看各服務的 AI 工作流程視覺化展示
+          </p>
+          <div class="footer-nav-grid">
+            <a
+              href="service-content-editor.html"
+              class="footer-nav-card footer-nav-card-current"
+            >
+              <div class="footer-nav-icon">CONTENT</div>
+              <h4>自動流量小編</h4>
+              <p>讓網站自己會抓客戶</p>
+              <span class="footer-nav-tag">SEO 自動化</span>
+            </a>
+            <a href="service-voice-receptionist.html" class="footer-nav-card">
+              <div class="footer-nav-icon">VOICE</div>
+              <h4>智慧接線生</h4>
+              <p>24 小時守護每一通訂單</p>
+              <span class="footer-nav-tag">語音 AI</span>
+            </a>
+            <a href="service-brand-clone.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BRAND</div>
+              <h4>品牌分身術</h4>
+              <p>讓 AI 代你發文</p>
+              <span class="footer-nav-tag">社群經營</span>
+            </a>
+            <a href="service-chatbot.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BOT</div>
+              <h4>客服機器人</h4>
+              <p>您專屬的線上小幫手</p>
+              <span class="footer-nav-tag">智能客服</span>
+            </a>
+            <a href="service-meeting-notes.html" class="footer-nav-card">
+              <div class="footer-nav-icon">NOTES</div>
+              <h4>智慧會議秘書</h4>
+              <p>開完會，紀錄就好了</p>
+              <span class="footer-nav-tag">效率工具</span>
+            </a>
+            <a href="service-consultant.html" class="footer-nav-card">
+              <div class="footer-nav-icon">THINK</div>
+              <h4>AI 顧問</h4>
+              <p>數位轉型夥伴</p>
+              <span class="footer-nav-tag">企業轉型</span>
+            </a>
+          </div>
         </div>
+
+        <!-- 品牌資訊 -->
+        <div class="footer-content">
+          <div class="footer-brand">AI 智能大腦</div>
+          <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">
+            © 2026 AI 智能大腦公司 | Enterprise AI Solutions
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
     <script>
-        // 自動流量小編 - 工作流程配置 (De-Emoji Version)
-        const SERVICE_CONFIG = {
-            name: '自動流量小編',
-            nodes: [
-                {
-                    id: 'trend-scan',
-                    title: '熱點掃描',
-                    description: '監控 Google Trends、社群話題、產業新聞',
-                    icon: 'search',
-                    color: '#E67E22',
-                    position: { x: 120, y: 30 },
-                    bubbleMessages: [
-                        '[CONNECT] 連接 Google Trends API...',
-                        '[HOT] 掃描今日熱門話題...',
-                        '[DATA] 分析搜尋趨勢曲線...',
-                        '[OK] 發現 5 個熱門關鍵字！'
-                    ]
-                },
-                {
-                    id: 'keyword-ai',
-                    title: '關鍵字分析',
-                    description: 'AI 分析關鍵字競爭度與搜尋意圖',
-                    icon: 'target',
-                    color: '#9B59B6',
-                    position: { x: 320, y: 30 },
-                    bubbleMessages: [
-                        '[AI] 載入 SEO 分析模型...',
-                        '[GROWTH] 計算關鍵字競爭度...',
-                        '[SEARCH] 分析使用者搜尋意圖...',
-                        '[OK] 最佳關鍵字已選定！'
-                    ]
-                },
-                {
-                    id: 'content-gen',
-                    title: '深度內容生成',
-                    description: '自動撰寫 SEO 優化專業文章',
-                    icon: 'write',
-                    color: '#3498DB',
-                    position: { x: 520, y: 30 },
-                    bubbleMessages: [
-                        '[CONTENT] 生成文章大綱...',
-                        '[NEW] AI 撰寫專業內容...',
-                        '[BUILD] 優化 SEO 標題與描述...',
-                        '[OK] 2000 字高品質文章完成！'
-                    ]
-                },
-                {
-                    id: 'cms-publish',
-                    title: '自動發布',
-                    description: '自動登入 CMS 後台發布文章',
-                    icon: 'upload',
-                    color: '#27AE60',
-                    position: { x: 720, y: 30 },
-                    bubbleMessages: [
-                        '[SECURE] 登入 WordPress 後台...',
-                        '[NOTES] 填入文章標題與內容...',
-                        '[IMAGE] 上傳特色圖片...',
-                        '[OK] 文章已排程發布！'
-                    ]
-                },
-                {
-                    id: 'notify-owner',
-                    title: 'LINE 即時審核',
-                    description: '推播通知您一鍵確認',
-                    icon: 'notify',
-                    color: '#E74C3C',
-                    position: { x: 920, y: 30 },
-                    bubbleMessages: [
-                        '[SEND] 發送 LINE 預覽連結...',
-                        '[VIEW] 等待您審核...',
-                        '[OK] 已點擊確認！',
-                        '[SUCCESS] 文章正式上線！'
-                    ]
-                }
+      // 自動流量小編 - 工作流程配置 (De-Emoji Version)
+      const SERVICE_CONFIG = {
+        name: "自動流量小編",
+        nodes: [
+          {
+            id: "trend-scan",
+            title: "熱點掃描",
+            description: "監控 Google Trends、社群話題、產業新聞",
+            icon: "search",
+            color: "#E67E22",
+            position: { x: 120, y: 30 },
+            bubbleMessages: [
+              "[CONNECT] 連接 Google Trends API...",
+              "[HOT] 掃描今日熱門話題...",
+              "[DATA] 分析搜尋趨勢曲線...",
+              "[OK] 發現 5 個熱門關鍵字！",
             ],
-            connections: [
-                { from: 'trend-scan', to: 'keyword-ai' },
-                { from: 'keyword-ai', to: 'content-gen' },
-                { from: 'content-gen', to: 'cms-publish' },
-                { from: 'cms-publish', to: 'notify-owner' }
+          },
+          {
+            id: "keyword-ai",
+            title: "關鍵字分析",
+            description: "AI 分析關鍵字競爭度與搜尋意圖",
+            icon: "target",
+            color: "#9B59B6",
+            position: { x: 320, y: 30 },
+            bubbleMessages: [
+              "[AI] 載入 SEO 分析模型...",
+              "[GROWTH] 計算關鍵字競爭度...",
+              "[SEARCH] 分析使用者搜尋意圖...",
+              "[OK] 最佳關鍵字已選定！",
             ],
-            executionOrder: ['trend-scan', 'keyword-ai', 'content-gen', 'cms-publish', 'notify-owner'],
-            resultPreview: {
-                type: 'line',
-                content: {
-                    icon: 'NOTIFY',
-                    sender: '內容引擎',
-                    message: '您好！新文章「2026 最新 SEO 趨勢」已發布到官網，等您確認後即可正式上線！',
-                    link: false
-                }
-            }
-        };
+          },
+          {
+            id: "content-gen",
+            title: "深度內容生成",
+            description: "自動撰寫 SEO 優化專業文章",
+            icon: "write",
+            color: "#3498DB",
+            position: { x: 520, y: 30 },
+            bubbleMessages: [
+              "[CONTENT] 生成文章大綱...",
+              "[NEW] AI 撰寫專業內容...",
+              "[BUILD] 優化 SEO 標題與描述...",
+              "[OK] 2000 字高品質文章完成！",
+            ],
+          },
+          {
+            id: "cms-publish",
+            title: "自動發布",
+            description: "自動登入 CMS 後台發布文章",
+            icon: "upload",
+            color: "#27AE60",
+            position: { x: 720, y: 30 },
+            bubbleMessages: [
+              "[SECURE] 登入 WordPress 後台...",
+              "[NOTES] 填入文章標題與內容...",
+              "[IMAGE] 上傳特色圖片...",
+              "[OK] 文章已排程發布！",
+            ],
+          },
+          {
+            id: "notify-owner",
+            title: "LINE 即時審核",
+            description: "推播通知您一鍵確認",
+            icon: "notify",
+            color: "#E74C3C",
+            position: { x: 920, y: 30 },
+            bubbleMessages: [
+              "[SEND] 發送 LINE 預覽連結...",
+              "[VIEW] 等待您審核...",
+              "[OK] 已點擊確認！",
+              "[SUCCESS] 文章正式上線！",
+            ],
+          },
+        ],
+        connections: [
+          { from: "trend-scan", to: "keyword-ai" },
+          { from: "keyword-ai", to: "content-gen" },
+          { from: "content-gen", to: "cms-publish" },
+          { from: "cms-publish", to: "notify-owner" },
+        ],
+        executionOrder: [
+          "trend-scan",
+          "keyword-ai",
+          "content-gen",
+          "cms-publish",
+          "notify-owner",
+        ],
+        resultPreview: {
+          type: "line",
+          content: {
+            icon: "NOTIFY",
+            sender: "內容引擎",
+            message:
+              "您好！新文章「2026 最新 SEO 趨勢」已發布到官網，等您確認後即可正式上線！",
+            link: false,
+          },
+        },
+      };
     </script>
     <!-- 工作流引擎模組化載入 -->
     <script src="../js/workflow-engine/config.js"></script>
@@ -494,19 +603,18 @@
     <script src="../js/workflow-engine/engine.js"></script>
     <script src="../js/workflow-engine/index.js"></script>
     <script>
-        // 聲音控制
-        const video = document.getElementById('heroVideo');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundOff = soundToggle.querySelector('.sound-off');
-        const soundOn = soundToggle.querySelector('.sound-on');
+      // 聲音控制
+      const video = document.getElementById("heroVideo");
+      const soundToggle = document.getElementById("soundToggle");
+      const soundOff = soundToggle.querySelector(".sound-off");
+      const soundOn = soundToggle.querySelector(".sound-on");
 
-        soundToggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            soundOff.style.display = video.muted ? 'inline' : 'none';
-            soundOn.style.display = video.muted ? 'none' : 'inline';
-        });
+      soundToggle.addEventListener("click", () => {
+        video.muted = !video.muted;
+        soundOff.style.display = video.muted ? "inline" : "none";
+        soundOn.style.display = video.muted ? "none" : "inline";
+      });
     </script>
     <script src="../js/icons.js"></script>
-</body>
-
+  </body>
 </html>

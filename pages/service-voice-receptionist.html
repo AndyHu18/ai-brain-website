@@ -1,443 +1,587 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>智慧接線生 | AI 智能大腦</title>
-    <meta name="description" content="24 小時守護每一通訂單 - 不用請櫃檯人員、不用擔心漏接電話，AI 24 小時幫您接聽每一通來電。">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+      name="description"
+      content="24 小時守護每一通訂單 - 不用請櫃檯人員、不用擔心漏接電話，AI 24 小時幫您接聽每一通來電。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations-keyframes.css">
-    <link rel="stylesheet" href="../css/animations-stagger.css">
-    <link rel="stylesheet" href="../css/service-page-hero.css">
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations-keyframes.css" />
+    <link rel="stylesheet" href="../css/animations-stagger.css" />
+    <link rel="stylesheet" href="../css/service-page-hero.css" />
     <!-- n8n 工作流程樣式 + 手機適配 -->
-    <link rel="stylesheet" href="../css/n8n-workflow/_index.css">
-    <link rel="stylesheet" href="../css/n8n-responsive.css">
-    <link rel="stylesheet" href="../css/icons.css">
-    <link rel="stylesheet" href="../css/pricing-comparison.css">
-    <link rel="stylesheet" href="../css/service-content-deep.css">
-</head>
+    <link rel="stylesheet" href="../css/n8n-workflow/_index.css" />
+    <link rel="stylesheet" href="../css/n8n-responsive.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pricing-comparison.css" />
+    <link rel="stylesheet" href="../css/service-content-deep.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-transparent">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
-            <div class="nav-menu">
-                <a href="../index.html#services" class="nav-link">服務項目</a>
-                <a href="../index.html#solutions" class="nav-link">解決方案</a>
-                <a href="../index.html#technology" class="nav-link">技術能力</a>
-                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo"
+          ><span class="logo-text">AI 智能大腦</span></a
+        >
+        <div class="nav-menu">
+          <a href="../index.html#services" class="nav-link">服務項目</a>
+          <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../index.html#technology" class="nav-link">技術能力</a>
+          <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <section class="service-hero" id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-                <source src="../assets/videos/services/service_voice_receptionist.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">OFF</span>
-            <span class="sound-icon sound-on" style="display: none;">ON</span>
-        </button>
-        <div class="hero-content">
-            <span class="service-badge">服務方案 02</span>
-            <h1 class="hero-title">智慧接線生</h1>
-            <p class="hero-tagline">24 小時守護每一通訂單</p>
+      <div class="hero-video-container">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="heroVideo"
+        >
+          <source
+            src="../assets/videos/services/service_voice_receptionist.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon sound-off">OFF</span>
+        <span class="sound-icon sound-on" style="display: none">ON</span>
+      </button>
+      <div class="hero-content">
+        <span class="service-badge">服務方案 02</span>
+        <h1 class="hero-title">智慧接線生</h1>
+        <p class="hero-tagline">24 小時守護每一通訂單</p>
 
-            <div class="hero-pricing-anchor">
-                <div class="pricing-compare">
-                    <span class="compare-label">24H 接線服務</span>
-                    <span class="compare-price">NT$80,000<small>/月</small></span>
-                </div>
-                <div class="pricing-arrow">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="pricing-offer">
-                    <span class="offer-label">智能語音系統</span>
-                    <span class="offer-price">NT$28,800<small>/月起</small></span>
-                </div>
-            </div>
-            <p class="hero-savings">每月節省 <strong>NT$51,200</strong>，年省超過 <strong>61 萬</strong></p>
-
-            <div class="hero-cta-group">
-                <a href="#pricing" class="btn btn-primary">免費試用 7 天</a>
-                <a href="#workflow-demo" class="btn btn-secondary">看 AI 怎麼做</a>
-            </div>
-
-            <div class="hero-trust-signals">
-                <span class="trust-signal">實機演示測試</span>
-                <span class="trust-signal">零風險系統對接</span>
-                <span class="trust-signal">本月限額 3 家</span>
-            </div>
+        <div class="hero-pricing-anchor">
+          <div class="pricing-compare">
+            <span class="compare-label">24H 接線服務</span>
+            <span class="compare-price">NT$80,000<small>/月</small></span>
+          </div>
+          <div class="pricing-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div class="pricing-offer">
+            <span class="offer-label">智能語音系統</span>
+            <span class="offer-price">NT$28,800<small>/月起</small></span>
+          </div>
         </div>
-        <div class="hero-scroll-indicator"><span>SCROLL</span>
-            <div class="scroll-arrow"></div>
+        <p class="hero-savings">
+          每月節省 <strong>NT$51,200</strong>，年省超過 <strong>61 萬</strong>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#workflow-demo" class="btn btn-primary">進入閱讀</a>
         </div>
+
+        <div class="hero-trust-signals">
+          <span class="trust-signal">實機演示測試</span>
+          <span class="trust-signal">零風險系統對接</span>
+          <span class="trust-signal">本月限額 3 家</span>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
     <!-- 震撼開場銷售主張區塊 -->
     <section class="sales-hook-section">
-        <div class="sales-hook-container">
-            <blockquote class="sales-hook-quote">
-                如果您漏掉一通關鍵客戶的電話，損失是多少？現在，讓系統幫您一通不剩地抓回來。
-            </blockquote>
-            <p class="sales-hook-body">
-                <strong>不管是半夜三點、假日，還是線路繁忙的尖峰時刻，您的品牌應該永遠有人接聽。</strong>透過最新的語音互動技術，讓每一位撥打電話的客戶都能感受到真人般的溫暖服務，且絕不遺漏任何一個獲利機會。
-            </p>
-        </div>
+      <div class="sales-hook-container">
+        <blockquote class="sales-hook-quote">
+          如果您漏掉一通關鍵客戶的電話，損失是多少？現在，讓系統幫您一通不剩地抓回來。
+        </blockquote>
+        <p class="sales-hook-body">
+          <strong
+            >不管是半夜三點、假日，還是線路繁忙的尖峰時刻，您的品牌應該永遠有人接聽。</strong
+          >透過最新的語音互動技術，讓每一位撥打電話的客戶都能感受到真人般的溫暖服務，且絕不遺漏任何一個獲利機會。
+        </p>
+      </div>
     </section>
 
     <div class="grid-background"></div>
     <div id="particles"></div>
 
     <main class="workflow-container" id="workflow-demo">
-        <header class="header">
-            <div class="logo">
-                <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>智慧接線生</h2>
-                <span class="demo-badge">流程示範</span>
-            </div>
-            <div class="controls">
-                <button id="btn-start" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                    啟動流程
-                </button>
-                <button id="btn-reset" class="btn btn-secondary">重置</button>
-            </div>
-        </header>
-
-        <!-- 核心銷售主張 -->
-        <section class="intro-section">
-            <div class="intro-header">
-                <h2>為什麼您的企業需要「智慧接線生」？</h2>
-                <p class="intro-subtitle">在 2026 年，客戶的耐心只有 30
-                    秒。如果電話沒人接，他們會立刻撥給您的競爭對手。您不需要負擔高昂的三班制人事成本，您需要的是一套永不疲勞、語氣專業、且能精準處理業務的語音自動化系統。</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg></span>
-                    <h3>24/7 零死角守護</h3>
-                    <p>自動接聽所有來電，不論是諮詢、預約還是客訴，系統 24 小時在線，確保您的生意永不打烊</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                            <path d="M12 19v3" />
-                        </svg></span>
-                    <h3>在地化雙語辨識</h3>
-                    <p>具備先進的語義理解技術，完整支援國語與台語辨識。語氣自然流暢，讓年長客戶也能輕鬆溝通</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <rect x="3" y="4" width="18" height="16" rx="2" />
-                            <path d="M7 8h10M7 12h6M7 16h8" />
-                        </svg></span>
-                    <h3>智慧業務處理</h3>
-                    <p>不只是錄音。系統能理解客戶意圖、回答常見問題，並能直接與您的預約系統連動，自動登記行程</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五大語音處理節點 -->
-        <section class="flow-explanation">
-            <h3>五大語音處理節點：看系統如何守護訂單</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">
-                這是一套具備思考能力的語音交互系統，完整重現資深櫃台的工作流程</p>
-            <div class="node-explanations">
-                <div class="node-exp"><span class="exp-num">1</span><strong>即時來電接聽</strong> —
-                    穩定接收每一通進線電話，即時啟動語音互動，確保客戶無需等待</div>
-                <div class="node-exp"><span class="exp-num">2</span><strong>雙語語義辨識</strong> —
-                    精準將客戶的國語或台語轉換為數位指令，並理解其背後的真實需求</div>
-                <div class="node-exp"><span class="exp-num">3</span><strong>核心意圖分析</strong> —
-                    判斷客戶是要詢價、預約還是售後，並根據邏輯進行最專業的回應</div>
-                <div class="node-exp"><span class="exp-num">4</span><strong>自動化流程執行</strong> —
-                    根據對話結果，自動在後端操作預約登記、查詢庫存或記錄聯絡資訊</div>
-                <div class="node-exp"><span class="exp-num">5</span><strong>語音回饋與紀錄</strong> —
-                    用自然的人聲回覆客戶處理結果，並同步將通話摘要發送至您的手機</div>
-            </div>
-        </section>
-
-        <div class="status-bar">
-            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
-                        id="workflow-status">等待啟動</strong></span></div>
-            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
-            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+      <header class="header">
+        <div class="logo">
+          <a href="../index.html" class="back-btn">← 返回首頁</a>
+          <h2>智慧接線生</h2>
+          <span class="demo-badge">流程示範</span>
         </div>
-
-        <div class="canvas-wrapper">
-            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
-                點擊模擬</button>
-            <div id="workflow-canvas" class="workflow-canvas">
-                <svg id="connections-svg" class="connections-layer"></svg>
-                <div id="nodes-container" class="nodes-container"></div>
-            </div>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            啟動流程
+          </button>
+          <button id="btn-reset" class="btn btn-secondary">重置</button>
         </div>
+      </header>
 
-        <aside class="log-panel">
-            <div class="log-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 9h6M9 13h6M9 17h6" />
-                </svg>
-                <span>即時執行紀錄</span>
-            </div>
-            <div id="log-content" class="log-content">
-                <div class="log-entry info"><span class="log-time">--:--:--</span><span
-                        class="log-msg">智慧接線生就緒，點擊啟動流程開始...</span></div>
-            </div>
-        </aside>
+      <!-- 核心銷售主張 -->
+      <section class="intro-section">
+        <div class="intro-header">
+          <h2>為什麼您的企業需要「智慧接線生」？</h2>
+          <p class="intro-subtitle">
+            在 2026 年，客戶的耐心只有 30
+            秒。如果電話沒人接，他們會立刻撥給您的競爭對手。您不需要負擔高昂的三班制人事成本，您需要的是一套永不疲勞、語氣專業、且能精準處理業務的語音自動化系統。
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" /></svg
+            ></span>
+            <h3>24/7 零死角守護</h3>
+            <p>
+              自動接聽所有來電，不論是諮詢、預約還是客訴，系統 24
+              小時在線，確保您的生意永不打烊
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M12 2a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"
+                />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <path d="M12 19v3" /></svg
+            ></span>
+            <h3>在地化雙語辨識</h3>
+            <p>
+              具備先進的語義理解技術，完整支援國語與台語辨識。語氣自然流暢，讓年長客戶也能輕鬆溝通
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path d="M7 8h10M7 12h6M7 16h8" /></svg
+            ></span>
+            <h3>智慧業務處理</h3>
+            <p>
+              不只是錄音。系統能理解客戶意圖、回答常見問題，並能直接與您的預約系統連動，自動登記行程
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五大語音處理節點 -->
+      <section class="flow-explanation">
+        <h3>五大語音處理節點：看系統如何守護訂單</h3>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+          "
+        >
+          這是一套具備思考能力的語音交互系統，完整重現資深櫃台的工作流程
+        </p>
+        <div class="node-explanations">
+          <div class="node-exp">
+            <span class="exp-num">1</span><strong>即時來電接聽</strong> —
+            穩定接收每一通進線電話，即時啟動語音互動，確保客戶無需等待
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">2</span><strong>雙語語義辨識</strong> —
+            精準將客戶的國語或台語轉換為數位指令，並理解其背後的真實需求
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">3</span><strong>核心意圖分析</strong> —
+            判斷客戶是要詢價、預約還是售後，並根據邏輯進行最專業的回應
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">4</span><strong>自動化流程執行</strong> —
+            根據對話結果，自動在後端操作預約登記、查詢庫存或記錄聯絡資訊
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">5</span><strong>語音回饋與紀錄</strong> —
+            用自然的人聲回覆客戶處理結果，並同步將通話摘要發送至您的手機
+          </div>
+        </div>
+      </section>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot idle"></span
+          ><span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+        </div>
+        <div class="status-item">
+          <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+        </div>
+        <div class="status-item">
+          <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <button
+          id="start-node-btn"
+          class="start-node-btn"
+          onclick="document.getElementById('btn-start').click()"
+        >
+          ▶ 點擊模擬
+        </button>
+        <div id="workflow-canvas" class="workflow-canvas">
+          <svg id="connections-svg" class="connections-layer"></svg>
+          <div id="nodes-container" class="nodes-container"></div>
+        </div>
+      </div>
+
+      <aside class="log-panel">
+        <div class="log-header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="18"
+            height="18"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h6" />
+          </svg>
+          <span>即時執行紀錄</span>
+        </div>
+        <div id="log-content" class="log-content">
+          <div class="log-entry info">
+            <span class="log-time">--:--:--</span
+            ><span class="log-msg">智慧接線生就緒，點擊啟動流程開始...</span>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- 四欄式對比表格區塊 -->
     <section class="math-proof-section" id="pricing">
-        <div class="math-proof-container">
-            <div class="math-proof-header">
-                <span class="value-section-eyebrow">數學題</span>
-                <h2 class="value-section-title">每通電話的商業價值</h2>
-            </div>
-
-            <!-- 詳細對比表格 -->
-            <div class="detailed-comparison-table">
-                <table class="comparison-table-grid">
-                    <thead>
-                        <tr>
-                            <th class="compare-header">比較項目</th>
-                            <th class="compare-header traditional">24H 傳統接線服務 / 人力</th>
-                            <th class="compare-header featured">智慧接線生 (本方案)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-label">每月成本</td>
-                            <td class="compare-value bad">NT$80,000 起 (三班制人力)</td>
-                            <td class="compare-value good"><strong>NT$28,800</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">情緒管理</td>
-                            <td class="compare-value bad">受壓力與疲勞影響，服務品質不一</td>
-                            <td class="compare-value good"><strong>永遠保持專業、耐心與親切</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">業務整合</td>
-                            <td class="compare-value bad">需人工手動紀錄，易出錯遺漏</td>
-                            <td class="compare-value good"><strong>自動串接系統，紀錄精準無誤</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">多線處理</td>
-                            <td class="compare-value bad">一個人只能接一通電話</td>
-                            <td class="compare-value good"><strong>支援多線並行，絕不佔線</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">年度總支出</td>
-                            <td class="compare-value bad">NT$960,000+</td>
-                            <td class="compare-value good"><strong>NT$345,600</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 年省金額強調 -->
-            <div class="savings-highlight-box">
-                <p class="savings-highlight-label">每年直接節省</p>
-                <p class="savings-highlight-amount">NT$614,400</p>
-                <p class="savings-highlight-note">這是您不再漏接的訂單價值</p>
-            </div>
+      <div class="math-proof-container">
+        <div class="math-proof-header">
+          <span class="value-section-eyebrow">數學題</span>
+          <h2 class="value-section-title">每通電話的商業價值</h2>
         </div>
+
+        <!-- 詳細對比表格 -->
+        <div class="detailed-comparison-table">
+          <table class="comparison-table-grid">
+            <thead>
+              <tr>
+                <th class="compare-header">比較項目</th>
+                <th class="compare-header traditional">
+                  24H 傳統接線服務 / 人力
+                </th>
+                <th class="compare-header featured">智慧接線生 (本方案)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compare-label">每月成本</td>
+                <td class="compare-value bad">NT$80,000 起 (三班制人力)</td>
+                <td class="compare-value good"><strong>NT$28,800</strong></td>
+              </tr>
+              <tr>
+                <td class="compare-label">情緒管理</td>
+                <td class="compare-value bad">
+                  受壓力與疲勞影響，服務品質不一
+                </td>
+                <td class="compare-value good">
+                  <strong>永遠保持專業、耐心與親切</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">業務整合</td>
+                <td class="compare-value bad">需人工手動紀錄，易出錯遺漏</td>
+                <td class="compare-value good">
+                  <strong>自動串接系統，紀錄精準無誤</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">多線處理</td>
+                <td class="compare-value bad">一個人只能接一通電話</td>
+                <td class="compare-value good">
+                  <strong>支援多線並行，絕不佔線</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">年度總支出</td>
+                <td class="compare-value bad">NT$960,000+</td>
+                <td class="compare-value good"><strong>NT$345,600</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 年省金額強調 -->
+        <div class="savings-highlight-box">
+          <p class="savings-highlight-label">每年直接節省</p>
+          <p class="savings-highlight-amount">NT$614,400</p>
+          <p class="savings-highlight-note">這是您不再漏接的訂單價值</p>
+        </div>
+      </div>
     </section>
 
     <!-- 最終 CTA 區塊 -->
     <section class="final-cta-section">
-        <div class="final-cta-container">
-            <div class="final-cta-badge">
-                <span class="final-cta-badge-dot"></span>
-                本月限額 3 家
-            </div>
-            <h2 class="final-cta-title">實機測試保證</h2>
-            <p class="final-cta-desc">
-                我們不賣空洞的軟體，我們賣的是<strong>訂單的保障</strong>。
-            </p>
-            <div class="final-cta-guarantees">
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>實機演示測試</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>親自體驗台語辨識</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>系統無法理解業務不收費</span>
-                </div>
-            </div>
-            <a href="../index.html#contact" class="final-cta-button">
-                立即預約您的智慧接線生演示
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </a>
-            <p class="final-cta-slots">為了確保語音訓練品質，本月僅剩 <strong>1 個</strong>對接名額</p>
+      <div class="final-cta-container">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-dot"></span>
+          本月限額 3 家
         </div>
+        <h2 class="final-cta-title">實機測試保證</h2>
+        <p class="final-cta-desc">
+          我們不賣空洞的軟體，我們賣的是<strong>訂單的保障</strong>。
+        </p>
+        <div class="final-cta-guarantees">
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>實機演示測試</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>親自體驗台語辨識</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>系統無法理解業務不收費</span>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="final-cta-button">
+          立即預約您的智慧接線生演示
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="final-cta-slots">
+          為了確保語音訓練品質，本月僅剩 <strong>1 個</strong>對接名額
+        </p>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <!-- 六大服務快速導覽 -->
-            <div class="footer-quick-nav">
-                <h3 class="footer-section-title">六大 AI 服務方案</h3>
-                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
-                <div class="footer-nav-grid">
-                    <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">CONTENT</div>
-                        <h4>自動流量小編</h4>
-                        <p>讓網站自己會抓客戶</p>
-                        <span class="footer-nav-tag">SEO 自動化</span>
-                    </a>
-                    <a href="service-voice-receptionist.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">VOICE</div>
-                        <h4>智慧接線生</h4>
-                        <p>24 小時守護每一通訂單</p>
-                        <span class="footer-nav-tag">語音 AI</span>
-                    </a>
-                    <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BRAND</div>
-                        <h4>品牌分身術</h4>
-                        <p>讓 AI 代你發文</p>
-                        <span class="footer-nav-tag">社群經營</span>
-                    </a>
-                    <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BOT</div>
-                        <h4>客服機器人</h4>
-                        <p>您專屬的線上小幫手</p>
-                        <span class="footer-nav-tag">智能客服</span>
-                    </a>
-                    <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">NOTES</div>
-                        <h4>智慧會議秘書</h4>
-                        <p>開完會，紀錄就好了</p>
-                        <span class="footer-nav-tag">效率工具</span>
-                    </a>
-                    <a href="service-consultant.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">THINK</div>
-                        <h4>AI 顧問</h4>
-                        <p>數位轉型夥伴</p>
-                        <span class="footer-nav-tag">企業轉型</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 品牌資訊 -->
-            <div class="footer-content">
-                <div class="footer-brand">AI 智能大腦</div>
-                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
-                <div class="footer-divider"></div>
-                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
-            </div>
+      <div class="container">
+        <!-- 六大服務快速導覽 -->
+        <div class="footer-quick-nav">
+          <h3 class="footer-section-title">六大 AI 服務方案</h3>
+          <p class="footer-section-subtitle">
+            點擊查看各服務的 AI 工作流程視覺化展示
+          </p>
+          <div class="footer-nav-grid">
+            <a href="service-content-editor.html" class="footer-nav-card">
+              <div class="footer-nav-icon">CONTENT</div>
+              <h4>自動流量小編</h4>
+              <p>讓網站自己會抓客戶</p>
+              <span class="footer-nav-tag">SEO 自動化</span>
+            </a>
+            <a
+              href="service-voice-receptionist.html"
+              class="footer-nav-card footer-nav-card-current"
+            >
+              <div class="footer-nav-icon">VOICE</div>
+              <h4>智慧接線生</h4>
+              <p>24 小時守護每一通訂單</p>
+              <span class="footer-nav-tag">語音 AI</span>
+            </a>
+            <a href="service-brand-clone.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BRAND</div>
+              <h4>品牌分身術</h4>
+              <p>讓 AI 代你發文</p>
+              <span class="footer-nav-tag">社群經營</span>
+            </a>
+            <a href="service-chatbot.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BOT</div>
+              <h4>客服機器人</h4>
+              <p>您專屬的線上小幫手</p>
+              <span class="footer-nav-tag">智能客服</span>
+            </a>
+            <a href="service-meeting-notes.html" class="footer-nav-card">
+              <div class="footer-nav-icon">NOTES</div>
+              <h4>智慧會議秘書</h4>
+              <p>開完會，紀錄就好了</p>
+              <span class="footer-nav-tag">效率工具</span>
+            </a>
+            <a href="service-consultant.html" class="footer-nav-card">
+              <div class="footer-nav-icon">THINK</div>
+              <h4>AI 顧問</h4>
+              <p>數位轉型夥伴</p>
+              <span class="footer-nav-tag">企業轉型</span>
+            </a>
+          </div>
         </div>
+
+        <!-- 品牌資訊 -->
+        <div class="footer-content">
+          <div class="footer-brand">AI 智能大腦</div>
+          <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">
+            © 2026 AI 智能大腦公司 | Enterprise AI Solutions
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
     <script>
-        // 📞 智慧接線生 - 工作流程配置
-        const SERVICE_CONFIG = {
-            name: '智慧接線生',
-            nodes: [
-                {
-                    id: 'call-receive',
-                    title: '來電接聽',
-                    description: 'Twilio 接收來電',
-                    icon: 'phone',
-                    color: '#16A085',
-                    position: { x: 50, y: 30 },
-                    bubbleMessages: ['[VOICE] 來電進線中...', '[LINK] 建立連線...', '[OK] 通話已建立！']
-                },
-                {
-                    id: 'voice-stt',
-                    title: '🎧 語音辨識',
-                    description: 'Gemini Live 語音轉文字',
-                    icon: 'mic',
-                    color: '#9B59B6',
-                    position: { x: 280, y: 30 },
-                    bubbleMessages: ['[MIC] 接收語音...', '[SPEAK] 辨識台語/國語...', '[OK] 辨識完成！']
-                },
-                {
-                    id: 'intent-detect',
-                    title: '意圖理解',
-                    description: 'AI 分析客戶意圖',
-                    icon: 'brain',
-                    color: '#E67E22',
-                    position: { x: 510, y: 30 },
-                    bubbleMessages: ['[SEARCH] 分析對話內容...', '[IDEA] 識別客戶意圖...', '[OK] 客戶想預約掛號！']
-                },
-                {
-                    id: 'booking-action',
-                    title: '預約登記',
-                    description: '自動操作預約系統',
-                    icon: 'calendar',
-                    color: '#3498DB',
-                    position: { x: 740, y: 30 },
-                    bubbleMessages: ['[SCHEDULE] 開啟預約系統...', '[EDIT] 填寫客戶資料...', '[OK] 1/15 下午 2:00 預約成功！']
-                },
-                {
-                    id: 'voice-tts',
-                    title: '語音回覆',
-                    description: 'AI 語音回答客戶',
-                    icon: 'speaker',
-                    color: '#E74C3C',
-                    position: { x: 970, y: 30 },
-                    bubbleMessages: ['[SOUND] 生成語音回覆...', '[SPEAK] 播放確認訊息...', '[OK] 對話完成，掛斷！']
-                }
+      // 📞 智慧接線生 - 工作流程配置
+      const SERVICE_CONFIG = {
+        name: "智慧接線生",
+        nodes: [
+          {
+            id: "call-receive",
+            title: "來電接聽",
+            description: "Twilio 接收來電",
+            icon: "phone",
+            color: "#16A085",
+            position: { x: 50, y: 30 },
+            bubbleMessages: [
+              "[VOICE] 來電進線中...",
+              "[LINK] 建立連線...",
+              "[OK] 通話已建立！",
             ],
-            connections: [
-                { from: 'call-receive', to: 'voice-stt' },
-                { from: 'voice-stt', to: 'intent-detect' },
-                { from: 'intent-detect', to: 'booking-action' },
-                { from: 'booking-action', to: 'voice-tts' }
+          },
+          {
+            id: "voice-stt",
+            title: "🎧 語音辨識",
+            description: "Gemini Live 語音轉文字",
+            icon: "mic",
+            color: "#9B59B6",
+            position: { x: 280, y: 30 },
+            bubbleMessages: [
+              "[MIC] 接收語音...",
+              "[SPEAK] 辨識台語/國語...",
+              "[OK] 辨識完成！",
             ],
-            executionOrder: ['call-receive', 'voice-stt', 'intent-detect', 'booking-action', 'voice-tts'],
-            resultPreview: {
-                type: 'line',
-                content: {
-                    icon: 'PHONE',
-                    sender: 'AI 接線生',
-                    message: '您好！已為您預約 1/15 下午 2:00，届時會有專人為您服務！',
-                    link: false
-                }
-            }
-        };
+          },
+          {
+            id: "intent-detect",
+            title: "意圖理解",
+            description: "AI 分析客戶意圖",
+            icon: "brain",
+            color: "#E67E22",
+            position: { x: 510, y: 30 },
+            bubbleMessages: [
+              "[SEARCH] 分析對話內容...",
+              "[IDEA] 識別客戶意圖...",
+              "[OK] 客戶想預約掛號！",
+            ],
+          },
+          {
+            id: "booking-action",
+            title: "預約登記",
+            description: "自動操作預約系統",
+            icon: "calendar",
+            color: "#3498DB",
+            position: { x: 740, y: 30 },
+            bubbleMessages: [
+              "[SCHEDULE] 開啟預約系統...",
+              "[EDIT] 填寫客戶資料...",
+              "[OK] 1/15 下午 2:00 預約成功！",
+            ],
+          },
+          {
+            id: "voice-tts",
+            title: "語音回覆",
+            description: "AI 語音回答客戶",
+            icon: "speaker",
+            color: "#E74C3C",
+            position: { x: 970, y: 30 },
+            bubbleMessages: [
+              "[SOUND] 生成語音回覆...",
+              "[SPEAK] 播放確認訊息...",
+              "[OK] 對話完成，掛斷！",
+            ],
+          },
+        ],
+        connections: [
+          { from: "call-receive", to: "voice-stt" },
+          { from: "voice-stt", to: "intent-detect" },
+          { from: "intent-detect", to: "booking-action" },
+          { from: "booking-action", to: "voice-tts" },
+        ],
+        executionOrder: [
+          "call-receive",
+          "voice-stt",
+          "intent-detect",
+          "booking-action",
+          "voice-tts",
+        ],
+        resultPreview: {
+          type: "line",
+          content: {
+            icon: "PHONE",
+            sender: "AI 接線生",
+            message: "您好！已為您預約 1/15 下午 2:00，届時會有專人為您服務！",
+            link: false,
+          },
+        },
+      };
     </script>
     <!-- 工作流引擎模組化載入 -->
     <script src="../js/workflow-engine/config.js"></script>
@@ -446,17 +590,16 @@
     <script src="../js/workflow-engine/engine.js"></script>
     <script src="../js/workflow-engine/index.js"></script>
     <script>
-        const video = document.getElementById('heroVideo');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundOff = soundToggle.querySelector('.sound-off');
-        const soundOn = soundToggle.querySelector('.sound-on');
-        soundToggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            soundOff.style.display = video.muted ? 'inline' : 'none';
-            soundOn.style.display = video.muted ? 'none' : 'inline';
-        });
+      const video = document.getElementById("heroVideo");
+      const soundToggle = document.getElementById("soundToggle");
+      const soundOff = soundToggle.querySelector(".sound-off");
+      const soundOn = soundToggle.querySelector(".sound-on");
+      soundToggle.addEventListener("click", () => {
+        video.muted = !video.muted;
+        soundOff.style.display = video.muted ? "inline" : "none";
+        soundOn.style.display = video.muted ? "none" : "inline";
+      });
     </script>
     <script src="../js/icons.js"></script>
-</body>
-
+  </body>
 </html>

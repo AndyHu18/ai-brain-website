@@ -2533,9 +2533,10 @@
       @media (max-width: 600px) {
         .staircase-section {
           padding: 20px 8px;
+          overflow: hidden;
         }
         .staircase-chart {
-          height: 170px;
+          height: 250px;
           gap: 2px;
         }
         .stair-col {
@@ -5236,6 +5237,17 @@
         { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
       );
       fadeEls.forEach((el) => fadeObserver.observe(el));
+
+      // Section nav: dynamically match navbar height
+      const navbarEl = document.getElementById("navbar");
+      const sectionNavEl = document.getElementById("sectionNav");
+      if (navbarEl && sectionNavEl) {
+        const updateNavTop = () => {
+          sectionNavEl.style.top = navbarEl.offsetHeight + "px";
+        };
+        updateNavTop();
+        window.addEventListener("resize", updateNavTop);
+      }
 
       // Section nav active state
       const sectionNavLinks = document.querySelectorAll(".section-nav a");

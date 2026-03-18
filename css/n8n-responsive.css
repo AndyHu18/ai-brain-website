@@ -6,213 +6,211 @@
 
 /* === 響應式補充設計 === */
 @media (max-width: 1200px) {
-    .workflow-container {
-        padding: 1rem;
-    }
+  .workflow-container {
+    padding: 1rem;
+  }
 
-    .canvas-wrapper {
-        padding: 1rem;
-    }
+  .canvas-wrapper {
+    padding: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
+  /* 主容器 */
+  .workflow-container {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
 
-    /* 主容器 */
-    .workflow-container {
-        padding: 0.75rem;
-        gap: 1rem;
-    }
+  /* Header 區域 */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+  }
 
-    /* Header 區域 */
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 1rem;
-    }
+  .logo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 
-    .logo {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
+  .logo h1 {
+    font-size: 1.25rem;
+  }
 
-    .logo h1 {
-        font-size: 1.25rem;
-    }
+  .controls {
+    width: 100%;
+    justify-content: center;
+  }
 
-    .controls {
-        width: 100%;
-        justify-content: center;
-    }
+  /* 介紹區塊 */
+  .intro-section {
+    padding: 1.5rem 1rem;
+  }
 
-    /* 介紹區塊 */
-    .intro-section {
-        padding: 1.5rem 1rem;
-    }
+  .intro-header h2 {
+    font-size: 1.3rem;
+  }
 
-    .intro-header h2 {
-        font-size: 1.3rem;
-    }
+  .intro-subtitle {
+    font-size: 1rem;
+  }
 
-    .intro-subtitle {
-        font-size: 1rem;
-    }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 
-    .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+  .benefit-card {
+    padding: 1.25rem 1rem;
+  }
 
-    .benefit-card {
-        padding: 1.25rem 1rem;
-    }
+  /* 流程說明 */
+  .flow-explanation {
+    padding: 1.5rem 1rem;
+  }
 
-    /* 流程說明 */
-    .flow-explanation {
-        padding: 1.5rem 1rem;
-    }
+  .flow-explanation h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
 
-    .flow-explanation h3 {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-    }
+  .node-explanations {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .node-explanations {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
+  .node-exp {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
 
-    .node-exp {
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-    }
+  /* 狀態列 */
+  .status-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
 
-    /* 狀態列 */
-    .status-bar {
-        flex-direction: column;
-        gap: 0.75rem;
-        padding: 1rem;
-    }
+  .status-item {
+    font-size: 0.85rem;
+  }
 
-    .status-item {
-        font-size: 0.85rem;
-    }
+  /* 畫布區域 - 垂直 Stepper（由 n8n-workflow/responsive.css 控制） */
+  .canvas-wrapper {
+    padding-top: 10px;
+    margin-bottom: 1rem;
+    overflow: visible;
+  }
 
-    /* 畫布區域 - 可橫向滾動 */
-    .canvas-wrapper {
-        padding-top: 45px;
-        margin-bottom: 1rem;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+  .workflow-canvas {
+    min-width: 0;
+    height: auto;
+  }
 
-    .workflow-canvas {
-        min-width: 900px;
-        height: 240px;
-    }
+  .start-node-btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+  }
 
-    .start-node-btn {
-        font-size: 0.8rem;
-        padding: 6px 14px;
-    }
+  /* 節點尺寸調整 */
+  .node {
+    width: 150px;
+  }
 
-    /* 節點尺寸調整 */
-    .node {
-        width: 150px;
-    }
+  .node-title {
+    font-size: 0.85rem;
+  }
 
-    .node-title {
-        font-size: 0.85rem;
-    }
+  .node-description {
+    font-size: 0.75rem;
+  }
 
-    .node-description {
-        font-size: 0.75rem;
-    }
+  /* 日誌面板 */
+  .log-panel {
+    border-radius: 8px;
+  }
 
-    /* 日誌面板 */
-    .log-panel {
-        border-radius: 8px;
-    }
+  .log-content {
+    max-height: 150px;
+  }
 
-    .log-content {
-        max-height: 150px;
-    }
+  .log-entry {
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+  }
 
-    .log-entry {
-        flex-direction: column;
-        gap: 0.25rem;
-        font-size: 0.8rem;
-    }
-
-    .log-time {
-        font-size: 0.7rem;
-    }
+  .log-time {
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .workflow-container {
-        padding: 0.5rem;
-    }
+  .workflow-container {
+    padding: 0.5rem;
+  }
 
-    .header {
-        padding: 0.75rem;
-    }
+  .header {
+    padding: 0.75rem;
+  }
 
-    .logo h1 {
-        font-size: 1.1rem;
-    }
+  .logo h1 {
+    font-size: 1.1rem;
+  }
 
-    .back-btn {
-        font-size: 0.8rem;
-    }
+  .back-btn {
+    font-size: 0.8rem;
+  }
 
-    .btn {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.8rem;
-    }
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
 
-    .intro-header h2 {
-        font-size: 1.1rem;
-    }
+  .intro-header h2 {
+    font-size: 1.1rem;
+  }
 
-    .benefit-card h3 {
-        font-size: 1rem;
-    }
+  .benefit-card h3 {
+    font-size: 1rem;
+  }
 
-    .benefit-card p {
-        font-size: 0.85rem;
-    }
+  .benefit-card p {
+    font-size: 0.85rem;
+  }
 
-    .workflow-canvas {
-        min-width: 800px;
-        height: 220px;
-    }
+  .workflow-canvas {
+    min-width: 0;
+    height: auto;
+  }
 
-    .node {
-        width: 130px;
-    }
+  .node {
+    width: 130px;
+  }
 
-    .log-content {
-        max-height: 120px;
-    }
+  .log-content {
+    max-height: 120px;
+  }
 }
 
 /* === 橫向滾動提示 === */
 .canvas-wrapper::after {
-    content: '← 橫向滾動查看完整流程 →';
-    display: none;
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.75rem;
-    color: #6B5344;
-    white-space: nowrap;
+  content: "← 橫向滾動查看完整流程 →";
+  display: none;
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #6b5344;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-    .canvas-wrapper::after {
-        display: block;
-    }
+  .canvas-wrapper::after {
+    display: none;
+  }
 }

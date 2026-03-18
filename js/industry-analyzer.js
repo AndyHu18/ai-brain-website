@@ -6,8 +6,8 @@
   "use strict";
 
   // ── Config ──
-  const API_URL = "https://getlove-api-proxy.getlove-ai.workers.dev/api/gemini";
-  const MODEL = "gemini-2.5-flash";
+  const API_URL = "/api/chat";
+  const MODEL = "claude-haiku-4-5-20251001";
 
   const SERVICES = [
     { name: "靜態形象網站", icon: "", color: "#3b82f6" },
