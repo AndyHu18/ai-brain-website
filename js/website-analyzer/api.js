@@ -119,11 +119,16 @@ const WebsiteAnalyzerAPI = {
     };
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 90000);
+
       const response = await fetch(config.API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url }),
+        signal: controller.signal,
       });
+      clearTimeout(timeoutId);
 
       const data = await response.json();
 
@@ -172,6 +177,11 @@ const WebsiteAnalyzerAPI = {
     } catch (error) {
       progressAnimationDone = true;
       stopFunFacts();
+      if (error.name === "AbortError") {
+        throw new Error(
+          "分析超時，該網站內容較複雜。請改用較小的網站測試，或加 LINE 由我們為您分析。",
+        );
+      }
       throw error;
     }
   },

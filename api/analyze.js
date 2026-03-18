@@ -23,6 +23,10 @@ function generateReportId() {
 /**
  * 主處理函數
  */
+export const config = {
+  maxDuration: 60,
+};
+
 export default async function handler(req, res) {
   // CORS 處理
   res.setHeader("Access-Control-Allow-Origin", "*");
