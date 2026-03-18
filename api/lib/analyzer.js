@@ -5,11 +5,12 @@
  * @usedBy  : ['api/analyze.js']
  */
 
-const { buildAnalysisPrompt } = require('../config/system-prompts');
+const { buildAnalysisPrompt } = require("../config/system-prompts");
 
 // ============ 常數設定 ============
 
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+const GEMINI_API_URL =
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
 /** 最大內容長度（傳給 AI） */
 const MAX_CONTENT_LENGTH = 25000;
@@ -26,35 +27,43 @@ const API_RETRY_DELAY = 2000;
  * 建構發送給 Gemini 的完整提示詞
  */
 function buildFullPrompt(content, config) {
-    const systemPrompt = buildAnalysisPrompt(config);
+  const systemPrompt = buildAnalysisPrompt(config);
 
-    // 診斷日誌：記錄實際傳入 AI 的資料
-    console.log('📍[Analyzer] Prompt 資料診斷:', {
-        textContentLength: content.textContent?.length || 0,
-        headingsCount: content.headings?.length || 0,
-        navigationCount: content.navigation?.length || 0,
-        serviceBlocksCount: content.serviceBlocks?.length || 0,
-        source: content.source || 'unknown',
-        subPagesCount: content.subPagesCount || 0
-    });
+  // 診斷日誌：記錄實際傳入 AI 的資料
+  console.log("📍[Analyzer] Prompt 資料診斷:", {
+    textContentLength: content.textContent?.length || 0,
+    headingsCount: content.headings?.length || 0,
+    navigationCount: content.navigation?.length || 0,
+    serviceBlocksCount: content.serviceBlocks?.length || 0,
+    source: content.source || "unknown",
+    subPagesCount: content.subPagesCount || 0,
+  });
 
-    const headings = content.headings || [];
-    const serviceBlocks = content.serviceBlocks || [];
+  const headings = content.headings || [];
+  const serviceBlocks = content.serviceBlocks || [];
 
-    // 構建結構化的網站資訊
-    const structuredInfo = [
-        `網址: ${content.url}`,
-        `標題: ${content.title}`,
-        `描述: ${content.description || '(無)'}`,
-        headings.length > 0 ? `主要標題 (H1-H3):\n${headings.map(h => `  • ${h}`).join('\n')}` : '',
-        content.navigation.length > 0 ? `導航項目: ${content.navigation.join('、')}` : '',
-        serviceBlocks.length > 0 ? `識別到的服務區塊:\n${serviceBlocks.map(s => `  ▸ ${s}`).join('\n')}` : ''
-    ].filter(Boolean).join('\n');
+  // 構建結構化的網站資訊
+  const structuredInfo = [
+    `網址: ${content.url}`,
+    `標題: ${content.title}`,
+    `描述: ${content.description || "(無)"}`,
+    headings.length > 0
+      ? `主要標題 (H1-H3):\n${headings.map((h) => `  • ${h}`).join("\n")}`
+      : "",
+    content.navigation.length > 0
+      ? `導航項目: ${content.navigation.join("、")}`
+      : "",
+    serviceBlocks.length > 0
+      ? `識別到的服務區塊:\n${serviceBlocks.map((s) => `  ▸ ${s}`).join("\n")}`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
 
-    // 截取內容
-    const contentText = content.textContent.slice(0, MAX_CONTENT_LENGTH);
+  // 截取內容
+  const contentText = content.textContent.slice(0, MAX_CONTENT_LENGTH);
 
-    return `${systemPrompt}
+  return `${systemPrompt}
 
 ═══════════════════════════════════════════════════════════════
 【網站資訊】
@@ -92,160 +101,269 @@ ${contentText}
  * 解析 AI 回應
  */
 function parseAIResponse(text) {
-    try {
-        let jsonText = text.trim();
+  try {
+    let jsonText = text.trim();
 
-        // 移除可能的 markdown 代碼塊包裝
-        if (jsonText.startsWith('```json')) {
-            jsonText = jsonText.slice(7);
-        } else if (jsonText.startsWith('```')) {
-            jsonText = jsonText.slice(3);
-        }
-        if (jsonText.endsWith('```')) {
-            jsonText = jsonText.slice(0, -3);
-        }
-        jsonText = jsonText.trim();
-
-        // 嘗試提取 JSON 物件
-        const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
-        if (!jsonMatch) {
-            console.error('📍[Analyzer] 找不到 JSON 物件');
-            return null;
-        }
-
-        const parsed = JSON.parse(jsonMatch[0]);
-
-        // 驗證必要欄位
-        if (!parsed.services || !Array.isArray(parsed.services)) {
-            console.error('📍[Analyzer] 缺少 services 欄位');
-            return null;
-        }
-        if (!parsed.aiOpportunities || !Array.isArray(parsed.aiOpportunities)) {
-            console.error('📍[Analyzer] 缺少 aiOpportunities 欄位');
-            return null;
-        }
-
-        // 確保所有欄位都存在（給予預設值）
-        return {
-            services: parsed.services,
-            aiOpportunities: parsed.aiOpportunities,
-            departmentInsights: parsed.departmentInsights || [],
-            positionOpportunities: parsed.positionOpportunities || [],
-            websiteOptimizations: parsed.websiteOptimizations || [],
-            salesFunnelAI: parsed.salesFunnelAI || [],
-            summary: parsed.summary || '分析完成'
-        };
-
-    } catch (error) {
-        console.error('📍[Analyzer] JSON 解析失敗:', error);
-        return null;
+    // 移除可能的 markdown 代碼塊包裝
+    if (jsonText.startsWith("```json")) {
+      jsonText = jsonText.slice(7);
+    } else if (jsonText.startsWith("```")) {
+      jsonText = jsonText.slice(3);
     }
+    if (jsonText.endsWith("```")) {
+      jsonText = jsonText.slice(0, -3);
+    }
+    jsonText = jsonText.trim();
+
+    // 嘗試提取 JSON 物件
+    const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      console.error("📍[Analyzer] 找不到 JSON 物件");
+      return null;
+    }
+
+    const parsed = JSON.parse(jsonMatch[0]);
+
+    // 驗證必要欄位
+    if (!parsed.services || !Array.isArray(parsed.services)) {
+      console.error("📍[Analyzer] 缺少 services 欄位");
+      return null;
+    }
+    if (!parsed.aiOpportunities || !Array.isArray(parsed.aiOpportunities)) {
+      console.error("📍[Analyzer] 缺少 aiOpportunities 欄位");
+      return null;
+    }
+
+    // 確保所有欄位都存在（給予預設值）
+    return {
+      services: parsed.services,
+      aiOpportunities: parsed.aiOpportunities,
+      departmentInsights: parsed.departmentInsights || [],
+      positionOpportunities: parsed.positionOpportunities || [],
+      websiteOptimizations: parsed.websiteOptimizations || [],
+      salesFunnelAI: parsed.salesFunnelAI || [],
+      summary: parsed.summary || "分析完成",
+    };
+  } catch (error) {
+    console.error("📍[Analyzer] JSON 解析失敗:", error);
+    return null;
+  }
 }
 
 // ============ API 呼叫 ============
 
 /**
+ * 呼叫 Claude API（含重試機制）
+ */
+async function callClaudeAPI(prompt, apiKey, retries = MAX_API_RETRIES) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    if (attempt > 0) {
+      console.log(`📍[Analyzer] Claude API 重試 ${attempt}/${retries}...`);
+      await new Promise((r) => setTimeout(r, API_RETRY_DELAY * attempt));
+    }
+
+    try {
+      const response = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 16384,
+          messages: [{ role: "user", content: prompt }],
+          temperature: 0.3,
+        }),
+      });
+
+      if (response.status === 429) {
+        console.warn("📍[Analyzer] Rate limit，等待重試...");
+        continue;
+      }
+
+      if (response.status >= 500) {
+        console.warn(`📍[Analyzer] 伺服器錯誤 ${response.status}，等待重試...`);
+        continue;
+      }
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("📍[Analyzer] Claude API 錯誤:", errorText);
+        return {
+          ok: false,
+          error: "AI_API_ERROR",
+          message: `API 錯誤: ${response.status}`,
+        };
+      }
+
+      const data = await response.json();
+      const text = data.content?.[0]?.text;
+
+      if (!text) {
+        console.error("📍[Analyzer] 空白回應");
+        return {
+          ok: false,
+          error: "INVALID_RESPONSE",
+          message: "AI 回應格式異常",
+        };
+      }
+
+      return { ok: true, data: text };
+    } catch (error) {
+      console.error("📍[Analyzer] 請求錯誤:", error);
+      if (attempt === retries) {
+        return {
+          ok: false,
+          error: "AI_API_ERROR",
+          message: error.message || "未知錯誤",
+        };
+      }
+    }
+  }
+
+  return {
+    ok: false,
+    error: "RATE_LIMIT",
+    message: "API 請求失敗，請稍後再試",
+  };
+}
+
+/**
  * 呼叫 Gemini API（含重試機制）
  */
 async function callGeminiAPI(prompt, apiKey, retries = MAX_API_RETRIES) {
-    for (let attempt = 0; attempt <= retries; attempt++) {
-        if (attempt > 0) {
-            console.log(`📍[Analyzer] API 重試 ${attempt}/${retries}...`);
-            await new Promise(r => setTimeout(r, API_RETRY_DELAY * attempt));
-        }
-
-        try {
-            const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    generationConfig: {
-                        temperature: 0.3,
-                        maxOutputTokens: 16384,
-                        topP: 0.85,
-                        topK: 40
-                    }
-                })
-            });
-
-            if (response.status === 429) {
-                console.warn('📍[Analyzer] Rate limit，等待重試...');
-                continue;
-            }
-
-            if (response.status >= 500) {
-                console.warn(`📍[Analyzer] 伺服器錯誤 ${response.status}，等待重試...`);
-                continue;
-            }
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.error('📍[Analyzer] API 錯誤:', errorText);
-                return { ok: false, error: 'AI_API_ERROR', message: `API 錯誤: ${response.status}` };
-            }
-
-            const data = await response.json();
-            const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-            if (!text) {
-                console.error('📍[Analyzer] 空白回應');
-                return { ok: false, error: 'INVALID_RESPONSE', message: 'AI 回應格式異常' };
-            }
-
-            return { ok: true, data: text };
-
-        } catch (error) {
-            console.error('📍[Analyzer] 請求錯誤:', error);
-            if (attempt === retries) {
-                return { ok: false, error: 'AI_API_ERROR', message: error.message || '未知錯誤' };
-            }
-        }
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    if (attempt > 0) {
+      console.log(`📍[Analyzer] Gemini API 重試 ${attempt}/${retries}...`);
+      await new Promise((r) => setTimeout(r, API_RETRY_DELAY * attempt));
     }
 
-    return { ok: false, error: 'RATE_LIMIT', message: 'API 請求失敗，請稍後再試' };
+    try {
+      const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            temperature: 0.3,
+            maxOutputTokens: 16384,
+            topP: 0.85,
+            topK: 40,
+          },
+        }),
+      });
+
+      if (response.status === 429) {
+        console.warn("📍[Analyzer] Rate limit，等待重試...");
+        continue;
+      }
+
+      if (response.status >= 500) {
+        console.warn(`📍[Analyzer] 伺服器錯誤 ${response.status}，等待重試...`);
+        continue;
+      }
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("📍[Analyzer] Gemini API 錯誤:", errorText);
+        return {
+          ok: false,
+          error: "AI_API_ERROR",
+          message: `API 錯誤: ${response.status}`,
+        };
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+      if (!text) {
+        console.error("📍[Analyzer] 空白回應");
+        return {
+          ok: false,
+          error: "INVALID_RESPONSE",
+          message: "AI 回應格式異常",
+        };
+      }
+
+      return { ok: true, data: text };
+    } catch (error) {
+      console.error("📍[Analyzer] 請求錯誤:", error);
+      if (attempt === retries) {
+        return {
+          ok: false,
+          error: "AI_API_ERROR",
+          message: error.message || "未知錯誤",
+        };
+      }
+    }
+  }
+
+  return {
+    ok: false,
+    error: "RATE_LIMIT",
+    message: "API 請求失敗，請稍後再試",
+  };
 }
 
 // ============ 主函數 ============
 
 /**
- * 使用 Gemini API 分析網站
+ * 使用 AI 分析網站（優先 Claude，fallback Gemini）
  */
-async function analyzeWithAI(content, config, apiKey) {
-    console.log('📍[Analyzer] 開始 AI 分析');
+async function analyzeWithAI(content, config, apiKey, useClaude = false) {
+  console.log(
+    "📍[Analyzer] 開始 AI 分析，使用:",
+    useClaude ? "Claude" : "Gemini",
+  );
 
-    if (content.textContent.length < 50) {
-        console.error('📍[Analyzer] 內容過短:', content.textContent.length);
-        return { ok: false, error: 'CONTENT_TOO_SHORT', message: '網站內容太少，無法進行有效分析（需至少 50 字）' };
-    }
+  if (content.textContent.length < 50) {
+    console.error("📍[Analyzer] 內容過短:", content.textContent.length);
+    return {
+      ok: false,
+      error: "CONTENT_TOO_SHORT",
+      message: "網站內容太少，無法進行有效分析（需至少 50 字）",
+    };
+  }
 
-    console.log('📍[Analyzer] 內容長度:', content.textContent.length);
+  console.log("📍[Analyzer] 內容長度:", content.textContent.length);
 
-    const prompt = buildFullPrompt(content, config);
-    console.log('📍[Analyzer] Prompt 長度:', prompt.length);
+  const prompt = buildFullPrompt(content, config);
+  console.log("📍[Analyzer] Prompt 長度:", prompt.length);
 
-    const apiResult = await callGeminiAPI(prompt, apiKey);
-    if (!apiResult.ok) {
-        return apiResult;
-    }
+  const apiResult = useClaude
+    ? await callClaudeAPI(prompt, apiKey)
+    : await callGeminiAPI(prompt, apiKey);
+  if (!apiResult.ok) {
+    return apiResult;
+  }
 
-    console.log('📍[Analyzer] 收到 AI 回應，長度:', apiResult.data.length);
+  console.log("📍[Analyzer] 收到 AI 回應，長度:", apiResult.data.length);
 
-    const result = parseAIResponse(apiResult.data);
-    if (!result) {
-        console.error('📍[Analyzer] 無法解析的回應前 500 字:', apiResult.data.slice(0, 500));
-        return { ok: false, error: 'INVALID_RESPONSE', message: '無法解析 AI 回應' };
-    }
+  const result = parseAIResponse(apiResult.data);
+  if (!result) {
+    console.error(
+      "📍[Analyzer] 無法解析的回應前 500 字:",
+      apiResult.data.slice(0, 500),
+    );
+    return {
+      ok: false,
+      error: "INVALID_RESPONSE",
+      message: "無法解析 AI 回應",
+    };
+  }
 
-    console.log('📍[Analyzer] 分析完成，識別服務數:', result.services.length);
-    return { ok: true, data: result };
+  console.log("📍[Analyzer] 分析完成，識別服務數:", result.services.length);
+  return { ok: true, data: result };
 }
 
 // ============ 匯出 ============
 
 module.exports = {
-    analyzeWithAI,
-    buildFullPrompt,
-    parseAIResponse,
-    callGeminiAPI
+  analyzeWithAI,
+  buildFullPrompt,
+  parseAIResponse,
+  callClaudeAPI,
+  callGeminiAPI,
 };

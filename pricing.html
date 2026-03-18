@@ -181,7 +181,7 @@
       /* ── Section Nav (sticky) ── */
       .section-nav {
         position: sticky;
-        top: 64px;
+        top: var(--navbar-height, 56px);
         z-index: 90;
         background: linear-gradient(180deg, #2d2319 0%, #3a2c1f 100%);
         border-bottom: 1px solid rgba(210, 105, 30, 0.2);
@@ -3080,20 +3080,12 @@
           </div>
           <span class="logo-text">AI 智能大腦</span>
         </a>
-        <div class="nav-menu">
-          <a href="index.html" class="nav-link">首頁</a>
-          <a href="index.html#services" class="nav-link">服務項目</a>
-          <a href="index.html#solutions" class="nav-link">解決方案</a>
-          <a href="#" class="nav-link nav-link-active" onclick="return false;"
-            >服務方案</a
-          >
-          <a href="#ai-cs" class="nav-link nav-cta">免費諮詢 →</a>
-        </div>
-        <button class="nav-toggle" aria-label="選單">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <a
+          href="index.html"
+          class="nav-link"
+          style="color: rgba(255, 250, 245, 0.9); font-weight: 600"
+          >← 回首頁</a
+        >
       </div>
     </nav>
 
@@ -5243,10 +5235,16 @@
       const sectionNavEl = document.getElementById("sectionNav");
       if (navbarEl && sectionNavEl) {
         const updateNavTop = () => {
-          sectionNavEl.style.top = navbarEl.offsetHeight + "px";
+          const h = navbarEl.offsetHeight;
+          sectionNavEl.style.top = h + "px";
+          document.documentElement.style.setProperty(
+            "--navbar-height",
+            h + "px",
+          );
         };
         updateNavTop();
         window.addEventListener("resize", updateNavTop);
+        window.addEventListener("load", updateNavTop);
       }
 
       // Section nav active state

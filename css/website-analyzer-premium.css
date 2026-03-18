@@ -448,6 +448,11 @@
     align-items: center;
     gap: 12px;
   }
+
+  .analyzer-trust-signals .trust-item {
+    min-width: 220px;
+    justify-content: flex-start;
+  }
 }
 
 /* === Container z-index === */

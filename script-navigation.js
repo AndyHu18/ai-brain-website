@@ -13,21 +13,25 @@ function initNavigation() {
   const navToggle = document.querySelector(".nav-toggle");
   const navMenu = document.querySelector(".nav-menu");
 
+  // 透明導航欄由 script-service-nav.js 獨立控制，此處跳過
+  const isTransparent =
+    navbar && navbar.classList.contains("navbar-transparent");
+
   // 滾動時導航列效果 - 使用 CSS class 切換
   let lastScrollY = 0;
-  window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
+  if (!isTransparent) {
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
 
-    if (currentScrollY > 50) {
-      // 滾動後：添加 scrolled class，觸發 CSS 過渡
-      navbar.classList.add("navbar-scrolled");
-    } else {
-      // 頂部：移除 scrolled class
-      navbar.classList.remove("navbar-scrolled");
-    }
+      if (currentScrollY > 50) {
+        navbar.classList.add("navbar-scrolled");
+      } else {
+        navbar.classList.remove("navbar-scrolled");
+      }
 
-    lastScrollY = currentScrollY;
-  });
+      lastScrollY = currentScrollY;
+    });
+  }
 
   // 手機版選單切換
   navToggle?.addEventListener("click", () => {

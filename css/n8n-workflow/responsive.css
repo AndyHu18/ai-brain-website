@@ -7,6 +7,7 @@
 @media (max-width: 768px) {
   .workflow-container {
     padding: var(--spacing-md);
+    min-height: auto;
   }
 
   /* --- 重新排序：按鈕 → 狀態列 → 畫布 → 介紹區 → 流程說明 --- */
@@ -161,9 +162,10 @@
     z-index: 200;
   }
 
-  /* 確保正在執行的節點在最上層 */
+  /* running 節點需要更大 margin-bottom 為泡泡留空間 */
   .node.running {
     z-index: 100;
+    margin-bottom: 60px;
   }
 
   .node.completed {
@@ -239,10 +241,16 @@
     transform: none !important;
     right: auto !important;
     top: auto !important;
+    left: auto !important;
     margin-top: var(--spacing-md);
-    z-index: 150;
+    z-index: 300;
     opacity: 1;
     visibility: visible;
+  }
+
+  .result-preview.visible {
+    animation: none !important;
+    transform: none !important;
   }
 
   .preview-line,
