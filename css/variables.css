@@ -5,192 +5,197 @@
  */
 
 :root {
-    /* ========================================
+  /* ========================================
        配色系統 - Hermès 經典暖橘
        ======================================== */
 
-    /* 背景色系 - 優化：避免純白，使用高級灰 */
-    --bg-light: #FCFCFC;
-    /* 極淡灰主背景 - 比純白更高級 */
-    --bg-lighter: #FEFEFE;
-    /* 近白 */
-    --bg-section: #F5EFE6;
-    /* 燕麥色區塊背景 */
-    --bg-card: #FFFAF5;
-    /* 卡片背景 */
-    --bg-input: #FAF7F2;
-    /* 輸入框背景 */
+  /* 背景色系 - 優化：避免純白，使用高級灰 */
+  --bg-light: #fcfcfc;
+  /* 極淡灰主背景 - 比純白更高級 */
+  --bg-lighter: #fefefe;
+  /* 近白 */
+  --bg-section: #f5efe6;
+  /* 燕麥色區塊背景 */
+  --bg-card: #fffaf5;
+  /* 卡片背景 */
+  --bg-input: #faf7f2;
+  /* 輸入框背景 */
 
-    /* AI 科技感輔色 - 深鈦灰 */
-    --tech-titanium: #2D3436;
-    /* 深鈦灰 - 權威感 */
-    --tech-midnight: #1A1E23;
-    /* 午夜藍灰 - 深度感 */
-    --tech-slate: #4A5568;
-    /* 石板灰 - 輔助 */
+  /* AI 科技感輔色 - 深鈦灰 */
+  --tech-titanium: #2d3436;
+  /* 深鈦灰 - 權威感 */
+  --tech-midnight: #1a1e23;
+  /* 午夜藍灰 - 深度感 */
+  --tech-slate: #4a5568;
+  /* 石板灰 - 輔助 */
 
-    /* 主色 - 愛馬仕橘 */
-    --color-primary: #D2691E;
-    /* 主橘色 */
-    --color-primary-light: #E07B3A;
-    /* 淺橘（hover） */
-    --color-primary-dark: #B85A15;
-    /* 深橘（active） */
+  /* 主色 - 愛馬仕橘 */
+  --color-primary: #d2691e;
+  /* 主橘色 */
+  --color-primary-light: #e07b3a;
+  /* 淺橘（hover） */
+  --color-primary-dark: #b85a15;
+  /* 深橘（active） */
 
-    /* 點綴色 - 古銅金 */
-    --color-accent: #CD853F;
-    /* 古銅金 */
-    --color-accent-light: #DDA15E;
-    /* 淺金 */
-    --color-accent-dark: #A0522D;
-    /* 深金 */
+  /* 點綴色 - 古銅金 */
+  --color-accent: #cd853f;
+  /* 古銅金 */
+  --color-accent-light: #dda15e;
+  /* 淺金 */
+  --color-accent-dark: #a0522d;
+  /* 深金 */
 
-    /* APCA 合規色彩 - 確保對比度達標 */
-    --color-primary-accessible: #9A4A10;
-    /* 深橘 - APCA Lc 75+ 與白色文字 */
-    --text-on-primary: #FFFFFF;
-    /* 白色文字用於深橘背景 */
+  /* APCA 合規色彩 - 確保對比度達標 */
+  --color-primary-accessible: #9a4a10;
+  /* 深橘 - APCA Lc 75+ 與白色文字 */
+  --text-on-primary: #ffffff;
+  /* 白色文字用於深橘背景 */
 
-    /* 文字色 - 高對比度版本 */
-    --text-primary: #1A0F0A;
-    /* 極深棕 - 主標題（提高對比度）*/
-    --text-secondary: #2D1810;
-    /* 深棕 - 正文（提高對比度）*/
-    --text-muted: #5D4037;
-    /* 中棕 - 次要（提高對比度）*/
-    --text-light: #FFFFFF;
-    /* 白色文字 */
+  /* 文字色 - 高對比度版本 */
+  --text-primary: #1a0f0a;
+  /* 極深棕 - 主標題（提高對比度）*/
+  --text-secondary: #2d1810;
+  /* 深棕 - 正文（提高對比度）*/
+  --text-muted: #5d4037;
+  /* 中棕 - 次要（提高對比度）*/
+  --text-light: #ffffff;
+  /* 白色文字 */
 
-    /* 邊框色 */
-    --border-subtle: rgba(62, 39, 35, 0.1);
-    --border-default: rgba(62, 39, 35, 0.2);
-    --border-accent: rgba(210, 105, 30, 0.3);
+  /* 邊框色 */
+  --border-subtle: rgba(62, 39, 35, 0.1);
+  --border-default: rgba(62, 39, 35, 0.2);
+  --border-accent: rgba(210, 105, 30, 0.3);
 
-    /* ========================================
+  /* ========================================
        間距系統 (8px Grid) - 大呼吸感佈局
        ======================================== */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 32px;
-    --spacing-2xl: 48px;
-    --spacing-3xl: 64px;
-    --spacing-4xl: 80px;
-    /* 新增：區塊間大間距 */
-    --spacing-5xl: 120px;
-    /* 新增：超大呼吸感間距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+  /* 新增：區塊間大間距 */
+  --spacing-5xl: 120px;
+  /* 新增：超大呼吸感間距 */
 
-    /* ========================================
+  /* ========================================
        字體系統
        ======================================== */
-    /* 行銷頁面需要更大字體 */
-    --font-size-xs: 0.875rem;
-    /* 14px */
-    --font-size-sm: 1rem;
-    /* 16px */
-    --font-size-base: 1.25rem;
-    /* 20px - 基礎字體加大 */
-    --font-size-lg: 1.5rem;
-    /* 24px */
-    --font-size-xl: 1.75rem;
-    /* 28px */
-    --font-size-2xl: 2.25rem;
-    /* 36px */
-    --font-size-3xl: 3rem;
-    /* 48px */
-    --font-size-4xl: 4rem;
-    /* 64px */
-    --font-size-5xl: 5rem;
-    /* 80px */
+  /* 行銷頁面需要更大字體 */
+  --font-size-xs: 0.875rem;
+  /* 14px */
+  --font-size-sm: 1rem;
+  /* 16px */
+  --font-size-base: 1.25rem;
+  /* 20px - 基礎字體加大 */
+  --font-size-lg: 1.5rem;
+  /* 24px */
+  --font-size-xl: 1.75rem;
+  /* 28px */
+  --font-size-2xl: 2.25rem;
+  /* 36px */
+  --font-size-3xl: 3rem;
+  /* 48px */
+  --font-size-4xl: 4rem;
+  /* 64px */
+  --font-size-5xl: 5rem;
+  /* 80px */
 
-    /* ========================================
+  /* ========================================
        圓角系統
        ======================================== */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
-    --radius-xl: 16px;
-    --radius-2xl: 24px;
-    --radius-full: 9999px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
 
-    /* ========================================
+  /* ========================================
        陰影系統
        ======================================== */
-    --shadow-sm: 0 1px 2px rgba(62, 39, 35, 0.05);
-    --shadow-md: 0 4px 6px rgba(62, 39, 35, 0.07);
-    --shadow-lg: 0 10px 15px rgba(62, 39, 35, 0.1);
-    --shadow-xl: 0 20px 25px rgba(62, 39, 35, 0.15);
-    --shadow-card: 0 4px 20px rgba(210, 105, 30, 0.08);
+  --shadow-sm: 0 1px 2px rgba(62, 39, 35, 0.05);
+  --shadow-md: 0 4px 6px rgba(62, 39, 35, 0.07);
+  --shadow-lg: 0 10px 15px rgba(62, 39, 35, 0.1);
+  --shadow-xl: 0 20px 25px rgba(62, 39, 35, 0.15);
+  --shadow-card: 0 4px 20px rgba(210, 105, 30, 0.08);
 
-    /* AI 發光效果 - 能量感 */
-    --glow-primary: 0 0 20px rgba(210, 105, 30, 0.4);
-    --glow-primary-intense: 0 0 30px rgba(210, 105, 30, 0.6);
-    --glow-accent: 0 0 15px rgba(205, 133, 63, 0.3);
+  /* AI 發光效果 - 能量感 */
+  --glow-primary: 0 0 20px rgba(210, 105, 30, 0.4);
+  --glow-primary-intense: 0 0 30px rgba(210, 105, 30, 0.6);
+  --glow-accent: 0 0 15px rgba(205, 133, 63, 0.3);
 
-    /* ========================================
+  /* ========================================
        過渡動畫
        ======================================== */
-    --transition-fast: 0.15s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
 
-    /* ========================================
+  /* ========================================
        容器寬度
        ======================================== */
-    --container-max: 1200px;
-    --container-wide: 1400px;
+  --container-max: 1200px;
+  --container-wide: 1400px;
 
-    /* ========================================
+  /* ========================================
        分析報告設計系統（軟編碼）
        ======================================== */
 
-    /* 報告字體尺寸 - 主要調整區（/visionnew 高端規範 + PDF 可讀性）*/
-    --report-font-title: 3.5rem;
-    /* 報告主標題 - 56px，視覺權威 */
-    --report-font-section: 2.25rem;
-    /* 區塊標題 - 36px，清晰層級 */
-    --report-font-card-title: 1.75rem;
-    /* 卡片標題 - 28px，醒目 */
-    --report-font-body: 1.5rem;
-    /* 正文內容 - 24px，舒適閱讀 */
-    --report-font-meta: 1.35rem;
-    /* 輔助資訊 - 21.6px */
-    --report-font-tag: 1.25rem;
-    /* 標籤文字 - 20px */
+  /* 報告字體尺寸 - 主要調整區（/visionnew 高端規範 + PDF 可讀性）*/
+  --report-font-title: 2rem;
+  /* 報告主標題 - 32px */
+  --report-font-section: 1.375rem;
+  /* 區塊標題 - 22px */
+  --report-font-card-title: 1.125rem;
+  /* 卡片標題 - 18px */
+  --report-font-body: 1rem;
+  /* 正文內容 - 16px */
+  --report-font-meta: 0.9rem;
+  /* 輔助資訊 - 14.4px */
+  --report-font-tag: 0.85rem;
+  /* 標籤文字 - 13.6px */
 
-    /* 報告表格字體（新增）*/
-    --report-font-table-header: 1.5rem;
-    /* 表頭 - 24px */
-    --report-font-table-cell: 1.35rem;
-    /* 表格內容 - 21.6px */
-    --report-font-department-title: 1.875rem;
-    /* 部門標題 - 30px */
-    --report-font-list-item: 1.45rem;
-    /* 列表項目 - 23.2px */
+  /* 報告表格字體 */
+  --report-font-table-header: 0.95rem;
+  /* 表頭 - 15.2px */
+  --report-font-table-cell: 0.9rem;
+  /* 表格內容 - 14.4px */
+  --report-font-department-title: 1.2rem;
+  /* 部門標題 - 19.2px */
+  --report-font-list-item: 0.95rem;
+  /* 列表項目 - 15.2px */
 
-    /* 報告間距 */
-    --report-spacing-section: 48px;
-    /* 區塊間距 */
-    --report-spacing-card: 24px;
-    /* 卡片內距 */
-    --report-spacing-element: 16px;
-    /* 元素間距 */
+  /* 報告間距 */
+  --report-spacing-section: 36px;
+  /* 區塊間距 */
+  --report-spacing-card: 20px;
+  /* 卡片內距 */
+  --report-spacing-element: 14px;
+  /* 元素間距 */
 
-    /* 報告色彩 - APCA 合規（Lc 75+）*/
-    --report-bg-header: linear-gradient(135deg, #0D0705 0%, #1A0F0A 40%, #2D1810 100%);
-    --report-bg-section: #FFFCF9;
-    --report-bg-card: #FFFFFF;
-    --report-border-accent: rgba(210, 105, 30, 0.15);
-    --report-highlight: #D2691E;
+  /* 報告色彩 - APCA 合規（Lc 75+）*/
+  --report-bg-header: linear-gradient(
+    135deg,
+    #0d0705 0%,
+    #1a0f0a 40%,
+    #2d1810 100%
+  );
+  --report-bg-section: #fffcf9;
+  --report-bg-card: #ffffff;
+  --report-border-accent: rgba(210, 105, 30, 0.15);
+  --report-highlight: #d2691e;
 
-    /* 報告裝飾 */
-    --report-glow-soft: 0 0 40px rgba(210, 105, 30, 0.08);
-    --report-shadow-card: 0 4px 24px rgba(26, 15, 10, 0.06);
+  /* 報告裝飾 */
+  --report-glow-soft: 0 0 40px rgba(210, 105, 30, 0.08);
+  --report-shadow-card: 0 4px 24px rgba(26, 15, 10, 0.06);
 
-    /* PDF 專用 */
-    --pdf-brand-primary: #D2691E;
-    --pdf-brand-dark: #1A0F0A;
-    --pdf-text-primary: #1A0F0A;
-    --pdf-text-secondary: #5D4037;
+  /* PDF 專用 */
+  --pdf-brand-primary: #d2691e;
+  --pdf-brand-dark: #1a0f0a;
+  --pdf-text-primary: #1a0f0a;
+  --pdf-text-secondary: #5d4037;
 }

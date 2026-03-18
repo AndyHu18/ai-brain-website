@@ -27,7 +27,7 @@
     #2d1810 100%
   ) !important;
   color: #ffffff !important;
-  padding: 64px 48px !important;
+  padding: 36px 32px !important;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -64,7 +64,7 @@
 }
 
 .report-title {
-  font-size: 1.6rem !important;
+  font-size: 1.1rem !important;
   font-weight: 700;
   /* 增加到 700 */
   margin: 0 0 12px;
@@ -95,7 +95,7 @@
     rgba(210, 105, 30, 0.08),
     rgba(205, 133, 63, 0.04)
   );
-  padding: 32px !important;
+  padding: 24px !important;
   margin: var(--report-spacing-card);
   border-radius: var(--radius-lg);
   border-left: 4px solid var(--report-highlight);
@@ -107,7 +107,7 @@
   position: absolute;
   top: -10px;
   right: 20px;
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 900;
   color: rgba(210, 105, 30, 0.06);
   line-height: 1;
@@ -116,7 +116,7 @@
 .report-summary h4 {
   margin: 0 0 var(--report-spacing-element);
   color: var(--report-highlight);
-  font-size: 1.75rem !important;
+  font-size: 1.25rem !important;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -373,7 +373,7 @@
 
 .company-intro-header h4 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
@@ -491,7 +491,7 @@
    職位層級卡片字體升級（/visionnew 規範）
    ============================================================ */
 .position-card h5 {
-  font-size: 1.35rem !important;
+  font-size: 1.1rem !important;
   margin-bottom: 12px !important;
 }
 
@@ -509,7 +509,7 @@
    ============================================================ */
 .optimization-card h5,
 .opt-content h5 {
-  font-size: 1.25rem !important;
+  font-size: 1.05rem !important;
 }
 
 .optimization-card p,
@@ -553,12 +553,12 @@
   ) !important;
   border-top: 2px solid var(--report-border-accent);
   margin-top: 0;
-  padding: 40px !important;
+  padding: 28px !important;
 }
 
 .pdf-download-btn-bottom {
-  padding: 18px 36px !important;
-  font-size: 1.15rem !important;
+  padding: 14px 28px !important;
+  font-size: 1rem !important;
 }
 
 .download-hint {
