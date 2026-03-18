@@ -6,8 +6,8 @@
   "use strict";
 
   // ── Config ──
-  const API_URL = "https://getlove-api-proxy.getlove-ai.workers.dev/api/claude";
-  const MODEL = "claude-sonnet-4-6";
+  const API_URL = "https://getlove-api-proxy.getlove-ai.workers.dev/api/gemini";
+  const MODEL = "gemini-2.5-flash";
 
   const SERVICES = [
     { name: "靜態形象網站", icon: "", color: "#3b82f6" },
@@ -298,10 +298,11 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           model: MODEL,
-          max_tokens: 1500,
-          system: SYSTEM_PROMPT,
-          temperature: 0.8,
-          messages: [{ role: "user", content: `我的行業是：${industry}` }],
+          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents: [
+            { role: "user", parts: [{ text: `我的行業是：${industry}` }] },
+          ],
+          generationConfig: { temperature: 0.8, maxOutputTokens: 1500 },
         }),
       });
 
@@ -311,8 +312,9 @@
         throw new Error(data.error || data.details || "API 呼叫失敗");
       }
 
-      // Extract text from Claude response
-      const text = data.content?.[0]?.text || data.text || "無法取得分析結果";
+      // Extract text from Gemini response
+      const text =
+        data.candidates?.[0]?.content?.parts?.[0]?.text || "無法取得分析結果";
 
       // Typewriter effect
       resultStatus.textContent = "分析完成";
