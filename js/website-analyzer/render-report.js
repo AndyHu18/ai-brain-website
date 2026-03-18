@@ -256,12 +256,11 @@ const WebsiteAnalyzerReport = {
     if (ttsBtn && window.AnalyzerTTS) {
       ttsBtn.addEventListener("click", function () {
         if (ttsBtn.classList.contains("tts-ready")) {
-          // 已生成，直接播放
+          // 已生成，確保播放器可見並觸發播放
           const bar = document.getElementById("analyzerBottomBar");
-          if (bar && bar.classList.contains("visible")) {
-            const playBtn = document.getElementById("analyzerBarPlayBtn");
-            if (playBtn) playBtn.click();
-          }
+          if (bar) bar.classList.add("visible");
+          const playBtn = document.getElementById("analyzerBarPlayBtn");
+          if (playBtn) playBtn.click();
           return;
         }
         window.AnalyzerTTS.generate(report);

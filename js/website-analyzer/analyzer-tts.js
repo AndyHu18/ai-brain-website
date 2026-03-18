@@ -52,7 +52,7 @@ const AnalyzerTTS = (function () {
 
     try {
       // Step 1: 生成語音腳本
-      updateBtn(btnText, "撰寫語音腳本...", true);
+      updateBtn(btnText, "自動生成語音中，約 1 分鐘...", true);
       const script = await generateScript(report);
 
       // Step 2: 拆分腳本
@@ -84,6 +84,7 @@ const AnalyzerTTS = (function () {
         btn.classList.remove("tts-generating");
       }
       showPlayer(report.websiteTitle || report.websiteUrl);
+      notifyReady();
       isGenerating = false;
     } catch (err) {
       console.error("[AnalyzerTTS] 生成失敗:", err);
@@ -354,9 +355,18 @@ const AnalyzerTTS = (function () {
       newProgress.addEventListener("click", (e) => {
         const rect = newProgress.getBoundingClientRect();
         const pct = (e.clientX - rect.left) / rect.width;
+        const wasPlaying = isPlaying;
+        if (wasPlaying) {
+          // 先停止，但不累加 offset（因為要直接設新位置）
+          if (currentSource) {
+            currentSource.stop();
+            currentSource.disconnect();
+            currentSource = null;
+          }
+          isPlaying = false;
+        }
         pauseOffset = pct * audioBuffer.duration;
-        if (isPlaying) {
-          pauseAudio();
+        if (wasPlaying) {
           playAudio();
         }
         if (newFill) newFill.style.width = pct * 100 + "%";
@@ -415,10 +425,49 @@ const AnalyzerTTS = (function () {
       currentSource.disconnect();
       currentSource = null;
     }
-    if (audioContext) {
+    if (isPlaying && audioContext) {
       pauseOffset += audioContext.currentTime - startTime;
     }
     isPlaying = false;
+  }
+
+  /**
+   * 語音生成完成通知（標題閃爍 + 瀏覽器通知）
+   */
+  function notifyReady() {
+    // 標題閃爍提醒
+    const originalTitle = document.title;
+    let flash = true;
+    const flashTimer = setInterval(() => {
+      document.title = flash ? "AI 語音分析已完成！" : originalTitle;
+      flash = !flash;
+    }, 1000);
+    // 用戶回到頁面時停止閃爍
+    const stopFlash = () => {
+      clearInterval(flashTimer);
+      document.title = originalTitle;
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("focus", stopFlash);
+    };
+    const onVisible = () => {
+      if (!document.hidden) stopFlash();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("focus", stopFlash);
+    // 10 秒後自動停止
+    setTimeout(stopFlash, 10000);
+
+    // 瀏覽器推播通知
+    if ("Notification" in window && Notification.permission === "granted") {
+      new Notification("AI 智能大腦", {
+        body: "您的網站語音分析已完成，點擊收聽！",
+      });
+    } else if (
+      "Notification" in window &&
+      Notification.permission !== "denied"
+    ) {
+      Notification.requestPermission();
+    }
   }
 
   function formatTime(sec) {

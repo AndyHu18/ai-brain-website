@@ -23,7 +23,7 @@ const WebsiteAnalyzerConfig = {
 
   // 根據經過時間顯示的狀態訊息（無 emoji）
   PROGRESS_MESSAGES: [
-    { after: 0, text: "正在連接網站..." },
+    { after: 0, text: "正在連接網站...（全程約需 3 分鐘，可先忙別的事）" },
     { after: 2000, text: "抓取網頁內容..." },
     { after: 4000, text: "解析頁面結構..." },
     { after: 6000, text: "AI 正在分析業務模式..." },
@@ -34,6 +34,7 @@ const WebsiteAnalyzerConfig = {
     { after: 38000, text: "整理分析報告..." },
     { after: 50000, text: "內容較豐富，深度分析中..." },
     { after: 65000, text: "幾乎完成了，請稍候..." },
+    { after: 80000, text: "報告完成後會自動生成語音播報..." },
   ],
 
   // 等待期間輪播的知識卡（無 emoji）
