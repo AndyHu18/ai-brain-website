@@ -118,6 +118,8 @@ const PremiumInfographic = (function () {
       "- Avoid any AI artifacts: no plastic skin, no unnatural lighting, no warped objects, no extra fingers\n" +
       "- Style: real-world editorial photography, shot on Canon/Sony camera, natural Taiwanese skin tones, realistic textures\n" +
       "- Luxurious, high-end atmosphere — like a 5-star establishment or premium magazine shoot\n" +
+      "- Design tone: luxury soft-sell educational marketing — NOT hard-sell or cheap promotional\n" +
+      "- Think Hermès, Apple, or high-end consulting firm brand campaigns — elegant, aspirational, sophisticated\n" +
       "- Professional lighting with natural shadows, shallow depth of field, rich warm tones\n" +
       "- All Chinese text must be perfectly clear using bold sans-serif font\n" +
       "- Mobile aspect ratio 9:16\n" +
