@@ -179,12 +179,12 @@ const PremiumPDF = (function () {
       "</div>" +
       '<div style="font-size:16px;margin-bottom:16px;">\u6211\u5011\u7684\u670D\u52D9</div>' +
       '<div style="font-size:13px;color:#a0a0a0;line-height:2.2;">' +
-      "\uD83C\uDF10 \u975C\u614B\u5F62\u8C61\u7DB2\u7AD9 NT$5,000 \u8D77<br>" +
-      "\uD83D\uDCDD CMS \u53EF\u7BA1\u7406\u7DB2\u7AD9 NT$12,000 \u8D77<br>" +
-      "\uD83D\uDED2 \u96FB\u5546\u91D1\u6D41\u4E32\u63A5 NT$8,000 \u8D77<br>" +
-      "\uD83D\uDCC8 \u884C\u92B7\u5C0E\u5411\u7DB2\u7AD9 NT$15,000 \u8D77<br>" +
-      "\uD83E\uDD16 AI \u667A\u80FD\u5BA2\u670D NT$3,000 \u8D77/\u6708<br>" +
-      "\uD83C\uDFAC \u7D20\u6750\u8F49\u88FD\u670D\u52D9 \u514D\u8CBB\u8D08\u9001" +
+      "\u975C\u614B\u5F62\u8C61\u7DB2\u7AD9 NT$5,000 \u8D77<br>" +
+      "CMS \u53EF\u7BA1\u7406\u7DB2\u7AD9 NT$13,500 \u8D77<br>" +
+      "\u96FB\u5546\u91D1\u6D41\u4E32\u63A5 NT$19,000 \u8D77<br>" +
+      "\u884C\u92B7\u5C0E\u5411\u7DB2\u7AD9 NT$35,000 \u8D77<br>" +
+      "AI \u667A\u80FD\u5BA2\u670D NT$3,000 \u8D77<br>" +
+      "\u7D20\u6750\u8F49\u88FD\u670D\u52D9 \u514D\u8CBB\u8D08\u9001" +
       "</div>" +
       '<div style="position:absolute;bottom:40px;text-align:center;">' +
       '<div style="font-size:12px;color:#d2691e;">AI \u667A\u80FD\u5927\u8166 | \u8B93\u7DB2\u7AD9\u81EA\u5DF1\u62DB\u651D\u5BA2\u6236</div>' +
