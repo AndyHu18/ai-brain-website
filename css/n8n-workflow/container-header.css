@@ -5,148 +5,146 @@
 
 /* === 主容器 === */
 .workflow-container {
-    position: relative;
-    z-index: 10;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: var(--spacing-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-lg);
-    min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-height: 100vh;
 }
 
 /* === 標題區 === */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
 }
 
 .back-btn {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
 }
 
 .back-btn:hover {
-    color: var(--warm-orange);
-    border-color: var(--warm-orange);
+  color: var(--warm-orange);
+  border-color: var(--warm-orange);
 }
 
 .logo-icon {
-    width: 44px;
-    height: 44px;
-    filter: drop-shadow(0 2px 8px rgba(230, 126, 34, 0.3));
+  width: 44px;
+  height: 44px;
+  filter: drop-shadow(0 2px 8px rgba(230, 126, 34, 0.3));
 }
 
 .logo h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--warm-orange), var(--warm-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--warm-orange), var(--warm-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .service-desc {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    text-align: center;
-    padding: 0 20px;
-    margin-top: -10px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  text-align: center;
+  padding: 0 20px;
+  margin-top: -10px;
 }
 
 /* 示範標籤 */
 .demo-badge {
-    background: linear-gradient(135deg, #E74C3C, #C0392B);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    animation: pulse-badge 2s infinite;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  animation: pulse-badge 2s infinite;
 }
 
 @keyframes pulse-badge {
+  0%,
+  100% {
+    opacity: 1;
+  }
 
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.7;
-    }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 /* 第一個節點啟動按鈕 */
 .start-node-btn {
-    position: absolute;
-    left: 10px;
-    top: 70px;
-    background: linear-gradient(135deg, var(--warm-orange), #D4A537);
-    color: white;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 0 4px 16px rgba(230, 126, 34, 0.5);
-    transition: all 0.3s ease;
-    animation: bounce-btn 1.5s infinite;
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 70px;
+  background: linear-gradient(135deg, var(--warm-orange), #d4a537);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.5);
+  transition: all 0.3s ease;
+  animation: bounce-btn 1.5s infinite;
 }
 
 .start-node-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
 }
 
 @keyframes bounce-btn {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-5px);
-    }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .controls {
-    display: flex;
-    gap: var(--spacing-sm);
+  display: none;
+  gap: var(--spacing-sm);
 }
 
 /* 霓虹呼吸效果 */
 .logo h1 {
-    animation: neon-breathe 3s ease-in-out infinite;
+  animation: neon-breathe 3s ease-in-out infinite;
 }
 
 @keyframes neon-breathe {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 20px oklch(80% 0.18 170 / 0.4));
+  }
 
-    0%,
-    100% {
-        filter: drop-shadow(0 0 20px oklch(80% 0.18 170 / 0.4));
-    }
-
-    50% {
-        filter: drop-shadow(0 0 35px oklch(80% 0.18 170 / 0.7));
-    }
+  50% {
+    filter: drop-shadow(0 0 35px oklch(80% 0.18 170 / 0.7));
+  }
 }

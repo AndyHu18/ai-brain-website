@@ -128,8 +128,9 @@
     font-size: 0.75rem;
   }
 
-  /* 日誌面板 */
+  /* 日誌面板 - 手機版隱藏 */
   .log-panel {
+    display: none;
     border-radius: 8px;
   }
 

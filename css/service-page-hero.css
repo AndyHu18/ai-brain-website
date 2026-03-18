@@ -451,21 +451,40 @@
   z-index: 1000;
   transition: all 0.3s ease;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
-/* 滾動後變為深色背景，確保對比度 */
+/* 滾動後變為深色背景，與首頁 navbar 一致 */
 .navbar-transparent.scrolled,
 .navbar-transparent.navbar-scrolled {
-  background: rgba(45, 35, 28, 0.98);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(
+    180deg,
+    rgba(25, 20, 18, 0.96) 0%,
+    rgba(40, 30, 24, 0.94) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(210, 165, 90, 0.35);
+  box-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.35),
+    0 0 50px rgba(210, 105, 30, 0.15);
 }
 
-.navbar-transparent .nav-link,
-.navbar-transparent .logo-text {
+.navbar-transparent .nav-link {
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   font-weight: 600;
+}
+
+/* Hero 上方透明狀態：logo 用白色，覆蓋 layout.css 的漸層 */
+.navbar-transparent .logo-text {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.95);
+  background-clip: unset;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  filter: none;
 }
 
 .navbar-transparent .nav-link:hover {
@@ -473,10 +492,25 @@
 }
 
 .navbar-transparent.scrolled .nav-link,
-.navbar-transparent.scrolled .logo-text,
-.navbar-transparent.navbar-scrolled .nav-link,
-.navbar-transparent.navbar-scrolled .logo-text {
+.navbar-transparent.navbar-scrolled .nav-link {
   color: rgba(253, 249, 243, 0.95);
+  text-shadow: none;
+}
+
+/* 滾動後恢復首頁的橘金漸層 logo */
+.navbar-transparent.scrolled .logo-text,
+.navbar-transparent.navbar-scrolled .logo-text {
+  background: linear-gradient(
+    135deg,
+    #d2691e 0%,
+    #ffb347 35%,
+    #ff8c00 65%,
+    #b8860b 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 1px 2px rgba(210, 105, 30, 0.3));
   text-shadow: none;
 }
 

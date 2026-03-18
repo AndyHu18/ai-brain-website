@@ -19,17 +19,8 @@
   z-index: 2;
 }
 
-.sales-hook-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 4px;
-  background: var(--color-primary);
-  border-radius: var(--radius-full);
-}
+/* 已移除：原本在 section 頂部的 120px 橘色裝飾線
+   被上方 hero 區塊覆蓋導致外觀異常，改為無裝飾 */
 
 .sales-hook-container {
   max-width: 900px;

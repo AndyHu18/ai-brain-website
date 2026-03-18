@@ -26,6 +26,7 @@
   }
   .log-panel {
     order: 4;
+    display: none;
   }
   .intro-section {
     order: 5;
