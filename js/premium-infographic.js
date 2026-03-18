@@ -113,8 +113,11 @@ const PremiumInfographic = (function () {
       '- Bottom: "LINE \u514D\u8CBB\u8AEE\u8A62" + contact info area\n\n' +
       "IMPORTANT:\n" +
       "- Match the reference image quality and layout precision\n" +
-      "- The hero image MUST be photorealistic, luxurious, and high-end — like a 5-star establishment or premium brand campaign\n" +
-      "- Use real-world photography style: professional lighting, shallow depth of field, rich warm tones\n" +
+      "- The hero image MUST look like a REAL PHOTOGRAPH taken by a professional photographer — NOT AI-generated\n" +
+      "- Avoid any AI artifacts: no plastic skin, no unnatural lighting, no warped objects, no extra fingers\n" +
+      "- Style: real-world editorial photography, shot on Canon/Sony camera, natural skin tones, realistic textures\n" +
+      "- Luxurious, high-end atmosphere — like a 5-star establishment or premium magazine shoot\n" +
+      "- Professional lighting with natural shadows, shallow depth of field, rich warm tones\n" +
       "- All Chinese text must be perfectly clear using bold sans-serif font\n" +
       "- Mobile aspect ratio 9:16\n" +
       "- Warm color scheme with orange (#D2691E) accents on dark background";
