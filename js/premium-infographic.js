@@ -9,9 +9,6 @@ const PremiumInfographic = (function () {
   const GEMINI_API = "/api/gemini";
   const MODEL = "gemini-3-pro-image-preview";
 
-  /** Title max 8 chars, no description (prevents mid-sentence cuts) */
-  const MAX_TITLE_LEN = 8;
-
   async function generate(industry, analysisHtml, onProgress) {
     const points = extractKeyPoints(analysisHtml);
     if (points.length === 0)
@@ -55,9 +52,7 @@ const PremiumInfographic = (function () {
         if (parent) content = parent.textContent.replace(title, "").trim();
       }
       if (title && title.length > 2) {
-        points.push({
-          title: title.slice(0, MAX_TITLE_LEN),
-        });
+        points.push({ title });
       }
     });
 
@@ -105,7 +100,7 @@ const PremiumInfographic = (function () {
       year +
       ' AI\u667A\u80FD\u5927\u8166" ' +
       "Ultra-photorealistic subjects, cinematic lighting, futuristic luxurious commercial aesthetic. " +
-      "IMPORTANT: Each panel text must be SHORT (max 8 Chinese characters). NO long sentences. NO truncated text. 9:16 mobile ratio (1080x1920)."
+      "NO messy overlapping text. 9:16 aspect ratio, 4K resolution (2160x3840)."
     );
   }
 
