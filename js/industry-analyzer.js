@@ -155,7 +155,7 @@
 - 用繁體中文回覆
 - 針對該行業的痛點和需求，推薦最適合的 3-4 個服務
 - 每個推薦要有具體的使用情境和預期效果（用數字說話，例如「減少 60% 電話諮詢」）
-- 語氣親切專業，像在跟老闆聊天
+- 語氣專業友善，以顧問角色分析，不要稱呼對方「老闆」，用「您」或直接陳述
 - 最後加一句鼓勵性的總結
 - 用 h3 標題區分每個服務（格式：### 服務名稱）
 - 不要用 markdown 的 ** 粗體語法，用 <strong> 標籤
@@ -264,10 +264,34 @@
     });
   }
 
+  // ── Daily usage limit ──
+  const DAILY_LIMIT = 2;
+
+  function getUsageToday() {
+    const key = "ia_usage_" + new Date().toISOString().slice(0, 10);
+    return parseInt(localStorage.getItem(key) || "0", 10);
+  }
+
+  function incrementUsage() {
+    const key = "ia_usage_" + new Date().toISOString().slice(0, 10);
+    localStorage.setItem(key, (getUsageToday() + 1).toString());
+  }
+
   // ── Submit ──
   async function handleSubmit() {
     const industry = inputEl.value.trim();
     if (!industry || isAnalyzing) return;
+
+    // Check daily limit
+    if (getUsageToday() >= DAILY_LIMIT) {
+      resultEl.classList.add("visible");
+      resultBody.innerHTML =
+        '<div class="ia-error">\u4ECA\u65E5\u514D\u8CBB\u5206\u6790\u6B21\u6578\u5DF2\u7528\u5B8C\uFF08' +
+        DAILY_LIMIT +
+        " \u6B21/\u5929\uFF09<br>\u52A0 LINE \u514D\u8CBB\u8AEE\u8A62\u53EF\u53D6\u5F97\u5B8C\u6574\u5206\u6790\uFF01</div>";
+      resultStatus.textContent = "\u5DF2\u9054\u4E0A\u9650";
+      return;
+    }
 
     isAnalyzing = true;
     submitBtn.disabled = true;
@@ -319,6 +343,9 @@
       // Typewriter effect
       resultStatus.textContent = "分析完成";
       await typewriteResult(text);
+
+      // Count usage
+      incrementUsage();
 
       // Trigger Premium Content generation (podcast + infographic + PDF)
       if (typeof PremiumContent !== "undefined") {

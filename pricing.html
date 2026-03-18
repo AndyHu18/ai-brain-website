@@ -253,35 +253,35 @@
 
         <!-- Premium Content Panel -->
         <div class="pc-panel" id="iaPremiumPanel">
-          <div class="pc-panel-title">正在為你準備專屬內容包</div>
-          <div class="pc-panel-subtitle">
-            Podcast 討論 + 資訊圖 + PDF 報告，約需 30-60 秒
-          </div>
-          <div class="pc-tasks">
-            <div class="pc-task" data-task="podcast">
-              <div class="pc-task-icon">🎙️</div>
-              <div class="pc-task-name">專屬 Podcast</div>
-              <div class="pc-task-status">準備中...</div>
-              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
-            </div>
-            <div class="pc-task" data-task="infographic">
-              <div class="pc-task-icon">🖼️</div>
-              <div class="pc-task-name">資訊圖卡</div>
-              <div class="pc-task-status">準備中...</div>
-              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
-            </div>
-            <div class="pc-task" data-task="pdf">
-              <div class="pc-task-icon">📄</div>
-              <div class="pc-task-name">PDF 報告</div>
-              <div class="pc-task-status">等待圖片完成...</div>
-              <div class="pc-progress"><div class="pc-progress-bar"></div></div>
+          <div class="pc-panel-header">
+            <div class="pc-panel-title">專屬內容包生成中</div>
+            <div class="pc-task-row">
+              <span class="pc-task-chip" data-task="infographic"
+                >圖卡 <span class="pc-chip-status">準備中</span></span
+              >
+              <span class="pc-task-chip" data-task="pdf"
+                >PDF <span class="pc-chip-status">等待中</span></span
+              >
+              <span class="pc-task-chip" data-task="podcast"
+                >語音 <span class="pc-chip-status">準備中</span></span
+              >
             </div>
           </div>
-          <div class="pc-gallery"></div>
+          <div class="pc-hero-image" id="pcHeroImage"></div>
           <div class="pc-actions"></div>
         </div>
 
-        <div class="ia-remaining">每位訪客每日可免費分析 5 次</div>
+        <div class="ia-remaining">每位訪客每日可免費分析 2 次</div>
+
+        <!-- Simulated Chat -->
+        <div class="ia-chat" id="iaChat">
+          <div class="ia-chat-header">
+            <div class="ia-chat-dot"></div>
+            <span class="ia-chat-label">AI 顧問線上諮詢</span>
+            <span class="ia-chat-live">LIVE</span>
+          </div>
+          <div class="ia-chat-body" id="iaChatBody"></div>
+        </div>
       </div>
     </section>
 
@@ -2194,28 +2194,31 @@
 
     <script src="js/agent-demo-engine.js"></script>
     <script src="js/industry-analyzer.js"></script>
+    <script src="js/ia-chat-sim.js"></script>
     <script src="js/pricing.js"></script>
 
-    <!-- Premium Floating Podcast Player -->
-    <div class="pc-float-player" id="pcFloatPlayer">
-      <div class="pc-float-label">🎧 專屬行銷討論已就緒</div>
-      <div class="pc-mini-player">
-        <div class="pc-mini-title">行業行銷專題</div>
-        <div class="pc-mini-controls">
-          <button class="pc-mini-play">▶</button>
-          <div class="pc-mini-progress-wrap">
-            <div class="pc-mini-progress">
-              <div class="pc-mini-progress-fill"></div>
+    <!-- Bottom Action Bar (appears after all generation complete) -->
+    <div class="pc-bottom-bar" id="pcBottomBar">
+      <div class="pc-bar-inner">
+        <div class="pc-bar-play">
+          <button class="pc-bar-play-btn" id="pcBarPlayBtn">&#9654;</button>
+          <div class="pc-bar-audio-info">
+            <div class="pc-bar-title" id="pcBarTitle">語音分析</div>
+            <div class="pc-bar-progress">
+              <div class="pc-bar-progress-fill" id="pcBarProgressFill"></div>
             </div>
-            <div class="pc-mini-time">
-              <span class="pc-time-current">0:00</span>
-              <span class="pc-time-total">0:00</span>
+            <div class="pc-bar-time">
+              <span id="pcBarTimeCurrent">0:00</span>
+              <span id="pcBarTimeTotal">0:00</span>
             </div>
           </div>
         </div>
+        <button class="pc-bar-pdf-btn" id="pcBarPdfBtn">PDF 報告</button>
       </div>
-      <button class="pc-float-btn">🎙</button>
     </div>
+
+    <!-- Notification toast -->
+    <div class="pc-toast" id="pcToast"></div>
 
     <!-- Lightbox for infographic images -->
     <div class="pc-lightbox" id="pcLightbox">

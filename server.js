@@ -3,9 +3,20 @@ const https = require("https");
 const fs = require("fs");
 const path = require("path");
 
-const root = "C:/Users/user/Desktop/ai-brain-website";
-const GEMINI_API_KEY =
-  process.env.GEMINI_API_KEY || "AIzaSyAmZPdL23vXV9TBTlCGJZAuea8Dlb0hw8w";
+// Load .env for local dev
+const envPath = path.join(__dirname, ".env");
+if (fs.existsSync(envPath)) {
+  fs.readFileSync(envPath, "utf8")
+    .split("\n")
+    .forEach((line) => {
+      const [key, ...vals] = line.split("=");
+      if (key && vals.length) process.env[key.trim()] = vals.join("=").trim();
+    });
+}
+
+const root = __dirname;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+const CLAUDE_API_KEY = process.env.ANTHROPIC_API_KEY || "";
 const mime = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css",
@@ -60,6 +71,97 @@ const handleApiChat = (req, res) => {
   });
 };
 
+/**
+ * Proxy /api/gemini and /api/gemini-tts to Gemini API
+ * Body must contain { model, contents, generationConfig }
+ */
+const handleGeminiProxy = (req, res) => {
+  let body = "";
+  req.on("data", (chunk) => (body += chunk));
+  req.on("end", () => {
+    const parsed = JSON.parse(body);
+    const model = parsed.model || "gemini-2.0-flash";
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+    const payload = JSON.stringify({
+      contents: parsed.contents,
+      generationConfig: parsed.generationConfig,
+      systemInstruction: parsed.systemInstruction || parsed.system_instruction,
+    });
+    const urlObj = new URL(geminiUrl);
+    const options = {
+      hostname: urlObj.hostname,
+      path: urlObj.pathname + urlObj.search,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Length": Buffer.byteLength(payload),
+      },
+    };
+    const proxyReq = https.request(options, (proxyRes) => {
+      res.writeHead(proxyRes.statusCode, {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      });
+      proxyRes.pipe(res);
+    });
+    proxyReq.on("error", (err) => {
+      res.writeHead(502, {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      });
+      res.end(JSON.stringify({ error: err.message }));
+    });
+    proxyReq.write(payload);
+    proxyReq.end();
+  });
+};
+
+/**
+ * Proxy /api/claude to Anthropic Messages API
+ * Body must contain { model, system, messages, max_tokens, temperature }
+ */
+const handleClaudeProxy = (req, res) => {
+  let body = "";
+  req.on("data", (chunk) => (body += chunk));
+  req.on("end", () => {
+    const parsed = JSON.parse(body);
+    const payload = JSON.stringify({
+      model: parsed.model || "claude-haiku-4-5-20251001",
+      max_tokens: parsed.max_tokens || 2000,
+      system: parsed.system || "",
+      temperature: parsed.temperature || 0.7,
+      messages: parsed.messages || [],
+    });
+    const options = {
+      hostname: "api.anthropic.com",
+      path: "/v1/messages",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": CLAUDE_API_KEY,
+        "anthropic-version": "2023-06-01",
+        "Content-Length": Buffer.byteLength(payload),
+      },
+    };
+    const proxyReq = https.request(options, (proxyRes) => {
+      res.writeHead(proxyRes.statusCode, {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      });
+      proxyRes.pipe(res);
+    });
+    proxyReq.on("error", (err) => {
+      res.writeHead(502, {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      });
+      res.end(JSON.stringify({ error: err.message }));
+    });
+    proxyReq.write(payload);
+    proxyReq.end();
+  });
+};
+
 http
   .createServer((req, res) => {
     // CORS preflight
@@ -76,6 +178,15 @@ http
     const urlPath = decodeURIComponent(req.url.split("?")[0]);
     if (urlPath === "/api/chat" && req.method === "POST") {
       return handleApiChat(req, res);
+    }
+    if (urlPath === "/api/gemini" && req.method === "POST") {
+      return handleGeminiProxy(req, res);
+    }
+    if (urlPath === "/api/gemini-tts" && req.method === "POST") {
+      return handleGeminiProxy(req, res);
+    }
+    if (urlPath === "/api/claude" && req.method === "POST") {
+      return handleClaudeProxy(req, res);
     }
 
     let u = urlPath;

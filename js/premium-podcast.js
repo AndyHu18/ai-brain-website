@@ -5,10 +5,8 @@
 const PremiumPodcast = (function () {
   "use strict";
 
-  const CLAUDE_API =
-    "https://getlove-api-proxy.getlove-ai.workers.dev/api/claude";
-  const TTS_API =
-    "https://getlove-api-proxy.getlove-ai.workers.dev/api/gemini-tts";
+  const CLAUDE_API = "/api/claude";
+  const TTS_API = "/api/gemini-tts";
   const TTS_MODEL = "gemini-2.5-pro-preview-tts";
 
   const VOICE_HOST = "Kore"; // Female host
@@ -20,26 +18,22 @@ const PremiumPodcast = (function () {
     "audio/bgm-ep5-aics.mp3",
   ];
 
-  const SCRIPT_SYSTEM_PROMPT = `\u4F60\u662F\u4E00\u500B Podcast \u8173\u672C\u4F5C\u5BB6\u3002\u6839\u64DA\u7528\u6236\u63D0\u4F9B\u7684\u884C\u696D\u5206\u6790\uFF0C\u5BEB\u4E00\u6BB5\u96D9\u4EBA\u5C0D\u8A71\u8173\u672C\u3002
+  const SCRIPT_SYSTEM_PROMPT = `\u4F60\u662F\u4E00\u500B Podcast \u8173\u672C\u4F5C\u5BB6\u3002\u6839\u64DA\u7528\u6236\u63D0\u4F9B\u7684\u884C\u696D\u5206\u6790\uFF0C\u5BEB\u4E00\u6BB5\u55AE\u4EBA\u65C1\u767D\u8173\u672C\u3002
 
-\u89D2\u8272\uFF1A
-- [\u4E3B\u6301\u4EBA] \u5C0F\u6797\uFF1A\u89AA\u5207\u6D3B\u6F51\uFF0C\u64C5\u9577\u7528\u767D\u8A71\u89E3\u91CB\u8907\u96DC\u6982\u5FF5
-- [\u4F86\u8CD3] \u963F\u5F37\uFF1A\u7DB2\u7AD9\u884C\u92B7\u5C08\u5BB6\uFF0C\u6709\u8C50\u5BCC\u5BE6\u6230\u7D93\u9A57
+\u8AAA\u8A71\u8005\uFF1A\u4E00\u4F4D\u89AA\u5207\u5C08\u696D\u7684\u5973\u6027\u884C\u92B7\u9867\u554F\uFF0C\u7528\u767D\u8A71\u89E3\u91CB\u8907\u96DC\u6982\u5FF5
 
-\u5167\u5BB9\u7D50\u69CB\uFF08\u56B4\u683C\u9075\u5B88\uFF09\uFF1A
-1. \u958B\u5834\u767D\uFF0840\u5B57\uFF09\uFF1A\u4E3B\u6301\u4EBA\u5E36\u51FA\u4ECA\u5929\u8A0E\u8AD6\u7684\u884C\u696D
-2. \u884C\u696D\u7DB2\u7AD9\u884C\u92B7\u7B56\u7565\uFF08200\u5B57\uFF09\uFF1A\u9019\u500B\u884C\u696D\u505A\u7DB2\u7AD9\u884C\u92B7\u7684\u91CD\u9EDE\u3001\u75DB\u9EDE\u3001\u5BE6\u969B\u505A\u6CD5
-3. AI \u5982\u4F55\u61C9\u7528\uFF08200\u5B57\uFF09\uFF1AAI \u5BA2\u670D\u3001\u667A\u6167\u63A8\u85A6\u3001\u81EA\u52D5\u5316\u884C\u92B7\u7B49\u5177\u9AD4\u61C9\u7528
-4. \u670D\u52D9\u63A8\u85A6\uFF08150\u5B57\uFF09\uFF1A\u81EA\u7136\u5E36\u5165 AI \u667A\u80FD\u5927\u8166\u7684\u670D\u52D9\uFF0C\u8AAA\u660E\u70BA\u4EC0\u9EBC\u9069\u5408
-5. \u53CE\u5C3E\uFF0850\u5B57\uFF09\uFF1A\u9F13\u52F5\u52A0 LINE \u514D\u8CBB\u8AEE\u8A62
+\u5167\u5BB9\u7D50\u69CB\uFF1A
+1. \u958B\u5834\uFF0830\u5B57\uFF09\uFF1A\u6B61\u8FCE\u807D\u773E + \u5E36\u51FA\u4ECA\u5929\u884C\u696D
+2. \u884C\u696D\u75DB\u9EDE\uFF08100\u5B57\uFF09\uFF1A\u9019\u500B\u884C\u696D\u7DB2\u7AD9\u884C\u92B7\u7684\u91CD\u9EDE\u548C\u75DB\u9EDE
+3. AI \u89E3\u6C7A\u65B9\u6848\uFF08100\u5B57\uFF09\uFF1A\u5177\u9AD4\u600E\u9EBC\u7528 AI \u89E3\u6C7A
+4. \u5834\u666F\u63CF\u7E6A\uFF0880\u5B57\uFF09\uFF1A\u7528\u5177\u9AD4\u5834\u666F\u5E6B\u807D\u773E\u770B\u5230\u756B\u9762\u2014\u2014\u63CF\u8FF0\u4E00\u500B\u5BA2\u6236\u5728\u4ED6\u5011\u7DB2\u7AD9\u4E0A\u7684\u771F\u5BE6\u4F7F\u7528\u9AD4\u9A57\uFF0C\u4F8B\u5982\uFF1A\u300C\u60F3\u50CF\u4E00\u4E0B\uFF0C\u665A\u4E0A\u5341\u9EDE\u6709\u500B\u5BA2\u6236\u6253\u958B\u60A8\u7684\u7DB2\u7AD9\uFF0CAI \u5BA2\u670D\u7ACB\u523B\u56DE\u61C9\u4ED6\u7684\u554F\u984C\u3001\u63A8\u85A6\u9069\u5408\u7684\u670D\u52D9\u3001\u5E6B\u4ED6\u9810\u7D04\u660E\u5929\u7684\u6642\u6BB5\u2026\u300D\u9019\u6A23\u7684\u5177\u9AD4\u63CF\u8FF0\uFF0C\u8B93\u807D\u773E\u611F\u53D7\u5230\u9019\u4E9B\u529F\u80FD\u5C31\u662F\u70BA\u4ED6\u7684\u751F\u610F\u8A2D\u8A08\u7684
+5. \u53CE\u5C3E\uFF0830\u5B57\uFF09\uFF1A\u9F13\u52F5\u52A0 LINE \u514D\u8CBB\u8AEE\u8A62
 
-\u683C\u5F0F\u898F\u5247\uFF1A
-- \u6BCF\u53E5\u7528 [\u4E3B\u6301\u4EBA] \u6216 [\u4F86\u8CD3] \u958B\u982D\uFF0C\u5404\u4F54\u7D04\u4E00\u534A
-- \u7E3D\u5B57\u6578\u56B4\u683C\u63A7\u5236\u5728 600-800 \u5B57\uFF08\u542B\u6A19\u8A18\uFF09
-- \u8AAA\u8A71\u98A8\u683C\u81EA\u7136\u53E3\u8A9E\u5316\uFF0C\u50CF\u771F\u4EBA\u804A\u5929
-- \u4E0D\u8981\u7528 markdown \u683C\u5F0F\uFF0C\u7D14\u6587\u5B57
-- \u4E0D\u8981\u5BEB\u300C\u7B2C\u4E00\u6BB5\u300D\u300C\u7B2C\u4E8C\u6BB5\u300D\u7B49\u5F8C\u8A2D\u6307\u793A
-- \u670D\u52D9\u63A8\u85A6\u8981\u81EA\u7136\u4E0D\u751F\u786C\uFF0C\u50CF\u662F\u8DA3\u805E\u5206\u4EAB\u800C\u4E0D\u662F\u63A8\u92B7`;
+\u56B4\u683C\u898F\u5247\uFF1A
+- \u7E3D\u5B57\u6578\u63A7\u5236\u5728 300-400 \u5B57
+- \u8AAA\u8A71\u98A8\u683C\u81EA\u7136\u53E3\u8A9E\u5316\uFF0C\u50CF\u771F\u4EBA\u8AAA\u8A71
+- \u4E0D\u8981\u7528 markdown\u3001\u6A19\u984C\u3001\u7DE8\u865F\uFF0C\u7D14\u6587\u5B57\u6D41\u66A2\u8FF0\u8AAA
+- \u670D\u52D9\u63A8\u85A6\u8981\u81EA\u7136\u4E0D\u751F\u786C`;
 
   let floatPlayerEl = null;
   let audioContext = null;
@@ -154,10 +148,17 @@ const PremiumPodcast = (function () {
    * Returns base64 audio data or null on failure
    */
   async function generateTTS(segmentText) {
-    // Build multi-speaker text: replace [主持人] → Kore, [來賓] → Puck
+    // Clean up text for TTS: strip labels, markdown, and empty lines
     const ttsText = segmentText
-      .replace(/\[主持人\]\s*/g, '<speaker name="' + VOICE_HOST + '">')
-      .replace(/\[來賓\]\s*/g, '<speaker name="' + VOICE_GUEST + '">');
+      .replace(/\[主持人\]\s*/g, "")
+      .replace(/\[來賓\]\s*/g, "")
+      .replace(/^#{1,6}\s+.*$/gm, "")
+      .replace(/\*{1,3}([^*]+)\*{1,3}/g, "$1")
+      .replace(/^[-=]{3,}$/gm, "")
+      .replace(/\n{2,}/g, "\n")
+      .trim();
+
+    if (!ttsText || ttsText.length < 5) return null;
 
     const requestBody = {
       model: TTS_MODEL,
@@ -169,21 +170,8 @@ const PremiumPodcast = (function () {
       generationConfig: {
         response_modalities: ["AUDIO"],
         speech_config: {
-          multi_speaker_voice_config: {
-            speaker_voice_configs: [
-              {
-                speaker: VOICE_HOST,
-                voice_config: {
-                  prebuilt_voice_config: { voice_name: VOICE_HOST },
-                },
-              },
-              {
-                speaker: VOICE_GUEST,
-                voice_config: {
-                  prebuilt_voice_config: { voice_name: VOICE_GUEST },
-                },
-              },
-            ],
+          voice_config: {
+            prebuilt_voice_config: { voice_name: VOICE_HOST },
           },
         },
       },
@@ -197,7 +185,10 @@ const PremiumPodcast = (function () {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "TTS API \u5931\u6557");
+      if (!res.ok)
+        throw new Error(
+          data.error?.message || data.error || "TTS API \u5931\u6557",
+        );
 
       // Extract audio from response
       const parts = data.candidates?.[0]?.content?.parts || [];
@@ -222,12 +213,29 @@ const PremiumPodcast = (function () {
   async function mixWithBGM(audioChunks, industry) {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Decode TTS chunks
+    // Decode TTS chunks (handles PCM L16 from Gemini TTS)
     const ttsBuffers = [];
     for (const chunk of audioChunks) {
       const raw = Uint8Array.from(atob(chunk.data), (c) => c.charCodeAt(0));
       try {
-        const decoded = await audioContext.decodeAudioData(raw.buffer.slice(0));
+        let decoded;
+        if (chunk.mimeType && chunk.mimeType.includes("pcm")) {
+          // Raw PCM L16 — manually create AudioBuffer
+          const sampleRate = parseInt(
+            (chunk.mimeType.match(/rate=(\d+)/) || [])[1] || "24000",
+            10,
+          );
+          const int16 = new Int16Array(raw.buffer);
+          const float32 = new Float32Array(int16.length);
+          for (let i = 0; i < int16.length; i++) {
+            float32[i] = int16[i] / 32768;
+          }
+          decoded = audioContext.createBuffer(1, float32.length, sampleRate);
+          decoded.getChannelData(0).set(float32);
+        } else {
+          // Standard format (MP3/WAV/OGG) — use built-in decoder
+          decoded = await audioContext.decodeAudioData(raw.buffer.slice(0));
+        }
         ttsBuffers.push(decoded);
       } catch (e) {
         console.warn("[PremiumPodcast] Failed to decode audio chunk:", e);
@@ -255,7 +263,8 @@ const PremiumPodcast = (function () {
     }
 
     // Create offline context for mixing
-    const sampleRate = ttsBuffers[0].sampleRate;
+    // Use 44100Hz (standard) so both TTS (24000Hz) and BGM (44100Hz) resample correctly
+    const sampleRate = 44100;
     const channels = 1; // mono
     const totalLength = Math.ceil((totalTTSDuration + 4) * sampleRate); // +4s for fade
     const offlineCtx = new OfflineAudioContext(
@@ -291,10 +300,10 @@ const PremiumPodcast = (function () {
         const gain = offlineCtx.createGain();
         // Fade in
         gain.gain.setValueAtTime(0, bgmOffset);
-        gain.gain.linearRampToValueAtTime(0.08, bgmOffset + 2);
+        gain.gain.linearRampToValueAtTime(0.15, bgmOffset + 2);
         // Sustain
         const segEnd = bgmOffset + bgmSegmentDuration;
-        gain.gain.setValueAtTime(0.08, Math.max(bgmOffset + 2, segEnd - 2));
+        gain.gain.setValueAtTime(0.15, Math.max(bgmOffset + 2, segEnd - 2));
         // Fade out
         gain.gain.linearRampToValueAtTime(0, segEnd);
 
@@ -315,71 +324,51 @@ const PremiumPodcast = (function () {
   }
 
   /**
-   * Show floating play button
+   * Show bottom action bar with audio player
    */
   function showFloatingPlayer(industry) {
-    floatPlayerEl = document.getElementById("pcFloatPlayer");
-    if (!floatPlayerEl) return;
+    const bar = document.getElementById("pcBottomBar");
+    if (!bar) return;
 
-    const label = floatPlayerEl.querySelector(".pc-float-label");
-    if (label)
-      label.textContent =
-        "\u{1F3A7} \u5C08\u5C6C\u300C" +
-        industry +
-        "\u300D\u884C\u92B7\u8A0E\u8AD6";
-
-    floatPlayerEl.classList.add("visible");
-
-    // Main button toggle
-    const mainBtn = floatPlayerEl.querySelector(".pc-float-btn");
-    const miniPlayer = floatPlayerEl.querySelector(".pc-mini-player");
-    const playBtn = floatPlayerEl.querySelector(".pc-mini-play");
-    const progressBar = floatPlayerEl.querySelector(".pc-mini-progress");
-    const progressFill = floatPlayerEl.querySelector(".pc-mini-progress-fill");
-    const timeCurrentEl = floatPlayerEl.querySelector(".pc-time-current");
-    const timeTotalEl = floatPlayerEl.querySelector(".pc-time-total");
-    const titleEl = floatPlayerEl.querySelector(".pc-mini-title");
+    const titleEl = document.getElementById("pcBarTitle");
+    const timeTotalEl = document.getElementById("pcBarTimeTotal");
+    const playBtn = document.getElementById("pcBarPlayBtn");
+    const progressEl = bar.querySelector(".pc-bar-progress");
+    const progressFill = document.getElementById("pcBarProgressFill");
+    const timeCurrentEl = document.getElementById("pcBarTimeCurrent");
 
     if (titleEl)
-      titleEl.textContent = industry + " \u884C\u696D\u884C\u92B7\u5C08\u984C";
+      titleEl.textContent = industry + " \u884C\u696D\u5206\u6790\u8A9E\u97F3";
     if (timeTotalEl) timeTotalEl.textContent = formatTime(audioBuffer.duration);
 
-    // Toggle mini player
-    mainBtn.addEventListener("click", () => {
-      const wasVisible = miniPlayer.classList.contains("visible");
-      if (wasVisible) {
-        miniPlayer.classList.remove("visible");
-        if (label) label.style.display = "";
-      } else {
-        miniPlayer.classList.add("visible");
-        if (label) label.style.display = "none";
-      }
-    });
+    bar.classList.add("visible");
 
     // Play/pause
     playBtn.addEventListener("click", () => {
       if (isPlaying) {
         pauseAudio();
         playBtn.textContent = "\u25B6";
-        mainBtn.classList.remove("playing");
+        playBtn.classList.remove("playing");
       } else {
         playAudio();
         playBtn.textContent = "\u23F8";
-        mainBtn.classList.add("playing");
+        playBtn.classList.add("playing");
       }
     });
 
-    // Progress bar click to seek
-    progressBar.addEventListener("click", (e) => {
-      const rect = progressBar.getBoundingClientRect();
-      const pct = (e.clientX - rect.left) / rect.width;
-      pauseOffset = pct * audioBuffer.duration;
-      if (isPlaying) {
-        pauseAudio();
-        playAudio();
-      }
-      updateProgressUI(progressFill, timeCurrentEl, pct);
-    });
+    // Seek
+    if (progressEl) {
+      progressEl.addEventListener("click", (e) => {
+        const rect = progressEl.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        pauseOffset = pct * audioBuffer.duration;
+        if (isPlaying) {
+          pauseAudio();
+          playAudio();
+        }
+        updateProgressUI(progressFill, timeCurrentEl, pct);
+      });
+    }
 
     // Update loop
     let rafId = null;
@@ -392,13 +381,12 @@ const PremiumPodcast = (function () {
         pauseAudio();
         pauseOffset = 0;
         playBtn.textContent = "\u25B6";
-        mainBtn.classList.remove("playing");
+        playBtn.classList.remove("playing");
         return;
       }
       rafId = requestAnimationFrame(updateLoop);
     }
 
-    // Override play to start update loop
     const origPlay = playAudio;
     playAudio = function () {
       origPlay();
