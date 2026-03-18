@@ -293,13 +293,12 @@
    末端結果預覽 - LINE 通知視覺
    ======================================== */
 .hero-result-preview {
-  margin-top: var(--spacing-md);
   margin-left: auto;
   margin-right: auto;
   background: white;
   border: 1px solid rgba(39, 174, 96, 0.3);
   border-radius: var(--radius-lg);
-  padding: 12px 16px;
+  padding: 0 16px;
   box-shadow: 0 8px 24px rgba(39, 174, 96, 0.2);
   display: flex;
   align-items: center;
@@ -310,11 +309,18 @@
   z-index: 100;
   min-width: 200px;
   width: fit-content;
+  /* 未顯示時不佔空間 */
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
 }
 
 .hero-result-preview.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+  max-height: 80px;
+  padding: 12px 16px;
+  margin-top: var(--spacing-md);
 }
 
 /* 結果圖示 - SVG Icon 支援 */
