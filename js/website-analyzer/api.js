@@ -98,7 +98,7 @@ const WebsiteAnalyzerAPI = {
       let factIdx = 0;
       const showFact = () => {
         const fact = facts[factIdx % facts.length];
-        funFactEl.innerHTML = `<div class="fun-fact-card"><span class="fun-fact-icon">${fact.icon}</span><span class="fun-fact-text">${fact.text}</span></div>`;
+        funFactEl.innerHTML = `<div class="fun-fact-card"><span class="fun-fact-text">${fact.text}</span></div>`;
         funFactEl
           .querySelector(".fun-fact-card")
           .classList.add("fun-fact-enter");

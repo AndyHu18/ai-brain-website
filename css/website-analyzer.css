@@ -236,6 +236,8 @@
 /* 報告區塊通用 */
 .report-sections {
   padding: var(--spacing-lg);
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .report-section {
