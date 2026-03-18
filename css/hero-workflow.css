@@ -15,6 +15,23 @@
   margin: var(--spacing-2xl) auto 0;
   padding: 0 var(--spacing-md);
   z-index: 10;
+  /* 初始隱藏，由 JS 控制顯示 */
+  display: none;
+}
+
+.hero-workflow-container.revealed {
+  display: block;
+  opacity: 1 !important;
+  animation: workflowSlideUp 0.6s ease both;
+}
+
+@keyframes workflowSlideUp {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .hero-workflow-badge {
