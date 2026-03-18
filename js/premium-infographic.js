@@ -1,13 +1,13 @@
 /**
  * Premium Infographic Generator
- * Uses Nano Banana 2 (gemini-3.1-flash-image-preview)
- * Generates magazine-quality promotional image with text directly in image
+ * Uses Nano Banana Pro (gemini-3-pro-image-preview)
+ * Generates luxury promotional image based on industry analysis
  */
 const PremiumInfographic = (function () {
   "use strict";
 
   const GEMINI_API = "/api/gemini";
-  const MODEL = "gemini-3.1-flash-image-preview";
+  const MODEL = "gemini-3-pro-image-preview";
 
   async function generate(industry, analysisHtml, onProgress) {
     const points = extractKeyPoints(analysisHtml);
@@ -84,77 +84,42 @@ const PremiumInfographic = (function () {
   }
 
   /**
-   * Generate promotional image — few-shot with reference image
+   * Generate promotional image — reference image + simple prompt
    */
   async function generateCard(industry, points) {
-    // Wrap Chinese text in quotes for better rendering (per gemini.md guidelines)
     const bullets = points
       .slice(0, 4)
       .map((p) => '"' + p.title.slice(0, 8) + '"')
-      .join("\n");
+      .join(", ");
 
-    // Load reference image for few-shot
     const refBase64 = await loadReferenceImage();
 
-    const newPrompt =
-      "Now create a luxury promotional image for the " +
+    const prompt =
+      "Generate a promotional image in the exact same style and layout as the reference image, but for a " +
       industry +
-      " industry, same style and quality level as the reference.\n\n" +
-      "LAYOUT:\n" +
-      "- TOP 55%: Full-bleed photorealistic hero photograph of a premium " +
+      " business. Use Taiwanese people. " +
+      "Luxury, high-end, photorealistic — must look like a real photograph, not AI-generated. " +
+      "Text to include: " +
+      '"AI \u667A\u80FD\u5927\u8166", "' +
       industry +
-      " scene\n" +
-      "  - Taiwanese people (East Asian faces, black hair, natural skin) in an upscale setting\n" +
-      "  - Golden hour lighting, shallow depth of field, film grain texture\n" +
-      "  - The atmosphere should feel like a luxury magazine editorial — Vogue, Monocle, Kinfolk\n\n" +
-      "- BOTTOM 45%: Elegant dark overlay (#1A1E23) with warm orange (#D2691E) accents\n" +
-      '  - Brand: "AI \u667A\u80FD\u5927\u8166" small logo\n' +
-      '  - Headline: "' +
-      industry +
-      ' AI \u61C9\u7528\u5206\u6790"\n' +
-      "  - Service list:\n" +
+      ' AI \u61C9\u7528\u5206\u6790", ' +
       bullets +
-      "\n" +
-      '  - CTA: "LINE \u514D\u8CBB\u8AEE\u8A62"\n\n' +
-      "QUALITY REQUIREMENTS:\n" +
-      "- MUST look like a real photograph, NOT AI-generated — natural imperfections, realistic skin pores, fabric textures\n" +
-      "- Shot on Sony A7R V or Canon R5, 85mm f/1.4 lens, natural warm tones\n" +
-      "- Luxury soft-sell educational marketing tone — NOT cheap or hard-sell\n" +
-      "- Visual cues of luxury: marble textures, brass/gold accents, premium materials, fresh flowers, natural wood\n" +
-      "- All Chinese text: bold sans-serif font, perfectly clear and legible\n" +
-      "- Mobile aspect ratio 9:16 (1080x1920)";
+      ', "LINE \u514D\u8CBB\u8AEE\u8A62"';
 
-    // Build contents: few-shot if reference available, otherwise text-only
     const contents = [];
     if (refBase64) {
-      // Turn 1: user shows reference
+      // Single turn: reference image + prompt together
       contents.push({
         role: "user",
         parts: [
           { inlineData: { mimeType: "image/jpeg", data: refBase64 } },
-          {
-            text: "This is a reference promotional image for a restaurant. Study its layout, typography, color scheme, and overall design quality. I want you to generate new cards in this exact same style and quality level for different industries.",
-          },
+          { text: prompt },
         ],
-      });
-      // Turn 2: model acknowledges
-      contents.push({
-        role: "model",
-        parts: [
-          {
-            text: "I've studied the reference card. It features: (1) photorealistic hero image with people dining at top, (2) brand logo with tagline, (3) large bold Chinese headline, (4) food photos with descriptions, (5) promotional offers section, (6) contact info at bottom. The style uses warm tones, professional photography, bold sans-serif Chinese typography, and a clean structured layout. I'll generate new cards matching this quality and structure.",
-          },
-        ],
-      });
-      // Turn 3: user requests new industry
-      contents.push({
-        role: "user",
-        parts: [{ text: newPrompt }],
       });
     } else {
       contents.push({
         role: "user",
-        parts: [{ text: newPrompt }],
+        parts: [{ text: prompt }],
       });
     }
 
