@@ -130,47 +130,54 @@ const WebsiteAnalyzerAPI = {
       });
       clearTimeout(timeoutId);
 
-      const data = await response.json();
+      // 先取得原始文字，再嘗試解析 JSON
+      const rawText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(rawText);
+      } catch (parseErr) {
+        // 非 JSON 回應（如 Vercel 超時的純文字錯誤）
+        console.error("[診斷] 非 JSON 回應:", rawText.slice(0, 200));
+        progressAnimationDone = true;
+        stopFunFacts();
+        if (rawText.includes("FUNCTION_INVOCATION_TIMEOUT")) {
+          throw new Error(
+            "伺服器處理超時（60 秒），請換一個較簡單的網站試試，或加 LINE 由我們為您分析。",
+          );
+        }
+        throw new Error("伺服器回應異常: " + rawText.slice(0, 100));
+      }
 
-      // 🔍 診斷模式：記錄 API 回傳的原始數據
-      console.group("📊 [診斷] API 原始回傳數據");
-      console.log("🌐 請求 URL:", url);
-      console.log("📦 回應狀態:", response.status, response.ok ? "✅" : "❌");
-
+      // 診斷日誌
+      console.group("[診斷] API 回傳");
+      console.log("狀態:", response.status, response.ok ? "OK" : "FAIL");
+      if (data.timing) {
+        console.log("耗時:", data.timing);
+      }
+      if (data.step) {
+        console.log("失敗步驟:", data.step);
+      }
       if (data.content) {
-        console.log("📄 抓取內容:", {
-          標題: data.content.title,
-          描述: data.content.description?.slice(0, 100) + "...",
-          textContent長度: data.content.textContent?.length || 0,
-          導航項目數: data.content.navigation?.length || 0,
-          導航項目: data.content.navigation,
-        });
+        console.log(
+          "來源:",
+          data.content.source,
+          "子頁面:",
+          data.content.subPagesCount,
+        );
       }
-
-      if (data.analysis) {
-        console.log("🤖 AI 分析結果:", {
-          services數量: data.analysis.services?.length || 0,
-          services內容: data.analysis.services,
-          aiOpportunities數量: data.analysis.aiOpportunities?.length || 0,
-          departmentInsights數量: data.analysis.departmentInsights?.length || 0,
-          positionOpportunities數量:
-            data.analysis.positionOpportunities?.length || 0,
-          websiteOptimizations數量:
-            data.analysis.websiteOptimizations?.length || 0,
-          salesFunnelAI數量: data.analysis.salesFunnelAI?.length || 0,
-          summary長度: data.analysis.summary?.length || 0,
-          summary前100字: data.analysis.summary?.slice(0, 100) + "...",
-        });
-      }
-
-      console.log("📋 完整原始數據:", JSON.parse(JSON.stringify(data)));
       console.groupEnd();
 
       progressAnimationDone = true;
       stopFunFacts();
 
       if (!response.ok) {
-        throw new Error(data.error || `HTTP ${response.status}`);
+        const stepMsg =
+          data.step === "scrape"
+            ? "（抓取網站失敗）"
+            : data.step === "ai"
+              ? "（AI 分析失敗）"
+              : "";
+        throw new Error((data.message || `HTTP ${response.status}`) + stepMsg);
       }
 
       return data;
@@ -179,7 +186,7 @@ const WebsiteAnalyzerAPI = {
       stopFunFacts();
       if (error.name === "AbortError") {
         throw new Error(
-          "分析超時，該網站內容較複雜。請改用較小的網站測試，或加 LINE 由我們為您分析。",
+          "前端等待超時（90 秒），請換一個較簡單的網站試試，或加 LINE 由我們為您分析。",
         );
       }
       throw error;

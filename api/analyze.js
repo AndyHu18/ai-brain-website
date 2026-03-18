@@ -76,58 +76,90 @@ export default async function handler(req, res) {
   console.log("📍[Analyze API] 開始分析:", trimmedUrl);
   const startTime = Date.now();
 
+  const timing = {};
+
   try {
     // Step 1: 抓取網站
     console.log("📍[Analyze API] Step 1: 抓取網站內容");
+    const scrapeStart = Date.now();
     const scrapeResult = await scrapeWebsite(trimmedUrl);
+    timing.scrape = Date.now() - scrapeStart;
+    console.log(`📍[Analyze API] 抓取耗時: ${timing.scrape}ms`);
 
     if (!scrapeResult.ok) {
       console.error("📍[Analyze API] 抓取失敗:", scrapeResult.message);
       return res.status(400).json({
         error: scrapeResult.error,
         message: scrapeResult.message,
+        step: "scrape",
+        timing,
       });
     }
 
     const content = scrapeResult.data;
-    console.log("📍[Analyze API] 抓取成功，標題:", content.title);
+    console.log(
+      "📍[Analyze API] 抓取成功，標題:",
+      content.title,
+      "來源:",
+      content.source,
+      "內容長度:",
+      content.textContent?.length,
+    );
 
     // Step 2: AI 分析
     console.log("📍[Analyze API] Step 2: 執行 AI 分析");
+    const aiStart = Date.now();
     const analysisResult = await analyzeWithAI(
       content,
       null,
       apiKey,
       !!claudeKey,
     );
+    timing.ai = Date.now() - aiStart;
+    console.log(`📍[Analyze API] AI 分析耗時: ${timing.ai}ms`);
 
     if (!analysisResult.ok) {
       console.error("📍[Analyze API] 分析失敗:", analysisResult.message);
       return res.status(500).json({
         error: analysisResult.error,
         message: analysisResult.message,
+        step: "ai",
+        timing,
       });
     }
 
     // Step 3: 組裝報告
-    console.log("📍[Analyze API] Step 3: 組裝報告");
+    timing.total = Date.now() - startTime;
+    console.log(
+      `📍[Analyze API] ✅ 完成，總耗時 ${timing.total}ms (抓取 ${timing.scrape}ms + AI ${timing.ai}ms)`,
+    );
+
     const report = {
       id: generateReportId(),
       websiteUrl: content.url,
       websiteTitle: content.title || "未知網站",
       analysis: analysisResult.data,
+      content: {
+        title: content.title,
+        description: content.description,
+        textContent: content.textContent?.slice(0, 200) + "...",
+        navigation: content.navigation,
+        source: content.source,
+        subPagesCount: content.subPagesCount,
+      },
       generatedAt: new Date().toISOString(),
+      timing,
     };
-
-    const duration = Date.now() - startTime;
-    console.log(`📍[Analyze API] ✅ 完成，耗時 ${duration}ms`);
 
     return res.status(200).json(report);
   } catch (error) {
+    timing.total = Date.now() - startTime;
     console.error("❌ [Analyze API] 未預期錯誤:", error);
     return res.status(500).json({
       error: "Internal server error",
       message: "分析過程發生未預期錯誤，請稍後再試",
+      step: "unknown",
+      timing,
     });
   }
 }
