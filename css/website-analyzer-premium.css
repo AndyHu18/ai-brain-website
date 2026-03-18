@@ -455,6 +455,70 @@
   }
 }
 
+@media (max-width: 480px) {
+  .analyzer-section-premium {
+    padding: 40px 12px 32px;
+  }
+
+  .analyzer-hero-header {
+    margin-bottom: 24px;
+  }
+
+  .analyzer-badge-group {
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .analyzer-badge-free,
+  .analyzer-badge-ai {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .analyzer-main-title {
+    font-size: 1.25rem;
+  }
+
+  .analyzer-subtitle {
+    font-size: 0.875rem;
+    padding: 0 4px;
+  }
+
+  .analyzer-input-container {
+    border-radius: 12px;
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .analyzer-input-container input {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .analyzer-submit-btn {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+  }
+
+  .analyzer-trust-signals {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .analyzer-trust-signals .trust-item {
+    min-width: auto;
+    font-size: 0.8rem;
+    gap: 8px;
+  }
+
+  .analyzer-trust-signals .trust-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 0.55rem;
+  }
+}
+
 /* === Container z-index === */
 .analyzer-section-premium .container {
   position: relative;

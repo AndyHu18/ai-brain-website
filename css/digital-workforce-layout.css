@@ -9,98 +9,137 @@
    數位員工主區塊
    ============================================================ */
 .digital-workforce {
-    padding: var(--spacing-3xl) 0;
-    background: linear-gradient(180deg,
-            var(--bg-light) 0%,
-            var(--bg-section) 50%,
-            var(--bg-light) 100%);
+  padding: var(--spacing-3xl) 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-light) 0%,
+    var(--bg-section) 50%,
+    var(--bg-light) 100%
+  );
 }
 
 /* 區塊標題 */
 .workforce-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto var(--spacing-3xl);
-    padding: 0 var(--spacing-md);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-3xl);
+  padding: 0 var(--spacing-md);
 }
 
 .workforce-header .section-badge {
-    display: inline-block;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    color: var(--text-light);
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--spacing-md);
-    text-transform: uppercase;
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  color: var(--text-light);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
 }
 
 .workforce-title {
-    font-size: clamp(2rem, 5vw, var(--font-size-3xl));
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.2;
-    margin-bottom: var(--spacing-md);
+  font-size: clamp(2rem, 5vw, var(--font-size-3xl));
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
 }
 
 .workforce-title .highlight {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .workforce-subtitle {
-    font-size: var(--font-size-lg);
-    color: var(--text-secondary);
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
+  font-size: var(--font-size-lg);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 /* ============================================================
    服務方案網格
    ============================================================ */
 .workforce-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
-    max-width: var(--container-wide);
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 /* ============================================================
    響應式設計
    ============================================================ */
 @media (max-width: 1200px) {
-    .workforce-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .workforce-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-    .digital-workforce {
-        padding: var(--spacing-2xl) 0;
-    }
+  .digital-workforce {
+    padding: var(--spacing-2xl) 0;
+  }
 
-    .workforce-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-        padding: 0 var(--spacing-md);
-    }
+  .workforce-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+  }
 
-    .workforce-header {
-        margin-bottom: var(--spacing-2xl);
-    }
+  .workforce-header {
+    margin-bottom: var(--spacing-2xl);
+  }
 
-    .workforce-title {
-        font-size: var(--font-size-2xl);
-    }
+  .workforce-title {
+    font-size: var(--font-size-2xl);
+  }
 
-    .workforce-subtitle {
-        font-size: var(--font-size-base);
-    }
+  .workforce-subtitle {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .digital-workforce {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .workforce-grid {
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .workforce-header {
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .workforce-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .workforce-subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .workforce-header .section-badge {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.65rem;
+  }
 }

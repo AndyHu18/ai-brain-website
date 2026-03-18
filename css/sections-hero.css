@@ -243,6 +243,10 @@
   .hero-stats {
     gap: var(--spacing-lg);
   }
+
+  .hero-scroll-indicator {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {

@@ -152,3 +152,12 @@
     opacity: 0.8;
   }
 }
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .chat-hint {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+}

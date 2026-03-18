@@ -648,8 +648,16 @@
     z-index: 25;
   }
 
+  .service-hero .hero-title {
+    font-size: clamp(1.6rem, 5vw, 2.5rem);
+  }
+
   .service-hero .hero-title .emoji {
     font-size: 2.5rem;
+  }
+
+  .service-hero .hero-tagline {
+    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
   }
 
   .hero-value-block {

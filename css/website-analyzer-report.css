@@ -689,14 +689,40 @@
     font-size: 0.85rem !important;
   }
 
-  .opportunities-table th {
+  .opportunities-table {
     font-size: 0.85rem !important;
+    table-layout: fixed !important;
+    word-break: break-word !important;
+  }
+
+  .opportunities-table th {
+    font-size: 0.8rem !important;
     padding: 10px 8px !important;
   }
 
   .opportunities-table td {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
     padding: 10px 8px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 固定欄寬比例：領域 18% / AI應用 32% / 效益 38% / 難度 12% */
+  .opportunities-table th:nth-child(1),
+  .opportunities-table td:nth-child(1) {
+    width: 18%;
+  }
+  .opportunities-table th:nth-child(2),
+  .opportunities-table td:nth-child(2) {
+    width: 32%;
+  }
+  .opportunities-table th:nth-child(3),
+  .opportunities-table td:nth-child(3) {
+    width: 38%;
+  }
+  .opportunities-table th:nth-child(4),
+  .opportunities-table td:nth-child(4) {
+    width: 12%;
+    text-align: center;
   }
 
   .report-download-section {
@@ -736,11 +762,111 @@
 }
 
 @media (max-width: 480px) {
+  .report-summary::before {
+    font-size: 2rem;
+  }
+
   .company-services-grid {
     grid-template-columns: 1fr;
   }
 
   .analyzer-service-card {
     padding: var(--report-spacing-element);
+  }
+
+  /* === 手機版：表格轉卡片佈局 === */
+  .opportunities-table {
+    font-size: 0.85rem !important;
+  }
+
+  .opportunities-table thead {
+    display: none !important;
+  }
+
+  .opportunities-table,
+  .opportunities-table tbody,
+  .opportunities-table tr,
+  .opportunities-table td {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .opportunities-table tr {
+    background: rgba(0, 0, 0, 0.015);
+    border-radius: 12px;
+    padding: 14px 16px !important;
+    margin-bottom: 12px;
+    border: 1px solid var(--color-border, #eee);
+    border-bottom: 1px solid var(--color-border, #eee) !important;
+  }
+
+  .opportunities-table td {
+    padding: 3px 0 !important;
+    border-bottom: none !important;
+    text-align: left !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* 領域 - 加粗作為卡片標題 */
+  .opportunities-table td:nth-child(1) {
+    font-weight: 700;
+    font-size: 0.95rem !important;
+    color: var(--color-primary, #d4740e);
+    padding-bottom: 4px !important;
+    width: auto !important;
+  }
+
+  /* AI 應用 */
+  .opportunities-table td:nth-child(2) {
+    color: var(--color-text, #333);
+    padding-bottom: 6px !important;
+    width: auto !important;
+  }
+
+  /* 預估效益 */
+  .opportunities-table td:nth-child(3) {
+    width: auto !important;
+  }
+
+  .opportunities-table td.benefit {
+    font-size: 0.85rem !important;
+    line-height: 1.7 !important;
+    padding-bottom: 6px !important;
+  }
+
+  /* 難度標籤 */
+  .opportunities-table td:nth-child(4) {
+    text-align: left !important;
+    padding-top: 4px !important;
+    width: auto !important;
+  }
+
+  /* 每個 td 前加標籤 */
+  .opportunities-table td:nth-child(2)::before {
+    content: "AI 應用：";
+    font-weight: 600;
+    color: var(--color-text-secondary, #666);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .opportunities-table td:nth-child(3)::before {
+    content: "預估效益：";
+    font-weight: 600;
+    color: var(--color-text-secondary, #666);
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .opportunities-table td:nth-child(4)::before {
+    content: "難度：";
+    font-weight: 600;
+    color: var(--color-text-secondary, #666);
+    font-size: 0.75rem;
+    display: inline;
+    margin-right: 6px;
   }
 }

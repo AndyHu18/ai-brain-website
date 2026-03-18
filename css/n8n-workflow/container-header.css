@@ -53,7 +53,8 @@
   filter: drop-shadow(0 2px 8px rgba(230, 126, 34, 0.3));
 }
 
-.logo h1 {
+.logo h1,
+.logo h2 {
   font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(135deg, var(--warm-orange), var(--warm-gold));
@@ -134,7 +135,8 @@
 }
 
 /* 霓虹呼吸效果 */
-.logo h1 {
+.logo h1,
+.logo h2 {
   animation: neon-breathe 3s ease-in-out infinite;
 }
 

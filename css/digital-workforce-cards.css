@@ -9,148 +9,205 @@
    服務方案卡片
    ============================================================ */
 .workforce-card {
-    background: var(--bg-lighter);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-xl);
-    box-shadow: var(--shadow-card);
-    border: 1px solid var(--border-subtle);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
+  background: var(--bg-lighter);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
 }
 
 .workforce-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    opacity: 0;
-    transition: opacity var(--transition-base);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
 }
 
 .workforce-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
 }
 
 .workforce-card:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* 卡片編號 */
 .card-number {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-    color: var(--text-light);
-    font-size: var(--font-size-sm);
-    font-weight: 700;
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-accent) 100%
+  );
+  color: var(--text-light);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
 }
 
 /* 卡片標題 */
 .card-title {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 .card-title .icon {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 /* 適用對象標籤 */
 .card-target {
-    display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-md);
-    background: rgba(210, 105, 30, 0.1);
-    color: var(--color-primary-dark);
-    font-size: var(--font-size-xs);
-    font-weight: 500;
-    border-radius: var(--radius-full);
-    margin-bottom: var(--spacing-md);
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(210, 105, 30, 0.1);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-md);
 }
 
 /* 問題描述 */
 .card-problem {
-    font-size: var(--font-size-sm);
-    color: var(--text-muted);
-    margin-bottom: var(--spacing-md);
-    padding-bottom: var(--spacing-md);
-    border-bottom: 1px solid var(--border-subtle);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .card-problem strong {
-    color: var(--color-primary-dark);
+  color: var(--color-primary-dark);
 }
 
 /* 體驗描述 */
 .card-experience {
-    font-size: var(--font-size-base);
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: var(--spacing-md);
-    position: relative;
-    padding-left: var(--spacing-lg);
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-left: var(--spacing-lg);
 }
 
 .card-experience::before {
-    content: '"';
-    position: absolute;
-    left: 0;
-    top: -8px;
-    font-size: 3rem;
-    color: var(--color-accent);
-    opacity: 0.3;
-    font-family: Georgia, serif;
+  content: '"';
+  position: absolute;
+  left: 0;
+  top: -8px;
+  font-size: 3rem;
+  color: var(--color-accent);
+  opacity: 0.3;
+  font-family: Georgia, serif;
 }
 
 /* 技術底氣 */
 .card-tech {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-md);
-    background: linear-gradient(135deg, rgba(210, 105, 30, 0.05) 0%, rgba(205, 133, 63, 0.05) 100%);
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-xs);
-    color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: linear-gradient(
+    135deg,
+    rgba(210, 105, 30, 0.05) 0%,
+    rgba(205, 133, 63, 0.05) 100%
+  );
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
 }
 
 .card-tech .tech-icon {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--color-primary);
-    color: var(--text-light);
-    border-radius: var(--radius-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    font-weight: 700;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--color-primary);
+  color: var(--text-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 /* ============================================================
    響應式設計
    ============================================================ */
 @media (max-width: 768px) {
-    .workforce-card {
-        padding: var(--spacing-lg);
-    }
+  .workforce-card {
+    padding: var(--spacing-lg);
+  }
 
-    .card-title {
-        font-size: var(--font-size-lg);
-    }
+  .card-title {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .workforce-card {
+    padding: var(--spacing-md);
+  }
+
+  .card-number {
+    width: 30px;
+    height: 30px;
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-title {
+    font-size: var(--font-size-base);
+    gap: var(--spacing-xs);
+  }
+
+  .card-target {
+    padding: 4px var(--spacing-sm);
+    font-size: 0.7rem;
+  }
+
+  .card-problem {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .card-experience {
+    font-size: var(--font-size-sm);
+    padding-left: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-experience::before {
+    font-size: 1.8rem;
+    top: -4px;
+  }
+
+  .card-tech {
+    padding: var(--spacing-sm);
+    font-size: 0.7rem;
+  }
 }

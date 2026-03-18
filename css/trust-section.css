@@ -8,165 +8,221 @@
    信任區塊容器
    ======================================== */
 .trust-section {
-    /* L-01 修復：增加上下呼吸感 (專家建議 120px) */
-    padding: var(--spacing-5xl) 0;
-    /* 使用燕麥色背景 - 淺色主題 */
-    background: var(--bg-section);
-    position: relative;
+  /* L-01 修復：增加上下呼吸感 (專家建議 120px) */
+  padding: var(--spacing-5xl) 0;
+  /* 使用燕麥色背景 - 淺色主題 */
+  background: var(--bg-section);
+  position: relative;
 }
 
 /* ========================================
    信任網格 - 四欄佈局
    ======================================== */
 .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-xl);
-    margin-top: var(--spacing-2xl);
-    margin-bottom: var(--spacing-2xl);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+  margin-bottom: var(--spacing-2xl);
 }
 
 /* ========================================
    信任卡片
    ======================================== */
 .trust-card {
-    text-align: center;
-    padding: var(--spacing-xl);
-    /* U-01 修復：添加實體容器感 */
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--radius-xl);
-    /* 使用微妙邊框取代陰影 */
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    /* 非線性動畫 - 高質感 */
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  padding: var(--spacing-xl);
+  /* U-01 修復：添加實體容器感 */
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  /* 使用微妙邊框取代陰影 */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  /* 非線性動畫 - 高質感 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .trust-card:hover {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: var(--color-primary);
-    /* 節制的反饋 - 僅 4px 位移 */
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(210, 105, 30, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--color-primary);
+  /* 節制的反饋 - 僅 4px 位移 */
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(210, 105, 30, 0.08);
 }
 
 .trust-icon {
-    /* V-01 修復：統一圖標樣式與顏色 */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    margin-bottom: var(--spacing-lg);
-    /* 使用 APCA 合規的深橘色漸層 */
-    background: linear-gradient(135deg, var(--color-primary-accessible) 0%, var(--color-primary-dark) 100%);
-    color: var(--text-on-primary);
-    border-radius: var(--radius-lg);
-    /* 統一的微發光邊框 */
-    box-shadow: 0 4px 12px rgba(154, 74, 16, 0.25);
+  /* V-01 修復：統一圖標樣式與顏色 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--spacing-lg);
+  /* 使用 APCA 合規的深橘色漸層 */
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-accessible) 0%,
+    var(--color-primary-dark) 100%
+  );
+  color: var(--text-on-primary);
+  border-radius: var(--radius-lg);
+  /* 統一的微發光邊框 */
+  box-shadow: 0 4px 12px rgba(154, 74, 16, 0.25);
 }
 
 .trust-title {
-    font-size: var(--font-size-lg);
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
 }
 
 .trust-description {
-    font-size: var(--font-size-base);
-    /* C-02 修復：提升文字對比度 */
-    color: var(--text-secondary);
-    /* T-02 修復：增加行高至 1.75 (中文推薦) */
-    line-height: 1.75;
-    /* T-03 修復：限制寬度避免資訊牆 */
-    max-width: 280px;
-    margin: 0 auto;
+  font-size: var(--font-size-base);
+  /* C-02 修復：提升文字對比度 */
+  color: var(--text-secondary);
+  /* T-02 修復：增加行高至 1.75 (中文推薦) */
+  line-height: 1.75;
+  /* T-03 修復：限制寬度避免資訊牆 */
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 /* ========================================
    服務承諾區塊
    ======================================== */
 .trust-promise {
-    max-width: 800px;
-    /* U-02 修復：增加與卡片區的間距 */
-    margin: var(--spacing-3xl) auto 0;
-    text-align: center;
-    padding: var(--spacing-2xl) var(--spacing-xl);
-    /* 使用分層表面系統 */
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(210, 105, 30, 0.15);
+  max-width: 800px;
+  /* U-02 修復：增加與卡片區的間距 */
+  margin: var(--spacing-3xl) auto 0;
+  text-align: center;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  /* 使用分層表面系統 */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(210, 105, 30, 0.15);
 }
 
 .promise-badge {
-    display: inline-block;
-    /* C-01 修復：使用 APCA 合規的深橘色 */
-    background: linear-gradient(135deg, var(--color-primary-accessible) 0%, var(--color-primary-dark) 100%);
-    color: var(--text-on-primary);
-    padding: var(--spacing-sm) var(--spacing-xl);
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-sm);
-    /* C-01 修復：增加字重至 700 */
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin-bottom: var(--spacing-xl);
-    /* 添加微妙發光 */
-    box-shadow: 0 4px 12px rgba(154, 74, 16, 0.3);
+  display: inline-block;
+  /* C-01 修復：使用 APCA 合規的深橘色 */
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-accessible) 0%,
+    var(--color-primary-dark) 100%
+  );
+  color: var(--text-on-primary);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  /* C-01 修復：增加字重至 700 */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xl);
+  /* 添加微妙發光 */
+  box-shadow: 0 4px 12px rgba(154, 74, 16, 0.3);
 }
 
 .promise-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--spacing-md) var(--spacing-xl);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md) var(--spacing-xl);
 }
 
 .promise-list li {
-    font-size: var(--font-size-base);
-    color: var(--text-secondary);
-    font-weight: 500;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* ========================================
    響應式設計
    ======================================== */
 @media (max-width: 1024px) {
-    .trust-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-    .trust-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
+  .trust-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
 
-    .trust-card {
-        padding: var(--spacing-lg);
-    }
+  .trust-card {
+    padding: var(--spacing-lg);
+  }
 
-    .trust-icon {
-        font-size: 2.5rem;
-    }
+  .trust-icon {
+    font-size: 2.5rem;
+  }
 
-    .trust-promise {
-        padding: var(--spacing-xl);
-    }
+  .trust-promise {
+    padding: var(--spacing-xl);
+  }
 
-    .promise-list {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-md);
-    }
+  .promise-list {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .trust-section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .trust-grid {
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .trust-card {
+    padding: var(--spacing-md);
+  }
+
+  .trust-icon {
+    font-size: 1.8rem;
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .trust-title {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .trust-description {
+    font-size: var(--font-size-sm);
+    max-width: none;
+  }
+
+  .trust-promise {
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin: var(--spacing-2xl) auto 0;
+  }
+
+  .promise-badge {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .promise-list li {
+    font-size: var(--font-size-sm);
+  }
 }

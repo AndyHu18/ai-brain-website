@@ -17,21 +17,22 @@ function initNavigation() {
   const isTransparent =
     navbar && navbar.classList.contains("navbar-transparent");
 
+  // 透明導航欄的一切（滾動 + 漢堡選單）都由 script-service-nav.js 負責
+  if (isTransparent) return;
+
   // 滾動時導航列效果 - 使用 CSS class 切換
   let lastScrollY = 0;
-  if (!isTransparent) {
-    window.addEventListener("scroll", () => {
-      const currentScrollY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 50) {
-        navbar.classList.add("navbar-scrolled");
-      } else {
-        navbar.classList.remove("navbar-scrolled");
-      }
+    if (currentScrollY > 50) {
+      navbar.classList.add("navbar-scrolled");
+    } else {
+      navbar.classList.remove("navbar-scrolled");
+    }
 
-      lastScrollY = currentScrollY;
-    });
-  }
+    lastScrollY = currentScrollY;
+  });
 
   // 手機版選單切換
   navToggle?.addEventListener("click", () => {

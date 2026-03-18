@@ -2532,38 +2532,52 @@
       }
       @media (max-width: 600px) {
         .staircase-section {
-          padding: 20px 8px;
+          padding: 20px 12px;
           overflow: hidden;
         }
         .staircase-chart {
           height: 250px;
-          gap: 2px;
+          gap: 4px;
         }
         .stair-col {
           gap: 6px;
           min-width: 0;
+          overflow: visible;
+        }
+        .stair-bar-wrap {
+          overflow: visible;
         }
         .stair-bar {
-          width: 36px;
+          width: 100%;
+          max-width: 56px;
+          min-width: 32px;
         }
         .stair-price {
-          font-size: 0.85rem;
+          font-size: 0.8rem;
         }
         .stair-level {
-          font-size: 0.75rem;
+          font-size: 0.7rem;
         }
         .stair-name {
-          font-size: 0.78rem;
+          font-size: 0.72rem;
           white-space: normal;
           text-align: center;
           line-height: 1.2;
         }
         .stair-save {
-          font-size: 0.75rem;
+          font-size: 0.68rem;
+          white-space: nowrap;
         }
         .stair-cap {
-          font-size: 0.75rem;
-          top: -22px;
+          font-size: 0.65rem;
+          top: -20px;
+          white-space: nowrap;
+          left: 50%;
+          transform: translateX(-50%);
+          width: max-content;
+        }
+        .staircase-section.stair-animated .stair-cap {
+          transform: translateX(-50%) translateY(0);
         }
         .stair-summary {
           gap: 12px;

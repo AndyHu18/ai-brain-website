@@ -4,18 +4,18 @@
  */
 
 const WebsiteAnalyzerReport = {
-    /**
-     * 渲染完整報告
-     * @param {Object} report - 分析報告數據
-     * @param {HTMLElement} resultContainer - 結果容器元素
-     */
-    renderReport(report, resultContainer) {
-        const config = window.WebsiteAnalyzerConfig;
-        const sections = window.WebsiteAnalyzerSections;
-        const analysis = report.analysis;
-        const generatedTime = new Date(report.generatedAt).toLocaleString('zh-TW');
+  /**
+   * 渲染完整報告
+   * @param {Object} report - 分析報告數據
+   * @param {HTMLElement} resultContainer - 結果容器元素
+   */
+  renderReport(report, resultContainer) {
+    const config = window.WebsiteAnalyzerConfig;
+    const sections = window.WebsiteAnalyzerSections;
+    const analysis = report.analysis;
+    const generatedTime = new Date(report.generatedAt).toLocaleString("zh-TW");
 
-        let html = `
+    let html = `
             <div class="analyzer-report">
                 <div class="report-header">
                     <h3>30 秒看懂：AI 能幫你省多少？</h3>
@@ -24,39 +24,39 @@ const WebsiteAnalyzerReport = {
                 </div>
         `;
 
-        // 📥 PDF 下載區塊
-        html += this._renderDownloadSection(report);
+    // 📥 PDF 下載區塊
+    html += this._renderDownloadSection(report);
 
-        // 摘要
-        if (analysis.summary) {
-            html += `
+    // 摘要
+    if (analysis.summary) {
+      html += `
                 <div class="report-summary">
                     <h4>執行摘要</h4>
                     <p>${analysis.summary}</p>
                 </div>
             `;
-        }
+    }
 
-        html += '<div class="report-sections">';
-        html += sections.renderServicesSection(analysis.services);
-        html += sections.renderOpportunitiesTable(analysis.aiOpportunities);
-        html += sections.renderDepartmentsSection(analysis.departmentInsights);
-        html += sections.renderPositionsSection(analysis.positionOpportunities);
-        html += sections.renderOptimizationsSection(analysis.websiteOptimizations);
-        html += sections.renderSalesFunnelSection(analysis.salesFunnelAI);
-        html += '</div>';
+    html += '<div class="report-sections">';
+    html += sections.renderServicesSection(analysis.services);
+    html += sections.renderOpportunitiesTable(analysis.aiOpportunities);
+    html += sections.renderDepartmentsSection(analysis.departmentInsights);
+    html += sections.renderPositionsSection(analysis.positionOpportunities);
+    html += sections.renderOptimizationsSection(analysis.websiteOptimizations);
+    html += sections.renderSalesFunnelSection(analysis.salesFunnelAI);
+    html += "</div>";
 
-        // 🏢 公司介紹區塊
-        html += this._renderCompanyIntro();
+    // 🏢 公司介紹區塊
+    html += this._renderCompanyIntro();
 
-        // 📥 底部 PDF 下載區塊
-        html += this._renderDownloadSection(report, true);
+    // 📥 底部 PDF 下載區塊
+    html += this._renderDownloadSection(report, true);
 
-        // 📧 寄送報告到信箱 CTA
-        html += this._renderEmailCTA();
+    // 📧 寄送報告到信箱 CTA
+    html += this._renderEmailCTA();
 
-        // 完整分析連結
-        html += `
+    // 完整分析連結
+    html += `
             <div class="report-cta">
                 <p class="cta-text">想要更詳細的分析報告？使用我們的專業分析工具獲取完整洞察。</p>
                 <a href="${config.FULL_ANALYZER_URL}" target="_blank" rel="noopener" class="cta-button">
@@ -65,26 +65,30 @@ const WebsiteAnalyzerReport = {
             </div>
         `;
 
-        html += '</div>';
-        resultContainer.innerHTML = html;
-        resultContainer.style.display = 'block';
-        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    html += "</div>";
+    resultContainer.innerHTML = html;
+    resultContainer.style.display = "block";
+    resultContainer.scrollIntoView({ behavior: "smooth", block: "start" });
 
-        // 綁定事件
-        this._bindPDFButtons(report);
-        this._bindEmailForm(report);
-    },
+    // 綁定事件
+    this._bindPDFButtons(report);
+    this._bindEmailForm(report);
+  },
 
-    /**
-     * 渲染下載區塊
-     */
-    _renderDownloadSection(report, isBottom = false) {
-        const id = isBottom ? 'download-pdf-btn-bottom' : 'download-pdf-btn';
-        const cls = isBottom ? 'report-download-section report-download-bottom' : 'report-download-section';
-        const btnCls = isBottom ? 'pdf-download-btn pdf-download-btn-bottom' : 'pdf-download-btn';
-        const btnText = isBottom ? '下載完整 PDF 報告' : '下載 PDF 報告';
+  /**
+   * 渲染下載區塊
+   */
+  _renderDownloadSection(report, isBottom = false) {
+    const id = isBottom ? "download-pdf-btn-bottom" : "download-pdf-btn";
+    const cls = isBottom
+      ? "report-download-section report-download-bottom"
+      : "report-download-section";
+    const btnCls = isBottom
+      ? "pdf-download-btn pdf-download-btn-bottom"
+      : "pdf-download-btn";
+    const btnText = isBottom ? "下載完整 PDF 報告" : "下載 PDF 報告";
 
-        return `
+    return `
             <div class="${cls}">
                 <button class="${btnCls}" id="${id}" data-report='${JSON.stringify(report).replace(/'/g, "\\'")}'>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -94,16 +98,16 @@ const WebsiteAnalyzerReport = {
                     </svg>
                     <span class="btn-text">${btnText}</span>
                 </button>
-                ${isBottom ? '<p class="download-hint">包含所有分析結果與 AI 智能大腦公司介紹</p>' : ''}
+                ${isBottom ? '<p class="download-hint">包含所有分析結果與 AI 智能大腦公司介紹</p>' : ""}
             </div>
         `;
-    },
+  },
 
-    /**
-     * 渲染公司介紹區塊
-     */
-    _renderCompanyIntro() {
-        return `
+  /**
+   * 渲染公司介紹區塊
+   */
+  _renderCompanyIntro() {
+    return `
             <div class="company-intro-section">
                 <div class="company-intro-header">
                     <div class="company-logo-placeholder">AI</div>
@@ -122,22 +126,16 @@ const WebsiteAnalyzerReport = {
                         <div class="company-service-tag">智慧會議秘書</div>
                         <div class="company-service-tag">AI 顧問</div>
                     </div>
-                    <a href="https://ai-brain.com.tw" target="_blank" rel="noopener" class="company-cta-link">
-                        了解更多 AI 解決方案
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
                 </div>
             </div>
         `;
-    },
+  },
 
-    /**
-     * 渲染 Email CTA
-     */
-    _renderEmailCTA() {
-        return `
+  /**
+   * 渲染 Email CTA
+   */
+  _renderEmailCTA() {
+    return `
             <div class="report-email-cta">
                 <div class="email-cta-header">
                     <span class="email-icon">
@@ -156,90 +154,95 @@ const WebsiteAnalyzerReport = {
                 <p class="email-hint">建議使用公司信箱，方便團隊討論</p>
             </div>
         `;
-    },
+  },
 
-    /**
-     * 綁定 PDF 下載按鈕事件
-     */
-    _bindPDFButtons(report) {
-        const pdfButtons = [
-            document.getElementById('download-pdf-btn'),
-            document.getElementById('download-pdf-btn-bottom')
-        ];
+  /**
+   * 綁定 PDF 下載按鈕事件
+   */
+  _bindPDFButtons(report) {
+    const pdfButtons = [
+      document.getElementById("download-pdf-btn"),
+      document.getElementById("download-pdf-btn-bottom"),
+    ];
 
-        pdfButtons.forEach(pdfBtn => {
-            if (pdfBtn) {
-                pdfBtn.addEventListener('click', async function () {
-                    const btn = this;
-                    const originalText = btn.querySelector('.btn-text').textContent;
+    pdfButtons.forEach((pdfBtn) => {
+      if (pdfBtn) {
+        pdfBtn.addEventListener("click", async function () {
+          const btn = this;
+          const originalText = btn.querySelector(".btn-text").textContent;
 
-                    try {
-                        btn.classList.add('pdf-generating');
-                        btn.querySelector('.btn-text').textContent = '生成中...';
-                        btn.disabled = true;
+          try {
+            btn.classList.add("pdf-generating");
+            btn.querySelector(".btn-text").textContent = "生成中...";
+            btn.disabled = true;
 
-                        await window.PDFGenerator.generatePDF(report);
+            await window.PDFGenerator.generatePDF(report);
 
-                        btn.querySelector('.btn-text').textContent = '下載完成！';
-                        setTimeout(() => {
-                            btn.querySelector('.btn-text').textContent = originalText;
-                            btn.classList.remove('pdf-generating');
-                            btn.disabled = false;
-                        }, 2000);
-                    } catch (error) {
-                        console.error('📍[WebsiteAnalyzer] PDF 生成失敗:', error);
-                        btn.querySelector('.btn-text').textContent = '生成失敗';
-                        setTimeout(() => {
-                            btn.querySelector('.btn-text').textContent = originalText;
-                            btn.classList.remove('pdf-generating');
-                            btn.disabled = false;
-                        }, 2000);
-                    }
-                });
-            }
+            btn.querySelector(".btn-text").textContent = "下載完成！";
+            setTimeout(() => {
+              btn.querySelector(".btn-text").textContent = originalText;
+              btn.classList.remove("pdf-generating");
+              btn.disabled = false;
+            }, 2000);
+          } catch (error) {
+            console.error("📍[WebsiteAnalyzer] PDF 生成失敗:", error);
+            btn.querySelector(".btn-text").textContent = "生成失敗";
+            setTimeout(() => {
+              btn.querySelector(".btn-text").textContent = originalText;
+              btn.classList.remove("pdf-generating");
+              btn.disabled = false;
+            }, 2000);
+          }
         });
-    },
+      }
+    });
+  },
 
-    /**
-     * 綁定 Email 表單事件
-     */
-    _bindEmailForm(report) {
-        const emailForm = document.getElementById('report-email-form');
-        if (emailForm) {
-            emailForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const email = document.getElementById('report-email-input').value;
-                this._handleEmailSubmit(email, report);
-            });
-        }
-    },
+  /**
+   * 綁定 Email 表單事件
+   */
+  _bindEmailForm(report) {
+    const emailForm = document.getElementById("report-email-form");
+    if (emailForm) {
+      emailForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("report-email-input").value;
+        this._handleEmailSubmit(email, report);
+      });
+    }
+  },
 
-    /**
-     * 處理 Email 提交
-     */
-    _handleEmailSubmit(email, report) {
-        const form = document.getElementById('report-email-form');
-        const submitBtn = form.querySelector('.email-submit-btn');
+  /**
+   * 處理 Email 提交
+   */
+  _handleEmailSubmit(email, report) {
+    const form = document.getElementById("report-email-form");
+    const submitBtn = form.querySelector(".email-submit-btn");
 
-        if (!email || !email.includes('@')) {
-            alert('請輸入有效的 Email 地址');
-            return;
-        }
+    if (!email || !email.includes("@")) {
+      alert("請輸入有效的 Email 地址");
+      return;
+    }
 
-        submitBtn.textContent = '發送中...';
-        submitBtn.disabled = true;
+    submitBtn.textContent = "發送中...";
+    submitBtn.disabled = true;
 
-        setTimeout(() => {
-            form.innerHTML = `
+    setTimeout(() => {
+      form.innerHTML = `
                 <div class="email-success">
                     <span class="success-icon">✅</span>
                     <p>報告已發送至 <strong>${email}</strong></p>
                     <p class="success-hint">同時，我們會在 24 小時內與您聯繫</p>
                 </div>
             `;
-            console.log('📧 [Lead Capture] Email:', email, 'Website:', report.websiteUrl);
-        }, 1500);
-    }
+      console.log(
+        "📧 [Lead Capture] Email:",
+        email,
+        "Website:",
+        report.websiteUrl,
+      );
+    }, 1500);
+  },
 };
 
 // 暴露到全域
