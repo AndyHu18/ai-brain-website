@@ -55,7 +55,7 @@ async function handleClaude(req, res, apiKey) {
   }));
 
   const claudeBody = {
-    model: "claude-sonnet-4-6-20250514",
+    model: "claude-sonnet-4-6",
     max_tokens: body.generationConfig?.maxOutputTokens || 1024,
     system: systemText,
     messages,

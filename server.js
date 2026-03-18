@@ -126,7 +126,7 @@ const handleClaudeProxy = (req, res) => {
   req.on("end", () => {
     const parsed = JSON.parse(body);
     const payload = JSON.stringify({
-      model: parsed.model || "claude-sonnet-4-6-20250514",
+      model: parsed.model || "claude-sonnet-4-6",
       max_tokens: parsed.max_tokens || 2000,
       system: parsed.system || "",
       temperature: parsed.temperature || 0.7,

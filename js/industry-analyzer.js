@@ -7,7 +7,7 @@
 
   // ── Config ──
   const API_URL = "/api/chat";
-  const MODEL = "claude-sonnet-4-6-20250514";
+  const MODEL = "claude-sonnet-4-6";
 
   const SERVICES = [
     { name: "靜態形象網站", icon: "", color: "#3b82f6" },
