@@ -33,7 +33,8 @@ const PremiumPodcast = (function () {
 - \u7E3D\u5B57\u6578\u63A7\u5236\u5728 300-400 \u5B57
 - \u8AAA\u8A71\u98A8\u683C\u81EA\u7136\u53E3\u8A9E\u5316\uFF0C\u50CF\u771F\u4EBA\u8AAA\u8A71
 - \u4E0D\u8981\u7528 markdown\u3001\u6A19\u984C\u3001\u7DE8\u865F\uFF0C\u7D14\u6587\u5B57\u6D41\u66A2\u8FF0\u8AAA
-- \u670D\u52D9\u63A8\u85A6\u8981\u81EA\u7136\u4E0D\u751F\u786C`;
+- \u670D\u52D9\u63A8\u85A6\u8981\u81EA\u7136\u4E0D\u751F\u786C
+- \u4E0D\u8981\u63D0 SEO\uFF0C\u6539\u7528 AEO\uFF08AI \u641C\u5C0B\u5F15\u64CE\u512A\u5316\uFF09`;
 
   let floatPlayerEl = null;
   let audioContext = null;
@@ -342,6 +343,19 @@ const PremiumPodcast = (function () {
     if (timeTotalEl) timeTotalEl.textContent = formatTime(audioBuffer.duration);
 
     bar.classList.add("visible");
+
+    // Push other floating elements above the bar
+    const barHeight = bar.offsetHeight || 56;
+    document
+      .querySelectorAll(
+        '[class*="float"], [class*="chatbot-fab"], [class*="line-"]',
+      )
+      .forEach((el) => {
+        if (el !== bar && el.style) {
+          const currentBottom = parseInt(getComputedStyle(el).bottom, 10) || 0;
+          el.style.bottom = currentBottom + barHeight + 8 + "px";
+        }
+      });
 
     // Play/pause
     playBtn.addEventListener("click", () => {

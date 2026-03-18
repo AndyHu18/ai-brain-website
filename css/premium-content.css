@@ -180,6 +180,19 @@
   gap: 12px;
 }
 
+/* Push floating buttons (LINE, AI chatbot) above the bar when visible */
+.pc-bottom-bar.visible ~ .chatbot-fab,
+.pc-bottom-bar.visible ~ .line-float-btn,
+.pc-bottom-bar.visible ~ [class*="float"],
+.pc-bottom-bar.visible ~ [class*="chatbot"] {
+  bottom: 70px;
+}
+
+/* Also add body padding so content isn't hidden behind bar */
+body:has(.pc-bottom-bar.visible) {
+  padding-bottom: 60px;
+}
+
 .pc-bar-play {
   flex: 1;
   display: flex;
