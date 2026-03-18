@@ -1,13 +1,17 @@
 /**
  * Premium Infographic Generator
  * Uses Nano Banana Pro (gemini-3-pro-image-preview)
- * Generates luxury promotional image based on industry analysis
+ * Generates dynamic marketing poster with structured layout
  */
 const PremiumInfographic = (function () {
   "use strict";
 
   const GEMINI_API = "/api/gemini";
   const MODEL = "gemini-3-pro-image-preview";
+
+  /** Title max 6 chars, description max 15 chars */
+  const MAX_TITLE_LEN = 6;
+  const MAX_DESC_LEN = 15;
 
   async function generate(industry, analysisHtml, onProgress) {
     const points = extractKeyPoints(analysisHtml);
@@ -52,7 +56,10 @@ const PremiumInfographic = (function () {
         if (parent) content = parent.textContent.replace(title, "").trim();
       }
       if (title && title.length > 2) {
-        points.push({ title, content: content.trim().slice(0, 80) });
+        points.push({
+          title: title.slice(0, MAX_TITLE_LEN),
+          content: content.trim().slice(0, MAX_DESC_LEN),
+        });
       }
     });
 
@@ -60,26 +67,58 @@ const PremiumInfographic = (function () {
   }
 
   /**
-   * Generate promotional image — text-only prompt
+   * Build structured prompt for dynamic marketing poster
+   */
+  function buildPrompt(industry, points) {
+    const p1 = points[0] || { title: "", content: "" };
+    const p2 = points[1] || { title: "", content: "" };
+    const p3 = points[2] || { title: "", content: "" };
+    const p4 = points[3] || { title: "", content: "" };
+    const year = new Date().getFullYear();
+
+    return (
+      "A professional, high-end digital marketing poster. Dark navy blue background with glowing gold and cyan data lines, network nodes, and subtle holographic tech UI elements floating in the air. " +
+      "On the left side, an elegant Taiwanese couple: a woman in a black evening gown and a man in a tuxedo, posing gracefully. Next to them, a classic wooden large-format studio camera on a tripod, emitting a subtle holographic scanning light. " +
+      "Text layout is strictly structured and grid-based. The text must be clean and highly legible, integrated seamlessly into the high-tech background without any solid white paper backgrounds: " +
+      '- Top center, large prominent clean gold serif font: "AI \u667A\u80FD\u5927\u8166" ' +
+      '- Below it, medium gold font: "' +
+      industry +
+      ' AI\u667A\u80FD\u89E3\u6C7A\u65B9\u6848" ' +
+      "- On the right side, floating holographic tech panels with subtle glassmorphism (translucent) effect containing clean lists: " +
+      '  - Panel 1 (Top) with a sleek icon: "' +
+      p1.title +
+      '" and "' +
+      p1.content +
+      '" ' +
+      '  - Panel 2 with a star icon: "' +
+      p2.title +
+      '" and "' +
+      p2.content +
+      '" ' +
+      '  - Panel 3 with a brain icon: "' +
+      p3.title +
+      '" and "' +
+      p3.content +
+      '" ' +
+      '  - Panel 4 (Bottom) with a cloud icon: "' +
+      p4.title +
+      '" and "' +
+      p4.content +
+      '" ' +
+      '- Bottom right, a glowing tech-style button: "\u7ACB\u5373\u8AEE\u8A62" next to a chat icon ' +
+      '- Bottom left edge, small vertical text: "\u00A9 ' +
+      year +
+      ' AI\u667A\u80FD\u5927\u8166" ' +
+      "Ultra-photorealistic subjects, crisp vector-like graphic design elements, cinematic lighting, futuristic yet luxurious commercial aesthetic. NO messy overlapping text. Ensure exact text rendering for all specified text. " +
+      "Mobile aspect ratio 9:16 (1080x1920)."
+    );
+  }
+
+  /**
+   * Generate marketing poster
    */
   async function generateCard(industry, points) {
-    const bullets = points
-      .slice(0, 4)
-      .map((p) => '"' + p.title.slice(0, 8) + '"')
-      .join(", ");
-
-    const prompt =
-      "Generate a luxury promotional image for a " +
-      industry +
-      " business. Use Taiwanese people. " +
-      "Luxury, high-end, premium quality, photorealistic commercial promotional poster — must look like a real photograph, not AI-generated. " +
-      "The visual style should feel upscale and sophisticated like a luxury brand advertisement. " +
-      "Text to include: " +
-      '"AI \u667A\u80FD\u5927\u8166", "' +
-      industry +
-      ' AI \u61C9\u7528\u5206\u6790", ' +
-      bullets +
-      ', "LINE \u514D\u8CBB\u8AEE\u8A62"';
+    const prompt = buildPrompt(industry, points);
 
     const contents = [
       {
