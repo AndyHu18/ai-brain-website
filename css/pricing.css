@@ -418,6 +418,12 @@ body {
   color: var(--text-muted);
 }
 
+.price-range-separator {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
 .price-note {
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -552,27 +558,35 @@ body {
 
 .pv-ours-bar {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-accent)
-  );
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 8px rgba(210, 105, 30, 0.3);
-  min-width: 0;
-  overflow: visible;
-  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  top: 2px;
+  bottom: 2px;
+  width: 5px;
+  background: var(--color-primary);
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(210, 105, 30, 0.5);
+  z-index: 2;
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 三角形箭頭指向標記線 */
+.pv-ours-bar::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid var(--color-primary);
 }
 
 .pv-ours-text {
   position: absolute;
-  left: 100%;
-  margin-left: 8px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 0.9rem;
   color: var(--color-primary);
   font-weight: 700;
@@ -634,12 +648,22 @@ body {
 }
 
 .price-visual-premium .pv-ours-bar {
+  /* 行銷流程用範圍條，不用標記點 */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
   background: linear-gradient(135deg, #c4975a 0%, #f0d48a 40%, #c4975a 100%);
   box-shadow:
     0 2px 16px rgba(196, 151, 90, 0.5),
     0 0 40px rgba(240, 212, 138, 0.15);
   min-width: 80px;
+  border-radius: 6px;
   overflow: hidden;
+}
+
+.price-visual-premium .pv-ours-bar::before {
+  display: none;
 }
 
 .price-visual-premium .pv-ours-text {
@@ -1405,7 +1429,7 @@ body {
 
   /* Price visual fully stacked */
   .pv-ours-bar {
-    min-width: 50px;
+    min-width: 0;
   }
 
   .pv-ours-text {
