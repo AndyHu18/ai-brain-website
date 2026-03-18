@@ -9,13 +9,13 @@
 
 /** 要抓取的常見子頁面路徑 */
 const IMPORTANT_PATHS = [
-    '/about',
-    '/about-us',
-    '/services',
-    '/products',
-    '/solutions',
-    '/pricing',
-    '/features'
+  "/about",
+  "/about-us",
+  "/services",
+  "/products",
+  "/solutions",
+  "/pricing",
+  "/features",
 ];
 
 /** 最多抓取的子頁面數量 */
@@ -33,62 +33,63 @@ const MIN_CONTENT_LENGTH = 100;
  * @returns {string[]} 子頁面 URL 列表
  */
 function discoverSubPages(html, baseUrl) {
-    const discovered = [];
+  const discovered = [];
 
-    try {
-        const urlObj = new URL(baseUrl);
-        const baseHost = urlObj.hostname;
+  try {
+    const urlObj = new URL(baseUrl);
+    const baseHost = urlObj.hostname;
 
-        // 從 HTML 中提取所有連結
-        const linkPattern = /href=["']([^"']+)["']/gi;
-        let match;
+    // 從 HTML 中提取所有連結
+    const linkPattern = /href=["']([^"']+)["']/gi;
+    let match;
 
-        while ((match = linkPattern.exec(html)) !== null) {
-            const href = match[1];
+    while ((match = linkPattern.exec(html)) !== null) {
+      const href = match[1];
 
-            // 跳過外部連結、錨點、JavaScript
-            if (href.startsWith('#') ||
-                href.startsWith('javascript:') ||
-                href.startsWith('mailto:') ||
-                href.startsWith('tel:')) {
-                continue;
-            }
+      // 跳過外部連結、錨點、JavaScript
+      if (
+        href.startsWith("#") ||
+        href.startsWith("javascript:") ||
+        href.startsWith("mailto:") ||
+        href.startsWith("tel:")
+      ) {
+        continue;
+      }
 
-            // 構建完整 URL
-            let fullUrl;
-            if (href.startsWith('http')) {
-                fullUrl = href;
-            } else if (href.startsWith('/')) {
-                fullUrl = `${urlObj.protocol}//${urlObj.host}${href}`;
-            } else {
-                continue;
-            }
+      // 構建完整 URL
+      let fullUrl;
+      if (href.startsWith("http")) {
+        fullUrl = href;
+      } else if (href.startsWith("/")) {
+        fullUrl = `${urlObj.protocol}//${urlObj.host}${href}`;
+      } else {
+        continue;
+      }
 
-            // 檢查是否為同域名
-            try {
-                const linkUrl = new URL(fullUrl);
-                if (linkUrl.hostname !== baseHost) continue;
+      // 檢查是否為同域名
+      try {
+        const linkUrl = new URL(fullUrl);
+        if (linkUrl.hostname !== baseHost) continue;
 
-                // 檢查是否為重要路徑
-                const path = linkUrl.pathname.toLowerCase();
-                const isImportant = IMPORTANT_PATHS.some(p =>
-                    path === p || path === `${p}/` || path.startsWith(`${p}/`)
-                );
+        // 檢查是否為重要路徑
+        const path = linkUrl.pathname.toLowerCase();
+        const isImportant = IMPORTANT_PATHS.some(
+          (p) => path === p || path === `${p}/` || path.startsWith(`${p}/`),
+        );
 
-                if (isImportant && !discovered.includes(fullUrl)) {
-                    discovered.push(fullUrl);
-                }
-            } catch {
-                continue;
-            }
+        if (isImportant && !discovered.includes(fullUrl)) {
+          discovered.push(fullUrl);
         }
-
-    } catch (error) {
-        console.warn('📍[MultiPage] 識別子頁面時發生錯誤:', error.message);
+      } catch {
+        continue;
+      }
     }
+  } catch (error) {
+    console.warn("📍[MultiPage] 識別子頁面時發生錯誤:", error.message);
+  }
 
-    console.log('📍[MultiPage] 識別到子頁面:', discovered.slice(0, MAX_SUBPAGES));
-    return discovered.slice(0, MAX_SUBPAGES);
+  console.log("📍[MultiPage] 識別到子頁面:", discovered.slice(0, MAX_SUBPAGES));
+  return discovered.slice(0, MAX_SUBPAGES);
 }
 
 /**
@@ -97,22 +98,24 @@ function discoverSubPages(html, baseUrl) {
  * @returns {string} 合併後的內容
  */
 function mergePageContents(pages) {
-    const validPages = pages.filter(p =>
-        p.content && p.content.length > MIN_CONTENT_LENGTH
-    );
+  const validPages = pages.filter(
+    (p) => p.content && p.content.length > MIN_CONTENT_LENGTH,
+  );
 
-    if (validPages.length === 0) {
-        return '';
-    }
+  if (validPages.length === 0) {
+    return "";
+  }
 
-    // 簡單合併，用分隔符區分
-    const merged = validPages.map(p => {
-        const pathName = new URL(p.url).pathname || '/';
-        return `\n--- ${pathName} ---\n${p.content}`;
-    }).join('\n');
+  // 簡單合併，用分隔符區分
+  const merged = validPages
+    .map((p) => {
+      const pathName = new URL(p.url).pathname || "/";
+      return `\n--- ${pathName} ---\n${p.content}`;
+    })
+    .join("\n");
 
-    console.log('📍[MultiPage] 合併了', validPages.length, '個頁面');
-    return merged;
+  console.log("📍[MultiPage] 合併了", validPages.length, "個頁面");
+  return merged;
 }
 
 /**
@@ -122,18 +125,18 @@ function mergePageContents(pages) {
  * @returns {string[]} 不重複的子頁面 URL
  */
 function getUniqueSubPages(urls, mainUrl) {
-    const mainPath = new URL(mainUrl).pathname;
+  const mainPath = new URL(mainUrl).pathname;
 
-    return [...new Set(urls)]
-        .filter(url => {
-            try {
-                const path = new URL(url).pathname;
-                return path !== mainPath && path !== '/';
-            } catch {
-                return false;
-            }
-        })
-        .slice(0, MAX_SUBPAGES);
+  return [...new Set(urls)]
+    .filter((url) => {
+      try {
+        const path = new URL(url).pathname;
+        return path !== mainPath && path !== "/";
+      } catch {
+        return false;
+      }
+    })
+    .slice(0, MAX_SUBPAGES);
 }
 
 // ============ 多頁並行抓取 ============
@@ -142,48 +145,48 @@ function getUniqueSubPages(urls, mainUrl) {
 const REQUEST_DELAY = 600;
 
 /**
- * 串行抓取多個頁面（控制 Rate Limit）
+ * 並行抓取多個頁面（Promise.allSettled）
  * @param {string[]} urls - URL 列表
  * @param {Function} fetcher - 抓取函數 (url) => Promise<{ok, content}>
  * @returns {Promise<Array<{url: string, content: string}>>}
  */
 async function fetchMultiplePages(urls, fetcher) {
-    const results = [];
+  console.log(`📍[MultiPage] 並行抓取 ${urls.length} 個子頁面`);
 
-    for (let i = 0; i < urls.length; i++) {
-        const url = urls[i];
-        console.log(`📍[MultiPage] 抓取 ${i + 1}/${urls.length}:`, url);
+  const promises = urls.map((url) =>
+    fetcher(url)
+      .then((result) => ({ url, result }))
+      .catch((error) => ({ url, result: { ok: false, error: error.message } })),
+  );
 
-        try {
-            const result = await fetcher(url);
-            if (result.ok && result.content) {
-                results.push({
-                    url: url,
-                    content: result.content
-                });
-            }
-        } catch (error) {
-            console.warn(`📍[MultiPage] 抓取失敗:`, url, error.message);
-        }
+  const settled = await Promise.allSettled(promises);
+  const results = [];
 
-        // 添加延遲避免 Rate Limit（最後一個不需要延遲）
-        if (i < urls.length - 1) {
-            await new Promise(resolve => setTimeout(resolve, REQUEST_DELAY));
-        }
+  for (const item of settled) {
+    if (
+      item.status === "fulfilled" &&
+      item.value.result.ok &&
+      item.value.result.content
+    ) {
+      results.push({ url: item.value.url, content: item.value.result.content });
+    } else {
+      const url = item.status === "fulfilled" ? item.value.url : "unknown";
+      console.warn(`📍[MultiPage] 抓取失敗:`, url);
     }
+  }
 
-    console.log(`📍[MultiPage] 成功抓取 ${results.length}/${urls.length} 頁`);
-    return results;
+  console.log(`📍[MultiPage] 成功抓取 ${results.length}/${urls.length} 頁`);
+  return results;
 }
 
 // ============ 匯出 ============
 
 module.exports = {
-    discoverSubPages,
-    mergePageContents,
-    getUniqueSubPages,
-    fetchMultiplePages,
-    IMPORTANT_PATHS,
-    MAX_SUBPAGES,
-    REQUEST_DELAY
+  discoverSubPages,
+  mergePageContents,
+  getUniqueSubPages,
+  fetchMultiplePages,
+  IMPORTANT_PATHS,
+  MAX_SUBPAGES,
+  REQUEST_DELAY,
 };

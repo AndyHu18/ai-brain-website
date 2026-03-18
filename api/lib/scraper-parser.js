@@ -1,12 +1,21 @@
 /**
  * @file    : api/lib/scraper-parser.js
- * @purpose : 網站抓取模組 - Jina Reader 整合 + 多頁抓取
+ * @purpose : 網站抓取模組 - 直接 fetch + Firecrawl 備胎 + 多頁抓取
  * @depends : ['api/lib/scraper-core.js', 'api/lib/scraper-multi-page.js']
  * @usedBy  : ['api/analyze.js']
  */
 
-const { isValidUrl, normalizeUrl, fetchWithJina, fetchWithRetry } = require('./scraper-core');
-const { discoverSubPages, mergePageContents, fetchMultiplePages } = require('./scraper-multi-page');
+const {
+  isValidUrl,
+  normalizeUrl,
+  fetchWithFirecrawl,
+  fetchWithRetry,
+} = require("./scraper-core");
+const {
+  discoverSubPages,
+  mergePageContents,
+  fetchMultiplePages,
+} = require("./scraper-multi-page");
 
 // ============ 常數設定 ============
 
@@ -19,195 +28,218 @@ const MAX_TEXT_LENGTH = 30000;
  * 從 HTML 中提取純文字內容
  */
 function extractTextContent(html) {
-    // 移除 script、style、noscript、svg 標籤
-    let text = html
-        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-        .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-        .replace(/<noscript[^>]*>[\s\S]*?<\/noscript>/gi, '')
-        .replace(/<svg[^>]*>[\s\S]*?<\/svg>/gi, '')
-        .replace(/<!--[\s\S]*?-->/g, ''); // 移除 HTML 註解
+  // 移除 script、style、noscript、svg 標籤
+  let text = html
+    .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<noscript[^>]*>[\s\S]*?<\/noscript>/gi, "")
+    .replace(/<svg[^>]*>[\s\S]*?<\/svg>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, ""); // 移除 HTML 註解
 
-    // 移除所有 HTML 標籤
-    text = text.replace(/<[^>]+>/g, ' ');
+  // 移除所有 HTML 標籤
+  text = text.replace(/<[^>]+>/g, " ");
 
-    // 解碼 HTML 實體
-    text = text
-        .replace(/&nbsp;/g, ' ')
-        .replace(/&amp;/g, '&')
-        .replace(/&lt;/g, '<')
-        .replace(/&gt;/g, '>')
-        .replace(/&quot;/g, '"')
-        .replace(/&#39;/g, "'")
-        .replace(/&apos;/g, "'")
-        .replace(/&#(\d+);/g, (_, num) => String.fromCharCode(parseInt(num)));
+  // 解碼 HTML 實體
+  text = text
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, num) => String.fromCharCode(parseInt(num)));
 
-    // 清理多餘空白
-    text = text.replace(/\s+/g, ' ').trim();
+  // 清理多餘空白
+  text = text.replace(/\s+/g, " ").trim();
 
-    return text;
+  return text;
 }
 
 /**
  * 從 Markdown 內容中提取標題（#, ##, ###）
  */
 function extractMarkdownHeadings(markdown) {
-    const headings = [];
-    const lines = markdown.split('\n');
+  const headings = [];
+  const lines = markdown.split("\n");
 
-    for (const line of lines) {
-        const match = line.match(/^(#{1,3})\s+(.+)/);
-        if (match) {
-            const level = match[1].length;
-            const text = match[2].trim();
-            if (text.length > 0 && text.length < 200) {
-                headings.push(`H${level}: ${text}`);
-            }
-        }
+  for (const line of lines) {
+    const match = line.match(/^(#{1,3})\s+(.+)/);
+    if (match) {
+      const level = match[1].length;
+      const text = match[2].trim();
+      if (text.length > 0 && text.length < 200) {
+        headings.push(`H${level}: ${text}`);
+      }
     }
+  }
 
-    // 最多取 20 個標題
-    return headings.slice(0, 20);
+  // 最多取 20 個標題
+  return headings.slice(0, 20);
 }
 
 /**
  * 從 Markdown 內容中識別可能的服務/產品區塊
  */
 function extractMarkdownServiceBlocks(markdown) {
-    const services = [];
-    const lines = markdown.split('\n');
+  const services = [];
+  const lines = markdown.split("\n");
 
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        // 找到二級或三級標題
-        const match = line.match(/^#{2,3}\s+(.+)/);
-        if (match) {
-            const title = match[1].trim();
-            // 如果標題像是服務/產品名稱（不是通用詞）
-            if (title.length > 2 && title.length < 100 &&
-                !title.match(/^(home|about|contact|privacy|terms|menu|navigation)/i)) {
-                // 取得後面 2 行作為描述
-                const desc = lines.slice(i + 1, i + 3).join(' ').slice(0, 150);
-                if (desc.length > 10) {
-                    services.push(`${title}: ${desc}`);
-                }
-            }
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    // 找到二級或三級標題
+    const match = line.match(/^#{2,3}\s+(.+)/);
+    if (match) {
+      const title = match[1].trim();
+      // 如果標題像是服務/產品名稱（不是通用詞）
+      if (
+        title.length > 2 &&
+        title.length < 100 &&
+        !title.match(/^(home|about|contact|privacy|terms|menu|navigation)/i)
+      ) {
+        // 取得後面 2 行作為描述
+        const desc = lines
+          .slice(i + 1, i + 3)
+          .join(" ")
+          .slice(0, 150);
+        if (desc.length > 10) {
+          services.push(`${title}: ${desc}`);
         }
+      }
     }
+  }
 
-    return services.slice(0, 10);
+  return services.slice(0, 10);
 }
 
 /**
  * 提取 meta 標籤內容
  */
 function extractMeta(html, name) {
-    const patterns = [
-        new RegExp(`<meta[^>]*name=["']${name}["'][^>]*content=["']([^"']*)["']`, 'i'),
-        new RegExp(`<meta[^>]*content=["']([^"']*)["'][^>]*name=["']${name}["']`, 'i'),
-        new RegExp(`<meta[^>]*property=["']og:${name}["'][^>]*content=["']([^"']*)["']`, 'i'),
-        new RegExp(`<meta[^>]*property=["']${name}["'][^>]*content=["']([^"']*)["']`, 'i')
-    ];
+  const patterns = [
+    new RegExp(
+      `<meta[^>]*name=["']${name}["'][^>]*content=["']([^"']*)["']`,
+      "i",
+    ),
+    new RegExp(
+      `<meta[^>]*content=["']([^"']*)["'][^>]*name=["']${name}["']`,
+      "i",
+    ),
+    new RegExp(
+      `<meta[^>]*property=["']og:${name}["'][^>]*content=["']([^"']*)["']`,
+      "i",
+    ),
+    new RegExp(
+      `<meta[^>]*property=["']${name}["'][^>]*content=["']([^"']*)["']`,
+      "i",
+    ),
+  ];
 
-    for (const pattern of patterns) {
-        const match = html.match(pattern);
-        if (match && match[1]) return match[1];
-    }
-    return '';
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (match && match[1]) return match[1];
+  }
+  return "";
 }
 
 /**
  * 提取頁面標題
  */
 function extractTitle(html) {
-    const ogTitle = extractMeta(html, 'title');
-    if (ogTitle) return ogTitle;
+  const ogTitle = extractMeta(html, "title");
+  if (ogTitle) return ogTitle;
 
-    const match = html.match(/<title[^>]*>([^<]*)<\/title>/i);
-    return match && match[1] ? match[1].trim() : '';
+  const match = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+  return match && match[1] ? match[1].trim() : "";
 }
 
 /**
  * 提取導航連結
  */
 function extractNavigation(html) {
-    const links = [];
+  const links = [];
 
-    // 從 <nav> 標籤中提取
-    const navMatches = html.match(/<nav[^>]*>[\s\S]*?<\/nav>/gi) || [];
-    for (const nav of navMatches) {
-        const linkMatches = nav.matchAll(/<a[^>]*>([^<]*)<\/a>/gi);
-        for (const match of linkMatches) {
-            const text = match[1].trim();
-            if (text && text.length > 1 && text.length < 30) {
-                links.push(text);
-            }
-        }
+  // 從 <nav> 標籤中提取
+  const navMatches = html.match(/<nav[^>]*>[\s\S]*?<\/nav>/gi) || [];
+  for (const nav of navMatches) {
+    const linkMatches = nav.matchAll(/<a[^>]*>([^<]*)<\/a>/gi);
+    for (const match of linkMatches) {
+      const text = match[1].trim();
+      if (text && text.length > 1 && text.length < 30) {
+        links.push(text);
+      }
     }
+  }
 
-    // 從 <header> 標籤中提取（補充）
-    const headerMatches = html.match(/<header[^>]*>[\s\S]*?<\/header>/gi) || [];
-    for (const header of headerMatches) {
-        const linkMatches = header.matchAll(/<a[^>]*>([^<]*)<\/a>/gi);
-        for (const match of linkMatches) {
-            const text = match[1].trim();
-            if (text && text.length > 1 && text.length < 30 && !links.includes(text)) {
-                links.push(text);
-            }
-        }
+  // 從 <header> 標籤中提取（補充）
+  const headerMatches = html.match(/<header[^>]*>[\s\S]*?<\/header>/gi) || [];
+  for (const header of headerMatches) {
+    const linkMatches = header.matchAll(/<a[^>]*>([^<]*)<\/a>/gi);
+    for (const match of linkMatches) {
+      const text = match[1].trim();
+      if (
+        text &&
+        text.length > 1 &&
+        text.length < 30 &&
+        !links.includes(text)
+      ) {
+        links.push(text);
+      }
     }
+  }
 
-    return [...new Set(links)].slice(0, 25);
+  return [...new Set(links)].slice(0, 25);
 }
 
 /**
  * 提取主要標題 (h1, h2, h3)
  */
 function extractHeadings(html) {
-    const headings = [];
-    const patterns = [
-        /<h1[^>]*>([^<]*)<\/h1>/gi,
-        /<h2[^>]*>([^<]*)<\/h2>/gi,
-        /<h3[^>]*>([^<]*)<\/h3>/gi
-    ];
+  const headings = [];
+  const patterns = [
+    /<h1[^>]*>([^<]*)<\/h1>/gi,
+    /<h2[^>]*>([^<]*)<\/h2>/gi,
+    /<h3[^>]*>([^<]*)<\/h3>/gi,
+  ];
 
-    for (const pattern of patterns) {
-        const matches = html.matchAll(pattern);
-        for (const match of matches) {
-            const text = match[1].trim();
-            if (text && text.length > 2 && text.length < 100) {
-                headings.push(text);
-            }
-        }
+  for (const pattern of patterns) {
+    const matches = html.matchAll(pattern);
+    for (const match of matches) {
+      const text = match[1].trim();
+      if (text && text.length > 2 && text.length < 100) {
+        headings.push(text);
+      }
     }
+  }
 
-    return [...new Set(headings)].slice(0, 30);
+  return [...new Set(headings)].slice(0, 30);
 }
 
 /**
  * 提取結構化服務區塊
  */
 function extractServiceBlocks(html) {
-    const blocks = [];
-    const patterns = [
-        /<(?:section|article|div)[^>]*class="[^"]*(?:service|product|feature|solution)[^"]*"[^>]*>([\s\S]*?)<\/(?:section|article|div)>/gi,
-        /<li[^>]*class="[^"]*(?:service|product|menu)[^"]*"[^>]*>([\s\S]*?)<\/li>/gi
-    ];
+  const blocks = [];
+  const patterns = [
+    /<(?:section|article|div)[^>]*class="[^"]*(?:service|product|feature|solution)[^"]*"[^>]*>([\s\S]*?)<\/(?:section|article|div)>/gi,
+    /<li[^>]*class="[^"]*(?:service|product|menu)[^"]*"[^>]*>([\s\S]*?)<\/li>/gi,
+  ];
 
-    for (const pattern of patterns) {
-        const matches = html.matchAll(pattern);
-        for (const match of matches) {
-            const text = match[1]
-                .replace(/<[^>]+>/g, ' ')
-                .replace(/\s+/g, ' ')
-                .trim()
-                .slice(0, 200);
-            if (text.length > 10) {
-                blocks.push(text);
-            }
-        }
+  for (const pattern of patterns) {
+    const matches = html.matchAll(pattern);
+    for (const match of matches) {
+      const text = match[1]
+        .replace(/<[^>]+>/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 200);
+      if (text.length > 10) {
+        blocks.push(text);
+      }
     }
+  }
 
-    return [...new Set(blocks)].slice(0, 15);
+  return [...new Set(blocks)].slice(0, 15);
 }
 
 // ============ 主要抓取函數 ============
@@ -218,115 +250,137 @@ function extractServiceBlocks(html) {
  * @returns {Promise<{ok: boolean, data?: object, error?: string, message?: string}>}
  */
 async function scrapeWebsite(url) {
-    const startTime = Date.now();
-    console.log('📍[Scraper] 開始抓取:', url);
+  const startTime = Date.now();
+  console.log("📍[Scraper] 開始抓取:", url);
 
-    // URL 正規化與驗證
-    const normalizedUrl = normalizeUrl(url);
-    console.log('📍[Scraper] 正規化 URL:', normalizedUrl);
+  // URL 正規化與驗證
+  const normalizedUrl = normalizeUrl(url);
+  console.log("📍[Scraper] 正規化 URL:", normalizedUrl);
 
-    if (!isValidUrl(normalizedUrl)) {
-        return { ok: false, error: 'INVALID_URL', message: '無效的網址格式' };
+  if (!isValidUrl(normalizedUrl)) {
+    return { ok: false, error: "INVALID_URL", message: "無效的網址格式" };
+  }
+
+  // Step 1: 直接 HTTP 抓取（最快）
+  console.log("📍[Scraper] Step 1: 直接 HTTP 抓取");
+  let mainResult = null;
+  let source = "http";
+
+  const httpResult = await fetchWithRetry(normalizedUrl);
+  if (httpResult.ok && httpResult.html) {
+    const text = extractTextContent(httpResult.html);
+    if (text.length >= 200) {
+      mainResult = {
+        ok: true,
+        content: text,
+        title: extractTitle(httpResult.html),
+      };
+      source = "http";
+    } else {
+      console.log(
+        "📍[Scraper] HTTP 內容過少:",
+        text.length,
+        "字，切換 Firecrawl",
+      );
     }
+  } else {
+    console.log("📍[Scraper] HTTP 失敗，切換 Firecrawl");
+  }
 
-    // Step 1: 使用 Jina Reader 抓取首頁
-    console.log('📍[Scraper] Step 1: 使用 Jina Reader 抓取首頁');
-    let mainResult = await fetchWithJina(normalizedUrl);
-    let source = 'jina';
-
-    // 如果 Jina 失敗，降級到原始 HTTP
-    if (!mainResult.ok) {
-        console.log('📍[Scraper] Jina 失敗，降級到 HTTP');
-        const httpResult = await fetchWithRetry(normalizedUrl);
-        if (httpResult.ok && httpResult.html) {
-            mainResult = {
-                ok: true,
-                content: extractTextContent(httpResult.html),
-                title: extractTitle(httpResult.html)
-            };
-            source = 'http';
-        } else {
-            return {
-                ok: false,
-                error: 'FETCH_FAILED',
-                message: '無法抓取網站（Jina 和 HTTP 都失敗）'
-            };
-        }
+  // Step 1b: HTTP 失敗或內容不足 → Firecrawl 備胎
+  if (!mainResult) {
+    const fcResult = await fetchWithFirecrawl(normalizedUrl);
+    if (fcResult.ok) {
+      mainResult = fcResult;
+      source = "firecrawl";
+    } else {
+      return {
+        ok: false,
+        error: "FETCH_FAILED",
+        message: "無法抓取網站（HTTP 和 Firecrawl 都失敗）",
+      };
     }
+  }
 
-    const mainContent = mainResult.content;
-    const fetchDuration = Date.now() - startTime;
-    console.log(`📍[Scraper] 首頁抓取完成 (${source}, ${fetchDuration}ms)，長度:`, mainContent.length);
+  const mainContent = mainResult.content;
+  const fetchDuration = Date.now() - startTime;
+  console.log(
+    `📍[Scraper] 首頁抓取完成 (${source}, ${fetchDuration}ms)，長度:`,
+    mainContent.length,
+  );
 
-    // Step 2: 識別並抓取子頁面
-    console.log('📍[Scraper] Step 2: 識別子頁面');
-    const subPageUrls = discoverSubPages(mainContent, normalizedUrl);
+  // Step 2: 識別並抓取子頁面
+  console.log("📍[Scraper] Step 2: 識別子頁面");
+  const subPageUrls = discoverSubPages(mainContent, normalizedUrl);
 
-    let allContent = mainContent;
-    let subPagesData = [];
+  let allContent = mainContent;
+  let subPagesData = [];
 
-    if (subPageUrls.length > 0) {
-        console.log('📍[Scraper] 發現', subPageUrls.length, '個子頁面');
-        subPagesData = await fetchMultiplePages(subPageUrls, fetchWithJina);
+  if (subPageUrls.length > 0) {
+    console.log("📍[Scraper] 發現", subPageUrls.length, "個子頁面");
+    subPagesData = await fetchMultiplePages(subPageUrls, fetchWithFirecrawl);
 
-        if (subPagesData.length > 0) {
-            const mergedSubContent = mergePageContents(subPagesData);
-            allContent = mainContent + '\n\n--- 子頁面內容 ---\n' + mergedSubContent;
-            console.log('📍[Scraper] 合併後總內容長度:', allContent.length);
-        }
+    if (subPagesData.length > 0) {
+      const mergedSubContent = mergePageContents(subPagesData);
+      allContent = mainContent + "\n\n--- 子頁面內容 ---\n" + mergedSubContent;
+      console.log("📍[Scraper] 合併後總內容長度:", allContent.length);
     }
+  }
 
-    // 截取到最大長度
-    const textContent = allContent.slice(0, MAX_TEXT_LENGTH);
+  // 截取到最大長度
+  const textContent = allContent.slice(0, MAX_TEXT_LENGTH);
 
-    // 從 Markdown 提取結構化資訊（如果是 Jina 來源）
-    const headings = source === 'jina' ? extractMarkdownHeadings(allContent) : [];
-    const serviceBlocks = source === 'jina' ? extractMarkdownServiceBlocks(allContent) : [];
+  // 從 Markdown 提取結構化資訊（Firecrawl 回傳 Markdown）
+  const isMarkdown = source === "firecrawl";
+  const headings = isMarkdown ? extractMarkdownHeadings(allContent) : [];
+  const serviceBlocks = isMarkdown
+    ? extractMarkdownServiceBlocks(allContent)
+    : [];
 
-    const content = {
-        url: normalizedUrl,
-        title: mainResult.title || '未知網站',
-        description: '',
-        textContent,
-        navigation: [],
-        headings: headings,
-        serviceBlocks: serviceBlocks,
-        fetchedAt: new Date().toISOString(),
-        source: source,
-        subPagesCount: subPagesData.length
+  const content = {
+    url: normalizedUrl,
+    title: mainResult.title || "未知網站",
+    description: "",
+    textContent,
+    navigation: [],
+    headings: headings,
+    serviceBlocks: serviceBlocks,
+    fetchedAt: new Date().toISOString(),
+    source: source,
+    subPagesCount: subPagesData.length,
+  };
+
+  console.log("📍[Scraper] 解析完成:", {
+    title: content.title,
+    textLength: textContent.length,
+    headingsCount: headings.length,
+    serviceBlocksCount: serviceBlocks.length,
+    source: source,
+    subPages: subPagesData.length,
+  });
+
+  // 檢查內容是否足夠
+  if (textContent.length < 50) {
+    console.warn("📍[Scraper] 警告: 抓取內容過少");
+    return {
+      ok: false,
+      error: "PARSE_ERROR",
+      message: "網站內容過少或無法解析（可能是 JavaScript 渲染的網站）",
     };
+  }
 
-    console.log('📍[Scraper] 解析完成:', {
-        title: content.title,
-        textLength: textContent.length,
-        headingsCount: headings.length,
-        serviceBlocksCount: serviceBlocks.length,
-        source: source,
-        subPages: subPagesData.length
-    });
-
-    // 檢查內容是否足夠
-    if (textContent.length < 50) {
-        console.warn('📍[Scraper] 警告: 抓取內容過少');
-        return {
-            ok: false,
-            error: 'PARSE_ERROR',
-            message: '網站內容過少或無法解析（可能是 JavaScript 渲染的網站）'
-        };
-    }
-
-    return { ok: true, data: content };
+  return { ok: true, data: content };
 }
 
 // ============ 匯出 ============
 
 module.exports = {
-    scrapeWebsite,
-    extractTextContent,
-    extractTitle,
-    extractMeta,
-    extractNavigation,
-    extractHeadings,
-    extractServiceBlocks,
-    MAX_TEXT_LENGTH
+  scrapeWebsite,
+  extractTextContent,
+  extractTitle,
+  extractMeta,
+  extractNavigation,
+  extractHeadings,
+  extractServiceBlocks,
+  MAX_TEXT_LENGTH,
 };
