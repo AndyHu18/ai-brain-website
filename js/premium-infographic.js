@@ -102,7 +102,7 @@ const PremiumInfographic = (function () {
       "LAYOUT (same structure as the reference):\n" +
       "- TOP: Photorealistic hero image of a " +
       industry +
-      " scene with people, warm lighting\n" +
+      " scene with Taiwanese people (East Asian, natural Taiwanese facial features), warm lighting\n" +
       '- Brand logo area: "AI \u667A\u80FD\u5927\u8166" with tagline\n' +
       '- Large bold headline: "' +
       industry +
@@ -114,8 +114,9 @@ const PremiumInfographic = (function () {
       "IMPORTANT:\n" +
       "- Match the reference image quality and layout precision\n" +
       "- The hero image MUST look like a REAL PHOTOGRAPH taken by a professional photographer — NOT AI-generated\n" +
+      "- All people in the image MUST be Taiwanese — natural East Asian faces, black hair, realistic Taiwanese appearance\n" +
       "- Avoid any AI artifacts: no plastic skin, no unnatural lighting, no warped objects, no extra fingers\n" +
-      "- Style: real-world editorial photography, shot on Canon/Sony camera, natural skin tones, realistic textures\n" +
+      "- Style: real-world editorial photography, shot on Canon/Sony camera, natural Taiwanese skin tones, realistic textures\n" +
       "- Luxurious, high-end atmosphere — like a 5-star establishment or premium magazine shoot\n" +
       "- Professional lighting with natural shadows, shallow depth of field, rich warm tones\n" +
       "- All Chinese text must be perfectly clear using bold sans-serif font\n" +
