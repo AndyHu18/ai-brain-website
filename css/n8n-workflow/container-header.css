@@ -47,6 +47,11 @@
   border-color: var(--warm-orange);
 }
 
+/* 回首頁按鈕 — navbar 內（子頁面頂部） */
+.nav-back-home {
+  margin-right: auto;
+}
+
 /* 回首頁按鈕 — 精緻版 */
 .back-home-btn {
   display: inline-flex;
