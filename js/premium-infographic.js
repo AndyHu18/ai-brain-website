@@ -87,43 +87,42 @@ const PremiumInfographic = (function () {
    * Generate promotional image — few-shot with reference image
    */
   async function generateCard(industry, points) {
+    // Wrap Chinese text in quotes for better rendering (per gemini.md guidelines)
     const bullets = points
       .slice(0, 4)
-      .map((p) => p.title)
+      .map((p) => '"' + p.title.slice(0, 8) + '"')
       .join("\n");
 
     // Load reference image for few-shot
     const refBase64 = await loadReferenceImage();
 
     const newPrompt =
-      "Now create a similar style promotional promotional image for the " +
+      "Now create a luxury promotional image for the " +
       industry +
-      " industry.\n\n" +
-      "LAYOUT (same structure as the reference):\n" +
-      "- TOP: Photorealistic hero image of a " +
+      " industry, same style and quality level as the reference.\n\n" +
+      "LAYOUT:\n" +
+      "- TOP 55%: Full-bleed photorealistic hero photograph of a premium " +
       industry +
-      " scene with Taiwanese people (East Asian, natural Taiwanese facial features), warm lighting\n" +
-      '- Brand logo area: "AI \u667A\u80FD\u5927\u8166" with tagline\n' +
-      '- Large bold headline: "' +
+      " scene\n" +
+      "  - Taiwanese people (East Asian faces, black hair, natural skin) in an upscale setting\n" +
+      "  - Golden hour lighting, shallow depth of field, film grain texture\n" +
+      "  - The atmosphere should feel like a luxury magazine editorial — Vogue, Monocle, Kinfolk\n\n" +
+      "- BOTTOM 45%: Elegant dark overlay (#1A1E23) with warm orange (#D2691E) accents\n" +
+      '  - Brand: "AI \u667A\u80FD\u5927\u8166" small logo\n' +
+      '  - Headline: "' +
       industry +
       ' AI \u61C9\u7528\u5206\u6790"\n' +
-      "- Key service recommendations:\n" +
+      "  - Service list:\n" +
       bullets +
       "\n" +
-      '- Bottom: "LINE \u514D\u8CBB\u8AEE\u8A62" + contact info area\n\n' +
-      "IMPORTANT:\n" +
-      "- Match the reference image quality and layout precision\n" +
-      "- The hero image MUST look like a REAL PHOTOGRAPH taken by a professional photographer — NOT AI-generated\n" +
-      "- All people in the image MUST be Taiwanese — natural East Asian faces, black hair, realistic Taiwanese appearance\n" +
-      "- Avoid any AI artifacts: no plastic skin, no unnatural lighting, no warped objects, no extra fingers\n" +
-      "- Style: real-world editorial photography, shot on Canon/Sony camera, natural Taiwanese skin tones, realistic textures\n" +
-      "- Luxurious, high-end atmosphere — like a 5-star establishment or premium magazine shoot\n" +
-      "- Design tone: luxury soft-sell educational marketing — NOT hard-sell or cheap promotional\n" +
-      "- Think Hermès, Apple, or high-end consulting firm brand campaigns — elegant, aspirational, sophisticated\n" +
-      "- Professional lighting with natural shadows, shallow depth of field, rich warm tones\n" +
-      "- All Chinese text must be perfectly clear using bold sans-serif font\n" +
-      "- Mobile aspect ratio 9:16\n" +
-      "- Warm color scheme with orange (#D2691E) accents on dark background";
+      '  - CTA: "LINE \u514D\u8CBB\u8AEE\u8A62"\n\n' +
+      "QUALITY REQUIREMENTS:\n" +
+      "- MUST look like a real photograph, NOT AI-generated — natural imperfections, realistic skin pores, fabric textures\n" +
+      "- Shot on Sony A7R V or Canon R5, 85mm f/1.4 lens, natural warm tones\n" +
+      "- Luxury soft-sell educational marketing tone — NOT cheap or hard-sell\n" +
+      "- Visual cues of luxury: marble textures, brass/gold accents, premium materials, fresh flowers, natural wood\n" +
+      "- All Chinese text: bold sans-serif font, perfectly clear and legible\n" +
+      "- Mobile aspect ratio 9:16 (1080x1920)";
 
     // Build contents: few-shot if reference available, otherwise text-only
     const contents = [];
