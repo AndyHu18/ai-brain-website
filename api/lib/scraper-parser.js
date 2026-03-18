@@ -261,45 +261,38 @@ async function scrapeWebsite(url) {
     return { ok: false, error: "INVALID_URL", message: "無效的網址格式" };
   }
 
-  // Step 1: 直接 HTTP 抓取（最快）
-  console.log("📍[Scraper] Step 1: 直接 HTTP 抓取");
+  // Step 1: Firecrawl 優先（穩定）
+  console.log("📍[Scraper] Step 1: Firecrawl 抓取");
   let mainResult = null;
-  let source = "http";
+  let source = "firecrawl";
 
-  const httpResult = await fetchWithRetry(normalizedUrl);
-  if (httpResult.ok && httpResult.html) {
-    const text = extractTextContent(httpResult.html);
-    if (text.length >= 200) {
-      mainResult = {
-        ok: true,
-        content: text,
-        title: extractTitle(httpResult.html),
-      };
-      source = "http";
-    } else {
-      console.log(
-        "📍[Scraper] HTTP 內容過少:",
-        text.length,
-        "字，切換 Firecrawl",
-      );
-    }
+  const fcResult = await fetchWithFirecrawl(normalizedUrl);
+  if (fcResult.ok) {
+    mainResult = fcResult;
+    source = "firecrawl";
   } else {
-    console.log("📍[Scraper] HTTP 失敗，切換 Firecrawl");
+    // Step 1b: Firecrawl 失敗 → 直接 HTTP 備胎
+    console.log("📍[Scraper] Firecrawl 失敗，切換直接 HTTP");
+    const httpResult = await fetchWithRetry(normalizedUrl);
+    if (httpResult.ok && httpResult.html) {
+      const text = extractTextContent(httpResult.html);
+      if (text.length >= 200) {
+        mainResult = {
+          ok: true,
+          content: text,
+          title: extractTitle(httpResult.html),
+        };
+        source = "http";
+      }
+    }
   }
 
-  // Step 1b: HTTP 失敗或內容不足 → Firecrawl 備胎
   if (!mainResult) {
-    const fcResult = await fetchWithFirecrawl(normalizedUrl);
-    if (fcResult.ok) {
-      mainResult = fcResult;
-      source = "firecrawl";
-    } else {
-      return {
-        ok: false,
-        error: "FETCH_FAILED",
-        message: "無法抓取網站（HTTP 和 Firecrawl 都失敗）",
-      };
-    }
+    return {
+      ok: false,
+      error: "FETCH_FAILED",
+      message: "無法抓取網站（Firecrawl 和 HTTP 都失敗）",
+    };
   }
 
   const mainContent = mainResult.content;

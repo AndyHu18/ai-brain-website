@@ -272,7 +272,7 @@
   }
 
   // ── Daily usage limit ──
-  const DAILY_LIMIT = 3;
+  const DAILY_LIMIT = 5;
 
   function getUsageToday() {
     const key = "ia_usage_" + new Date().toISOString().slice(0, 10);
