@@ -72,7 +72,8 @@ const PremiumInfographic = (function () {
       "Generate a luxury promotional image for a " +
       industry +
       " business. Use Taiwanese people. " +
-      "Luxury, high-end, photorealistic commercial promotional poster — must look like a real photograph, not AI-generated." +
+      "Luxury, high-end, premium quality, photorealistic commercial promotional poster — must look like a real photograph, not AI-generated. " +
+      "The visual style should feel upscale and sophisticated like a luxury brand advertisement. " +
       "Text to include: " +
       '"AI \u667A\u80FD\u5927\u8166", "' +
       industry +
