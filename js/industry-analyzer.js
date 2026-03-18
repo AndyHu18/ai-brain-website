@@ -333,7 +333,7 @@
           contents: [
             { role: "user", parts: [{ text: `我的行業是：${industry}` }] },
           ],
-          generationConfig: { temperature: 0.8, maxOutputTokens: 1500 },
+          generationConfig: { temperature: 0.8, maxOutputTokens: 3000 },
         }),
       });
 
