@@ -99,6 +99,49 @@
   text-align: center;
 }
 
+/* 知識卡輪播 */
+.analyzer-fun-facts {
+  margin-top: 12px;
+  min-height: 48px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.fun-fact-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(210, 105, 30, 0.08),
+    rgba(243, 156, 18, 0.04)
+  );
+  border-radius: 10px;
+  border: 1px solid rgba(210, 105, 30, 0.15);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: funFactIn 0.4s ease forwards;
+}
+
+.fun-fact-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.fun-fact-text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+@keyframes funFactIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* 錯誤狀態 */
 .analyzer-error {
   display: none;
@@ -166,7 +209,25 @@
   font-size: 1.1rem;
 }
 
-.report-summary p {
+.report-summary .summary-content p {
+  margin: 0 0 12px;
+  line-height: 1.9;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.report-summary .summary-content p:last-child {
+  margin-bottom: 0;
+}
+
+.report-summary .summary-stat {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+/* Fallback for plain <p> without .summary-content */
+.report-summary > p {
   margin: 0;
   line-height: 1.8;
   color: var(--color-text);
@@ -552,6 +613,24 @@
   box-shadow: var(--shadow-md);
   color: white;
   background: linear-gradient(135deg, #c05a1e, #e67e22);
+}
+
+.cta-button-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #06c755, #05b64c);
+  padding: 14px 32px;
+  font-size: 1.05rem;
+  border-radius: 50px;
+}
+
+.cta-button-line:hover {
+  background: linear-gradient(135deg, #05b64c, #04a343);
+}
+
+.cta-button-line svg {
+  flex-shrink: 0;
 }
 
 /* 📧 信箱收集區塊 */

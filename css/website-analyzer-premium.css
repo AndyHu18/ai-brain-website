@@ -450,7 +450,8 @@
   }
 
   .analyzer-trust-signals .trust-item {
-    min-width: 220px;
+    width: 260px;
+    max-width: 100%;
     justify-content: flex-start;
   }
 }
@@ -506,7 +507,8 @@
   }
 
   .analyzer-trust-signals .trust-item {
-    min-width: auto;
+    width: 240px;
+    max-width: 100%;
     font-size: 0.8rem;
     gap: 8px;
   }

@@ -47,6 +47,44 @@
   border-color: var(--warm-orange);
 }
 
+/* 回首頁按鈕 — 精緻版 */
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 250, 245, 0.85);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.back-home-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(210, 105, 30, 0.5);
+  color: #fff;
+}
+
+.back-home-btn svg {
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.back-home-btn:hover svg {
+  opacity: 1;
+}
+
+/* 深色背景版（pricing CTA 區塊用） */
+.back-home-btn-dark {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .logo-icon {
   width: 44px;
   height: 44px;

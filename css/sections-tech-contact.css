@@ -140,6 +140,46 @@
   box-shadow: var(--shadow-card);
 }
 
+/* Contact — LINE CTA */
+.contact-line-cta {
+  text-align: center;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.contact-line-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #06c755, #05b64c);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.3);
+}
+
+.contact-line-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(6, 199, 85, 0.4);
+  color: #fff;
+}
+
+.contact-line-btn svg {
+  flex-shrink: 0;
+}
+
+.contact-line-hint {
+  margin-top: var(--spacing-md);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .tech-grid {
