@@ -383,34 +383,62 @@
 .department-card {
   background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .department-card h5 {
-  margin: 0 0 var(--spacing-md);
+  margin: 0 0 16px;
   font-size: 1.1rem;
   color: var(--color-primary);
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(210, 105, 30, 0.15);
 }
 
 .dept-opportunities,
 .dept-tools {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 16px;
 }
 
 .dept-label {
   font-size: 0.8rem;
   color: var(--color-text-muted);
-  margin: 0 0 var(--spacing-xs);
-  font-weight: 500;
+  margin: 0 0 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .department-card ul {
   margin: 0;
-  padding-left: var(--spacing-lg);
+  padding-left: 0;
+  list-style: none;
   color: var(--color-text);
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+.department-card ul li {
+  padding: 8px 0 8px 20px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.department-card ul li:last-child {
+  border-bottom: none;
+}
+
+.department-card ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  opacity: 0.6;
 }
 
 .tools-tags {
