@@ -1,7 +1,7 @@
 /**
  * Premium Infographic Generator
  * Uses Nano Banana 2 (gemini-3.1-flash-image-preview)
- * Generates magazine-quality infographic card with text directly in image
+ * Generates magazine-quality promotional image with text directly in image
  */
 const PremiumInfographic = (function () {
   "use strict";
@@ -84,7 +84,7 @@ const PremiumInfographic = (function () {
   }
 
   /**
-   * Generate infographic card — few-shot with reference image
+   * Generate promotional image — few-shot with reference image
    */
   async function generateCard(industry, points) {
     const bullets = points
@@ -96,7 +96,7 @@ const PremiumInfographic = (function () {
     const refBase64 = await loadReferenceImage();
 
     const newPrompt =
-      "Now create a similar style promotional infographic card for the " +
+      "Now create a similar style promotional promotional image for the " +
       industry +
       " industry.\n\n" +
       "LAYOUT (same structure as the reference):\n" +
@@ -134,7 +134,7 @@ const PremiumInfographic = (function () {
         parts: [
           { inlineData: { mimeType: "image/jpeg", data: refBase64 } },
           {
-            text: "This is a reference infographic card for a restaurant. Study its layout, typography, color scheme, and overall design quality. I want you to generate new cards in this exact same style and quality level for different industries.",
+            text: "This is a reference promotional image for a restaurant. Study its layout, typography, color scheme, and overall design quality. I want you to generate new cards in this exact same style and quality level for different industries.",
           },
         ],
       });

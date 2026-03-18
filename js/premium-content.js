@@ -154,7 +154,7 @@ const PremiumContent = (function () {
     if (!heroImageEl || !imgBase64) return;
     const img = document.createElement("img");
     img.src = "data:image/png;base64," + imgBase64;
-    img.alt = "AI 行業分析資訊圖";
+    img.alt = "AI 行業分析宣傳圖";
     img.loading = "eager";
     heroImageEl.innerHTML = "";
     heroImageEl.appendChild(img);
