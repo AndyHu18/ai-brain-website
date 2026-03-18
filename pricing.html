@@ -14,6 +14,11 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
+    <!-- Shared CSS (與首頁統一) -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/logo-3d.css" />
+    <!-- Page-specific CSS -->
     <link rel="stylesheet" href="css/agent-demo.css" />
     <link rel="stylesheet" href="css/industry-analyzer.css" />
     <link rel="stylesheet" href="css/premium-content.css" />
@@ -69,157 +74,7 @@
         -webkit-font-smoothing: antialiased;
       }
 
-      /* ── Navbar（與首頁統一：深色毛玻璃） ── */
-      .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-        background: linear-gradient(
-          180deg,
-          rgba(30, 25, 22, 0.92) 0%,
-          rgba(45, 35, 28, 0.88) 100%
-        );
-        border-bottom: 1px solid rgba(210, 165, 90, 0.35);
-        box-shadow:
-          0 4px 20px rgba(0, 0, 0, 0.25),
-          0 0 40px rgba(210, 105, 30, 0.1);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .navbar.scrolled {
-        background: linear-gradient(
-          180deg,
-          rgba(25, 20, 18, 0.96) 0%,
-          rgba(40, 30, 24, 0.94) 100%
-        );
-        box-shadow:
-          0 6px 30px rgba(0, 0, 0, 0.35),
-          0 0 50px rgba(210, 105, 30, 0.15);
-      }
-
-      .nav-inner {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 10px 32px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: padding 0.3s ease;
-      }
-
-      .nav-logo {
-        font-weight: 900;
-        font-size: 1.75rem;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: linear-gradient(
-          135deg,
-          #d2691e 0%,
-          #ffb347 35%,
-          #ff8c00 65%,
-          #b8860b 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        filter: drop-shadow(0 1px 2px rgba(210, 105, 30, 0.3));
-      }
-
-      .nav-logo-icon {
-        width: 30px;
-        height: 30px;
-        background: linear-gradient(
-          135deg,
-          var(--color-primary),
-          var(--color-accent)
-        );
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 0.9rem;
-        font-weight: 900;
-        -webkit-text-fill-color: #fff;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 8px;
-        list-style: none;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: rgba(255, 250, 245, 0.9);
-        font-size: 0.95rem;
-        font-weight: 600;
-        padding: 6px 12px;
-        border-radius: 8px;
-        transition: all 0.2s;
-        letter-spacing: 0.02em;
-      }
-
-      .nav-links a:hover,
-      .nav-links a.active {
-        color: var(--color-accent);
-        background: rgba(210, 165, 90, 0.15);
-      }
-
-      .nav-cta {
-        background: linear-gradient(
-          135deg,
-          #c05000 0%,
-          #a87000 100%
-        ) !important;
-        color: #fff !important;
-        padding: 7px 20px !important;
-        border-radius: 10px !important;
-        font-weight: 700 !important;
-        transition: all 0.3s !important;
-        box-shadow:
-          0 0 10px rgba(192, 80, 0, 0.5),
-          0 4px 20px rgba(192, 80, 0, 0.35);
-        border: 1px solid rgba(255, 200, 100, 0.35);
-      }
-
-      .nav-cta:hover {
-        background: linear-gradient(
-          135deg,
-          #e06000 0%,
-          #c05000 100%
-        ) !important;
-        transform: translateY(-2px);
-        box-shadow:
-          0 0 20px rgba(255, 140, 0, 0.7),
-          0 6px 30px rgba(224, 96, 0, 0.45);
-      }
-
-      .nav-toggle {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        min-width: 44px;
-        min-height: 44px;
-      }
-
-      .nav-toggle span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: rgba(255, 250, 245, 0.9);
-        margin: 5px 0;
-        border-radius: 2px;
-        transition: 0.3s;
-      }
+      /* ── Navbar: 由 css/layout.css + css/logo-3d.css 統一控制 ── */
 
       /* ── Hero ── */
       .hero {
@@ -1385,52 +1240,19 @@
         }
       }
 
-      /* Tablet — 壓縮導航間距 */
-      @media (max-width: 1024px) {
-        .nav-links {
-          gap: 8px;
-        }
-
-        .nav-links a {
-          font-size: 0.85rem;
-          padding: 6px 10px;
-        }
-      }
+      /* Navbar responsive: 由 css/layout.css 統一控制 */
 
       /* Mobile (<768px) */
       @media (max-width: 767px) {
-        .nav-links {
-          display: none;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          background: linear-gradient(
-            180deg,
-            rgba(30, 25, 22, 0.98) 0%,
-            rgba(45, 35, 28, 0.96) 100%
-          );
-          backdrop-filter: blur(20px);
-          flex-direction: column;
-          padding: 16px 24px;
-          border-bottom: 1px solid rgba(210, 165, 90, 0.25);
-        }
-
-        .nav-links.open {
-          display: flex;
-        }
-
-        .nav-toggle {
-          display: block;
-        }
-
         .hero {
           padding: 120px 20px 60px;
         }
 
         .hero-features {
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
+          width: fit-content;
+          margin: 0 auto;
           gap: 16px;
         }
 
@@ -3237,24 +3059,39 @@
   </head>
 
   <body>
-    <!-- Navigation -->
+    <!-- Navigation（與首頁統一結構） -->
     <nav class="navbar" id="navbar">
-      <div class="nav-inner">
+      <div class="nav-container">
         <a href="index.html" class="nav-logo">
-          <div class="nav-logo-icon">AI</div>
-          <span>AI 智能大腦</span>
+          <div class="saturn-scene">
+            <div class="saturn-wrapper">
+              <div class="saturn-planet">
+                <div class="saturn-glow"></div>
+              </div>
+              <div class="saturn-ring"></div>
+              <div class="saturn-orbit">
+                <div class="saturn-moon"></div>
+              </div>
+              <div class="saturn-orbit saturn-orbit-2">
+                <div class="saturn-moon saturn-moon-2"></div>
+              </div>
+            </div>
+          </div>
+          <span class="logo-text">AI 智能大腦</span>
         </a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="index.html">首頁</a></li>
-          <li><a href="#static">形象站</a></li>
-          <li><a href="#cms">可管理站</a></li>
-          <li><a href="#ecommerce">電商功能</a></li>
-          <li><a href="#marketing">行銷導向</a></li>
-          <li><a href="#ai-cs">AI 客服</a></li>
-          <li><a href="#contact" class="nav-cta">免費諮詢</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="選單">
-          <span></span><span></span><span></span>
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link">首頁</a>
+          <a href="index.html#services" class="nav-link">服務項目</a>
+          <a href="index.html#solutions" class="nav-link">解決方案</a>
+          <a href="#" class="nav-link nav-link-active" onclick="return false;"
+            >服務方案</a
+          >
+          <a href="#ai-cs" class="nav-link nav-cta">免費諮詢 →</a>
+        </div>
+        <button class="nav-toggle" aria-label="選單">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
     </nav>
@@ -5368,25 +5205,12 @@
     <script src="chatbot-core.js?v=2"></script>
     <script src="chatbot-ui.js?v=2"></script>
     <script src="chatbot-hints.js?v=2"></script>
+    <script src="script-navigation.js"></script>
 
     <script>
-      // Navbar scroll shadow
-      const navbar = document.getElementById("navbar");
-      window.addEventListener("scroll", () => {
-        navbar.classList.toggle("scrolled", window.scrollY > 10);
-      });
-
-      // Mobile nav toggle
-      const navToggle = document.getElementById("navToggle");
-      const navLinks = document.getElementById("navLinks");
-      navToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
-      });
-
-      // Close mobile nav on link click
-      navLinks.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => navLinks.classList.remove("open"));
-      });
+      // 初始化共用導航（與首頁統一）
+      initNavigation();
+      initSmoothScroll();
 
       // Floating LINE CTA visibility
       const floatingLineCta = document.getElementById("floatingLineCta");

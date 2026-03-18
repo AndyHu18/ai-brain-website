@@ -126,6 +126,13 @@
   background: rgba(210, 165, 90, 0.15);
 }
 
+/* 當前頁面高亮 */
+.nav-link-active {
+  color: var(--color-accent) !important;
+  background: rgba(210, 165, 90, 0.12);
+  cursor: default;
+}
+
 /* 導航連結底線動畫 */
 .nav-link::after {
   content: "";

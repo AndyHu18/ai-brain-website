@@ -3,126 +3,330 @@
  * @module n8n-workflow/responsive
  */
 
-/* === 響應式設計 === */
+/* === 平板斷點 === */
 @media (max-width: 768px) {
-    .workflow-container {
-        padding: var(--spacing-md);
-    }
+  .workflow-container {
+    padding: var(--spacing-md);
+  }
 
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  /* --- 重新排序：按鈕 → 狀態列 → 畫布 → 介紹區 → 流程說明 --- */
+  .workflow-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .header {
+    order: 1;
+  }
+  .status-bar {
+    order: 2;
+  }
+  .canvas-wrapper {
+    order: 3;
+  }
+  .log-panel {
+    order: 4;
+  }
+  .intro-section {
+    order: 5;
+  }
+  .flow-explanation {
+    order: 6;
+  }
 
-    .status-bar {
-        flex-direction: column;
-        gap: var(--spacing-sm);
-    }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .node {
-        width: 150px;
-        min-height: 110px;
-    }
+  .status-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.85rem;
+  }
 
-    .node-title {
-        font-size: 0.9rem;
-    }
+  .status-item {
+    font-size: 0.85rem;
+  }
 
-    .node-description {
-        font-size: 0.8rem;
-    }
+  /* --- 垂直 Stepper 佈局 --- */
+  .canvas-wrapper {
+    padding-top: 10px;
+    overflow: hidden;
+    max-width: 100%;
+  }
 
-    .canvas-wrapper {
-        padding-top: 40px;
-    }
+  .workflow-canvas {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: auto !important;
+    height: auto !important;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    box-sizing: border-box;
+  }
 
-    .start-node-btn {
-        top: 50px;
-        padding: 10px 16px;
-        font-size: 0.9rem;
-    }
+  .nodes-container {
+    position: static !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: auto !important;
+  }
 
-    /* 泡泡響應式調整 */
-    .node-bubble {
-        min-width: 140px;
-        max-width: 180px;
-        top: -70px;
-        padding: var(--spacing-xs) var(--spacing-sm);
-    }
+  .node {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100%;
+    max-width: 320px;
+    min-height: auto;
+  }
 
-    .bubble-message {
-        font-size: 0.75rem;
-    }
+  .node-body {
+    height: auto;
+  }
 
-    /* 結果預覽響應式 */
-    .result-preview {
-        position: static;
-        transform: none;
-        margin-top: var(--spacing-md);
-    }
+  .node-title {
+    font-size: 0.95rem;
+  }
 
-    .preview-line,
-    .preview-email,
-    .preview-article,
-    .preview-report {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
+  .node-description {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
+  }
+
+  /* 連接埠隱藏（改用 CSS 垂直箭頭） */
+  .node-port {
+    display: none;
+  }
+
+  /* SVG 連接線隱藏（用 CSS 垂直連接器替代） */
+  .connections-layer {
+    display: none;
+  }
+
+  /* 垂直連接箭頭 — 用 node::after 偽元素 */
+  .node:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 12px;
+    background: var(--glass-border);
+    z-index: 5;
+  }
+
+  /* 執行完成的連接線變綠 */
+  .node.completed:not(:last-child)::after {
+    background: var(--status-success);
+    box-shadow: 0 0 6px rgba(39, 174, 96, 0.4);
+  }
+
+  /* 執行中的連接線用橘色脈衝 */
+  .node.running:not(:last-child)::after {
+    background: var(--warm-orange);
+    animation: vertical-pulse 1s ease infinite;
+  }
+
+  @keyframes vertical-pulse {
+    0%,
+    100% {
+      opacity: 0.4;
     }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  /* 泡泡改到右側（避免遮蓋上方節點） */
+  .node-bubble {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 8px);
+    transform: translateY(-50%) translateX(0);
+    min-width: 160px;
+    max-width: 200px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .node-bubble::after {
+    /* 箭頭改成向左指 */
+    bottom: auto;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: none;
+    border-right: 10px solid var(--warm-orange);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+  }
+
+  .node-bubble::before {
+    bottom: auto;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: none;
+    border-right: 8px solid #ffffff;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+
+  .node-bubble.visible {
+    animation: bubble-pop-right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes bubble-pop-right {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%) translateX(10px) scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0) scale(1);
+    }
+  }
+
+  .bubble-message {
+    font-size: 0.75rem;
+  }
+
+  /* 「點擊模擬」按鈕 */
+  .start-node-btn {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    margin: 0 auto 12px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+
+  /* 橫向滾動提示隱藏 */
+  .scroll-hint {
+    display: none;
+  }
+
+  /* 結果預覽 */
+  .result-preview {
+    position: static;
+    transform: none;
+    margin-top: var(--spacing-md);
+  }
+
+  .preview-line,
+  .preview-email,
+  .preview-article,
+  .preview-report {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }
 
+/* === 手機小屏斷點 === */
 @media (max-width: 480px) {
-    .node {
-        width: 130px;
-        min-height: 100px;
-    }
+  .node {
+    width: 100% !important;
+    max-width: 280px;
+  }
 
-    .node-header {
-        padding: var(--spacing-sm);
-    }
+  .node-header {
+    padding: var(--spacing-sm);
+  }
 
-    .node-icon {
-        width: 28px;
-        height: 28px;
-    }
+  .node-icon {
+    width: 28px;
+    height: 28px;
+  }
 
-    .node-title {
-        font-size: 0.85rem;
-    }
+  .node-title {
+    font-size: 0.85rem;
+  }
 
-    .node-body {
-        height: 40px;
-    }
+  .intro-section {
+    padding: var(--spacing-md);
+  }
 
-    .intro-section {
-        padding: var(--spacing-md);
-    }
+  .intro-header h2 {
+    font-size: 1.4rem;
+  }
 
-    .intro-header h2 {
-        font-size: 1.4rem;
-    }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .benefits-grid {
-        grid-template-columns: 1fr;
+  /* 泡泡在小螢幕改到下方，避免溢出右側 */
+  .node-bubble {
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 240px;
+  }
+
+  .node-bubble::after {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid var(--warm-orange);
+    border-top: none;
+  }
+
+  .node-bubble::before {
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid #ffffff;
+    border-top: none;
+  }
+
+  .node-bubble.visible {
+    animation: bubble-pop-down 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes bubble-pop-down {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(-10px) scale(0.8);
     }
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
 }
 
 /* === Scrollbar 樣式 === */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-tertiary);
-    border-radius: 4px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
-    border-radius: 4px;
+  background: var(--glass-border);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--neon-cyan);
+  background: var(--neon-cyan);
 }
