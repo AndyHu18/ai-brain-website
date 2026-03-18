@@ -96,15 +96,29 @@ const PremiumInfographic = (function () {
         }),
       });
 
+      if (!res.ok) {
+        console.warn("[PremiumInfographic] Haiku API error:", res.status);
+        return points.map((p) => ({ title: p.title }));
+      }
+
       const data = await res.json();
       const text = data.content?.[0]?.text || "";
+      console.log("[PremiumInfographic] Haiku raw output:", text);
+
       const lines = text
         .split("\n")
         .map((l) => l.trim())
         .filter((l) => l.length > 0);
 
-      if (lines.length >= points.length) {
-        return lines.slice(0, 4).map((line) => ({ title: line }));
+      console.log("[PremiumInfographic] Condensed lines:", lines);
+
+      if (lines.length > 0) {
+        // Use whatever lines Haiku returned, pad with original titles if needed
+        const result = [];
+        for (let i = 0; i < 4; i++) {
+          result.push({ title: lines[i] || points[i]?.title || "" });
+        }
+        return result;
       }
     } catch (err) {
       console.warn("[PremiumInfographic] Haiku condense failed:", err);
