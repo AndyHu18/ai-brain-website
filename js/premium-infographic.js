@@ -59,32 +59,8 @@ const PremiumInfographic = (function () {
     return points;
   }
 
-  // Cache reference image base64
-  let refImageBase64 = null;
-
-  async function loadReferenceImage() {
-    if (refImageBase64) return refImageBase64;
-    try {
-      const res = await fetch("images/reference-infographic.jpg");
-      const blob = await res.blob();
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-          refImageBase64 = reader.result.split(",")[1];
-          resolve(refImageBase64);
-        };
-        reader.readAsDataURL(blob);
-      });
-    } catch (e) {
-      console.warn(
-        "[PremiumInfographic] Reference image not found, using text-only prompt",
-      );
-      return null;
-    }
-  }
-
   /**
-   * Generate promotional image — reference image + simple prompt
+   * Generate promotional image — text-only prompt
    */
   async function generateCard(industry, points) {
     const bullets = points
@@ -92,10 +68,8 @@ const PremiumInfographic = (function () {
       .map((p) => '"' + p.title.slice(0, 8) + '"')
       .join(", ");
 
-    const refBase64 = await loadReferenceImage();
-
     const prompt =
-      "Generate a promotional image in the exact same style and layout as the reference image, but for a " +
+      "Generate a luxury promotional image for a " +
       industry +
       " business. Use Taiwanese people. " +
       "Luxury, high-end, photorealistic soft-sell marketing poster — must look like a real photograph, not AI-generated. " +
@@ -106,22 +80,12 @@ const PremiumInfographic = (function () {
       bullets +
       ', "LINE \u514D\u8CBB\u8AEE\u8A62"';
 
-    const contents = [];
-    if (refBase64) {
-      // Single turn: reference image + prompt together
-      contents.push({
-        role: "user",
-        parts: [
-          { inlineData: { mimeType: "image/jpeg", data: refBase64 } },
-          { text: prompt },
-        ],
-      });
-    } else {
-      contents.push({
+    const contents = [
+      {
         role: "user",
         parts: [{ text: prompt }],
-      });
-    }
+      },
+    ];
 
     const res = await fetch(GEMINI_API, {
       method: "POST",
