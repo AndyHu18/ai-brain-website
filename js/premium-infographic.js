@@ -1,23 +1,29 @@
 /**
  * Premium Infographic Generator
  * Uses Nano Banana Pro (gemini-3-pro-image-preview)
- * Generates dynamic marketing poster with structured layout
+ * Step 1: Haiku condenses analysis points to ≤25 chars
+ * Step 2: Chinese prompt generates 4K marketing poster
  */
 const PremiumInfographic = (function () {
   "use strict";
 
   const GEMINI_API = "/api/gemini";
+  const CLAUDE_API = "/api/claude";
   const MODEL = "gemini-3-pro-image-preview";
 
   async function generate(industry, analysisHtml, onProgress) {
-    const points = extractKeyPoints(analysisHtml);
-    if (points.length === 0)
+    const rawPoints = extractKeyPoints(analysisHtml);
+    if (rawPoints.length === 0)
       throw new Error("\u7121\u6CD5\u63D0\u53D6\u5206\u6790\u8981\u9EDE");
 
-    onProgress("\u751F\u6210\u884C\u696D\u5206\u6790\u5716\u5361...", 30);
+    // Step 1: Haiku condenses long points to ≤25 char labels
+    onProgress("\u6FC3\u7E2E\u5206\u6790\u8981\u9EDE...", 20);
+    const condensed = await condensePoints(rawPoints.slice(0, 4));
 
+    // Step 2: Generate image with condensed labels
+    onProgress("\u751F\u6210\u884C\u696D\u5206\u6790\u6D77\u5831...", 40);
     try {
-      const imgData = await generateCard(industry, points);
+      const imgData = await generateCard(industry, condensed);
       if (imgData) return [imgData];
     } catch (err) {
       console.warn("[PremiumInfographic] Card failed:", err);
@@ -52,7 +58,7 @@ const PremiumInfographic = (function () {
         if (parent) content = parent.textContent.replace(title, "").trim();
       }
       if (title && title.length > 2) {
-        points.push({ title });
+        points.push({ title, content: content.trim() });
       }
     });
 
@@ -60,7 +66,56 @@ const PremiumInfographic = (function () {
   }
 
   /**
-   * Build structured prompt for dynamic marketing poster
+   * Use Haiku to condense long analysis points into ≤25 char labels
+   */
+  async function condensePoints(points) {
+    const pointsText = points
+      .map(
+        (p, i) => i + 1 + ". " + p.title + (p.content ? "：" + p.content : ""),
+      )
+      .join("\n");
+
+    try {
+      const res = await fetch(CLAUDE_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "claude-haiku-4-5-20251001",
+          max_tokens: 200,
+          temperature: 0.3,
+          system:
+            "\u4F60\u662F\u6587\u6848\u6FC3\u7E2E\u5C08\u5BB6\u3002\u628A\u6BCF\u500B\u8981\u9EDE\u6FC3\u7E2E\u6210\u4E00\u53E5\u7CBE\u7149\u7684\u4E2D\u6587\uFF0C\u6BCF\u53E5\u4E0D\u8D85\u904E25\u500B\u5B57\u3002\u53EA\u8F38\u51FA\u6FC3\u7E2E\u5F8C\u7684\u53E5\u5B50\uFF0C\u6BCF\u884C\u4E00\u53E5\uFF0C\u4E0D\u8981\u7DE8\u865F\uFF0C\u4E0D\u8981\u5176\u4ED6\u6587\u5B57\u3002",
+          messages: [
+            {
+              role: "user",
+              content:
+                "\u8ACB\u628A\u4EE5\u4E0B\u8981\u9EDE\u5404\u6FC3\u7E2E\u6210\u4E00\u53E5\u226425\u5B57\u7684\u7CBE\u7149\u4E2D\u6587\uFF1A\n" +
+                pointsText,
+            },
+          ],
+        }),
+      });
+
+      const data = await res.json();
+      const text = data.content?.[0]?.text || "";
+      const lines = text
+        .split("\n")
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0);
+
+      if (lines.length >= points.length) {
+        return lines.slice(0, 4).map((line) => ({ title: line }));
+      }
+    } catch (err) {
+      console.warn("[PremiumInfographic] Haiku condense failed:", err);
+    }
+
+    // Fallback: use original titles if Haiku fails
+    return points.map((p) => ({ title: p.title }));
+  }
+
+  /**
+   * Build Chinese prompt following 2026 best practices
    */
   function buildPrompt(industry, points) {
     const p1 = points[0] || { title: "" };
@@ -70,37 +125,37 @@ const PremiumInfographic = (function () {
     const year = new Date().getFullYear();
 
     return (
-      "A professional, high-end digital marketing poster for a " +
+      "\u88FD\u4F5C\u4E00\u5F35\u9AD8\u7AEF\u5546\u696D\u884C\u92B7\u6D77\u5831\uFF0C\u91DD\u5C0D\u53F0\u7063\u7684" +
       industry +
-      " business in Taiwan. " +
-      "Dark premium background with glowing gold and cyan data lines, network nodes, and subtle holographic tech UI elements. " +
-      "On the left side, photorealistic Taiwanese people in a scene that represents the " +
+      "\u884C\u696D\u3002\n\n" +
+      "\u5834\u666F\uFF1A\u6DF1\u8272\u9AD8\u7D1A\u80CC\u666F\uFF0C\u5E36\u6709\u91D1\u8272\u8207\u9752\u8272\u7684\u79D1\u6280\u5149\u7DDA\u3001\u7DB2\u7D61\u7BC0\u9EDE\u8207\u5168\u606F\u6295\u5F71UI\u5143\u7D20\u3002" +
+      "\u5DE6\u5074\u662F" +
       industry +
-      " industry, dressed professionally. " +
-      "Text layout is strictly structured and grid-based. Clean and highly legible text, integrated into the background with glassmorphism (translucent) panels. No solid white backgrounds: " +
-      '- Top center, large prominent gold serif font: "AI \u667A\u80FD\u5927\u8166" ' +
-      '- Below it, medium gold font: "' +
+      "\u884C\u696D\u7684\u53F0\u7063\u4EBA\u5C08\u696D\u5834\u666F\uFF0C\u7A7F\u8457\u5F97\u9AD4\uFF0C\u8D85\u64EC\u771F\u651D\u5F71\u98A8\u683C\u3002\n\n" +
+      "\u6587\u5B57\u6392\u7248\uFF08\u73FE\u4EE3\u9ED1\u9AD4\uFF0C\u6E05\u6670\u6613\u8B80\uFF09\uFF1A\n" +
+      "- \u7F6E\u4E2D\u4E0A\u65B9\uFF0C\u5927\u6A19\u984C\u91D1\u8272\u5B57\uFF1A\u300C" +
+      "AI \u667A\u80FD\u5927\u8166\u300D\n" +
+      "- \u6B21\u6A19\u984C\uFF1A\u300C" +
       industry +
-      ' AI\u667A\u80FD\u89E3\u6C7A\u65B9\u6848" ' +
-      "- Right side, 4 floating holographic glassmorphism panels, each showing ONLY a short label (no descriptions): " +
-      '  - Panel 1: "' +
+      " AI\u667A\u80FD\u89E3\u6C7A\u65B9\u6848\u300D\n" +
+      "- \u53F3\u5074\u56DB\u500B\u534A\u900F\u660E\u6BDB\u73BB\u7483\u9762\u677F\uFF0C\u6BCF\u500B\u9762\u677F\u986F\u793A\u4E00\u53E5\u8A71\uFF1A\n" +
+      "  - \u9762\u677F\u4E00\uFF1A\u300C" +
       p1.title +
-      '" ' +
-      '  - Panel 2: "' +
+      "\u300D\n" +
+      "  - \u9762\u677F\u4E8C\uFF1A\u300C" +
       p2.title +
-      '" ' +
-      '  - Panel 3: "' +
+      "\u300D\n" +
+      "  - \u9762\u677F\u4E09\uFF1A\u300C" +
       p3.title +
-      '" ' +
-      '  - Panel 4: "' +
+      "\u300D\n" +
+      "  - \u9762\u677F\u56DB\uFF1A\u300C" +
       p4.title +
-      '" ' +
-      '- Bottom right, glowing button: "\u7ACB\u5373\u8AEE\u8A62" ' +
-      '- Bottom left, small text: "\u00A9 ' +
+      "\u300D\n" +
+      "- \u53F3\u4E0B\u65B9\u767C\u5149\u6309\u9215\uFF1A\u300C\u7ACB\u5373\u8AEE\u8A62\u300D\n" +
+      "- \u5DE6\u4E0B\u89D2\u5C0F\u5B57\uFF1A\u300C\u00A9 " +
       year +
-      ' AI\u667A\u80FD\u5927\u8166" ' +
-      "Ultra-photorealistic subjects, cinematic lighting, futuristic luxurious commercial aesthetic. " +
-      "NO messy overlapping text. 9:16 aspect ratio, 4K resolution (2160x3840)."
+      " AI\u667A\u80FD\u5927\u8166\u300D\n\n" +
+      "\u98A8\u683C\uFF1A\u96DC\u8A8C\u7D1A\u5546\u696D\u651D\u5F71\uFF0C\u96FB\u5F71\u611F\u5149\u5F71\uFF0C\u672A\u4F86\u611F\u8207\u5962\u83EF\u611F\u4E26\u5B58\u3002\u4E0D\u8981\u6587\u5B57\u91CD\u758A\u6216\u6A21\u7CCA\u3002\u6BD4\u4F8B 9:16\uFF0C4K \u89E3\u6790\u5EA6\uFF082160x3840\uFF09\u3002"
     );
   }
 
