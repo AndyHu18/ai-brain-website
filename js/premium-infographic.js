@@ -77,40 +77,44 @@ const PremiumInfographic = (function () {
     const year = new Date().getFullYear();
 
     return (
-      "A professional, high-end digital marketing poster. Dark navy blue background with glowing gold and cyan data lines, network nodes, and subtle holographic tech UI elements floating in the air. " +
-      "On the left side, an elegant Taiwanese couple: a woman in a black evening gown and a man in a tuxedo, posing gracefully. Next to them, a classic wooden large-format studio camera on a tripod, emitting a subtle holographic scanning light. " +
-      "Text layout is strictly structured and grid-based. The text must be clean and highly legible, integrated seamlessly into the high-tech background without any solid white paper backgrounds: " +
-      '- Top center, large prominent clean gold serif font: "AI \u667A\u80FD\u5927\u8166" ' +
+      "A professional, high-end digital marketing poster for a " +
+      industry +
+      " business in Taiwan. " +
+      "Dark premium background with glowing gold and cyan data lines, network nodes, and subtle holographic tech UI elements. " +
+      "On the left side, photorealistic Taiwanese people in a scene that represents the " +
+      industry +
+      " industry, dressed professionally. " +
+      "Text layout is strictly structured and grid-based. Clean and highly legible text, integrated into the background with glassmorphism (translucent) panels. No solid white backgrounds: " +
+      '- Top center, large prominent gold serif font: "AI \u667A\u80FD\u5927\u8166" ' +
       '- Below it, medium gold font: "' +
       industry +
       ' AI\u667A\u80FD\u89E3\u6C7A\u65B9\u6848" ' +
-      "- On the right side, floating holographic tech panels with subtle glassmorphism (translucent) effect containing clean lists: " +
-      '  - Panel 1 (Top) with a sleek icon: "' +
+      "- Right side, floating holographic glassmorphism panels: " +
+      '  - Panel 1: "' +
       p1.title +
-      '" and "' +
+      '" - "' +
       p1.content +
       '" ' +
-      '  - Panel 2 with a star icon: "' +
+      '  - Panel 2: "' +
       p2.title +
-      '" and "' +
+      '" - "' +
       p2.content +
       '" ' +
-      '  - Panel 3 with a brain icon: "' +
+      '  - Panel 3: "' +
       p3.title +
-      '" and "' +
+      '" - "' +
       p3.content +
       '" ' +
-      '  - Panel 4 (Bottom) with a cloud icon: "' +
+      '  - Panel 4: "' +
       p4.title +
-      '" and "' +
+      '" - "' +
       p4.content +
       '" ' +
-      '- Bottom right, a glowing tech-style button: "\u7ACB\u5373\u8AEE\u8A62" next to a chat icon ' +
-      '- Bottom left edge, small vertical text: "\u00A9 ' +
+      '- Bottom right, glowing button: "\u7ACB\u5373\u8AEE\u8A62" ' +
+      '- Bottom left, small text: "\u00A9 ' +
       year +
       ' AI\u667A\u80FD\u5927\u8166" ' +
-      "Ultra-photorealistic subjects, crisp vector-like graphic design elements, cinematic lighting, futuristic yet luxurious commercial aesthetic. NO messy overlapping text. Ensure exact text rendering for all specified text. " +
-      "Mobile aspect ratio 9:16 (1080x1920)."
+      "Ultra-photorealistic subjects, cinematic lighting, futuristic luxurious commercial aesthetic. NO messy overlapping text. 9:16 mobile ratio (1080x1920)."
     );
   }
 
