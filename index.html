@@ -1089,6 +1089,7 @@
     <script src="js/website-analyzer/ui.js"></script>
     <script src="js/website-analyzer/render-sections.js"></script>
     <script src="js/website-analyzer/render-report.js"></script>
+    <script src="js/website-analyzer/analyzer-tts.js"></script>
     <script src="js/website-analyzer/index.js"></script>
     <script src="js/hero-workflow-demo.js"></script>
     <script src="js/icons.js"></script>
@@ -1179,6 +1180,25 @@
         // if (lineLabel) fabTypewriter(lineLabel, LINE_PHRASES);
     })();
     </script>
+
+    <!-- 首頁分析語音播放器 -->
+    <div class="analyzer-bottom-bar" id="analyzerBottomBar">
+      <div class="analyzer-bar-inner">
+        <div class="analyzer-bar-play">
+          <button class="analyzer-bar-play-btn" id="analyzerBarPlayBtn">&#9654;</button>
+          <div class="analyzer-bar-audio-info">
+            <div class="analyzer-bar-title" id="analyzerBarTitle">AI 語音分析</div>
+            <div class="analyzer-bar-progress">
+              <div class="analyzer-bar-progress-fill" id="analyzerBarProgressFill"></div>
+            </div>
+            <div class="analyzer-bar-time">
+              <span id="analyzerBarTimeCurrent">0:00</span>
+              <span id="analyzerBarTimeTotal">0:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 
 </html>

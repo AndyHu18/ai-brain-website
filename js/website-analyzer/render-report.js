@@ -24,7 +24,7 @@ const WebsiteAnalyzerReport = {
                 </div>
         `;
 
-    // 📥 PDF 下載區塊
+    // 📥 PDF 下載 + 🔊 語音播報區塊
     html += this._renderDownloadSection(report);
 
     // 摘要（智能分段 + 重點標記）
@@ -65,6 +65,7 @@ const WebsiteAnalyzerReport = {
 
     // 綁定事件
     this._bindPDFButtons(report);
+    this._bindTTSButton(report);
   },
 
   /**
@@ -124,6 +125,18 @@ const WebsiteAnalyzerReport = {
       : "pdf-download-btn";
     const btnText = isBottom ? "下載完整 PDF 報告" : "下載 PDF 報告";
 
+    const ttsBtn = isBottom
+      ? ""
+      : `<button class="tts-generate-btn" id="analyzer-tts-btn" data-report='${JSON.stringify(report).replace(/'/g, "\\'")}'>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                    </svg>
+                    <span class="tts-btn-text">語音播報</span>
+                    <span class="tts-spinner"></span>
+                </button>`;
+
     return `
             <div class="${cls}">
                 <button class="${btnCls}" id="${id}" data-report='${JSON.stringify(report).replace(/'/g, "\\'")}'>
@@ -134,6 +147,7 @@ const WebsiteAnalyzerReport = {
                     </svg>
                     <span class="btn-text">${btnText}</span>
                 </button>
+                ${ttsBtn}
                 ${isBottom ? '<p class="download-hint">包含所有分析結果與 AI 智能大腦公司介紹</p>' : ""}
             </div>
         `;
@@ -232,6 +246,27 @@ const WebsiteAnalyzerReport = {
         });
       }
     });
+  },
+
+  /**
+   * 綁定語音播報按鈕事件
+   */
+  _bindTTSButton(report) {
+    const ttsBtn = document.getElementById("analyzer-tts-btn");
+    if (ttsBtn && window.AnalyzerTTS) {
+      ttsBtn.addEventListener("click", function () {
+        if (ttsBtn.classList.contains("tts-ready")) {
+          // 已生成，直接播放
+          const bar = document.getElementById("analyzerBottomBar");
+          if (bar && bar.classList.contains("visible")) {
+            const playBtn = document.getElementById("analyzerBarPlayBtn");
+            if (playBtn) playBtn.click();
+          }
+          return;
+        }
+        window.AnalyzerTTS.generate(report);
+      });
+    }
   },
 
   /**
