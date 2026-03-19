@@ -11,11 +11,7 @@ const AnalyzerTTS = (function () {
   const TTS_MODEL = "gemini-2.5-pro-preview-tts";
   const VOICE = "Kore";
 
-  const BGM_TRACKS = [
-    "audio/bgm-lofi.mp3",
-    "audio/bgm-ep4-marketing.mp3",
-    "audio/bgm-ep5-aics.mp3",
-  ];
+  const BGM_TRACKS = ["audio/bgm-luxury-1.mp3", "audio/bgm-luxury-2.mp3"];
 
   const SCRIPT_PROMPT = `你是一位親切的 AI 行銷顧問。根據以下網站分析報告，用口語化的方式做一段語音摘要播報。
 

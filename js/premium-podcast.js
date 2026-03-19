@@ -12,11 +12,7 @@ const PremiumPodcast = (function () {
   const VOICE_HOST = "Kore"; // Female host
   const VOICE_GUEST = "Puck"; // Male expert guest
 
-  const BGM_TRACKS = [
-    "audio/bgm-lofi.mp3",
-    "audio/bgm-ep4-marketing.mp3",
-    "audio/bgm-ep5-aics.mp3",
-  ];
+  const BGM_TRACKS = ["audio/bgm-luxury-1.mp3", "audio/bgm-luxury-2.mp3"];
 
   const SCRIPT_SYSTEM_PROMPT = `\u4F60\u662F\u4E00\u500B Podcast \u8173\u672C\u4F5C\u5BB6\u3002\u6839\u64DA\u7528\u6236\u63D0\u4F9B\u7684\u884C\u696D\u5206\u6790\uFF0C\u5BEB\u4E00\u6BB5\u55AE\u4EBA\u65C1\u767D\u8173\u672C\u3002
 
