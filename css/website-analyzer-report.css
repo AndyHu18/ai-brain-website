@@ -1055,12 +1055,12 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Push floating elements above bar */
-.analyzer-bottom-bar.visible ~ .chatbot-fab,
-.analyzer-bottom-bar.visible ~ .line-float-btn,
-.analyzer-bottom-bar.visible ~ [class*="float"],
-.analyzer-bottom-bar.visible ~ [class*="chatbot"] {
-  bottom: 70px;
+/* Push floating elements above bar — use body:has() (sibling ~ won't work, floats are before bar in DOM) */
+body:has(.analyzer-bottom-bar.visible) .floating-line-cta {
+  bottom: 166px;
+}
+body:has(.analyzer-bottom-bar.visible) .chat-widget-container {
+  bottom: 94px;
 }
 
 body:has(.analyzer-bottom-bar.visible) {
@@ -1089,6 +1089,13 @@ body:has(.analyzer-bottom-bar.visible) {
 
   .analyzer-bar-title {
     font-size: 0.75rem;
+  }
+
+  body:has(.analyzer-bottom-bar.visible) .floating-line-cta {
+    bottom: 158px;
+  }
+  body:has(.analyzer-bottom-bar.visible) .chat-widget-container {
+    bottom: 94px;
   }
 }
 
@@ -1121,5 +1128,12 @@ body:has(.analyzer-bottom-bar.visible) {
 
   .analyzer-bar-time {
     font-size: 0.6rem;
+  }
+
+  body:has(.analyzer-bottom-bar.visible) .floating-line-cta {
+    bottom: 150px;
+  }
+  body:has(.analyzer-bottom-bar.visible) .chat-widget-container {
+    bottom: 94px;
   }
 }

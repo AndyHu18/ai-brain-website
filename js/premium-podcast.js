@@ -340,17 +340,13 @@ const PremiumPodcast = (function () {
 
     bar.classList.add("visible");
 
-    // Push other floating elements above the bar
+    // Push floating buttons (LINE + AI chat) above the bar
     const barHeight = bar.offsetHeight || 56;
     document
-      .querySelectorAll(
-        '[class*="float"], [class*="chatbot-fab"], [class*="line-"]',
-      )
+      .querySelectorAll(".floating-line-cta, .chat-widget-container")
       .forEach((el) => {
-        if (el !== bar && el.style) {
-          const currentBottom = parseInt(getComputedStyle(el).bottom, 10) || 0;
-          el.style.bottom = currentBottom + barHeight + 8 + "px";
-        }
+        const currentBottom = parseInt(getComputedStyle(el).bottom, 10) || 0;
+        el.style.bottom = currentBottom + barHeight + 8 + "px";
       });
 
     // Play/pause
