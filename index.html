@@ -8,37 +8,14 @@
     <meta name="description" content="專注於將人工智慧技術轉化為可落地的商業解決方案，協助企業降低營運成本、提升服務效率、創造競爭優勢。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
-    <!-- Modular CSS -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/sections-hero.css">
-    <link rel="stylesheet" href="css/sections-services.css">
-    <link rel="stylesheet" href="css/sections-solutions.css">
-    <link rel="stylesheet" href="css/sections-tech-contact.css">
-    <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css">
-    <link rel="stylesheet" href="css/chatbot/chatbot-window.css">
-    <link rel="stylesheet" href="css/chatbot/chatbot-messages.css">
-    <link rel="stylesheet" href="css/digital-workforce-layout.css">
-    <link rel="stylesheet" href="css/digital-workforce-cards.css">
-    <link rel="stylesheet" href="css/service-fullscreen-layout.css">
-    <link rel="stylesheet" href="css/service-fullscreen-content.css">
-    <link rel="stylesheet" href="css/animations-keyframes.css">
-    <link rel="stylesheet" href="css/animations-stagger.css">
-    <link rel="stylesheet" href="css/service-quick-nav.css">
-    <link rel="stylesheet" href="css/solutions-video-showcase.css">
-    <link rel="stylesheet" href="css/website-analyzer.css">
-    <link rel="stylesheet" href="css/website-analyzer-premium.css">
-    <link rel="stylesheet" href="css/website-analyzer-report.css?v=3">
-    <link rel="stylesheet" href="css/logo-3d.css">
-    <link rel="stylesheet" href="css/hero-workflow.css">
-    <link rel="stylesheet" href="css/trust-section.css">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/p1-marketing/_index.css?v=7">
-    <link rel="stylesheet" href="css/floating-line.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <!-- Critical CSS: 首屏樣式（render-blocking，僅 1 個請求） -->
+    <link rel="stylesheet" href="css/dist/critical.css">
+    <!-- Main CSS: 其他樣式（延遲載入，不阻擋首屏） -->
+    <link rel="stylesheet" href="css/dist/main.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/dist/main.css"></noscript>
 </head>
 
 <body>
