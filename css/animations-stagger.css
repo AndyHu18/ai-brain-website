@@ -5,29 +5,29 @@
  */
 
 /* Hero Content Animations（排除 workflow container，它有自己的 reveal 邏輯） */
-.hero-content > *:not(.hero-workflow-container) {
+/* hero-badge + hero-title 立即顯示（LCP 元素），不加動畫延遲 */
+.hero-badge,
+.hero-title {
+  opacity: 1;
+}
+
+/* 其他非 LCP 元素保留進場動畫 */
+.hero-content
+  > *:not(.hero-workflow-container):not(.hero-badge):not(.hero-title) {
   opacity: 0;
   animation: fadeInUp 0.8s ease forwards;
 }
 
-.hero-badge {
+.hero-description {
   animation-delay: 0.1s;
 }
 
-.hero-title {
+.hero-cta-group {
   animation-delay: 0.2s;
 }
 
-.hero-description {
-  animation-delay: 0.3s;
-}
-
-.hero-cta-group {
-  animation-delay: 0.4s;
-}
-
 .hero-stats {
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 
 /* Scroll Indicator Animation */
