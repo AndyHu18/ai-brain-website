@@ -1,475 +1,627 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 顧問 | AI 智能大腦</title>
-    <meta name="description" content="從零到一的數位轉型夥伴 - 不知道 AI 怎麼導入？我們從頭陪您到尾，從評估到上線全程輔導。">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/animations-keyframes.css">
-    <link rel="stylesheet" href="../css/animations-stagger.css">
-    <link rel="stylesheet" href="../css/service-page-hero.css">
-    <link rel="stylesheet" href="../css/n8n-workflow/_index.css">
-    <link rel="stylesheet" href="../css/n8n-responsive.css">
-    <link rel="stylesheet" href="../css/icons.css">
-    <link rel="stylesheet" href="../css/pricing-comparison.css">
-    <link rel="stylesheet" href="../css/service-content-deep.css">
-</head>
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="../images/favicon-512.png"
+    />
+    <link rel="apple-touch-icon" href="../images/favicon-512.png" />
+    <meta
+      property="og:image"
+      content="https://ai-brain-website.vercel.app/images/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <title>AI 顧問 | AI 智能大腦</title>
+    <meta
+      name="description"
+      content="從零到一的數位轉型夥伴 - 不知道 AI 怎麼導入？我們從頭陪您到尾，從評估到上線全程輔導。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/variables.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/animations-keyframes.css" />
+    <link rel="stylesheet" href="../css/animations-stagger.css" />
+    <link rel="stylesheet" href="../css/service-page-hero.css" />
+    <link rel="stylesheet" href="../css/n8n-workflow/_index.css" />
+    <link rel="stylesheet" href="../css/n8n-responsive.css" />
+    <link rel="stylesheet" href="../css/icons.css" />
+    <link rel="stylesheet" href="../css/pricing-comparison.css" />
+    <link rel="stylesheet" href="../css/service-content-deep.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-transparent">
-        <div class="nav-container">
-            <a href="../index.html" class="nav-logo"><span class="logo-text">AI 智能大腦</span></a>
-            <a href="../index.html" class="back-home-btn nav-back-home"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>回首頁</a>
-          <div class="nav-menu">
-                <a href="../index.html#services" class="nav-link">服務項目</a>
-                <a href="../index.html#solutions" class="nav-link">解決方案</a>
-                <a href="../index.html#technology" class="nav-link">技術能力</a>
-                <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
-            </div>
-            <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      <div class="nav-container">
+        <a href="../index.html" class="nav-logo"
+          ><span class="logo-text">AI 智能大腦</span></a
+        >
+        <a href="../index.html" class="back-home-btn nav-back-home"
+          ><svg
+            viewBox="0 0 24 24"
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"
+            /></svg
+          >回首頁</a
+        >
+        <div class="nav-menu">
+          <a href="../index.html#services" class="nav-link">服務項目</a>
+          <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../index.html#technology" class="nav-link">技術能力</a>
+          <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
 
     <section class="service-hero" id="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
-                <source src="../assets/videos/services/service_consultant.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
-            <span class="sound-icon sound-off">OFF</span>
-            <span class="sound-icon sound-on" style="display: none;">ON</span>
-        </button>
-        <div class="hero-content">
-            <span class="service-badge">服務方案 06</span>
-            <h1 class="hero-title">AI 顧問</h1>
-            <p class="hero-tagline">從零到一的數位轉型夥伴</p>
+      <div class="hero-video-container">
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          id="heroVideo"
+        >
+          <source
+            src="../assets/videos/services/service_consultant.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero-video-overlay"></div>
+      </div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound">
+        <span class="sound-icon sound-off">OFF</span>
+        <span class="sound-icon sound-on" style="display: none">ON</span>
+      </button>
+      <div class="hero-content">
+        <span class="service-badge">服務方案 06</span>
+        <h1 class="hero-title">AI 顧問</h1>
+        <p class="hero-tagline">從零到一的數位轉型夥伴</p>
 
-            <div class="hero-pricing-anchor">
-                <div class="pricing-compare">
-                    <span class="compare-label">顧問公司導入專案</span>
-                    <span class="compare-price">NT$300,000<small>+ /專案</small></span>
-                </div>
-                <div class="pricing-arrow">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                </div>
-                <div class="pricing-offer">
-                    <span class="offer-label">實戰佈署計畫</span>
-                    <span class="offer-price">NT$88,000<small>起 /專案</small></span>
-                </div>
-            </div>
-            <p class="hero-savings">節省超過 <strong>70%</strong>，且 <strong>首次諮詢免費</strong></p>
-
-            <div class="hero-cta-group">
-                <a href="#pricing" class="btn btn-primary">預約免費諮詢</a>
-                <a href="#workflow-demo" class="btn btn-secondary">看導入流程</a>
-            </div>
-
-            <div class="hero-trust-signals">
-                <span class="trust-signal">60 分鐘深度診斷免費</span>
-                <span class="trust-signal">階梯式支付保障</span>
-                <span class="trust-signal">本月限額 2 家</span>
-            </div>
+        <div class="hero-pricing-anchor">
+          <div class="pricing-compare">
+            <span class="compare-label">顧問公司導入專案</span>
+            <span class="compare-price">NT$300,000<small>+ /專案</small></span>
+          </div>
+          <div class="pricing-arrow">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+          <div class="pricing-offer">
+            <span class="offer-label">實戰佈署計畫</span>
+            <span class="offer-price">NT$88,000<small>起 /專案</small></span>
+          </div>
         </div>
-        <div class="hero-scroll-indicator"><span>SCROLL</span>
-            <div class="scroll-arrow"></div>
+        <p class="hero-savings">
+          節省超過 <strong>70%</strong>，且 <strong>首次諮詢免費</strong>
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#pricing" class="btn btn-primary">預約免費諮詢</a>
+          <a href="#workflow-demo" class="btn btn-secondary">看導入流程</a>
         </div>
+
+        <div class="hero-trust-signals">
+          <span class="trust-signal">60 分鐘深度診斷免費</span>
+          <span class="trust-signal">階梯式支付保障</span>
+          <span class="trust-signal">本月限額 2 家</span>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </section>
 
     <!-- 震撼開場銷售主張區塊 -->
     <section class="sales-hook-section">
-        <div class="sales-hook-container">
-            <blockquote class="sales-hook-quote">
-                大公司用技術裁員，您該用技術掠奪市場。我們不談空泛的理論，只談如何讓系統落地幫您賺錢。
-            </blockquote>
-            <p class="sales-hook-body">
-                <strong>在 2026
-                    年，企業的競爭力不再取決於員工數量，而取決於「流程自動化」的深度。</strong>當您的競爭對手還在觀望、摸索如何使用新工具時，我們已經直接進入您的業務底層，為您打造一套專屬的數位自動化獲利系統。
-            </p>
-        </div>
+      <div class="sales-hook-container">
+        <blockquote class="sales-hook-quote">
+          大公司用技術裁員，您該用技術掠奪市場。我們不談空泛的理論，只談如何讓系統落地幫您賺錢。
+        </blockquote>
+        <p class="sales-hook-body">
+          <strong
+            >在 2026
+            年，企業的競爭力不再取決於員工數量，而取決於「流程自動化」的深度。</strong
+          >當您的競爭對手還在觀望、摸索如何使用新工具時，我們已經直接進入您的業務底層，為您打造一套專屬的數位自動化獲利系統。
+        </p>
+      </div>
     </section>
 
     <div class="grid-background"></div>
     <div id="particles"></div>
 
     <main class="workflow-container" id="workflow-demo">
-        <header class="header">
-            <div class="logo">
-                <a href="../index.html" class="back-btn">← 返回首頁</a>
-                <h2>AI 顧問</h2>
-                <span class="demo-badge">流程示範</span>
-            </div>
-            <div class="controls">
-                <button id="btn-start" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                    啟動流程
-                </button>
-                <button id="btn-reset" class="btn btn-secondary">重置</button>
-            </div>
-        </header>
-
-        <!-- 核心銷售主張 -->
-        <section class="intro-section">
-            <div class="intro-header">
-                <h2>為什麼您的企業需要「AI 顧問」？</h2>
-                <p class="intro-subtitle">
-                    中小企業轉型最怕「買了昂貴軟體卻沒人用」或「請了顧問卻只會講簡報」。您不需要大型顧問公司那套動輒數十萬的理論模型，您需要的是一套務實、快速、且能直接與您的營收掛鉤的實戰佈署計畫。</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="6" cy="6" r="3" />
-                            <circle cx="6" cy="18" r="3" />
-                            <line x1="20" y1="4" x2="8.12" y2="15.88" />
-                            <line x1="14.47" y1="14.48" x2="20" y2="20" />
-                            <line x1="8.12" y1="8.12" x2="12" y2="12" />
-                        </svg></span>
-                    <h3>拒絕轉型泡沫</h3>
-                    <p>大型顧問公司收費 NT$300,000 起，本方案只需 NT$88,000 起，為您節省 70% 以上的建置成本，並直接帶領您的團隊完成技術對接</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <circle cx="12" cy="12" r="10" />
-                            <circle cx="12" cy="12" r="6" />
-                            <circle cx="12" cy="12" r="2" />
-                        </svg></span>
-                    <h3>精準技術選型</h3>
-                    <p>市場工具成千上萬，選錯比沒選更浪費錢。我們根據您的業務現況，挑選出轉化率最高、操作難度最低的自動化路徑，讓每一分預算都花在刀口上</p>
-                </div>
-                <div class="benefit-card">
-                    <span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="1.5">
-                            <path
-                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                        </svg></span>
-                    <h3>結構性效率重組</h3>
-                    <p>透過技術導入，我們幫您重新梳理業務流程，將高重複性的行政、行銷、客服工作系統化，讓您的人力真正投入在高價值的決策</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 五大轉型實戰節點 -->
-        <section class="flow-explanation">
-            <h3>五大轉型實戰節點：看系統如何重塑您的企業</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 1rem;">
-                這是一次完整的企業武裝，從診斷到優化，確保轉型真正發生</p>
-            <div class="node-explanations">
-                <div class="node-exp"><span class="exp-num">1</span><strong>企業深度診斷</strong> — 深入分析您的業務流程，找出隱藏的人力黑洞與效率瓶頸
-                </div>
-                <div class="node-exp"><span class="exp-num">2</span><strong>自動化藍圖規劃</strong> —
-                    為您量身定制轉型路線圖，明確標記哪些環節可以立即透過自動化產生獲利</div>
-                <div class="node-exp"><span class="exp-num">3</span><strong>技術選型與導入</strong> —
-                    捨棄複雜代碼，為您建置最穩定、最易維護的系統架構，確保您的團隊能輕鬆上手</div>
-                <div class="node-exp"><span class="exp-num">4</span><strong>團隊實戰培訓</strong> —
-                    不只是幫您做，更要教會您的員工如何操作與優化系統，建立企業內部的數位文化</div>
-                <div class="node-exp"><span class="exp-num">5</span><strong>持續效能優化</strong> —
-                    系統上線後進行定期追蹤，根據真實數據調整參數，確保自動化效益極大化</div>
-            </div>
-        </section>
-
-        <div class="status-bar">
-            <div class="status-item"><span class="status-dot idle"></span><span>狀態：<strong
-                        id="workflow-status">等待啟動</strong></span></div>
-            <div class="status-item"><span>進度：<strong id="workflow-progress">0 / 5</strong></span></div>
-            <div class="status-item"><span>執行時間：<strong id="workflow-time">0.00s</strong></span></div>
+      <header class="header">
+        <div class="logo">
+          <a href="../index.html" class="back-btn">← 返回首頁</a>
+          <h2>AI 顧問</h2>
+          <span class="demo-badge">流程示範</span>
         </div>
-
-        <div class="canvas-wrapper">
-            <button id="start-node-btn" class="start-node-btn" onclick="document.getElementById('btn-start').click()">▶
-                點擊模擬</button>
-            <div id="workflow-canvas" class="workflow-canvas">
-                <svg id="connections-svg" class="connections-layer"></svg>
-                <div id="nodes-container" class="nodes-container"></div>
-            </div>
+        <div class="controls">
+          <button id="btn-start" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            啟動流程
+          </button>
+          <button id="btn-reset" class="btn btn-secondary">重置</button>
         </div>
+      </header>
 
-        <aside class="log-panel">
-            <div class="log-header">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                    <path d="M9 9h6M9 13h6M9 17h6" />
-                </svg>
-                <span>即時執行紀錄</span>
-            </div>
-            <div id="log-content" class="log-content">
-                <div class="log-entry info"><span class="log-time">--:--:--</span><span class="log-msg">AI
-                        顧問就緒，點擊「啟動流程」開始...</span></div>
-            </div>
-        </aside>
+      <!-- 核心銷售主張 -->
+      <section class="intro-section">
+        <div class="intro-header">
+          <h2>為什麼您的企業需要「AI 顧問」？</h2>
+          <p class="intro-subtitle">
+            中小企業轉型最怕「買了昂貴軟體卻沒人用」或「請了顧問卻只會講簡報」。您不需要大型顧問公司那套動輒數十萬的理論模型，您需要的是一套務實、快速、且能直接與您的營收掛鉤的實戰佈署計畫。
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="6" cy="6" r="3" />
+                <circle cx="6" cy="18" r="3" />
+                <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                <line x1="8.12" y1="8.12" x2="12" y2="12" /></svg
+            ></span>
+            <h3>拒絕轉型泡沫</h3>
+            <p>
+              大型顧問公司收費 NT$300,000 起，本方案只需 NT$88,000 起，為您節省
+              70% 以上的建置成本，並直接帶領您的團隊完成技術對接
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" /></svg
+            ></span>
+            <h3>精準技術選型</h3>
+            <p>
+              市場工具成千上萬，選錯比沒選更浪費錢。我們根據您的業務現況，挑選出轉化率最高、操作難度最低的自動化路徑，讓每一分預算都花在刀口上
+            </p>
+          </div>
+          <div class="benefit-card">
+            <span class="benefit-icon"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                /></svg
+            ></span>
+            <h3>結構性效率重組</h3>
+            <p>
+              透過技術導入，我們幫您重新梳理業務流程，將高重複性的行政、行銷、客服工作系統化，讓您的人力真正投入在高價值的決策
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 五大轉型實戰節點 -->
+      <section class="flow-explanation">
+        <h3>五大轉型實戰節點：看系統如何重塑您的企業</h3>
+        <p
+          style="
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 1rem;
+          "
+        >
+          這是一次完整的企業武裝，從診斷到優化，確保轉型真正發生
+        </p>
+        <div class="node-explanations">
+          <div class="node-exp">
+            <span class="exp-num">1</span><strong>企業深度診斷</strong> —
+            深入分析您的業務流程，找出隱藏的人力黑洞與效率瓶頸
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">2</span><strong>自動化藍圖規劃</strong> —
+            為您量身定制轉型路線圖，明確標記哪些環節可以立即透過自動化產生獲利
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">3</span><strong>技術選型與導入</strong> —
+            捨棄複雜代碼，為您建置最穩定、最易維護的系統架構，確保您的團隊能輕鬆上手
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">4</span><strong>團隊實戰培訓</strong> —
+            不只是幫您做，更要教會您的員工如何操作與優化系統，建立企業內部的數位文化
+          </div>
+          <div class="node-exp">
+            <span class="exp-num">5</span><strong>持續效能優化</strong> —
+            系統上線後進行定期追蹤，根據真實數據調整參數，確保自動化效益極大化
+          </div>
+        </div>
+      </section>
+
+      <div class="status-bar">
+        <div class="status-item">
+          <span class="status-dot idle"></span
+          ><span>狀態：<strong id="workflow-status">等待啟動</strong></span>
+        </div>
+        <div class="status-item">
+          <span>進度：<strong id="workflow-progress">0 / 5</strong></span>
+        </div>
+        <div class="status-item">
+          <span>執行時間：<strong id="workflow-time">0.00s</strong></span>
+        </div>
+      </div>
+
+      <div class="canvas-wrapper">
+        <button
+          id="start-node-btn"
+          class="start-node-btn"
+          onclick="document.getElementById('btn-start').click()"
+        >
+          ▶ 點擊模擬
+        </button>
+        <div id="workflow-canvas" class="workflow-canvas">
+          <svg id="connections-svg" class="connections-layer"></svg>
+          <div id="nodes-container" class="nodes-container"></div>
+        </div>
+      </div>
+
+      <aside class="log-panel">
+        <div class="log-header">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            width="18"
+            height="18"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h6" />
+          </svg>
+          <span>即時執行紀錄</span>
+        </div>
+        <div id="log-content" class="log-content">
+          <div class="log-entry info">
+            <span class="log-time">--:--:--</span
+            ><span class="log-msg">AI 顧問就緒，點擊「啟動流程」開始...</span>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <!-- 四欄式對比表格區塊 -->
     <section class="math-proof-section" id="pricing">
-        <div class="math-proof-container">
-            <div class="math-proof-header">
-                <span class="value-section-eyebrow">數學題</span>
-                <h2 class="value-section-title">轉型投資的成本比較</h2>
-            </div>
-
-            <!-- 詳細對比表格 -->
-            <div class="detailed-comparison-table">
-                <table class="comparison-table-grid">
-                    <thead>
-                        <tr>
-                            <th class="compare-header">比較項目</th>
-                            <th class="compare-header traditional">大型數位轉型顧問公司</th>
-                            <th class="compare-header featured">AI 顧問實戰方案 (本方案)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="compare-label">專案成本</td>
-                            <td class="compare-value bad">NT$300,000 起</td>
-                            <td class="compare-value good"><strong>NT$88,000 起</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">交付內容</td>
-                            <td class="compare-value bad">理論報告、PPT 簡報</td>
-                            <td class="compare-value good"><strong>可執行的自動化系統、團隊培訓</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">落地速度</td>
-                            <td class="compare-value bad">需 3 - 6 個月評估期</td>
-                            <td class="compare-value good"><strong>2 - 4 週內見到初步成效</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">後續維護</td>
-                            <td class="compare-value bad">需支付昂貴的維護年費</td>
-                            <td class="compare-value good"><strong>模組化設計，企業可自主維修</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="compare-label">總投入風險</td>
-                            <td class="compare-value bad">極高 (往往只有報告落地難)</td>
-                            <td class="compare-value good"><strong>極低 (以解決具體痛點為目標)</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 投入回報比強調 -->
-            <div class="savings-highlight-box">
-                <p class="savings-highlight-label">投入回報比</p>
-                <p class="savings-highlight-amount">用不到 1/3 的價格</p>
-                <p class="savings-highlight-note">這是傳統顧問公司的報價差額</p>
-            </div>
+      <div class="math-proof-container">
+        <div class="math-proof-header">
+          <span class="value-section-eyebrow">數學題</span>
+          <h2 class="value-section-title">轉型投資的成本比較</h2>
         </div>
+
+        <!-- 詳細對比表格 -->
+        <div class="detailed-comparison-table">
+          <table class="comparison-table-grid">
+            <thead>
+              <tr>
+                <th class="compare-header">比較項目</th>
+                <th class="compare-header traditional">大型數位轉型顧問公司</th>
+                <th class="compare-header featured">
+                  AI 顧問實戰方案 (本方案)
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="compare-label">專案成本</td>
+                <td class="compare-value bad">NT$300,000 起</td>
+                <td class="compare-value good">
+                  <strong>NT$88,000 起</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">交付內容</td>
+                <td class="compare-value bad">理論報告、PPT 簡報</td>
+                <td class="compare-value good">
+                  <strong>可執行的自動化系統、團隊培訓</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">落地速度</td>
+                <td class="compare-value bad">需 3 - 6 個月評估期</td>
+                <td class="compare-value good">
+                  <strong>2 - 4 週內見到初步成效</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">後續維護</td>
+                <td class="compare-value bad">需支付昂貴的維護年費</td>
+                <td class="compare-value good">
+                  <strong>模組化設計，企業可自主維修</strong>
+                </td>
+              </tr>
+              <tr>
+                <td class="compare-label">總投入風險</td>
+                <td class="compare-value bad">極高 (往往只有報告落地難)</td>
+                <td class="compare-value good">
+                  <strong>極低 (以解決具體痛點為目標)</strong>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 投入回報比強調 -->
+        <div class="savings-highlight-box">
+          <p class="savings-highlight-label">投入回報比</p>
+          <p class="savings-highlight-amount">用不到 1/3 的價格</p>
+          <p class="savings-highlight-note">這是傳統顧問公司的報價差額</p>
+        </div>
+      </div>
     </section>
 
     <!-- 最終 CTA 區塊 -->
     <section class="final-cta-section">
-        <div class="final-cta-container">
-            <div class="final-cta-badge">
-                <span class="final-cta-badge-dot"></span>
-                本月限額 2 家
-            </div>
-            <h2 class="final-cta-title">高階診斷預約</h2>
-            <p class="final-cta-desc">
-                我們不賣軟體授權，我們賣的是<strong>企業的競爭優勢</strong>。
-            </p>
-            <div class="final-cta-guarantees">
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>首場 60 分鐘深度診斷免費</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>不適合導入會誠實告知</span>
-                </div>
-                <div class="final-cta-guarantee">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l2 2 4-4" />
-                        <circle cx="12" cy="12" r="10" />
-                    </svg>
-                    <span>階梯式支付，看到成果再續</span>
-                </div>
-            </div>
-            <a href="../index.html#contact" class="final-cta-button">
-                立即申請您的企業轉型診斷
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-            </a>
-            <p class="final-cta-slots">為確保顧問品質，本月僅剩 <strong>1 個</strong>專案額度</p>
+      <div class="final-cta-container">
+        <div class="final-cta-badge">
+          <span class="final-cta-badge-dot"></span>
+          本月限額 2 家
         </div>
+        <h2 class="final-cta-title">高階診斷預約</h2>
+        <p class="final-cta-desc">
+          我們不賣軟體授權，我們賣的是<strong>企業的競爭優勢</strong>。
+        </p>
+        <div class="final-cta-guarantees">
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>首場 60 分鐘深度診斷免費</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>不適合導入會誠實告知</span>
+          </div>
+          <div class="final-cta-guarantee">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4" />
+              <circle cx="12" cy="12" r="10" />
+            </svg>
+            <span>階梯式支付，看到成果再續</span>
+          </div>
+        </div>
+        <a href="../index.html#contact" class="final-cta-button">
+          立即申請您的企業轉型診斷
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <p class="final-cta-slots">
+          為確保顧問品質，本月僅剩 <strong>1 個</strong>專案額度
+        </p>
+      </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <!-- 六大服務快速導覽 -->
-            <div class="footer-quick-nav">
-                <h3 class="footer-section-title">六大 AI 服務方案</h3>
-                <p class="footer-section-subtitle">點擊查看各服務的 AI 工作流程視覺化展示</p>
-                <div class="footer-nav-grid">
-                    <a href="service-content-editor.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">CONTENT</div>
-                        <h4>自動流量小編</h4>
-                        <p>讓網站自己會抓客戶</p>
-                        <span class="footer-nav-tag">SEO 自動化</span>
-                    </a>
-                    <a href="service-voice-receptionist.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">VOICE</div>
-                        <h4>智慧接線生</h4>
-                        <p>24 小時守護每一通訂單</p>
-                        <span class="footer-nav-tag">語音 AI</span>
-                    </a>
-                    <a href="service-brand-clone.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BRAND</div>
-                        <h4>品牌分身術</h4>
-                        <p>讓 AI 代你發文</p>
-                        <span class="footer-nav-tag">社群經營</span>
-                    </a>
-                    <a href="service-chatbot.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">BOT</div>
-                        <h4>客服機器人</h4>
-                        <p>您專屬的線上小幫手</p>
-                        <span class="footer-nav-tag">智能客服</span>
-                    </a>
-                    <a href="service-meeting-notes.html" class="footer-nav-card">
-                        <div class="footer-nav-icon">NOTES</div>
-                        <h4>智慧會議秘書</h4>
-                        <p>開完會，紀錄就好了</p>
-                        <span class="footer-nav-tag">效率工具</span>
-                    </a>
-                    <a href="service-consultant.html" class="footer-nav-card footer-nav-card-current">
-                        <div class="footer-nav-icon">THINK</div>
-                        <h4>AI 顧問</h4>
-                        <p>數位轉型夥伴</p>
-                        <span class="footer-nav-tag">企業轉型</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- 品牌資訊 -->
-            <div class="footer-content">
-                <div class="footer-brand">AI 智能大腦</div>
-                <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
-                <div class="footer-divider"></div>
-                <p class="footer-copyright">© 2026 AI 智能大腦公司 | Enterprise AI Solutions</p>
-            </div>
+      <div class="container">
+        <!-- 六大服務快速導覽 -->
+        <div class="footer-quick-nav">
+          <h3 class="footer-section-title">六大 AI 服務方案</h3>
+          <p class="footer-section-subtitle">
+            點擊查看各服務的 AI 工作流程視覺化展示
+          </p>
+          <div class="footer-nav-grid">
+            <a href="service-content-editor.html" class="footer-nav-card">
+              <div class="footer-nav-icon">CONTENT</div>
+              <h4>自動流量小編</h4>
+              <p>讓網站自己會抓客戶</p>
+              <span class="footer-nav-tag">SEO 自動化</span>
+            </a>
+            <a href="service-voice-receptionist.html" class="footer-nav-card">
+              <div class="footer-nav-icon">VOICE</div>
+              <h4>智慧接線生</h4>
+              <p>24 小時守護每一通訂單</p>
+              <span class="footer-nav-tag">語音 AI</span>
+            </a>
+            <a href="service-brand-clone.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BRAND</div>
+              <h4>品牌分身術</h4>
+              <p>讓 AI 代你發文</p>
+              <span class="footer-nav-tag">社群經營</span>
+            </a>
+            <a href="service-chatbot.html" class="footer-nav-card">
+              <div class="footer-nav-icon">BOT</div>
+              <h4>客服機器人</h4>
+              <p>您專屬的線上小幫手</p>
+              <span class="footer-nav-tag">智能客服</span>
+            </a>
+            <a href="service-meeting-notes.html" class="footer-nav-card">
+              <div class="footer-nav-icon">NOTES</div>
+              <h4>智慧會議秘書</h4>
+              <p>開完會，紀錄就好了</p>
+              <span class="footer-nav-tag">效率工具</span>
+            </a>
+            <a
+              href="service-consultant.html"
+              class="footer-nav-card footer-nav-card-current"
+            >
+              <div class="footer-nav-icon">THINK</div>
+              <h4>AI 顧問</h4>
+              <p>數位轉型夥伴</p>
+              <span class="footer-nav-tag">企業轉型</span>
+            </a>
+          </div>
         </div>
+
+        <!-- 品牌資訊 -->
+        <div class="footer-content">
+          <div class="footer-brand">AI 智能大腦</div>
+          <p class="footer-tagline">讓 AI 成為您的競爭優勢</p>
+          <div class="footer-divider"></div>
+          <p class="footer-copyright">
+            © 2026 AI 智能大腦公司 | Enterprise AI Solutions
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
     <script>
-        // 🧠 AI 顧問 - 工作流程配置
-        const SERVICE_CONFIG = {
-            name: 'AI 顧問',
-            nodes: [
-                {
-                    id: 'enterprise-scan',
-                    title: '企業診斷',
-                    description: '分析企業現況與痛點',
-                    icon: 'scan',
-                    color: '#D4A537',
-                    position: { x: 50, y: 30 },
-                    bubbleMessages: [
-                        '[CHART] 收集企業數據...',
-                        '[SEARCH] 分析作業流程...',
-                        '[WARN] 識別效率瓶頸...',
-                        '[OK] 診斷報告完成！'
-                    ]
-                },
-                {
-                    id: 'ai-blueprint',
-                    title: '藍圖規劃',
-                    description: 'AI 導入策略與路線圖',
-                    icon: 'blueprint',
-                    color: '#3498DB',
-                    position: { x: 280, y: 30 },
-                    bubbleMessages: [
-                        '[NOTES] 定義轉型目標...',
-                        '[DATE] 規劃實施階段...',
-                        '[SAVE] 估算投資報酬...',
-                        '[OK] AI 藍圖已設計！'
-                    ]
-                },
-                {
-                    id: 'tech-select',
-                    title: '技術選型',
-                    description: '選擇最適合的 AI 工具',
-                    icon: 'cog',
-                    color: '#9B59B6',
-                    position: { x: 510, y: 30 },
-                    bubbleMessages: [
-                        '[BUILD] 評估技術方案...',
-                        '[NOTES] 比較工具優劣...',
-                        '[OK] 選定最佳組合...',
-                        '[OK] 技術架構確認！'
-                    ]
-                },
-                {
-                    id: 'team-train',
-                    title: '團隊培訓',
-                    description: '培訓內部團隊操作',
-                    icon: 'team',
-                    color: '#27AE60',
-                    position: { x: 740, y: 30 },
-                    bubbleMessages: [
-                        '[LEARN] 製作培訓教材...',
-                        '[CERT] 進行實操培訓...',
-                        '[CONTENT] 驗收學習成果...',
-                        '[OK] 團隊已能獨立運作！'
-                    ]
-                },
-                {
-                    id: 'continuous-opt',
-                    title: '持續優化',
-                    description: '定期追蹤與效能優化',
-                    icon: 'chart',
-                    color: '#E74C3C',
-                    position: { x: 970, y: 30 },
-                    bubbleMessages: [
-                        '[CHART] 追蹤關鍵指標...',
-                        '[SYNC] 收集使用回饋...',
-                        '[FAST] 優化系統效能...',
-                        '[OK] ROI 提升 300%！'
-                    ]
-                }
+      // 🧠 AI 顧問 - 工作流程配置
+      const SERVICE_CONFIG = {
+        name: "AI 顧問",
+        nodes: [
+          {
+            id: "enterprise-scan",
+            title: "企業診斷",
+            description: "分析企業現況與痛點",
+            icon: "scan",
+            color: "#D4A537",
+            position: { x: 50, y: 30 },
+            bubbleMessages: [
+              "[CHART] 收集企業數據...",
+              "[SEARCH] 分析作業流程...",
+              "[WARN] 識別效率瓶頸...",
+              "[OK] 診斷報告完成！",
             ],
-            connections: [
-                { from: 'enterprise-scan', to: 'ai-blueprint' },
-                { from: 'ai-blueprint', to: 'tech-select' },
-                { from: 'tech-select', to: 'team-train' },
-                { from: 'team-train', to: 'continuous-opt' }
+          },
+          {
+            id: "ai-blueprint",
+            title: "藍圖規劃",
+            description: "AI 導入策略與路線圖",
+            icon: "blueprint",
+            color: "#3498DB",
+            position: { x: 280, y: 30 },
+            bubbleMessages: [
+              "[NOTES] 定義轉型目標...",
+              "[DATE] 規劃實施階段...",
+              "[SAVE] 估算投資報酬...",
+              "[OK] AI 藍圖已設計！",
             ],
-            executionOrder: ['enterprise-scan', 'ai-blueprint', 'tech-select', 'team-train', 'continuous-opt'],
-            resultPreview: {
-                type: 'report',
-                content: {
-                    title: 'AI 導入成效報告',
-                    stats: [
-                        { value: '300%', label: 'ROI 提升' },
-                        { value: '65%', label: '效率提升' },
-                        { value: '40萬', label: '年省成本' },
-                        { value: '98%', label: '滿意度' }
-                    ]
-                }
-            }
-        };
+          },
+          {
+            id: "tech-select",
+            title: "技術選型",
+            description: "選擇最適合的 AI 工具",
+            icon: "cog",
+            color: "#9B59B6",
+            position: { x: 510, y: 30 },
+            bubbleMessages: [
+              "[BUILD] 評估技術方案...",
+              "[NOTES] 比較工具優劣...",
+              "[OK] 選定最佳組合...",
+              "[OK] 技術架構確認！",
+            ],
+          },
+          {
+            id: "team-train",
+            title: "團隊培訓",
+            description: "培訓內部團隊操作",
+            icon: "team",
+            color: "#27AE60",
+            position: { x: 740, y: 30 },
+            bubbleMessages: [
+              "[LEARN] 製作培訓教材...",
+              "[CERT] 進行實操培訓...",
+              "[CONTENT] 驗收學習成果...",
+              "[OK] 團隊已能獨立運作！",
+            ],
+          },
+          {
+            id: "continuous-opt",
+            title: "持續優化",
+            description: "定期追蹤與效能優化",
+            icon: "chart",
+            color: "#E74C3C",
+            position: { x: 970, y: 30 },
+            bubbleMessages: [
+              "[CHART] 追蹤關鍵指標...",
+              "[SYNC] 收集使用回饋...",
+              "[FAST] 優化系統效能...",
+              "[OK] ROI 提升 300%！",
+            ],
+          },
+        ],
+        connections: [
+          { from: "enterprise-scan", to: "ai-blueprint" },
+          { from: "ai-blueprint", to: "tech-select" },
+          { from: "tech-select", to: "team-train" },
+          { from: "team-train", to: "continuous-opt" },
+        ],
+        executionOrder: [
+          "enterprise-scan",
+          "ai-blueprint",
+          "tech-select",
+          "team-train",
+          "continuous-opt",
+        ],
+        resultPreview: {
+          type: "report",
+          content: {
+            title: "AI 導入成效報告",
+            stats: [
+              { value: "300%", label: "ROI 提升" },
+              { value: "65%", label: "效率提升" },
+              { value: "40萬", label: "年省成本" },
+              { value: "98%", label: "滿意度" },
+            ],
+          },
+        },
+      };
     </script>
     <!-- 工作流引擎模組化載入 -->
     <script src="../js/workflow-engine/config.js"></script>
@@ -478,17 +630,16 @@
     <script src="../js/workflow-engine/engine.js"></script>
     <script src="../js/workflow-engine/index.js"></script>
     <script>
-        const video = document.getElementById('heroVideo');
-        const soundToggle = document.getElementById('soundToggle');
-        const soundOff = soundToggle.querySelector('.sound-off');
-        const soundOn = soundToggle.querySelector('.sound-on');
-        soundToggle.addEventListener('click', () => {
-            video.muted = !video.muted;
-            soundOff.style.display = video.muted ? 'inline' : 'none';
-            soundOn.style.display = video.muted ? 'none' : 'inline';
-        });
+      const video = document.getElementById("heroVideo");
+      const soundToggle = document.getElementById("soundToggle");
+      const soundOff = soundToggle.querySelector(".sound-off");
+      const soundOn = soundToggle.querySelector(".sound-on");
+      soundToggle.addEventListener("click", () => {
+        video.muted = !video.muted;
+        soundOff.style.display = video.muted ? "inline" : "none";
+        soundOn.style.display = video.muted ? "none" : "inline";
+      });
     </script>
     <script src="../js/icons.js"></script>
-</body>
-
+  </body>
 </html>
