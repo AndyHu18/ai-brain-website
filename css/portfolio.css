@@ -311,21 +311,35 @@
 
 .pf-brain-tag {
   position: absolute;
-  top: -8px;
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
-  padding: 3px 10px;
-  background: linear-gradient(135deg, #00ced1, #00b4d8);
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  border-radius: 6px;
-  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  background: #2d3436;
+  color: #f5efe6;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 206, 209, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
+  max-width: 220px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.pf-brain-tag::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #2d3436;
 }
 
 @keyframes floatBrain {
@@ -690,6 +704,12 @@
     height: 64px;
     bottom: 20px;
     right: 20px;
+  }
+
+  .pf-brain-tag {
+    font-size: 0.6rem;
+    padding: 5px 10px;
+    max-width: 170px;
   }
 
   .pf-cta {
