@@ -287,7 +287,7 @@
 /* Floating Brain LINE Button */
 .pf-floating-brain {
   position: fixed;
-  bottom: 32px;
+  bottom: calc(32px + env(safe-area-inset-bottom, 0px));
   right: 32px;
   width: 80px;
   height: 80px;
@@ -563,6 +563,7 @@
 /* ===== Footer ===== */
 .portfolio-footer {
   padding: 32px 24px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
   text-align: center;
   background: #f5efe6;
   border-top: 1px solid rgba(210, 105, 30, 0.08);
@@ -587,7 +588,7 @@
 /* ===== Tablet (768px) ===== */
 @media (max-width: 768px) {
   .portfolio-hero {
-    padding: 120px 24px 80px;
+    padding: 100px 24px 60px;
   }
 
   .pf-project {
@@ -597,7 +598,7 @@
   .pf-project-inner,
   .pf-project-inner.pf-reverse {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
     direction: ltr;
   }
 
@@ -610,32 +611,39 @@
   }
 
   .pf-founder {
-    padding: 60px 24px;
+    padding: 48px 24px;
   }
 
   .pf-cta {
-    padding: 48px 24px;
+    padding: 40px 24px;
   }
 
   .pf-cta-inner {
     grid-template-columns: 1fr;
     gap: 0;
+    border-radius: 20px;
   }
 
   .pf-cta-image {
-    border-radius: 24px 24px 0 0;
-    max-height: 280px;
+    border-radius: 20px 20px 0 0;
+    max-height: 240px;
   }
 
   .pf-cta-body {
-    padding: 36px;
+    padding: 32px 28px;
+    text-align: center;
+  }
+
+  .pf-cta-btn {
+    margin: 0 auto;
   }
 }
 
 /* ===== Mobile (480px) ===== */
 @media (max-width: 480px) {
   .portfolio-hero {
-    padding: 100px 16px 64px;
+    padding: 80px 14px 48px;
+    padding-top: calc(80px + env(safe-area-inset-top, 0px));
   }
 
   .portfolio-hero::before {
@@ -647,87 +655,150 @@
     font-size: 0.65rem;
     padding: 6px 16px;
     letter-spacing: 0.2em;
+    margin-bottom: 20px;
+  }
+
+  .portfolio-hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.75;
   }
 
   .pf-project {
-    padding: 32px 16px;
+    padding: 28px 14px;
   }
 
   .pf-project-inner {
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .pf-project-image {
+    border-radius: 14px;
   }
 
   .pf-project-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .pf-project-tagline {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
   }
 
   .pf-project-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
   }
 
   .pf-divider {
-    padding: 40px 16px 12px;
+    padding: 36px 14px 12px;
   }
 
   .pf-divider-title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .pf-founder {
-    padding: 48px 16px;
+    padding: 36px 14px;
   }
 
   .pf-founder-title {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+  }
+
+  .pf-founder-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
   }
 
   .pf-compare {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
+  }
+
+  .pf-compare-col {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .pf-compare-heading {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .pf-compare-list li {
+    font-size: 0.85rem;
+    padding: 6px 0;
+  }
+
+  .pf-multiplier {
+    padding: 18px;
+    margin-bottom: 24px;
   }
 
   .pf-multiplier-items {
-    gap: 6px;
+    gap: 5px;
   }
 
   .pf-multiplier-tag {
-    font-size: 0.75rem;
-    padding: 5px 10px;
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+
+  .pf-multiplier-x {
+    font-size: 1rem;
   }
 
   .pf-floating-brain {
-    width: 64px;
-    height: 64px;
-    bottom: 20px;
-    right: 20px;
+    width: 56px;
+    height: 56px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
   }
 
   .pf-brain-tag {
-    font-size: 0.8rem;
-    padding: 5px 12px;
-    max-width: 180px;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    max-width: 160px;
   }
 
   .pf-cta {
-    padding: 32px 16px;
+    padding: 28px 14px;
+  }
+
+  .pf-cta-inner {
+    border-radius: 16px;
+  }
+
+  .pf-cta-image {
+    border-radius: 16px 16px 0 0;
+    max-height: 200px;
   }
 
   .pf-cta-body {
-    padding: 24px;
+    padding: 24px 20px;
+    text-align: center;
   }
 
   .pf-cta-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+
+  .pf-cta-text {
+    font-size: 0.88rem;
+    margin-bottom: 24px;
   }
 
   .pf-cta-btn {
     width: 100%;
     justify-content: center;
-    padding: 16px 32px;
+    padding: 14px 24px;
     font-size: 0.9rem;
+    border-radius: 10px;
+    margin: 0 auto;
+  }
+
+  /* Footer safe area */
+  .portfolio-footer {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   }
 }
