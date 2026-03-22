@@ -278,7 +278,7 @@
           </div>
           <div class="pf-cta-body">
             <h2 class="pf-cta-title">
-              你的網站，準備好<br />從展示型升級為業務型了嗎？
+              <span class="typewriter" id="typewriter-cta"></span>
             </h2>
             <p class="pf-cta-text">
               六大方案從品牌形象站到 AI 行銷系統。每個方案含 RWD + SEO + 5
@@ -314,55 +314,93 @@
 
     <script>
       (function () {
-        const lines = [
-          { text: "不只做網站", highlight: false },
-          { text: "打造會接客的 AI 商業工具", highlight: true },
-        ];
-        const el = document.getElementById("typewriter");
-        const speed = 100;
-        const lineDelay = 400;
-        let lineIdx = 0;
-        let charIdx = 0;
-
-        function type() {
-          if (lineIdx >= lines.length) {
-            // Add blinking cursor at end
-            const cursor = document.createElement("span");
-            cursor.className = "typewriter-cursor";
-            cursor.textContent = "|";
-            el.appendChild(cursor);
-            return;
-          }
-
-          const line = lines[lineIdx];
-
-          if (charIdx === 0 && lineIdx > 0) {
-            el.appendChild(document.createElement("br"));
-          }
-
-          if (charIdx === 0 && line.highlight) {
-            const span = document.createElement("span");
-            span.className = "highlight";
-            span.id = "tw-line-" + lineIdx;
-            el.appendChild(span);
-          }
-
-          const target = line.highlight
-            ? document.getElementById("tw-line-" + lineIdx)
-            : el;
-
-          if (charIdx < line.text.length) {
-            target.appendChild(document.createTextNode(line.text[charIdx]));
-            charIdx++;
-            setTimeout(type, speed);
-          } else {
-            lineIdx++;
+        /* === Typewriter Engine === */
+        function typewriter(el, lines, speed, lineDelay) {
+          let lineIdx = 0,
             charIdx = 0;
-            setTimeout(type, lineDelay);
+          function type() {
+            if (lineIdx >= lines.length) {
+              const cursor = document.createElement("span");
+              cursor.className = "typewriter-cursor";
+              cursor.textContent = "|";
+              el.appendChild(cursor);
+              return;
+            }
+            const line = lines[lineIdx];
+            if (charIdx === 0 && lineIdx > 0)
+              el.appendChild(document.createElement("br"));
+            if (charIdx === 0 && line.highlight) {
+              const span = document.createElement("span");
+              span.className = "highlight";
+              span.id = el.id + "-hl-" + lineIdx;
+              el.appendChild(span);
+            }
+            const target = line.highlight
+              ? document.getElementById(el.id + "-hl-" + lineIdx)
+              : el;
+            if (charIdx < line.text.length) {
+              target.appendChild(document.createTextNode(line.text[charIdx]));
+              charIdx++;
+              setTimeout(type, speed);
+            } else {
+              lineIdx++;
+              charIdx = 0;
+              setTimeout(type, lineDelay);
+            }
           }
+          type();
         }
 
-        type();
+        /* Hero typewriter — immediate */
+        typewriter(
+          document.getElementById("typewriter"),
+          [
+            { text: "不只做網站", highlight: false },
+            { text: "打造會接客的 AI 商業工具", highlight: true },
+          ],
+          100,
+          400,
+        );
+
+        /* CTA typewriter — on scroll into view */
+        const ctaEl = document.getElementById("typewriter-cta");
+        let ctaFired = false;
+        const ctaObserver = new IntersectionObserver(
+          function (entries) {
+            if (entries[0].isIntersecting && !ctaFired) {
+              ctaFired = true;
+              typewriter(
+                ctaEl,
+                [
+                  { text: "你的網站，準備好", highlight: false },
+                  { text: "從展示型升級為業務型了嗎？", highlight: true },
+                ],
+                80,
+                300,
+              );
+              ctaObserver.disconnect();
+            }
+          },
+          { threshold: 0.5 },
+        );
+        ctaObserver.observe(ctaEl);
+
+        /* === Scroll Reveal for project cards === */
+        const projects = document.querySelectorAll(".pf-project");
+        const revealObserver = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("pf-visible");
+                revealObserver.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 },
+        );
+        projects.forEach(function (p) {
+          revealObserver.observe(p);
+        });
       })();
     </script>
   </body>

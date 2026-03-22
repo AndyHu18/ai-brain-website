@@ -211,6 +211,20 @@
   transform: translateX(4px);
 }
 
+/* ===== Scroll Reveal Animation ===== */
+.pf-project {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.pf-project.pf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ===== Divider ===== */
 .pf-divider {
   text-align: center;
