@@ -26,9 +26,7 @@
         <div class="portfolio-hero-content">
           <div class="portfolio-badge">PORTFOLIO</div>
           <h1 class="portfolio-hero-title">
-            不只做網站<br /><span class="highlight"
-              >打造會接客的 AI 商業工具</span
-            >
+            <span class="typewriter" id="typewriter"></span>
           </h1>
           <p class="portfolio-hero-subtitle">
             別人的網站放文字介紹 AI，我們的網站讓你直接體驗 AI。<br />
@@ -79,8 +77,8 @@
 
       <!-- Section Divider -->
       <div class="pf-divider">
-        <span class="portfolio-badge">CLIENT PROJECTS</span>
-        <h2 class="pf-divider-title">每個品牌，都有專屬的設計語言</h2>
+        <span class="portfolio-badge">WORKS</span>
+        <h2 class="pf-divider-title">精選作品展示</h2>
       </div>
 
       <!-- 1. 華友聯 -->
@@ -313,5 +311,59 @@
         </p>
       </footer>
     </div>
+
+    <script>
+      (function () {
+        const lines = [
+          { text: "不只做網站", highlight: false },
+          { text: "打造會接客的 AI 商業工具", highlight: true },
+        ];
+        const el = document.getElementById("typewriter");
+        const speed = 100;
+        const lineDelay = 400;
+        let lineIdx = 0;
+        let charIdx = 0;
+
+        function type() {
+          if (lineIdx >= lines.length) {
+            // Add blinking cursor at end
+            const cursor = document.createElement("span");
+            cursor.className = "typewriter-cursor";
+            cursor.textContent = "|";
+            el.appendChild(cursor);
+            return;
+          }
+
+          const line = lines[lineIdx];
+
+          if (charIdx === 0 && lineIdx > 0) {
+            el.appendChild(document.createElement("br"));
+          }
+
+          if (charIdx === 0 && line.highlight) {
+            const span = document.createElement("span");
+            span.className = "highlight";
+            span.id = "tw-line-" + lineIdx;
+            el.appendChild(span);
+          }
+
+          const target = line.highlight
+            ? document.getElementById("tw-line-" + lineIdx)
+            : el;
+
+          if (charIdx < line.text.length) {
+            target.appendChild(document.createTextNode(line.text[charIdx]));
+            charIdx++;
+            setTimeout(type, speed);
+          } else {
+            lineIdx++;
+            charIdx = 0;
+            setTimeout(type, lineDelay);
+          }
+        }
+
+        type();
+      })();
+    </script>
   </body>
 </html>

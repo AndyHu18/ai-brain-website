@@ -89,6 +89,23 @@
   background-clip: text;
 }
 
+/* Typewriter */
+.typewriter-cursor {
+  color: #d2691e;
+  font-weight: 300;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 .portfolio-hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: #8a7262;
