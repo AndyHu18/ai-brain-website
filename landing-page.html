@@ -486,12 +486,12 @@
         let tagIdx = 0;
         setInterval(function () {
           tagEl.style.opacity = "0";
-          tagEl.style.transform = "translateY(-8px)";
+          tagEl.style.transform = "translateX(-50%) translateY(-8px)";
           setTimeout(function () {
             tagIdx = (tagIdx + 1) % tags.length;
             tagEl.textContent = tags[tagIdx];
             tagEl.style.opacity = "1";
-            tagEl.style.transform = "translateY(0)";
+            tagEl.style.transform = "translateX(-50%) translateY(0)";
           }, 300);
         }, 2000);
 
