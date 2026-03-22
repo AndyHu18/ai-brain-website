@@ -160,6 +160,8 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  /* LINE in-app browser safe area */
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .section-nav::-webkit-scrollbar {
@@ -1168,6 +1170,7 @@ body {
 /* ── Footer ── */
 .footer {
   padding: 32px 24px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
   text-align: center;
   border-top: 1px solid var(--border-light);
   font-size: 0.9rem;
@@ -1270,7 +1273,8 @@ body {
 /* Mobile (<768px) */
 @media (max-width: 767px) {
   .hero {
-    padding: 120px 20px 60px;
+    padding: 100px 20px 48px;
+    padding-top: calc(100px + env(safe-area-inset-top, 0px));
   }
 
   .hero-features {
@@ -1278,25 +1282,30 @@ body {
     align-items: flex-start;
     width: fit-content;
     margin: 0 auto;
-    gap: 16px;
+    gap: 12px;
   }
 
   .section {
-    padding: 60px 0;
+    padding: 48px 0;
   }
 
   .pricing-card {
-    padding: 28px 24px;
+    padding: 24px 20px;
+  }
+
+  /* Section nav: more compact on mobile */
+  .section-nav {
+    top: 56px;
   }
 
   .section-nav-inner {
-    padding: 10px 16px;
+    padding: 8px 16px;
     justify-content: flex-start;
   }
 
   .section-nav a {
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    padding: 7px 14px;
+    font-size: 0.82rem;
   }
 
   .decision-grid {
@@ -1379,52 +1388,73 @@ body {
   }
 
   .cta-section {
-    padding: 72px 20px;
+    padding: 60px 20px;
   }
 
   /* Section header spacing */
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 }
 
-/* Small mobile (≤480px) */
+/* Small mobile (≤480px) — LINE in-app browser optimized */
 @media (max-width: 480px) {
   .container {
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .hero {
-    padding: 110px 16px 48px;
+    padding: 90px 14px 36px;
+    padding-top: calc(90px + env(safe-area-inset-top, 0px));
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
   }
 
   .hero-sub {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .hero-badge {
+    font-size: 0.82rem;
+    padding: 5px 14px;
+    margin-bottom: 16px;
   }
 
   .section {
-    padding: 48px 0;
+    padding: 36px 0;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .section-desc {
+    font-size: 0.92rem;
   }
 
   .pricing-card {
-    padding: 24px 18px;
+    padding: 20px 16px;
   }
 
   .price-amount {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
   }
 
   .card-desc {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
   .card-features li {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
 
   /* Price visual fully stacked */
@@ -1451,11 +1481,11 @@ body {
   }
 
   .addon-name {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
   }
 
   .addon-price {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 
   /* Marketing modules 1-col on tiny screens */
@@ -1465,7 +1495,7 @@ body {
 
   /* Decision box */
   .decision-box {
-    padding: 24px 18px;
+    padding: 20px 16px;
   }
 
   /* CTA buttons stack */
@@ -1480,49 +1510,63 @@ body {
     max-width: 300px;
   }
 
-  /* Floating LINE CTA smaller */
+  /* Floating LINE CTA — safe area for LINE bottom bar */
   .floating-line-cta {
-    bottom: 90px;
-    right: 16px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
   }
   .fab-btn-line {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
+  }
+  .fab-btn-line svg {
+    width: 26px;
+    height: 26px;
   }
   .fab-label {
-    font-size: 0.82rem;
-    padding: 5px 10px;
+    font-size: 0.78rem;
+    padding: 4px 10px;
   }
 
   /* Included section */
+  .included-section {
+    padding: 48px 0;
+  }
   .included-card {
-    padding: 22px 18px;
+    padding: 20px 16px;
   }
 
   /* Extras card */
   .extras-card {
-    padding: 22px 18px;
+    padding: 20px 16px;
   }
 
-  /* Section nav scroll hint */
+  /* Section nav: ultra compact for LINE in-app */
+  .section-nav {
+    top: 50px;
+  }
   .section-nav-inner {
-    padding: 8px 12px;
-    gap: 6px;
+    padding: 6px 10px;
+    gap: 5px;
     justify-content: flex-start;
   }
 
   .section-nav a {
-    padding: 7px 12px;
-    font-size: 0.82rem;
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .section-nav a .sn-num {
+    font-size: 0.72rem;
   }
 
   /* AI tiers cards */
   .ai-card {
-    padding: 22px 18px;
+    padding: 20px 16px;
   }
 
   .ai-card .card-price .price-amount {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .ai-market-row {
@@ -1530,21 +1574,37 @@ body {
   }
 
   .ai-market-tag {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     padding: 2px 6px;
   }
 
   /* Tag list */
   .tag {
-    font-size: 0.85rem;
-    padding: 5px 12px;
+    font-size: 0.82rem;
+    padding: 5px 10px;
+  }
+
+  /* CTA section */
+  .cta-section {
+    padding: 48px 14px;
+  }
+
+  /* Section header */
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  /* Transition CTA */
+  .transition-cta-inner {
+    padding: 24px 16px;
+    font-size: 0.9rem;
   }
 }
 
 /* ── Floating LINE CTA ── */
 .floating-line-cta {
   position: fixed;
-  bottom: 100px;
+  bottom: calc(100px + env(safe-area-inset-bottom, 0px));
   right: 24px;
   z-index: 99;
   opacity: 0;
@@ -2633,8 +2693,8 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
   .floating-line-cta {
-    bottom: 100px;
-    right: 20px;
+    bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+    right: 18px;
   }
   .ai-tiers {
     grid-template-columns: repeat(2, 1fr);
@@ -2689,8 +2749,8 @@ body {
     grid-template-columns: 1fr;
   }
   .floating-line-cta {
-    bottom: 90px;
-    right: 16px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
   }
   .ai-tiers {
     grid-template-columns: 1fr;

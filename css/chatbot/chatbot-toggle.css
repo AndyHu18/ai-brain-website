@@ -8,7 +8,7 @@
    ======================================== */
 .chat-widget-container {
   position: fixed;
-  bottom: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
   right: 24px;
   z-index: 1000;
   display: flex;
