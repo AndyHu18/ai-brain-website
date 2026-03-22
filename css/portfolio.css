@@ -280,24 +280,33 @@
 }
 
 .pf-founder-inner {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  gap: 64px;
-  align-items: center;
 }
 
-.pf-founder-brain {
-  text-align: center;
-  position: relative;
+/* Floating Brain LINE Button */
+.pf-floating-brain {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 80px;
+  height: 80px;
+  z-index: 999;
+  animation: floatBrain 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(210, 105, 30, 0.4));
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
-.pf-brain-img {
+.pf-floating-brain:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 12px 32px rgba(210, 105, 30, 0.6));
+}
+
+.pf-floating-brain img {
   width: 100%;
-  max-width: 380px;
-  animation: floatBrain 4s ease-in-out infinite;
-  filter: drop-shadow(0 20px 40px rgba(210, 105, 30, 0.3));
+  height: 100%;
+  object-fit: contain;
 }
 
 @keyframes floatBrain {
@@ -306,7 +315,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-8px);
   }
 }
 
@@ -441,55 +450,7 @@
   font-weight: 700;
 }
 
-/* Founder CTA */
-.pf-founder-cta {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.pf-line-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 32px;
-  background: #06c755;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-  border-radius: 12px;
-  text-decoration: none;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  box-shadow: 0 4px 16px rgba(6, 199, 85, 0.3);
-}
-
-.pf-line-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(6, 199, 85, 0.4);
-}
-
-.pf-pricing-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 16px 32px;
-  background: transparent;
-  color: #d2691e;
-  font-size: 1rem;
-  font-weight: 700;
-  border: 2px solid #d2691e;
-  border-radius: 12px;
-  text-decoration: none;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-}
-
-.pf-pricing-btn:hover {
-  background: #d2691e;
-  color: #ffffff;
-}
+/* (LINE & pricing buttons removed, LINE is now floating brain) */
 
 /* ===== CTA ===== */
 .pf-cta {
@@ -619,15 +580,6 @@
     padding: 60px 24px;
   }
 
-  .pf-founder-inner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .pf-brain-img {
-    max-width: 280px;
-  }
-
   .pf-cta {
     padding: 48px 24px;
   }
@@ -696,14 +648,6 @@
     padding: 48px 16px;
   }
 
-  .pf-founder-inner {
-    gap: 24px;
-  }
-
-  .pf-brain-img {
-    max-width: 220px;
-  }
-
   .pf-founder-title {
     font-size: 1.3rem;
   }
@@ -713,17 +657,6 @@
     gap: 16px;
   }
 
-  .pf-founder-cta {
-    flex-direction: column;
-  }
-
-  .pf-line-btn,
-  .pf-pricing-btn {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-
   .pf-multiplier-items {
     gap: 6px;
   }
@@ -731,6 +664,13 @@
   .pf-multiplier-tag {
     font-size: 0.75rem;
     padding: 5px 10px;
+  }
+
+  .pf-floating-brain {
+    width: 64px;
+    height: 64px;
+    bottom: 20px;
+    right: 20px;
   }
 
   .pf-cta {
