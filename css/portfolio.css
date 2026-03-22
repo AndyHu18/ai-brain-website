@@ -293,20 +293,39 @@
   height: 80px;
   z-index: 999;
   animation: floatBrain 3s ease-in-out infinite;
-  filter: drop-shadow(0 8px 24px rgba(210, 105, 30, 0.4));
+  filter: drop-shadow(0 8px 24px rgba(0, 206, 209, 0.5));
   transition: transform 0.3s ease;
   cursor: pointer;
 }
 
 .pf-floating-brain:hover {
   transform: scale(1.15);
-  filter: drop-shadow(0 12px 32px rgba(210, 105, 30, 0.6));
+  filter: drop-shadow(0 12px 32px rgba(0, 206, 209, 0.7));
 }
 
 .pf-floating-brain img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.pf-brain-tag {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 10px;
+  background: linear-gradient(135deg, #00ced1, #00b4d8);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 6px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 206, 209, 0.4);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 @keyframes floatBrain {

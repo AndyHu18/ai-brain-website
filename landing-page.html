@@ -277,7 +277,9 @@
 
           <div class="pf-founder-content">
             <span class="portfolio-badge">WHY AI</span>
-            <h2 class="pf-founder-title">一般網站 vs AI 驅動網站</h2>
+            <h2 class="pf-founder-title">
+              <span class="typewriter" id="typewriter-founder"></span>
+            </h2>
             <p class="pf-founder-subtitle">
               同樣一個網站，加上 AI 後營收差距可達 <strong>10 倍以上</strong>
             </p>
@@ -367,7 +369,7 @@
       </footer>
     </div>
 
-    <!-- Floating LINE Brain Button -->
+    <!-- Floating Cyan Brain LINE Button -->
     <a
       href="https://line.me/ti/p/5gW0er9baG"
       target="_blank"
@@ -375,7 +377,8 @@
       class="pf-floating-brain"
       title="LINE 免費諮詢"
     >
-      <img src="images/portfolio/brain-ai.png" alt="LINE 免費諮詢" />
+      <img src="images/portfolio/brain-cyan.png" alt="LINE 免費諮詢" />
+      <span class="pf-brain-tag" id="brainTag">AI</span>
     </a>
 
     <script>
@@ -450,6 +453,41 @@
           { threshold: 0.5 },
         );
         ctaObserver.observe(ctaEl);
+
+        /* Founder typewriter — on scroll into view */
+        const founderEl = document.getElementById("typewriter-founder");
+        let founderFired = false;
+        const founderObserver = new IntersectionObserver(
+          function (entries) {
+            if (entries[0].isIntersecting && !founderFired) {
+              founderFired = true;
+              typewriter(
+                founderEl,
+                [{ text: "一般網站 vs AI 驅動網站", highlight: true }],
+                90,
+                300,
+              );
+              founderObserver.disconnect();
+            }
+          },
+          { threshold: 0.5 },
+        );
+        founderObserver.observe(founderEl);
+
+        /* === AITDA Tag Carousel on floating brain === */
+        const tags = ["AI", "TDA", "SEO", "ROI", "24/7"];
+        const tagEl = document.getElementById("brainTag");
+        let tagIdx = 0;
+        setInterval(function () {
+          tagEl.style.opacity = "0";
+          tagEl.style.transform = "translateY(-8px)";
+          setTimeout(function () {
+            tagIdx = (tagIdx + 1) % tags.length;
+            tagEl.textContent = tags[tagIdx];
+            tagEl.style.opacity = "1";
+            tagEl.style.transform = "translateY(0)";
+          }, 300);
+        }, 2000);
 
         /* === Scroll Reveal for project cards === */
         const projects = document.querySelectorAll(".pf-project");
