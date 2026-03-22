@@ -60,6 +60,7 @@ const MAIN_FILES = [
   'p1-marketing/scarcity.css',
   'p1-marketing/maturity-quiz.css',
   'p1-marketing/responsive.css',
+  'case-video.css',
 ];
 
 function readCssFile(relativePath) {

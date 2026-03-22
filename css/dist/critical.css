@@ -790,6 +790,16 @@ img {
 
 /* Mobile (<768px) — 漢堡選單 */
 @media (max-width: 767px) {
+  /* Compact navbar for mobile / LINE in-app browser */
+  .navbar {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .nav-container {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
   .nav-menu {
     display: none;
     position: absolute;
