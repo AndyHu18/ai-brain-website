@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/portfolio.css" />
     <link rel="stylesheet" href="css/case-video.css" />
+    <link rel="stylesheet" href="css/podcast-player.css" />
     <link rel="icon" href="images/favicon-512.png" type="image/png" />
   </head>
   <body>
@@ -300,6 +301,123 @@
               <div class="case-video-metric">
                 <span class="case-video-metric-number">170筆</span>
                 <span class="case-video-metric-label">單季成交</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Brain Podcast -->
+      <section class="abp-section" id="podcast">
+        <div class="abp-inner">
+          <div class="abp-header">
+            <div class="abp-badge">PODCAST</div>
+            <h2 class="abp-title">AI Brain Podcast</h2>
+            <p class="abp-subtitle">
+              兩位主持人與 Andy 深度對談，解析 AI 如何改變企業經營
+            </p>
+          </div>
+
+          <div class="abp-layout">
+            <!-- Cover -->
+            <div class="abp-cover">
+              <img
+                src="images/podcast/broadcast-studio.jpg"
+                alt="AI Brain Podcast 錄音室"
+              />
+              <div class="abp-cover-badge">AI BRAIN</div>
+              <div class="abp-cover-hosts">
+                <span class="abp-host-dot female"></span>
+                <span class="abp-host-name">小雅</span>
+                <span class="abp-host-dot male"></span>
+                <span class="abp-host-name">志豪</span>
+              </div>
+            </div>
+
+            <!-- Episodes -->
+            <div class="abp-episodes">
+              <!-- EP.1 -->
+              <div class="abp-ep" data-src="audio/podcast-ep1-final.mp3">
+                <div class="abp-ep-header">
+                  <span class="abp-ep-num">EP.1</span>
+                  <span class="abp-ep-title"
+                    >AI 網站不只是官網，它是 24 小時營業的超級業務</span
+                  >
+                  <span class="abp-ep-duration">0:00</span>
+                </div>
+                <div class="abp-controls">
+                  <button class="abp-play-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6,3 20,12 6,21" />
+                    </svg>
+                  </button>
+                  <div class="abp-progress-wrap">
+                    <div class="abp-progress-bar">
+                      <div class="abp-progress-fill"></div>
+                    </div>
+                    <div class="abp-time">
+                      <span class="abp-time-current">0:00</span>
+                      <span class="abp-time-total">0:00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="abp-wave"></div>
+              </div>
+
+              <!-- EP.2 -->
+              <div class="abp-ep" data-src="audio/podcast-ep2-final.mp3">
+                <div class="abp-ep-header">
+                  <span class="abp-ep-num">EP.2</span>
+                  <span class="abp-ep-title"
+                    >你的競爭對手已經在用 AI 了，你的網站還在等人看嗎？</span
+                  >
+                  <span class="abp-ep-duration">0:00</span>
+                </div>
+                <div class="abp-controls">
+                  <button class="abp-play-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6,3 20,12 6,21" />
+                    </svg>
+                  </button>
+                  <div class="abp-progress-wrap">
+                    <div class="abp-progress-bar">
+                      <div class="abp-progress-fill"></div>
+                    </div>
+                    <div class="abp-time">
+                      <span class="abp-time-current">0:00</span>
+                      <span class="abp-time-total">0:00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="abp-wave"></div>
+              </div>
+
+              <!-- EP.3 -->
+              <div class="abp-ep" data-src="audio/podcast-ep3-final.mp3">
+                <div class="abp-ep-header">
+                  <span class="abp-ep-num">EP.3</span>
+                  <span class="abp-ep-title"
+                    >導入 AI 網站的真實成本：比你想的便宜，比你想的重要</span
+                  >
+                  <span class="abp-ep-duration">0:00</span>
+                </div>
+                <div class="abp-controls">
+                  <button class="abp-play-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="6,3 20,12 6,21" />
+                    </svg>
+                  </button>
+                  <div class="abp-progress-wrap">
+                    <div class="abp-progress-bar">
+                      <div class="abp-progress-fill"></div>
+                    </div>
+                    <div class="abp-time">
+                      <span class="abp-time-current">0:00</span>
+                      <span class="abp-time-total">0:00</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="abp-wave"></div>
               </div>
             </div>
           </div>
@@ -607,5 +725,6 @@
         });
       })();
     </script>
+    <script src="js/podcast-player.js"></script>
   </body>
 </html>

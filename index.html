@@ -22,6 +22,7 @@
     <!-- Main CSS: 其他樣式（延遲載入，不阻擋首屏） -->
     <link rel="stylesheet" href="css/dist/main.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="css/dist/main.css"></noscript>
+    <link rel="stylesheet" href="css/podcast-player.css">
 </head>
 
 <body>
@@ -962,6 +963,36 @@
         </div>
     </section>
 
+    <!-- Podcast Mini Player -->
+    <section class="abp-mini-section">
+        <div class="abp-mini-label">AI Brain Podcast</div>
+        <div class="abp-mini" data-src="audio/podcast-ep4-final.mp3">
+            <div class="abp-mini-top">
+                <div class="abp-mini-thumb">
+                    <img src="images/podcast/broadcast-studio.jpg" alt="AI Brain Podcast" />
+                </div>
+                <div class="abp-mini-info">
+                    <div class="abp-mini-ep">EP.4</div>
+                    <div class="abp-mini-title">AI 如何讓一人公司變成一支軍隊</div>
+                </div>
+            </div>
+            <div class="abp-mini-controls">
+                <button class="abp-play-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,3 20,12 6,21"/></svg>
+                </button>
+                <div class="abp-progress-wrap">
+                    <div class="abp-progress-bar"><div class="abp-progress-fill"></div></div>
+                    <div class="abp-time">
+                        <span class="abp-time-current">0:00</span>
+                        <span class="abp-time-total">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="abp-wave"></div>
+            <a href="landing-page.html#podcast" class="abp-mini-more">收聽更多集數 →</a>
+        </div>
+    </section>
+
     <!-- Technology Section -->
     <section class="technology" id="technology">
         <div class="container">
@@ -1283,6 +1314,7 @@
         </div>
       </div>
     </div>
+<script src="js/podcast-player.js"></script>
 </body>
 
 </html>

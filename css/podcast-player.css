@@ -1,0 +1,519 @@
+/* ── AI Brain Podcast Player ── */
+
+/* === Full Player (landing-page: 3-episode scrollable) === */
+.abp-section {
+  padding: 80px 24px;
+  background: linear-gradient(180deg, #111 0%, #1a1610 50%, #111 100%);
+}
+
+.abp-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.abp-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.abp-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #d2691e, #e07b3a);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.abp-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.abp-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* Layout: cover left, episodes right */
+.abp-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Cover */
+.abp-cover {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+.abp-cover img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.9);
+  transition: filter 0.4s;
+}
+
+.abp-cover:hover img {
+  filter: brightness(1);
+}
+
+.abp-cover-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(210, 105, 30, 0.9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.abp-cover-hosts {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.abp-host-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.abp-host-dot.female {
+  background: #e07b3a;
+}
+.abp-host-dot.male {
+  background: #7eb8da;
+}
+
+.abp-host-name {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Episode list */
+.abp-episodes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.abp-episodes::-webkit-scrollbar {
+  width: 3px;
+}
+
+.abp-episodes::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.abp-episodes::-webkit-scrollbar-thumb {
+  background: rgba(210, 105, 30, 0.4);
+  border-radius: 2px;
+}
+
+/* Episode card */
+.abp-ep {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.abp-ep:hover {
+  background: rgba(210, 105, 30, 0.06);
+  border-color: rgba(210, 105, 30, 0.2);
+}
+
+.abp-ep.active {
+  background: rgba(210, 105, 30, 0.1);
+  border-color: rgba(210, 105, 30, 0.4);
+}
+
+.abp-ep-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.abp-ep-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #e07b3a;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+.abp-ep-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.abp-ep-duration {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Player controls (shown in active episode) */
+.abp-controls {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.abp-ep.active .abp-controls {
+  display: flex;
+}
+
+.abp-play-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #d2691e, #e07b3a);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.abp-play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(210, 105, 30, 0.4);
+}
+
+.abp-play-btn.playing {
+  animation: abpPulse 1.5s ease infinite;
+}
+
+@keyframes abpPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(210, 105, 30, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(210, 105, 30, 0);
+  }
+}
+
+.abp-play-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.abp-progress-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.abp-progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.abp-progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #d2691e, #e07b3a);
+  border-radius: 2px;
+  transition: width 0.15s linear;
+}
+
+.abp-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Wave animation */
+.abp-wave {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 18px;
+  margin-top: 8px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.abp-wave.active {
+  opacity: 1;
+}
+
+.abp-wave span {
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(to top, #d2691e, #e07b3a);
+  transition: height 0.1s ease;
+}
+
+/* === Mini Player (homepage + subpages: single episode) === */
+.abp-mini {
+  background: linear-gradient(135deg, #1a1610 0%, #221c14 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(210, 105, 30, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.abp-mini-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.abp-mini-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.abp-mini-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.abp-mini-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.abp-mini-ep {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #e07b3a;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.abp-mini-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.abp-mini-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px 14px;
+}
+
+.abp-mini .abp-play-btn {
+  width: 32px;
+  height: 32px;
+}
+
+.abp-mini .abp-play-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.abp-mini .abp-wave {
+  height: 14px;
+  margin-top: 6px;
+}
+
+.abp-mini-more {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(210, 105, 30, 0.7);
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.abp-mini-more:hover {
+  color: #e07b3a;
+}
+
+/* === Mini section wrapper (for subpages) === */
+.abp-mini-section {
+  padding: 48px 24px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(26, 22, 16, 0.6) 50%,
+    transparent 100%
+  );
+}
+
+.abp-mini-section .abp-mini-label {
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+/* === RWD === */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .abp-section {
+    padding: 56px 20px;
+  }
+
+  .abp-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .abp-cover img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .abp-episodes {
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .abp-title {
+    font-size: 1.3rem;
+  }
+
+  .abp-ep-title {
+    white-space: normal;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .abp-section {
+    padding: 40px 16px;
+  }
+
+  .abp-header {
+    margin-bottom: 24px;
+  }
+
+  .abp-title {
+    font-size: 1.1rem;
+  }
+
+  .abp-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .abp-cover-hosts {
+    padding: 6px 10px;
+  }
+
+  .abp-host-name {
+    font-size: 0.6rem;
+  }
+
+  .abp-ep {
+    padding: 12px;
+  }
+
+  .abp-ep-header {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+
+  .abp-ep-title {
+    font-size: 0.75rem;
+    white-space: normal;
+    order: 3;
+    width: 100%;
+  }
+
+  .abp-play-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .abp-play-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Mini player mobile */
+  .abp-mini-top {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .abp-mini-thumb {
+    width: 44px;
+    height: 44px;
+  }
+
+  .abp-mini-title {
+    font-size: 0.72rem;
+  }
+
+  .abp-mini-controls {
+    padding: 0 14px 12px;
+  }
+
+  .abp-mini-section {
+    padding: 32px 16px;
+  }
+}
