@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="../css/pricing-comparison.css" />
     <link rel="stylesheet" href="../css/service-content-deep.css" />
     <link rel="stylesheet" href="../css/case-video.css" />
+    <link rel="stylesheet" href="../css/floating-line.css" />
+    <link rel="stylesheet" href="../css/podcast-player.css" />
   </head>
 
   <body>
@@ -66,6 +68,7 @@
         <div class="nav-menu">
           <a href="../index.html#services" class="nav-link">服務項目</a>
           <a href="../index.html#solutions" class="nav-link">解決方案</a>
+          <a href="../pricing.html" class="nav-link">服務方案</a>
           <a href="../index.html#technology" class="nav-link">技術能力</a>
           <a href="../index.html#contact" class="nav-link nav-cta">聯繫我們</a>
         </div>
@@ -450,6 +453,47 @@
     </section>
 
     <!-- 最終 CTA 區塊 -->
+    <!-- Podcast Mini Player -->
+    <section class="abp-mini-section">
+      <div class="abp-mini-label">AI Brain Podcast</div>
+      <div class="abp-mini" data-src="../audio/podcast-ep5-final.mp3">
+        <div class="abp-mini-top">
+          <div class="abp-mini-thumb">
+            <img
+              src="../images/podcast/broadcast-studio.jpg"
+              alt="AI Brain Podcast"
+            />
+          </div>
+          <div class="abp-mini-info">
+            <div class="abp-mini-ep">EP.5</div>
+            <div class="abp-mini-title">
+              你的客服不需要睡覺：AI 客服的真實面貌
+            </div>
+          </div>
+        </div>
+        <div class="abp-mini-controls">
+          <button class="abp-play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,3 20,12 6,21" />
+            </svg>
+          </button>
+          <div class="abp-progress-wrap">
+            <div class="abp-progress-bar">
+              <div class="abp-progress-fill"></div>
+            </div>
+            <div class="abp-time">
+              <span class="abp-time-current">0:00</span>
+              <span class="abp-time-total">0:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="abp-wave"></div>
+        <a href="../landing-page.html#podcast" class="abp-mini-more"
+          >收聽更多集數 →</a
+        >
+      </div>
+    </section>
+
     <section class="final-cta-section">
       <div class="final-cta-container">
         <div class="final-cta-badge">
@@ -562,6 +606,29 @@
         </div>
       </div>
     </footer>
+
+    <!-- Floating LINE CTA -->
+    <div class="floating-line-cta" id="floatingLineCta">
+      <a
+        href="https://line.me/ti/p/5gW0er9baG"
+        target="_blank"
+        rel="noopener"
+        class="fab-btn-line"
+        aria-label="LINE 諮詢"
+      >
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff">
+          <path
+            d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386a.63.63 0 0 1-.63-.629V8.108c0-.345.281-.63.63-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 0 1-.63.631.618.618 0 0 1-.51-.262l-2.417-3.296v2.927a.63.63 0 0 1-1.26 0V8.108a.632.632 0 0 1 .63-.63c.2 0 .387.096.504.259l2.424 3.304V8.108c0-.345.282-.63.63-.63.349 0 .63.285.63.63v4.771zm-5.741 0a.63.63 0 0 1-1.26 0V8.108c0-.345.282-.63.63-.63.349 0 .63.285.63.63v4.771zm-2.466.631H4.917a.63.63 0 0 1-.63-.631V8.108c0-.345.282-.63.63-.63.349 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M12 1c-6.627 0-12 4.208-12 9.399 0 4.644 4.121 8.535 9.688 9.278.377.082.89.25 1.02.577.117.297.076.762.037 1.062l-.164 1.013c-.05.3-.232 1.177 1.032.645 1.26-.532 6.81-4.01 9.293-6.865C22.924 14.003 24 11.869 24 9.399 24 5.208 18.627 1 12 1"
+          />
+        </svg>
+      </a>
+    </div>
+    <script>
+      setTimeout(function () {
+        var el = document.getElementById("floatingLineCta");
+        if (el) el.classList.add("visible");
+      }, 1000);
+    </script>
 
     <script src="../script-navigation.js"></script>
     <script src="../script-service-nav.js"></script>
@@ -678,5 +745,6 @@
       });
     </script>
     <script src="../js/icons.js"></script>
+    <script src="../js/podcast-player.js"></script>
   </body>
 </html>
