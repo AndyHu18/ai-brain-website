@@ -44,6 +44,7 @@
     <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
     <link rel="stylesheet" href="css/pricing.css" />
     <link rel="stylesheet" href="css/case-video.css" />
+    <link rel="stylesheet" href="css/podcast-player.css" />
   </head>
 
   <body>
@@ -82,6 +83,22 @@
           </svg>
           回首頁
         </a>
+        <div class="nav-menu">
+          <a href="index.html#services" class="nav-link">服務項目</a>
+          <a href="index.html#solutions" class="nav-link">解決方案</a>
+          <a
+            href="pricing.html"
+            class="nav-link nav-link-active"
+            onclick="return false;"
+            >服務方案</a
+          >
+          <a href="index.html#contact" class="nav-link nav-cta">免費諮詢 →</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </nav>
 
@@ -1940,6 +1957,47 @@
       </div>
     </section>
 
+    <!-- Podcast Mini Player -->
+    <section class="abp-mini-section">
+      <div class="abp-mini-label">AI Brain Podcast</div>
+      <div class="abp-mini" data-src="audio/podcast-ep7-final.mp3">
+        <div class="abp-mini-top">
+          <div class="abp-mini-thumb">
+            <img
+              src="images/podcast/broadcast-studio.jpg"
+              alt="AI Brain Podcast"
+            />
+          </div>
+          <div class="abp-mini-info">
+            <div class="abp-mini-ep">EP.7</div>
+            <div class="abp-mini-title">
+              老闆最在乎的 ROI：AI 投資怎麼算才對
+            </div>
+          </div>
+        </div>
+        <div class="abp-mini-controls">
+          <button class="abp-play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6,3 20,12 6,21" />
+            </svg>
+          </button>
+          <div class="abp-progress-wrap">
+            <div class="abp-progress-bar">
+              <div class="abp-progress-fill"></div>
+            </div>
+            <div class="abp-time">
+              <span class="abp-time-current">0:00</span>
+              <span class="abp-time-total">0:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="abp-wave"></div>
+        <a href="landing-page.html#podcast" class="abp-mini-more"
+          >收聽更多集數 →</a
+        >
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
       <p>&copy; 2026 AI 智能大腦. All rights reserved.</p>
@@ -2032,6 +2090,36 @@
     <script src="chatbot-ui.js?v=2"></script>
     <script src="chatbot-hints.js?v=2"></script>
     <script src="script-navigation.js"></script>
+    <script>
+      // Ensure nav toggle works (fallback if DOMContentLoaded already fired)
+      (function () {
+        var toggle = document.querySelector(".nav-toggle");
+        var menu = document.querySelector(".nav-menu");
+        if (!toggle || !menu) return;
+        toggle.addEventListener("click", function () {
+          menu.classList.toggle("active");
+          var spans = toggle.querySelectorAll("span");
+          if (menu.classList.contains("active")) {
+            spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
+            spans[1].style.opacity = "0";
+            spans[2].style.transform = "rotate(-45deg) translate(5px, -5px)";
+          } else {
+            spans[0].style.transform = "";
+            spans[1].style.opacity = "";
+            spans[2].style.transform = "";
+          }
+        });
+        menu.querySelectorAll(".nav-link").forEach(function (link) {
+          link.addEventListener("click", function () {
+            menu.classList.remove("active");
+            var spans = toggle.querySelectorAll("span");
+            spans[0].style.transform = "";
+            spans[1].style.opacity = "";
+            spans[2].style.transform = "";
+          });
+        });
+      })();
+    </script>
 
     <script src="js/agent-demo-engine.js"></script>
     <script src="js/industry-analyzer.js"></script>
@@ -2071,5 +2159,6 @@
     <script src="js/premium-podcast.js"></script>
     <script src="js/premium-pdf.js"></script>
     <script src="js/premium-content.js"></script>
+    <script src="js/podcast-player.js"></script>
   </body>
 </html>
