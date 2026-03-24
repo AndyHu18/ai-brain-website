@@ -560,6 +560,31 @@
   box-shadow: 0 12px 40px rgba(210, 105, 30, 0.4);
 }
 
+/* ===== Mid-page CTA ===== */
+.pf-mid-cta {
+  text-align: center;
+  padding: 48px 24px;
+  background: #f5efe6;
+}
+.pf-mid-cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #d2691e, #cd853f);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 12px;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+.pf-mid-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(210, 105, 30, 0.35);
+}
+
 /* ===== Footer ===== */
 .portfolio-footer {
   padding: 32px 24px;
