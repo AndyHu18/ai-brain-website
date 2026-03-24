@@ -297,3 +297,29 @@
     display: none;
   }
 }
+
+/* ============================================================
+   iframe-mode: PRO360 嵌入時的 hero 精簡
+   ============================================================ */
+.iframe-mode .hero {
+  min-height: auto;
+  padding-top: 20px;
+}
+
+.iframe-mode .hero-scroll-indicator {
+  display: none;
+}
+
+.iframe-mode .hero-workflow-container {
+  display: none;
+}
+
+.iframe-mode .hero-trust-row {
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.iframe-mode .hero-cta-group {
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}

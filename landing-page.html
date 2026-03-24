@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="zh-TW">
   <head>
+    <script>
+      try {
+        if (window.self !== window.top)
+          document.documentElement.classList.add("iframe-mode");
+      } catch (e) {
+        document.documentElement.classList.add("iframe-mode");
+      }
+    </script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -34,8 +42,8 @@
             <span class="typewriter" id="typewriter"></span>
           </h1>
           <p class="portfolio-hero-subtitle">
-            別人的網站放文字介紹 AI，我們的網站讓你直接體驗 AI。<br />
-            從品牌策略到 AI 落地，每個作品都是能幫客戶賺錢的數位資產。
+            你的網站不只好看，還會自動幫你回客人、接訂單。<br />
+            每個作品都幫客戶省時間、接更多生意。
           </p>
         </div>
       </section>
@@ -275,6 +283,11 @@
         </a>
       </section>
 
+      <!-- Mid CTA after cases -->
+      <div class="pf-mid-cta">
+        <a href="pricing.html" class="pf-mid-cta-btn">免費諮詢，了解方案 →</a>
+      </div>
+
       <!-- 案例影片：花束爆單 -->
       <section class="case-video-section">
         <div class="case-video-layout">
@@ -374,7 +387,7 @@
                 <div class="abp-ep-header">
                   <span class="abp-ep-num">EP.2</span>
                   <span class="abp-ep-title"
-                    >你的競爭對手已經在用 AI 了，你的網站還在等人看嗎？</span
+                    >當 AI 開始幫同業接單，你的優勢在哪？</span
                   >
                   <span class="abp-ep-duration">0:00</span>
                 </div>

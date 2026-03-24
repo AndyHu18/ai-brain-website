@@ -177,7 +177,7 @@
 }
 
 .abp-ep-title {
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
   flex: 1;
@@ -478,7 +478,7 @@
   }
 
   .abp-ep-title {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     white-space: normal;
     order: 3;
     width: 100%;

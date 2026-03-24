@@ -123,10 +123,75 @@ function initSoundToggle() {
  * 初始化所有功能
  * 入口點：由 HTML 載入後執行
  */
+/**
+ * 案例影片：點擊整個畫面即可播放/暫停
+ * 自動注入播放覆蓋按鈕到每個 .phone-frame
+ */
+function initVideoClickToPlay() {
+  const playSvg =
+    '<svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="28" fill="rgba(255,255,255,0.9)"/><polygon points="22,16 42,28 22,40" fill="#1a0f0a"/></svg>';
+
+  document.querySelectorAll(".phone-frame").forEach((frame) => {
+    const video = frame.querySelector("video");
+    if (!video) return;
+
+    frame.style.cursor = "pointer";
+
+    // 注入播放覆蓋按鈕（inline style 避免合併 CSS 遺漏）
+    const overlay = document.createElement("div");
+    overlay.innerHTML = playSvg;
+    Object.assign(overlay.style, {
+      position: "absolute",
+      inset: "0",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: "4",
+      borderRadius: "22px",
+      background: "rgba(0,0,0,0.25)",
+      transition: "opacity 0.3s",
+    });
+    const svg = overlay.querySelector("svg");
+    Object.assign(svg.style, {
+      width: "56px",
+      height: "56px",
+      filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.5))",
+    });
+    frame.appendChild(overlay);
+
+    const showOverlay = () => {
+      overlay.style.opacity = "1";
+      overlay.style.pointerEvents = "auto";
+    };
+    const hideOverlay = () => {
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    };
+
+    // overlay 點擊播放，之後原生 controls 接管
+    overlay.addEventListener("click", (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      video.play();
+      hideOverlay();
+    });
+
+    // 影片結束或被原生 controls 暫停時，重新顯示 overlay
+    video.addEventListener("ended", showOverlay);
+    video.addEventListener("pause", () => {
+      // 只在影片不是剛開始播放的瞬間才顯示（避免 play/pause 競爭）
+      setTimeout(() => {
+        if (video.paused) showOverlay();
+      }, 100);
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // initNavigation, initSmoothScroll, initScrollAnimations
   // 已在 script-navigation.js 中初始化，不重複呼叫
   initContactForm();
   initVideoFallback();
   initSoundToggle();
+  initVideoClickToPlay();
 });

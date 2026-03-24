@@ -516,3 +516,15 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   iframe-mode: PRO360 嵌入時自動啟用
+   偵測邏輯在 <head> inline script
+   ============================================================ */
+.iframe-mode .navbar {
+  display: none;
+}
+
+.iframe-mode .footer {
+  display: none;
+}
