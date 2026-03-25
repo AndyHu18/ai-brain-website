@@ -528,3 +528,19 @@
 .iframe-mode .footer {
   display: none;
 }
+
+/* iframe 內 body 適配：移除 navbar 留的空間，確保內容可滾動 */
+.iframe-mode body {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Hero 區域：移除為 fixed navbar 預留的 padding */
+.iframe-mode .hero {
+  padding-top: 32px !important;
+}
+
+/* 所有 section 確保不被裁切 */
+.iframe-mode section {
+  overflow: visible;
+}

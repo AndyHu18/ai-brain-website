@@ -3143,3 +3143,31 @@ body {
     font-size: 0.82rem;
   }
 }
+
+/* ============================================================
+   iframe-mode: PRO360 App 嵌入適配
+   Pro360 上下有自己的導航列，高度不固定
+   ============================================================ */
+.iframe-mode .hero {
+  padding-top: 32px;
+}
+
+.iframe-mode .section-nav {
+  position: sticky;
+  top: 0;
+}
+
+/* 手機版 iframe 適配 */
+@media (max-width: 767px) {
+  .iframe-mode .hero {
+    padding-top: 24px;
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .iframe-mode .hero {
+    padding-top: 20px;
+    padding-bottom: 28px;
+  }
+}
