@@ -1274,7 +1274,6 @@ body {
 @media (max-width: 767px) {
   .hero {
     padding: 100px 20px 48px;
-    padding-top: calc(100px + env(safe-area-inset-top, 0px));
   }
 
   .hero-features {
@@ -1404,8 +1403,7 @@ body {
   }
 
   .hero {
-    padding: 90px 14px 36px;
-    padding-top: calc(90px + env(safe-area-inset-top, 0px));
+    padding: 100px 14px 36px;
   }
 
   .hero h1 {

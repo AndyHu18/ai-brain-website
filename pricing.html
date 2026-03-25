@@ -9,6 +9,15 @@
         document.documentElement.classList.add("iframe-mode");
       }
     </script>
+    <style>
+      /* 動態適配 navbar 高度，避免內容被遮擋 */
+      .hero {
+        padding-top: calc(var(--navbar-h, 70px) + 24px) !important;
+      }
+      .iframe-mode .hero {
+        padding-top: 24px !important;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -76,22 +85,8 @@
           </div>
           <span class="logo-text">AI 智能大腦</span>
         </a>
-        <a href="index.html" class="back-home-btn">
-          <svg
-            viewBox="0 0 24 24"
-            width="16"
-            height="16"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"
-            />
-          </svg>
-          回首頁
-        </a>
         <div class="nav-menu">
+          <a href="index.html" class="nav-link">回首頁</a>
           <a href="index.html#services" class="nav-link">服務項目</a>
           <a href="index.html#solutions" class="nav-link">解決方案</a>
           <a
@@ -2114,6 +2109,21 @@
     <script src="chatbot-hints.js?v=2"></script>
     <script src="script-navigation.js"></script>
     <script>
+      // 動態量測 navbar 高度，設定 CSS 變數讓 hero 自動配合
+      (function () {
+        function syncNavHeight() {
+          var nav = document.getElementById("navbar");
+          if (nav && nav.offsetHeight > 0) {
+            document.documentElement.style.setProperty(
+              "--navbar-h",
+              nav.offsetHeight + "px",
+            );
+          }
+        }
+        syncNavHeight();
+        window.addEventListener("resize", syncNavHeight);
+      })();
+
       // Ensure nav toggle works (fallback if DOMContentLoaded already fired)
       (function () {
         var toggle = document.querySelector(".nav-toggle");
