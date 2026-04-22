@@ -896,6 +896,239 @@
             display: none;
           }
         }
+
+        /* ===== TL;DR 區塊「這個頁面有什麼？」===== */
+        .lp-tldr {
+          padding: 32px 20px 8px;
+          max-width: 1080px;
+          margin: 0 auto;
+        }
+        .lp-tldr-box {
+          background: #fff;
+          border: 1px solid rgba(135, 106, 47, 0.18);
+          border-radius: 14px;
+          padding: 22px 24px;
+          box-shadow: 0 4px 16px rgba(26, 15, 10, 0.05);
+        }
+        .lp-tldr-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 14px;
+        }
+        .lp-tldr-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 26px;
+          height: 26px;
+          background: #876a2f;
+          color: #faf7f2;
+          border-radius: 50%;
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .lp-tldr-label {
+          font-size: 14px;
+          font-weight: 700;
+          color: #1a0f0a;
+          letter-spacing: 0.02em;
+        }
+        .lp-tldr-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px 16px;
+        }
+        @media (min-width: 768px) {
+          .lp-tldr-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+        .lp-tldr-item {
+          display: block;
+          padding: 8px 12px;
+          font-size: 14px;
+          color: #4a4540;
+          text-decoration: none;
+          border-radius: 8px;
+          border: 1px solid transparent;
+          transition:
+            background 0.2s,
+            color 0.2s,
+            border-color 0.2s;
+        }
+        .lp-tldr-item:hover {
+          background: rgba(201, 169, 97, 0.12);
+          color: #1a0f0a;
+          border-color: rgba(135, 106, 47, 0.25);
+        }
+
+        /* ===== Hook（章節間的引導文）===== */
+        .lp-hook {
+          max-width: 860px;
+          margin: 40px auto 24px;
+          padding: 0 24px;
+          font-size: clamp(16px, 2.4vw, 22px);
+          font-weight: 700;
+          text-align: center;
+          line-height: 1.55;
+          color: #1a0f0a;
+        }
+        .lp-hook strong {
+          color: #876a2f;
+        }
+
+        /* ===== Transition Zone（區塊過渡帶）===== */
+        .lp-transition-zone {
+          padding: 32px 20px;
+          background: linear-gradient(
+            180deg,
+            transparent,
+            rgba(201, 169, 97, 0.08)
+          );
+        }
+
+        /* ===== Stats（數據三格）===== */
+        .lp-stats {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 14px;
+          max-width: 960px;
+          margin: 20px auto 0;
+          padding: 0 20px;
+        }
+        @media (min-width: 768px) {
+          .lp-stats {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+          }
+        }
+        .lp-stat {
+          background: #fff;
+          border: 1px solid rgba(135, 106, 47, 0.18);
+          border-radius: 12px;
+          padding: 22px 18px;
+          text-align: center;
+          box-shadow: 0 4px 14px rgba(26, 15, 10, 0.04);
+        }
+        .lp-stat-num {
+          font-size: clamp(26px, 5vw, 38px);
+          font-weight: 800;
+          color: #876a2f;
+          line-height: 1.1;
+          margin-bottom: 6px;
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 4px;
+          flex-wrap: wrap;
+        }
+        .lp-stat-suffix {
+          font-size: clamp(13px, 1.8vw, 16px);
+          font-weight: 600;
+          color: #4a4540;
+        }
+        .lp-stat-label {
+          font-size: 14px;
+          color: #1a0f0a;
+          font-weight: 600;
+        }
+        .lp-counter {
+          font-variant-numeric: tabular-nums;
+        }
+
+        /* ===== Micro CTA（小型行動呼籲）===== */
+        .lp-micro-cta {
+          max-width: 860px;
+          margin: 32px auto;
+          padding: 0 20px;
+        }
+        .lp-micro-cta-box {
+          background: linear-gradient(135deg, #1a0f0a, #2d1d12);
+          border-radius: 14px;
+          padding: 24px 22px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 14px;
+          text-align: center;
+          box-shadow: 0 8px 24px rgba(26, 15, 10, 0.18);
+        }
+        @media (min-width: 768px) {
+          .lp-micro-cta-box {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+          }
+        }
+        .lp-micro-cta-text {
+          color: #faf7f2;
+          font-size: 15px;
+          font-weight: 600;
+          line-height: 1.5;
+          margin: 0;
+        }
+        .lp-micro-cta-btn {
+          display: inline-block;
+          background: #c9a961;
+          color: #1a0f0a;
+          padding: 12px 22px;
+          border-radius: 10px;
+          font-weight: 700;
+          font-size: 14px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition:
+            background 0.2s,
+            transform 0.2s;
+        }
+        .lp-micro-cta-btn:hover {
+          background: #d9c89a;
+          transform: translateY(-2px);
+        }
+
+        /* ===== Back-to-Top 按鈕 ===== */
+        .lp-btt {
+          position: fixed;
+          right: 18px;
+          bottom: 80px;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #876a2f;
+          color: #faf7f2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          text-decoration: none;
+          box-shadow: 0 6px 18px rgba(26, 15, 10, 0.28);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(10px);
+          transition:
+            opacity 0.3s,
+            visibility 0.3s,
+            transform 0.3s,
+            background 0.2s;
+          z-index: 8000;
+        }
+        .lp-btt.show,
+        .lp-btt.visible,
+        .lp-btt[data-show="true"] {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        .lp-btt:hover {
+          background: #c9a961;
+          color: #1a0f0a;
+        }
+        @media (min-width: 900px) {
+          .lp-btt {
+            bottom: 24px;
+          }
+        }
       </style>
 
       <div id="lp-cro"></div>
