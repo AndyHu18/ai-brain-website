@@ -32,7 +32,9 @@
     <link rel="stylesheet" href="css/case-video.css" />
     <!-- V2: synergy/experts CSS removed -->
     <link rel="stylesheet" href="css/podcast-player.css" />
-    <link rel="stylesheet" href="css/chatbot-widget.css?v=20260408" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-window.css" />
+    <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
     <link rel="icon" href="images/favicon-512.png" type="image/png" />
   </head>
   <body>
@@ -1128,6 +1130,194 @@
           .lp-btt {
             bottom: 24px;
           }
+        }
+
+        /* ===== Typewriter 打字機效果 ===== */
+        .typewriter {
+          display: inline-block;
+          white-space: pre-wrap;
+          word-break: break-word;
+          color: inherit;
+        }
+
+        /* ===== 作品卡 bullet 清單 / highlight tags（portfolio.css 沒補到的 4 個）===== */
+        .pf-project-bullets {
+          list-style: none;
+          padding: 0;
+          margin: 12px 0 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .pf-project-bullets li {
+          position: relative;
+          padding-left: 20px;
+          font-size: 15px;
+          line-height: 1.6;
+          color: #4a4540;
+        }
+        .pf-project-bullets li::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          top: 0;
+          color: #876a2f;
+          font-weight: 700;
+        }
+        .pf-project-highlights {
+          margin: 14px 0 4px;
+        }
+        .pf-highlight-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px 8px;
+        }
+        .pf-highlight-tags span {
+          display: inline-block;
+          padding: 4px 10px;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          color: #876a2f;
+          background: rgba(201, 169, 97, 0.12);
+          border: 1px solid rgba(135, 106, 47, 0.22);
+          border-radius: 20px;
+        }
+
+        /* ===== Founder 區塊內容欄（portfolio.css 有 .pf-founder-inner 但沒 content）===== */
+        .pf-founder-content {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          max-width: 720px;
+          margin: 0 auto;
+          padding: 0 20px;
+          text-align: center;
+        }
+        @media (min-width: 768px) {
+          .pf-founder-content {
+            text-align: left;
+            margin: 0;
+          }
+        }
+
+        /* ===== Expert Free 區塊外層容器 ===== */
+        .expert-free-block {
+          margin: 24px 0;
+        }
+
+        /* ===== Works Interrupt — 成交鏈三格 ===== */
+        .works-interrupt {
+          max-width: 920px;
+          margin: 40px auto;
+          padding: 24px 20px;
+          background: linear-gradient(
+            180deg,
+            rgba(201, 169, 97, 0.08),
+            transparent
+          );
+          border-radius: 14px;
+          text-align: center;
+        }
+        .works-interrupt-text {
+          font-size: clamp(16px, 2.4vw, 20px);
+          font-weight: 700;
+          color: #1a0f0a;
+          line-height: 1.55;
+          margin-bottom: 18px;
+        }
+        .works-interrupt-chain {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 14px;
+        }
+        .works-interrupt-tag {
+          display: inline-block;
+          padding: 8px 14px;
+          background: #fff;
+          color: #876a2f;
+          font-size: 14px;
+          font-weight: 700;
+          border: 1px solid rgba(135, 106, 47, 0.25);
+          border-radius: 24px;
+          box-shadow: 0 2px 8px rgba(26, 15, 10, 0.05);
+        }
+        .works-interrupt-arrow {
+          color: #876a2f;
+          font-weight: 700;
+          font-size: 18px;
+        }
+        .works-interrupt-sub {
+          font-size: 14px;
+          color: #4a4540;
+          margin: 0;
+        }
+
+        /* ===== Line 浮動按鈕（右下）===== */
+        .line-float-btn {
+          position: fixed;
+          right: 18px;
+          bottom: 140px;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: #06c755;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 6px 20px rgba(6, 199, 85, 0.35);
+          text-decoration: none;
+          z-index: 8500;
+          transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+        }
+        .line-float-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 28px rgba(6, 199, 85, 0.45);
+        }
+        .line-float-icon {
+          width: 32px;
+          height: 32px;
+          display: block;
+        }
+        @media (min-width: 900px) {
+          .line-float-btn {
+            bottom: 90px;
+          }
+        }
+
+        /* ===== Audio/Podcast 播放器小元素 ===== */
+        .abp-ep-play-hint {
+          font-size: 12px;
+          color: #876a2f;
+          font-weight: 600;
+          margin-top: 4px;
+        }
+        .abp-time-current,
+        .abp-time-total {
+          font-size: 12px;
+          color: #4a4540;
+          font-variant-numeric: tabular-nums;
+          font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        }
+
+        /* ===== Chatbot 小元素 ===== */
+        .chat-toggle-avatar,
+        .chat-header-avatar {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          display: block;
+        }
+        .chat-send-icon {
+          width: 18px;
+          height: 18px;
+          display: block;
         }
       </style>
 
