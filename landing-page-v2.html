@@ -532,7 +532,7 @@
           href="https://lib-detector-lime-sunshine.trycloudflare.com"
           target="_blank"
           rel="noopener"
-          class="pf-project-inner pf-reverse"
+          class="pf-project-inner"
         >
           <div class="pf-project-image">
             <img
@@ -836,6 +836,65 @@
         }
         .lp-cro-exit strong {
           color: #876a2f;
+        }
+
+        /* Progress Bar — 頁面頂端滾動進度條 */
+        .lp-progress-bar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 3px;
+          background: linear-gradient(90deg, #c9a961, #876a2f);
+          z-index: 9999;
+          transition: width 0.1s linear;
+          pointer-events: none;
+        }
+
+        /* Mobile Section Nav — 手機版底部固定導航 */
+        .lp-mobile-nav {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(26, 15, 10, 0.96);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+          border-top: 1px solid rgba(201, 169, 97, 0.25);
+          z-index: 9000;
+          overflow-x: auto;
+          scrollbar-width: none;
+        }
+        .lp-mobile-nav::-webkit-scrollbar {
+          display: none;
+        }
+        .lp-mobile-nav-item {
+          flex: 0 0 auto;
+          padding: 6px 10px;
+          font-size: 12px;
+          font-weight: 600;
+          color: #d9c89a;
+          text-decoration: none;
+          white-space: nowrap;
+          border-radius: 14px;
+          transition:
+            background 0.2s,
+            color 0.2s;
+        }
+        .lp-mobile-nav-item:hover,
+        .lp-mobile-nav-item.active {
+          background: rgba(201, 169, 97, 0.18);
+          color: #fff;
+        }
+        /* Desktop 以上隱藏手機版 nav */
+        @media (min-width: 900px) {
+          .lp-mobile-nav {
+            display: none;
+          }
         }
       </style>
 
