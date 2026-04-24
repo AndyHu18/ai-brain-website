@@ -59,7 +59,7 @@
       </section>
 
       <!-- 實驗室區塊 -->
-      <section class="exp-lab">
+      <section class="exp-lab" id="lab">
         <div class="exp-lab-inner">
           <div class="exp-lab-header">
             <span class="exp-lab-badge">Live 實驗</span>
@@ -183,27 +183,24 @@
                 <div class="exp-card-triple">
                   <a
                     href="https://sneaker-comparison.vercel.app/bad.html"
-                    target="_blank"
-                    rel="noopener"
-                    class="exp-card-triple-btn exp-card-triple-bad"
+                    class="exp-card-triple-btn exp-card-triple-bad js-demo-link"
+                    data-demo-title="基礎版 — 沒做設計"
                   >
                     基礎版
                     <span>沒做設計</span>
                   </a>
                   <a
                     href="https://sneaker-comparison.vercel.app/medium.html"
-                    target="_blank"
-                    rel="noopener"
-                    class="exp-card-triple-btn exp-card-triple-mid"
+                    class="exp-card-triple-btn exp-card-triple-mid js-demo-link"
+                    data-demo-title="標準版 — 有設計沒心理學"
                   >
                     標準版
                     <span>有設計沒心理學</span>
                   </a>
                   <a
                     href="https://sneaker-comparison.vercel.app/good.html"
-                    target="_blank"
-                    rel="noopener"
-                    class="exp-card-triple-btn exp-card-triple-good"
+                    class="exp-card-triple-btn exp-card-triple-good js-demo-link"
+                    data-demo-title="完整版 — 七章心理學全套"
                   >
                     完整版
                     <span>七章心理學全套</span>
@@ -230,16 +227,14 @@
                 <div class="exp-card-dual">
                   <a
                     href="https://bad-landing-page.vercel.app"
-                    target="_blank"
-                    rel="noopener"
-                    class="exp-card-dual-btn exp-card-dual-bad"
+                    class="exp-card-dual-btn exp-card-dual-bad js-demo-link"
+                    data-demo-title="改造前 — 兒童課程落地頁"
                     >看改造前 →</a
                   >
                   <a
                     href="https://kids-course-landing.vercel.app"
-                    target="_blank"
-                    rel="noopener"
-                    class="exp-card-dual-btn exp-card-dual-good"
+                    class="exp-card-dual-btn exp-card-dual-good js-demo-link"
+                    data-demo-title="改造後 — 兒童課程落地頁"
                     >看改造後 →</a
                   >
                 </div>
@@ -1620,5 +1615,318 @@
       })();
     </script>
     <script src="js/podcast-player.js"></script>
+
+    <!-- ═══════════════ Demo Preview Modal ═══════════════ -->
+    <style>
+      .demo-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        background: rgba(10, 6, 20, 0.88);
+        backdrop-filter: blur(8px);
+        display: none;
+        flex-direction: column;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .demo-modal.is-open {
+        display: flex;
+        opacity: 1;
+      }
+      body.demo-modal-open {
+        overflow: hidden;
+      }
+      .demo-modal-bar {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        background: #1a1030;
+        border-bottom: 1px solid rgba(210, 105, 30, 0.3);
+        color: #fff;
+      }
+      .demo-modal-back {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #d2691e, #b85a15);
+        color: #fff;
+        border: none;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: 0 4px 16px rgba(210, 105, 30, 0.4);
+        white-space: nowrap;
+      }
+      .demo-modal-back:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(210, 105, 30, 0.55);
+      }
+      .demo-modal-title {
+        flex: 1;
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
+      .demo-modal-title-label {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: rgba(255, 255, 255, 0.5);
+        margin-right: 8px;
+        text-transform: uppercase;
+      }
+      .demo-modal-external {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        transition: background 0.2s ease;
+        white-space: nowrap;
+      }
+      .demo-modal-external:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .demo-modal-body {
+        flex: 1;
+        background: #fff;
+        overflow: hidden;
+        position: relative;
+      }
+      .demo-modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+      .demo-modal-loader {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        color: #8d6e63;
+        font-size: 14px;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .demo-modal-loader.is-hidden {
+        opacity: 0;
+      }
+
+      /* Tablet */
+      @media (max-width: 768px) {
+        .demo-modal-bar {
+          padding: 8px 12px;
+          gap: 8px;
+        }
+        .demo-modal-title {
+          font-size: 13px;
+        }
+        .demo-modal-title-label {
+          display: none;
+        }
+        .demo-modal-back {
+          padding: 9px 14px;
+          font-size: 13px;
+        }
+        .demo-modal-external {
+          padding: 7px 10px;
+          font-size: 11px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 480px) {
+        .demo-modal-bar {
+          flex-wrap: wrap;
+          padding: 8px 10px;
+          gap: 6px;
+        }
+        .demo-modal-back {
+          order: 1;
+          padding: 10px 14px;
+          font-size: 13px;
+        }
+        .demo-modal-external {
+          order: 2;
+          margin-left: auto;
+          padding: 8px 10px;
+          font-size: 11px;
+        }
+        .demo-modal-title {
+          order: 3;
+          flex-basis: 100%;
+          font-size: 12px;
+          font-weight: 600;
+          white-space: normal;
+          line-height: 1.4;
+          opacity: 0.85;
+        }
+      }
+    </style>
+
+    <div
+      id="demoModal"
+      class="demo-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demoModalTitle"
+      aria-hidden="true"
+    >
+      <div class="demo-modal-bar">
+        <button
+          type="button"
+          class="demo-modal-back"
+          id="demoModalBack"
+          aria-label="關閉並回到實驗室"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          回實驗室
+        </button>
+        <div class="demo-modal-title" id="demoModalTitle">
+          <span class="demo-modal-title-label">DEMO</span
+          ><span id="demoModalTitleText"></span>
+        </div>
+        <a
+          id="demoModalExternal"
+          class="demo-modal-external"
+          href="#"
+          target="_blank"
+          rel="noopener"
+          aria-label="在新分頁開啟"
+        >
+          新分頁開啟
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17 17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </a>
+      </div>
+      <div class="demo-modal-body">
+        <div class="demo-modal-loader" id="demoModalLoader">載入中…</div>
+        <iframe
+          id="demoModalIframe"
+          class="demo-modal-iframe"
+          title="Demo preview"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const modal = document.getElementById("demoModal");
+        if (!modal) return;
+        const iframe = document.getElementById("demoModalIframe");
+        const loader = document.getElementById("demoModalLoader");
+        const titleText = document.getElementById("demoModalTitleText");
+        const external = document.getElementById("demoModalExternal");
+        const backBtn = document.getElementById("demoModalBack");
+
+        const closeModal = () => {
+          modal.classList.remove("is-open");
+          modal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("demo-modal-open");
+          iframe.src = "about:blank";
+          // 捲回實驗室原位置
+          const lab = document.getElementById("lab");
+          if (lab) {
+            const y = lab.getBoundingClientRect().top + window.pageYOffset - 20;
+            window.scrollTo({ top: y, behavior: "instant" });
+          }
+          if (history.state && history.state.demoModal) {
+            history.back();
+          }
+        };
+
+        const openModal = (url, title) => {
+          titleText.textContent = title || "";
+          external.href = url;
+          loader.classList.remove("is-hidden");
+          iframe.src = url;
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("demo-modal-open");
+          if (!(history.state && history.state.demoModal)) {
+            history.pushState({ demoModal: true }, "", "#demo");
+          }
+        };
+
+        iframe.addEventListener("load", () => {
+          if (iframe.src === "about:blank") return;
+          loader.classList.add("is-hidden");
+        });
+
+        document.addEventListener("click", (e) => {
+          const link = e.target.closest(".js-demo-link");
+          if (!link) return;
+          e.preventDefault();
+          openModal(link.href, link.dataset.demoTitle || "Demo");
+        });
+
+        backBtn.addEventListener("click", closeModal);
+
+        // 點背景(bar 或 iframe 外)關閉 — 只允許點純背景
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && modal.classList.contains("is-open")) {
+            closeModal();
+          }
+        });
+
+        window.addEventListener("popstate", () => {
+          if (modal.classList.contains("is-open")) {
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("demo-modal-open");
+            iframe.src = "about:blank";
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
