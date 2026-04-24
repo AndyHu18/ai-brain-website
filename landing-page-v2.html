@@ -227,6 +227,16 @@
               display: flex;
               gap: 10px;
               margin-top: auto;
+              width: 100%;
+              max-width: 420px;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .exp-card--h .exp-card-dual {
+              width: 100%;
+              max-width: 420px;
+              margin-left: auto;
+              margin-right: auto;
             }
             .exp-card-triple-btn {
               flex: 1;
@@ -310,17 +320,16 @@
               box-shadow: 0 12px 28px rgba(210, 105, 30, 0.45);
             }
             .exp-card-triple-good .exp-recommend-badge {
-              position: absolute;
-              top: 6px;
-              right: 6px;
+              display: inline-block;
               background: #fff;
               color: #b85a15;
               font-size: 9px;
               font-weight: 900;
-              letter-spacing: 0.1em;
-              padding: 3px 8px;
+              letter-spacing: 0.12em;
+              padding: 3px 10px;
               border-radius: 9999px;
-              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+              margin-bottom: 6px;
               z-index: 2;
             }
 
@@ -384,8 +393,8 @@
                 padding: 16px 14px;
               }
               .exp-card-triple-good .exp-recommend-badge {
-                top: 8px;
-                right: 10px;
+                font-size: 10px;
+                padding: 3px 12px;
               }
             }
           </style>
