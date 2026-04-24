@@ -1421,7 +1421,7 @@ body:has(.portfolio-page) {
 
 .exp-card-no {
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1542,9 +1542,9 @@ body:has(.portfolio-page) {
 .exp-card-dual-btn {
   display: block;
   text-align: center;
-  padding: 13px 16px;
+  padding: 14px 16px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   text-decoration: none;
   transition:
@@ -1661,9 +1661,9 @@ body:has(.portfolio-page) {
 }
 
 .exp-card-versus-vs {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  color: rgba(45, 24, 16, 0.25);
+  color: rgba(45, 24, 16, 0.4);
   letter-spacing: 0.08em;
 }
 
@@ -1765,6 +1765,6 @@ body:has(.portfolio-page) {
   }
 
   .exp-card-no {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
