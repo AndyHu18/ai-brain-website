@@ -85,13 +85,19 @@
               letter-spacing: -0.01em;
             }
 
-            /* ══ 左側統一置中(兩張卡) ══ */
-            .exp-card--h .exp-card-left {
+            /* ══ 左右兩側統一置中(一致的中心軸) ══ */
+            .exp-card--h .exp-card-left,
+            .exp-card--h .exp-card-right {
               align-items: center;
               text-align: center;
             }
             .exp-card-versus {
               justify-content: center;
+            }
+            .exp-card--h .exp-card-desc {
+              max-width: 420px;
+              margin-left: auto;
+              margin-right: auto;
             }
 
             /* ══ 實驗 kicker 強化 ══ */
@@ -111,24 +117,24 @@
             /* ══ 右側 h3 放大 + 襯線字 + 高亮 ══ */
             .exp-card--h .exp-card-title {
               font-family: "Noto Serif TC", "Noto Sans TC", serif;
-              font-size: clamp(20px, 2.4vw, 28px);
+              font-size: clamp(24px, 3.2vw, 34px);
               font-weight: 900;
               line-height: 1.3;
               letter-spacing: -0.01em;
               color: #1a0f0a;
-              margin-bottom: 14px;
+              margin-bottom: 18px;
             }
             .exp-hi {
               color: #d2691e;
               font-weight: 900;
-              font-size: 1.15em;
-              letter-spacing: -0.01em;
+              font-size: 1.5em;
+              letter-spacing: -0.02em;
               white-space: nowrap;
             }
             .exp-card--h .exp-card-desc {
-              font-size: 14px;
+              font-size: 16px;
               line-height: 1.85;
-              color: rgba(45, 24, 16, 0.62);
+              color: rgba(45, 24, 16, 0.68);
             }
             .exp-card--h .exp-card-desc strong {
               color: #b85a15;
