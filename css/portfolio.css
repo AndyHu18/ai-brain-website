@@ -823,8 +823,8 @@
 /* ===== Mobile (480px) ===== */
 @media (max-width: 480px) {
   .portfolio-hero {
-    padding: 80px 14px 48px;
-    padding-top: calc(80px + env(safe-area-inset-top, 0px));
+    padding: 32px 14px 48px;
+    padding-top: calc(32px + env(safe-area-inset-top, 0px));
   }
 
   .portfolio-hero::before {
@@ -1286,5 +1286,471 @@
     width: 100%;
     text-align: center;
     white-space: normal;
+  }
+}
+
+/* ===== 實驗室區塊 ===== */
+.exp-lab {
+  background: #f5efe6;
+  padding: 80px 0 96px;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-lab::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(210, 105, 30, 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.exp-lab-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.exp-lab-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.exp-lab-badge {
+  display: inline-block;
+  background: rgba(210, 105, 30, 0.12);
+  border: 1px solid rgba(210, 105, 30, 0.35);
+  color: #e07b3a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 5px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.exp-lab-title {
+  font-size: 52px;
+  font-weight: 900;
+  color: #2d1810;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.exp-lab-title-period {
+  color: #d2691e;
+}
+
+.exp-lab-sub {
+  font-size: 16px;
+  color: rgba(45, 24, 16, 0.5);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.exp-lab-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.exp-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid rgba(210, 105, 30, 0.15);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d2691e, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(210, 105, 30, 0.4);
+  box-shadow:
+    0 16px 48px rgba(45, 24, 16, 0.1),
+    0 0 0 1px rgba(210, 105, 30, 0.15);
+}
+
+.exp-card:hover::after {
+  opacity: 1;
+}
+
+.exp-card-no {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d2691e;
+  margin-bottom: 20px;
+}
+
+.exp-card-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.exp-card-stat-bad {
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(45, 24, 16, 0.2);
+  line-height: 1;
+}
+
+.exp-card-stat-good {
+  font-size: 48px;
+  font-weight: 900;
+  color: #d2691e;
+  line-height: 1;
+}
+
+.exp-card-stat-unit {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.exp-card-stat-arrow {
+  font-size: 22px;
+  color: rgba(45, 24, 16, 0.2);
+}
+
+.exp-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.exp-card-mini {
+  background: rgba(210, 105, 30, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exp-card-mini-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: #d2691e;
+  line-height: 1;
+}
+
+.exp-card-mini-label {
+  font-size: 11px;
+  color: rgba(45, 24, 16, 0.45);
+  letter-spacing: 0.04em;
+}
+
+.exp-card-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2d1810;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.exp-card-desc {
+  font-size: 14px;
+  color: rgba(45, 24, 16, 0.55);
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.exp-card-cta {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #d2691e;
+  margin-top: auto;
+  transition: letter-spacing 0.2s ease;
+}
+
+.exp-card:hover .exp-card-cta {
+  letter-spacing: 0.03em;
+}
+
+.exp-card-split {
+  cursor: default;
+}
+
+.exp-card-split:hover {
+  transform: none;
+  border-color: rgba(210, 105, 30, 0.15);
+  box-shadow: none;
+}
+
+.exp-card-split:hover::after {
+  opacity: 0;
+}
+
+.exp-card-dual {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.exp-card-dual-btn {
+  display: block;
+  text-align: center;
+  padding: 13px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.exp-card-dual-btn:hover {
+  transform: translateY(-2px);
+}
+
+.exp-card-dual-bad {
+  background: rgba(45, 24, 16, 0.04);
+  color: rgba(45, 24, 16, 0.5);
+  border: 1px solid rgba(45, 24, 16, 0.1);
+}
+
+.exp-card-dual-bad:hover {
+  background: rgba(45, 24, 16, 0.08);
+  color: rgba(45, 24, 16, 0.7);
+}
+
+.exp-card-dual-good {
+  background: rgba(210, 105, 30, 0.1);
+  color: #c45e18;
+  border: 1px solid rgba(210, 105, 30, 0.25);
+}
+
+.exp-card-dual-good:hover {
+  background: rgba(210, 105, 30, 0.18);
+}
+
+.exp-card-featured {
+  background: #fffaf5;
+  border-color: rgba(210, 105, 30, 0.25);
+}
+
+/* Horizontal full-width card layout */
+.exp-card--h {
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+}
+
+.exp-card-left {
+  flex: 0 0 300px;
+  padding: 40px 40px;
+  border-right: 1px solid rgba(210, 105, 30, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: stretch;
+  justify-content: center;
+}
+
+.exp-card-right {
+  flex: 1;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exp-card--h .exp-card-stat-row {
+  margin-bottom: 0;
+}
+
+.exp-card--h .exp-card-grid {
+  margin-bottom: 0;
+}
+
+.exp-card--h .exp-card-desc {
+  margin-bottom: 20px;
+}
+
+.exp-card--h .exp-card-dual {
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 0;
+}
+
+.exp-card--h .exp-card-dual-btn {
+  flex: 1;
+}
+
+.exp-card-left-note {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(45, 24, 16, 0.35);
+  margin: 0;
+}
+
+.exp-card-versus {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.exp-card-versus-bad {
+  font-size: 28px;
+  font-weight: 900;
+  color: rgba(45, 24, 16, 0.2);
+  line-height: 1;
+}
+
+.exp-card-versus-good {
+  font-size: 28px;
+  font-weight: 900;
+  color: #d2691e;
+  line-height: 1;
+}
+
+.exp-card-versus-vs {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(45, 24, 16, 0.25);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .exp-lab-cards {
+    gap: 16px;
+  }
+
+  .exp-card--h {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .exp-card-left {
+    flex: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-right: none;
+    border-bottom: 1px solid rgba(210, 105, 30, 0.1);
+    padding: 28px 28px 24px;
+    align-self: auto;
+    min-width: 0;
+  }
+
+  .exp-card-right {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px 28px 32px;
+    min-width: 0;
+  }
+
+  .exp-card-stat-row,
+  .exp-card-versus {
+    flex-wrap: wrap;
+  }
+
+  .exp-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .exp-card--h .exp-card-dual {
+    flex-direction: column;
+  }
+
+  .exp-lab-title {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exp-lab {
+    padding: 60px 0 72px;
+  }
+
+  .exp-lab-inner {
+    padding: 0 16px;
+  }
+
+  .exp-lab-title {
+    font-size: 30px;
+  }
+
+  /* 橫向卡片在 480px 已由 900px 斷點收回垂直，此處補細節 */
+  .exp-card-left {
+    padding: 24px 20px 18px;
+    gap: 10px;
+  }
+
+  .exp-card-right {
+    padding: 18px 20px 28px;
+  }
+
+  .exp-card-stat-bad,
+  .exp-card-stat-good {
+    font-size: 36px;
+  }
+
+  .exp-card-title {
+    font-size: 16px;
+  }
+
+  .exp-card-desc {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .exp-card-mini-num {
+    font-size: 18px;
+  }
+
+  .exp-card-versus-bad,
+  .exp-card-versus-good {
+    font-size: 22px;
+  }
+
+  .exp-card-dual {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-card-no {
+    font-size: 10px;
   }
 }

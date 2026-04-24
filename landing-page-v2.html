@@ -27,39 +27,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/portfolio.css?v=20260408" />
+    <link rel="stylesheet" href="css/portfolio.css" />
     <link rel="stylesheet" href="css/case-video.css" />
-    <!-- V2: synergy/experts CSS removed -->
     <link rel="stylesheet" href="css/podcast-player.css" />
-    <link rel="stylesheet" href="css/chatbot/chatbot-toggle.css" />
-    <link rel="stylesheet" href="css/chatbot/chatbot-window.css" />
-    <link rel="stylesheet" href="css/chatbot/chatbot-messages.css" />
     <link rel="icon" href="images/favicon-512.png" type="image/png" />
   </head>
   <body>
-    <!-- Progress Bar -->
-    <div class="lp-progress-bar" id="lpProgressBar"></div>
-
-    <!-- V2: Desktop TOC removed (mobile-first, Pro360 clients mostly on phone) -->
-
-    <!-- Mobile Section Nav -->
-    <nav class="lp-mobile-nav" id="lpMobileNav">
-      <a href="#lp-works" class="lp-mobile-nav-item">&#x4F5C;&#x54C1;</a>
-      <a href="#lp-cro" class="lp-mobile-nav-item">&#x5BE6;&#x9A57;&#x5BA4;</a>
-      <a href="#lp-cases" class="lp-mobile-nav-item">LINE AI</a>
-      <a href="#lp-podcast" class="lp-mobile-nav-item">Podcast</a>
-      <a href="#lp-compare" class="lp-mobile-nav-item">&#x6BD4;&#x8F03;</a>
-      <a href="#lp-free" class="lp-mobile-nav-item">&#x514D;&#x8CBB;</a>
-      <a href="#lp-pricing" class="lp-mobile-nav-item">&#x65B9;&#x6848;</a>
-    </nav>
-
     <div class="portfolio-page">
       <!-- Hero -->
-      <section class="portfolio-hero portfolio-hero--expert" id="lp-hero">
+      <section class="portfolio-hero portfolio-hero--expert">
         <div class="portfolio-hero-content portfolio-hero-content--split">
           <div class="portfolio-hero-text">
-            <div class="portfolio-badge">SHOWCASE</div>
+            <div class="portfolio-badge">PORTFOLIO</div>
             <h1 class="portfolio-hero-title">
               <span class="typewriter" id="typewriter"></span>
             </h1>
@@ -79,42 +58,562 @@
         </div>
       </section>
 
-      <!-- TLDR Quick Nav -->
-      <div class="lp-tldr">
-        <div class="lp-tldr-box">
-          <div class="lp-tldr-header">
-            <span class="lp-tldr-icon">&#x2197;</span>
-            <span class="lp-tldr-label"
-              >&#x9019;&#x500B;&#x9801;&#x9762;&#x6709;&#x4EC0;&#x9EBC;&#xFF1F;</span
-            >
+      <!-- 實驗室區塊 -->
+      <section class="exp-lab">
+        <div class="exp-lab-inner">
+          <div class="exp-lab-header">
+            <span class="exp-lab-badge">Live 實驗</span>
+            <h2 class="exp-lab-title">
+              不用我說<span class="exp-lab-title-period">。</span
+              ><br />自己進去感受。
+            </h2>
+            <p class="exp-lab-sub">
+              同樣的產業、同一批流量——3
+              組真實實驗，讓你親眼看到設計的差距有多大。
+            </p>
           </div>
-          <div class="lp-tldr-grid">
-            <a href="#lp-works" class="lp-tldr-item"
-              >8 &#x500B;&#x7CBE;&#x9078;&#x4F5C;&#x54C1;</a
+
+          <div class="exp-lab-cards">
+            <!-- 實驗 1 -->
+            <a
+              href="https://conversion-comparison.vercel.app"
+              target="_blank"
+              rel="noopener"
+              class="exp-card exp-card--h"
             >
-            <a href="#lp-cro" class="lp-tldr-item"
-              >3 &#x500B;&#x6210;&#x4EA4;&#x5BE6;&#x9A57;</a
+              <div class="exp-card-left">
+                <span class="exp-card-no">實驗 01 ‧ A/B 轉換測試</span>
+                <div class="exp-card-stat-row">
+                  <div class="exp-card-stat-bad">
+                    1<span class="exp-card-stat-unit">%</span>
+                  </div>
+                  <div class="exp-card-stat-arrow">→</div>
+                  <div class="exp-card-stat-good">
+                    5<span class="exp-card-stat-unit">%</span>
+                  </div>
+                </div>
+                <p class="exp-card-left-note">成交率</p>
+              </div>
+              <div class="exp-card-right">
+                <h3 class="exp-card-title">同一批流量,成交率可以差 5 倍</h3>
+                <p class="exp-card-desc">
+                  同批流量、同一個產品——調整設計策略後,月營收直接翻 5 倍。進去 3
+                  秒就看出兩個版本差在哪。
+                </p>
+                <span class="exp-card-cta">看兩個版本的設計差異 →</span>
+              </div>
+            </a>
+
+            <!-- 實驗 2 -->
+            <div class="exp-card exp-card--h exp-card-split">
+              <div class="exp-card-left">
+                <span class="exp-card-no">案例對比 ‧ 改造前後</span>
+                <div class="exp-card-versus">
+                  <div class="exp-card-versus-bad">改造前</div>
+                  <div class="exp-card-versus-vs">vs</div>
+                  <div class="exp-card-versus-good">改造後</div>
+                </div>
+              </div>
+              <div class="exp-card-right">
+                <h3 class="exp-card-title">同一堂課,改造前後的成交差距</h3>
+                <p class="exp-card-desc">
+                  內容一模一樣、受眾完全相同——設計策略重新規劃後,訪客的下單意願直接被放大。兩個版本並排看,差距一目了然。
+                </p>
+                <div class="exp-card-dual">
+                  <a
+                    href="https://bad-landing-page.vercel.app"
+                    target="_blank"
+                    rel="noopener"
+                    class="exp-card-dual-btn exp-card-dual-bad"
+                    >看改造前 →</a
+                  >
+                  <a
+                    href="https://kids-course-landing.vercel.app"
+                    target="_blank"
+                    rel="noopener"
+                    class="exp-card-dual-btn exp-card-dual-good"
+                    >看改造後 →</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- 實驗 3 -->
+            <a
+              href="https://sneaker-comparison.vercel.app"
+              target="_blank"
+              rel="noopener"
+              class="exp-card exp-card--h exp-card-featured"
             >
-            <a href="#lp-cases" class="lp-tldr-item"
-              >3 &#x500B; LINE AI &#x5834;&#x666F;</a
-            >
-            <a href="#lp-podcast" class="lp-tldr-item"
-              >&#x7B56;&#x7565; Podcast</a
-            >
-            <a href="#lp-compare" class="lp-tldr-item"
-              >AI vs &#x50B3;&#x7D71;&#x5C0D;&#x6BD4;</a
-            >
-            <a href="#lp-free" class="lp-tldr-item"
-              >9 &#x9805;&#x514D;&#x8CBB;&#x597D;&#x79AE;</a
-            >
-            <a href="#lp-pricing" class="lp-tldr-item"
-              >&#x65B9;&#x6848;&#x8207;&#x5831;&#x50F9;</a
-            >
+              <div class="exp-card-left">
+                <span class="exp-card-no">實驗 03 ‧ 行為科學應用</span>
+                <div class="exp-card-grid">
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">14×</span
+                    ><span class="exp-card-mini-label">轉換倍數</span>
+                  </div>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">5.3天</span
+                    ><span class="exp-card-mini-label">決策加速</span>
+                  </div>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">7章</span
+                    ><span class="exp-card-mini-label">心理框架</span>
+                  </div>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">3版</span
+                    ><span class="exp-card-mini-label">AB 迭代</span>
+                  </div>
+                </div>
+              </div>
+              <div class="exp-card-right">
+                <h3 class="exp-card-title">
+                  猶豫的人，不是不想買——是還沒被說服
+                </h3>
+                <p class="exp-card-desc">
+                  7 個行為科學框架，3 輪 AB 迭代。讓決策週期從 5.3
+                  天壓縮到當天，訪客轉換率直接乘 14
+                  倍。這不是行銷技巧，是人類心理的底層規律。
+                </p>
+                <span class="exp-card-cta">看完整實驗報告 →</span>
+              </div>
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- 官網入口 -->
+      <!-- ═══════════════ 漏斗方法論（Funnel Method）══════════════ -->
+      <style>
+        .fm-section {
+          position: relative;
+          background: linear-gradient(
+            180deg,
+            #fffaf5 0%,
+            #f5efe6 55%,
+            #fffaf5 100%
+          );
+          padding: 120px 0 140px;
+          border-top: 1px solid rgba(210, 105, 30, 0.12);
+          border-bottom: 1px solid rgba(210, 105, 30, 0.12);
+          overflow: hidden;
+        }
+        .fm-section::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(rgba(210, 105, 30, 0.035) 1px, transparent 1px),
+            linear-gradient(
+              90deg,
+              rgba(210, 105, 30, 0.035) 1px,
+              transparent 1px
+            );
+          background-size: 56px 56px;
+          pointer-events: none;
+        }
+        .fm-inner {
+          position: relative;
+          z-index: 1;
+          max-width: 1160px;
+          margin: 0 auto;
+          padding: 0 40px;
+        }
+        .fm-header {
+          text-align: center;
+          margin-bottom: 72px;
+        }
+        .fm-badge {
+          display: inline-block;
+          padding: 8px 28px;
+          border: 1px solid rgba(210, 105, 30, 0.35);
+          border-radius: 9999px;
+          background: rgba(255, 255, 255, 0.6);
+          color: #b85a15;
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          margin-bottom: 24px;
+        }
+        .fm-title {
+          font-family: "Noto Serif TC", "Noto Sans TC", serif;
+          font-size: clamp(2rem, 4.8vw, 3.6rem);
+          font-weight: 900;
+          line-height: 1.15;
+          color: #1a0f0a;
+          margin: 0 0 20px;
+          letter-spacing: -0.01em;
+        }
+        .fm-title em {
+          font-style: normal;
+          color: #d2691e;
+          position: relative;
+        }
+        .fm-subtitle {
+          font-size: clamp(1rem, 1.6vw, 1.2rem);
+          color: #5d4037;
+          line-height: 1.8;
+          max-width: 680px;
+          margin: 0 auto;
+        }
+
+        /* 子區塊 */
+        .fm-block {
+          margin-bottom: 96px;
+        }
+        .fm-block:last-of-type {
+          margin-bottom: 72px;
+        }
+
+        .fm-block-head {
+          text-align: center;
+          margin-bottom: 40px;
+        }
+        .fm-kicker {
+          display: inline-block;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.3em;
+          color: #b85a15;
+          text-transform: uppercase;
+          margin-bottom: 14px;
+        }
+        .fm-h3 {
+          font-family: "Noto Serif TC", "Noto Sans TC", serif;
+          font-size: clamp(1.5rem, 3vw, 2.2rem);
+          font-weight: 900;
+          color: #1a0f0a;
+          line-height: 1.3;
+          margin: 0 0 14px;
+          letter-spacing: -0.01em;
+        }
+        .fm-lead {
+          font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+          color: #5d4037;
+          line-height: 1.85;
+          max-width: 680px;
+          margin: 0 auto;
+        }
+        .fm-lead strong {
+          color: #b85a15;
+          font-weight: 700;
+        }
+
+        .fm-visual {
+          width: 100%;
+          border-radius: 20px;
+          display: block;
+          box-shadow: 0 20px 60px rgba(160, 82, 45, 0.18);
+        }
+
+        /* Audit 3 連張 */
+        .fm-audit-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 48px;
+          margin-top: 40px;
+        }
+        .fm-audit-item {
+          text-align: left;
+        }
+        .fm-audit-row {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 12px;
+          padding-bottom: 12px;
+          border-bottom: 1px dashed rgba(210, 105, 30, 0.2);
+        }
+        .fm-audit-no {
+          flex-shrink: 0;
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #d2691e, #cd853f);
+          color: #fff;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 900;
+          font-size: 0.95rem;
+          box-shadow: 0 4px 12px rgba(210, 105, 30, 0.3);
+        }
+        .fm-audit-q {
+          font-family: "Noto Serif TC", serif;
+          font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+          font-weight: 900;
+          color: #1a0f0a;
+          line-height: 1.35;
+        }
+        .fm-audit-desc {
+          font-size: 0.98rem;
+          color: #5d4037;
+          line-height: 1.75;
+          margin: 0 0 20px;
+        }
+        .fm-audit-img {
+          width: 100%;
+          border-radius: 16px;
+          display: block;
+          box-shadow: 0 12px 36px rgba(160, 82, 45, 0.15);
+        }
+
+        /* CTA */
+        .fm-cta-wrap {
+          text-align: center;
+          margin-top: 48px;
+          padding: 44px 32px;
+          background: #fff;
+          border-radius: 20px;
+          border: 1px solid rgba(210, 105, 30, 0.18);
+          box-shadow: 0 12px 40px rgba(160, 82, 45, 0.08);
+        }
+        .fm-cta-text {
+          font-size: 1.05rem;
+          color: #5d4037;
+          margin: 0 0 20px;
+          line-height: 1.7;
+        }
+        .fm-cta-text strong {
+          color: #1a0f0a;
+          font-weight: 700;
+        }
+        .fm-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #d2691e, #b85a15);
+          color: #fff;
+          padding: 16px 36px;
+          border-radius: 9999px;
+          font-size: 1rem;
+          font-weight: 700;
+          text-decoration: none;
+          box-shadow: 0 10px 28px rgba(210, 105, 30, 0.35);
+          transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+        }
+        .fm-cta-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 34px rgba(210, 105, 30, 0.45);
+        }
+        .fm-cta-btn svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        @media (max-width: 768px) {
+          .fm-section {
+            padding: 80px 0 96px;
+          }
+          .fm-inner {
+            padding: 0 24px;
+          }
+          .fm-header {
+            margin-bottom: 56px;
+          }
+          .fm-block {
+            margin-bottom: 72px;
+          }
+          .fm-cta-wrap {
+            padding: 32px 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .fm-section {
+            padding: 64px 0 80px;
+          }
+          .fm-inner {
+            padding: 0 18px;
+          }
+          .fm-audit-row {
+            gap: 10px;
+          }
+          .fm-audit-no {
+            width: 34px;
+            height: 34px;
+            font-size: 0.85rem;
+          }
+        }
+      </style>
+
+      <section class="fm-section" id="funnel-method">
+        <div class="fm-inner">
+          <!-- 開場 -->
+          <div class="fm-header">
+            <span class="fm-badge">FUNNEL METHOD</span>
+            <h2 class="fm-title">
+              為什麼同樣的流量，<br />成交率可以差 <em>5 倍</em>？
+            </h2>
+            <p class="fm-subtitle">
+              上方實驗室看到的結果不是運氣，<br />是一套可以複製的設計方法——讓每個進來的人都走完「會成交」的那條路。
+            </p>
+          </div>
+
+          <!-- 子區塊 1：用戶旅程對比 -->
+          <div class="fm-block">
+            <div class="fm-block-head">
+              <span class="fm-kicker">BEFORE vs AFTER · 5 秒內的差別</span>
+              <h3 class="fm-h3">客人點進來的 5 秒，你的網站在做什麼？</h3>
+              <p class="fm-lead">
+                一般網站把資訊「攤開」讓客人自己找；漏斗型網頁把客人「<strong>推著走</strong>」——每一步都在回答「下一步我該做什麼」。
+              </p>
+            </div>
+            <picture>
+              <source
+                media="(max-width: 768px)"
+                srcset="
+                  gpt-image-2-output/mobile-9x16/hero-journey-comparison-chinese-gpt-image-2-luxe-vivid-mobile-v4.png
+                "
+              />
+              <img
+                src="gpt-image-2-output/hero-journey-comparison-chinese-gpt-image-2-luxe-vivid.png"
+                alt="一般網站與漏斗型網頁的用戶旅程對比"
+                class="fm-visual"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+
+          <!-- 子區塊 2：漏斗三層結構 -->
+          <div class="fm-block">
+            <div class="fm-block-head">
+              <span class="fm-kicker">FUNNEL STRUCTURE · 賺錢的網站長這樣</span>
+              <h3 class="fm-h3">不是一個頁面，是一套結構</h3>
+              <p class="fm-lead">
+                認知 → 考慮 →
+                決策，每一層都有自己的內容任務和行動指令。錯置一層，整個轉換就斷掉。
+              </p>
+            </div>
+            <picture>
+              <source
+                media="(max-width: 768px)"
+                srcset="
+                  gpt-image-2-output/mobile-9x16/funnel-structure-chinese-gpt-image-2-luxe-vivid-mobile.png
+                "
+              />
+              <img
+                src="gpt-image-2-output/funnel-structure-chinese-gpt-image-2-luxe-vivid.png"
+                alt="漏斗三層結構資訊圖"
+                class="fm-visual"
+                loading="lazy"
+              />
+            </picture>
+          </div>
+
+          <!-- 子區塊 3：轉換卡在哪 -->
+          <div class="fm-block">
+            <div class="fm-block-head">
+              <span class="fm-kicker">AUDIT POINTS · 轉換卡在哪</span>
+              <h3 class="fm-h3">90% 的網站，只死在這三個地方</h3>
+              <p class="fm-lead">
+                訊息沒對上、信任沒建起來、最後一步沒推過去——這三個環節任何一個斷掉，廣告費就白燒了。
+              </p>
+            </div>
+
+            <div class="fm-audit-grid">
+              <div class="fm-audit-item">
+                <div class="fm-audit-row">
+                  <span class="fm-audit-no">01</span>
+                  <span class="fm-audit-q">廣告說的，跟落地頁說的一樣嗎？</span>
+                </div>
+                <p class="fm-audit-desc">
+                  訪客從廣告點進來的第一秒，主標題、視覺、訴求是不是和廣告完全對焦。訊息一錯，訪客
+                  3 秒就離開——廣告費就這樣白燒。
+                </p>
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="
+                      gpt-image-2-output/mobile-9x16/expert-audit-part1-message-match-chinese-gpt-image-2-luxe-vivid-lite-mobile.png
+                    "
+                  />
+                  <img
+                    src="gpt-image-2-output/expert-audit-part1-message-match-chinese-gpt-image-2-luxe-vivid-lite.png"
+                    alt="廣告訊息與落地頁是否對焦示意圖"
+                    class="fm-audit-img"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+
+              <div class="fm-audit-item">
+                <div class="fm-audit-row">
+                  <span class="fm-audit-no">02</span>
+                  <span class="fm-audit-q">你的頁面，讓人「敢留下來」嗎？</span>
+                </div>
+                <p class="fm-audit-desc">
+                  客戶見證、媒體露出、案例數字、專業資歷——信任元素不夠或擺錯位置，訪客有興趣卻不敢行動。轉換率卡住，問題通常就在這裡。
+                </p>
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="
+                      gpt-image-2-output/mobile-9x16/expert-audit-part2-trust-blocks-chinese-gpt-image-2-luxe-vivid-lite-mobile.png
+                    "
+                  />
+                  <img
+                    src="gpt-image-2-output/expert-audit-part2-trust-blocks-chinese-gpt-image-2-luxe-vivid-lite.png"
+                    alt="信任區塊設計是否接得住訪客"
+                    class="fm-audit-img"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+
+              <div class="fm-audit-item">
+                <div class="fm-audit-row">
+                  <span class="fm-audit-no">03</span>
+                  <span class="fm-audit-q">最後這一步，他為什麼沒送出？</span>
+                </div>
+                <p class="fm-audit-desc">
+                  按鈕文字、表單欄位數量、送出後會發生什麼——這些細節直接決定有沒有辦法跨出最後一步。很多轉換就死在這最後
+                  5 秒。
+                </p>
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="
+                      gpt-image-2-output/mobile-9x16/expert-audit-part3-cta-form-chinese-gpt-image-2-luxe-vivid-lite-mobile.png
+                    "
+                  />
+                  <img
+                    src="gpt-image-2-output/expert-audit-part3-cta-form-chinese-gpt-image-2-luxe-vivid-lite.png"
+                    alt="CTA 與表單設計是否能促成成交"
+                    class="fm-audit-img"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA：引導看完整方法論 -->
+          <div class="fm-cta-wrap">
+            <p class="fm-cta-text">
+              這三點只是入門——<strong>完整的漏斗設計方法論</strong>還包含關鍵字意圖分層、PAS
+              文案公式、20 項網站差異對照。
+            </p>
+            <a href="funnel-web-design.html" class="fm-cta-btn">
+              看完整漏斗設計方法論
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured: AI 智能大腦 -->
       <section class="pf-project">
         <a
           href="https://ai-brain-website.vercel.app"
@@ -131,18 +630,12 @@
             <p class="pf-project-tagline">
               每天忙到沒時間思考？讓 AI 接手重複工作
             </p>
-            <ul class="pf-project-bullets">
-              <li>內建 AI 即時網站分析器，訪客進站就能體驗實力</li>
-              <li>智能客服 + 語音 AI 播放器，24 小時自動接客</li>
-              <li>互動式方案測驗，讓訪客自己找到最適合的服務</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>AI 即時網站分析</span>
-                <span>智能客服</span>
-                <span>互動式方案測驗</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              品牌旗艦站本身就是最強的產品展示 — 內建 AI
+              即時網站分析器、智能客服、語音 AI
+              播放器與互動式方案測驗。訪客不是在「看」服務介紹，而是在「體驗」AI
+              的威力。
+            </p>
             <span class="pf-project-link"
               >造訪官網
               <svg
@@ -161,8 +654,6 @@
       </section>
 
       <!-- Section Divider -->
-      <!-- works anchor -->
-      <div id="lp-works"></div>
       <div class="pf-divider">
         <span class="portfolio-badge">WORKS</span>
         <h2 class="pf-divider-title">精選作品展示</h2>
@@ -183,18 +674,10 @@
             <span class="portfolio-badge">奢華養生</span>
             <h2 class="pf-project-title">華友聯健康園區</h2>
             <p class="pf-project-tagline">擁抱翠綠山水，享受宜蘭富居</p>
-            <ul class="pf-project-bullets">
-              <li>沈浸式導覽，訪客還沒到現場就先「走進去體驗」</li>
-              <li>自建 CMS 後台 + 六大面向動態展示</li>
-              <li>多步驟預約參觀系統，線上直接安排</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>AI 智慧管家模擬</span>
-                <span>多步驟預約導覽</span>
-                <span>六大面向 CMS</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              結合高端醫療與 AI 智能科技的全方位健康奢華生活園區。自建 CMS
+              後台、預約參觀系統、六大面向動態展示，讓高端園區的每一寸價值都被看見。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -232,19 +715,11 @@
             <p class="pf-project-tagline">
               從漁港到餐桌，堅持天然食材的鮮甜原味
             </p>
-            <ul class="pf-project-bullets">
-              <li>線上訂位 + 點餐，尖峰時段不再漏接電話</li>
-              <li>LINE 官方帳號串接，訂單即時通知</li>
-              <li>散客到企業宴席，一站搞定</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>線上訂位</span>
-                <span>線上點餐</span>
-                <span>LINE 一鍵通知</span>
-                <span>後台自主管理</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              宜蘭日式海鮮燒烤餐廳，大溪港每日直送。整合線上訂位、餐點訂購與
+              LINE
+              官方帳號，散客到企業宴席一站搞定。備長炭炙烤、零味精堅持，網站就讓客人聞到炭火香。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -280,18 +755,10 @@
             <span class="portfolio-badge">形象官網</span>
             <h2 class="pf-project-title">果日和 鮮果汁冰品</h2>
             <p class="pf-project-tagline">每一杯，都是水果最好的樣子</p>
-            <ul class="pf-project-bullets">
-              <li>網頁點餐系統，掃碼就點、到店免等</li>
-              <li>LINE 串接，訂單自動通知店家</li>
-              <li>日式和風美學，小店也有品牌質感</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>網頁點餐系統</span>
-                <span>LINE 串接</span>
-                <span>到店免排隊</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              日式和風美學搭配完整線上點餐系統與 LINE
+              串接，讓一間小店也能擁有完整的線上訂餐體驗。到店免排隊，當季嚴選、現點現做、天然無添加。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -309,38 +776,6 @@
         </a>
       </section>
 
-      <!-- Works Interrupt -->
-      <div class="works-interrupt">
-        <p class="works-interrupt-text">
-          這些作品有一個共同點——<strong>它們都會自己接客。</strong>
-        </p>
-        <div class="works-interrupt-chain">
-          <span class="works-interrupt-tag">SEO 讓人找到你</span>
-          <span class="works-interrupt-arrow">&rarr;</span>
-          <span class="works-interrupt-tag">設計讓人信任你</span>
-          <span class="works-interrupt-arrow">&rarr;</span>
-          <span class="works-interrupt-tag">AI 讓人留下來</span>
-        </div>
-        <p class="works-interrupt-sub">從流量到回購，一條完整的成交鏈</p>
-        <figure
-          style="margin: 1.5rem auto 0; text-align: center; padding: 0 1rem"
-        >
-          <img
-            src="images/pricing/content-flow.jpg"
-            alt="SEO 讓人找到你 → 設計讓人信任你 → AI 讓人留下來，完整成交鏈"
-            loading="lazy"
-            style="
-              display: block;
-              margin: 0 auto;
-              width: 100%;
-              max-width: 760px;
-              border-radius: 12px;
-              box-shadow: 0 4px 20px rgba(210, 105, 30, 0.08);
-            "
-          />
-        </figure>
-      </div>
-
       <!-- 4. BLOOM -->
       <section class="pf-project">
         <a
@@ -356,18 +791,11 @@
             <span class="portfolio-badge">電商官網</span>
             <h2 class="pf-project-title">BLOOM 色料品牌</h2>
             <p class="pf-project-tagline">從一滴色彩開始的故事</p>
-            <ul class="pf-project-bullets">
-              <li>品牌官網 + 電商 + 教育課程，三合一平台</li>
-              <li>完整色號展示、三級課程報名、學員作品 Gallery</li>
-              <li>業主自行管理所有內容，不需要工程師</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>品牌 + 電商 + 課程</span>
-                <span>完整色號展示</span>
-                <span>業主自管後台</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              專業半永久色料品牌的三合一平台 — 品牌官網、電商、教育課程。50+
+              色號產品展示、三級課程報名、學員作品
+              Gallery，業主可自行管理所有內容。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -400,18 +828,9 @@
             <span class="portfolio-badge">珠寶行銷</span>
             <h2 class="pf-project-title">ETERNEL 珠寶行銷</h2>
             <p class="pf-project-tagline">前所未見的創意，此刻綻放</p>
-            <ul class="pf-project-bullets">
-              <li>黑金奢華設計系統，打開網站就感受品牌氣場</li>
-              <li>作品集展示 + 部落格 + 電子報訂閱</li>
-              <li>設計本身就在替產品定價</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>黑金奢華設計</span>
-                <span>電子報訂閱</span>
-                <span>品牌溢價塑造</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              黑金奢華設計系統打造的珠寶行銷品牌。作品集展示、部落格、電子報訂閱，用最少的元素傳達最強的品牌氣場。每個品牌故事從一次對話開始。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -449,18 +868,12 @@
             <p class="pf-project-tagline">
               不只是官網，是一套會接客、會回話、會通知你的 AI 系統
             </p>
-            <ul class="pf-project-bullets">
-              <li>LINE AI 即時回覆客人問題，老闆不用再守訊息</li>
-              <li>在 LINE 上說一句話就能改網站內容</li>
-              <li>預約表單送出，老闆手機立刻收到通知</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>LINE AI 即時回覆</span>
-                <span>LINE 改網站</span>
-                <span>預約自動通知</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              客人在 LINE 問「VIP 房多少錢」，AI
+              即時查資料回覆；填完預約表單，老闆手機立刻收到 LINE
+              通知。老闆想改價格？直接在 LINE 上說「標準房改 900
+              元」，網站秒更新。不用學後台、不用開電腦，所有內容用聊天就能管理。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -493,18 +906,11 @@
             <span class="portfolio-badge">精品 SPA</span>
             <h2 class="pf-project-title">璞御 SPA</h2>
             <p class="pf-project-tagline">返璞歸真，靜養本源</p>
-            <ul class="pf-project-bullets">
-              <li>東方禪意美學，六段身心療程完整敘事</li>
-              <li>線上預約一頁搞定，深夜也能自助訂位</li>
-              <li>師傅個人檔案展示，建立信任感提升轉換</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>精油療程</span>
-                <span>線上預約</span>
-                <span>品牌視覺</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              台北靜巷的東方禪意 SPA
+              品牌視覺設計。以侘寂美學為骨、在地檜木沉香為魂，打造六段身心旅程的完整敘事
+              — 從招牌療程到尊爵雙人 SPA，用一頁網站說完一場儀式。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -542,18 +948,11 @@
             <p class="pf-project-tagline">
               你的 LINE 官方帳號，現在會自己接客了
             </p>
-            <ul class="pf-project-bullets">
-              <li>24/7 AI 客服，半夜三點也能成交</li>
-              <li>懂你的產品、記住每個客戶的偏好</li>
-              <li>一鍵部署，不用裝 App、不需技術背景</li>
-            </ul>
-            <div class="pf-project-highlights">
-              <div class="pf-highlight-tags">
-                <span>24/7 自動回覆</span>
-                <span>記住每位客戶</span>
-                <span>一鍵部署</span>
-              </div>
-            </div>
+            <p class="pf-project-desc">
+              24 小時不打烊的 AI
+              客服，懂你的產品、記住每個客戶，半夜三點也能成交。一鍵部署品牌專屬
+              AI，不用裝 App、不用改網站、不需要技術背景。
+            </p>
             <span class="pf-project-link"
               >探索專案
               <svg
@@ -571,909 +970,11 @@
         </a>
       </section>
 
-      <!-- ★ 成交率實驗室 ★ -->
-      <style>
-        .lp-cro-bridge {
-          background: #876a2f;
-          color: #faf7f2;
-          text-align: center;
-          padding: 18px 28px;
-          font-size: 15px;
-          line-height: 1.75;
-          margin: 40px auto 0;
-          max-width: 720px;
-          border-radius: 6px;
-        }
-        .lp-cro-bridge strong {
-          color: #fff;
-        }
-        .lp-cro-section {
-          padding: 48px 20px 32px;
-          max-width: 1080px;
-          margin: 0 auto;
-        }
-        .lp-cro-header {
-          text-align: center;
-          margin-bottom: 36px;
-        }
-        .lp-cro-badge {
-          display: inline-block;
-          background: #876a2f;
-          color: #faf7f2;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          padding: 4px 14px;
-          border-radius: 20px;
-          margin-bottom: 14px;
-        }
-        .lp-cro-title {
-          font-size: clamp(20px, 4vw, 30px);
-          font-weight: 700;
-          color: #1a0f0a;
-          line-height: 1.3;
-          margin-bottom: 10px;
-        }
-        .lp-cro-subtitle {
-          font-size: 15px;
-          color: #4a4540;
-          line-height: 1.75;
-          margin-bottom: 6px;
-        }
-        .lp-cro-time {
-          font-size: 12px;
-          color: #876a2f;
-          font-weight: 600;
-          margin-top: 2px;
-        }
-        .lp-cro-cards {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 16px;
-        }
-        @media (min-width: 768px) {
-          .lp-cro-cards {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-          }
-        }
-        .lp-cro-card {
-          background: #fff;
-          border: 1px solid rgba(135, 106, 47, 0.2);
-          border-radius: 12px;
-          padding: 22px;
-          text-decoration: none;
-          color: #1a0f0a;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          transition:
-            transform 0.2s,
-            box-shadow 0.2s;
-        }
-        .lp-cro-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 24px rgba(135, 106, 47, 0.18);
-        }
-        .lp-cro-card-label {
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #876a2f;
-        }
-        .lp-cro-card-title {
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 1.4;
-          color: #1a0f0a;
-        }
-        .lp-cro-stat-row {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 14px 0;
-        }
-        .lp-cro-stat {
-          flex: 1;
-          text-align: center;
-          padding: 12px 8px;
-          border-radius: 8px;
-        }
-        .lp-cro-stat-bad {
-          background: #fef2f2;
-        }
-        .lp-cro-stat-good {
-          background: #f0faf0;
-        }
-        .lp-cro-stat-num {
-          display: block;
-          font-size: 30px;
-          font-weight: 800;
-          line-height: 1;
-        }
-        .lp-cro-stat-bad .lp-cro-stat-num {
-          color: #c0392b;
-        }
-        .lp-cro-stat-good .lp-cro-stat-num {
-          color: #27ae60;
-        }
-        .lp-cro-stat-unit {
-          font-size: 16px;
-          font-weight: 700;
-        }
-        .lp-cro-stat-label {
-          display: block;
-          font-size: 11px;
-          color: #7a7269;
-          margin-top: 4px;
-        }
-        .lp-cro-stat-arrow {
-          font-size: 18px;
-          color: #876a2f;
-          font-weight: 700;
-        }
-        .lp-cro-compare-row {
-          display: flex;
-          gap: 8px;
-        }
-        .lp-cro-compare-item {
-          flex: 1;
-          border-radius: 8px;
-          padding: 12px 8px;
-          text-decoration: none;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          transition: opacity 0.2s;
-        }
-        .lp-cro-compare-item:hover {
-          opacity: 0.85;
-        }
-        .lp-cro-compare-bad {
-          background: #fef2f2;
-          border: 1px solid #fca5a5;
-        }
-        .lp-cro-compare-good {
-          background: #f0faf0;
-          border: 1px solid #86efac;
-        }
-        .lp-cro-compare-tag {
-          font-size: 11px;
-          font-weight: 700;
-          display: block;
-        }
-        .lp-cro-compare-bad .lp-cro-compare-tag {
-          color: #c0392b;
-        }
-        .lp-cro-compare-good .lp-cro-compare-tag {
-          color: #27ae60;
-        }
-        .lp-cro-compare-name {
-          font-size: 13px;
-          font-weight: 600;
-          color: #1a0f0a;
-          line-height: 1.4;
-          display: block;
-        }
-        .lp-cro-compare-cta {
-          font-size: 12px;
-          font-weight: 600;
-          color: #876a2f;
-          display: block;
-        }
-        .lp-cro-card-c {
-          background: #1a1714;
-          border-color: rgba(135, 106, 47, 0.4);
-        }
-        .lp-cro-card-c .lp-cro-card-label {
-          color: #c4a45a;
-        }
-        .lp-cro-card-c .lp-cro-card-title {
-          color: #faf7f2;
-        }
-        .lp-cro-card-c .lp-cro-card-desc {
-          color: rgba(250, 247, 242, 0.7);
-        }
-        .lp-cro-card-c .lp-cro-card-link {
-          color: #c4a45a;
-        }
-        .lp-cro-stats-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px;
-          padding: 4px 0;
-        }
-        .lp-cro-mini-stat {
-          background: rgba(135, 106, 47, 0.15);
-          border: 1px solid rgba(135, 106, 47, 0.3);
-          border-radius: 8px;
-          padding: 10px 6px;
-          text-align: center;
-        }
-        .lp-cro-mini-num {
-          display: block;
-          font-size: 20px;
-          font-weight: 800;
-          color: #c4a45a;
-          line-height: 1.1;
-        }
-        .lp-cro-mini-label {
-          display: block;
-          font-size: 10px;
-          color: rgba(250, 247, 242, 0.6);
-          margin-top: 2px;
-        }
-        .lp-cro-card-desc {
-          font-size: 13px;
-          color: #4a4540;
-          line-height: 1.65;
-          flex: 1;
-        }
-        .lp-cro-card-link {
-          font-size: 13px;
-          font-weight: 700;
-          color: #876a2f;
-          margin-top: 2px;
-        }
-        .lp-cro-exit {
-          text-align: center;
-          margin: 36px auto 0;
-          padding: 18px 24px;
-          background: rgba(135, 106, 47, 0.07);
-          border-left: 3px solid #876a2f;
-          border-radius: 0 6px 6px 0;
-          font-size: 14px;
-          line-height: 1.8;
-          color: #4a4540;
-          max-width: 680px;
-        }
-        .lp-cro-exit strong {
-          color: #876a2f;
-        }
-
-        /* Progress Bar — 頁面頂端滾動進度條 */
-        .lp-progress-bar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 0%;
-          height: 3px;
-          background: linear-gradient(90deg, #c9a961, #876a2f);
-          z-index: 9999;
-          transition: width 0.1s linear;
-          pointer-events: none;
-        }
-
-        /* Mobile Section Nav — 手機版底部固定導航 */
-        .lp-mobile-nav {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: rgba(26, 15, 10, 0.96);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          display: flex;
-          justify-content: space-around;
-          align-items: center;
-          padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
-          border-top: 1px solid rgba(201, 169, 97, 0.25);
-          z-index: 9000;
-          overflow-x: auto;
-          scrollbar-width: none;
-        }
-        .lp-mobile-nav::-webkit-scrollbar {
-          display: none;
-        }
-        .lp-mobile-nav-item {
-          flex: 0 0 auto;
-          padding: 6px 10px;
-          font-size: 12px;
-          font-weight: 600;
-          color: #d9c89a;
-          text-decoration: none;
-          white-space: nowrap;
-          border-radius: 14px;
-          transition:
-            background 0.2s,
-            color 0.2s;
-        }
-        .lp-mobile-nav-item:hover,
-        .lp-mobile-nav-item.active {
-          background: rgba(201, 169, 97, 0.18);
-          color: #fff;
-        }
-        /* Desktop 以上隱藏手機版 nav */
-        @media (min-width: 900px) {
-          .lp-mobile-nav {
-            display: none;
-          }
-        }
-
-        /* ===== TL;DR 區塊「這個頁面有什麼？」===== */
-        .lp-tldr {
-          padding: 32px 20px 8px;
-          max-width: 1080px;
-          margin: 0 auto;
-        }
-        .lp-tldr-box {
-          background: #fff;
-          border: 1px solid rgba(135, 106, 47, 0.18);
-          border-radius: 14px;
-          padding: 22px 24px;
-          box-shadow: 0 4px 16px rgba(26, 15, 10, 0.05);
-        }
-        .lp-tldr-header {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          margin-bottom: 14px;
-        }
-        .lp-tldr-icon {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 26px;
-          height: 26px;
-          background: #876a2f;
-          color: #faf7f2;
-          border-radius: 50%;
-          font-size: 14px;
-          font-weight: 700;
-        }
-        .lp-tldr-label {
-          font-size: 14px;
-          font-weight: 700;
-          color: #1a0f0a;
-          letter-spacing: 0.02em;
-        }
-        .lp-tldr-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px 16px;
-        }
-        @media (min-width: 768px) {
-          .lp-tldr-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-        .lp-tldr-item {
-          display: block;
-          padding: 8px 12px;
-          font-size: 14px;
-          color: #4a4540;
-          text-decoration: none;
-          border-radius: 8px;
-          border: 1px solid transparent;
-          transition:
-            background 0.2s,
-            color 0.2s,
-            border-color 0.2s;
-        }
-        .lp-tldr-item:hover {
-          background: rgba(201, 169, 97, 0.12);
-          color: #1a0f0a;
-          border-color: rgba(135, 106, 47, 0.25);
-        }
-
-        /* ===== Hook（章節間的引導文）===== */
-        .lp-hook {
-          max-width: 860px;
-          margin: 40px auto 24px;
-          padding: 0 24px;
-          font-size: clamp(16px, 2.4vw, 22px);
-          font-weight: 700;
-          text-align: center;
-          line-height: 1.55;
-          color: #1a0f0a;
-        }
-        .lp-hook strong {
-          color: #876a2f;
-        }
-
-        /* ===== Transition Zone（區塊過渡帶）===== */
-        .lp-transition-zone {
-          padding: 32px 20px;
-          background: linear-gradient(
-            180deg,
-            transparent,
-            rgba(201, 169, 97, 0.08)
-          );
-        }
-
-        /* ===== Stats（數據三格）===== */
-        .lp-stats {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 14px;
-          max-width: 960px;
-          margin: 20px auto 0;
-          padding: 0 20px;
-        }
-        @media (min-width: 768px) {
-          .lp-stats {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-          }
-        }
-        .lp-stat {
-          background: #fff;
-          border: 1px solid rgba(135, 106, 47, 0.18);
-          border-radius: 12px;
-          padding: 22px 18px;
-          text-align: center;
-          box-shadow: 0 4px 14px rgba(26, 15, 10, 0.04);
-        }
-        .lp-stat-num {
-          font-size: clamp(26px, 5vw, 38px);
-          font-weight: 800;
-          color: #876a2f;
-          line-height: 1.1;
-          margin-bottom: 6px;
-          display: flex;
-          align-items: baseline;
-          justify-content: center;
-          gap: 4px;
-          flex-wrap: wrap;
-        }
-        .lp-stat-suffix {
-          font-size: clamp(13px, 1.8vw, 16px);
-          font-weight: 600;
-          color: #4a4540;
-        }
-        .lp-stat-label {
-          font-size: 14px;
-          color: #1a0f0a;
-          font-weight: 600;
-        }
-        .lp-counter {
-          font-variant-numeric: tabular-nums;
-        }
-
-        /* ===== Micro CTA（小型行動呼籲）===== */
-        .lp-micro-cta {
-          max-width: 860px;
-          margin: 32px auto;
-          padding: 0 20px;
-        }
-        .lp-micro-cta-box {
-          background: linear-gradient(135deg, #1a0f0a, #2d1d12);
-          border-radius: 14px;
-          padding: 24px 22px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 14px;
-          text-align: center;
-          box-shadow: 0 8px 24px rgba(26, 15, 10, 0.18);
-        }
-        @media (min-width: 768px) {
-          .lp-micro-cta-box {
-            flex-direction: row;
-            justify-content: space-between;
-            text-align: left;
-          }
-        }
-        .lp-micro-cta-text {
-          color: #faf7f2;
-          font-size: 15px;
-          font-weight: 600;
-          line-height: 1.5;
-          margin: 0;
-        }
-        .lp-micro-cta-btn {
-          display: inline-block;
-          background: #c9a961;
-          color: #1a0f0a;
-          padding: 12px 22px;
-          border-radius: 10px;
-          font-weight: 700;
-          font-size: 14px;
-          text-decoration: none;
-          white-space: nowrap;
-          transition:
-            background 0.2s,
-            transform 0.2s;
-        }
-        .lp-micro-cta-btn:hover {
-          background: #d9c89a;
-          transform: translateY(-2px);
-        }
-
-        /* ===== Back-to-Top 按鈕 ===== */
-        .lp-btt {
-          position: fixed;
-          right: 18px;
-          bottom: 80px;
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background: #876a2f;
-          color: #faf7f2;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 18px;
-          text-decoration: none;
-          box-shadow: 0 6px 18px rgba(26, 15, 10, 0.28);
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(10px);
-          transition:
-            opacity 0.3s,
-            visibility 0.3s,
-            transform 0.3s,
-            background 0.2s;
-          z-index: 8000;
-        }
-        .lp-btt.show,
-        .lp-btt.visible,
-        .lp-btt[data-show="true"] {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
-        .lp-btt:hover {
-          background: #c9a961;
-          color: #1a0f0a;
-        }
-        @media (min-width: 900px) {
-          .lp-btt {
-            bottom: 24px;
-          }
-        }
-
-        /* ===== Typewriter 打字機效果 ===== */
-        .typewriter {
-          display: inline-block;
-          white-space: pre-wrap;
-          word-break: break-word;
-          color: inherit;
-        }
-
-        /* ===== 作品卡 bullet 清單 / highlight tags（portfolio.css 沒補到的 4 個）===== */
-        .pf-project-bullets {
-          list-style: none;
-          padding: 0;
-          margin: 12px 0 16px;
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .pf-project-bullets li {
-          position: relative;
-          padding-left: 20px;
-          font-size: 15px;
-          line-height: 1.6;
-          color: #4a4540;
-        }
-        .pf-project-bullets li::before {
-          content: "✓";
-          position: absolute;
-          left: 0;
-          top: 0;
-          color: #876a2f;
-          font-weight: 700;
-        }
-        .pf-project-highlights {
-          margin: 14px 0 4px;
-        }
-        .pf-highlight-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px 8px;
-        }
-        .pf-highlight-tags span {
-          display: inline-block;
-          padding: 4px 10px;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          color: #876a2f;
-          background: rgba(201, 169, 97, 0.12);
-          border: 1px solid rgba(135, 106, 47, 0.22);
-          border-radius: 20px;
-        }
-
-        /* ===== Founder 區塊內容欄（portfolio.css 有 .pf-founder-inner 但沒 content）===== */
-        .pf-founder-content {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          max-width: 720px;
-          margin: 0 auto;
-          padding: 0 20px;
-          text-align: center;
-        }
-        @media (min-width: 768px) {
-          .pf-founder-content {
-            text-align: left;
-            margin: 0;
-          }
-        }
-
-        /* ===== Expert Free 區塊外層容器 ===== */
-        .expert-free-block {
-          margin: 24px 0;
-        }
-
-        /* ===== Works Interrupt — 成交鏈三格 ===== */
-        .works-interrupt {
-          max-width: 920px;
-          margin: 40px auto;
-          padding: 24px 20px;
-          background: linear-gradient(
-            180deg,
-            rgba(201, 169, 97, 0.08),
-            transparent
-          );
-          border-radius: 14px;
-          text-align: center;
-        }
-        .works-interrupt-text {
-          font-size: clamp(16px, 2.4vw, 20px);
-          font-weight: 700;
-          color: #1a0f0a;
-          line-height: 1.55;
-          margin-bottom: 18px;
-        }
-        .works-interrupt-chain {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 14px;
-        }
-        .works-interrupt-tag {
-          display: inline-block;
-          padding: 8px 14px;
-          background: #fff;
-          color: #876a2f;
-          font-size: 14px;
-          font-weight: 700;
-          border: 1px solid rgba(135, 106, 47, 0.25);
-          border-radius: 24px;
-          box-shadow: 0 2px 8px rgba(26, 15, 10, 0.05);
-        }
-        .works-interrupt-arrow {
-          color: #876a2f;
-          font-weight: 700;
-          font-size: 18px;
-        }
-        .works-interrupt-sub {
-          font-size: 14px;
-          color: #4a4540;
-          margin: 0;
-        }
-
-        /* ===== Line 浮動按鈕（右下）===== */
-        .line-float-btn {
-          position: fixed;
-          right: 18px;
-          bottom: 140px;
-          width: 56px;
-          height: 56px;
-          border-radius: 50%;
-          background: #06c755;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 6px 20px rgba(6, 199, 85, 0.35);
-          text-decoration: none;
-          z-index: 8500;
-          transition:
-            transform 0.2s,
-            box-shadow 0.2s;
-        }
-        .line-float-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 28px rgba(6, 199, 85, 0.45);
-        }
-        .line-float-icon {
-          width: 32px;
-          height: 32px;
-          display: block;
-        }
-        @media (min-width: 900px) {
-          .line-float-btn {
-            bottom: 90px;
-          }
-        }
-
-        /* ===== Audio/Podcast 播放器小元素 ===== */
-        .abp-ep-play-hint {
-          font-size: 12px;
-          color: #876a2f;
-          font-weight: 600;
-          margin-top: 4px;
-        }
-        .abp-time-current,
-        .abp-time-total {
-          font-size: 12px;
-          color: #4a4540;
-          font-variant-numeric: tabular-nums;
-          font-family: ui-monospace, "SF Mono", Menlo, monospace;
-        }
-
-        /* ===== Chatbot 小元素 ===== */
-        .chat-toggle-avatar,
-        .chat-header-avatar {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          object-fit: cover;
-          display: block;
-        }
-        .chat-send-icon {
-          width: 18px;
-          height: 18px;
-          display: block;
-        }
-      </style>
-
-      <div id="lp-cro"></div>
-      <div class="lp-cro-bridge">
-        上面這 8 個作品，每一個都在幫客戶賺錢。我們怎麼做到的？<br />
-        <strong>下面 3 個實驗，把方法拆給你看。</strong>
-      </div>
-
-      <section class="lp-cro-section">
-        <div class="lp-cro-header">
-          <div class="lp-cro-badge">成交率實驗室</div>
-          <h2 class="lp-cro-title">會成交的網頁，背後都有這 3 個實驗</h2>
-          <p class="lp-cro-subtitle">
-            同樣的產業、同一批流量。<br />一般網站月入 3 萬，用方法的網頁月入 12
-            萬。差別在哪？下面拆給你看。
-          </p>
-          <p class="lp-cro-time">⏱ 約 2 分鐘看完</p>
-        </div>
-
-        <div class="lp-cro-cards">
-          <a
-            href="https://conversion-comparison.vercel.app"
-            target="_blank"
-            rel="noopener"
-            class="lp-cro-card"
-          >
-            <div class="lp-cro-card-label">實驗 1</div>
-            <h3 class="lp-cro-card-title">同一個產品，成交率差 5 倍</h3>
-            <div class="lp-cro-stat-row" id="lp-cro-trigger-v2">
-              <div class="lp-cro-stat lp-cro-stat-bad">
-                <span class="lp-cro-stat-num">1</span
-                ><span class="lp-cro-stat-unit">%</span>
-                <span class="lp-cro-stat-label">一般設計</span>
-              </div>
-              <div class="lp-cro-stat-arrow">→</div>
-              <div class="lp-cro-stat lp-cro-stat-good">
-                <span class="lp-cro-stat-num" id="cro-count-after-v2">1</span
-                ><span class="lp-cro-stat-unit">%</span>
-                <span class="lp-cro-stat-label">優化後</span>
-              </div>
-            </div>
-            <p class="lp-cro-card-desc">
-              同一批流量、同樣產品，一個關鍵改動讓成交率翻 5 倍。看 AB
-              對比拆解。
-            </p>
-            <span class="lp-cro-card-link">看 3 秒對比 →</span>
-          </a>
-
-          <div class="lp-cro-card" style="cursor: default">
-            <div class="lp-cro-card-label">實驗 2</div>
-            <h3 class="lp-cro-card-title">刻意做一個爛版，再做一個優化版</h3>
-            <div class="lp-cro-compare-row">
-              <a
-                href="https://bad-landing-page.vercel.app"
-                target="_blank"
-                rel="noopener"
-                class="lp-cro-compare-item lp-cro-compare-bad"
-              >
-                <span class="lp-cro-compare-tag">❌ 反面教材</span>
-                <span class="lp-cro-compare-name">寶貝學堂<br />（爛版）</span>
-                <span class="lp-cro-compare-cta">看爛版 →</span>
-              </a>
-              <a
-                href="https://kids-course-landing.vercel.app"
-                target="_blank"
-                rel="noopener"
-                class="lp-cro-compare-item lp-cro-compare-good"
-              >
-                <span class="lp-cro-compare-tag">✓ 優化版</span>
-                <span class="lp-cro-compare-name">黃金三角<br />啟蒙法™</span>
-                <span class="lp-cro-compare-cta">看優化版 →</span>
-              </a>
-            </div>
-            <p class="lp-cro-card-desc">
-              同一個課程，5 個關鍵差異讓一個版本讓人關掉，另一個版本讓人付錢。
-            </p>
-          </div>
-
-          <a
-            href="https://sneaker-comparison.vercel.app"
-            target="_blank"
-            rel="noopener"
-            class="lp-cro-card lp-cro-card-c"
-          >
-            <div class="lp-cro-card-label">實驗 3</div>
-            <h3 class="lp-cro-card-title">
-              決策架構師：讓每個訪客都帶走一個購物袋
-            </h3>
-            <div class="lp-cro-stats-grid">
-              <div class="lp-cro-mini-stat">
-                <span class="lp-cro-mini-num">14×</span
-                ><span class="lp-cro-mini-label">轉換倍數</span>
-              </div>
-              <div class="lp-cro-mini-stat">
-                <span class="lp-cro-mini-num">5.3天</span
-                ><span class="lp-cro-mini-label">決策加速</span>
-              </div>
-              <div class="lp-cro-mini-stat">
-                <span class="lp-cro-mini-num">7章</span
-                ><span class="lp-cro-mini-label">心理框架</span>
-              </div>
-              <div class="lp-cro-mini-stat">
-                <span class="lp-cro-mini-num">3版</span
-                ><span class="lp-cro-mini-label">AB 迭代</span>
-              </div>
-            </div>
-            <p class="lp-cro-card-desc">
-              用行為科學架構顧客決策路徑，讓猶豫者變成購買者。
-            </p>
-            <span class="lp-cro-card-link">看完整診斷報告 →</span>
-          </a>
-        </div>
-
-        <div class="lp-cro-exit">
-          看懂這 3 個實驗，你會明白上面 8 個作品為什麼能幫客戶賺錢。<br />
-          <strong>接下來，網頁把客人勾進來了，怎麼接？往下看 LINE AI →</strong>
-        </div>
-      </section>
-
-      <script>
-        (function () {
-          var el = document.getElementById("cro-count-after-v2");
-          var trigger = document.getElementById("lp-cro-trigger-v2");
-          if (!el || !trigger) return;
-          var fired = false;
-          var obs = new IntersectionObserver(
-            function (entries) {
-              if (entries[0].isIntersecting && !fired) {
-                fired = true;
-                var start = performance.now(),
-                  dur = 1200,
-                  from = 1,
-                  to = 5;
-                function tick(now) {
-                  var p = Math.min((now - start) / dur, 1);
-                  var eased = 1 - Math.pow(1 - p, 3);
-                  el.textContent = Math.round(from + eased * (to - from));
-                  if (p < 1) requestAnimationFrame(tick);
-                }
-                requestAnimationFrame(tick);
-                obs.disconnect();
-              }
-            },
-            { threshold: 0.4 },
-          );
-          obs.observe(trigger);
-        })();
-      </script>
-
       <!-- Mid CTA after cases -->
       <div class="pf-mid-cta">
-        <a href="pricing.html" class="pf-mid-cta-btn"
-          >&#x514D;&#x8CBB;&#x8AEE;&#x8A62;&#xFF0C;&#x4E86;&#x89E3;&#x65B9;&#x6848;
-          &#x2192;</a
-        >
+        <a href="pricing.html" class="pf-mid-cta-btn">免費諮詢，了解方案 →</a>
       </div>
 
-      <!-- Hook: works → cases -->
-      <div class="lp-hook">設計讓客人走進來，LINE AI 讓客人留下來——</div>
-
-      <div id="lp-cases"></div>
       <!-- 案例影片：花束爆單 -->
       <section class="case-video-section">
         <div class="case-video-layout">
@@ -1482,7 +983,7 @@
               <video
                 controls
                 playsinline
-                preload="none"
+                preload="metadata"
                 poster="assets/images/posters/florist.jpg"
               >
                 <source
@@ -1511,13 +1012,7 @@
         </div>
       </section>
 
-      <!-- Hook: cases → podcast -->
-      <div class="lp-hook">
-        這些案例背後的策略邏輯，兩位主持人幫你問出來了——
-      </div>
-
       <!-- AI Brain Podcast -->
-      <div id="lp-podcast"></div>
       <section class="abp-section" id="podcast">
         <div class="abp-inner">
           <div class="abp-header">
@@ -1577,11 +1072,6 @@
               <!-- EP.2 -->
               <div class="abp-ep" data-src="audio/podcast-ep2-final.mp3">
                 <div class="abp-ep-header">
-                  <button class="abp-ep-play-hint">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="7,4 19,12 7,20" />
-                    </svg>
-                  </button>
                   <span class="abp-ep-num">EP.2</span>
                   <span class="abp-ep-title"
                     >當 AI 開始幫同業接單，你的優勢在哪？</span
@@ -1610,11 +1100,6 @@
               <!-- EP.3 -->
               <div class="abp-ep" data-src="audio/podcast-ep3-final.mp3">
                 <div class="abp-ep-header">
-                  <button class="abp-ep-play-hint">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <polygon points="7,4 19,12 7,20" />
-                    </svg>
-                  </button>
                   <span class="abp-ep-num">EP.3</span>
                   <span class="abp-ep-title"
                     >導入 AI 網站的真實成本：比你想的便宜，比你想的重要</span
@@ -1644,10 +1129,6 @@
         </div>
       </section>
 
-      <!-- Hook: podcast → compare -->
-      <div class="lp-hook">同樣一個網站，加上 AI 後差在哪？</div>
-
-      <div id="lp-compare"></div>
       <!-- Founder / AI vs Normal -->
       <section class="pf-founder">
         <div class="pf-founder-inner">
@@ -1703,25 +1184,12 @@
             <!-- CTA buttons removed, LINE is now floating brain button -->
           </div>
         </div>
-
-        <figure
-          style="margin: 2rem auto 0; text-align: center; padding: 0 1rem"
-        >
-          <img
-            src="images/pricing/P05-marketing-growth.jpg"
-            alt="網站營收 5 倍乘數公式 — 流量×信任感×轉換率×回購率×客單價"
-            loading="lazy"
-            style="
-              display: block;
-              margin: 0 auto;
-              width: 100%;
-              max-width: 720px;
-              border-radius: 12px;
-              box-shadow: 0 4px 20px rgba(210, 105, 30, 0.08);
-            "
-          />
-        </figure>
       </section>
+
+      <!-- Mid CTA after comparison -->
+      <div class="pf-mid-cta">
+        <a href="pricing.html" class="pf-mid-cta-btn">查看方案與報價 →</a>
+      </div>
 
       <!-- 案例影片：診所 -->
       <section class="case-video-section">
@@ -1731,7 +1199,7 @@
               <video
                 controls
                 playsinline
-                preload="none"
+                preload="metadata"
                 poster="assets/images/posters/clinic.jpg"
               >
                 <source src="assets/videos/cases/clinic.mp4" type="video/mp4" />
@@ -1766,7 +1234,7 @@
               <video
                 controls
                 playsinline
-                preload="none"
+                preload="metadata"
                 poster="assets/images/posters/free-time.jpg"
               >
                 <source
@@ -1786,79 +1254,10 @@
               直接回還有幾個名額。約好通知你，你只管做擅長的事。
             </p>
             <div class="case-video-quote">把時間還給你真正擅長的事</div>
-            <div class="case-video-metrics">
-              <div class="case-video-metric">
-                <span class="case-video-metric-number">-90%</span>
-                <span class="case-video-metric-label">回覆時間縮短</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
-      <!-- Mid CTA after all case videos -->
-      <div class="pf-mid-cta">
-        <a href="pricing.html" class="pf-mid-cta-btn">查看方案與報價 →</a>
-      </div>
-
-      <!-- Transition zone: unified background -->
-      <div class="lp-transition-zone">
-        <!-- Micro CTA after case videos -->
-        <div class="lp-micro-cta">
-          <div class="lp-micro-cta-box">
-            <p class="lp-micro-cta-text">
-              你的產業適合哪種 AI 接客方式？聊聊就知道。
-            </p>
-            <a
-              href="/api/line-redirect-intent"
-              onclick="
-                event.preventDefault();
-                window.location.href = this.href;
-              "
-              class="lp-micro-cta-btn"
-              >&#x514D;&#x8CBB;&#x804A; 30 &#x5206;&#x9418; &#x2192;</a
-            >
-          </div>
-        </div>
-
-        <!-- Stats Counter -->
-        <div class="lp-stats" id="lpStats">
-          <div class="lp-stat">
-            <div class="lp-stat-num">
-              <span class="lp-counter" data-target="9">0</span
-              ><span class="lp-stat-suffix"> 項</span>
-            </div>
-            <div class="lp-stat-label">免費好禮</div>
-          </div>
-          <div class="lp-stat">
-            <div class="lp-stat-num">
-              <span class="lp-stat-suffix">流量→回購</span>
-            </div>
-            <div class="lp-stat-label">完整成交鏈</div>
-          </div>
-          <div class="lp-stat">
-            <div class="lp-stat-num">
-              <span class="lp-stat-suffix">免費 Demo</span>
-            </div>
-            <div class="lp-stat-label">先看成品再決定</div>
-          </div>
-        </div>
-
-        <!-- Hook: cases → free -->
-        <div class="lp-hook">
-          這些作品的背後——你不用額外花一毛錢就能得到的好處。
-        </div>
-      </div>
-
-      <div id="lp-free"></div>
-
-      <!-- V2: synergy/experts/founder sections removed for conversion testing -->
-
-      <div class="lp-transition-zone">
-        <div class="lp-hook">從展示型網站升級為業務型——</div>
-      </div>
-
-      <div id="lp-pricing"></div>
       <!-- CTA -->
       <section class="pf-cta">
         <div class="pf-cta-inner">
@@ -1918,7 +1317,7 @@
                 <p>首頁放公司名稱。客人看完，不知道你在賣什麼。走了。</p>
               </div>
               <div class="expert-compare-item">
-                <h3 class="expert-compare-heading">我做的網站</h3>
+                <h3 class="expert-compare-heading">我們做的網站</h3>
                 <p>
                   從打開第一眼，到按下聯繫按鈕，每個環節只想一件事：<strong
                     >讓這個訪客變成你的客戶。</strong
@@ -1926,41 +1325,22 @@
                 </p>
               </div>
               <div class="expert-compare-item">
-                <h3 class="expert-compare-heading">我的網站跟著廣告動</h3>
+                <h3 class="expert-compare-heading">我們的網站跟著廣告動</h3>
                 <p>
-                  我能根據你投的關鍵字，自動生成匹配頁面。客人搜什麼，看到什麼。
+                  我們能根據你投的關鍵字，自動生成匹配頁面。客人搜什麼，看到什麼。
                 </p>
               </div>
             </div>
 
             <div class="expert-divider"></div>
 
-            <figure style="margin: 0 0 2rem; text-align: center">
-              <picture>
-                <img
-                  src="images/pricing/P13-success-ai-overnight.jpg"
-                  alt="你休息，AI 接客 — 老闆悠閒喝茶，LINE AI 自動幫你接單"
-                  loading="lazy"
-                  style="
-                    display: block;
-                    margin: 0 auto;
-                    width: 100%;
-                    max-width: 680px;
-                    border-radius: 12px;
-                    box-shadow: 0 4px 20px rgba(210, 105, 30, 0.08);
-                  "
-                />
-            </figure>
-
             <div class="expert-free-block">
               <div class="expert-free-top">
-                <h3 class="expert-free-heading">這些我免費給你</h3>
+                <h3 class="expert-free-heading">這些我們免費給你</h3>
                 <a
-                  href="/api/line-redirect-intent"
-                  onclick="
-                    event.preventDefault();
-                    window.location.href = this.href;
-                  "
+                  href="https://line.me/ti/p/5gW0er9baG"
+                  target="_blank"
+                  rel="noopener"
                   class="expert-line-btn"
                   >LINE ID：cnntime99 →</a
                 >
@@ -1988,7 +1368,7 @@
                 </li>
                 <li>
                   <strong>一個月社群文案代發</strong> —
-                  為社群經營發愁？第一個月我替你搞定
+                  為社群經營發愁？第一個月我們替你搞定
                 </li>
                 <li>
                   <strong>高質感行銷影片一支</strong> —
@@ -2008,11 +1388,9 @@
             <div class="expert-bottom-cta">
               <p>想先看做起來什麼感覺？我做一個 Demo 讓你直接體驗，不收費。</p>
               <a
-                href="/api/line-redirect-intent"
-                onclick="
-                  event.preventDefault();
-                  window.location.href = this.href;
-                "
+                href="https://line.me/ti/p/5gW0er9baG"
+                target="_blank"
+                rel="noopener"
                 class="expert-cta-btn"
                 >免費體驗 Demo →</a
               >
@@ -2020,110 +1398,6 @@
           </div>
         </div>
       </section>
-
-      <style>
-        .pf-article-card {
-          padding: 48px 20px;
-          background: #f5efe6;
-          border-top: 1px solid #e5dfd5;
-          border-bottom: 1px solid #e5dfd5;
-        }
-        .pf-article-header {
-          text-align: center;
-          margin-bottom: 40px;
-        }
-        .pf-article-inner {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 24px;
-          align-items: center;
-          max-width: 1100px;
-          margin: 0 auto;
-          text-decoration: none;
-          color: inherit;
-        }
-        .pf-article-image {
-          position: relative;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 16px 48px rgba(62, 39, 35, 0.1);
-        }
-        .pf-article-image img {
-          width: 100%;
-          height: auto;
-          display: block;
-          transition: transform 0.6s ease;
-        }
-        .pf-article-inner:hover .pf-article-image img {
-          transform: scale(1.04);
-        }
-        .pf-article-badge {
-          position: absolute;
-          top: 16px;
-          left: 16px;
-          background: linear-gradient(135deg, #876a2f, #6b5525);
-          color: #fff;
-          font-size: 0.75rem;
-          font-weight: 700;
-          padding: 6px 14px;
-          border-radius: 999px;
-          letter-spacing: 0.08em;
-        }
-        .pf-article-body {
-          padding: 16px 0;
-          text-align: center;
-        }
-        .pf-article-label {
-          font-size: 0.875rem;
-          color: #876a2f;
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          margin-bottom: 12px;
-        }
-        .pf-article-title {
-          font-size: clamp(1.5rem, 3vw, 2.2rem);
-          font-weight: 900;
-          line-height: 1.25;
-          letter-spacing: -0.02em;
-          color: #2d1810;
-          margin-bottom: 16px;
-        }
-        .pf-article-desc {
-          font-size: 1rem;
-          line-height: 1.7;
-          color: #5c554a;
-          margin-bottom: 24px;
-        }
-        .pf-article-cta {
-          display: inline-flex;
-          align-items: center;
-          padding: 12px 28px;
-          background: linear-gradient(135deg, #876a2f, #6b5525);
-          color: #fff;
-          font-weight: 700;
-          font-size: 0.9375rem;
-          border-radius: 999px;
-          transition: all 0.25s ease;
-          box-shadow: 0 4px 16px -4px rgba(135, 106, 47, 0.3);
-        }
-        .pf-article-inner:hover .pf-article-cta {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 24px -4px rgba(135, 106, 47, 0.45);
-        }
-        @media (min-width: 768px) {
-          .pf-article-card {
-            padding: 80px 40px;
-          }
-          .pf-article-inner {
-            grid-template-columns: 1fr;
-            gap: 32px;
-            max-width: 800px;
-          }
-          .pf-article-body {
-            text-align: center;
-          }
-        }
-      </style>
 
       <!-- Footer -->
       <footer class="portfolio-footer">
@@ -2133,15 +1407,17 @@
       </footer>
     </div>
 
-    <!-- Back to Top -->
-    <button
-      class="lp-btt"
-      id="lpBtt"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      aria-label="&#x56DE;&#x5230;&#x9802;&#x90E8;"
+    <!-- Floating Cyan Brain LINE Button -->
+    <a
+      href="https://line.me/ti/p/5gW0er9baG"
+      target="_blank"
+      rel="noopener"
+      class="pf-floating-brain"
+      title="LINE 免費諮詢"
     >
-      &#x2191;
-    </button>
+      <img src="images/portfolio/brain-cyan.png" alt="LINE 免費諮詢" />
+      <span class="pf-brain-tag" id="brainTag">AI</span>
+    </a>
 
     <script>
       (function () {
@@ -2236,6 +1512,28 @@
         );
         founderObserver.observe(founderEl);
 
+        /* === AITDA Tag Carousel on floating brain === */
+        const tags = [
+          "SEO 自動曝光",
+          "影片提升停留",
+          "信任感設計",
+          "價格錨定策略",
+          "AI 24H 接客",
+          "免費諮詢 →",
+        ];
+        const tagEl = document.getElementById("brainTag");
+        let tagIdx = 0;
+        setInterval(function () {
+          tagEl.style.opacity = "0";
+          tagEl.style.transform = "translateX(-50%) translateY(-8px)";
+          setTimeout(function () {
+            tagIdx = (tagIdx + 1) % tags.length;
+            tagEl.textContent = tags[tagIdx];
+            tagEl.style.opacity = "1";
+            tagEl.style.transform = "translateX(-50%) translateY(0)";
+          }, 300);
+        }, 3500);
+
         /* === Scroll Reveal for project cards === */
         const projects = document.querySelectorAll(".pf-project");
         const revealObserver = new IntersectionObserver(
@@ -2252,223 +1550,8 @@
         projects.forEach(function (p) {
           revealObserver.observe(p);
         });
-
-        /* === Progress Bar + Back-to-Top + TOC visibility === */
-        var lpBar = document.getElementById("lpProgressBar");
-        var lpBtt = document.getElementById("lpBtt");
-        var lpToc = document.getElementById("lpToc");
-        var heroEnd = document.querySelector(".portfolio-hero")
-          ? document.querySelector(".portfolio-hero").offsetTop +
-            document.querySelector(".portfolio-hero").offsetHeight
-          : 600;
-        window.addEventListener(
-          "scroll",
-          function () {
-            var max =
-              document.documentElement.scrollHeight - window.innerHeight;
-            var pct = max > 0 ? Math.round((window.scrollY / max) * 100) : 0;
-            lpBar.style.width = pct + "%";
-            lpBtt.classList.toggle("vis", window.scrollY > 500);
-            if (lpToc)
-              lpToc.classList.toggle("toc-visible", window.scrollY > heroEnd);
-          },
-          { passive: true },
-        );
-
-        /* === Scroll-spy for TOC + mobile nav === */
-        var spySections = Array.from(document.querySelectorAll('[id^="lp-"]'));
-        var tocItems = document.querySelectorAll(".lp-toc-item");
-        var mobileNavItems = document.querySelectorAll(".lp-mobile-nav-item");
-        var lpMobileNav = document.getElementById("lpMobileNav");
-
-        function updateLpSpy() {
-          var scrollY = window.scrollY + 150;
-          var currentId = spySections[0] ? spySections[0].id : "";
-          for (var i = 0; i < spySections.length; i++) {
-            if (spySections[i].offsetTop <= scrollY)
-              currentId = spySections[i].id;
-          }
-          tocItems.forEach(function (item) {
-            item.classList.toggle(
-              "active",
-              item.getAttribute("data-target") === currentId,
-            );
-          });
-          mobileNavItems.forEach(function (item) {
-            var isActive = item.getAttribute("href") === "#" + currentId;
-            item.classList.toggle("active", isActive);
-            if (isActive && lpMobileNav) {
-              var navRect = lpMobileNav.getBoundingClientRect();
-              var itemRect = item.getBoundingClientRect();
-              if (
-                itemRect.left < navRect.left ||
-                itemRect.right > navRect.right
-              ) {
-                item.scrollIntoView({
-                  behavior: "smooth",
-                  block: "nearest",
-                  inline: "center",
-                });
-              }
-            }
-          });
-        }
-        window.addEventListener("scroll", updateLpSpy, { passive: true });
-        updateLpSpy();
-
-        /* TOC + mobile nav click */
-        tocItems.forEach(function (link) {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            var target = document.getElementById(
-              link.getAttribute("data-target"),
-            );
-            if (target)
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
-        });
-        mobileNavItems.forEach(function (link) {
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            var target = document.querySelector(link.getAttribute("href"));
-            if (target)
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
-        });
-
-        /* === Hook Reveal === */
-        var hooks = document.querySelectorAll(".lp-hook");
-        var hookObserver = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("lp-vis");
-                hookObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3 },
-        );
-        hooks.forEach(function (h) {
-          hookObserver.observe(h);
-        });
-
-        /* === Counter Animation === */
-        var counters = document.querySelectorAll(".lp-counter");
-        var counterFired = false;
-        var statsEl = document.getElementById("lpStats");
-        if (statsEl) {
-          var counterObserver = new IntersectionObserver(
-            function (entries) {
-              if (entries[0].isIntersecting && !counterFired) {
-                counterFired = true;
-                counters.forEach(function (el) {
-                  var target = parseInt(el.getAttribute("data-target"), 10);
-                  var duration = 1500;
-                  var start = performance.now();
-                  function animate(now) {
-                    var elapsed = now - start;
-                    var progress = Math.min(elapsed / duration, 1);
-                    var eased = 1 - Math.pow(1 - progress, 3);
-                    el.textContent = Math.round(eased * target);
-                    if (progress < 1) requestAnimationFrame(animate);
-                  }
-                  requestAnimationFrame(animate);
-                });
-                counterObserver.disconnect();
-              }
-            },
-            { threshold: 0.5 },
-          );
-          counterObserver.observe(statsEl);
-        }
       })();
     </script>
     <script src="js/podcast-player.js"></script>
-    <!-- V2: expert-podcasts.js removed -->
-
-    <!-- AI Chatbot Widget -->
-    <div class="chat-widget-container">
-      <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
-        <img
-          src="images/chat-avatar-female.png"
-          alt="AI 客服"
-          class="chat-toggle-avatar"
-        />
-        <span class="chat-notification">1</span>
-      </button>
-      <a
-        href="/api/line-redirect-intent"
-        onclick="
-          event.preventDefault();
-          window.location.href = this.href;
-        "
-        class="line-float-btn"
-        title="LINE 加入好友"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 40 40"
-          width="28"
-          height="28"
-          class="line-float-icon"
-          aria-label="LINE"
-        >
-          <rect width="40" height="40" rx="8" fill="white" />
-          <path
-            d="M33.5 18.3C33.5 11.5 26.6 6 18 6S2.5 11.5 2.5 18.3c0 6.1 5.4 11.2 12.7 12.2.5.1 1.2.3 1.3.8.1.4.1 1-.1 1.3l-.2 1.3c-.1.4-.3 1.5 1.3.8 1.6-.7 8.7-5.1 11.9-8.8 2.2-2.4 3.1-4.9 3.1-7.6z"
-            fill="#06C755"
-          />
-          <path
-            d="M15.2 15.4h-1c-.2 0-.4.2-.4.4v6.1c0 .2.2.4.4.4h1c.2 0 .4-.2.4-.4v-6.1c0-.2-.2-.4-.4-.4zm6.9 0h-1c-.2 0-.4.2-.4.4v3.6l-2.8-3.8c0-.1-.1-.1-.1-.2h-1.1c-.2 0-.4.2-.4.4v6.1c0 .2.2.4.4.4h1c.2 0 .4-.2.4-.4v-3.6l2.8 3.8c0 .1.1.1.2.2h1c.2 0 .4-.2.4-.4v-6.1c.1-.2-.1-.4-.4-.4zm-9.8 5.5h-2v-5.1c0-.2-.2-.4-.4-.4h-1c-.2 0-.4.2-.4.4v6.1c0 .1.1.2.1.3.1.1.2.1.3.1h3.4c.2 0 .4-.2.4-.4v-1c0-.2-.2-.4-.4 0zm14.3-4.2c.2 0 .4-.2.4-.4v-1c0-.2-.2-.4-.4-.4h-3.4c-.1 0-.2 0-.3.1-.1.1-.1.2-.1.3v6.1c0 .1 0 .2.1.3.1.1.2.1.3.1h3.4c.2 0 .4-.2.4-.4v-1c0-.2-.2-.4-.4-.4h-2v-1.1h2c.2 0 .4-.2.4-.4v-1c0-.2-.2-.4-.4-.4h-2v-1.1h2z"
-            fill="white"
-          />
-        </svg>
-      </a>
-    </div>
-
-    <div class="chat-window" id="chatWindow">
-      <div class="chat-header">
-        <div class="chat-header-info">
-          <div class="chat-avatar">
-            <img
-              src="images/chat-avatar-female.png"
-              alt="AI 客服"
-              class="chat-header-avatar"
-            />
-          </div>
-          <div class="chat-header-text">
-            <h4>AI 客服小腦</h4>
-            <span>AI 自動回覆・秒速響應</span>
-          </div>
-        </div>
-        <button class="chat-close" id="chatClose" aria-label="Close chat">
-          &#x2715;
-        </button>
-      </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input-area">
-        <form class="chat-form" id="chatForm">
-          <input
-            type="text"
-            class="chat-input"
-            id="chatInput"
-            placeholder="輸入您的問題..."
-            autocomplete="off"
-          />
-          <button type="submit" class="chat-send" aria-label="Send message">
-            <span class="chat-send-icon">→</span>
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <!-- Chatbot 模組化載入 -->
-    <script src="chatbot-config.js?v=5"></script>
-    <script src="chatbot-api.js?v=5"></script>
-    <script src="chatbot-core.js?v=5"></script>
-    <script src="chatbot-ui.js?v=5"></script>
-    <script src="chatbot-hints.js?v=5"></script>
-    <!-- chatbot + LINE 按鈕位置由 CSS flexbox 處理，不需 JS 動態計算 -->
   </body>
 </html>
