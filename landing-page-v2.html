@@ -1819,29 +1819,6 @@
           <span class="demo-modal-title-label">DEMO</span
           ><span id="demoModalTitleText"></span>
         </div>
-        <a
-          id="demoModalExternal"
-          class="demo-modal-external"
-          href="#"
-          target="_blank"
-          rel="noopener"
-          aria-label="在新分頁開啟"
-        >
-          新分頁開啟
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M7 17 17 7" />
-            <path d="M7 7h10v10" />
-          </svg>
-        </a>
       </div>
       <div class="demo-modal-body">
         <div class="demo-modal-loader" id="demoModalLoader">載入中…</div>
@@ -1861,28 +1838,27 @@
         const iframe = document.getElementById("demoModalIframe");
         const loader = document.getElementById("demoModalLoader");
         const titleText = document.getElementById("demoModalTitleText");
-        const external = document.getElementById("demoModalExternal");
         const backBtn = document.getElementById("demoModalBack");
+
+        // 記錄點擊當下的滾動位置,關閉時精準還原
+        let scrollYBeforeOpen = 0;
 
         const closeModal = () => {
           modal.classList.remove("is-open");
           modal.setAttribute("aria-hidden", "true");
           document.body.classList.remove("demo-modal-open");
           iframe.src = "about:blank";
-          // 捲回實驗室原位置
-          const lab = document.getElementById("lab");
-          if (lab) {
-            const y = lab.getBoundingClientRect().top + window.pageYOffset - 20;
-            window.scrollTo({ top: y, behavior: "instant" });
-          }
+          // 還原點擊當下的滾動位置(不是 lab 頂,是用戶按按鈕那一刻的視線)
+          window.scrollTo({ top: scrollYBeforeOpen, behavior: "instant" });
           if (history.state && history.state.demoModal) {
             history.back();
           }
         };
 
         const openModal = (url, title) => {
+          // 記下當前滾動位置
+          scrollYBeforeOpen = window.scrollY || window.pageYOffset || 0;
           titleText.textContent = title || "";
-          external.href = url;
           loader.classList.remove("is-hidden");
           iframe.src = url;
           modal.classList.add("is-open");
@@ -1924,6 +1900,8 @@
             modal.setAttribute("aria-hidden", "true");
             document.body.classList.remove("demo-modal-open");
             iframe.src = "about:blank";
+            // 也要還原 scroll(用戶在 WebView 按裝置返回鍵走這條)
+            window.scrollTo({ top: scrollYBeforeOpen, behavior: "instant" });
           }
         });
       })();
