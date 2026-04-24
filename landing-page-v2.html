@@ -68,41 +68,149 @@
               ><br />自己進去感受。
             </h2>
             <p class="exp-lab-sub">
-              同樣的產業、同一批流量——3
-              組真實實驗，讓你親眼看到設計的差距有多大。
+              同一個產品、三種設計——真實實驗讓你親眼看到,設計策略到底值多少。
             </p>
           </div>
 
+          <style>
+            /* 三版本對比卡按鈕 */
+            .exp-card-triple {
+              display: flex;
+              gap: 10px;
+              margin-top: auto;
+            }
+            .exp-card-triple-btn {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              padding: 12px 8px;
+              border-radius: 10px;
+              font-size: 13px;
+              font-weight: 700;
+              text-decoration: none;
+              transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+              line-height: 1.3;
+              gap: 4px;
+              min-width: 0;
+            }
+            .exp-card-triple-btn span {
+              font-size: 10px;
+              font-weight: 500;
+              opacity: 0.7;
+              letter-spacing: 0.02em;
+            }
+            .exp-card-triple-btn:hover {
+              transform: translateY(-2px);
+            }
+            .exp-card-triple-bad {
+              background: rgba(45, 24, 16, 0.04);
+              color: rgba(45, 24, 16, 0.55);
+              border: 1px solid rgba(45, 24, 16, 0.12);
+            }
+            .exp-card-triple-bad:hover {
+              background: rgba(45, 24, 16, 0.08);
+            }
+            .exp-card-triple-mid {
+              background: rgba(210, 105, 30, 0.06);
+              color: rgba(184, 90, 21, 0.85);
+              border: 1px solid rgba(210, 105, 30, 0.18);
+            }
+            .exp-card-triple-mid:hover {
+              background: rgba(210, 105, 30, 0.12);
+            }
+            .exp-card-triple-good {
+              background: linear-gradient(135deg, #d2691e, #b85a15);
+              color: #fff;
+              border: 1px solid transparent;
+              box-shadow: 0 6px 18px rgba(210, 105, 30, 0.28);
+            }
+            .exp-card-triple-good span {
+              color: rgba(255, 255, 255, 0.85);
+              opacity: 1;
+            }
+            .exp-card-triple-good:hover {
+              box-shadow: 0 10px 24px rgba(210, 105, 30, 0.4);
+            }
+            @media (max-width: 480px) {
+              .exp-card-triple {
+                flex-direction: column;
+                gap: 8px;
+              }
+              .exp-card-triple-btn {
+                padding: 14px 12px;
+              }
+            }
+          </style>
+
           <div class="exp-lab-cards">
-            <!-- 實驗 1 -->
-            <a
-              href="https://conversion-comparison.vercel.app"
-              target="_blank"
-              rel="noopener"
-              class="exp-card exp-card--h"
-            >
+            <!-- 實驗 1:三版本對比(sneaker) -->
+            <div class="exp-card exp-card--h exp-card-split exp-card-featured">
               <div class="exp-card-left">
-                <span class="exp-card-no">實驗 01 ‧ A/B 轉換測試</span>
-                <div class="exp-card-stat-row">
-                  <div class="exp-card-stat-bad">
-                    1<span class="exp-card-stat-unit">%</span>
+                <span class="exp-card-no">實驗 01 ‧ 三版本對比</span>
+                <div class="exp-card-grid">
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">14×</span
+                    ><span class="exp-card-mini-label">轉換倍數</span>
                   </div>
-                  <div class="exp-card-stat-arrow">→</div>
-                  <div class="exp-card-stat-good">
-                    5<span class="exp-card-stat-unit">%</span>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">5.3天</span
+                    ><span class="exp-card-mini-label">決策加速</span>
+                  </div>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">7章</span
+                    ><span class="exp-card-mini-label">心理框架</span>
+                  </div>
+                  <div class="exp-card-mini">
+                    <span class="exp-card-mini-num">3版</span
+                    ><span class="exp-card-mini-label">逐步進化</span>
                   </div>
                 </div>
-                <p class="exp-card-left-note">成交率</p>
               </div>
               <div class="exp-card-right">
-                <h3 class="exp-card-title">同一批流量,成交率可以差 5 倍</h3>
+                <h3 class="exp-card-title">
+                  同一雙鞋、三種網頁,成交率天差地別
+                </h3>
                 <p class="exp-card-desc">
-                  同批流量、同一個產品——調整設計策略後,月營收直接翻 5 倍。進去 3
-                  秒就看出兩個版本差在哪。
+                  親眼看懂「設計策略 =
+                  轉換率」的真實差距——三個版本逐步加入心理學應用,從沒設計 → 中等
+                  → 完整實裝,直接體驗每一層設計對成交的影響。
                 </p>
-                <span class="exp-card-cta">看兩個版本的設計差異 →</span>
+                <div class="exp-card-triple">
+                  <a
+                    href="https://sneaker-comparison.vercel.app/bad.html"
+                    target="_blank"
+                    rel="noopener"
+                    class="exp-card-triple-btn exp-card-triple-bad"
+                  >
+                    基礎版
+                    <span>沒做設計</span>
+                  </a>
+                  <a
+                    href="https://sneaker-comparison.vercel.app/medium.html"
+                    target="_blank"
+                    rel="noopener"
+                    class="exp-card-triple-btn exp-card-triple-mid"
+                  >
+                    標準版
+                    <span>有設計沒心理學</span>
+                  </a>
+                  <a
+                    href="https://sneaker-comparison.vercel.app/good.html"
+                    target="_blank"
+                    rel="noopener"
+                    class="exp-card-triple-btn exp-card-triple-good"
+                  >
+                    完整版
+                    <span>七章心理學全套</span>
+                  </a>
+                </div>
               </div>
-            </a>
+            </div>
 
             <!-- 實驗 2 -->
             <div class="exp-card exp-card--h exp-card-split">
@@ -137,47 +245,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- 實驗 3 -->
-            <a
-              href="https://sneaker-comparison.vercel.app"
-              target="_blank"
-              rel="noopener"
-              class="exp-card exp-card--h exp-card-featured"
-            >
-              <div class="exp-card-left">
-                <span class="exp-card-no">實驗 03 ‧ 行為科學應用</span>
-                <div class="exp-card-grid">
-                  <div class="exp-card-mini">
-                    <span class="exp-card-mini-num">14×</span
-                    ><span class="exp-card-mini-label">轉換倍數</span>
-                  </div>
-                  <div class="exp-card-mini">
-                    <span class="exp-card-mini-num">5.3天</span
-                    ><span class="exp-card-mini-label">決策加速</span>
-                  </div>
-                  <div class="exp-card-mini">
-                    <span class="exp-card-mini-num">7章</span
-                    ><span class="exp-card-mini-label">心理框架</span>
-                  </div>
-                  <div class="exp-card-mini">
-                    <span class="exp-card-mini-num">3版</span
-                    ><span class="exp-card-mini-label">AB 迭代</span>
-                  </div>
-                </div>
-              </div>
-              <div class="exp-card-right">
-                <h3 class="exp-card-title">
-                  猶豫的人，不是不想買——是還沒被說服
-                </h3>
-                <p class="exp-card-desc">
-                  7 個行為科學框架，3 輪 AB 迭代。讓決策週期從 5.3
-                  天壓縮到當天，訪客轉換率直接乘 14
-                  倍。這不是行銷技巧，是人類心理的底層規律。
-                </p>
-                <span class="exp-card-cta">看完整實驗報告 →</span>
-              </div>
-            </a>
           </div>
         </div>
       </section>
