@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>寶貝學堂｜幼兒全方位啟蒙教育課程</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Comfortaa:wght@700&family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Noto Sans TC", sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #7c3aed 0%,
+          #f97316 50%,
+          #fbbf24 100%
+        );
+        color: white;
+        text-align: center;
+        padding: 80px 20px 60px;
+      }
+      .hero h1 {
+        font-family: "Comfortaa", "Noto Serif TC", serif;
+        font-size: 42px;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      .hero .subtitle {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-family: "Noto Serif TC", serif;
+      }
+      .hero .desc {
+        font-size: 15px;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        line-height: 2;
+        text-align: left;
+      }
+      .hero .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-green {
+        background: #22c55e;
+        color: white;
+        padding: 14px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+      }
+      .btn-outline {
+        background: transparent;
+        color: white;
+        padding: 14px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid white;
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      /* 關於老師 */
+      .about {
+        background: #f5f0ff;
+        padding: 40px 20px;
+      }
+      .about .inner {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        gap: 25px;
+        align-items: flex-start;
+      }
+      .about .photo-frame {
+        flex-shrink: 0;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 5px solid #7c3aed;
+        background: #e9d5ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 72px;
+      }
+      .about h2 {
+        font-family: "Noto Serif TC", serif;
+        color: #7c3aed;
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
+      .about p {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .about .credentials {
+        background: white;
+        border: 2px dashed #c084fc;
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-top: 10px;
+        font-size: 13px;
+      }
+      .about .credentials li {
+        margin-left: 18px;
+        margin-bottom: 4px;
+      }
+
+      /* 課程特色 */
+      .features {
+        background: #fff;
+        padding: 55px 20px 40px;
+        text-align: center;
+      }
+      .features h2 {
+        font-family: "Comfortaa", sans-serif;
+        color: #f97316;
+        font-size: 32px;
+        margin-bottom: 8px;
+      }
+      .features .sub {
+        color: #999;
+        font-size: 14px;
+        margin-bottom: 35px;
+      }
+      .features .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        max-width: 850px;
+        margin: 0 auto;
+      }
+      .features .card {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: 12px;
+        padding: 25px 15px;
+        box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.08);
+      }
+      .features .card .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      .features .card h3 {
+        font-size: 17px;
+        color: #b45309;
+        margin-bottom: 8px;
+      }
+      .features .card p {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      /* 課程內容 */
+      .curriculum {
+        background: #f0fdf4;
+        padding: 30px 20px 40px;
+      }
+      .curriculum h2 {
+        text-align: center;
+        font-family: "Noto Serif TC", serif;
+        color: #16a34a;
+        font-size: 28px;
+        margin-bottom: 25px;
+      }
+      .curriculum table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        font-size: 14px;
+        background: white;
+      }
+      .curriculum th {
+        background: #16a34a;
+        color: white;
+        padding: 10px 12px;
+        text-align: left;
+        font-size: 13px;
+      }
+      .curriculum td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .curriculum tr:nth-child(even) td {
+        background: #f9fafb;
+      }
+
+      /* 限時優惠橫幅 */
+      .urgency-banner {
+        background: #ef4444;
+        color: white;
+        text-align: center;
+        padding: 18px 20px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      /* 見證 */
+      .testimonials {
+        background: #faf5ff;
+        padding: 50px 20px;
+        text-align: center;
+      }
+      .testimonials h2 {
+        font-size: 30px;
+        color: #7c3aed;
+        margin-bottom: 30px;
+        font-family: "Comfortaa", sans-serif;
+      }
+      .testimonials .cards {
+        display: flex;
+        gap: 18px;
+        max-width: 900px;
+        margin: 0 auto;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .testimonials .t-card {
+        background: white;
+        border: 2px solid #e9d5ff;
+        border-radius: 10px;
+        padding: 20px;
+        width: 270px;
+        text-align: left;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.1);
+      }
+      .testimonials .stars {
+        color: #fbbf24;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .testimonials .t-card p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 12px;
+        font-style: italic;
+      }
+      .testimonials .t-card .name {
+        font-weight: bold;
+        color: #7c3aed;
+        font-size: 13px;
+      }
+
+      /* 價格 */
+      .pricing {
+        background: #fffde7;
+        padding: 50px 20px;
+        text-align: center;
+      }
+      .pricing h2 {
+        font-size: 30px;
+        color: #b45309;
+        font-family: "Noto Serif TC", serif;
+        margin-bottom: 10px;
+      }
+      .pricing .note {
+        font-size: 13px;
+        color: #999;
+        margin-bottom: 30px;
+      }
+      .pricing .plans {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .pricing .plan {
+        background: white;
+        border: 2px solid #fde68a;
+        border-radius: 12px;
+        padding: 30px 20px;
+        width: 260px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.06);
+      }
+      .pricing .plan h3 {
+        font-size: 20px;
+        color: #d97706;
+        margin-bottom: 5px;
+      }
+      .pricing .plan .sessions {
+        font-size: 13px;
+        color: #999;
+        margin-bottom: 15px;
+      }
+      .pricing .plan .price {
+        font-size: 36px;
+        color: #ef4444;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .pricing .plan .price span {
+        font-size: 16px;
+        color: #999;
+      }
+      .pricing .plan ul {
+        text-align: left;
+        font-size: 13px;
+        margin-bottom: 20px;
+      }
+      .pricing .plan ul li {
+        margin-left: 15px;
+        margin-bottom: 5px;
+        color: #666;
+      }
+      .pricing .plan .btn-plan {
+        display: block;
+        padding: 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      .btn-orange {
+        background: #f97316;
+        color: white;
+        border: none;
+      }
+
+      /* 報名表 */
+      .form-section {
+        background: linear-gradient(180deg, #ede9fe, #fff);
+        padding: 50px 20px;
+      }
+      .form-section h2 {
+        text-align: center;
+        font-size: 28px;
+        color: #7c3aed;
+        font-family: "Noto Serif TC", serif;
+        margin-bottom: 8px;
+      }
+      .form-section .form-note {
+        text-align: center;
+        font-size: 13px;
+        color: #999;
+        margin-bottom: 30px;
+      }
+      .form-section form {
+        max-width: 550px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .form-section .form-group {
+        margin-bottom: 14px;
+      }
+      .form-section label {
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 4px;
+      }
+      .form-section label .req {
+        color: #ef4444;
+      }
+      .form-section input,
+      .form-section select,
+      .form-section textarea {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: "Noto Sans TC", sans-serif;
+      }
+      .form-section textarea {
+        height: 70px;
+        resize: vertical;
+      }
+      .form-section .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: #ef4444;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      /* Footer */
+      footer {
+        background: #1f2937;
+        color: #9ca3af;
+        padding: 35px 20px;
+        font-size: 13px;
+      }
+      footer .inner {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      footer .social {
+        font-size: 28px;
+        margin-bottom: 15px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+      footer .social a {
+        color: #9ca3af;
+        text-decoration: none;
+      }
+      footer .info p {
+        margin-bottom: 5px;
+      }
+      footer .links {
+        margin-top: 15px;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      footer .links a {
+        color: #60a5fa;
+        text-decoration: underline;
+        font-size: 12px;
+      }
+      footer .copy {
+        margin-top: 18px;
+        font-size: 11px;
+        color: #6b7280;
+      }
+
+      /* ---- Mobile RWD ---- */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 28px;
+        }
+        .hero .subtitle {
+          font-size: 16px;
+        }
+        .hero .desc {
+          font-size: 14px;
+        }
+
+        .about .inner {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .about .photo-frame {
+          width: 120px;
+          height: 120px;
+          font-size: 48px;
+        }
+        .about .credentials {
+          text-align: left;
+        }
+
+        .features .grid {
+          grid-template-columns: 1fr;
+        }
+        .features h2 {
+          font-size: 24px;
+        }
+
+        .curriculum table {
+          display: block;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .urgency-banner {
+          font-size: 16px;
+          padding: 14px 15px;
+        }
+
+        .testimonials .t-card {
+          width: 100%;
+        }
+
+        .pricing .plan {
+          width: 100%;
+        }
+
+        .form-section form {
+          padding: 20px;
+        }
+
+        footer .links {
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>✨ 歡迎來到寶貝學堂 ✨</h1>
+      <p class="subtitle">~ 專為0-6歲幼兒打造的全方位啟蒙教育課程 ~</p>
+      <p class="desc">
+        寶貝學堂自2019年創辦以來，一直秉持著「用愛灌溉、用心教育」的理念，致力於提供優質的幼兒教育服務。我們相信每一個孩子都是獨一無二的，擁有無限的潛能等待被發掘。我們的課程結合了蒙特梭利教學法、瑞吉歐教育理念以及多元智能理論，希望能夠為您的寶貝打下最扎實的學習基礎，培養孩子主動學習的精神！歡迎各位家長們一起加入寶貝學堂這個大家庭！！
+      </p>
+      <div class="btn-group">
+        <a href="#form" class="btn-green">了解更多 ↓</a>
+        <a href="#pricing" class="btn-outline">查看方案</a>
+      </div>
+    </section>
+
+    <!-- 關於老師 -->
+    <section class="about">
+      <div class="inner">
+        <div class="photo-frame">👩‍🏫</div>
+        <div>
+          <h2>關於林美玲老師</h2>
+          <p>
+            林美玲老師畢業於國立台北教育大學幼兒教育學系，擁有<b>超過10年</b>的幼教經驗。曾任職於多家知名幼兒園，包括台北市立大安幼兒園、私立愛德華幼兒園等。林老師對幼兒教育充滿熱忱，始終堅信「沒有教不好的孩子，只有找不到方法的老師」這句話。
+          </p>
+          <p>
+            2019年，林老師決定創辦「寶貝學堂」，希望能以更彈性、更有溫度的方式，帶給每一位小朋友最棒的學習體驗。我們不只是教知識，更注重培養孩子的品格教育和人際互動能力！
+          </p>
+          <div class="credentials">
+            <b>📋 林老師的資歷：</b>
+            <ul>
+              <li>國立台北教育大學幼兒教育學系畢業</li>
+              <li>幼兒園教師證照（幼教字第 XXXXX 號）</li>
+              <li>蒙特梭利 AMS 3-6 歲國際認證</li>
+              <li>兒童發展與輔導證書</li>
+              <li>CPR及急救證照（持續更新中）</li>
+              <li>10年以上幼教現場經驗</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 課程特色 -->
+    <section class="features">
+      <h2>✦ 課程特色 ✦</h2>
+      <p class="sub">以下是寶貝學堂的課程特色介紹</p>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">📚</div>
+          <h3>48堂完整課程</h3>
+          <p>
+            一期48堂課，每週2堂，每堂90分鐘，完整的課程規劃讓孩子循序漸進地學習。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">👨‍👩‍👧</div>
+          <h3>小班制教學</h3>
+          <p>
+            每班僅收6-8位小朋友，確保每一位孩子都能獲得老師充分的關注和指導。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">📝</div>
+          <h3>教材費全包含</h3>
+          <p>
+            報名費用已包含所有課程教材、學習單及美勞材料，不需要再額外付費購買！
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">🎨</div>
+          <h3>多元教學活動</h3>
+          <p>
+            課程融合美勞、音樂、肢體律動、繪本導讀等多元活動，讓學習不無聊。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>每月學習報告</h3>
+          <p>
+            每個月提供一份詳細的學習報告，讓家長了解孩子的學習狀況和進步情形。
+          </p>
+        </div>
+        <div class="card">
+          <div class="icon">🏆</div>
+          <h3>結業證書頒發</h3>
+          <p>
+            完成全期課程後，頒發寶貝學堂結業證書，為孩子的學習歷程留下紀念！
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 課程內容 -->
+    <section class="curriculum">
+      <h2>📖 詳細課程內容</h2>
+      <table>
+        <tr>
+          <th>週次</th>
+          <th>主題</th>
+          <th>教學內容</th>
+          <th>教學目標</th>
+        </tr>
+        <tr>
+          <td>第1-4週</td>
+          <td>認識自己</td>
+          <td>自我介紹、身體部位、五感探索、情緒認知</td>
+          <td>建立自我認同感</td>
+        </tr>
+        <tr>
+          <td>第5-8週</td>
+          <td>數字好朋友</td>
+          <td>1-20數字認識、簡單加減概念、形狀辨認、量的比較</td>
+          <td>奠定數學基礎</td>
+        </tr>
+        <tr>
+          <td>第9-12週</td>
+          <td>注音符號</td>
+          <td>ㄅㄆㄇ認讀、拼音練習、兒歌教唱、簡單閱讀</td>
+          <td>語文能力啟蒙</td>
+        </tr>
+        <tr>
+          <td>第13-16週</td>
+          <td>自然探索家</td>
+          <td>動植物認識、四季變化、簡單科學實驗、戶外觀察</td>
+          <td>培養觀察力與好奇心</td>
+        </tr>
+        <tr>
+          <td>第17-20週</td>
+          <td>藝術小天地</td>
+          <td>繪畫技巧、黏土創作、剪貼拼貼、色彩學基礎</td>
+          <td>激發創造力與想像力</td>
+        </tr>
+        <tr>
+          <td>第21-24週</td>
+          <td>綜合複習＆成果發表</td>
+          <td>總複習、作品整理、成果發表會準備、結業典禮</td>
+          <td>整合所學並展現自信</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 限時優惠 -->
+    <div class="urgency-banner">
+      🔥 限時優惠！！前20名報名享早鳥95折優惠！！剩餘名額有限！！🔥
+    </div>
+
+    <!-- 學員見證 -->
+    <section class="testimonials">
+      <h2>💬 家長好評推薦</h2>
+      <div class="cards">
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            「這個課程真的很不錯，我女兒每次上完課都很開心，回家還會主動唸書給我聽。林老師很有耐心，而且教室環境也很乾淨舒適。推薦給大家！！」
+          </p>
+          <div class="name">— 小美媽媽（大安區）</div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            「原本我兒子比較害羞內向，上了寶貝學堂之後變得比較願意表達自己了。課程內容很豐富，老師也都很用心在教。價格也蠻合理的，CP值很高！」
+          </p>
+          <div class="name">— 阿華爸爸（信義區）</div>
+        </div>
+        <div class="t-card">
+          <div class="stars">★★★★★</div>
+          <p>
+            「朋友推薦我帶小孩來試上，試上完就決定報名了！林老師的教學方式很活潑，小朋友都很喜歡。每個月的學習報告也讓我很放心～大推！」
+          </p>
+          <div class="name">— 小芳媽咪（中山區）</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 價格方案 -->
+    <section class="pricing" id="pricing">
+      <h2>💰 課程費用</h2>
+      <p class="note">＊以下費用已含教材費、保險費＊如有疑問歡迎來電詢問</p>
+      <div class="plans">
+        <div class="plan">
+          <h3>全方位啟蒙課程</h3>
+          <div class="sessions">48堂完整課程</div>
+          <div class="price">$8,800 <span>/期</span></div>
+          <ul>
+            <li>影片課程48堂</li>
+            <li>LINE社群</li>
+            <li>每月直播Q&A</li>
+            <li>學習進度追蹤表</li>
+            <li>贈品三份</li>
+          </ul>
+          <a href="#form" class="btn-plan btn-orange">我要報名</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 報名表單 -->
+    <section class="form-section" id="form">
+      <h2>📝 線上報名表</h2>
+      <p class="form-note">
+        填寫以下資料，我們將盡快與您聯繫！（標示 * 為必填欄位）
+      </p>
+      <form
+        onsubmit="
+          alert('感謝您的報名！我們將盡快與您聯繫～');
+          return false;
+        "
+      >
+        <div class="form-group">
+          <label>家長姓名 <span class="req">*</span></label>
+          <input type="text" placeholder="請輸入您的姓名" required />
+        </div>
+        <div class="form-group">
+          <label>聯絡電話 <span class="req">*</span></label>
+          <input type="tel" placeholder="例：0912-345-678" required />
+        </div>
+        <div class="form-group">
+          <label>Email <span class="req">*</span></label>
+          <input type="email" placeholder="example@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>LINE ID</label>
+          <input type="text" placeholder="方便我們用LINE與您聯繫" />
+        </div>
+        <div class="form-group">
+          <label>孩子姓名 <span class="req">*</span></label>
+          <input type="text" placeholder="請輸入孩子的姓名" required />
+        </div>
+        <div class="form-group">
+          <label>孩子年齡 <span class="req">*</span></label>
+          <select required>
+            <option value="">請選擇</option>
+            <option>3歲</option>
+            <option>3歲半</option>
+            <option>4歲</option>
+            <option>4歲半</option>
+            <option>5歲</option>
+            <option>5歲半</option>
+            <option>6歲</option>
+            <option>6歲以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>居住區域</label>
+          <input type="text" placeholder="例：台北市大安區" />
+        </div>
+        <div class="form-group">
+          <label>想報名的方案</label>
+          <select>
+            <option value="">請選擇方案</option>
+            <option>全方位啟蒙課程（$8,800/48堂）</option>
+            <option>還不確定，想先了解</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>希望上課時段</label>
+          <select>
+            <option value="">請選擇</option>
+            <option>平日上午（9:00-10:30）</option>
+            <option>平日下午（14:00-15:30）</option>
+            <option>平日傍晚（16:00-17:30）</option>
+            <option>週六上午（9:00-10:30）</option>
+            <option>週六下午（14:00-15:30）</option>
+            <option>都可以，再配合</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>您是如何得知寶貝學堂的？</label>
+          <select>
+            <option value="">請選擇</option>
+            <option>Facebook廣告</option>
+            <option>Instagram</option>
+            <option>Google搜尋</option>
+            <option>親友推薦</option>
+            <option>路過看到</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>想對老師說的話 / 其他備註</label>
+          <textarea
+            placeholder="例如：孩子有什麼特殊需求、想了解的問題等等..."
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-btn">送出報名表</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="inner">
+        <div class="social">
+          <a href="#">📘</a>
+          <a href="#">📸</a>
+          <a href="#">💬</a>
+          <a href="#">📺</a>
+        </div>
+        <div class="info">
+          <p>📍 地址：台北市大安區和平東路二段XX號3樓</p>
+          <p>📞 電話：(02) 2345-XXXX ／ 手機：0912-345-XXX</p>
+          <p>✉️ Email：babyschool2019@gmail.com</p>
+          <p>💬 LINE官方帳號：@babyschool</p>
+          <p>🕐 營業時間：週一至週六 9:00-18:00（週日及國定假日休息）</p>
+        </div>
+        <div class="links">
+          <a href="#">首頁</a>
+          <a href="#">課程介紹</a>
+          <a href="#">師資團隊</a>
+          <a href="#">最新消息</a>
+          <a href="#">常見問題</a>
+          <a href="#">交通位置</a>
+          <a href="#">隱私權政策</a>
+        </div>
+        <p class="copy">
+          © 2024 寶貝學堂 Baby School. All Rights Reserved.
+          本網站內容未經同意請勿任意轉載。
+        </p>
+      </div>
+    </footer>
+
+    <!-- CRO Lab Navigator -->
+    <section
+      style="
+        background: #f8f4f0;
+        border-top: 2px solid #e5dfd5;
+        padding: 48px 20px;
+        font-family: &quot;Noto Sans TC&quot;, sans-serif;
+      "
+    >
+      <div style="max-width: 640px; margin: 0 auto; text-align: center">
+        <h2
+          style="
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a0f0a;
+            margin-bottom: 8px;
+          "
+        >
+          還有另一個同主題的兒童課程
+        </h2>
+        <p
+          style="
+            font-size: 14px;
+            color: #7a7269;
+            line-height: 1.7;
+            margin-bottom: 24px;
+          "
+        >
+          黃金三角啟蒙法，用心理學的方式幫助孩子建立持久的學習動力。
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+          "
+        >
+          <a
+            href="https://kids-course-landing.vercel.app"
+            target="_blank"
+            rel="noopener"
+            style="
+              font-size: 13px;
+              color: #876a2f;
+              border: 1px solid rgba(135, 106, 47, 0.4);
+              border-radius: 20px;
+              padding: 7px 18px;
+              text-decoration: none;
+            "
+            >→ 了解黃金三角啟蒙法</a
+          >
+        </div>
+        <a
+          href="https://line.me/ti/p/5gW0er9baG"
+          target="_blank"
+          rel="noopener"
+          style="
+            display: inline-block;
+            background: #06c755;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >想讓你的網站會賺錢 → LINE 諮詢</a
+        >
+      </div>
+    </section>
+  </body>
+</html>

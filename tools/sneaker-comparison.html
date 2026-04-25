@@ -1,0 +1,2211 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>決策架構師 · 讓每個訪客都帶走一個購物袋</title>
+    <meta
+      name="description"
+      content="網頁設計是工程師的工作。真正把訪客變成買家的是心理學。七個章節 × 14 倍營收差距。邀請制合作。"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #faf8f3;
+        --surface: #fffdf8;
+        --surface-warm: #f3ede0;
+        --ink: #0a0a0a;
+        --ink-dim: #3a3a3a;
+        --ink-faint: #6b6b6b;
+        --accent: #dc2626;
+        --accent-dark: #991b1b;
+        --gold: #b8860b;
+        --line: #e8e3d8;
+        --line-dark: #d0cbc0;
+        /* Apple HIG dark-section text colors (high-contrast on #0a0a0a) */
+        --on-dark: #f5f5f7;
+        --on-dark-secondary: #e5e5e7;
+        --on-dark-tertiary: #d2d2d7;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter",
+          "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: "kern" 1;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+        height: auto;
+      }
+      ::selection {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ═══════════ Typography ═══════════ */
+      .kicker {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 0.24em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+      .kicker-bar {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .kicker-bar::before,
+      .kicker-bar::after {
+        content: "";
+        width: 24px;
+        height: 1px;
+        background: var(--accent);
+      }
+      h1,
+      h2,
+      h3 {
+        letter-spacing: -0.03em;
+        font-weight: 900;
+        line-height: 1.02;
+      }
+      em.hl {
+        font-style: normal;
+        color: var(--accent);
+        position: relative;
+        white-space: nowrap;
+      }
+      em.hl::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 4px;
+        background: var(--accent);
+        opacity: 0.22;
+      }
+
+      /* ═══════════ Top Bar ═══════════ */
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(250, 248, 243, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line);
+      }
+      .top-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+      }
+      .brand {
+        font-weight: 900;
+        font-size: 17px;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .brand-mark {
+        width: 28px;
+        height: 28px;
+        background: var(--ink);
+        color: var(--on-dark);
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        border-radius: 6px;
+      }
+      .brand span {
+        color: var(--accent);
+      }
+      .nav-cta {
+        background: var(--ink);
+        color: var(--on-dark);
+        padding: 11px 20px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition: background 0.2s;
+        min-height: 40px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .nav-cta:hover {
+        background: var(--accent);
+      }
+
+      /* ═══════════ HERO ═══════════ */
+      .hero {
+        padding: 60px 0 70px;
+        position: relative;
+      }
+      .hero-label {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        color: var(--accent);
+        margin-bottom: 20px;
+        padding: 7px 14px;
+        border: 1px solid var(--accent);
+        border-radius: 2px;
+      }
+      .hero h1 {
+        font-size: 46px;
+        line-height: 1;
+        margin-bottom: 26px;
+      }
+      .hero .lead {
+        font-size: 19px;
+        color: var(--ink-dim);
+        max-width: 640px;
+        margin-bottom: 32px;
+        line-height: 1.65;
+      }
+      .hero .lead strong {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 44px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 16px 26px;
+        border-radius: 2px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        min-height: 48px;
+        line-height: 1.2;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--on-dark);
+      }
+      .btn-primary:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        background: transparent;
+        border-color: var(--ink);
+        color: var(--ink);
+      }
+      .btn-ghost:hover {
+        background: var(--ink);
+        color: var(--on-dark);
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 36px;
+        border-top: 1px solid var(--line);
+        max-width: 720px;
+      }
+      .meta-item b {
+        display: block;
+        font-size: 32px;
+        font-weight: 900;
+        color: var(--ink);
+        letter-spacing: -0.03em;
+        margin-bottom: 4px;
+      }
+      .meta-item b em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .meta-item span {
+        font-size: 15px;
+        color: var(--ink-dim);
+      }
+
+      /* ═══════════ REALITY ═══════════ */
+      .reality {
+        padding: 80px 0;
+        background: var(--surface);
+        color: var(--ink);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .reality .kicker {
+        color: var(--accent);
+      }
+      .reality h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+        color: var(--ink);
+      }
+      .reality h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .reality .sub {
+        color: var(--ink-dim);
+        max-width: 640px;
+        margin-bottom: 48px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .math-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .math-cell {
+        padding: 30px 26px;
+        background: var(--bg);
+        border: 1px solid var(--line-dark);
+        border-radius: 8px;
+        position: relative;
+      }
+      .math-cell.good {
+        background: var(--bg);
+        border-color: var(--accent);
+        border-width: 2px;
+        box-shadow: 0 4px 24px rgba(220, 38, 38, 0.12);
+      }
+      .math-cell .tier {
+        font-size: 12px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        color: var(--ink-dim);
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .math-cell.good .tier {
+        color: var(--accent);
+      }
+      .math-cell .rate {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 0.9;
+        margin-bottom: 10px;
+        letter-spacing: -0.05em;
+      }
+      .math-cell.bad .rate {
+        color: #999;
+      }
+      .math-cell.mid .rate {
+        color: var(--ink);
+      }
+      .math-cell.good .rate {
+        color: var(--accent);
+      }
+      .math-cell .formula {
+        font-size: 14px;
+        color: var(--ink-dim);
+        font-family: ui-monospace, "SF Mono", Consolas, monospace;
+        margin-bottom: 10px;
+      }
+      .math-cell .revenue {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      .math-cell.good .revenue {
+        color: var(--accent);
+      }
+      .math-cell .desc {
+        font-size: 14px;
+        color: var(--ink-dim);
+        margin-top: 12px;
+        line-height: 1.55;
+      }
+
+      .unlock-callout {
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          var(--accent-dark) 100%
+        );
+        padding: 36px 26px;
+        border-radius: 6px;
+        text-align: center;
+        color: #fff;
+      }
+      .unlock-callout .label {
+        font-size: 13px;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        opacity: 0.95;
+        font-weight: 700;
+      }
+      .unlock-callout .num {
+        font-size: 46px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .unlock-callout .note {
+        font-size: 15px;
+        opacity: 0.95;
+        line-height: 1.5;
+      }
+      .disclaimer {
+        margin-top: 24px;
+        text-align: center;
+        font-size: 14px;
+        color: var(--on-dark-tertiary);
+        font-style: italic;
+      }
+
+      /* ═══════════ COMPOUND ═══════════ */
+      .compound {
+        padding: 80px 0;
+        background: var(--surface-warm);
+      }
+      .compound h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .compound h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .compound .sub {
+        color: var(--ink-dim);
+        max-width: 660px;
+        margin-bottom: 44px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .timeline {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        border-top: 2px solid var(--ink);
+      }
+      .tl-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .tl-when {
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink);
+        min-width: 120px;
+      }
+      .tl-bar {
+        height: 8px;
+        background: var(--accent);
+        border-radius: 4px;
+        position: relative;
+        max-width: 100%;
+      }
+      .tl-bar.s1 {
+        width: 10%;
+      }
+      .tl-bar.s3 {
+        width: 25%;
+      }
+      .tl-bar.s6 {
+        width: 50%;
+      }
+      .tl-bar.s12 {
+        width: 100%;
+      }
+      .tl-amount {
+        font-size: 20px;
+        font-weight: 900;
+        color: var(--accent);
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      .compound-close {
+        margin-top: 44px;
+        padding: 32px 28px;
+        background: var(--bg);
+        color: var(--ink);
+        border: 1px solid var(--line-dark);
+        border-left: 4px solid var(--accent);
+        border-radius: 6px;
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      .compound-close b {
+        color: var(--accent);
+      }
+
+      /* ═══════════ CODEX ═══════════ */
+      .codex {
+        padding: 80px 0;
+        background: var(--bg);
+      }
+      .codex h2 {
+        font-size: 40px;
+        line-height: 1.02;
+        margin-bottom: 18px;
+      }
+      .codex h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .codex .sub {
+        color: var(--ink-dim);
+        max-width: 700px;
+        margin-bottom: 56px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .codex .sub b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .chapter-list {
+        border-top: 1px solid var(--line-dark);
+      }
+      .chapter {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 22px;
+        padding: 34px 0;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .chapter-num {
+        font-family:
+          ui-serif, "Playfair Display", Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: -0.02em;
+        line-height: 1;
+        min-width: 76px;
+      }
+      .chapter-body .en {
+        font-size: 13px;
+        letter-spacing: 0.2em;
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .chapter-body h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+      }
+      .chapter-body p {
+        color: var(--ink-dim);
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 10px;
+      }
+      .chapter-body p b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .citation {
+        display: inline-block;
+        font-size: 13px;
+        color: var(--ink-dim);
+        font-family: ui-monospace, Consolas, monospace;
+        letter-spacing: 0.04em;
+        padding: 5px 10px;
+        background: var(--surface-warm);
+        border-left: 2px solid var(--accent);
+      }
+
+      /* ═══════════ PROOF ═══════════ */
+      .proof {
+        padding: 80px 0;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .proof h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .proof h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .proof .sub {
+        color: var(--ink-dim);
+        max-width: 660px;
+        margin-bottom: 44px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .diagnostic-box {
+        background: var(--bg);
+        border: 2px solid var(--ink);
+        padding: 32px 26px;
+        border-radius: 6px;
+        margin-bottom: 44px;
+      }
+      .diagnostic-box h3 {
+        font-size: 20px;
+        margin-bottom: 18px;
+        letter-spacing: -0.01em;
+      }
+      .check-list {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        margin-bottom: 26px;
+      }
+      .check-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 1px solid var(--line-dark);
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1.55;
+        transition: all 0.15s;
+        user-select: none;
+      }
+      .check-list li:hover {
+        border-color: var(--ink);
+        background: var(--surface-warm);
+      }
+      .check-list li.checked {
+        background: var(--surface-warm);
+        color: var(--ink);
+        border-color: var(--accent);
+        border-width: 1.5px;
+      }
+      .check-list .box {
+        width: 22px;
+        height: 22px;
+        border: 1.5px solid var(--ink-dim);
+        border-radius: 3px;
+        flex-shrink: 0;
+        margin-top: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 900;
+        background: transparent;
+        color: transparent;
+      }
+      .check-list li.checked .box {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .score-display {
+        padding: 20px 22px;
+        background: var(--surface-warm);
+        border-left: 4px solid var(--accent);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .score-display b {
+        color: var(--accent);
+        font-size: 24px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .exp-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .exp-card {
+        padding: 26px 22px;
+        border: 1px solid var(--line-dark);
+        background: var(--bg);
+        border-radius: 4px;
+        transition: all 0.2s;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .exp-card:hover {
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
+      .exp-card.is-good {
+        background: var(--bg);
+        color: var(--ink);
+        border-color: var(--accent);
+        border-width: 2px;
+        box-shadow: 0 4px 24px rgba(220, 38, 38, 0.12);
+      }
+      .exp-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+      .exp-tier {
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+      }
+      .exp-card.is-good .exp-tier {
+        color: var(--accent);
+      }
+      .exp-rate {
+        font-size: 26px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .exp-card.bad .exp-rate {
+        color: #888;
+      }
+      .exp-card.mid .exp-rate {
+        color: var(--ink);
+      }
+      .exp-card.is-good .exp-rate {
+        color: var(--accent);
+      }
+      .exp-card h4 {
+        font-size: 22px;
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+      .exp-card p {
+        color: var(--ink-dim);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .exp-card.is-good p {
+        color: var(--ink-dim);
+      }
+      .exp-open {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        align-self: flex-start;
+        margin-top: 8px;
+        padding: 14px 22px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        transition: all 0.2s;
+        min-height: 48px;
+        white-space: nowrap;
+      }
+      .exp-card.bad .exp-open {
+        background: #2a2a2a;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      }
+      .exp-card.mid .exp-open {
+        background: var(--ink);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      }
+      .exp-card.is-good .exp-open {
+        background: var(--accent);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+      }
+      .exp-open::after {
+        content: "↗";
+        font-size: 16px;
+        transition: transform 0.2s;
+      }
+      .exp-card:hover .exp-open {
+        transform: translateY(-1px);
+      }
+      .exp-card.bad:hover .exp-open {
+        background: var(--ink);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      }
+      .exp-card.mid:hover .exp-open {
+        background: var(--accent);
+        box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+      }
+      .exp-card.is-good:hover .exp-open {
+        background: var(--accent-dark);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+      }
+      .exp-card:hover .exp-open::after {
+        transform: translate(2px, -2px);
+      }
+
+      .exp-note {
+        font-size: 15px;
+        color: var(--ink-dim);
+        line-height: 1.65;
+        padding: 18px 0;
+        border-top: 1px solid var(--line);
+      }
+      .exp-note b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      /* ═══════════ DEMOS (三個版本展示) ═══════════ */
+      .demos {
+        padding: 72px 0;
+        background: var(--surface-warm);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .demos h2 {
+        font-size: 30px;
+        line-height: 1.1;
+        margin-bottom: 14px;
+        letter-spacing: -0.02em;
+      }
+      .demos h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .demos .sub {
+        color: var(--ink-dim);
+        max-width: 640px;
+        margin-bottom: 26px;
+        font-size: 17px;
+        line-height: 1.65;
+      }
+      .demos-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--bg);
+        border: 1px solid var(--line-dark);
+        border-left: 3px solid var(--accent);
+        padding: 10px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: var(--ink);
+        font-weight: 600;
+        margin-bottom: 32px;
+      }
+      .demos-hint::before {
+        content: "👆";
+        font-size: 16px;
+        filter: grayscale(0.2);
+      }
+
+      /* ═══════════ ON CLIENT ═══════════ */
+      .on-client {
+        padding: 80px 0;
+        background: var(--bg);
+      }
+      .on-client .container {
+        max-width: 780px;
+      }
+      .on-client h2 {
+        font-size: 36px;
+        line-height: 1.05;
+        margin-bottom: 26px;
+      }
+      .on-client h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .on-client p {
+        font-size: 18px;
+        color: var(--ink-dim);
+        line-height: 1.75;
+        margin-bottom: 20px;
+      }
+      .on-client p b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .on-client p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ═══════════ INVITATION ═══════════ */
+      .invitation {
+        padding: 80px 0;
+        background: var(--surface-warm);
+      }
+      .invitation h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .invitation h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .invitation .sub {
+        color: var(--ink-dim);
+        margin-bottom: 36px;
+        font-size: 18px;
+        max-width: 660px;
+        line-height: 1.65;
+      }
+      .invite-list {
+        list-style: none;
+        max-width: 740px;
+      }
+      .invite-list li {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line-dark);
+        font-size: 17px;
+        line-height: 1.6;
+        color: var(--ink);
+      }
+      .invite-list li::before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 900;
+        font-size: 20px;
+        flex-shrink: 0;
+        line-height: 1.5;
+      }
+      .invite-close {
+        margin-top: 36px;
+        padding: 26px 28px;
+        background: var(--bg);
+        border: 1px solid var(--line-dark);
+        border-left: 4px solid var(--accent);
+        font-size: 17px;
+        line-height: 1.7;
+        font-style: italic;
+        color: var(--ink);
+      }
+
+      /* ═══════════ TIERS ═══════════ */
+      .tiers {
+        padding: 80px 0;
+        background: var(--bg);
+      }
+      .tiers h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .tiers h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .tiers .sub {
+        color: var(--ink-dim);
+        max-width: 660px;
+        margin-bottom: 48px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .tier-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 36px;
+      }
+      .tier-card {
+        padding: 34px 30px;
+        border: 1px solid var(--line-dark);
+        background: var(--surface);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .tier-card.featured {
+        border-color: var(--accent);
+        border-width: 2px;
+        background: var(--bg);
+        color: var(--ink);
+        box-shadow: 0 4px 24px rgba(220, 38, 38, 0.12);
+      }
+      .tier-name {
+        font-size: 13px;
+        letter-spacing: 0.22em;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+      }
+      .tier-card.featured .tier-name {
+        color: var(--accent);
+      }
+      .tier-title {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+      }
+      .tier-invest {
+        font-size: 15px;
+        color: var(--ink-dim);
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .tier-card.featured .tier-invest {
+        color: var(--ink-dim);
+        border-color: var(--line-dark);
+      }
+      .tier-list {
+        list-style: none;
+        font-size: 16px;
+        line-height: 1.7;
+        flex: 1;
+      }
+      .tier-list li {
+        padding: 7px 0;
+        color: var(--ink-dim);
+      }
+      .tier-card.featured .tier-list li {
+        color: var(--ink-dim);
+      }
+      .tier-list li::before {
+        content: "— ";
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .tiers-footer {
+        padding: 26px 28px;
+        background: var(--surface-warm);
+        border-left: 4px solid var(--accent);
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--ink);
+        border-radius: 0 6px 6px 0;
+      }
+      .tiers-footer b {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 17px;
+      }
+
+      /* ═══════════ APPLICATION ═══════════ */
+      .application {
+        padding: 100px 0 80px;
+        background: var(--surface);
+        color: var(--ink);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid var(--line);
+      }
+      .application::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(220, 38, 38, 0.06),
+          transparent 70%
+        );
+        z-index: 0;
+      }
+      .application > .container {
+        position: relative;
+        z-index: 1;
+      }
+      .application .kicker {
+        color: var(--accent);
+      }
+      .application h2 {
+        font-size: 42px;
+        line-height: 1.04;
+        margin-bottom: 22px;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+      }
+      .application h2 em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .application .lead {
+        color: var(--ink-dim);
+        font-size: 19px;
+        max-width: 600px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+      .flow {
+        max-width: 580px;
+        margin: 0 auto 40px;
+        text-align: left;
+        display: grid;
+        gap: 12px;
+        background: var(--bg);
+        padding: 24px 28px;
+        border-radius: 8px;
+        border: 1px solid var(--line-dark);
+      }
+      .flow-step {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink-dim);
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .flow-step:last-child {
+        border-bottom: none;
+      }
+      .flow-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 14px;
+      }
+      .flow-step b {
+        color: var(--ink);
+        font-weight: 700;
+        font-size: 17px;
+      }
+      .app-btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 20px 42px;
+        border-radius: 4px;
+        font-size: 17px;
+        font-weight: 700;
+        display: inline-block;
+        transition: all 0.2s;
+        margin-bottom: 26px;
+        letter-spacing: 0.02em;
+        box-shadow: 0 4px 16px rgba(220, 38, 38, 0.25);
+      }
+      .app-btn:hover {
+        background: var(--accent-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+      }
+      .app-availability {
+        display: inline-block;
+        padding: 12px 22px;
+        background: rgba(220, 38, 38, 0.1);
+        border: 1px solid var(--accent);
+        border-radius: 999px;
+        font-size: 15px;
+        color: var(--accent);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+      .app-avail-row {
+        margin-top: 24px;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 15px;
+        color: var(--ink-dim);
+      }
+      .app-avail-row b {
+        color: var(--ink);
+      }
+
+      /* ═══════════ Day callout (Reality section) ═══════════ */
+      .day-callout {
+        margin-top: 28px;
+        padding: 32px 28px;
+        background: var(--bg);
+        border: 2px solid var(--accent);
+        border-radius: 6px;
+        color: var(--ink);
+      }
+      .day-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 22px;
+        text-align: center;
+      }
+      .day-label {
+        font-size: 13px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-dim);
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .day-num {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        color: var(--ink);
+        line-height: 1;
+      }
+      .day-num.red {
+        color: var(--accent);
+      }
+      .day-close {
+        text-align: center;
+        font-size: 16px;
+        color: var(--ink-dim);
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        margin: 0;
+      }
+      .day-close b {
+        color: var(--accent);
+        font-weight: 900;
+      }
+
+      /* ═══════════ Alternatives ═══════════ */
+      .alternatives {
+        padding: 80px 0;
+        background: var(--surface-warm);
+      }
+      .alternatives h2 {
+        font-size: 38px;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .alternatives h2 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .alternatives .sub {
+        color: var(--ink-dim);
+        max-width: 640px;
+        margin-bottom: 44px;
+        font-size: 18px;
+        line-height: 1.65;
+      }
+      .alt-table {
+        border-top: 2px solid var(--ink);
+        margin-bottom: 28px;
+      }
+      .alt-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 22px 0;
+        border-bottom: 1px solid var(--line-dark);
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .alt-row.featured {
+        background: var(--bg);
+        color: var(--ink);
+        padding: 28px 24px;
+        margin: 12px -20px 0;
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        box-shadow: 0 4px 24px rgba(220, 38, 38, 0.12);
+      }
+      .alt-item {
+        font-size: 17px;
+        color: var(--ink);
+        font-weight: 600;
+      }
+      .alt-sub {
+        font-size: 14px;
+        color: var(--ink-dim);
+        display: block;
+        margin-top: 6px;
+        font-weight: 400;
+      }
+      .alt-row.featured .alt-item {
+        color: var(--ink);
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .alt-row.featured .alt-sub {
+        color: var(--ink-dim);
+      }
+      .alt-cost {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      .alt-row.featured .alt-cost {
+        color: var(--accent);
+        font-size: 28px;
+      }
+      .alt-close {
+        text-align: center;
+        color: var(--ink-dim);
+        font-size: 16px;
+        font-style: italic;
+        padding-top: 22px;
+      }
+
+      /* ═══════════ Footer ═══════════ */
+      footer {
+        padding: 36px 0;
+        background: var(--surface-warm);
+        color: var(--ink-dim);
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.6;
+        border-top: 1px solid var(--line-dark);
+      }
+      footer a {
+        color: var(--ink);
+        margin: 0 12px;
+      }
+      footer a:hover {
+        color: var(--accent);
+      }
+
+      /* ═══════════ Tablet (768px+) ═══════════ */
+      @media (min-width: 768px) {
+        .container {
+          padding: 0 32px;
+        }
+        body {
+          font-size: 18px;
+        }
+        .hero {
+          padding: 80px 0 100px;
+        }
+        .hero h1 {
+          font-size: 68px;
+          margin-bottom: 30px;
+        }
+        .hero .lead {
+          font-size: 21px;
+        }
+        .hero-meta {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 28px;
+        }
+        .meta-item b {
+          font-size: 40px;
+        }
+        .meta-item span {
+          font-size: 16px;
+        }
+        .reality {
+          padding: 100px 0;
+        }
+        .reality h2 {
+          font-size: 54px;
+        }
+        .reality .sub {
+          font-size: 19px;
+        }
+        .math-row {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        .math-cell .rate {
+          font-size: 84px;
+        }
+        .math-cell .revenue {
+          font-size: 24px;
+        }
+        .math-cell .desc {
+          font-size: 15px;
+        }
+        .unlock-callout .num {
+          font-size: 62px;
+        }
+        .compound {
+          padding: 100px 0;
+        }
+        .compound h2 {
+          font-size: 54px;
+        }
+        .compound .sub {
+          font-size: 19px;
+        }
+        .compound-close {
+          font-size: 19px;
+        }
+        .codex {
+          padding: 100px 0;
+        }
+        .codex h2 {
+          font-size: 54px;
+        }
+        .codex .sub {
+          font-size: 19px;
+        }
+        .chapter {
+          grid-template-columns: 120px 1fr;
+          gap: 36px;
+          padding: 46px 0;
+        }
+        .chapter-num {
+          font-size: 52px;
+        }
+        .chapter-body h3 {
+          font-size: 28px;
+        }
+        .chapter-body p {
+          font-size: 18px;
+        }
+        .proof {
+          padding: 100px 0;
+        }
+        .proof h2 {
+          font-size: 54px;
+        }
+        .proof .sub {
+          font-size: 19px;
+        }
+        .check-list {
+          grid-template-columns: 1fr 1fr;
+        }
+        .check-list li {
+          font-size: 16px;
+        }
+        .exp-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+        .demos {
+          padding: 96px 0;
+        }
+        .demos h2 {
+          font-size: 42px;
+        }
+        .demos .sub {
+          font-size: 19px;
+        }
+        .exp-card h4 {
+          font-size: 22px;
+        }
+        .exp-card p {
+          font-size: 16px;
+        }
+        .on-client {
+          padding: 100px 0;
+        }
+        .on-client h2 {
+          font-size: 50px;
+        }
+        .on-client p {
+          font-size: 19px;
+        }
+        .invitation {
+          padding: 100px 0;
+        }
+        .invitation h2 {
+          font-size: 54px;
+        }
+        .invitation .sub {
+          font-size: 19px;
+        }
+        .invite-list li {
+          font-size: 18px;
+        }
+        .invite-close {
+          font-size: 18px;
+        }
+        .tiers {
+          padding: 100px 0;
+        }
+        .tiers h2 {
+          font-size: 54px;
+        }
+        .tiers .sub {
+          font-size: 19px;
+        }
+        .tier-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .tier-list {
+          font-size: 16px;
+        }
+        .application {
+          padding: 120px 0 100px;
+        }
+        .application h2 {
+          font-size: 58px;
+        }
+        .application .lead {
+          font-size: 20px;
+        }
+        .flow-step {
+          font-size: 17px;
+        }
+        .alternatives {
+          padding: 100px 0;
+        }
+        .alternatives h2 {
+          font-size: 54px;
+        }
+        .alternatives .sub {
+          font-size: 19px;
+        }
+      }
+
+      /* ═══════════ Desktop (1024px+) ═══════════ */
+      @media (min-width: 1024px) {
+        .hero h1 {
+          font-size: 88px;
+        }
+        .hero .lead {
+          font-size: 22px;
+          max-width: 700px;
+        }
+        .meta-item b {
+          font-size: 46px;
+        }
+        .reality h2 {
+          font-size: 66px;
+        }
+        .math-cell .rate {
+          font-size: 96px;
+        }
+        .unlock-callout .num {
+          font-size: 82px;
+        }
+        .compound h2 {
+          font-size: 66px;
+        }
+        .codex h2 {
+          font-size: 66px;
+        }
+        .chapter-num {
+          font-size: 60px;
+        }
+        .chapter-body h3 {
+          font-size: 32px;
+        }
+        .proof h2 {
+          font-size: 62px;
+        }
+        .invitation h2 {
+          font-size: 62px;
+        }
+        .tiers h2 {
+          font-size: 62px;
+        }
+        .application h2 {
+          font-size: 70px;
+        }
+        .alternatives h2 {
+          font-size: 62px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══════ TOP ═══════ -->
+    <nav class="top">
+      <div class="container top-inner">
+        <div class="brand">
+          <div class="brand-mark">決</div>
+          <span>決策<em>·</em>架構師</span>
+        </div>
+        <a href="#apply" class="nav-cta">申請合作 →</a>
+      </div>
+    </nav>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-label">決策架構師</div>
+        <h1>讓每個訪客，<br />都帶走一個<em class="hl">購物袋</em>。</h1>
+        <p class="lead">
+          「網頁設計」是工程師的工作。<strong>真正把訪客變成買家</strong>的，不是
+          HTML，不是漂亮的排版——而是<strong>心理學</strong>。<br /><br />
+          當七個章節完整實裝，同樣的流量能帶來
+          <strong>14 倍的營收差距</strong>。這不是推論，是一套方法論的直接展開。
+        </p>
+        <div class="hero-buttons">
+          <a href="#apply" class="btn btn-primary">申請 45 分鐘諮詢 →</a>
+          <a href="#demos" class="btn btn-ghost">看實際案例 ↓</a>
+        </div>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <b>14<em>×</em></b>
+            <span>同流量下的營收差距倍數</span>
+          </div>
+          <div class="meta-item">
+            <b>7 <em>章</em></b>
+            <span>轉換方法論 · 第一章至第七章</span>
+          </div>
+          <div class="meta-item">
+            <b>12 <em>位</em></b>
+            <span>2026 年度僅開放合作名額</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ REALITY ═══════ -->
+    <section class="reality">
+      <div class="container">
+        <div class="kicker kicker-bar">現實對照</div>
+        <h2>同樣流量，<br />卻能差 <em class="hl">14 倍</em>營收。</h2>
+        <p class="sub">
+          每月 10,000 訪客、客單價 $500。當成交率從 0.5% 帶到
+          7%，營收不是加倍——是進入下一個量級。
+        </p>
+
+        <div class="math-row">
+          <div class="math-cell bad">
+            <div class="tier">低轉換區</div>
+            <div class="rate">0.5%</div>
+            <div class="formula">10,000 × 0.5% × $500</div>
+            <div class="revenue">月營收 $25,000</div>
+            <div class="desc">多數中小企業目前的位置</div>
+          </div>
+          <div class="math-cell mid">
+            <div class="tier">中轉換區</div>
+            <div class="rate">2%</div>
+            <div class="formula">10,000 × 2% × $500</div>
+            <div class="revenue">月營收 $100,000</div>
+            <div class="desc">有做設計但未整合心理學</div>
+          </div>
+          <div class="math-cell good">
+            <div class="tier">高轉換區</div>
+            <div class="rate">7%</div>
+            <div class="formula">10,000 × 7% × $500</div>
+            <div class="revenue">月營收 $350,000</div>
+            <div class="desc">七個章節完整實裝的成品</div>
+          </div>
+        </div>
+
+        <div class="unlock-callout">
+          <div class="label">每年的營收落差</div>
+          <div class="num">$3,900,000</div>
+          <div class="note">Bad → Good 的差距，在 12 個月內累積的營收</div>
+        </div>
+
+        <div class="day-callout">
+          <div class="day-grid">
+            <div>
+              <div class="day-label">每天的差距</div>
+              <div class="day-num">$10,833</div>
+            </div>
+            <div>
+              <div class="day-label">我的啟動費</div>
+              <div class="day-num red">NT$ 58,000</div>
+            </div>
+            <div>
+              <div class="day-label">回收期</div>
+              <div class="day-num red">5.3 天</div>
+            </div>
+          </div>
+          <p class="day-close">第 <b>6</b> 天起，每天淨賺 <b>$10,833</b>。</p>
+        </div>
+
+        <p class="disclaimer">
+          ※ 示範計算。實際數字依你的流量、客單價、回購率變化。
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ DEMOS (三個版本展示) ═══════ -->
+    <section class="demos" id="demos">
+      <div class="container">
+        <div class="kicker kicker-bar">眼見為憑 · 實際頁面</div>
+        <h2>這三個數字，<br />是<em>真實成果</em>，拿數字說話。</h2>
+        <p class="sub">
+          0.5% / 2% /
+          7%——三個層次的商品頁面設計，帶你親身感受七個章節如何讓成交率翻 14
+          倍。點進去，自己感受差距在哪。
+        </p>
+
+        <div class="demos-hint">點擊任一頁面，直接體驗</div>
+
+        <div class="exp-grid">
+          <a href="bad.html" target="_blank" class="exp-card bad">
+            <div class="exp-head">
+              <span class="exp-tier">勾 0 – 2 項</span>
+              <span class="exp-rate">0.5%</span>
+            </div>
+            <h4>低轉換版本</h4>
+            <p>
+              訪客 10
+              秒內離開。沒有感覺、沒有停留、沒有記憶。像一本沒人看完的說明書。
+            </p>
+            <span class="exp-open">查看低轉換版本</span>
+          </a>
+          <a href="medium.html" target="_blank" class="exp-card mid">
+            <div class="exp-head">
+              <span class="exp-tier">勾 3 – 4 項</span>
+              <span class="exp-rate">2%</span>
+            </div>
+            <h4>中等版本</h4>
+            <p>
+              像很多其他網站。有功能但沒靈魂，可以滑但不想讀。離開時什麼也沒帶走。
+            </p>
+            <span class="exp-open">查看中等版本</span>
+          </a>
+          <a href="good.html" target="_blank" class="exp-card is-good">
+            <div class="exp-head">
+              <span class="exp-tier">勾 5 + 項</span>
+              <span class="exp-rate">7%</span>
+            </div>
+            <h4>完整實裝版本</h4>
+            <p>訪客滑到底捨不得關。結尾時不是「要不要買」，是「這個我要」。</p>
+            <span class="exp-open">查看完整實裝</span>
+          </a>
+        </div>
+
+        <p class="exp-note">
+          每個頁面都有真實的設計邏輯，背後是完整的方法論實裝。
+          同一款產品、同一段流量，把七個章節的「分量」調整了——結果卻是完全不同的商業模式。
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════ COMPOUND ═══════ -->
+    <section class="compound">
+      <div class="container">
+        <div class="kicker kicker-bar">複利效應</div>
+        <h2>每個月開始，<br />都是<em>複利</em>。</h2>
+        <p class="sub">
+          當成交率翻倍，它不只是翻倍——它會在每個月的營收、每次再行銷的觸及、每一個
+          LTV 上都翻倍。越早開始，複利曲線的陡峭度越高。
+        </p>
+
+        <div class="timeline">
+          <div class="tl-row">
+            <div class="tl-when">第 1 個月</div>
+            <div class="tl-bar s1"></div>
+            <div class="tl-amount">+$325K</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-when">第 3 個月</div>
+            <div class="tl-bar s3"></div>
+            <div class="tl-amount">累積 +$975K</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-when">第 6 個月</div>
+            <div class="tl-bar s6"></div>
+            <div class="tl-amount">累積 +$1,950K</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-when">第 12 個月</div>
+            <div class="tl-bar s12"></div>
+            <div class="tl-amount">累積 +$3,900K</div>
+          </div>
+        </div>
+
+        <div class="compound-close">
+          這不是省錢，是<b>複利</b>。每多等一天，不只是「今天沒賺」——是整條複利曲線都向後平移一天。
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ CODEX ═══════ -->
+    <section class="codex">
+      <div class="container">
+        <div class="kicker kicker-bar">轉換方法論</div>
+        <h2>七個章節，<br />一套<em class="hl">方法論</em>。</h2>
+        <p class="sub">
+          這不是一套可以被複製的 SOP，也不是任何人讀了網路文章就能做到的事。是
+          <b>七個累積多年才能內化成直覺</b>的面向——每一章都需要判斷，不是步驟。
+        </p>
+
+        <div class="chapter-list">
+          <div class="chapter">
+            <div class="chapter-num">01</div>
+            <div class="chapter-body">
+              <span class="en">關於文字</span>
+              <h3>文案心理學</h3>
+              <p>
+                有些句子讓人想繼續讀，有些讓人想關視窗。差別不在字數，在文字背後對「為什麼現在要按下」的理解。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">02</div>
+            <div class="chapter-body">
+              <span class="en">關於人</span>
+              <h3>用戶心理學</h3>
+              <p>
+                從訪客點進來到最後按下購買，中間有一段旅程。這段旅程不是線性，是被一層一層情緒推動。看懂情緒的人才能設計這條路。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">03</div>
+            <div class="chapter-body">
+              <span class="en">關於色</span>
+              <h3>色彩心理學</h3>
+              <p>
+                顏色不是裝飾，是情緒的直接輸入。為什麼某些顏色組合能讓人下單、某些只會讓人滑開——這是品味，也是方法。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">04</div>
+            <div class="chapter-body">
+              <span class="en">關於影像</span>
+              <h3>圖片心理學</h3>
+              <p>
+                人買的不是產品，是想像自己擁有產品之後，那個未來的自己。能不能讓訪客看見那個未來，是圖片的唯一任務。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">05</div>
+            <div class="chapter-body">
+              <span class="en">關於動態</span>
+              <h3>影片心理學</h3>
+              <p>
+                影片不是為了炫技。是因為人類的大腦對「動」的東西無法不注意。如何讓這份注意力在
+                8 秒內完成一次小說的敘事——這是關鍵。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">06</div>
+            <div class="chapter-body">
+              <span class="en">關於身體</span>
+              <h3>生理心理學</h3>
+              <p>
+                眼球怎麼看、手指怎麼滑、大腦一次只能記得幾件事——這些都不是偏好，是生理限制。違反的頁面再漂亮也沒人看得懂。
+              </p>
+            </div>
+          </div>
+
+          <div class="chapter">
+            <div class="chapter-num">07</div>
+            <div class="chapter-body">
+              <span class="en">關於決定</span>
+              <h3>決策心理學</h3>
+              <p>
+                一個人怎麼在 3
+                秒內說服自己從「有興趣」走到「我要」——這中間有一整套看不見的心理機制。沒做對這一段，前面
+                6 章都是白做。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ PROOF ═══════ -->
+    <section class="proof" id="proof">
+      <div class="container">
+        <div class="kicker kicker-bar">CHAPTER ZERO · 你的位置</div>
+        <h2>你現在<br />離 7% 還有<em class="hl">多遠</em>？</h2>
+        <p class="sub">
+          對照七個章節的核心要素，勾選你目前網站已經做到的。分數會告訴你還有多少章節沒做。
+        </p>
+
+        <div class="diagnostic-box">
+          <h3>自我診斷 · 勾選你目前網站有的</h3>
+          <ul class="check-list" id="diagnostic">
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>訪客看完首屏就知道「這是他要的未來」</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>每個段落都有明確的情緒目的，不是資訊堆疊</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>整頁有一個看不見但能感覺到的節奏</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>價格出現的時機讓人覺得理所當然，不是意外</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>訪客要的不是「產品」，是「產品之後的自己」</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span
+              ><span>滑到底也不會有「被推銷」的感覺</span>
+            </li>
+            <li data-v="1">
+              <span class="box">✓</span><span>看完會讓人想主動分享給別人</span>
+            </li>
+          </ul>
+          <div class="score-display" id="score">
+            你已具備 <b id="score-num">0</b> / 7 個章節的要素。還有
+            <b id="score-rem">7</b> 個章節沒做。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ INVITATION ═══════ -->
+    <section class="invitation">
+      <div class="container">
+        <div class="kicker kicker-bar">邀請制合作</div>
+        <h2>我們歡迎<br />這樣的<em>夥伴</em>。</h2>
+        <p class="sub">
+          不是姿態，是為了對現有合作夥伴負責。不對的合作會稀釋雙方的時間、精力、與信任。
+        </p>
+
+        <ul class="invite-list">
+          <li>願意把網站視為 <b>長期資產</b> 而非一次性專案的品牌</li>
+          <li>願意開放分析數據、一起測試、一起迭代的決策者</li>
+          <li>年度預算在 <b>台幣 200 萬以上</b> 的組織規模</li>
+          <li>相信心理學驅動成交，而非模板 / 套版 / 流行設計的經營者</li>
+          <li>決策流程清晰、我能直接對話 <b>拍板者本人</b> 的組織結構</li>
+          <li>願意給至少 <b>6 個月</b> 時間讓七個章節完整展開並看到累積效果</li>
+        </ul>
+
+        <div class="invite-close">
+          如果這聽起來像你——我們可能是彼此要找的人。<br />
+          如果不是——沒關係，我們都省下寶貴的時間。
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ TIERS ═══════ -->
+    <section class="tiers">
+      <div class="container">
+        <div class="kicker kicker-bar">合作層級</div>
+        <h2>三種加入<br /><em>方式</em>。</h2>
+        <p class="sub">
+          每一層的 Investment 依專案規模評估。以下為起始級距參考。
+        </p>
+
+        <div class="tier-grid">
+          <div class="tier-card">
+            <div class="tier-name">第一級</div>
+            <div class="tier-title">啟動</div>
+            <div class="tier-invest">NT$ <b>58,000</b> · 一次性</div>
+            <ul class="tier-list">
+              <li>3 週深度診斷</li>
+              <li>第一階段優化落地（前 3 個月重點）</li>
+              <li>一份首季成效評估報告</li>
+              <li>之後決定是否進入續航</li>
+            </ul>
+            <p
+              style="
+                font-size: 14px;
+                color: var(--ink-dim);
+                margin-top: auto;
+                padding-top: 18px;
+                border-top: 1px solid var(--line);
+              "
+            >
+              所有人的起點
+            </p>
+          </div>
+
+          <div class="tier-card featured">
+            <div class="tier-name">第二級 · 最多選用</div>
+            <div class="tier-title">續航</div>
+            <div class="tier-invest">從啟動期結束後<b>擇一</b></div>
+            <ul class="tier-list">
+              <li><b>月費制</b> · $58,000 / 月 · 持續優化與每月策略會議</li>
+              <li><b>成效制</b> · 營收提升的 10% 分潤 · 零基礎費</li>
+              <li><b>組合制</b> · $30,000 / 月 + 成效 5% · 風險減半</li>
+            </ul>
+            <p
+              style="
+                font-size: 14px;
+                color: var(--on-dark-secondary);
+                margin-top: auto;
+                padding-top: 18px;
+                border-top: 1px solid #3a3a3a;
+              "
+            >
+              含未達承諾值免費延展 3 個月
+            </p>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-name">第三級</div>
+            <div class="tier-title">長期合夥</div>
+            <div class="tier-invest">金額 <b>依議而定</b> · 年費起</div>
+            <ul class="tier-list">
+              <li>以「兼任轉換長」身份介入組織</li>
+              <li>年度戰略合夥 + 組內培訓</li>
+              <li>季度全面健檢 + 無限諮詢</li>
+              <li>長期續約優先權</li>
+            </ul>
+            <p
+              style="
+                font-size: 14px;
+                color: var(--ink-dim);
+                margin-top: auto;
+                padding-top: 18px;
+                border-top: 1px solid var(--line);
+              "
+            >
+              通常續約至第 3 年
+            </p>
+          </div>
+        </div>
+
+        <div class="tiers-footer">
+          <b>關於金額</b>
+          第一級（啟動）為固定入場費。第二、三級依專案規模、流量量級、產業複雜度評估。首次對話不報第二、三級價格——我們先確認契合度，再討論合作條件。
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ ALTERNATIVES ═══════ -->
+    <section class="alternatives">
+      <div class="container">
+        <div class="kicker kicker-bar">對比參考</div>
+        <h2>$58,000 的<br /><em class="hl">真實位置</em>。</h2>
+        <p class="sub">同一件事，其他做法的成本。</p>
+
+        <div class="alt-table">
+          <div class="alt-row">
+            <div class="alt-item">
+              自建 CRO 團隊（3 人）
+              <span class="alt-sub">產品經理 + 設計師 + 開發工程師</span>
+            </div>
+            <div class="alt-cost">$240,000+ / 月</div>
+          </div>
+          <div class="alt-row">
+            <div class="alt-item">
+              廣告代理商單次稽核
+              <span class="alt-sub">不含執行、不含後續優化</span>
+            </div>
+            <div class="alt-cost">$300,000+ / 次</div>
+          </div>
+          <div class="alt-row">
+            <div class="alt-item">
+              接案設計師重做網站
+              <span class="alt-sub">交付一次、無心理學整合</span>
+            </div>
+            <div class="alt-cost">$150,000+ 一次</div>
+          </div>
+          <div class="alt-row featured">
+            <div class="alt-item">
+              我的啟動費
+              <span class="alt-sub"
+                >3 週診斷 + 第一階段優化 + 首季成效報告</span
+              >
+            </div>
+            <div class="alt-cost">$58,000</div>
+          </div>
+        </div>
+
+        <p class="alt-close">不是比誰最便宜。是比誰的風險最低、回收最快。</p>
+      </div>
+    </section>
+
+    <!-- ═══════ APPLICATION ═══════ -->
+    <section class="application" id="apply">
+      <div class="container">
+        <div class="kicker kicker-bar">申請制</div>
+        <h2>45 分鐘諮詢對談<br />· <em>邀請制</em></h2>
+        <p class="lead">
+          這不是「免費諮詢」。是雙向評估是否適合合作。無論是否合作，你都會帶走一份初步診斷。
+        </p>
+
+        <div class="flow">
+          <div class="flow-step">
+            <div class="flow-num">1</div>
+            <div>
+              <b>遞交申請</b>（約 7 分鐘）<br />說明現有網站、目標、預算級距、決策時程
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">2</div>
+            <div><b>48 小時內回覆</b><br />接受 / 不接受 / 請提供更多資訊</div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">3</div>
+            <div>
+              <b>受邀者獲得預約連結</b><br />45 分鐘語音 · 只與拍板者對話
+            </div>
+          </div>
+          <div class="flow-step">
+            <div class="flow-num">4</div>
+            <div>
+              <b>結束後獲得診斷報告</b
+              ><br />無論合作與否，你都會帶走一份初步分析
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="app-btn">提交申請 →</a>
+
+        <div>
+          <span class="app-availability">● 2026 Q2 · 開放 12 位名額</span>
+        </div>
+
+        <div class="app-avail-row">
+          <span>🕐 <b>45 分鐘</b></span>
+          <span>📋 <b>雙向評估</b></span>
+          <span>📱 <b>語音進行</b></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>決策架構師 · 轉換方法論</p>
+      </div>
+    </footer>
+
+    <script>
+      // Self-Diagnostic interactive scoring
+      const items = document.querySelectorAll("#diagnostic li");
+      const scoreNum = document.getElementById("score-num");
+      const scoreRem = document.getElementById("score-rem");
+      items.forEach((li) => {
+        li.addEventListener("click", () => {
+          li.classList.toggle("checked");
+          const count = document.querySelectorAll(
+            "#diagnostic li.checked",
+          ).length;
+          scoreNum.textContent = count;
+          scoreRem.textContent = 7 - count;
+        });
+      });
+    </script>
+
+    <!-- CRO Lab Navigator -->
+    <section
+      style="
+        background: #f8f4f0;
+        border-top: 2px solid #e5dfd5;
+        padding: 48px 20px;
+        font-family: &quot;Noto Sans TC&quot;, sans-serif;
+      "
+    >
+      <div style="max-width: 640px; margin: 0 auto; text-align: center">
+        <div
+          style="
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #876a2f;
+            font-weight: 700;
+            margin-bottom: 10px;
+          "
+        >
+          想了解設計如何影響成交？
+        </div>
+        <h2
+          style="
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a0f0a;
+            margin-bottom: 8px;
+          "
+        >
+          一個頁面的設計，能讓成交率差距 5 倍
+        </h2>
+        <p
+          style="
+            font-size: 14px;
+            color: #7a7269;
+            line-height: 1.7;
+            margin-bottom: 24px;
+          "
+        >
+          用行為科學和認知心理學設計的頁面，讓每個訪客都能走到購買的那一步。
+        </p>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+          "
+        >
+          <a
+            href="https://conversion-comparison.vercel.app"
+            target="_blank"
+            rel="noopener"
+            style="
+              font-size: 13px;
+              color: #876a2f;
+              border: 1px solid rgba(135, 106, 47, 0.4);
+              border-radius: 20px;
+              padding: 7px 18px;
+              text-decoration: none;
+            "
+            >→ 了解設計如何影響成交</a
+          >
+        </div>
+        <a
+          href="https://line.me/ti/p/5gW0er9baG"
+          target="_blank"
+          rel="noopener"
+          style="
+            display: inline-block;
+            background: #06c755;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+          >想讓你的網站會賺錢 → LINE 諮詢</a
+        >
+      </div>
+    </section>
+  </body>
+</html>

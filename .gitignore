@@ -56,3 +56,8 @@ generate-podcast.mjs
 # WAV source files (too large)
 audio/*.wav
 audio/test-*
+
+# Verification screenshots (Claude-generated, not assets)
+v?-*.jpeg
+v?-*.jpg
+v?-*.png

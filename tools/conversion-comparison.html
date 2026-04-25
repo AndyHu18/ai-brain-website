@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>你的同行靠一個網頁，睡覺都在收單</title>
+    <meta
+      name="description"
+      content="同一個產業、同樣的產品——為什麼他月入十幾萬，你卻覺得做不下去？差別可能只在一個網頁。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #faf7f2;
+        --t1: #1a1714;
+        --t2: #4a4540;
+        --t3: #7a7269;
+        --gold: #876a2f;
+        --gold-deep: #6b5525;
+        --border: #e5dfd5;
+        --neg: #6b5044;
+        --neg-bg: #f5efeb;
+        --pos: #876a2f;
+        --pos-bg: #f5efe0;
+        --white: #fff;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+      body {
+        background: var(--bg);
+        color: var(--t1);
+        font-family:
+          "Inter",
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
+      .serif {
+        font-family: "Playfair Display", Georgia, serif;
+      }
+
+      .page {
+        max-width: 40rem;
+        margin: 0 auto;
+        padding: 2rem 1.25rem;
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        .page {
+          padding: 4rem 1.5rem;
+        }
+      }
+
+      /* Brand Signature — top */
+      .brand-sig {
+        display: block;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        font-size: 0.8125rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        padding-bottom: 0.375rem;
+        border-bottom: 1px solid rgba(135, 106, 47, 0.2);
+        display: inline-block;
+      }
+      @media (min-width: 768px) {
+        .brand-sig {
+          margin-bottom: 2rem;
+          font-size: 0.875rem;
+          letter-spacing: 0.2em;
+        }
+      }
+
+      h1 {
+        font-weight: 700;
+        font-size: 1.75rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+      }
+      @media (min-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+      .gold {
+        color: var(--gold);
+      }
+      .gold-line {
+        height: 2px;
+        max-width: 80px;
+        margin: 0.75rem auto 1.5rem;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold) 30%,
+          var(--gold) 70%,
+          transparent
+        );
+      }
+
+      .intro {
+        color: var(--t2);
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width: 30rem;
+        margin: 0 auto 1.75rem;
+      }
+      @media (min-width: 768px) {
+        .intro {
+          margin-bottom: 2.5rem;
+        }
+      }
+      @media (min-width: 768px) {
+        .intro {
+          font-size: 1.0625rem;
+        }
+      }
+      .intro strong {
+        color: var(--t1);
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.75rem;
+        text-align: left;
+      }
+      @media (min-width: 640px) {
+        .cards {
+          gap: 1.25rem;
+          margin-bottom: 2.5rem;
+        }
+      }
+      @media (min-width: 640px) {
+        .cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .card {
+        border-radius: 1rem;
+        overflow: hidden;
+        background: var(--white);
+        box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.06);
+        transition: all 0.3s ease;
+      }
+      .card--bad {
+        border: 2px solid rgba(107, 80, 68, 0.2);
+      }
+      .card--good {
+        border: 2px solid rgba(135, 106, 47, 0.2);
+      }
+      .card--good:hover {
+        box-shadow: 0 8px 36px -6px rgba(135, 106, 47, 0.15);
+      }
+      .card-header {
+        padding: 0.875rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+      }
+      .card--bad .card-header {
+        background: var(--neg-bg);
+      }
+      .card--good .card-header {
+        background: var(--pos-bg);
+      }
+      .card-icon {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+      }
+      .card--bad .card-icon {
+        background: var(--neg);
+      }
+      .card--good .card-icon {
+        background: var(--pos);
+      }
+      .card-label {
+        font-weight: 700;
+        font-size: 0.9375rem;
+      }
+      .card--bad .card-label {
+        color: var(--neg);
+      }
+      .card--good .card-label {
+        color: var(--pos);
+      }
+      .card-sub {
+        font-size: 0.75rem;
+        color: var(--t3);
+        margin-top: 0.125rem;
+      }
+      .card-body {
+        padding: 1.25rem;
+      }
+      .card-desc {
+        font-size: 0.875rem;
+        color: var(--t3);
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+      .card-link {
+        display: block;
+        text-align: center;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: all 0.25s ease;
+        min-height: 2.75rem;
+      }
+      .card--bad .card-link {
+        color: #fff;
+        background: rgba(107, 80, 68, 0.85);
+        border: 1px solid rgba(107, 80, 68, 0.3);
+      }
+      .card--bad .card-link:hover {
+        background: rgba(107, 80, 68, 0.95);
+        transform: translateY(-1px);
+      }
+      .card--good .card-link {
+        color: #fff;
+        background: #0d7c66;
+        border: 1px solid rgba(13, 124, 102, 0.3);
+        box-shadow: 0 4px 16px -4px rgba(13, 124, 102, 0.35);
+      }
+      .card--good .card-link:hover {
+        background: #0a6b58;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px -4px rgba(13, 124, 102, 0.45);
+      }
+
+      /* Reveal Block — blends with page background */
+      .reveal {
+        margin: 0;
+        padding: 2rem 0;
+        text-align: center;
+        position: relative;
+      }
+      @media (min-width: 768px) {
+        .reveal {
+          padding: 2.5rem 0;
+        }
+      }
+      .reveal-q {
+        font-weight: 700;
+        font-size: 1.375rem;
+        line-height: 1.3;
+        color: var(--t1);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.01em;
+      }
+      @media (min-width: 768px) {
+        .reveal-q {
+          font-size: 1.75rem;
+        }
+      }
+      .reveal-sub {
+        font-size: 0.875rem;
+        color: var(--t3);
+        margin-bottom: 1.75rem;
+      }
+      .reveal-divider {
+        width: 40px;
+        height: 2px;
+        margin: 0 auto 1.75rem;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+      .reveal-body {
+        font-size: 1rem;
+        color: var(--t2);
+        line-height: 1.8;
+        max-width: 28rem;
+        margin: 0 auto;
+      }
+      @media (min-width: 768px) {
+        .reveal-body {
+          font-size: 1.0625rem;
+        }
+      }
+      .reveal-body strong {
+        color: var(--gold);
+        font-weight: 700;
+      }
+      .reveal-hook {
+        margin-top: 1.5rem;
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: var(--t1);
+        line-height: 1.4;
+      }
+      @media (min-width: 768px) {
+        .reveal-hook {
+          font-size: 1.25rem;
+        }
+      }
+      .reveal-hook em {
+        font-style: normal;
+        color: var(--gold);
+      }
+
+      .prompt {
+        color: var(--t3);
+        font-size: 0.9375rem;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+        margin-top: 2rem;
+      }
+      @media (min-width: 768px) {
+        .prompt {
+          margin-bottom: 2rem;
+          margin-top: 2.5rem;
+        }
+      }
+      .prompt strong {
+        color: var(--t1);
+        font-style: normal;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        text-decoration: none;
+        background: #0d7c66;
+        color: #fff;
+        box-shadow: 0 6px 24px -4px rgba(13, 124, 102, 0.4);
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        min-height: 2.75rem;
+        width: 100%;
+      }
+      @media (min-width: 640px) {
+        .cta-btn {
+          width: auto;
+          padding: 1rem 2.5rem;
+        }
+      }
+      .cta-btn:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 8px 32px -6px rgba(13, 124, 102, 0.5);
+        background: #0a6b58;
+      }
+      .cta-btn svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+
+      /* Learn Preview */
+      .learn-preview {
+        text-align: center;
+        margin: 1.5rem 0 2rem;
+      }
+      .learn-lead {
+        font-size: 1rem;
+        color: var(--t2);
+        line-height: 1.8;
+        margin-bottom: 1.25rem;
+      }
+      .learn-lead strong {
+        color: var(--t1);
+      }
+      .learn-desc {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--t3);
+        margin-bottom: 0.75rem;
+        letter-spacing: 0.02em;
+      }
+      .learn-list {
+        list-style: none;
+        margin: 0 auto 1.25rem;
+        padding: 0;
+        text-align: left;
+        display: inline-block;
+      }
+      .learn-list li {
+        position: relative;
+        padding-left: 1.5rem;
+        font-size: 0.9375rem;
+        color: var(--t2);
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+      }
+      .learn-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.625rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: var(--gold);
+      }
+      .learn-time {
+        font-size: 0.8125rem;
+        color: var(--t3);
+        font-style: italic;
+      }
+
+      /* Footer Brand Lockup */
+      .brand-footer {
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      @media (min-width: 768px) {
+        .brand-footer {
+          margin-top: 3rem;
+        }
+      }
+      .brand-footer-name {
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      @media (min-width: 768px) {
+        .brand-footer-name {
+          font-size: 1.0625rem;
+        }
+      }
+      .brand-footer-tagline {
+        font-size: 0.8125rem;
+        color: var(--t3);
+        margin-top: 0.375rem;
+        line-height: 1.5;
+      }
+      .brand-footer-by {
+        font-size: 0.75rem;
+        color: var(--t3);
+        margin-top: 1rem;
+      }
+      .brand-footer-by a {
+        color: var(--gold);
+        text-decoration: none;
+        display: inline-block;
+        padding: 0.5rem 0;
+        min-height: 2.75rem;
+        line-height: 1.75rem;
+      }
+
+      /* Hero Image */
+      .hero-img {
+        margin: 0 -1.25rem 1.75rem;
+        overflow: hidden;
+        border-radius: 0;
+      }
+      @media (min-width: 768px) {
+        .hero-img {
+          margin: 0 -1.5rem 2.5rem;
+          border-radius: 1rem;
+        }
+      }
+      .hero-img img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Fade in */
+      .fade {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fadeUp 0.7s ease forwards;
+      }
+      .d1 {
+        animation-delay: 0.15s;
+      }
+      .d2 {
+        animation-delay: 0.3s;
+      }
+      .d3 {
+        animation-delay: 0.5s;
+      }
+      .d4 {
+        animation-delay: 0.7s;
+      }
+      .d5 {
+        animation-delay: 0.9s;
+      }
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .fade {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+        .card {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <span class="brand-sig fade">轉化科學</span>
+
+      <div class="hero-img fade d1">
+        <img src="hero-visual.png" alt="同一個產品，兩種命運——差別在哪？" />
+      </div>
+
+      <h1 class="serif fade d1">
+        同一個產業、同樣的產品<br /><span class="gold"
+          >你 3 秒就能感受到差異</span
+        >
+      </h1>
+      <div class="gold-line fade d1"></div>
+
+      <p class="intro fade d2">
+        以下是兩個兒童教育課程的網頁——產品幾乎一樣。<br />
+        <strong>先點進去看 3 秒，感受一下你的第一反應。</strong>
+      </p>
+
+      <div class="cards fade d3">
+        <div class="card card--bad">
+          <div class="card-header">
+            <div class="card-icon">1</div>
+            <div>
+              <p class="card-label">課程頁面 A</p>
+              <p class="card-sub">點進去感受第一眼</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">
+              點進去看 3 秒，感受你的第一反應——你會想繼續看嗎？
+            </p>
+            <a
+              href="https://bad-landing-page.vercel.app"
+              target="_blank"
+              rel="noopener"
+              class="card-link"
+              >看看為什麼留不住客人 →</a
+            >
+          </div>
+        </div>
+        <div class="card card--good">
+          <div class="card-header">
+            <div class="card-icon">2</div>
+            <div>
+              <p class="card-label">課程頁面 B</p>
+              <p class="card-sub">點進去看看</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">同樣看 3 秒，你的感覺是什麼？</p>
+            <a
+              href="https://kids-course-landing.vercel.app"
+              target="_blank"
+              rel="noopener"
+              class="card-link"
+              >看看怎麼讓客人主動買單 →</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="visual fade d4"
+        style="margin: 0 -1.25rem 0; overflow: hidden; border-radius: 0"
+      >
+        <img
+          src="comparison-visual.png"
+          alt="兩個課程頁面的對比"
+          style="width: 100%; height: auto; display: block"
+        />
+      </div>
+
+      <div class="reveal fade d4" style="margin-top: 0; border-top: none">
+        <p class="reveal-q serif">
+          如果你是消費者<br />你會買哪一個網站的產品？
+        </p>
+        <p class="reveal-sub">——你的第一感覺，往往就是客人的決定</p>
+        <div class="reveal-divider"></div>
+        <p class="reveal-body">
+          你知道嗎？你的同行<strong>就是這樣</strong>，靠一個更好的網頁，<strong>暗中把你的訂單一筆一筆搶走</strong>。
+        </p>
+        <p class="reveal-hook">今天，<em>我們要幫你把訂單搶回來</em>。</p>
+      </div>
+
+      <div class="learn-preview fade d5">
+        <p class="learn-lead">
+          你剛才感受到的差異，不是「設計好不好看」——<br />背後有<strong>神經科學、行為經濟學、認知心理學</strong>在運作。
+        </p>
+        <p class="learn-desc">下一篇，我們用 7 個章節帶你拆解：</p>
+        <ul class="learn-list">
+          <li>同樣 1,000 個訪客，為什麼他月入 12 萬你只有 3 萬</li>
+          <li>消費者在 0.05 秒內就決定了要不要信你</li>
+          <li>為什麼對手投得起廣告，你卻投一單虧一單</li>
+        </ul>
+        <p class="learn-time">閱讀時間約 7 分鐘</p>
+      </div>
+
+      <a href="article.html" class="cta-btn fade d5">
+        了解你的網頁少賺了多少
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+
+      <!-- CRO Lab Navigator -->
+      <div
+        style="
+          margin: 48px -1.25rem -2rem;
+          padding: 40px 20px;
+          background: #f0ece5;
+          border-top: 2px solid #e5dfd5;
+          text-align: center;
+          font-family: &quot;Noto Sans TC&quot;, sans-serif;
+        "
+      >
+        <div style="max-width: 580px; margin: 0 auto">
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              color: #876a2f;
+              font-weight: 700;
+              margin-bottom: 10px;
+            "
+          >
+            成交率實驗室
+          </div>
+          <h2
+            style="
+              font-size: 19px;
+              font-weight: 700;
+              color: #1a1714;
+              margin-bottom: 8px;
+            "
+          >
+            想更深入了解設計如何影響成交？
+          </h2>
+          <p
+            style="
+              font-size: 14px;
+              color: #7a7269;
+              line-height: 1.7;
+              margin-bottom: 20px;
+            "
+          >
+            決策架構師：用行為科學讓每個訪客都帶走一個購物袋。
+          </p>
+          <div
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              justify-content: center;
+              margin-bottom: 20px;
+            "
+          >
+            <a
+              href="https://sneaker-comparison.vercel.app"
+              target="_blank"
+              rel="noopener"
+              style="
+                font-size: 13px;
+                color: #876a2f;
+                border: 1px solid rgba(135, 106, 47, 0.4);
+                border-radius: 20px;
+                padding: 7px 18px;
+                text-decoration: none;
+              "
+              >→ 了解決策架構師方法論</a
+            >
+          </div>
+          <a
+            href="https://line.me/ti/p/5gW0er9baG"
+            target="_blank"
+            rel="noopener"
+            style="
+              display: inline-block;
+              background: #06c755;
+              color: #fff;
+              font-size: 15px;
+              font-weight: 700;
+              padding: 14px 28px;
+              border-radius: 8px;
+              text-decoration: none;
+            "
+            >想讓你的網站會賺錢 → LINE 諮詢</a
+          >
+        </div>
+      </div>
+
+      <footer class="brand-footer fade d5">
+        <p class="brand-footer-name">轉化科學</p>
+        <p class="brand-footer-tagline">用行為科學，打造會成交的網站</p>
+        <p class="brand-footer-by">
+          by <a href="https://ai-brain-website.vercel.app">AI 智能大腦</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
