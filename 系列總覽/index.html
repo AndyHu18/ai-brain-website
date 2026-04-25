@@ -824,7 +824,7 @@
           font-size: 0.9375rem;
         }
       }
-    
+
       /* =============================================
          HAMBURGER MENU
          ============================================= */
@@ -852,9 +852,16 @@
         transition: all 0.25s ease;
         transform-origin: center;
       }
-      .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-      .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+      .nav-hamburger.is-open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .nav-hamburger.is-open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .nav-hamburger.is-open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
 
       .nav-drawer-overlay {
         display: none;
@@ -865,7 +872,9 @@
         opacity: 0;
         transition: opacity 0.3s ease;
       }
-      .nav-drawer-overlay.is-open { opacity: 1; }
+      .nav-drawer-overlay.is-open {
+        opacity: 1;
+      }
 
       .nav-drawer {
         position: fixed;
@@ -882,7 +891,9 @@
         box-shadow: -4px 0 32px oklch(0.1 0 0 / 0.12);
         overflow-y: auto;
       }
-      .nav-drawer.is-open { transform: translateX(0); }
+      .nav-drawer.is-open {
+        transform: translateX(0);
+      }
 
       .nd-header {
         display: flex;
@@ -898,7 +909,9 @@
         color: oklch(0.2 0.02 50);
         letter-spacing: 0.02em;
       }
-      .nd-dot { color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-dot {
+        color: var(--color-primary, oklch(0.557 0.166 45));
+      }
       .nd-close {
         background: none;
         border: none;
@@ -913,7 +926,9 @@
         border-radius: 8px;
         transition: background 0.15s;
       }
-      .nd-close:hover { background: oklch(0.93 0.03 75); }
+      .nd-close:hover {
+        background: oklch(0.93 0.03 75);
+      }
 
       .nd-section-title {
         font-size: 0.6875rem;
@@ -941,8 +956,15 @@
         border-bottom: 1px solid oklch(0.94 0.015 78);
         transition: background 0.15s;
       }
-      .nd-item:hover { background: oklch(0.96 0.02 75); color: var(--color-primary, oklch(0.557 0.166 45)); }
-      .nd-item.is-current { background: oklch(0.94 0.04 72); color: var(--color-primary, oklch(0.557 0.166 45)); font-weight: 700; }
+      .nd-item:hover {
+        background: oklch(0.96 0.02 75);
+        color: var(--color-primary, oklch(0.557 0.166 45));
+      }
+      .nd-item.is-current {
+        background: oklch(0.94 0.04 72);
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        font-weight: 700;
+      }
       .nd-num {
         font-size: 0.6875rem;
         font-weight: 900;
@@ -954,7 +976,10 @@
         min-width: 28px;
         text-align: center;
       }
-      .nd-title { font-size: 0.9375rem; line-height: 1.4; }
+      .nd-title {
+        font-size: 0.9375rem;
+        line-height: 1.4;
+      }
 
       .nd-footer {
         display: flex;
@@ -975,7 +1000,9 @@
         border-radius: 10px;
         transition: background 0.15s;
       }
-      .nd-overview:hover { background: oklch(0.95 0.03 75); }
+      .nd-overview:hover {
+        background: oklch(0.95 0.03 75);
+      }
       .nd-cta {
         display: block;
         text-align: center;
@@ -988,12 +1015,16 @@
         border-radius: 10px;
         transition: background 0.15s;
       }
-      .nd-cta:hover { background: oklch(0.6 0.17 46); }
+      .nd-cta:hover {
+        background: oklch(0.6 0.17 46);
+      }
 
       @media (max-width: 768px) {
-        .nav-hamburger { display: flex; }
+        .nav-hamburger {
+          display: flex;
+        }
       }
-    
+
       /* ─── Hero 照片 ─────────────────────────────────────── */
       .hero-inner {
         display: flex;
@@ -1001,11 +1032,14 @@
         max-width: 1100px;
         gap: 0;
       }
-      .hero-text { flex: 1; min-width: 0; }
+      .hero-text {
+        flex: 1;
+        min-width: 0;
+      }
       .hero-photo-wrap {
         flex: 0 0 460px;
-          width: 460px;
-          height: 580px;
+        width: 460px;
+        height: 580px;
         overflow: hidden;
         align-self: flex-end;
         position: relative;
@@ -1014,7 +1048,11 @@
       .hero-photo-glow {
         position: absolute;
         inset: -20%;
-        background: radial-gradient(circle, oklch(0.557 0.166 45 / 0.35) 0%, transparent 60%);
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.35) 0%,
+          transparent 60%
+        );
         filter: blur(40px);
         pointer-events: none;
         z-index: 0;
@@ -1028,11 +1066,23 @@
         object-position: top center;
         display: block;
         mask-image:
-          linear-gradient(to bottom, transparent 0%, black 5%, black 82%, transparent 100%),
+          linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 82%,
+            transparent 100%
+          ),
           linear-gradient(to right, transparent 0%, black 18%, black 100%);
         mask-composite: intersect;
         -webkit-mask-image:
-          linear-gradient(to bottom, transparent 0%, black 5%, black 82%, transparent 100%),
+          linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 82%,
+            transparent 100%
+          ),
           linear-gradient(to right, transparent 0%, black 18%, black 100%);
         -webkit-mask-composite: source-in;
         filter: brightness(1.1) contrast(1.05);
@@ -1043,16 +1093,33 @@
           max-width: 780px;
           align-items: center;
         }
-        .hero-text { width: 100%; }
+        .hero-text {
+          width: 100%;
+        }
         .hero-photo-wrap {
+          order: -1;
           flex: none;
-          width: 220px;
-          height: 300px;
-          margin: 24px auto 0;
+          width: 100%;
+          max-width: 340px;
+          height: auto;
+          aspect-ratio: 3 / 4;
+          margin: 0 auto 24px;
         }
         .hero-photo-img {
-          mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
+          mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 85%,
+            transparent 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 5%,
+            black 85%,
+            transparent 100%
+          );
         }
       }
     </style>
@@ -1071,11 +1138,16 @@
           class="nav-cta"
           >加 LINE 免費診斷</a
         >
-      
-      <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+
+        <button
+          class="nav-hamburger"
+          id="navHamburger"
+          aria-label="開啟選單"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </nav>
     <!-- 手機漢堡抽屜 -->
     <div class="nav-drawer-overlay" id="navOverlay"></div>
@@ -1086,91 +1158,96 @@
       </div>
       <div class="nd-section-title">12 篇系列文章</div>
       <nav class="nd-list">
-      <a href="../article-01-exposure.html" class="nd-item">
-        <span class="nd-num">01</span>
-        <span class="nd-title">曝光與導流</span>
-      </a>
-      <a href="../article-02-homepage.html" class="nd-item">
-        <span class="nd-num">02</span>
-        <span class="nd-title">首頁印象</span>
-      </a>
-      <a href="../article-03.html" class="nd-item">
-        <span class="nd-num">03</span>
-        <span class="nd-title">差異化定位</span>
-      </a>
-      <a href="../article-04.html" class="nd-item">
-        <span class="nd-num">04</span>
-        <span class="nd-title">產品介紹</span>
-      </a>
-      <a href="../article-05-conversion.html" class="nd-item">
-        <span class="nd-num">05</span>
-        <span class="nd-title">成交路徑</span>
-      </a>
-      <a href="../article-06-contact.html" class="nd-item">
-        <span class="nd-num">06</span>
-        <span class="nd-title">留下聯絡方式</span>
-      </a>
-      <a href="../article-07-automation.html" class="nd-item">
-        <span class="nd-num">07</span>
-        <span class="nd-title">自動化訊息</span>
-      </a>
-      <a href="../article-08-upsell.html" class="nd-item">
-        <span class="nd-num">08</span>
-        <span class="nd-title">加購與升級</span>
-      </a>
-      <a href="../article-09-retention.html" class="nd-item">
-        <span class="nd-num">09</span>
-        <span class="nd-title">回頭客機制</span>
-      </a>
-      <a href="../article-10-referral.html" class="nd-item">
-        <span class="nd-num">10</span>
-        <span class="nd-title">口碑系統</span>
-      </a>
-      <a href="../article-11-trust.html" class="nd-item">
-        <span class="nd-num">11</span>
-        <span class="nd-title">信任與證據</span>
-      </a>
-      <a href="../article-12.html" class="nd-item">
-        <span class="nd-num">12</span>
-        <span class="nd-title">整合策略</span>
-      </a>
+        <a href="../article-01-exposure.html" class="nd-item">
+          <span class="nd-num">01</span>
+          <span class="nd-title">曝光與導流</span>
+        </a>
+        <a href="../article-02-homepage.html" class="nd-item">
+          <span class="nd-num">02</span>
+          <span class="nd-title">首頁印象</span>
+        </a>
+        <a href="../article-03.html" class="nd-item">
+          <span class="nd-num">03</span>
+          <span class="nd-title">差異化定位</span>
+        </a>
+        <a href="../article-04.html" class="nd-item">
+          <span class="nd-num">04</span>
+          <span class="nd-title">產品介紹</span>
+        </a>
+        <a href="../article-05-conversion.html" class="nd-item">
+          <span class="nd-num">05</span>
+          <span class="nd-title">成交路徑</span>
+        </a>
+        <a href="../article-06-contact.html" class="nd-item">
+          <span class="nd-num">06</span>
+          <span class="nd-title">留下聯絡方式</span>
+        </a>
+        <a href="../article-07-automation.html" class="nd-item">
+          <span class="nd-num">07</span>
+          <span class="nd-title">自動化訊息</span>
+        </a>
+        <a href="../article-08-upsell.html" class="nd-item">
+          <span class="nd-num">08</span>
+          <span class="nd-title">加購與升級</span>
+        </a>
+        <a href="../article-09-retention.html" class="nd-item">
+          <span class="nd-num">09</span>
+          <span class="nd-title">回頭客機制</span>
+        </a>
+        <a href="../article-10-referral.html" class="nd-item">
+          <span class="nd-num">10</span>
+          <span class="nd-title">口碑系統</span>
+        </a>
+        <a href="../article-11-trust.html" class="nd-item">
+          <span class="nd-num">11</span>
+          <span class="nd-title">信任與證據</span>
+        </a>
+        <a href="../article-12.html" class="nd-item">
+          <span class="nd-num">12</span>
+          <span class="nd-title">整合策略</span>
+        </a>
       </nav>
       <div class="nd-footer">
         <a href="../系列總覽/index.html" class="nd-overview">← 系列總覽</a>
-        <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="nd-cta">加 LINE 免費諮詢 →</a>
+        <a
+          href="https://line.me/ti/p/5gW0er9baG"
+          target="_blank"
+          rel="noopener"
+          class="nd-cta"
+          >加 LINE 免費諮詢 →</a
+        >
       </div>
     </div>
-
 
     <!-- ======== SERIES HERO ======== -->
     <header class="series-hero">
       <div class="hero-inner">
-          <div class="hero-text">
-        <div class="hero-eyebrow">
-          <span class="hero-eyebrow-dot"></span>
-          12 篇實戰行銷系列 · 免費完整公開
-        </div>
-        <h1>你有網站，<br />但它有在替你<em>賺錢</em>嗎？</h1>
-        <p class="hero-subtitle">
-          95% 的網站只是一張數位名片——看起來存在，實際上沒在賺錢。這 12
-          篇把每個環節補起來，從被找到、到成交、到回頭再買。
-        </p>
-        <div class="hero-cta-group">
-          <a href="../article-01-exposure.html" class="btn-primary-hero">
-            從第一篇開始 →
-          </a>
-          <a href="#articles" class="btn-outline-hero"> 瀏覽全部篇章 </a>
-        </div>
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            12 篇實戰行銷系列 · 免費完整公開
           </div>
-          <div class="hero-photo-wrap">
-            <div class="hero-photo-glow"></div>
-            <img
-              src="../andy-photo.png"
-              alt="AI 智能大腦 Andy"
-              class="hero-photo-img"
-              loading="eager"
-            />
+          <h1>你有網站，<br />但它有在替你<em>賺錢</em>嗎？</h1>
+          <p class="hero-subtitle">
+            95% 的網站只是一張數位名片——看起來存在，實際上沒在賺錢。這 12
+            篇把每個環節補起來，從被找到、到成交、到回頭再買。
+          </p>
+          <div class="hero-cta-group">
+            <a href="../article-01-exposure.html" class="btn-primary-hero">
+              從第一篇開始 →
+            </a>
+            <a href="#articles" class="btn-outline-hero"> 瀏覽全部篇章 </a>
           </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-glow"></div>
+          <img
+            src="../andy-photo.png"
+            alt="AI 智能大腦 Andy"
+            class="hero-photo-img"
+            loading="eager"
+          />
+        </div>
       </div>
     </header>
 
@@ -1473,51 +1550,54 @@
             .scrollIntoView({ behavior: "smooth", block: "start" });
         });
     </script>
-  
+
     <script>
-    (function() {
-      const btn = document.getElementById('navHamburger');
-      const drawer = document.getElementById('navDrawer');
-      const overlay = document.getElementById('navOverlay');
-      const closeBtn = document.getElementById('navClose');
-      if (!btn || !drawer) return;
+      (function () {
+        const btn = document.getElementById("navHamburger");
+        const drawer = document.getElementById("navDrawer");
+        const overlay = document.getElementById("navOverlay");
+        const closeBtn = document.getElementById("navClose");
+        if (!btn || !drawer) return;
 
-      function openDrawer() {
-        overlay.style.display = 'block';
-        requestAnimationFrame(() => {
-          overlay.classList.add('is-open');
-          drawer.classList.add('is-open');
+        function openDrawer() {
+          overlay.style.display = "block";
+          requestAnimationFrame(() => {
+            overlay.classList.add("is-open");
+            drawer.classList.add("is-open");
+          });
+          btn.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+          drawer.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+        }
+        function closeDrawer() {
+          overlay.classList.remove("is-open");
+          drawer.classList.remove("is-open");
+          btn.classList.remove("is-open");
+          btn.setAttribute("aria-expanded", "false");
+          drawer.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 300);
+        }
+
+        btn.addEventListener("click", openDrawer);
+        closeBtn.addEventListener("click", closeDrawer);
+        overlay.addEventListener("click", closeDrawer);
+
+        // 點選單裡的連結自動關閉
+        drawer.querySelectorAll(".nd-item, .nd-overview").forEach((a) => {
+          a.addEventListener("click", closeDrawer);
         });
-        btn.classList.add('is-open');
-        btn.setAttribute('aria-expanded', 'true');
-        drawer.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-      function closeDrawer() {
-        overlay.classList.remove('is-open');
-        drawer.classList.remove('is-open');
-        btn.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
-        drawer.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        setTimeout(() => { overlay.style.display = 'none'; }, 300);
-      }
 
-      btn.addEventListener('click', openDrawer);
-      closeBtn.addEventListener('click', closeDrawer);
-      overlay.addEventListener('click', closeDrawer);
-
-      // 點選單裡的連結自動關閉
-      drawer.querySelectorAll('.nd-item, .nd-overview').forEach(a => {
-        a.addEventListener('click', closeDrawer);
-      });
-
-      // 標記目前頁面
-      const cur = location.pathname.split('/').pop() || 'index.html';
-      drawer.querySelectorAll('.nd-item').forEach(a => {
-        if (a.getAttribute('href').includes(cur)) a.classList.add('is-current');
-      });
-    })();
+        // 標記目前頁面
+        const cur = location.pathname.split("/").pop() || "index.html";
+        drawer.querySelectorAll(".nd-item").forEach((a) => {
+          if (a.getAttribute("href").includes(cur))
+            a.classList.add("is-current");
+        });
+      })();
     </script>
   </body>
 </html>

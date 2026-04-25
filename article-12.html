@@ -2404,17 +2404,21 @@
       }
       @media (max-width: 1024px) {
         .hero-inner {
-          grid-template-columns: 1fr;
+          display: flex;
+          flex-direction: column;
         }
         .hero-photo-wrap {
-          width: 220px;
-          height: 300px;
-          margin: 24px auto 0;
+          order: -1;
           flex: none;
+          width: 100%;
+          max-width: 340px;
+          height: auto;
+          aspect-ratio: 3 / 4;
+          margin: 0 auto 24px;
         }
         .hero-photo-img {
-          mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 100%);
         }
       }
     </style>
