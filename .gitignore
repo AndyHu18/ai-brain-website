@@ -61,3 +61,7 @@ audio/test-*
 v?-*.jpeg
 v?-*.jpg
 v?-*.png
+cut-s12-icons.py
+gen-s12-icons.cjs
+patch-icons.py
+images/s12-icons/
