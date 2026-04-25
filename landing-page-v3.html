@@ -3407,25 +3407,27 @@
         );
         ctaObserver.observe(ctaEl);
 
-        /* Founder typewriter — on scroll into view */
+        /* Founder typewriter — on scroll into view (v3 移除 .pf-founder 區塊後 element 可能不存在) */
         const founderEl = document.getElementById("typewriter-founder");
-        let founderFired = false;
-        const founderObserver = new IntersectionObserver(
-          function (entries) {
-            if (entries[0].isIntersecting && !founderFired) {
-              founderFired = true;
-              typewriter(
-                founderEl,
-                [{ text: "一般網站 vs AI 驅動網站", highlight: true }],
-                90,
-                300,
-              );
-              founderObserver.disconnect();
-            }
-          },
-          { threshold: 0.5 },
-        );
-        founderObserver.observe(founderEl);
+        if (founderEl) {
+          let founderFired = false;
+          const founderObserver = new IntersectionObserver(
+            function (entries) {
+              if (entries[0].isIntersecting && !founderFired) {
+                founderFired = true;
+                typewriter(
+                  founderEl,
+                  [{ text: "一般網站 vs AI 驅動網站", highlight: true }],
+                  90,
+                  300,
+                );
+                founderObserver.disconnect();
+              }
+            },
+            { threshold: 0.5 },
+          );
+          founderObserver.observe(founderEl);
+        }
 
         /* === AITDA Tag Carousel on floating brain === */
         const tags = [
