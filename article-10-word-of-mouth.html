@@ -1875,5 +1875,61 @@
         }
       }
     </script>
+  
+    <a
+      href="系列總覽/#article-10"
+      class="back-to-overview"
+      aria-label="回到系列總覽"
+    >
+      <span class="bto-arrow" aria-hidden="true">←</span>
+      <span class="bto-text">系列總覽</span>
+      <span class="bto-meta">12 篇導讀</span>
+    </a>
+    <style>
+      .back-to-overview {
+        position: fixed;
+        top: calc(14px + env(safe-area-inset-top));
+        left: calc(14px + env(safe-area-inset-left));
+        z-index: 9999;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        background: oklch(0.14 0.025 50 / 0.92);
+        color: var(--bg-card, #f5f0ea);
+        border: 1px solid oklch(0.76 0.12 75 / 0.45);
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+        transition: all 0.25s ease;
+        font-family: 'Noto Sans TC', sans-serif;
+        line-height: 1;
+      }
+      .back-to-overview:hover {
+        background: linear-gradient(135deg, oklch(0.5 0.16 50) 0%, oklch(0.52 0.12 72) 100%);
+        border-color: oklch(0.84 0.14 85 / 0.7);
+        transform: translateX(-2px);
+        color: #fff;
+        box-shadow: 0 6px 24px oklch(0.47 0.15 50 / 0.45);
+      }
+      .back-to-overview .bto-arrow { font-size: 15px; font-weight: 700; }
+      .back-to-overview .bto-meta {
+        opacity: 0.55; font-size: 11px; font-weight: 500;
+        padding-left: 6px;
+        border-left: 1px solid oklch(0.76 0.12 75 / 0.3);
+        margin-left: 2px;
+      }
+      @media (max-width: 768px) {
+        .back-to-overview {
+          top: calc(72px + env(safe-area-inset-top));
+          left: 12px;
+          padding: 8px 12px 8px 10px;
+          font-size: 12px;
+        }
+        .back-to-overview .bto-meta { display: none; }
+      }
+    </style>
   </body>
 </html>
