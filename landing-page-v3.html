@@ -3338,6 +3338,8 @@
       (function () {
         /* === Typewriter Engine === */
         function typewriter(el, lines, speed, lineDelay) {
+          if (!el)
+            return; /* v3 guard: 被呼叫的 element 可能已不存在(舊 hero/founder 區塊移除) */
           let lineIdx = 0,
             charIdx = 0;
           function type() {
