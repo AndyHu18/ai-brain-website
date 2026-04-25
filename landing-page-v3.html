@@ -1428,12 +1428,17 @@
         @media (max-width: 1024px) {
           .hero-v3-inner {
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 32px;
           }
+          /* mobile/tablet:主圖在文字之前 — 一進來就看到人,信任感先建立 */
           .hero-v3-photo {
-            aspect-ratio: 4/3;
-            max-width: 480px;
+            order: -1;
+            aspect-ratio: 4 / 3;
+            max-width: 360px;
             margin: 0 auto;
+          }
+          .hero-v3-photo-img {
+            object-position: center top;
           }
           .s3-weapon-grid {
             grid-template-columns: 1fr;
@@ -1528,6 +1533,18 @@
           }
           .s3-final-cta {
             padding: 20px 28px;
+          }
+          /* 浮動 LINE 按鈕在 mobile 隱藏文字 tag,避免擋到內容(保留 brain icon 作為 CTA) */
+          .pf-brain-tag {
+            display: none !important;
+          }
+          .pf-floating-brain {
+            bottom: 16px !important;
+            right: 16px !important;
+          }
+          .pf-floating-brain img {
+            width: 60px !important;
+            height: 60px !important;
           }
         }
         @media (max-width: 480px) {
