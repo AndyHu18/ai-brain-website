@@ -1,0 +1,1450 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>網站經營 12 篇系列 | 系列總覽</title>
+    <meta
+      name="description"
+      content="從曝光到成效追蹤，完整的網站行銷系統。12篇實戰文章，每篇獨立可讀，建議從第一篇開始。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =============================================
+         DESIGN TOKENS — ai-brain Hermès 配色系統
+         ============================================= */
+      :root {
+        --bg-light: oklch(0.99 0.003 80);
+        --bg-section: oklch(0.95 0.02 78);
+        --bg-card: oklch(0.98 0.012 78);
+        --bg-input: oklch(0.97 0.012 78);
+
+        --tech-titanium: oklch(0.18 0.03 50);
+        --tech-midnight: oklch(0.13 0.025 50);
+
+        --color-primary: oklch(0.557 0.166 45);
+        --color-primary-light: oklch(0.6 0.17 46);
+        --color-primary-dark: oklch(0.5 0.15 43);
+        --color-accent-light: oklch(0.72 0.12 62);
+        --color-error: oklch(0.43 0.135 27);
+        --bg-warm-blush: oklch(0.98 0.01 72);
+
+        --text-primary: oklch(0.12 0.02 50);
+        --text-secondary: oklch(0.18 0.025 50);
+        --text-muted: oklch(0.38 0.04 40);
+        --text-light: oklch(1 0.015 80);
+
+        --border-subtle: oklch(0.27 0.035 25 / 0.1);
+        --border-default: oklch(0.27 0.035 25 / 0.2);
+        --border-accent: oklch(0.557 0.166 45 / 0.3);
+
+        --shadow-sm: 0 1px 2px oklch(0.27 0.035 25 / 0.05);
+        --shadow-md: 0 4px 6px oklch(0.27 0.035 25 / 0.07);
+        --shadow-lg: 0 10px 15px oklch(0.27 0.035 25 / 0.1);
+        --shadow-xl: 0 20px 25px oklch(0.27 0.035 25 / 0.15);
+        --shadow-card: 0 4px 20px oklch(0.557 0.166 45 / 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s ease;
+
+        --container-max: 1200px;
+      }
+
+      /* =============================================
+         RESET & BASE
+         ============================================= */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+
+      a:hover {
+        color: var(--color-primary-light);
+      }
+
+      /* =============================================
+         NAVBAR
+         ============================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(64px + env(safe-area-inset-top));
+        padding-top: env(safe-area-inset-top);
+        background: oklch(0.99 0.003 80 / 0.97);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        transition: box-shadow var(--transition-base);
+      }
+
+      .nav-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--text-primary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .nav-logo span {
+        color: var(--color-primary);
+      }
+
+      .nav-series-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        background: var(--bg-section);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+
+      .nav-series-label:hover {
+        color: var(--color-primary);
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 11px 18px;
+        min-height: 44px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        white-space: nowrap;
+      }
+
+      .nav-cta:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+         SERIES HERO
+         ============================================= */
+      .series-hero {
+        background: linear-gradient(
+          160deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        color: var(--text-light);
+        padding: calc(64px + env(safe-area-inset-top) + 60px) 24px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .series-hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.2) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .series-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          oklch(0.72 0.12 62 / 0.1) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: 780px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: oklch(0.557 0.166 45 / 0.2);
+        border: 1px solid oklch(0.557 0.166 45 / 0.4);
+        border-radius: var(--radius-full);
+        padding: 6px 16px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        letter-spacing: 0.08em;
+        margin-bottom: 24px;
+      }
+
+      .hero-eyebrow-dot {
+        width: 6px;
+        height: 6px;
+        background: var(--color-accent-light);
+        border-radius: 50%;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      .series-hero h1 {
+        font-family: "Noto Serif TC", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: var(--text-light);
+        line-height: 1.2;
+        margin-bottom: 24px;
+        letter-spacing: -0.01em;
+      }
+
+      .series-hero h1 em {
+        font-style: normal;
+        color: var(--color-accent-light);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        color: oklch(1 0.015 80 / 0.78);
+        line-height: 1.7;
+        max-width: 620px;
+        margin: 0 auto 40px;
+        text-wrap: balance;
+      }
+
+      .hero-cta-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn-primary-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1.0625rem;
+        padding: 15px 32px;
+        min-height: 52px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 6px 24px oklch(0.557 0.166 45 / 0.45);
+      }
+
+      .btn-primary-hero:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px oklch(0.557 0.166 45 / 0.55);
+      }
+
+      .btn-outline-hero {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: oklch(1 0.015 80 / 0.85);
+        font-weight: 700;
+        font-size: 0.9375rem;
+        padding: 13px 28px;
+        min-height: 52px;
+        border-radius: var(--radius-full);
+        border: 1.5px solid oklch(1 0.015 80 / 0.3);
+        transition: var(--transition-fast);
+      }
+
+      .btn-outline-hero:hover {
+        background: oklch(1 0.015 80 / 0.08);
+        color: var(--text-light);
+        border-color: oklch(1 0.015 80 / 0.5);
+      }
+
+      /* =============================================
+         STATS BAR
+         ============================================= */
+      .stats-bar {
+        background: white;
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 36px 24px;
+      }
+
+      .stats-inner {
+        max-width: 820px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+      }
+
+      .stat-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 48px;
+        background: var(--border-default);
+      }
+
+      .stat-num {
+        display: block;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+      }
+
+      /* =============================================
+         ARTICLES GRID SECTION
+         ============================================= */
+      .grid-section {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 72px 24px 80px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 52px;
+      }
+
+      .section-header h2 {
+        font-family: "Noto Serif TC", serif;
+        font-size: clamp(1.5rem, 3.5vw, 2rem);
+        margin-bottom: 12px;
+      }
+
+      .section-header p {
+        color: var(--text-muted);
+        font-size: 1rem;
+      }
+
+      .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      /* =============================================
+         ARTICLE CARD
+         ============================================= */
+      .article-card {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 28px;
+        border: 1px solid var(--border-subtle);
+        transition:
+          transform var(--transition-base),
+          box-shadow var(--transition-base),
+          border-color var(--transition-base);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 48px oklch(0.557 0.166 45 / 0.14);
+        border-color: var(--border-accent);
+        color: inherit;
+      }
+
+      .article-card.featured {
+        border: 2px solid var(--color-primary);
+        background: linear-gradient(
+          145deg,
+          oklch(0.557 0.166 45 / 0.04) 0%,
+          white 50%
+        );
+      }
+
+      .card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .card-number {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--border-default);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .article-card:hover .card-number,
+      .article-card.featured .card-number {
+        color: var(--color-primary);
+      }
+
+      .card-category {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        background: oklch(0.557 0.166 45 / 0.1);
+        border-radius: var(--radius-full);
+        padding: 3px 10px;
+        white-space: nowrap;
+      }
+
+      .article-card.featured .card-category {
+        background: var(--color-primary);
+        color: var(--text-light);
+      }
+
+      .card-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.45;
+        margin: 0;
+      }
+
+      .card-desc {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        flex-grow: 1;
+      }
+
+      .card-arrow {
+        align-self: flex-end;
+        width: 32px;
+        height: 32px;
+        background: var(--bg-section);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        transition: var(--transition-fast);
+        flex-shrink: 0;
+        margin-top: auto;
+      }
+
+      .article-card:hover .card-arrow {
+        background: var(--color-primary);
+        color: var(--text-light);
+        transform: translateX(2px);
+      }
+
+      /* =============================================
+         BOTTOM CTA
+         ============================================= */
+      .bottom-cta {
+        background: linear-gradient(
+          135deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        color: var(--text-light);
+        padding: 96px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .bottom-cta::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 360px;
+        height: 360px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.25) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .bottom-cta::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          oklch(0.72 0.12 62 / 0.12) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .cta-inner {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-eyebrow {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: oklch(1 0.015 80 / 0.55);
+        margin-bottom: 16px;
+      }
+
+      .bottom-cta h2 {
+        font-family: "Noto Serif TC", serif;
+        font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+        color: var(--text-light);
+        margin-bottom: 16px;
+        line-height: 1.3;
+      }
+
+      .bottom-cta p {
+        color: oklch(1 0.015 80 / 0.75);
+        font-size: 1.0625rem;
+        margin-bottom: 36px;
+        line-height: 1.7;
+      }
+
+      .btn-cta-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1.0625rem;
+        padding: 16px 40px;
+        min-height: 54px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 6px 24px oklch(0.557 0.166 45 / 0.45);
+      }
+
+      .btn-cta-primary:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 32px oklch(0.557 0.166 45 / 0.55);
+      }
+
+      /* =============================================
+         FOOTER
+         ============================================= */
+      .site-footer {
+        background: oklch(0.1 0.02 50);
+        color: oklch(0.7 0.01 80);
+        padding: 32px 24px;
+        text-align: center;
+        font-size: 0.875rem;
+      }
+
+      .footer-logo {
+        font-weight: 900;
+        font-size: 1.0625rem;
+        color: var(--text-light);
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .footer-logo span {
+        color: var(--color-accent-light);
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: oklch(0.7 0.01 80);
+        font-size: 0.8125rem;
+        transition: var(--transition-fast);
+      }
+
+      .footer-links a:hover {
+        color: var(--color-primary);
+      }
+
+      /* =============================================
+         MOBILE FLOAT CTA
+         ============================================= */
+      .float-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(20px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 900;
+        width: calc(100% - 32px);
+        max-width: 400px;
+      }
+
+      .float-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 16px 24px;
+        min-height: 52px;
+        border-radius: var(--radius-full);
+        box-shadow: 0 8px 28px oklch(0.557 0.166 45 / 0.55);
+        width: 100%;
+        text-align: center;
+        transition: var(--transition-fast);
+      }
+
+      .float-cta-btn:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+      }
+
+      /* =============================================
+         RWD — Tablet ≤ 1024px
+         ============================================= */
+      @media (max-width: 1024px) {
+        .articles-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .float-cta {
+          display: block;
+        }
+
+        .bottom-cta {
+          padding-bottom: 120px;
+        }
+      }
+
+      /* =============================================
+         RWD — Mobile ≤ 768px
+         ============================================= */
+      @media (max-width: 768px) {
+        .nav-series-label {
+          display: none;
+        }
+
+        .series-hero {
+          padding-top: calc(64px + env(safe-area-inset-top) + 40px);
+          padding-bottom: 60px;
+        }
+
+        .stats-inner {
+          gap: 0;
+        }
+
+        .stat-item {
+          padding: 0 12px;
+        }
+
+        .grid-section {
+          padding: 52px 20px 72px;
+        }
+
+        .section-header {
+          margin-bottom: 36px;
+        }
+
+        .articles-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .article-card {
+          padding: 22px;
+        }
+
+        .bottom-cta {
+          padding: 64px 20px 120px;
+        }
+      }
+
+      /* =============================================
+         RWD — Small Mobile ≤ 480px
+         ============================================= */
+      @media (max-width: 480px) {
+        .nav-inner {
+          padding: 0 16px;
+        }
+
+        .hero-inner {
+          padding: 0 4px;
+        }
+
+        .series-hero h1 {
+          font-size: 1.875rem;
+        }
+
+        .hero-cta-group {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn-primary-hero,
+        .btn-outline-hero {
+          justify-content: center;
+          text-align: center;
+        }
+
+        .stats-bar {
+          padding: 28px 16px;
+        }
+
+        .stat-num {
+          font-size: 1.75rem;
+        }
+
+        .stat-label {
+          font-size: 0.8125rem;
+        }
+
+        .grid-section {
+          padding: 44px 16px 72px;
+        }
+
+        .card-title {
+          font-size: 0.9375rem;
+        }
+      }
+    
+      /* =============================================
+         HAMBURGER MENU
+         ============================================= */
+      .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        border-radius: 2px;
+        transition: all 0.25s ease;
+        transform-origin: center;
+      }
+      .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-drawer-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: oklch(0.1 0 0 / 0.45);
+        z-index: 1998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .nav-drawer-overlay.is-open { opacity: 1; }
+
+      .nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(320px, 88vw);
+        background: oklch(0.99 0.008 78);
+        z-index: 1999;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+        box-shadow: -4px 0 32px oklch(0.1 0 0 / 0.12);
+        overflow-y: auto;
+      }
+      .nav-drawer.is-open { transform: translateX(0); }
+
+      .nd-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-logo {
+        font-weight: 900;
+        font-size: 1.0625rem;
+        color: oklch(0.2 0.02 50);
+        letter-spacing: 0.02em;
+      }
+      .nd-dot { color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-close {
+        background: none;
+        border: none;
+        font-size: 1.125rem;
+        color: oklch(0.5 0.02 60);
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: background 0.15s;
+      }
+      .nd-close:hover { background: oklch(0.93 0.03 75); }
+
+      .nd-section-title {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: oklch(0.6 0.04 60);
+        padding: 14px 20px 8px;
+        flex-shrink: 0;
+      }
+
+      .nd-list {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+      }
+      .nd-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 20px;
+        text-decoration: none;
+        color: oklch(0.3 0.03 55);
+        border-bottom: 1px solid oklch(0.94 0.015 78);
+        transition: background 0.15s;
+      }
+      .nd-item:hover { background: oklch(0.96 0.02 75); color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-item.is-current { background: oklch(0.94 0.04 72); color: var(--color-primary, oklch(0.557 0.166 45)); font-weight: 700; }
+      .nd-num {
+        font-size: 0.6875rem;
+        font-weight: 900;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        background: oklch(0.94 0.04 72);
+        border-radius: 6px;
+        padding: 2px 6px;
+        flex-shrink: 0;
+        min-width: 28px;
+        text-align: center;
+      }
+      .nd-title { font-size: 0.9375rem; line-height: 1.4; }
+
+      .nd-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 20px;
+        border-top: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-overview {
+        text-align: center;
+        padding: 10px;
+        color: oklch(0.45 0.05 55);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid oklch(0.85 0.04 68);
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-overview:hover { background: oklch(0.95 0.03 75); }
+      .nd-cta {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        color: #fff;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-cta:hover { background: oklch(0.6 0.17 46); }
+
+      @media (max-width: 768px) {
+        .nav-hamburger { display: flex; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ======== NAVBAR ======== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+        <a href="#" class="nav-series-label">網站經營 12 篇系列</a>
+        <a
+          href="https://line.me/ti/p/5gW0er9baG"
+          target="_blank"
+          rel="noopener"
+          class="nav-cta"
+          >加 LINE 免費診斷</a
+        >
+      
+      <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    </nav>
+    <!-- 手機漢堡抽屜 -->
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <div class="nd-header">
+        <span class="nd-logo">AI 智能大腦<span class="nd-dot">.</span></span>
+        <button class="nd-close" id="navClose" aria-label="關閉選單">✕</button>
+      </div>
+      <div class="nd-section-title">12 篇系列文章</div>
+      <nav class="nd-list">
+      <a href="../article-01-exposure.html" class="nd-item">
+        <span class="nd-num">01</span>
+        <span class="nd-title">曝光與導流</span>
+      </a>
+      <a href="../article-02-homepage.html" class="nd-item">
+        <span class="nd-num">02</span>
+        <span class="nd-title">首頁印象</span>
+      </a>
+      <a href="../article-03.html" class="nd-item">
+        <span class="nd-num">03</span>
+        <span class="nd-title">差異化定位</span>
+      </a>
+      <a href="../article-04.html" class="nd-item">
+        <span class="nd-num">04</span>
+        <span class="nd-title">產品介紹</span>
+      </a>
+      <a href="../article-05-conversion.html" class="nd-item">
+        <span class="nd-num">05</span>
+        <span class="nd-title">成交路徑</span>
+      </a>
+      <a href="../article-06-contact.html" class="nd-item">
+        <span class="nd-num">06</span>
+        <span class="nd-title">留下聯絡方式</span>
+      </a>
+      <a href="../article-07-automation.html" class="nd-item">
+        <span class="nd-num">07</span>
+        <span class="nd-title">自動化訊息</span>
+      </a>
+      <a href="../article-08-upsell.html" class="nd-item">
+        <span class="nd-num">08</span>
+        <span class="nd-title">加購與升級</span>
+      </a>
+      <a href="../article-09-retention.html" class="nd-item">
+        <span class="nd-num">09</span>
+        <span class="nd-title">回頭客機制</span>
+      </a>
+      <a href="../article-10-referral.html" class="nd-item">
+        <span class="nd-num">10</span>
+        <span class="nd-title">口碑系統</span>
+      </a>
+      <a href="../article-11-trust.html" class="nd-item">
+        <span class="nd-num">11</span>
+        <span class="nd-title">信任與證據</span>
+      </a>
+      <a href="../article-12.html" class="nd-item">
+        <span class="nd-num">12</span>
+        <span class="nd-title">整合策略</span>
+      </a>
+      </nav>
+      <div class="nd-footer">
+        <a href="../系列總覽/index.html" class="nd-overview">← 系列總覽</a>
+        <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="nd-cta">加 LINE 免費諮詢 →</a>
+      </div>
+    </div>
+
+
+    <!-- ======== SERIES HERO ======== -->
+    <header class="series-hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          12 篇實戰行銷系列 · 免費完整公開
+        </div>
+        <h1>你有網站，<br />但它有在替你<em>賺錢</em>嗎？</h1>
+        <p class="hero-subtitle">
+          95% 的網站只是一張數位名片——看起來存在，實際上沒在賺錢。這 12
+          篇把每個環節補起來，從被找到、到成交、到回頭再買。
+        </p>
+        <div class="hero-cta-group">
+          <a href="../article-01-exposure.html" class="btn-primary-hero">
+            從第一篇開始 →
+          </a>
+          <a href="#articles" class="btn-outline-hero"> 瀏覽全部篇章 </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======== STATS BAR ======== -->
+    <div class="stats-bar">
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-num">12</span>
+          <span class="stat-label">完整篇章</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">96分鐘</span>
+          <span class="stat-label">總閱讀時間</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">免費</span>
+          <span class="stat-label">完整公開</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== ARTICLES GRID ======== -->
+    <section class="grid-section" id="articles">
+      <div class="section-header">
+        <h2>每個環節各贏 5%，12 個加起來是 40 倍的差距</h2>
+        <p>
+          這不是 12 篇獨立的文章，是一套完整的系統。<br />找到你最薄弱的那一環，從那裡開始補。
+        </p>
+      </div>
+
+      <div class="articles-grid">
+        <!-- 01 -->
+        <a
+          href="../article-01-exposure.html"
+          id="article-01"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">01</span>
+            <span class="card-category">曝光</span>
+          </div>
+          <h3 class="card-title">你的店明明很好，為什麼網路上沒人找得到？</h3>
+          <p class="card-desc">
+            Google 第一頁拿走 95%
+            的點擊。沒有曝光，後面所有環節都白做——先把「被找到」這件事做對。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 02 -->
+        <a
+          href="../article-02-homepage.html"
+          id="article-02"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">02</span>
+            <span class="card-category">首頁設計</span>
+          </div>
+          <h3 class="card-title">訪客打開你的網站，3 秒鐘決定走還是留</h3>
+          <p class="card-desc">
+            網站「美但模糊」正在每天悄悄流失訂單。清楚勝過美感——這篇教你 3
+            秒內讓訪客明白你在賣什麼、為什麼要選你。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 03 -->
+        <a href="../article-03.html" id="article-03" class="article-card">
+          <div class="card-top">
+            <span class="card-number">03</span>
+            <span class="card-category">差異化定位</span>
+          </div>
+          <h3 class="card-title">
+            網路上有 50 家跟你類似的同行，你的網站憑什麼贏？
+          </h3>
+          <p class="card-desc">
+            「就是差不多」是最致命的定位。說不清楚自己哪裡不一樣，客人就只會用價格決定——這篇讓你把差異說清楚。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 04 -->
+        <a href="../article-04.html" id="article-04" class="article-card">
+          <div class="card-top">
+            <span class="card-number">04</span>
+            <span class="card-category">產品頁面</span>
+          </div>
+          <h3 class="card-title">
+            你的「商品介紹」是一份目錄，還是一個業務員？
+          </h3>
+          <p class="card-desc">
+            「列出商品」和「讓客人想買」差了一個世界。產品頁不是展示架，是你的
+            24 小時業務員——這篇教你讓它開口說話。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 05 -->
+        <a
+          href="../article-05-conversion.html"
+          id="article-05"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">05</span>
+            <span class="card-category">成交路徑</span>
+          </div>
+          <h3 class="card-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</h3>
+          <p class="card-desc">
+            從「想買」到「買到」，每多一個步驟就流失一半客人。把成交路徑縮短，就是把錢直接搶回來。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 06 -->
+        <a
+          href="../article-06-contact.html"
+          id="article-06"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">06</span>
+            <span class="card-category">留下聯絡</span>
+          </div>
+          <h3 class="card-title">90% 的訪客當下不會買，但你可以留住他們</h3>
+          <p class="card-desc">
+            99% 的店家讓這 90%
+            的人直接走了，再也沒有下一次機會。留下聯絡，才有第二次成交的可能。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 07 -->
+        <a
+          href="../article-07-automation.html"
+          id="article-07"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">07</span>
+            <span class="card-category">自動化行銷</span>
+          </div>
+          <h3 class="card-title">你不可能記得每個客人的生日，但網站可以</h3>
+          <p class="card-desc">
+            設定一次，自動跑半年。生日問候、消費後跟進、沉睡喚醒——讓每個客人都覺得你「還記得他」。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 08 -->
+        <a
+          href="../article-08-upsell.html"
+          id="article-08"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">08</span>
+            <span class="card-category">加購升級</span>
+          </div>
+          <h3 class="card-title">客人都已經要買了，順便讓他多買一點點</h3>
+          <p class="card-desc">
+            結帳那一秒是追加銷售的黃金時機。用對方法，客單價提升
+            30%，客人還覺得是你在幫他挑。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 09 -->
+        <a
+          href="../article-09-retention.html"
+          id="article-09"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">09</span>
+            <span class="card-category">回頭客機制</span>
+          </div>
+          <h3 class="card-title">你店裡賺最多錢的，是不是那 20% 的熟客？</h3>
+          <p class="card-desc">
+            開發新客的成本是留住舊客的 5
+            倍。讓已經買過的客人自動回來，才是低成本高獲利的正確算法。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 10 -->
+        <a
+          href="../article-10-referral.html"
+          id="article-10"
+          class="article-card"
+        >
+          <div class="card-top">
+            <span class="card-number">10</span>
+            <span class="card-category">口碑轉介</span>
+          </div>
+          <h3 class="card-title">好客人會帶來好客人，壞客人會帶來壞客人</h3>
+          <p class="card-desc">
+            滿意的客人是你最便宜的業務員。設計轉介機制，讓好客人主動帶人來——最低成本、最高信任的獲客方式。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 11 -->
+        <a href="../article-11-trust.html" id="article-11" class="article-card">
+          <div class="card-top">
+            <span class="card-number">11</span>
+            <span class="card-category">信任感建立</span>
+          </div>
+          <h3 class="card-title">客人在網路上不認識你，他憑什麼相信你？</h3>
+          <p class="card-desc">
+            陌生人掏錢給你之前，要先相信你。4
+            個信任信號放對位置，讓第一次來的客人也敢直接下單。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+
+        <!-- 12 — featured -->
+        <a href="../article-12.html" class="article-card featured">
+          <div class="card-top">
+            <span class="card-number">12</span>
+            <span class="card-category">整合策略</span>
+          </div>
+          <h3 class="card-title">你的網站到底有沒有幫你賺錢？</h3>
+          <p class="card-desc">
+            每個環節改善 5%，12 個串起來是 40
+            倍的效果差距。這篇教你用數字確認每一塊有沒有在發揮作用。
+          </p>
+          <div class="card-arrow">→</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======== BOTTOM CTA ======== -->
+    <section class="bottom-cta">
+      <div class="cta-inner">
+        <p class="cta-eyebrow">讀完，然後呢？</p>
+        <h2>免費讓我們看看<br />你的網站漏了哪幾塊</h2>
+        <p>
+          30 分鐘免費診斷，找出你現在最大的 3
+          個問題，直接給你可以做的具體建議——不賣東西，不廢話。
+        </p>
+        <a
+          href="https://line.me/ti/p/5gW0er9baG"
+          target="_blank"
+          rel="noopener"
+          class="btn-cta-primary"
+        >
+          加 LINE 預約免費診斷 →
+        </a>
+      </div>
+    </section>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="site-footer">
+      <span class="footer-logo">AI 智能大腦<span>.</span></span>
+      <p>© 2025 版權所有</p>
+      <nav class="footer-links">
+        <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener"
+          >加 LINE 免費診斷</a
+        >
+        <a href="../article-01-exposure.html">從第一篇開始</a>
+        <a href="../article-07-automation.html">第07篇：自動化</a>
+      </nav>
+    </footer>
+
+    <!-- ======== MOBILE FLOAT CTA ======== -->
+    <div class="float-cta">
+      <a
+        href="https://line.me/ti/p/5gW0er9baG"
+        target="_blank"
+        rel="noopener"
+        class="float-cta-btn"
+      >
+        加 LINE 免費診斷 →
+      </a>
+    </div>
+
+    <script>
+      // Navbar 滾動陰影
+      const navbar = document.getElementById("navbar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.style.boxShadow =
+            window.scrollY > 20
+              ? "0 2px 24px oklch(0.27 0.035 25 / 0.12)"
+              : "none";
+        },
+        { passive: true },
+      );
+
+      // 平滑滾動至 articles 錨點
+      document
+        .querySelector('a[href="#articles"]')
+        .addEventListener("click", (e) => {
+          e.preventDefault();
+          document
+            .getElementById("articles")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+    </script>
+  
+    <script>
+    (function() {
+      const btn = document.getElementById('navHamburger');
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navOverlay');
+      const closeBtn = document.getElementById('navClose');
+      if (!btn || !drawer) return;
+
+      function openDrawer() {
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          drawer.classList.add('is-open');
+        });
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        overlay.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlay.style.display = 'none'; }, 300);
+      }
+
+      btn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      // 點選單裡的連結自動關閉
+      drawer.querySelectorAll('.nd-item, .nd-overview').forEach(a => {
+        a.addEventListener('click', closeDrawer);
+      });
+
+      // 標記目前頁面
+      const cur = location.pathname.split('/').pop() || 'index.html';
+      drawer.querySelectorAll('.nd-item').forEach(a => {
+        if (a.getAttribute('href').includes(cur)) a.classList.add('is-current');
+      });
+    })();
+    </script>
+  </body>
+</html>

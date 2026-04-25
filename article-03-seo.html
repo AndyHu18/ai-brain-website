@@ -1,0 +1,2151 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>第 03 篇：為什麼要選你不選別人｜網站經營 12 篇系列</title>
+    <meta
+      name="description"
+      content="網路上跟你類似的同行有 50 家，客人為什麼要選你？如果你的網站回答不出這個問題，做再漂亮都沒用。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =============================================
+       DESIGN TOKENS — ai-brain Hermès 配色系統
+       ============================================= */
+      :root {
+        --bg-light: oklch(0.99 0.003 80);
+        --bg-section: oklch(0.95 0.02 78);
+        --bg-card: oklch(0.98 0.012 78);
+        --bg-input: oklch(0.97 0.012 78);
+
+        --tech-titanium: oklch(0.18 0.03 50);
+        --tech-midnight: oklch(0.13 0.025 50);
+
+        --color-primary: oklch(0.557 0.166 45);
+        --color-primary-light: oklch(0.6 0.17 46);
+        --color-primary-dark: oklch(0.5 0.15 43);
+        --color-accent-light: oklch(0.72 0.12 62);
+        --color-error: oklch(0.43 0.135 27);
+        --bg-warm-blush: oklch(0.98 0.01 72);
+
+        --text-primary: oklch(0.12 0.02 50);
+        --text-secondary: oklch(0.18 0.025 50);
+        --text-muted: oklch(0.38 0.04 40);
+        --text-light: oklch(1 0.015 80);
+
+        --border-subtle: oklch(0.27 0.035 25 / 0.1);
+        --border-default: oklch(0.27 0.035 25 / 0.2);
+        --border-accent: oklch(0.557 0.166 45 / 0.3);
+
+        --shadow-sm: 0 1px 2px oklch(0.27 0.035 25 / 0.05);
+        --shadow-md: 0 4px 6px oklch(0.27 0.035 25 / 0.07);
+        --shadow-lg: 0 10px 15px oklch(0.27 0.035 25 / 0.1);
+        --shadow-xl: 0 20px 25px oklch(0.27 0.035 25 / 0.15);
+        --shadow-card: 0 4px 20px oklch(0.557 0.166 45 / 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s ease;
+
+        --container-max: 1200px;
+      }
+
+      /* =============================================
+       RESET & BASE
+       ============================================= */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      p {
+        margin-bottom: 1.25rem;
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+      a:hover {
+        color: var(--color-primary-light);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* =============================================
+       READING PROGRESS BAR
+       ============================================= */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          var(--color-accent-light)
+        );
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+
+      /* =============================================
+       NAVBAR
+       ============================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(64px + env(safe-area-inset-top));
+        padding-top: env(safe-area-inset-top);
+        background: oklch(0.99 0.003 80 / 0.97);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--text-primary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .nav-logo span {
+        color: var(--color-primary);
+      }
+
+      .nav-series-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        background: var(--bg-section);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .nav-series-label:hover {
+        color: var(--color-primary);
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 11px 18px;
+        min-height: 44px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       ARTICLE HERO
+       ============================================= */
+      .article-hero {
+        padding-top: 100px;
+        padding-bottom: 64px;
+        background: linear-gradient(
+          160deg,
+          oklch(0.972 0.018 78) 0%,
+          var(--bg-light) 60%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .article-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-sep {
+        opacity: 0.4;
+      }
+
+      .article-category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        margin-bottom: 20px;
+        letter-spacing: 0.06em;
+      }
+
+      .article-num {
+        display: inline-block;
+        background: oklch(1 0.015 80 / 0.25);
+        border-radius: var(--radius-full);
+        padding: 1px 8px;
+        font-size: 0.7rem;
+      }
+
+      .article-hero h1 {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .article-hero h1 em {
+        font-style: normal;
+        color: var(--color-primary);
+      }
+
+      .article-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 680px;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding-top: 24px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .meta-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        opacity: 0.5;
+      }
+
+      .article-key-stats {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr 1px 1fr;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+      }
+
+      .key-stat {
+        text-align: center;
+      }
+
+      .key-stat-num {
+        display: block;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .key-stat-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      .key-stat-divider {
+        width: 1px;
+        background: var(--border-default);
+        align-self: stretch;
+      }
+
+      /* =============================================
+       LAYOUT — 主內容 + 側欄
+       ============================================= */
+      .article-layout {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 56px;
+        align-items: start;
+      }
+
+      /* =============================================
+       ARTICLE BODY
+       ============================================= */
+      .article-body {
+        min-width: 0;
+      }
+
+      /* Section 標題 */
+      .section-title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 900;
+        margin: 56px 0 24px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-title::before {
+        content: "";
+        flex-shrink: 0;
+        display: block;
+        width: 4px;
+        height: 1.4em;
+        background: var(--color-primary);
+        border-radius: var(--radius-full);
+        margin-top: 0.1em;
+      }
+
+      .section-intro {
+        font-size: 1.0625rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+      }
+
+      /* Pull quote */
+      .pull-quote {
+        border-left: 4px solid var(--color-primary);
+        background: linear-gradient(
+          135deg,
+          var(--bg-section) 0%,
+          var(--bg-card) 100%
+        );
+        border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+        padding: 24px 28px;
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: -12px;
+        left: 16px;
+        font-size: 4rem;
+        color: var(--color-primary);
+        opacity: 0.2;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+
+      .pull-quote p {
+        font-size: clamp(1rem, 2.5vw, 1.1875rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .pull-quote cite {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-style: normal;
+      }
+
+      /* Highlight box */
+      .highlight-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 32px 0;
+        box-shadow: var(--shadow-card);
+      }
+
+      .highlight-box-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* 錯誤卡片 */
+      .mistake-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 32px 0;
+      }
+
+      .mistake-card {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.557 0.166 45 / 0.15);
+        border-left: 4px solid var(--color-error);
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        padding: 20px 24px;
+      }
+
+      .mistake-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-error);
+        background: oklch(0.43 0.135 27 / 0.08);
+        border-radius: var(--radius-full);
+        padding: 3px 10px;
+        margin-bottom: 10px;
+      }
+
+      .mistake-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .mistake-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+      }
+
+      /* 序列卡片 */
+      .sequence-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 32px 0;
+      }
+
+      .sequence-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        box-shadow: var(--shadow-card);
+        transition: var(--transition-base);
+      }
+
+      .sequence-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .sequence-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .sequence-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px oklch(0.557 0.166 45 / 0.25);
+      }
+
+      .sequence-title {
+        font-size: 1.0625rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .sequence-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .sequence-body {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .sequence-tag {
+        display: inline-block;
+        background: oklch(0.557 0.166 45 / 0.1);
+        color: var(--color-primary-dark);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: var(--radius-full);
+        margin-bottom: 8px;
+      }
+
+      /* 時間軸步驟 */
+      .timeline {
+        background: linear-gradient(
+          135deg,
+          oklch(0.977 0.012 72) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 16px 0;
+      }
+
+      .timeline-step {
+        display: flex;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--border-default);
+        align-items: flex-start;
+      }
+
+      .timeline-step:last-child {
+        border-bottom: none;
+      }
+
+      .timeline-day {
+        flex-shrink: 0;
+        min-width: 64px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding-top: 2px;
+      }
+
+      .timeline-content {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 統計數字對比 */
+      .comparison-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .comparison-side {
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .comparison-side.bad {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.43 0.135 27 / 0.2);
+      }
+
+      .comparison-side.good {
+        background: linear-gradient(
+          135deg,
+          oklch(0.557 0.166 45 / 0.05) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+      }
+
+      .comparison-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+      }
+
+      .comparison-side.bad .comparison-label {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-label {
+        color: var(--color-primary);
+      }
+
+      .comparison-big-num {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .comparison-side.bad .comparison-big-num {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-big-num {
+        color: var(--color-primary);
+      }
+
+      .comparison-desc {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* 心理學 highlight */
+      .psychology-box {
+        background: linear-gradient(
+          135deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .psychology-box::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .psychology-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+        display: block;
+        color: var(--color-accent-light);
+      }
+
+      .psychology-box h3 {
+        color: var(--text-light);
+        font-size: 1.1875rem;
+        margin-bottom: 16px;
+      }
+
+      .psychology-box p {
+        color: oklch(1 0.015 80 / 0.8);
+        font-size: 0.9375rem;
+        margin-bottom: 12px;
+      }
+
+      .psychology-box p:last-child {
+        margin: 0;
+      }
+
+      .psychology-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: oklch(0.557 0.166 45 / 0.2);
+        border: 1px solid oklch(0.557 0.166 45 / 0.4);
+        border-radius: var(--radius-lg);
+        padding: 10px 16px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        font-size: 0.9375rem;
+      }
+
+      /* 自我診斷 */
+      .diagnosis-box {
+        background: var(--bg-section);
+        border: 2px solid var(--border-accent);
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .diagnosis-title {
+        font-size: 1.1875rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .diagnosis-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+      }
+
+      .diagnosis-item:last-of-type {
+        border-bottom: none;
+      }
+
+      .diagnosis-checkbox {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        background: var(--text-light);
+        margin-top: 3px;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox::after {
+        content: "✓";
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      .diagnosis-text {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .diagnosis-text strong {
+        color: var(--text-primary);
+      }
+
+      .diagnosis-verdict {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: oklch(0.557 0.166 45 / 0.08);
+        border-radius: var(--radius-lg);
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 結尾 CTA */
+      .article-cta {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-dark) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 40px 36px;
+        margin: 48px 0 32px;
+        text-align: center;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-cta::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(1 0.015 80 / 0.15) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .cta-eyebrow {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: oklch(1 0.015 80 / 0.7);
+        margin-bottom: 12px;
+      }
+
+      .article-cta h3 {
+        color: var(--text-light);
+        font-size: clamp(1.25rem, 3vw, 1.625rem);
+        margin-bottom: 12px;
+      }
+
+      .article-cta p {
+        color: oklch(1 0.015 80 / 0.85);
+        font-size: 0.9375rem;
+        margin-bottom: 24px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-btn-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--text-light);
+        color: var(--color-primary);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: var(--color-primary-dark);
+      }
+
+      .btn-outline-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: oklch(1 0.015 80 / 0.9);
+        font-weight: 700;
+        font-size: 0.9375rem;
+        padding: 12px 24px;
+        border-radius: var(--radius-full);
+        border: 1.5px solid oklch(1 0.015 80 / 0.4);
+        transition: var(--transition-fast);
+      }
+
+      .btn-outline-white:hover {
+        background: oklch(1 0.015 80 / 0.1);
+        color: var(--text-light);
+      }
+
+      /* 下一篇預告 */
+      .next-article {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px 24px;
+        transition: var(--transition-base);
+      }
+
+      .next-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .next-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+      }
+
+      .next-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+      }
+
+      .next-arrow {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-section);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        margin-left: auto;
+      }
+
+      /* =============================================
+       SIDEBAR
+       ============================================= */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .sidebar-widget {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .widget-title {
+        font-size: 0.8125rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      /* TOC */
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .toc-item a {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding: 6px 10px;
+        border-radius: var(--radius-md);
+        line-height: 1.4;
+        transition: var(--transition-fast);
+      }
+
+      .toc-item a:hover,
+      .toc-item.active a {
+        background: oklch(0.557 0.166 45 / 0.08);
+        color: var(--color-primary);
+      }
+
+      /* 系列篇章 */
+      .series-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .series-item a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 10px;
+        border-radius: var(--radius-md);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        transition: var(--transition-fast);
+      }
+
+      .series-item a:hover {
+        color: var(--color-primary);
+        background: oklch(0.557 0.166 45 / 0.06);
+      }
+
+      .series-item.current a {
+        color: var(--color-primary);
+        font-weight: 700;
+        background: oklch(0.557 0.166 45 / 0.1);
+      }
+
+      .series-num {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+
+      .series-item .series-num {
+        background: var(--bg-section);
+        color: var(--text-muted);
+      }
+      .series-item.current .series-num {
+        background: var(--color-primary);
+        color: var(--text-light);
+      }
+
+      /* CTA widget */
+      .cta-widget {
+        background: linear-gradient(
+          135deg,
+          oklch(0.97 0.025 75) 0%,
+          oklch(0.94 0.04 68) 100%
+        );
+        border: 1.5px solid oklch(0.82 0.07 62);
+      }
+
+      .cta-widget .widget-title {
+        color: oklch(0.45 0.09 52);
+        border-color: oklch(0.88 0.05 65);
+      }
+
+      .cta-widget p {
+        font-size: 0.875rem;
+        color: oklch(0.38 0.05 52);
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .btn-cta-sm {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 0.9375rem;
+        padding: 12px;
+        min-height: 44px;
+        border-radius: var(--radius-lg);
+        transition: var(--transition-fast);
+      }
+
+      .btn-cta-sm:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       FOOTER
+       ============================================= */
+      .article-footer {
+        background: var(--tech-midnight);
+        padding: 48px 24px;
+        text-align: center;
+        color: oklch(1 0.015 80 / 0.5);
+        font-size: 0.875rem;
+      }
+
+      .footer-logo {
+        font-weight: 900;
+        font-size: 1.125rem;
+        color: var(--text-light);
+        margin-bottom: 8px;
+      }
+
+      .footer-logo span {
+        color: var(--color-accent-light);
+      }
+
+      /* =============================================
+       MOBILE FLOAT CTA
+       ============================================= */
+      .float-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 900;
+        width: calc(100% - 32px);
+        max-width: 420px;
+      }
+
+      .float-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 16px 24px;
+        border-radius: var(--radius-full);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.5);
+        width: 100%;
+        text-align: center;
+      }
+
+      /* =============================================
+       RWD — Tablet ≤ 1024px
+       ============================================= */
+      @media (max-width: 1024px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding-bottom: 140px;
+        }
+
+        .sidebar {
+          display: none;
+        }
+        .float-cta {
+          display: block;
+        }
+      }
+
+      /* =============================================
+       RWD — Mobile ≤ 768px
+       ============================================= */
+      @media (max-width: 768px) {
+        body {
+          font-size: 1rem;
+        }
+
+        .nav-series-label {
+          display: none;
+        }
+
+        .article-hero {
+          padding-top: 88px;
+          padding-bottom: 40px;
+        }
+
+        .article-key-stats {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .key-stat {
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          text-align: left;
+        }
+
+        .key-stat:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .key-stat:first-child {
+          padding-top: 0;
+        }
+
+        .key-stat-num {
+          font-size: 1.75rem;
+        }
+        .key-stat-divider {
+          display: none;
+        }
+
+        .section-title {
+          margin-top: 40px;
+        }
+
+        .comparison-box {
+          grid-template-columns: 1fr;
+        }
+
+        .psychology-box {
+          padding: 24px 20px;
+        }
+
+        .article-cta {
+          padding: 28px 20px;
+        }
+
+        .next-article {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* =============================================
+       RWD — Small Mobile ≤ 480px
+       ============================================= */
+      @media (max-width: 480px) {
+        .article-layout {
+          padding: 0 16px 140px;
+        }
+        .hero-inner {
+          padding: 0 16px;
+        }
+
+        .pull-quote {
+          padding: 18px 20px;
+        }
+        .highlight-box {
+          padding: 18px 20px;
+        }
+        .sequence-card {
+          padding: 18px;
+        }
+        .diagnosis-box {
+          padding: 20px;
+        }
+        .article-cta {
+          padding: 24px 16px;
+        }
+        .psychology-box {
+          padding: 20px 16px;
+        }
+        .timeline {
+          padding: 18px 16px;
+        }
+
+        .cta-btn-group {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn-white,
+        .btn-outline-white {
+          justify-content: center;
+        }
+
+        .article-meta {
+          gap: 8px;
+          font-size: 0.8125rem;
+        }
+        .meta-dot {
+          display: none;
+        }
+      }
+
+      /* 內文補充樣式 */
+      .ab-example {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px 24px;
+        margin: 12px 0;
+        font-size: 0.9375rem;
+        line-height: 1.7;
+      }
+      .ab-bad {
+        color: var(--color-error);
+        font-weight: 500;
+      }
+      .ab-good {
+        color: var(--color-primary);
+        font-weight: 700;
+      }
+      .ab-note {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar"></div>
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+        <a href="系列總覽/#article-03" class="nav-series-label"
+          >網站經營 12 篇系列</a
+        >
+        <a href="#contact" class="nav-cta">免費診斷 →</a>
+      </div>
+    </nav>
+
+    <header class="article-hero">
+      <div class="hero-inner">
+        <nav class="article-breadcrumb" aria-label="breadcrumb">
+          <a href="#">AI 智能大腦</a><span class="breadcrumb-sep">›</span>
+          <a href="系列總覽/">網站經營系列</a
+          ><span class="breadcrumb-sep">›</span>
+          <span>第 03 篇</span>
+        </nav>
+        <div class="article-category-badge">
+          <span class="article-num">03 / 12</span> 差異化定位
+        </div>
+        <h1>網路上跟你類似的同行有 <em>50 家</em>，<br />客人為什麼要選你？</h1>
+        <p class="article-subtitle">
+          你的網站如果回答不出這個問題，做再漂亮都沒用
+        </p>
+        <div class="article-meta">
+          <span>閱讀時間約 8 分鐘</span><span class="meta-dot"></span>
+          <span>適合：所有想脫離價格戰的店家</span
+          ><span class="meta-dot"></span>
+          <span>難度：★★☆☆☆</span>
+        </div>
+        <div class="article-key-stats">
+          <div class="key-stat">
+            <span class="key-stat-num">50家</span
+            ><span class="key-stat-label">網路上類似的<br />同行數量</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">30-50%</span
+            ><span class="key-stat-label">差異化讓你多收<br />的價格溢價</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">3層</span
+            ><span class="key-stat-label">從故事到承諾<br />的挖掘深度</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="article-layout">
+      <article class="article-body" id="article-top">
+        <p>
+          打開三個同行的網站，你會發現一件事——他們的網站幾乎可以互換。換掉
+          logo、換掉照片、換掉電話，讀起來幾乎一模一樣：「我們提供專業服務」、「品質第一」、「客戶滿意是我們的承諾」。
+        </p>
+
+        <p>
+          問題是：客人也會發現這件事。當他在網路上連看 5
+          家同行，每一家都長得差不多，他會用什麼標準做決定？
+        </p>
+
+        <div class="pull-quote">
+          <p>
+            <strong>價格。</strong
+            >只要客人在網路上看不出你跟別家的差別，你就會被迫進入價格戰——而價格戰沒有贏家，只有比較不會輸的人。
+          </p>
+        </div>
+
+        <p>這篇文章要講的，是怎麼讓你的網站脫離這個賽道。</p>
+
+        <h2 class="section-title" id="s1">
+          客人不選你，通常不是因為你比別人差——是因為他看不出差別
+        </h2>
+
+        <p>
+          很多老闆遇到生意不好，第一反應是「我是不是要降價」、「是不是要做促銷」、「是不是品質要再升級」。
+        </p>
+
+        <p>
+          但真相通常是另一回事：客人不選你，不是因為你不好，是因為他在網路上<strong>看不出你跟別家的差別</strong>。
+        </p>
+
+        <p>
+          你的店就像一條街上的 50
+          家同行，從外觀、招牌、價目表看過去，客人沒有理由非選你不可。這時候他選誰？離他最近的、最便宜的、評論最多的——這三個你大概都贏不了連鎖品牌或老牌業者。
+        </p>
+
+        <div class="pull-quote">
+          <p>
+            但如果你的店門口寫著一句<strong>別家寫不出來的話</strong>——例如「我做這行
+            18
+            年，專門處理別家做不好的疑難雜症」——客人有需求時就會直接走進來，根本不會去比較其他
+            49 家。
+          </p>
+        </div>
+
+        <p>
+          這個「別家寫不出來的話」就是差異化。它不是行銷術語，是你的店在這條街上的存在理由。差異化沒寫出來，你的網站做得再漂亮、SEO
+          排得再前面，客人還是會跳出去比價——因為你沒給他「立刻選你」的理由。
+        </p>
+
+        <h2 class="section-title" id="s2">
+          你以為是差異化的東西，很可能正在讓客人跳出去
+        </h2>
+
+        <div class="mistake-list">
+          <div class="mistake-card">
+            <div class="mistake-label">錯誤一</div>
+            <h4>你的「品質好、服務好」，客人讀完馬上就忘</h4>
+            <p>
+              打開 100 個同產業網站，99
+              個都這樣寫。客人讀完不會記得你，因為他剛剛讀完的 10
+              家也這樣寫。<br /><br /><strong
+                >「服務好」是基本盤，不是賣點。</strong
+              >基本盤是門檻，賣點是讓人選你的理由。
+            </p>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-label">錯誤二</div>
+            <h4>你最引以為傲的那些，客人完全沒感覺</h4>
+            <p>
+              「成立 20 年」、「ISO
+              認證」、「業界第一」——這些是老闆自己有感的東西，客人完全沒感。客人想知道的是「這對我有什麼好處」，不是「你有多厲害」。<br /><br />20
+              年經驗如果只寫「成立 20 年」，客人無感。但寫成「20 年來累積處理過
+              8,000 個個案，70% 的客戶來找我們之前都先試過 2–3
+              家別的——所以我們特別擅長處理已經被別人做壞的爛攤子」，客人就有感了。<br /><br /><strong
+                >同樣的事實，前者是無感的履歷，後者是有感的賣點。</strong
+              >
+            </p>
+          </div>
+
+          <div class="mistake-card">
+            <div class="mistake-label">錯誤三</div>
+            <h4>「精緻」「優質」「專業」——客人看完，腦中一片空白</h4>
+            <p>
+              「精緻」、「細膩」、「頂級」、「優質」、「專業」、「用心」——這些詞在網路上已經被稀釋到
+              0 訊息量。<br /><br />客人看到「精緻」這個字，腦中是空白的；看到「主廚
+              18 年米其林經驗」，腦中是具體畫面。<br /><br /><strong
+                >形容詞不是差異化，具體事實才是。</strong
+              >
+            </p>
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s3">
+          差異化不是想出來的——它早就在你身上，只是你不知道在哪裡
+        </h2>
+
+        <p class="section-intro">
+          你的差異化已經在你身上了——只是你太熟悉自己，所以看不見它。多數老闆不是「沒有差異化」，是「有，但以為那沒什麼，大家不都這樣？」接下來三層，幫你把它挖出來。
+        </p>
+
+        <div class="sequence-list">
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">1</div>
+              <div>
+                <div class="sequence-tag">第一層 · 最容易找到</div>
+                <div class="sequence-title">
+                  你的故事——別人抄不走，因為它只屬於你
+                </div>
+                <div class="sequence-subtitle">別人抄不走的真實經歷</div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                你怎麼進入這個行業？你做這行之前在做什麼？你為什麼會選這個方向？
+              </p>
+              <p>
+                這層不需要很特別的故事，需要的是「真實的」故事。你做這行 10
+                年的真實經歷，本身就是別人抄不走的。故事的威力在於：它讓你從「商品供應商」變成「有理由的人」。
+              </p>
+              <div class="ab-example">
+                <div class="ab-bad">✗ 無感：「精選有機蔬菜，健康無毒」</div>
+                <div class="ab-good" style="margin-top: 8px">
+                  ✓
+                  有感：「我自己的小孩過敏，所以開始研究有機種植，現在這些菜是我自己也每天吃的」
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">2</div>
+              <div>
+                <div class="sequence-tag">第二層 · 更有說服力</div>
+                <div class="sequence-title">
+                  你做事的方式——客人一聽就記住，別人學了也做不像
+                </div>
+                <div class="sequence-subtitle">從外面看不到、抄也抄不像的</div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                你的工作流程、做事順序、堅持的小細節、拒絕做的事——這些是別人從外面看不到的。方法的威力在於：它把「我們也提供這個服務」變成「我們提供的這個服務跟別人不一樣」。
+              </p>
+              <div class="ab-example">
+                <div class="ab-bad">✗ 無感：「專業網頁設計」</div>
+                <div class="ab-good" style="margin-top: 8px">
+                  ✓ 有感：「我們做網站前一定先花 3
+                  小時跟客戶聊他的客戶是誰、最常被問什麼問題——因為網站不是設計給老闆看的，是設計給客戶看的」
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">3</div>
+              <div>
+                <div class="sequence-tag">第三層 · 最強大</div>
+                <div class="sequence-title">
+                  給一個具體承諾——你就贏過 90% 連承諾都不敢給的同行
+                </div>
+                <div class="sequence-subtitle">90% 的同行不敢給的東西</div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                絕大多數同行不敢給承諾，因為他們不確定自己做得到。所以只要你敢給一個明確、可驗證的承諾，你就自動贏了
+                90% 的同行。
+              </p>
+              <p>
+                承諾的威力：它把客戶決策的風險，從客戶身上<strong>轉到你身上</strong>——這是台灣
+                SMB 最少做、但效果最大的一件事。
+              </p>
+              <div class="ab-example">
+                <div class="ab-good">
+                  ✓ 「所有方案包含 30 天內無條件調整，直到你滿意為止」
+                </div>
+                <div class="ab-good" style="margin-top: 8px">
+                  ✓ 「24 小時內回覆，做不到我請你吃飯」
+                </div>
+                <div class="ab-note">
+                  承諾不需要很大，需要的是「具體 +
+                  可驗證」。「滿意保證」是空話，「30 天無條件調整」才是承諾。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s4">
+          同樣的實力，為什麼 B 店可以多收 50%？
+        </h2>
+
+        <div class="comparison-box">
+          <div class="comparison-side bad">
+            <div class="comparison-label">A 店（無差異化）</div>
+            <p
+              style="
+                font-size: 0.9375rem;
+                color: var(--text-secondary);
+                line-height: 1.7;
+                margin: 0;
+              "
+            >
+              「我們提供專業服務，品質保證，歡迎來電」
+            </p>
+            <p
+              style="
+                font-size: 0.8125rem;
+                color: var(--text-muted);
+                margin-top: 12px;
+                margin-bottom: 0;
+              "
+            >
+              客人讀完：無感，跳出比價
+            </p>
+          </div>
+          <div class="comparison-side good">
+            <div class="comparison-label">B 店（有差異化）</div>
+            <p
+              style="
+                font-size: 0.9375rem;
+                color: var(--text-secondary);
+                line-height: 1.7;
+                margin: 0;
+              "
+            >
+              「我做這行 12
+              年，離開大公司自己出來做的原因是——我看到太多客戶被當作 SOP
+              處理。每個客戶先免費聊 30 分鐘，合作後 30
+              天內覺得方向不對，<strong>全額退費</strong>。」
+            </p>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          <p>
+            幾乎所有人會選 B，而且 B 還可以收比 A 高
+            <strong>30–50%</strong> 的價錢。差別不在於 B 真的比 A 厲害——可能 A
+            客觀上更厲害。差別在於 B 的網站讓客人「感覺到」B 跟別家不一樣，而 A
+            的網站什麼感覺都沒給。
+          </p>
+        </div>
+
+        <h2 class="section-title" id="s5">
+          花 30 秒回答這三個問題——大部分老闆第一題就卡住了
+        </h2>
+
+        <div class="diagnosis-box">
+          <div class="diagnosis-title">自我診斷清單</div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong
+                >第一題：把你的網站文案複製到同行網站，讀起來會不會違和？</strong
+              ><br />
+              如果不會違和 → 差異化 = 0 分，你跟 50 個選項可以互換
+            </div>
+          </div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong
+                >第二題：你的網站有沒有「只有你寫得出來」的具體故事、方法、或承諾？</strong
+              ><br />
+              如果沒有 → 差異化只有基本盤，客人沒有理由非選你
+            </div>
+          </div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong
+                >第三題：客人讀完你的網站，他能不能用一句話跟朋友介紹你？</strong
+              ><br />
+              如果不能 → 客人腦中沒有你的位置，他下次要用的時候會忘記你
+            </div>
+          </div>
+
+          <div class="diagnosis-verdict">
+            三題全部答「沒有」的話，你的網站對客人來說就是「50
+            個一樣的選項之一」——他選誰都可以，所以他可能誰都不選，<strong>或選最便宜的那個</strong>。
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s6">
+          你現在知道問題在哪——但差異化靠自己挖，通常是挖不到的
+        </h2>
+
+        <p>
+          你會同意：客人不選你，通常不是因為你不好，是你的網站沒讓他看到你跟別人的差別。但你的網站此刻可能就是這個樣子——寫著「服務好、品質好、用心做」，跟其他
+          49 家同行可以互換。
+        </p>
+
+        <p>
+          差異化不是「我們再想想看」就能解決的事——多數老闆自己挖不出來，因為老闆對自己的事業太熟，熟到<strong>看不見「對外人來說特別」的部分</strong>。這就是為什麼，差異化挖掘通常需要一個外部的視角來幫你問對問題、看出你自己看不到的東西。
+        </p>
+
+        <div class="article-cta" id="contact">
+          <div class="cta-eyebrow">下一步</div>
+          <h3>想知道你的網站差異化幾分？</h3>
+          <p>加我 LINE，30 分鐘免費諮詢，告訴你哪 3 個環節最該優先補強。</p>
+          <div class="cta-btn-group">
+            <a href="#" class="btn-white">免費預約 30 分鐘診斷</a>
+            <a href="系列總覽/" class="btn-outline-white">繼續讀系列文章</a>
+          </div>
+        </div>
+
+        <!-- 上下篇導航 -->
+        <nav class="article-pagination" aria-label="文章導航">
+          <a href="article-02-homepage.html" class="pag-card prev-card">
+            <span class="pag-dir">← 上一篇</span>
+            <span class="pag-title">訪客打開你的網站，3 秒鐘決定走還是留</span>
+          </a>
+          <a href="article-04.html" class="pag-card next-card">
+            <span class="pag-dir">下一篇 →</span>
+            <span class="pag-title"
+              >你的「商品介紹」是一份目錄，還是一個業務員？</span
+            >
+          </a>
+        </nav>
+
+        <!-- 你可能也有興趣 -->
+        <section class="related-articles">
+          <h3 class="related-heading">你可能也有興趣</h3>
+          <div class="related-grid">
+            <a href="article-02-homepage.html" class="related-card">
+              <span class="related-num">第 02 篇</span>
+              <span class="related-title"
+                >訪客打開你的網站，3 秒鐘決定走還是留</span
+              >
+            </a>
+            <a href="article-04.html" class="related-card">
+              <span class="related-num">第 04 篇</span>
+              <span class="related-title"
+                >你的「商品介紹」是一份目錄，還是一個業務員？</span
+              >
+            </a>
+            <a href="article-11-trust.html" class="related-card">
+              <span class="related-num">第 11 篇</span>
+              <span class="related-title"
+                >客人在網路上不認識你，他憑什麼相信你？</span
+              >
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="sidebar" aria-label="文章導覽">
+        <div class="sidebar-widget">
+          <div class="widget-title">本文目錄</div>
+          <ul class="toc-list">
+            <li class="toc-item"><a href="#s1">看不出差別就被迫打價格戰</a></li>
+            <li class="toc-item">
+              <a href="#s2">以為是差異化的 3 個常見錯誤</a>
+            </li>
+            <li class="toc-item">
+              <a href="#s3">3 層挖掘法：故事、方法、承諾</a>
+            </li>
+            <li class="toc-item">
+              <a href="#s4">A 店 vs B 店：為何 B 多收 50%</a>
+            </li>
+            <li class="toc-item"><a href="#s5">30 秒自我診斷清單</a></li>
+            <li class="toc-item"><a href="#s6">靠自己挖通常挖不到</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <div class="widget-title">12 篇系列</div>
+          <ul class="series-list">
+            <li class="series-item">
+              <a href="./article-01-exposure.html"
+                ><span class="series-num">01</span>曝光與導流</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-02-homepage.html"
+                ><span class="series-num">02</span>首頁印象</a
+              >
+            </li>
+            <li class="series-item current">
+              <a href="./article-03.html"
+                ><span class="series-num">03</span>差異化定位</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-04.html"
+                ><span class="series-num">04</span>產品介紹</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-05-conversion.html"
+                ><span class="series-num">05</span>成交路徑</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-06-contact.html"
+                ><span class="series-num">06</span>留下聯絡方式</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-07-automation.html"
+                ><span class="series-num">07</span>自動化訊息</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-08-upsell.html"
+                ><span class="series-num">08</span>加購與升級</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-09-retention.html"
+                ><span class="series-num">09</span>回頭客機制</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-10-referral.html"
+                ><span class="series-num">10</span>口碑系統</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-11-trust.html"
+                ><span class="series-num">11</span>信任與證據</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-12.html"
+                ><span class="series-num">12</span>成效追蹤</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-widget cta-widget">
+          <div class="widget-title">免費診斷</div>
+          <p>不知道你的差異化在哪裡？30 分鐘我幫你挖出來。</p>
+          <a href="#contact" class="btn-cta-sm">立刻預約 →</a>
+        </div>
+      </aside>
+    </main>
+
+    <div class="float-cta">
+      <a href="#contact" class="float-cta-btn">免費 30 分鐘診斷</a>
+    </div>
+
+    <footer class="article-footer">
+      <div class="footer-logo">AI 智能大腦<span>.</span></div>
+      <p>網站經營 12 篇系列 · 第 03 篇：差異化定位</p>
+      <p style="margin-top: 8px; font-size: 0.8125rem; opacity: 0.4">
+        © 2026 AI 智能大腦 · 保留所有權利
+      </p>
+    </footer>
+
+    <a
+      href="系列總覽/#article-03"
+      class="back-to-overview"
+      aria-label="回到系列總覽"
+    >
+      <span class="bto-arrow">←</span><span class="bto-text">系列總覽</span
+      ><span class="bto-meta">12 篇導讀</span>
+    </a>
+
+    <style>
+      .back-to-overview {
+        position: fixed;
+        top: calc(14px + env(safe-area-inset-top));
+        left: calc(14px + env(safe-area-inset-left));
+        z-index: 9999;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        background: oklch(0.14 0.025 50 / 0.92);
+        color: var(--bg-card);
+        border: 1px solid oklch(0.76 0.12 75 / 0.45);
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+        transition: all 0.25s ease;
+        font-family: "Noto Sans TC", sans-serif;
+        line-height: 1;
+      }
+      .back-to-overview:hover {
+        background: linear-gradient(
+          135deg,
+          oklch(0.5 0.16 50) 0%,
+          oklch(0.52 0.12 72) 100%
+        );
+        border-color: oklch(0.84 0.14 85 / 0.7);
+        transform: translateX(-2px);
+        color: var(--text-light);
+        box-shadow: 0 6px 24px oklch(0.47 0.15 50 / 0.45);
+      }
+      .back-to-overview .bto-arrow {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .back-to-overview .bto-meta {
+        opacity: 0.55;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 6px;
+        border-left: 1px solid oklch(0.76 0.12 75 / 0.3);
+        margin-left: 2px;
+      }
+      .back-to-overview:hover .bto-meta {
+        opacity: 0.85;
+        border-left-color: oklch(0.84 0.14 85 / 0.5);
+      }
+      @media (max-width: 768px) {
+        .back-to-overview {
+          top: calc(72px + env(safe-area-inset-top));
+          bottom: auto;
+          left: 12px;
+          padding: 8px 12px 8px 10px;
+          font-size: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .back-to-overview .bto-meta {
+          display: none;
+        }
+      }
+
+      /* LINE 浮動按鈕 */
+      .fab-line {
+        position: fixed;
+        bottom: 88px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        background: #06c755;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
+        z-index: 9998;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        text-decoration: none;
+      }
+      .fab-line:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(6, 199, 85, 0.5);
+      }
+      .fab-line svg {
+        width: 28px;
+        height: 28px;
+      }
+      @media (max-width: 768px) {
+        .fab-line {
+          bottom: 80px;
+          right: 16px;
+          width: 46px;
+          height: 46px;
+        }
+      }
+
+      /* 相關文章 */
+      .related-articles {
+        margin: 60px 0 40px;
+        padding: 40px;
+        background: var(--bg-section, oklch(0.95 0.02 78));
+        border-radius: 16px;
+      }
+      .related-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--color-primary, oklch(0.557 0.166 45));
+        display: inline-block;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .related-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid oklch(0.9 0.01 80);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        position: relative;
+      }
+      .related-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.12);
+      }
+      .related-num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+      }
+      .related-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+      }
+      .related-arrow {
+        font-size: 1rem;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        margin-top: auto;
+      }
+      @media (max-width: 768px) {
+        .related-articles {
+          padding: 24px 16px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* 上下篇導航 */
+      .article-pagination {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 40px 0;
+      }
+      .article-pagination.no-prev {
+        grid-template-columns: 1fr;
+      }
+      .article-pagination.no-next {
+        grid-template-columns: 1fr;
+      }
+      .pag-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px 24px;
+        background: var(--bg-card, white);
+        border: 1px solid var(--border-default, oklch(0.27 0.035 25 / 0.2));
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .pag-card:hover {
+        border-color: var(--color-primary, oklch(0.557 0.166 45));
+        box-shadow: 0 4px 16px oklch(0.557 0.166 45 / 0.12);
+        transform: translateY(-2px);
+      }
+      .pag-card.next-card {
+        text-align: right;
+      }
+      .pag-dir {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .pag-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        line-height: 1.4;
+      }
+      @media (max-width: 600px) {
+        .article-pagination {
+          grid-template-columns: 1fr;
+        }
+        .pag-card.next-card {
+          text-align: left;
+        }
+      }
+    </style>
+
+    <script>
+      const progressBar = document.getElementById("progress-bar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const s = window.scrollY,
+            d = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = (d > 0 ? (s / d) * 100 : 0) + "%";
+        },
+        { passive: true },
+      );
+      const sections = document.querySelectorAll('[id^="s"]');
+      const tocLinks = document.querySelectorAll(".toc-item");
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove("active"));
+              const a = document.querySelector(
+                `.toc-item a[href="#${e.target.id}"]`,
+              );
+              if (a) a.closest(".toc-item").classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      sections.forEach((s) => obs.observe(s));
+      const fc = document.querySelector(".float-cta");
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (window.innerWidth <= 1024)
+            fc.style.display = window.scrollY > 400 ? "block" : "none";
+        },
+        { passive: true },
+      );
+    </script>
+
+    <a
+      href="https://line.me/ti/p/5gW0er9baG"
+      target="_blank"
+      rel="noopener"
+      class="fab-line"
+      aria-label="LINE 諮詢"
+    >
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="20" fill="#06C755" />
+        <path
+          d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z"
+          fill="white"
+        />
+        <path
+          d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z"
+          fill="#06C755"
+        />
+      </svg>
+    </a>
+  </body>
+</html>

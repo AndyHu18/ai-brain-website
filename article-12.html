@@ -1,0 +1,2504 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>成效追蹤與整合策略：讓12個環節產生複利 | 網站經營 12 篇系列</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =============================================
+       DESIGN TOKENS — ai-brain Hermès 配色系統
+       ============================================= */
+      :root {
+        --bg-light: oklch(0.99 0.003 80);
+        --bg-section: oklch(0.95 0.02 78);
+        --bg-card: oklch(0.98 0.012 78);
+        --bg-input: oklch(0.97 0.012 78);
+
+        --tech-titanium: oklch(0.18 0.03 50);
+        --tech-midnight: oklch(0.13 0.025 50);
+
+        --color-primary: oklch(0.557 0.166 45);
+        --color-primary-light: oklch(0.6 0.17 46);
+        --color-primary-dark: oklch(0.5 0.15 43);
+        --color-accent-light: oklch(0.72 0.12 62);
+        --color-error: oklch(0.43 0.135 27);
+        --bg-warm-blush: oklch(0.98 0.01 72);
+
+        --text-primary: oklch(0.12 0.02 50);
+        --text-secondary: oklch(0.18 0.025 50);
+        --text-muted: oklch(0.38 0.04 40);
+        --text-light: oklch(1 0.015 80);
+
+        --border-subtle: oklch(0.27 0.035 25 / 0.1);
+        --border-default: oklch(0.27 0.035 25 / 0.2);
+        --border-accent: oklch(0.557 0.166 45 / 0.3);
+
+        --shadow-sm: 0 1px 2px oklch(0.27 0.035 25 / 0.05);
+        --shadow-md: 0 4px 6px oklch(0.27 0.035 25 / 0.07);
+        --shadow-lg: 0 10px 15px oklch(0.27 0.035 25 / 0.1);
+        --shadow-xl: 0 20px 25px oklch(0.27 0.035 25 / 0.15);
+        --shadow-card: 0 4px 20px oklch(0.557 0.166 45 / 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s ease;
+
+        --container-max: 1200px;
+      }
+
+      /* =============================================
+       RESET & BASE
+       ============================================= */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      p {
+        margin-bottom: 1.25rem;
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+      a:hover {
+        color: var(--color-primary-light);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* =============================================
+       READING PROGRESS BAR
+       ============================================= */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          var(--color-accent-light)
+        );
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+
+      /* =============================================
+       NAVBAR
+       ============================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(64px + env(safe-area-inset-top));
+        padding-top: env(safe-area-inset-top);
+        background: oklch(0.99 0.003 80 / 0.97);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--text-primary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .nav-logo span {
+        color: var(--color-primary);
+      }
+
+      .nav-series-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        background: var(--bg-section);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .nav-series-label:hover {
+        color: var(--color-primary);
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 11px 18px;
+        min-height: 44px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       ARTICLE HERO
+       ============================================= */
+      .article-hero {
+        padding-top: 100px;
+        padding-bottom: 64px;
+        background: linear-gradient(
+          160deg,
+          oklch(0.972 0.018 78) 0%,
+          var(--bg-light) 60%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: 32px;
+        align-items: end;
+      }
+
+      .article-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-sep {
+        opacity: 0.4;
+      }
+
+      .article-category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        margin-bottom: 20px;
+        letter-spacing: 0.06em;
+      }
+
+      .article-num {
+        display: inline-block;
+        background: oklch(1 0.015 80 / 0.25);
+        border-radius: var(--radius-full);
+        padding: 1px 8px;
+        font-size: 0.7rem;
+      }
+
+      .article-hero h1 {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .article-hero h1 em {
+        font-style: normal;
+        color: var(--color-primary);
+      }
+
+      .article-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 680px;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding-top: 24px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .meta-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        opacity: 0.5;
+      }
+
+      .article-key-stats {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr 1px 1fr;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+      }
+
+      .key-stat {
+        text-align: center;
+      }
+
+      .key-stat-num {
+        display: block;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .key-stat-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      .key-stat-divider {
+        width: 1px;
+        background: var(--border-default);
+        align-self: stretch;
+      }
+
+      /* =============================================
+       LAYOUT — 主內容 + 側欄
+       ============================================= */
+      .article-layout {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 56px;
+        align-items: start;
+      }
+
+      /* =============================================
+       ARTICLE BODY
+       ============================================= */
+      .article-body {
+        min-width: 0;
+      }
+
+      /* Section 標題 */
+      .section-title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 900;
+        margin: 56px 0 24px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-title::before {
+        content: "";
+        flex-shrink: 0;
+        display: block;
+        width: 4px;
+        height: 1.4em;
+        background: var(--color-primary);
+        border-radius: var(--radius-full);
+        margin-top: 0.1em;
+      }
+
+      .section-intro {
+        font-size: 1.0625rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+      }
+
+      /* Pull quote */
+      .pull-quote {
+        border-left: 4px solid var(--color-primary);
+        background: linear-gradient(
+          135deg,
+          var(--bg-section) 0%,
+          var(--bg-card) 100%
+        );
+        border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+        padding: 24px 28px;
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: -12px;
+        left: 16px;
+        font-size: 4rem;
+        color: var(--color-primary);
+        opacity: 0.2;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+
+      .pull-quote p {
+        font-size: clamp(1rem, 2.5vw, 1.1875rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .pull-quote cite {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-style: normal;
+      }
+
+      /* Highlight box */
+      .highlight-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 32px 0;
+        box-shadow: var(--shadow-card);
+      }
+
+      .highlight-box-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* 錯誤卡片 */
+      .mistake-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 32px 0;
+      }
+
+      .mistake-card {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.557 0.166 45 / 0.15);
+        border-left: 4px solid var(--color-error);
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        padding: 20px 24px;
+      }
+
+      .mistake-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-error);
+        background: oklch(0.43 0.135 27 / 0.08);
+        border-radius: var(--radius-full);
+        padding: 3px 10px;
+        margin-bottom: 10px;
+      }
+
+      .mistake-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .mistake-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+      }
+
+      /* 序列卡片 */
+      .sequence-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 32px 0;
+      }
+
+      .sequence-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        box-shadow: var(--shadow-card);
+        transition: var(--transition-base);
+      }
+
+      .sequence-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .sequence-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .sequence-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px oklch(0.557 0.166 45 / 0.25);
+      }
+
+      .sequence-title {
+        font-size: 1.0625rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .sequence-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .sequence-body {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .sequence-tag {
+        display: inline-block;
+        background: oklch(0.557 0.166 45 / 0.1);
+        color: var(--color-primary-dark);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: var(--radius-full);
+        margin-bottom: 8px;
+      }
+
+      /* 時間軸步驟 */
+      .timeline {
+        background: linear-gradient(
+          135deg,
+          oklch(0.977 0.012 72) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 16px 0;
+      }
+
+      .timeline-step {
+        display: flex;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--border-default);
+        align-items: flex-start;
+      }
+
+      .timeline-step:last-child {
+        border-bottom: none;
+      }
+
+      .timeline-day {
+        flex-shrink: 0;
+        min-width: 64px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding-top: 2px;
+      }
+
+      .timeline-content {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 統計數字對比 */
+      .comparison-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .comparison-side {
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .comparison-side.bad {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.43 0.135 27 / 0.2);
+      }
+
+      .comparison-side.good {
+        background: linear-gradient(
+          135deg,
+          oklch(0.557 0.166 45 / 0.05) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+      }
+
+      .comparison-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+      }
+
+      .comparison-side.bad .comparison-label {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-label {
+        color: var(--color-primary);
+      }
+
+      .comparison-big-num {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .comparison-side.bad .comparison-big-num {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-big-num {
+        color: var(--color-primary);
+      }
+
+      .comparison-desc {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* 心理學 highlight */
+      .psychology-box {
+        background: linear-gradient(
+          135deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .psychology-box::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .psychology-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+        display: block;
+        color: var(--color-accent-light);
+      }
+
+      .psychology-box h3 {
+        color: var(--text-light);
+        font-size: 1.1875rem;
+        margin-bottom: 16px;
+      }
+
+      .psychology-box p {
+        color: oklch(1 0.015 80 / 0.8);
+        font-size: 0.9375rem;
+        margin-bottom: 12px;
+      }
+
+      .psychology-box p:last-child {
+        margin: 0;
+      }
+
+      .psychology-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: oklch(0.557 0.166 45 / 0.2);
+        border: 1px solid oklch(0.557 0.166 45 / 0.4);
+        border-radius: var(--radius-lg);
+        padding: 10px 16px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        font-size: 0.9375rem;
+      }
+
+      /* 自我診斷 */
+      .diagnosis-box {
+        background: var(--bg-section);
+        border: 2px solid var(--border-accent);
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .diagnosis-title {
+        font-size: 1.1875rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .diagnosis-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+      }
+
+      .diagnosis-item:last-of-type {
+        border-bottom: none;
+      }
+
+      .diagnosis-checkbox {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        background: var(--text-light);
+        margin-top: 3px;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox::after {
+        content: "✓";
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      .diagnosis-text {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .diagnosis-text strong {
+        color: var(--text-primary);
+      }
+
+      .diagnosis-verdict {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: oklch(0.557 0.166 45 / 0.08);
+        border-radius: var(--radius-lg);
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 結尾 CTA */
+      .article-cta {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-dark) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 40px 36px;
+        margin: 48px 0 32px;
+        text-align: center;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-cta::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(1 0.015 80 / 0.15) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .cta-eyebrow {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: oklch(1 0.015 80 / 0.7);
+        margin-bottom: 12px;
+      }
+
+      .article-cta h2 {
+        color: var(--text-light);
+        font-size: clamp(1.25rem, 3vw, 1.625rem);
+        margin-bottom: 12px;
+      }
+
+      .article-cta p {
+        color: oklch(1 0.015 80 / 0.85);
+        font-size: 0.9375rem;
+        margin-bottom: 24px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--text-light);
+        color: var(--color-primary);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: var(--color-primary-dark);
+      }
+
+      /* 下一篇預告 */
+      .next-article {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px 24px;
+        transition: var(--transition-base);
+        text-decoration: none;
+      }
+
+      .next-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .next-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .next-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+      }
+
+      .next-arrow {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-section);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        margin-left: auto;
+      }
+
+      /* =============================================
+       SIDEBAR
+       ============================================= */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      }
+
+      .sidebar-widget {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .widget-title {
+        font-size: 0.8125rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      /* TOC */
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .toc-item a {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding: 6px 10px;
+        border-radius: var(--radius-md);
+        line-height: 1.4;
+        transition: var(--transition-fast);
+      }
+
+      .toc-item a:hover,
+      .toc-item.active a {
+        background: oklch(0.557 0.166 45 / 0.08);
+        color: var(--color-primary);
+      }
+
+      /* 系列篇章 */
+      .series-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .series-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 10px;
+        border-radius: var(--radius-md);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        transition: var(--transition-fast);
+        text-decoration: none;
+      }
+
+      .series-item:hover {
+        color: var(--color-primary);
+        background: oklch(0.557 0.166 45 / 0.06);
+      }
+
+      .series-item.current {
+        color: var(--color-primary);
+        font-weight: 700;
+        background: oklch(0.557 0.166 45 / 0.1);
+      }
+
+      /* CTA widget */
+      .cta-widget {
+        background: linear-gradient(135deg, oklch(0.97 0.025 75) 0%, oklch(0.94 0.04 68) 100%);
+        border: 1.5px solid oklch(0.82 0.07 62);
+      }
+
+      .cta-widget .widget-title {
+        color: oklch(0.45 0.09 52);
+        border-color: oklch(0.88 0.05 65);
+      }
+
+      .cta-widget p {
+        font-size: 0.875rem;
+        color: oklch(0.38 0.05 52);
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .btn-cta-sm {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 0.9375rem;
+        padding: 12px;
+        min-height: 44px;
+        border-radius: var(--radius-lg);
+        transition: var(--transition-fast);
+      }
+
+      .btn-cta-sm:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       FOOTER
+       ============================================= */
+      .article-footer {
+        background: var(--tech-midnight);
+        padding: 48px 24px;
+        text-align: center;
+        color: oklch(1 0.015 80 / 0.5);
+        font-size: 0.875rem;
+      }
+
+      .footer-logo {
+        font-weight: 900;
+        font-size: 1.125rem;
+        color: var(--text-light);
+        margin-bottom: 8px;
+      }
+
+      .footer-logo span {
+        color: var(--color-accent-light);
+      }
+
+      /* =============================================
+       MOBILE FLOAT CTA
+       ============================================= */
+      .float-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        z-index: 900;
+        width: calc(100% - 32px);
+        max-width: 420px;
+        opacity: 0;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .float-cta.visible {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .float-cta a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 16px 24px;
+        border-radius: var(--radius-full);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.5);
+        width: 100%;
+        text-align: center;
+      }
+
+      /* =============================================
+       RWD — Tablet ≤ 1024px
+       ============================================= */
+      @media (max-width: 1024px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding-bottom: 140px;
+        }
+
+        .sidebar {
+          display: none;
+        }
+        .float-cta {
+          display: block;
+        }
+      }
+
+      /* =============================================
+       RWD — Mobile ≤ 768px
+       ============================================= */
+      @media (max-width: 768px) {
+        body {
+          font-size: 1rem;
+        }
+
+        .nav-series-label {
+          display: none;
+        }
+
+        .article-hero {
+          padding-top: 88px;
+          padding-bottom: 40px;
+        }
+
+        .article-key-stats {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .key-stat {
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          text-align: left;
+        }
+
+        .key-stat:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .key-stat:first-child {
+          padding-top: 0;
+        }
+
+        .key-stat-num {
+          font-size: 1.75rem;
+        }
+        .key-stat-divider {
+          display: none;
+        }
+
+        .section-title {
+          margin-top: 40px;
+        }
+
+        .comparison-box {
+          grid-template-columns: 1fr;
+        }
+
+        .psychology-box {
+          padding: 24px 20px;
+        }
+
+        .article-cta {
+          padding: 28px 20px;
+        }
+
+        .next-article {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* =============================================
+       RWD — Small Mobile ≤ 480px
+       ============================================= */
+      @media (max-width: 480px) {
+        .article-layout {
+          padding: 0 16px 140px;
+        }
+        .hero-inner {
+          padding: 0 16px;
+        }
+
+        .pull-quote {
+          padding: 18px 20px;
+        }
+        .highlight-box {
+          padding: 18px 20px;
+        }
+        .sequence-card {
+          padding: 18px;
+        }
+        .diagnosis-box {
+          padding: 20px;
+        }
+        .article-cta {
+          padding: 24px 16px;
+        }
+        .psychology-box {
+          padding: 20px 16px;
+        }
+        .timeline {
+          padding: 18px 16px;
+        }
+
+        .article-meta {
+          gap: 8px;
+          font-size: 0.8125rem;
+        }
+        .meta-dot {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar"></div>
+
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+        <a href="系列總覽/#article-12" class="nav-series-label">網站經營 12 篇系列</a>
+        <a href="#contact" class="nav-cta">免費診斷 →</a>
+      
+      <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    </nav>
+    <!-- 手機漢堡抽屜 -->
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <div class="nd-header">
+        <span class="nd-logo">AI 智能大腦<span class="nd-dot">.</span></span>
+        <button class="nd-close" id="navClose" aria-label="關閉選單">✕</button>
+      </div>
+      <div class="nd-section-title">12 篇系列文章</div>
+      <nav class="nd-list">
+      <a href="article-01-exposure.html" class="nd-item">
+        <span class="nd-num">01</span>
+        <span class="nd-title">曝光與導流</span>
+      </a>
+      <a href="article-02-homepage.html" class="nd-item">
+        <span class="nd-num">02</span>
+        <span class="nd-title">首頁印象</span>
+      </a>
+      <a href="article-03.html" class="nd-item">
+        <span class="nd-num">03</span>
+        <span class="nd-title">差異化定位</span>
+      </a>
+      <a href="article-04.html" class="nd-item">
+        <span class="nd-num">04</span>
+        <span class="nd-title">產品介紹</span>
+      </a>
+      <a href="article-05-conversion.html" class="nd-item">
+        <span class="nd-num">05</span>
+        <span class="nd-title">成交路徑</span>
+      </a>
+      <a href="article-06-contact.html" class="nd-item">
+        <span class="nd-num">06</span>
+        <span class="nd-title">留下聯絡方式</span>
+      </a>
+      <a href="article-07-automation.html" class="nd-item">
+        <span class="nd-num">07</span>
+        <span class="nd-title">自動化訊息</span>
+      </a>
+      <a href="article-08-upsell.html" class="nd-item">
+        <span class="nd-num">08</span>
+        <span class="nd-title">加購與升級</span>
+      </a>
+      <a href="article-09-retention.html" class="nd-item">
+        <span class="nd-num">09</span>
+        <span class="nd-title">回頭客機制</span>
+      </a>
+      <a href="article-10-referral.html" class="nd-item">
+        <span class="nd-num">10</span>
+        <span class="nd-title">口碑系統</span>
+      </a>
+      <a href="article-11-trust.html" class="nd-item">
+        <span class="nd-num">11</span>
+        <span class="nd-title">信任與證據</span>
+      </a>
+      <a href="article-12.html" class="nd-item">
+        <span class="nd-num">12</span>
+        <span class="nd-title">整合策略</span>
+      </a>
+      </nav>
+      <div class="nd-footer">
+        <a href="系列總覽/index.html" class="nd-overview">← 系列總覽</a>
+        <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="nd-cta">加 LINE 免費諮詢 →</a>
+      </div>
+    </div>
+
+
+    <header class="article-hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+        <div class="article-breadcrumb">
+          <a href="../系列總覽/">系列總覽</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>第12篇</span>
+        </div>
+        <div class="article-category-badge">整合策略</div>
+        <h1>你的網站到底有沒有<em>幫你賺錢</em>？<br />成效追蹤與12環節整合</h1>
+        <p class="article-subtitle">
+          大多數老闆做完網站就放著——不知道哪裡有效、哪裡在漏錢。這是系列最終篇：告訴你如何把12個環節串成一個複利系統，並讓數據幫你持續進化。
+        </p>
+        <div class="article-meta">
+          <span>第12篇</span>
+          <span class="meta-dot"></span>
+          <span>共12篇</span>
+          <span class="meta-dot"></span>
+          <span>閱讀約12分鐘</span>
+        </div>
+        <div class="article-key-stats">
+          <div class="key-stat">
+            <span class="key-stat-num">90%</span>
+            <span class="key-stat-label">老闆從不看網站數據</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">2-3x</span>
+            <span class="key-stat-label">有數據一年後的效率差距</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">30天</span>
+            <span class="key-stat-label">整合12環節的最短時程</span>
+          </div>
+        </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-glow"></div>
+          <img
+            src="andy-photo.png"
+            alt="AI 智能大腦 Andy"
+            class="hero-photo-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <main class="article-body">
+        <!-- Section 1: 沒數據的代價 -->
+        <section id="s1">
+          <h2 class="section-title" id="s1">
+            你的網站每個月在漏錢——而你完全看不到漏在哪
+          </h2>
+          <p class="section-intro">
+            你的店每個月會看財報——多少營收、多少成本、哪個品項好賣、哪個品項虧錢。這是基本常識。但你的網站呢？
+          </p>
+
+          <p>
+            多數老闆連「上個月有多少人看過」都不知道。這等於開了一家店，但從來不看帳——你不知道生意好不好、不知道客人從哪來、不知道哪個櫃位最熱、哪個櫃位浪費租金。一切靠感覺，賺錢靠運氣。
+          </p>
+
+          <div class="pull-quote">
+            <p>
+              問題是，你的店面不能這樣經營，你的網站為什麼可以？這是這個系列裡
+              80% 的老闆會跳過、但實際上最影響長期賺錢能力的環節。
+            </p>
+          </div>
+
+          <p>
+            沒看過數據意味著什麼？意味著廣告費可能在燒錯地方，而你連哪個入口帶客人都不知道。有一頁正在每天趕走你的客人，你只是不知道是哪頁——那個漏洞今天在跑、明天也在跑，修不掉是因為你看不到它在哪。最多人看的商品，可能正在默默拉低你的成交率：點擊多但買的少，代表頁面有問題，你卻以為是商品不受歡迎。
+          </p>
+
+          <div class="mistake-list">
+            <div class="mistake-card">
+              <div class="mistake-label">常見誤區一</div>
+              <h4>架好就不動：你有個員工每天上班，你卻從不看他的績效</h4>
+              <p>
+                多數老闆把網站當作「實體店面的數位版」——一次做好就放著，十年不動。但網站不是型錄，是每天產生客戶行為情報的機器。不看這份情報的老闆，等於開店十年從來不問「客人為什麼來」、「為什麼走」。
+              </p>
+            </div>
+            <div class="mistake-card">
+              <div class="mistake-label">常見誤區二</div>
+              <h4>數字交給工程師：他能解釋流量，但不會幫你決定該不該加碼</h4>
+              <p>
+                老闆不需要看 50 個指標，只需要看 3–5
+                個關鍵數字。工程師會告訴你「流量上升了
+                20%」，但他不會告訴你這代表「加碼廣告」還是「換策略」——那個判斷需要商業直覺，只有老闆自己能做。
+              </p>
+            </div>
+            <div class="mistake-card">
+              <div class="mistake-label">常見誤區三</div>
+              <h4>「流量正常啦」——正常不代表在賺錢，你不問就沒人主動告訴你</h4>
+              <p>
+                「正常」不是「有效」，「流量穩定」不代表「會賺錢」。每個月你應該收到一份報告：這個月來了多少人、來自哪裡、留下多少聯絡、下單多少、哪裡可以優化。收不到這份報告，你付錢養了一個每月持續漏錢的網站。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: 老闆只需要看的5個數字 -->
+        <section id="s2">
+          <h2 class="section-title" id="s2">
+            其實你只需要看這5個數字——其中一個你現在一定沒在追
+          </h2>
+          <p class="section-intro">
+            不需要懂技術，不需要工程師解釋。看完你自己就知道網站在賺錢，還是在漏錢。
+          </p>
+
+          <div class="sequence-list">
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">1</div>
+                <div>
+                  <div class="sequence-title">
+                    訪客人氣：這個月跟上個月比才看得出真相
+                  </div>
+                  <div class="sequence-subtitle">每月總訪客數 + 趨勢對比</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  要看「總數＋跟上個月比＋跟去年同期比」。太少代表曝光環節有問題，需要加強
+                  SEO
+                  或社群曝光；太多但沒下單，代表內容或成交環節有問題，需要優化頁面說服力。這個數字是你最基本的生意體溫計。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">2</div>
+                <div>
+                  <div class="sequence-title">
+                    流量來源：知道哪個管道帶來真正會買的客人
+                  </div>
+                  <div class="sequence-subtitle">
+                    Google搜尋 / 社群 / 廣告 / 直接輸入
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  哪個來源帶來最多訪客，你就加碼投入。更重要的是：哪個來源帶來最高轉換率——那才是真正的金礦。你最捨得投入的那個管道，有可能根本沒帶來一筆訂單；而你忽視的那個管道，才是默默幫你賺錢的來源。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">3</div>
+                <div>
+                  <div class="sequence-title">
+                    停留時間與跳出率：你的頁面正在趕人卻沒人告訴你
+                  </div>
+                  <div class="sequence-subtitle">
+                    平均停留秒數 + 跳出率百分比
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  停留少於 30 秒、跳出率高於
+                  70%，代表你的首頁或內容頁有嚴重問題。停留超過 2
+                  分鐘、跳出率低於 50%，代表內容讓人想看下去。平均 30
+                  秒以內就跑掉，等於每花 100 元帶客人來，70 元以上都白燒了。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">4</div>
+                <div>
+                  <div class="sequence-title">
+                    轉換率：1,000人來，最後幾個真的行動了
+                  </div>
+                  <div class="sequence-subtitle">這才是你的真實成績單</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  這是「網站有沒有賺錢」最直接的指標。1,000 訪客、轉換 10 人是
+                  1%（中下水準）；轉換 30 人是 3%（優秀水準）。這個數字每提升
+                  1%，等同於多帶了同等比例的訂單——完全不需要增加廣告費。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">5</div>
+                <div>
+                  <div class="sequence-title">
+                    熱門頁面：最熱的那頁是你的隱藏金礦入口
+                  </div>
+                  <div class="sequence-subtitle">你現在知道是哪頁嗎？</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  最熱的頁面要加強引導，帶客人進下一步。最冷的頁面要改寫或刪除，別浪費網站結構。80%
+                  的訂單往往來自 20% 的頁面——找到那 20%
+                  並讓它發揮最大效益，是最省力的增收方式。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">數據的威力</div>
+            <p>
+              一家店追蹤後發現，80%
+              的詢問訂單來自「服務介紹頁」而不是「首頁」——但首頁的入口埋在第三屏。把入口移到第一屏變成超大按鈕後，當月詢問量增加
+              30–50%。沒有任何新成本、沒有任何新功能——只是把一個按鈕的位置改了。這就是數據讓你看見肉眼看不見的漏錢點，然後用最小成本補起來。
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 3: 有數據 vs 沒數據一年後的差距 -->
+        <section id="s3">
+          <h2 class="section-title" id="s3">
+            一年後，有數據 vs 沒數據的老闆差多少？
+          </h2>
+          <p class="section-intro">
+            假設兩個老闆網站做得一樣好、訪客量一樣，一年後會有什麼差距？
+          </p>
+
+          <div class="comparison-box">
+            <div class="comparison-side bad">
+              <div class="comparison-label">沒數據</div>
+              <div class="comparison-big-num">靠感覺</div>
+              <div class="comparison-desc">
+                每年靠感覺調整，有時候對，有時候錯。不知道哪些動作有效，不知道哪些在浪費錢。業績「差不多」，原地踏步。
+              </div>
+            </div>
+            <div class="comparison-side good">
+              <div class="comparison-label">有數據</div>
+              <div class="comparison-big-num">月月變強</div>
+              <div class="comparison-desc">
+                第1月改按鈕文案 → 點擊 +40%；第3月優化手機版 → 轉換
+                +50%；第6月加見證 → 下單 +25%；第9月找到廣告黃金時段 → 效益
+                +80%。
+              </div>
+            </div>
+          </div>
+
+          <div class="psychology-box">
+            <h3>複利效應：為什麼12個環節要串在一起</h3>
+            <p>
+              12 個月後，「月月變強」的效率可能是「靠感覺走」的 2–3
+              倍。用同樣的網站、同樣的訪客、同樣的產品——只是多了「看數據＋小調整」這個動作。
+            </p>
+            <p>
+              但更關鍵的是：這 12
+              個環節不是各自獨立的。曝光做好，首頁沒做好——花錢帶來的客人一秒鐘就跑了。首頁做好，路徑沒做好——客人明明想買，卻找不到怎麼買。能成交，卻沒留聯絡——這次沒買的人，你永遠追不回來。
+            </p>
+            <div class="psychology-stat">少一環，前面所有的努力都會打折</div>
+          </div>
+
+          <p>
+            這就是為什麼這個系列要講 12
+            個環節，而不是只講「怎麼做網站」。網站只是表面，底下是一個完整的客戶轉換系統。每個環節都在守住或放大前一個環節的成果。沒有成效追蹤的網站，永遠停留在剛上線那一天；會看數據的網站，每個月都在變強。
+          </p>
+        </section>
+
+        <!-- Section 4: 12環節整合框架 -->
+        <section id="s4">
+          <h2 class="section-title" id="s4">
+            12個環節的整合框架：從曝光到複利
+          </h2>
+          <p class="section-intro">
+            這不是 12
+            個獨立任務的清單，而是一個有前後邏輯的系統。了解每個環節在整體架構中的位置，才能有效整合。
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-day">層一：引流</div>
+              <div class="timeline-content">
+                <strong>曝光（01）+ SEO搜尋（07）</strong> —
+                讓對的人找到你。沒有流量，後面的環節都沒有意義。這是整個系統的水源。
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">層二：留住</div>
+              <div class="timeline-content">
+                <strong>首頁設計（02）+ 菜單呈現（03）+ 視覺設計（04）</strong>
+                — 讓進來的人願意停留。這是篩選「對的客人」並建立第一印象的環節。
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">層三：成交</div>
+              <div class="timeline-content">
+                <strong>成交路徑（05）+ 留下聯絡（06）</strong> —
+                讓有意願的人採取行動。CTA
+                設計、預約流程、表單，每個摩擦點都在流失客人。
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">層四：放大</div>
+              <div class="timeline-content">
+                <strong>自動化（07）+ 加購升級（08）+ 回頭客（09）</strong> —
+                讓每個客人的價值最大化。一個客人不只是一筆訂單，而是長期的收益流。
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">層五：乘數</div>
+              <div class="timeline-content">
+                <strong>口碑轉介（10）+ 信任建立（11）+ 成效追蹤（12）</strong>
+                —
+                讓系統自我增強。口碑讓每個客人帶來更多客人，數據讓每個月比上個月更好。
+              </div>
+            </div>
+          </div>
+
+          <p>
+            每一層都依賴前一層的成果。如果你的流量很少（層一問題），後面再怎麼優化都效果有限。如果你的首頁留不住人（層二問題），成交環節的努力會大打折扣。這就是為什麼系統思維比單點優化重要：找到最弱的那一環，先修那裡，效益最大。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">找出你的弱環</div>
+            <p>
+              用這個邏輯自我診斷：訪客少 → 先修曝光和 SEO。訪客多但跳出快 →
+              先修首頁和視覺。停留長但不成交 → 先修路徑和 CTA。成交了但不回購 →
+              先修自動化和回頭客機制。成交和回購都好但成長停滯 →
+              先修口碑和轉介系統。
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 5: 30天行動計畫 -->
+        <section id="s5">
+          <h2 class="section-title" id="s5">30天行動計畫：從現在開始到位</h2>
+          <p class="section-intro">
+            知道 ≠ 做得到。這 12
+            個環節是一個系統，單獨做一個沒用，要全部串起來才會產生複利效應。但也不需要一次全做——這裡是最有效率的
+            30 天啟動順序。
+          </p>
+
+          <div class="sequence-list">
+            <div class="sequence-card">
+              <div class="sequence-tag">第1-7天</div>
+              <div class="sequence-header">
+                <div class="sequence-num">1</div>
+                <div>
+                  <div class="sequence-title">基礎建設：把數據蒐集架起來</div>
+                  <div class="sequence-subtitle">
+                    沒有數據，所有改動都是瞎猜
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  安裝流量分析工具，確認能追蹤訪客數、流量來源、停留時間、跳出率、轉換率這
+                  5 個核心數字。設定每週固定一個時間（15
+                  分鐘）看這些數字。這是整個系統的儀表板，沒有它就是在黑暗中開車。同時，把聯絡管道（LINE
+                  官方帳號、表單）確認可以正常運作並記錄每筆來源。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-tag">第8-14天</div>
+              <div class="sequence-header">
+                <div class="sequence-num">2</div>
+                <div>
+                  <div class="sequence-title">
+                    修漏洞：找出最大的流失點並修復
+                  </div>
+                  <div class="sequence-subtitle">先止血，再成長</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  看第一週的數據，找出跳出率最高的頁面。通常是首頁或菜單頁。針對那個頁面：確認手機版顯示正常（超過
+                  60%
+                  的客人用手機）、首屏有清楚的行動呼籲、聯絡或預約按鈕夠明顯。這一週只做這一件事，把最大的漏洞先堵起來，效益比做
+                  10 個小改動加起來還要大。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-tag">第15-21天</div>
+              <div class="sequence-header">
+                <div class="sequence-num">3</div>
+                <div>
+                  <div class="sequence-title">
+                    強化轉換：讓已經進來的人更容易行動
+                  </div>
+                  <div class="sequence-subtitle">不增加廣告費也能提升訂單</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  在最熱的頁面加上清晰的下一步指引。加入 1-2
+                  個真實客戶見證（文字或照片都行）。確認訂位或詢問流程最多 3
+                  步完成。如果有 LINE
+                  官方帳號，設定自動回覆，讓深夜詢問的客人也能即時收到回應。這一週的目標是：讓同樣數量的訪客，產生更多實際的聯繫或訂單。
+                </p>
+              </div>
+            </div>
+
+            <div class="sequence-card">
+              <div class="sequence-tag">第22-30天</div>
+              <div class="sequence-header">
+                <div class="sequence-num">4</div>
+                <div>
+                  <div class="sequence-title">
+                    建立複利：讓每個客人帶來更多客人
+                  </div>
+                  <div class="sequence-subtitle">從單次交易到長期增長</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                <p>
+                  設計一個讓客人願意分享的機制：可以是打卡優惠、推薦回饋、或只是讓體驗好到他們自然會分享。確認
+                  Google Maps
+                  有最新的照片和資訊，並主動請滿意的客人留下評價。制定下個月的「3件小事」清單：根據第一個月的數據，選出效益最高的
+                  3 個改動，下個月執行。這樣每個月都在進步，12
+                  個月後你的網站效益會是現在的數倍。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">最重要的心態轉變</div>
+            <p>
+              從「網站做完了」變成「網站是一個持續優化的系統」。這不是一次性的專案，而是你生意的一部份——就像你不會只看一次財報，你也不應該只優化一次網站。每個月
+              30 分鐘看數據、做 3 個小改動，一年後的差距會讓你自己都驚訝。
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 6: 最終自我評估 -->
+        <section id="s6">
+          <h2 class="section-title" id="s6">
+            你的網站現在在哪裡？最終自我評估
+          </h2>
+          <p class="section-intro">
+            讀完了 12 堂課。現在是時候誠實面對你的現況，然後決定下一步。
+          </p>
+
+          <p>
+            如果你從第 01 篇讀到這裡，你現在已經跟讀完前的自己不同了。你能用 12
+            個維度看一個網站好不好。你能看出別人網站的漏洞、自己網站的盲點、同行哪裡做得對哪裡做得錯。你的判斷力比
+            99% 的同行更深、更系統、更準確。
+          </p>
+
+          <p>
+            但知道 ≠ 做得到。知識不會自動變成結果——需要有人把這 12
+            個環節按正確的優先順序實作出來，並且持續追蹤、迭代、優化。
+          </p>
+
+          <div class="diagnosis-box">
+            <div class="diagnosis-title">你的餐廳現在幾分？</div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>曝光與 SEO</strong> — Google 搜尋「[你的菜系] +
+                [你的地區]」，你的店出現在第一頁嗎？Google Maps 有 50
+                則以上的評價嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>首頁與視覺</strong> — 手機打開你的網站，3
+                秒內知道你賣什麼嗎？照片有引起食慾嗎？字夠大、按鈕夠明顯嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>菜單呈現</strong> —
+                菜單有照片嗎？有招牌菜的故事嗎？定價策略有引導客人點高利潤品項嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>成交路徑</strong> —
+                訂位或詢問最多幾步完成？有多個聯絡管道嗎（電話、LINE、線上訂位）？有無縫的預約流程嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>自動化與回頭客</strong> — LINE
+                官方帳號有設定自動回覆嗎？有定期推播給老客人嗎？有任何「讓他們再來」的機制嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>信任與口碑</strong> —
+                網站有客人見證嗎？有媒體報導或得獎記錄嗎？有讓客人主動分享的機制嗎？
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong>成效追蹤</strong> —
+                你知道上個月有多少訪客嗎？你知道客人從哪裡來嗎？你每個月有在看數據並做改動嗎？
+              </div>
+            </div>
+
+            <div class="diagnosis-verdict">
+              打勾 6-7
+              項：你已經建立了一個相當完整的數位轉型系統，現在的重點是持續優化和數據追蹤。打勾
+              3-5
+              項：你已經有不錯的基礎，但還有明顯的漏洞需要補強。優先補強你沒打勾的那幾項。打勾
+              0-2
+              項：你的網站還有很大的提升空間——但這也意味著，每一個改動都會帶來顯著的效益。從第一個環節開始，一步一步來。
+            </div>
+          </div>
+
+          <p>
+            無論你現在在哪裡，最重要的是：今天就開始。不需要一次全做，不需要完美——需要的是把第一個最重要的改動做出來，然後用數據確認它有效，然後做下一個。
+          </p>
+
+          <p>
+            這 12
+            堂課給了你地圖。接下來的路，需要你開始走。如果你想要有人陪你走這條路——幫你診斷現況、制定優先順序、實作每一個環節——我們提供免費的
+            30 分鐘診斷，找出你現在最大的流失點，以及最快帶來改變的第一步。
+          </p>
+        </section>
+
+        <!-- 最後一篇強化版 CTA -->
+        <section class="article-cta" id="contact">
+          <div class="cta-eyebrow">系列完結．限時免費診斷</div>
+          <h2>完成了12堂課，現在換你行動</h2>
+          <p>
+            你已經了解了網站經營的完整框架。下一步：讓專家幫你診斷現況，制定30天行動計畫。30 分鐘找出你網站最大的流失點。
+          </p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="cta-button">加 LINE 免費諮詢 →</a>
+          </section>
+    <!-- 上下篇導航 -->
+    <nav class="article-pagination no-next" aria-label="文章導航">
+      <a href="article-11-trust.html" class="pag-card prev-card">
+        <span class="pag-dir">← 上一篇</span>
+        <span class="pag-title">客人在網路上不認識你，他憑什麼相信你？</span>
+      </a>
+    </nav>
+
+    <!-- 你可能也有興趣 -->
+    <section class="related-articles">
+      <h3 class="related-heading">你可能也有興趣</h3>
+      <div class="related-grid">
+        <a href="article-01-exposure.html" class="related-card">
+          <span class="related-num">第 01 篇</span>
+          <span class="related-title">你的店明明很好，為什麼網路上沒人找得到？</span>
+        </a>
+        <a href="article-05-conversion.html" class="related-card">
+          <span class="related-num">第 05 篇</span>
+          <span class="related-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</span>
+        </a>
+        <a href="article-11-trust.html" class="related-card">
+          <span class="related-num">第 11 篇</span>
+          <span class="related-title">客人在網路上不認識你，他憑什麼相信你？</span>
+        </a>
+      </div>
+    </section>
+
+
+
+
+
+
+
+        <!-- 最後一篇改為回到系列總覽 -->
+        
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-widget toc-widget">
+          <div class="widget-title">本文目錄</div>
+          <nav class="toc">
+            <ul class="toc-list">
+              <li class="toc-item"><a href="#s1">你的網站在漏錢</a></li>
+              <li class="toc-item"><a href="#s2">老闆必看的5個數字</a></li>
+              <li class="toc-item"><a href="#s3">有數據 vs 沒數據的差距</a></li>
+              <li class="toc-item"><a href="#s4">12環節整合框架</a></li>
+              <li class="toc-item"><a href="#s5">30天行動計畫</a></li>
+              <li class="toc-item"><a href="#s6">最終自我評估</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="sidebar-widget series-widget">
+          <div class="widget-title">系列文章</div>
+          <div class="series-list">
+            <a href="article-01-exposure.html" class="series-item"
+              >01 曝光問題</a
+            >
+            <a href="article-02-homepage.html" class="series-item"
+              >02 首頁設計</a
+            >
+            <a href="article-03.html" class="series-item">03 菜單設計</a>
+            <a href="article-04.html" class="series-item">04 視覺設計</a>
+            <a href="article-05-conversion.html" class="series-item"
+              >05 成交路徑</a
+            >
+            <a href="article-06-contact.html" class="series-item"
+              >06 留下聯絡</a
+            >
+            <a href="article-07-automation.html" class="series-item"
+              >07 自動化</a
+            >
+            <a href="article-08-upsell.html" class="series-item">08 加購升級</a>
+            <a href="article-09-retention.html" class="series-item"
+              >09 回頭客</a
+            >
+            <a href="article-10-referral.html" class="series-item"
+              >10 口碑轉介</a
+            >
+            <a href="article-11-trust.html" class="series-item">11 信任建立</a>
+            <a href="article-12.html" class="series-item current"
+              >12 整合策略</a
+            >
+          </div>
+        </div>
+
+        <div class="sidebar-widget cta-widget">
+          <div class="widget-title">免費診斷</div>
+          <p>30 分鐘找出你網站最大的流失點</p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="btn-cta-sm">加 LINE 諮詢 →</a>
+    </div>
+
+    <footer class="article-footer">
+      <p>
+        © 2025 AI 智能大腦 |
+        <a href="系列總覽/" class="btn-outline">系列總覽</a>
+    <style>
+      .back-to-overview {
+        position: fixed;
+        top: calc(14px + env(safe-area-inset-top));
+        left: calc(14px + env(safe-area-inset-left));
+        z-index: 9999;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        background: oklch(0.14 0.025 50 / 0.92);
+        color: var(--bg-card);
+        border: 1px solid oklch(0.76 0.12 75 / 0.45);
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+        transition: all 0.25s ease;
+        font-family: "Noto Sans TC", sans-serif;
+        line-height: 1;
+      }
+      .back-to-overview:hover {
+        background: linear-gradient(
+          135deg,
+          oklch(0.5 0.16 50) 0%,
+          oklch(0.52 0.12 72) 100%
+        );
+        border-color: oklch(0.84 0.14 85 / 0.7);
+        transform: translateX(-2px);
+        color: var(--text-light);
+        box-shadow: 0 6px 24px oklch(0.47 0.15 50 / 0.45);
+      }
+      .back-to-overview .bto-arrow {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .back-to-overview .bto-meta {
+        opacity: 0.55;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 6px;
+        border-left: 1px solid oklch(0.76 0.12 75 / 0.3);
+        margin-left: 2px;
+      }
+      .back-to-overview:hover .bto-meta {
+        opacity: 0.85;
+        border-left-color: oklch(0.84 0.14 85 / 0.5);
+      }
+      @media (max-width: 768px) {
+        .back-to-overview {
+          top: calc(72px + env(safe-area-inset-top));
+          bottom: auto;
+          left: 12px;
+          padding: 8px 12px 8px 10px;
+          font-size: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .back-to-overview .bto-meta {
+          display: none;
+        }
+      }
+    
+      /* LINE 浮動按鈕 */
+      .fab-line {
+        position: fixed;
+        bottom: 88px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        background: #06C755;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(6,199,85,0.4);
+        z-index: 9998;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+      .fab-line:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(6,199,85,0.5);
+      }
+      .fab-line svg { width: 28px; height: 28px; }
+      @media (max-width: 768px) {
+        .fab-line { bottom: 80px; right: 16px; width: 46px; height: 46px; }
+      }
+
+      /* 相關文章 */
+      .related-articles {
+        margin: 60px 0 40px;
+        padding: 40px;
+        background: var(--bg-section, oklch(0.95 0.02 78));
+        border-radius: 16px;
+      }
+      .related-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--color-primary, oklch(0.557 0.166 45));
+        display: inline-block;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .related-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid oklch(0.9 0.01 80);
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+      }
+      .related-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.12);
+      }
+      .related-num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+      }
+      .related-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+      }
+      .related-arrow {
+        font-size: 1rem;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        margin-top: auto;
+      }
+      @media (max-width: 768px) {
+        .related-articles { padding: 24px 16px; }
+        .related-grid { grid-template-columns: 1fr; }
+      }
+
+      /* 上下篇導航 */
+      .article-pagination {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 40px 0;
+      }
+      .article-pagination.no-prev { grid-template-columns: 1fr; }
+      .article-pagination.no-next { grid-template-columns: 1fr; }
+      .pag-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px 24px;
+        background: var(--bg-card, white);
+        border: 1px solid var(--border-default, oklch(0.27 0.035 25 / 0.2));
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      }
+      .pag-card:hover {
+        border-color: var(--color-primary, oklch(0.557 0.166 45));
+        box-shadow: 0 4px 16px oklch(0.557 0.166 45 / 0.12);
+        transform: translateY(-2px);
+      }
+      .pag-card.next-card { text-align: right; }
+      .pag-dir {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .pag-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        line-height: 1.4;
+      }
+      @media (max-width: 600px) {
+        .article-pagination { grid-template-columns: 1fr; }
+        .pag-card.next-card { text-align: left; }
+      }
+
+    
+      /* =============================================
+         HAMBURGER MENU
+         ============================================= */
+      .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        border-radius: 2px;
+        transition: all 0.25s ease;
+        transform-origin: center;
+      }
+      .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-drawer-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: oklch(0.1 0 0 / 0.45);
+        z-index: 1998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .nav-drawer-overlay.is-open { opacity: 1; }
+
+      .nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(320px, 88vw);
+        background: oklch(0.99 0.008 78);
+        z-index: 1999;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+        box-shadow: -4px 0 32px oklch(0.1 0 0 / 0.12);
+        overflow-y: auto;
+      }
+      .nav-drawer.is-open { transform: translateX(0); }
+
+      .nd-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-logo {
+        font-weight: 900;
+        font-size: 1.0625rem;
+        color: oklch(0.2 0.02 50);
+        letter-spacing: 0.02em;
+      }
+      .nd-dot { color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-close {
+        background: none;
+        border: none;
+        font-size: 1.125rem;
+        color: oklch(0.5 0.02 60);
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: background 0.15s;
+      }
+      .nd-close:hover { background: oklch(0.93 0.03 75); }
+
+      .nd-section-title {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: oklch(0.6 0.04 60);
+        padding: 14px 20px 8px;
+        flex-shrink: 0;
+      }
+
+      .nd-list {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+      }
+      .nd-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 20px;
+        text-decoration: none;
+        color: oklch(0.3 0.03 55);
+        border-bottom: 1px solid oklch(0.94 0.015 78);
+        transition: background 0.15s;
+      }
+      .nd-item:hover { background: oklch(0.96 0.02 75); color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-item.is-current { background: oklch(0.94 0.04 72); color: var(--color-primary, oklch(0.557 0.166 45)); font-weight: 700; }
+      .nd-num {
+        font-size: 0.6875rem;
+        font-weight: 900;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        background: oklch(0.94 0.04 72);
+        border-radius: 6px;
+        padding: 2px 6px;
+        flex-shrink: 0;
+        min-width: 28px;
+        text-align: center;
+      }
+      .nd-title { font-size: 0.9375rem; line-height: 1.4; }
+
+      .nd-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 20px;
+        border-top: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-overview {
+        text-align: center;
+        padding: 10px;
+        color: oklch(0.45 0.05 55);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid oklch(0.85 0.04 68);
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-overview:hover { background: oklch(0.95 0.03 75); }
+      .nd-cta {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        color: #fff;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-cta:hover { background: oklch(0.6 0.17 46); }
+
+      @media (max-width: 768px) {
+        .nav-hamburger { display: flex; }
+      }
+    
+      /* ─── Hero 照片 ───────────────────────────────── */
+      .hero-photo-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        align-self: end;
+      }
+      .hero-photo-glow {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 110px;
+        background: radial-gradient(
+          ellipse,
+          oklch(0.557 0.166 45 / 0.2) 0%,
+          transparent 70%
+        );
+        filter: blur(24px);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-photo-img {
+        width: 100%;
+        max-width: 240px;
+        object-fit: contain;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        position: relative;
+        z-index: 1;
+        filter: contrast(1.04) brightness(1.02);
+        display: block;
+      }
+      @media (max-width: 1024px) {
+        .hero-photo-wrap { display: none; }
+      }
+    </style>
+
+    <script>
+      window.addEventListener("scroll", () => {
+        const scrolled =
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      });
+
+      const tocItems = document.querySelectorAll(".toc-item");
+      const sections = document.querySelectorAll(".article-body section[id]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocItems.forEach((item) => item.classList.remove("active"));
+              const active = document.querySelector(
+                `.toc-item a[href="#${entry.target.id}"]`,
+              );
+              if (active) active.parentElement.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      const floatCta = document.querySelector(".float-cta");
+      window.addEventListener("scroll", () => {
+        floatCta.classList.toggle("visible", window.scrollY > 400);
+      });
+
+      document.querySelectorAll(".diagnosis-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          item.classList.toggle("checked");
+        });
+      });
+    </script>
+  
+    <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="fab-line" aria-label="LINE 諮詢">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="20" fill="#06C755"/>
+        <path d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z" fill="white"/>
+        <path d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z" fill="#06C755"/>
+      </svg>
+    </a>
+
+    <script>
+    (function() {
+      const btn = document.getElementById('navHamburger');
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navOverlay');
+      const closeBtn = document.getElementById('navClose');
+      if (!btn || !drawer) return;
+
+      function openDrawer() {
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          drawer.classList.add('is-open');
+        });
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        overlay.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlay.style.display = 'none'; }, 300);
+      }
+
+      btn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      // 點選單裡的連結自動關閉
+      drawer.querySelectorAll('.nd-item, .nd-overview').forEach(a => {
+        a.addEventListener('click', closeDrawer);
+      });
+
+      // 標記目前頁面
+      const cur = location.pathname.split('/').pop() || 'index.html';
+      drawer.querySelectorAll('.nd-item').forEach(a => {
+        if (a.getAttribute('href').includes(cur)) a.classList.add('is-current');
+      });
+    })();
+    </script>
+  </body>
+</html>

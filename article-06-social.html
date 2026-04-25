@@ -1,0 +1,2127 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      90%的訪客當下不會買，你怎麼讓他下次再回來？ | 網站經營 12 篇系列
+    </title>
+    <meta
+      name="description"
+      content="沒留下聯絡方式的客人，等於從你眼前消失。台灣 99% 的店家正在每天浪費這些客人，而且渾然不知。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =============================================
+       DESIGN TOKENS — ai-brain Hermès 配色系統
+       ============================================= */
+      :root {
+        --bg-light: oklch(0.99 0.003 80);
+        --bg-section: oklch(0.95 0.02 78);
+        --bg-card: oklch(0.98 0.012 78);
+        --bg-input: oklch(0.97 0.012 78);
+
+        --tech-titanium: oklch(0.18 0.03 50);
+        --tech-midnight: oklch(0.13 0.025 50);
+
+        --color-primary: oklch(0.557 0.166 45);
+        --color-primary-light: oklch(0.6 0.17 46);
+        --color-primary-dark: oklch(0.5 0.15 43);
+        --color-accent-light: oklch(0.72 0.12 62);
+        --color-error: oklch(0.43 0.135 27);
+        --bg-warm-blush: oklch(0.98 0.01 72);
+
+        --text-primary: oklch(0.12 0.02 50);
+        --text-secondary: oklch(0.18 0.025 50);
+        --text-muted: oklch(0.38 0.04 40);
+        --text-light: oklch(1 0.015 80);
+
+        --border-subtle: oklch(0.27 0.035 25 / 0.1);
+        --border-default: oklch(0.27 0.035 25 / 0.2);
+        --border-accent: oklch(0.557 0.166 45 / 0.3);
+
+        --shadow-sm: 0 1px 2px oklch(0.27 0.035 25 / 0.05);
+        --shadow-md: 0 4px 6px oklch(0.27 0.035 25 / 0.07);
+        --shadow-lg: 0 10px 15px oklch(0.27 0.035 25 / 0.1);
+        --shadow-xl: 0 20px 25px oklch(0.27 0.035 25 / 0.15);
+        --shadow-card: 0 4px 20px oklch(0.557 0.166 45 / 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s ease;
+
+        --container-max: 1200px;
+      }
+
+      /* =============================================
+       RESET & BASE
+       ============================================= */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      p {
+        margin-bottom: 1.25rem;
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+      a:hover {
+        color: var(--color-primary-light);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* =============================================
+       READING PROGRESS BAR
+       ============================================= */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          var(--color-accent-light)
+        );
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+
+      /* =============================================
+       NAVBAR
+       ============================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(64px + env(safe-area-inset-top));
+        padding-top: env(safe-area-inset-top);
+        background: oklch(0.99 0.003 80 / 0.97);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        padding-right: 24px;
+        gap: 16px;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--text-primary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .nav-series-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        background: var(--bg-section);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 11px 18px;
+        min-height: 44px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       ARTICLE HERO
+       ============================================= */
+      .article-hero {
+        padding-top: 100px;
+        padding-bottom: 64px;
+        background: linear-gradient(
+          160deg,
+          oklch(0.972 0.018 78) 0%,
+          var(--bg-light) 60%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+      }
+      .breadcrumb a {
+        color: var(--text-muted);
+      }
+      .breadcrumb a:hover {
+        color: var(--color-primary);
+      }
+
+      .article-category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        margin-bottom: 20px;
+        letter-spacing: 0.06em;
+      }
+
+      .article-hero h1 {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .article-hero h1 em {
+        font-style: normal;
+        color: var(--color-primary);
+      }
+
+      .article-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 680px;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding-top: 24px;
+        border-top: 1px solid var(--border-subtle);
+        margin-bottom: 0;
+      }
+
+      .article-key-stats {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr 1px 1fr;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+      }
+
+      .key-stat {
+        text-align: center;
+      }
+
+      .key-stat-num {
+        display: block;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .key-stat-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      .key-stat-divider {
+        width: 1px;
+        background: var(--border-default);
+        align-self: stretch;
+      }
+
+      /* =============================================
+       LAYOUT — 主內容 + 側欄
+       ============================================= */
+      .article-layout {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 56px;
+        align-items: start;
+      }
+
+      /* =============================================
+       ARTICLE BODY
+       ============================================= */
+      .article-body {
+        min-width: 0;
+      }
+
+      /* Section 標題 */
+      .section-title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 900;
+        margin: 56px 0 24px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-title::before {
+        content: "";
+        flex-shrink: 0;
+        display: block;
+        width: 4px;
+        height: 1.4em;
+        background: var(--color-primary);
+        border-radius: var(--radius-full);
+        margin-top: 0.1em;
+      }
+
+      .section-intro {
+        font-size: 1.0625rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+      }
+
+      /* Pull quote */
+      .pull-quote {
+        border-left: 4px solid var(--color-primary);
+        background: linear-gradient(
+          135deg,
+          var(--bg-section) 0%,
+          var(--bg-card) 100%
+        );
+        border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+        padding: 24px 28px;
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: -12px;
+        left: 16px;
+        font-size: 4rem;
+        color: var(--color-primary);
+        opacity: 0.2;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+
+      .pull-quote p {
+        font-size: clamp(1rem, 2.5vw, 1.1875rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .pull-quote cite {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-style: normal;
+      }
+
+      /* Highlight box */
+      .highlight-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 32px 0;
+        box-shadow: var(--shadow-card);
+      }
+
+      .highlight-box-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* 錯誤卡片 */
+      .mistake-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 32px 0;
+      }
+
+      .mistake-card {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.557 0.166 45 / 0.15);
+        border-left: 4px solid var(--color-error);
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        padding: 20px 24px;
+      }
+
+      .mistake-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-error);
+        background: oklch(0.43 0.135 27 / 0.08);
+        border-radius: var(--radius-full);
+        padding: 3px 10px;
+        margin-bottom: 10px;
+      }
+
+      .mistake-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .mistake-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+      }
+
+      /* 序列卡片 */
+      .sequence-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 32px 0;
+      }
+
+      .sequence-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        box-shadow: var(--shadow-card);
+        transition: var(--transition-base);
+      }
+
+      .sequence-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .sequence-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .sequence-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px oklch(0.557 0.166 45 / 0.25);
+      }
+
+      .sequence-title {
+        font-size: 1.0625rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .sequence-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .sequence-body {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .sequence-tag {
+        display: inline-block;
+        background: oklch(0.557 0.166 45 / 0.1);
+        color: var(--color-primary-dark);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: var(--radius-full);
+        margin-bottom: 8px;
+      }
+
+      /* 時間軸步驟 */
+      .timeline {
+        background: linear-gradient(
+          135deg,
+          oklch(0.977 0.012 72) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 16px 0;
+      }
+
+      .timeline-step {
+        display: flex;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--border-default);
+        align-items: flex-start;
+      }
+
+      .timeline-step:last-child {
+        border-bottom: none;
+      }
+
+      .timeline-day {
+        flex-shrink: 0;
+        min-width: 64px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding-top: 2px;
+      }
+
+      .timeline-content {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 統計數字對比 */
+      .comparison-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .comparison-side {
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .comparison-side.bad {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.43 0.135 27 / 0.2);
+      }
+
+      .comparison-side.good {
+        background: linear-gradient(
+          135deg,
+          oklch(0.557 0.166 45 / 0.05) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+      }
+
+      .comparison-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+      }
+
+      .comparison-side.bad .comparison-label {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-label {
+        color: var(--color-primary);
+      }
+
+      .comparison-big-num {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .comparison-side.bad .comparison-big-num {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-big-num {
+        color: var(--color-primary);
+      }
+
+      .comparison-desc {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* 心理學 highlight */
+      .psychology-box {
+        background: linear-gradient(
+          135deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .psychology-box::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .psychology-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+        display: block;
+        color: var(--color-accent-light);
+      }
+
+      .psychology-box h3 {
+        color: var(--text-light);
+        font-size: 1.1875rem;
+        margin-bottom: 16px;
+      }
+
+      .psychology-box p {
+        color: oklch(1 0.015 80 / 0.8);
+        font-size: 0.9375rem;
+        margin-bottom: 12px;
+      }
+
+      .psychology-box p:last-child {
+        margin: 0;
+      }
+
+      .psychology-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: oklch(0.557 0.166 45 / 0.2);
+        border: 1px solid oklch(0.557 0.166 45 / 0.4);
+        border-radius: var(--radius-lg);
+        padding: 10px 16px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        font-size: 0.9375rem;
+      }
+
+      /* 自我診斷 */
+      .diagnosis-box {
+        background: var(--bg-section);
+        border: 2px solid var(--border-accent);
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .diagnosis-title {
+        font-size: 1.1875rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .diagnosis-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+      }
+
+      .diagnosis-item:last-of-type {
+        border-bottom: none;
+      }
+
+      .diagnosis-checkbox {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        background: var(--text-light);
+        margin-top: 3px;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox::after {
+        content: "✓";
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      .diagnosis-text {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .diagnosis-text strong {
+        color: var(--text-primary);
+      }
+
+      .diagnosis-verdict {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: oklch(0.557 0.166 45 / 0.08);
+        border-radius: var(--radius-lg);
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 結尾 CTA */
+      .article-cta {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-dark) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 40px 36px;
+        margin: 48px 0 32px;
+        text-align: center;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-cta::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(1 0.015 80 / 0.15) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .article-cta h2 {
+        color: var(--text-light);
+        font-size: clamp(1.25rem, 3vw, 1.625rem);
+        margin-bottom: 12px;
+      }
+
+      .article-cta p {
+        color: oklch(1 0.015 80 / 0.85);
+        font-size: 0.9375rem;
+        margin-bottom: 24px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--text-light);
+        color: var(--color-primary);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: var(--color-primary-dark);
+      }
+
+      /* 下一篇預告 */
+      .next-article {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px 24px;
+        transition: var(--transition-base);
+        text-decoration: none;
+      }
+
+      .next-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .next-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .next-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+      }
+
+      .next-arrow {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-section);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        margin-left: auto;
+      }
+
+      /* =============================================
+       SIDEBAR
+       ============================================= */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      }
+
+      .sidebar-widget {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .widget-title {
+        font-size: 0.8125rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      /* TOC */
+      .toc {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .toc-item {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding: 6px 10px;
+        border-radius: var(--radius-md);
+        line-height: 1.4;
+        transition: var(--transition-fast);
+        text-decoration: none;
+      }
+
+      .toc-item:hover,
+      .toc-item.active {
+        background: oklch(0.557 0.166 45 / 0.08);
+        color: var(--color-primary);
+      }
+
+      /* 系列篇章 */
+      .series-list {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .series-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 10px;
+        border-radius: var(--radius-md);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        transition: var(--transition-fast);
+        text-decoration: none;
+      }
+
+      .series-item:hover {
+        color: var(--color-primary);
+        background: oklch(0.557 0.166 45 / 0.06);
+      }
+
+      .series-item.current {
+        color: var(--color-primary);
+        font-weight: 700;
+        background: oklch(0.557 0.166 45 / 0.1);
+      }
+
+      /* CTA widget */
+      .cta-widget {
+        background: linear-gradient(135deg, oklch(0.97 0.025 75) 0%, oklch(0.94 0.04 68) 100%);
+        border: 1.5px solid oklch(0.82 0.07 62);
+      }
+
+      .cta-widget .widget-title {
+        color: oklch(0.45 0.09 52);
+        border-color: oklch(0.88 0.05 65);
+      }
+
+      .cta-widget p {
+        font-size: 0.875rem;
+        color: oklch(0.38 0.05 52);
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .btn-cta-sm {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 0.9375rem;
+        padding: 12px;
+        min-height: 44px;
+        border-radius: var(--radius-lg);
+        transition: var(--transition-fast);
+        text-decoration: none;
+      }
+
+      .btn-cta-sm:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       FOOTER
+       ============================================= */
+      .article-footer {
+        background: var(--tech-midnight);
+        padding: 48px 24px;
+        text-align: center;
+        color: oklch(1 0.015 80 / 0.5);
+        font-size: 0.875rem;
+      }
+
+      .article-footer a {
+        color: oklch(1 0.015 80 / 0.7);
+      }
+
+      /* =============================================
+       MOBILE FLOAT CTA
+       ============================================= */
+      .float-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 900;
+        width: calc(100% - 32px);
+        max-width: 420px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .float-cta.visible {
+        opacity: 1;
+      }
+
+      .float-cta a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 16px 24px;
+        border-radius: var(--radius-full);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.5);
+        width: 100%;
+        text-align: center;
+      }
+
+      /* =============================================
+       RWD — Tablet ≤ 1024px
+       ============================================= */
+      @media (max-width: 1024px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding-bottom: 140px;
+        }
+
+        .sidebar {
+          display: none;
+        }
+        .float-cta {
+          display: block;
+        }
+      }
+
+      /* =============================================
+       RWD — Mobile ≤ 768px
+       ============================================= */
+      @media (max-width: 768px) {
+        body {
+          font-size: 1rem;
+        }
+
+        .nav-series-label {
+          display: none;
+        }
+
+        .article-hero {
+          padding-top: 88px;
+          padding-bottom: 40px;
+        }
+
+        .article-key-stats {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .key-stat {
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          text-align: left;
+        }
+
+        .key-stat:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .key-stat:first-child {
+          padding-top: 0;
+        }
+
+        .key-stat-num {
+          font-size: 1.75rem;
+        }
+        .key-stat-divider {
+          display: none;
+        }
+
+        .section-title {
+          margin-top: 40px;
+        }
+
+        .comparison-box {
+          grid-template-columns: 1fr;
+        }
+
+        .psychology-box {
+          padding: 24px 20px;
+        }
+
+        .article-cta {
+          padding: 28px 20px;
+        }
+
+        .next-article {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* =============================================
+       RWD — Small Mobile ≤ 480px
+       ============================================= */
+      @media (max-width: 480px) {
+        .article-layout {
+          padding: 0 16px 140px;
+        }
+        .hero-inner {
+          padding: 0 16px;
+        }
+
+        .pull-quote {
+          padding: 18px 20px;
+        }
+        .highlight-box {
+          padding: 18px 20px;
+        }
+        .sequence-card {
+          padding: 18px;
+        }
+        .diagnosis-box {
+          padding: 20px;
+        }
+        .article-cta {
+          padding: 24px 16px;
+        }
+        .psychology-box {
+          padding: 20px 16px;
+        }
+        .timeline {
+          padding: 18px 16px;
+        }
+
+        .article-meta {
+          gap: 8px;
+          font-size: 0.8125rem;
+        }
+      }
+
+      /* =============================================
+       RATE TABLE（轉換率比較）
+       ============================================= */
+      .rate-table {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 20px 0;
+      }
+
+      .rate-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--bg-input);
+        border-radius: var(--radius-md);
+        padding: 10px 14px;
+        font-size: 0.9rem;
+      }
+
+      .rate-row.highlight {
+        background: oklch(0.557 0.166 45 / 0.08);
+        border: 1px solid var(--border-accent);
+      }
+
+      .rate-row-label {
+        color: var(--text-secondary);
+        flex: 1;
+      }
+
+      .rate-row-value {
+        font-weight: 700;
+        color: var(--color-primary);
+        white-space: nowrap;
+      }
+
+      /* 產業格子 */
+      .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .industry-item {
+        background: var(--bg-input);
+        border-radius: var(--radius-md);
+        padding: 12px 14px;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        border-left: 3px solid var(--color-primary);
+        line-height: 1.6;
+      }
+
+      .industry-item strong {
+        display: block;
+        color: var(--text-primary);
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      @media (max-width: 480px) {
+        .industry-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar"></div>
+
+    <nav class="navbar">
+      <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+      <a href="系列總覽/#article-06" class="nav-series-label">網站經營 12 篇系列</a>
+      <a href="#contact" class="nav-cta">免費診斷 →</a>
+    </nav>
+
+    <header class="article-hero">
+      <div class="hero-inner">
+        <div class="breadcrumb">
+          <a href="../系列總覽/">系列總覽</a> / 第06篇
+        </div>
+        <div class="article-category-badge">留下聯絡方式</div>
+        <h1>90% 的訪客當下不會買<br /><em>你怎麼讓他下次再回來？</em></h1>
+        <p class="article-subtitle">
+          沒留下聯絡方式的客人，等於從你眼前消失。而台灣 99%
+          的店家，正在每天安靜地浪費這些客人。
+        </p>
+        <div class="article-meta">第06篇・共12篇・閱讀約8分鐘</div>
+        <div class="article-key-stats">
+          <div class="key-stat">
+            <span class="key-stat-num">90%</span>
+            <span class="key-stat-label">訪客當下不會<br />立刻購買</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">2–4×</span>
+            <span class="key-stat-label">送禮誘因比<br />折扣效果倍數</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">3–7次</span>
+            <span class="key-stat-label">客戶平均接觸<br />次數才會成交</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="article-layout">
+      <main class="article-body">
+        <!-- S1 -->
+        <section id="s1">
+          <h2 class="section-title" id="s1">
+            那 90% 走掉的人——你以為永遠失去了，其實沒有
+          </h2>
+
+          <p>
+            你的店裡今天進來 100 個客人，90
+            個沒買就走了。你會難過嗎？多數老闆會反省、會檢討、會想下次怎麼留住更多人。
+          </p>
+
+          <p>
+            但你的網站每天進來 100 個訪客，<strong>90 個沒下單就離開</strong
+            >，多數老闆完全沒感覺。因為他們看不到那 90
+            個人。網站的訪客流失是看不見的——沒有失望的眼神、沒有空蕩的座位。他們默默來、默默走，老闆連他們存在過都不知道。
+          </p>
+
+          <div class="pull-quote">
+            <p>
+              這 90%
+              的人，可能就是你接下來十年最值錢的資產——只要你做對一件事：在他們離開之前，讓他們留下聯絡方式。
+            </p>
+          </div>
+
+          <p>
+            我們先要破除一個多數老闆的迷思：訪客沒當下下單，不代表他沒興趣。實際情況是，網站訪客的購買決策，<strong
+              >平均要經過 3–7 次接觸才會發生</strong
+            >。
+          </p>
+
+          <div class="sequence-list">
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">1</div>
+                <div>
+                  <div class="sequence-title">第一次來訪：了解階段</div>
+                  <div class="sequence-subtitle">
+                    認識你是誰、賣什麼、跟別家有什麼不同
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段的訪客幾乎不會下單。他只是在「掃描」，評估你是否值得進一步了解。這完全正常。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">2</div>
+                <div>
+                  <div class="sequence-title">第二次來訪：比較階段</div>
+                  <div class="sequence-subtitle">
+                    你跟別家的差異在哪，價格、服務、品質怎麼比
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段他已經把你列入候選名單。如果你沒有留住他，他可能從此就去看其他家了。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">3–4</div>
+                <div>
+                  <div class="sequence-title">第三、四次來訪：準備階段</div>
+                  <div class="sequence-subtitle">
+                    預算評估、問家人意見、等待合適時機
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段他幾乎已經決定要買了，只差一個觸發點。這是你最應該「接住」他的時刻。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">5+</div>
+                <div>
+                  <div class="sequence-title">第五次以後：決定階段</div>
+                  <div class="sequence-subtitle">這時才會真正下單成交</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                如果你沒有在前幾次收集到他的聯絡方式，這個人不知道從哪個時間點起，就已經不記得你了。
+              </div>
+            </div>
+          </div>
+
+          <p>
+            換句話說，<strong
+              >90%
+              當下不買的訪客，其實大多數人是「還在比較」，不是「沒興趣」</strong
+            >。你不知道他是誰、不知道怎麼聯絡他——所以即使他下個月回來想買，他可能早就忘記你，直接買了別家。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">關鍵洞察</div>
+            <p style="margin: 0">
+              「留下聯絡方式」這件事，本質上是把「失去的客人」變成「可以隨時聯絡的潛在客戶」——這是任何單次成交都比不上的長期資產。做到的店家，三年後手上有幾千個能直接溝通的潛在客，任何時候發一則訊息就有業績。
+            </p>
+          </div>
+        </section>
+
+        <!-- S2 -->
+        <section id="s2">
+          <h2 class="section-title" id="s2">
+            你正在犯的三個錯，可能不是你以為的那個
+          </h2>
+
+          <p>
+            每次我看到一個店家的網站，幾乎都能找到同樣的問題。不是沒放 LINE QR
+            Code，而是放了卻沒有人掃。原因在於這三個常見錯誤：
+          </p>
+
+          <div class="mistake-list">
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤一</div>
+              <h4>以為訪客沒興趣——其實他只是還沒準備好</h4>
+              <p>
+                這是最致命的迷思。很多人需要
+                <strong>2–8 週</strong
+                >才會完成決策（高單價服務、需要諮詢家人的決定都是這樣）。你以為的「沒興趣」，可能只是「還沒準備好」。如果你不留下聯絡方式，你等於放棄了所有需要時間決策的客戶——而這群人通常是單價最高、最不殺價、最忠誠的優質客戶。
+              </p>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤二</div>
+              <h4>不是加 LINE 會嚇跑客人，是你給的「理由」出了問題</h4>
+              <p>
+                問題不在「加
+                LINE」這個動作，問題在「<strong>為什麼要加</strong>」。看看轉換率的差距：
+              </p>
+              <div class="rate-table">
+                <div class="rate-row">
+                  <span class="rate-row-label">只寫「歡迎加 LINE」</span>
+                  <span class="rate-row-value">轉換率 &lt;2%</span>
+                </div>
+                <div class="rate-row">
+                  <span class="rate-row-label"
+                    >「加 LINE 享首次體驗 8 折優惠」</span
+                  >
+                  <span class="rate-row-value">10–15%</span>
+                </div>
+                <div class="rate-row highlight">
+                  <span class="rate-row-label"
+                    >「加 LINE 立刻領《餐廳5個踩雷指南》」</span
+                  >
+                  <span class="rate-row-value">20–30% ↑</span>
+                </div>
+              </div>
+              <p style="margin-top: 12px; margin-bottom: 0">
+                差別在「換」的概念——你不是要客人「加
+                LINE」，你是要跟客人<strong>交換</strong>：他給聯絡方式，你給立刻拿得到的好處。
+              </p>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤三</div>
+              <h4>「我沒東西給」——這句話每天讓你放走最好轉換的那群人</h4>
+              <p>
+                幾乎每個老闆第一次聽到「設計加 LINE
+                的誘因」都這樣說。但實際上，你絕對有東西可以給，只是沒想過：
+              </p>
+              <div class="industry-grid">
+                <div class="industry-item">
+                  <strong>餐飲業</strong>加 LINE 送開胃菜、飲料或優惠券
+                </div>
+                <div class="industry-item">
+                  <strong>電商</strong>首購 9 折、免運券
+                </div>
+                <div class="industry-item">
+                  <strong>服務業</strong>免費 30 分鐘諮詢、首次體驗價
+                </div>
+                <div class="industry-item">
+                  <strong>線上課程</strong>1 堂試聽課、必看重點指南
+                </div>
+                <div class="industry-item">
+                  <strong>B2B</strong>趨勢報告、預約專屬諮詢
+                </div>
+                <div class="industry-item">
+                  <strong>醫美／健身</strong>1 堂體驗課、免費首次評估
+                </div>
+              </div>
+              <p style="margin-top: 14px; margin-bottom: 0">
+                重點不在「給什麼」，重點在——<strong>給的東西必須客人現在就拿得到，而且有具體感受到價值</strong>。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- S3 -->
+        <section id="s3">
+          <h2 class="section-title" id="s3">
+            同樣花 50 元，哪種方式讓人立刻加、哪種讓人「再想想」
+          </h2>
+
+          <p>
+            這裡有一個 99%
+            的老闆都不知道的事實，而且它完全影響你設計誘因的方式：
+          </p>
+
+          <div class="psychology-box">
+            <h3>為什麼送禮比打折有效 2–4 倍？大腦的秘密</h3>
+            <p>
+              當你說「加 LINE 折 50
+              元」，客人的大腦會啟動「得失計算」模式——他會冷靜下來想：「折扣划算嗎？我真的要加嗎？」這讓他進入理性分析，結果是「讓我再想想」。
+            </p>
+            <p>
+              但當你說「加 LINE
+              送開胃菜」，客人的大腦會啟動「獎勵迴路」——他會立刻興奮，想著「這個我現在就能拿到！」這讓他進入情感反應，結果是「好，我要加！」
+            </p>
+            <p>
+              兩者花的成本可能一樣（都是 50 元），但效果相差 2–4
+              倍。這就是行為科學在銷售上的應用。
+            </p>
+            <div class="psychology-stat">
+              送禮誘因的轉換率是折扣誘因的 2–4 倍，成本相同
+            </div>
+          </div>
+
+          <div class="comparison-box">
+            <div class="comparison-side bad">
+              <div class="comparison-label">效果較差</div>
+              <div class="comparison-big-num">&lt;15%</div>
+              <div class="comparison-desc">
+                「加 LINE 折 50 元」<br />啟動理性計算，讓人猶豫
+              </div>
+            </div>
+            <div class="comparison-side good">
+              <div class="comparison-label">效果較好</div>
+              <div class="comparison-big-num">20–30%</div>
+              <div class="comparison-desc">
+                「加 LINE 送開胃菜」<br />啟動獎勵迴路，讓人立刻想要
+              </div>
+            </div>
+          </div>
+
+          <p>
+            還有另一個關鍵：誘因必須是「<strong>立即可得</strong>」的，不是「下次來才能用」。研究顯示，延遲的獎勵轉換效果會下降
+            60% 以上。客人當下掃描 QR Code、立刻在 LINE
+            上收到兌換方式——這個「即時回饋」才是讓他按下加好友的真正動力。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">設計誘因的三個原則</div>
+            <p style="margin: 0">
+              1. <strong>立即可得</strong>——加完馬上能用，不要等到下次<br />
+              2.
+              <strong>具體有形</strong
+              >——「開胃菜」比「優惠」好，因為更有畫面<br />
+              3. <strong>低門檻</strong>——不要要求填太多資料，只需要加好友就夠
+            </p>
+          </div>
+        </section>
+
+        <!-- S4 -->
+        <section id="s4">
+          <h2 class="section-title" id="s4">
+            我把帳算給你看：兩家店三個月後的差距
+          </h2>
+
+          <p>
+            讓我們用具體數字來說明，這件事的長期價值有多大。假設你的網站每天有
+            50 個訪客（中小型網站正常數字），每月
+            <strong>1,500 個訪客</strong>。
+          </p>
+
+          <div class="comparison-box">
+            <div class="comparison-side bad">
+              <div class="comparison-label">情境 A：沒有收集機制</div>
+              <div class="comparison-big-num">30–45</div>
+              <div class="comparison-desc">
+                筆訂單/月（2–3% 即時成交）<br /><br />其餘 1,455–1,470
+                個訪客，離開後再也找不到。每個月都要付廣告費找新客人。
+              </div>
+            </div>
+            <div class="comparison-side good">
+              <div class="comparison-label">情境 B：有「加 LINE 送 X」</div>
+              <div class="comparison-big-num">+33</div>
+              <div class="comparison-desc">
+                筆額外訂單（三個月後）<br /><br />15% 加 LINE = 225
+                人/月。三個月累積 675 個 LINE 好友，培育轉換 5% = 額外 33
+                筆訂單，不需再付廣告費。
+              </div>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            <p>
+              情境 A 跟 B
+              的差距，不是這三個月的訂單差距，是接下來十年的累積差距。B
+              老闆三年後手上有 8,000 個 LINE
+              好友，任何時候發一則訊息就有業績，廣告費砍半。
+            </p>
+          </div>
+
+          <p>
+            這筆帳還沒算到「名單的複利效應」：你的 LINE
+            好友名單每個月都在成長，而你接觸他們的成本幾乎是零。反觀持續打廣告的對手，每個月都要花同樣的錢找新客人，永遠在原地踏步。
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-day">第1個月</div>
+              <div class="timeline-content">
+                累積 225 個 LINE 好友，開始建立名單基礎
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第3個月</div>
+              <div class="timeline-content">
+                675 人名單，可以發第一波活動訊息，預期額外 33 筆訂單
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第1年</div>
+              <div class="timeline-content">
+                2,700 人名單，廣告費需求開始下降，老客回購率提升
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第3年</div>
+              <div class="timeline-content">
+                8,000+ 人名單，每次活動不需依賴廣告，業績自行推動
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- S5 -->
+        <section id="s5">
+          <h2 class="section-title" id="s5">
+            三個問題，你的網站現在每天漏掉幾個人
+          </h2>
+
+          <p>
+            掃過下面三個問題，在心裡誠實打勾。這是一個快速的自我診斷，讓你知道現在的問題有多嚴重：
+          </p>
+
+          <div class="diagnosis-box">
+            <div class="diagnosis-title">自我診斷清單</div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第一題：你的網站上有沒有任何一個地方在收集 LINE 或
+                  Email？</strong
+                ><br />
+                沒有 → 你正在每天漏掉 80–95% 的潛在客戶。每 1,000
+                個訪客，你只接住了 20–50 個，其他 950–980 個人永遠消失了。
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第二題：如果有，你給的「換聯絡方式的好處」具體嗎？客人看了會立刻想加嗎？</strong
+                ><br />
+                只寫「歡迎加 LINE」→ 轉換率 &lt;2%；有具體誘因且立即可得 →
+                轉換率 10–30%。差距是 10–15 倍。
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第三題：你目前的 LINE 好友 / Email 名單有幾個人？</strong
+                ><br />
+                少於 100 人 → 你的長期資產接近零。按每月 1,500
+                訪客計算，一年應該能累積至少 2,000+
+                名單，如果差距太大代表機制有問題。
+              </div>
+            </div>
+
+            <div class="diagnosis-verdict">
+              如果你三題都答「沒有／不及格」，代表你的網站此刻正在每天浪費機會——而且這個浪費是看不見的、安靜的、會持續到你做改變為止。<strong
+                >好消息是：做這件事的成本接近零。</strong
+              >
+            </div>
+          </div>
+
+          <p>
+            很多老闆看到這裡會說「好，我知道了，我回去加個 LINE QR
+            Code。」但這樣還不夠。一個沒有誘因的 QR Code，轉換率只有
+            1–2%，跟沒放沒什麼差別。
+          </p>
+
+          <p>
+            真正要做的是：<strong
+              >設計一個「誘因 + 即時回饋 + 後續培育」的完整系統</strong
+            >。光收到名單還不夠，後續要怎麼跟這群人保持關係、在對的時間送對的訊息，才是讓名單變成業績的關鍵——這就是下一篇要講的自動化行銷系統。
+          </p>
+        </section>
+
+        <!-- S6 -->
+        <section id="s6">
+          <h2 class="section-title" id="s6">
+            你今天讀完會同意，但你的網站可能就是反例
+          </h2>
+
+          <p>
+            你會同意：90%
+            當下不買的訪客，如果留下聯絡方式，有機會變成未來的客戶；沒留下，永遠失去。
+          </p>
+
+          <p>
+            但你的網站此刻可能完全沒有任何收集機制——你正在每天讓 90%
+            的訪客從你眼前消失。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">最諷刺的事實</div>
+            <p style="margin: 0">
+              做這件事的成本接近零。一個誘因設計、一個簡單的 LINE
+              加好友入口、一套自動回應——但長期累積的價值可能是你接下來十年最值錢的資產。而你的競爭對手，99%
+              都還沒做。
+            </p>
+          </div>
+
+          <p>
+            這件事不需要等「網站大改版」才做，不需要等「預算充裕」才做。今天就可以在你的網站上加一個有誘因的加
+            LINE
+            入口，明天就開始累積名單。一年後，當你的對手還在每個月燒廣告費找新客人的時候，你手上的名單已經是一台不需要廣告費就能自動出單的機器。
+          </p>
+
+          <p>
+            問題不是「要不要做」，而是「現在就做還是再等等」。每一天你沒有收集名單，就是讓
+            80–95%
+            的訪客從你眼前消失。這個損失是靜默的、累積的、而且完全可以避免。
+          </p>
+
+          <div class="pull-quote">
+            <p>
+              三年後，同行老闆還在說「廣告費越來越貴」的時候，做了名單的你，廣告費是他們的一半，業績是他們的兩倍。
+            </p>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="article-cta" id="contact">
+          <h2>想讓你的網站也做到這些？</h2>
+          <p>
+            免費診斷你的網站現況，30分鐘找出3個立即可改善的點，包含聯絡方式收集機制的設計建議。
+          </p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="cta-button">加 LINE 免費諮詢 →</a>
+          </section>
+    <!-- 上下篇導航 -->
+    <nav class="article-pagination" aria-label="文章導航">
+      <a href="article-05-conversion.html" class="pag-card prev-card">
+        <span class="pag-dir">← 上一篇</span>
+        <span class="pag-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</span>
+      </a>
+      <a href="article-07-automation.html" class="pag-card next-card">
+        <span class="pag-dir">下一篇 →</span>
+        <span class="pag-title">你不可能記得每個客人的生日，但網站可以</span>
+      </a>
+    </nav>
+
+    <!-- 你可能也有興趣 -->
+    <section class="related-articles">
+      <h3 class="related-heading">你可能也有興趣</h3>
+      <div class="related-grid">
+        <a href="article-05-conversion.html" class="related-card">
+          <span class="related-num">第 05 篇</span>
+          <span class="related-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</span>
+        </a>
+        <a href="article-07-automation.html" class="related-card">
+          <span class="related-num">第 07 篇</span>
+          <span class="related-title">你不可能記得每個客人的生日，但網站可以</span>
+        </a>
+        <a href="article-09-retention.html" class="related-card">
+          <span class="related-num">第 09 篇</span>
+          <span class="related-title">你店裡賺最多錢的，是不是那 20% 的熟客？</span>
+        </a>
+      </div>
+    </section>
+
+
+
+
+
+
+
+        
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-widget toc-widget">
+          <div class="widget-title">本文目錄</div>
+          <nav class="toc">
+            <a href="#s1" class="toc-item active">1. 那 90% 其實沒有消失</a>
+            <a href="#s2" class="toc-item">2. 你正在犯的三個錯</a>
+            <a href="#s3" class="toc-item">3. 送禮 vs 打折的心理學</a>
+            <a href="#s4" class="toc-item">4. 兩家店三個月後的差距</a>
+            <a href="#s5" class="toc-item">5. 自我診斷三個問題</a>
+            <a href="#s6" class="toc-item">6. 現在就做還是再等？</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-widget series-widget">
+          <div class="widget-title">系列文章</div>
+          <div class="series-list">
+            <a href="article-01-exposure.html" class="series-item"
+              >01 曝光問題</a
+            >
+            <a href="article-02-homepage.html" class="series-item"
+              >02 首頁設計</a
+            >
+            <a href="article-03.html" class="series-item">03 菜單設計</a>
+            <a href="article-04.html" class="series-item">04 視覺設計</a>
+            <a href="article-05-conversion.html" class="series-item"
+              >05 成交路徑</a
+            >
+            <a href="article-06-contact.html" class="series-item current"
+              >06 留下聯絡</a
+            >
+            <a href="article-07-automation.html" class="series-item"
+              >07 自動化</a
+            >
+            <a href="article-08-upsell.html" class="series-item">08 加購升級</a>
+            <a href="article-09-retention.html" class="series-item"
+              >09 回頭客</a
+            >
+            <a href="article-10-referral.html" class="series-item"
+              >10 口碑轉介</a
+            >
+            <a href="article-11-trust.html" class="series-item">11 信任建立</a>
+            <a href="article-12.html" class="series-item">12 整合策略</a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget cta-widget">
+          <div class="widget-title">免費診斷</div>
+          <p>30 分鐘找出你網站最大的流失點</p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="btn-cta-sm">加 LINE 諮詢 →</a>
+    </div>
+
+    <footer class="article-footer">
+      <p>
+        © 2025 AI 智能大腦 |
+        <a href="系列總覽/" class="btn-outline">系列總覽</a>
+      </p>
+    </footer>
+
+    <a href="../系列總覽/" class="back-to-overview">
+      <span class="bto-arrow">←</span>
+      <span class="bto-text">系列總覽</span>
+      <span class="bto-meta">12 篇導讀</span>
+    </a>
+    <style>
+      .back-to-overview {
+        position: fixed;
+        top: calc(14px + env(safe-area-inset-top));
+        left: calc(14px + env(safe-area-inset-left));
+        z-index: 9999;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        background: oklch(0.14 0.025 50 / 0.92);
+        color: var(--bg-card);
+        border: 1px solid oklch(0.76 0.12 75 / 0.45);
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+        transition: all 0.25s ease;
+        font-family: "Noto Sans TC", sans-serif;
+        line-height: 1;
+      }
+      .back-to-overview:hover {
+        background: linear-gradient(
+          135deg,
+          oklch(0.5 0.16 50) 0%,
+          oklch(0.52 0.12 72) 100%
+        );
+        border-color: oklch(0.84 0.14 85 / 0.7);
+        transform: translateX(-2px);
+        color: var(--text-light);
+        box-shadow: 0 6px 24px oklch(0.47 0.15 50 / 0.45);
+      }
+      .back-to-overview .bto-arrow {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .back-to-overview .bto-meta {
+        opacity: 0.55;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 6px;
+        border-left: 1px solid oklch(0.76 0.12 75 / 0.3);
+        margin-left: 2px;
+      }
+      .back-to-overview:hover .bto-meta {
+        opacity: 0.85;
+        border-left-color: oklch(0.84 0.14 85 / 0.5);
+      }
+      @media (max-width: 768px) {
+        .back-to-overview {
+          top: calc(72px + env(safe-area-inset-top));
+          bottom: auto;
+          left: 12px;
+          padding: 8px 12px 8px 10px;
+          font-size: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .back-to-overview .bto-meta {
+          display: none;
+        }
+      }
+    
+      /* LINE 浮動按鈕 */
+      .fab-line {
+        position: fixed;
+        bottom: 88px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        background: #06C755;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(6,199,85,0.4);
+        z-index: 9998;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-decoration: none;
+      }
+      .fab-line:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(6,199,85,0.5);
+      }
+      .fab-line svg { width: 28px; height: 28px; }
+      @media (max-width: 768px) {
+        .fab-line { bottom: 80px; right: 16px; width: 46px; height: 46px; }
+      }
+
+      /* 相關文章 */
+      .related-articles {
+        margin: 60px 0 40px;
+        padding: 40px;
+        background: var(--bg-section, oklch(0.95 0.02 78));
+        border-radius: 16px;
+      }
+      .related-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--color-primary, oklch(0.557 0.166 45));
+        display: inline-block;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .related-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid oklch(0.9 0.01 80);
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+      }
+      .related-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.12);
+      }
+      .related-num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+      }
+      .related-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+      }
+      .related-arrow {
+        font-size: 1rem;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        margin-top: auto;
+      }
+      @media (max-width: 768px) {
+        .related-articles { padding: 24px 16px; }
+        .related-grid { grid-template-columns: 1fr; }
+      }
+
+      /* 上下篇導航 */
+      .article-pagination {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 40px 0;
+      }
+      .article-pagination.no-prev { grid-template-columns: 1fr; }
+      .article-pagination.no-next { grid-template-columns: 1fr; }
+      .pag-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px 24px;
+        background: var(--bg-card, white);
+        border: 1px solid var(--border-default, oklch(0.27 0.035 25 / 0.2));
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+      }
+      .pag-card:hover {
+        border-color: var(--color-primary, oklch(0.557 0.166 45));
+        box-shadow: 0 4px 16px oklch(0.557 0.166 45 / 0.12);
+        transform: translateY(-2px);
+      }
+      .pag-card.next-card { text-align: right; }
+      .pag-dir {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .pag-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        line-height: 1.4;
+      }
+      @media (max-width: 600px) {
+        .article-pagination { grid-template-columns: 1fr; }
+        .pag-card.next-card { text-align: left; }
+      }
+
+    </style>
+
+    <script>
+      window.addEventListener("scroll", () => {
+        const scrolled =
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      });
+
+      const tocItems = document.querySelectorAll(".toc-item");
+      const sections = document.querySelectorAll(".article-body section[id]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocItems.forEach((item) => item.classList.remove("active"));
+              const active = document.querySelector(
+                `.toc-item[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      sections.forEach((s) => observer.observe(s));
+
+      const floatCta = document.querySelector(".float-cta");
+      window.addEventListener("scroll", () => {
+        floatCta.classList.toggle("visible", window.scrollY > 400);
+      });
+    </script>
+  
+    <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="fab-line" aria-label="LINE 諮詢">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="20" fill="#06C755"/>
+        <path d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z" fill="white"/>
+        <path d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z" fill="#06C755"/>
+      </svg>
+    </a>
+</body>
+</html>

@@ -1,0 +1,1879 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第 10 篇｜口碑系統 — 好客人帶來好客人 | AI 智能大腦</title>
+    <meta
+      name="description"
+      content="讓老客人介紹新客人，不是請吃小菜就好——可以系統化做。推薦客轉換率比廣告客高3-5倍，你的最強業務員就是你的老客人。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+       CSS 變數 — AI Brain 設計系統（愛馬仕暖橘）
+       ============================================================ */
+      :root {
+        --bg-light: #fcfcfc;
+        --bg-section: #f5efe6;
+        --bg-card: #fffaf5;
+        --bg-dark: #1a0f0a;
+        --bg-dark-mid: #2d1810;
+
+        --color-primary: #d2691e;
+        --color-primary-light: #e07b3a;
+        --color-primary-dark: #b85a15;
+        --color-accent: #cd853f;
+        --color-accent-light: #dda15e;
+
+        --text-primary: #1a0f0a;
+        --text-secondary: #2d1810;
+        --text-muted: #5d4037;
+        --text-light: #ffffff;
+
+        --border-subtle: rgba(62, 39, 35, 0.1);
+        --border-default: rgba(62, 39, 35, 0.2);
+        --border-accent: rgba(210, 105, 30, 0.3);
+
+        --shadow-sm: 0 1px 2px rgba(62, 39, 35, 0.05);
+        --shadow-md: 0 4px 6px rgba(62, 39, 35, 0.07);
+        --shadow-lg: 0 10px 15px rgba(62, 39, 35, 0.1);
+        --shadow-card: 0 4px 20px rgba(210, 105, 30, 0.08);
+        --glow-primary: 0 0 20px rgba(210, 105, 30, 0.4);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-base: 0.3s ease;
+
+        --font-size-xs: 0.875rem;
+        --font-size-sm: 1rem;
+        --font-size-base: 1.125rem;
+        --font-size-lg: 1.375rem;
+        --font-size-xl: 1.75rem;
+        --font-size-2xl: 2.25rem;
+        --font-size-3xl: 2.75rem;
+        --font-size-4xl: 3.5rem;
+      }
+
+      /* ============================================================
+       Reset & Base
+       ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Noto Sans TC", system-ui, sans-serif;
+        font-size: var(--font-size-base);
+        color: var(--text-primary);
+        background: var(--bg-light);
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+      a:hover {
+        color: var(--color-primary-light);
+      }
+
+      /* ============================================================
+       Layout Utilities
+       ============================================================ */
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .container--wide {
+        max-width: 1100px;
+      }
+
+      /* ============================================================
+       Navigation
+       ============================================================ */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(26, 15, 10, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(210, 105, 30, 0.2);
+      }
+
+      .nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+        height: 60px;
+      }
+
+      .nav__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-light);
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+      }
+
+      .nav__logo-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        box-shadow: var(--glow-primary);
+        flex-shrink: 0;
+      }
+
+      .nav__series {
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 400;
+      }
+
+      .nav__cta {
+        background: var(--color-primary);
+        color: white;
+        padding: 8px 18px;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+        transition: background var(--transition-base);
+        white-space: nowrap;
+      }
+
+      .nav__cta:hover {
+        background: var(--color-primary-light);
+        color: white;
+      }
+
+      /* ============================================================
+       Article Hero
+       ============================================================ */
+      .article-hero {
+        background: linear-gradient(
+          135deg,
+          #0d0705 0%,
+          #1a0f0a 50%,
+          #2d1810 100%
+        );
+        padding: 120px 24px 72px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(210, 105, 30, 0.15) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .article-hero__series-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(210, 105, 30, 0.15);
+        border: 1px solid rgba(210, 105, 30, 0.3);
+        color: var(--color-accent-light);
+        padding: 6px 16px;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-xs);
+        font-weight: 500;
+        margin-bottom: 28px;
+        position: relative;
+      }
+
+      .article-hero__series-tag::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.8);
+        }
+      }
+
+      .article-hero__number {
+        font-size: var(--font-size-xs);
+        color: var(--color-accent-light);
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .article-hero__title {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 900;
+        color: var(--text-light);
+        line-height: 1.3;
+        margin-bottom: 20px;
+      }
+
+      .article-hero__title span {
+        color: var(--color-primary-light);
+      }
+
+      .article-hero__subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 560px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+
+      .article-hero__meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .article-hero__meta-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.4);
+      }
+
+      .article-hero__meta-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* ============================================================
+       Key Stats Bar
+       ============================================================ */
+      .stats-bar {
+        background: var(--color-primary);
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .stats-bar__inner {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .stat-item {
+        padding: 28px 20px;
+        text-align: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        position: relative;
+      }
+
+      .stat-item:last-child {
+        border-right: none;
+      }
+
+      .stat-item__number {
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: white;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .stat-item__label {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.75);
+        line-height: 1.4;
+      }
+
+      /* ============================================================
+       Article Body
+       ============================================================ */
+      .article-body {
+        padding: 64px 24px 80px;
+      }
+
+      .article-body .container {
+        max-width: 760px;
+      }
+
+      .prose p {
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        line-height: 1.9;
+      }
+
+      .prose h2 {
+        font-size: clamp(1.375rem, 3vw, 1.75rem);
+        font-weight: 800;
+        color: var(--text-primary);
+        margin: 3rem 0 1.25rem;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--border-accent);
+        line-height: 1.4;
+      }
+
+      .prose h2:first-of-type {
+        margin-top: 0;
+      }
+
+      .prose .lead {
+        font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+        font-weight: 500;
+        color: var(--text-primary);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      /* Highlight Quote */
+      .quote-block {
+        background: linear-gradient(135deg, var(--bg-section), #ede3d6);
+        border-left: 4px solid var(--color-primary);
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        padding: 28px 32px;
+        margin: 2.5rem 0;
+      }
+
+      .quote-block p {
+        font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+        font-weight: 500;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      .quote-block .quote-meta {
+        margin-top: 12px;
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      /* Comparison Callout */
+      .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 2.5rem 0;
+      }
+
+      .comparison__item {
+        background: var(--bg-card);
+        border: 1px solid var(--border-default);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        text-align: center;
+      }
+
+      .comparison__item--bad {
+        border-color: rgba(180, 60, 40, 0.2);
+        background: #fff5f3;
+      }
+
+      .comparison__item--good {
+        border-color: rgba(210, 105, 30, 0.3);
+        background: var(--bg-card);
+      }
+
+      .comparison__icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .comparison__title {
+        font-weight: 700;
+        font-size: var(--font-size-sm);
+        margin-bottom: 8px;
+      }
+
+      .comparison__item--bad .comparison__title {
+        color: #b84040;
+      }
+      .comparison__item--good .comparison__title {
+        color: var(--color-primary-dark);
+      }
+
+      .comparison__desc {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* ============================================================
+       Mistake Cards (3 mistakes section)
+       ============================================================ */
+      .mistakes-section {
+        background: var(--bg-section);
+        padding: 64px 24px;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto 48px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: var(--color-primary);
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        padding: 4px 14px;
+        border-radius: var(--radius-full);
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.3;
+        margin-bottom: 14px;
+      }
+
+      .section-subtitle {
+        color: var(--text-muted);
+        font-size: var(--font-size-sm);
+      }
+
+      .mistakes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1060px;
+        margin: 0 auto;
+      }
+
+      .mistake-card {
+        background: white;
+        border-radius: var(--radius-2xl);
+        padding: 32px 28px;
+        box-shadow: var(--shadow-card);
+        border: 1px solid var(--border-subtle);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mistake-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #c0392b, #e74c3c);
+      }
+
+      .mistake-card__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(192, 57, 43, 0.08);
+        color: #c0392b;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        margin-bottom: 18px;
+      }
+
+      .mistake-card__title {
+        font-size: var(--font-size-sm);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        line-height: 1.5;
+      }
+
+      .mistake-card__body {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .mistake-card__insight {
+        margin-top: 16px;
+        padding: 14px 16px;
+        background: var(--bg-section);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-xs);
+        color: var(--color-primary-dark);
+        font-weight: 500;
+        line-height: 1.6;
+        border-left: 3px solid var(--color-primary);
+      }
+
+      /* ============================================================
+       4 Levels System Section
+       ============================================================ */
+      .levels-section {
+        padding: 80px 24px;
+        background: var(--bg-light);
+      }
+
+      .levels-list {
+        display: grid;
+        gap: 24px;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .level-card {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 24px;
+        align-items: start;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        box-shadow: var(--shadow-sm);
+        transition:
+          box-shadow var(--transition-base),
+          transform var(--transition-base);
+      }
+
+      .level-card:hover {
+        box-shadow: var(--shadow-card);
+        transform: translateY(-2px);
+      }
+
+      .level-card__number {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(210, 105, 30, 0.25);
+      }
+
+      .level-card__num-text {
+        font-size: 1.25rem;
+        font-weight: 900;
+        color: white;
+        line-height: 1;
+      }
+
+      .level-card__num-label {
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.75);
+        letter-spacing: 0.5px;
+      }
+
+      .level-card__content {
+      }
+
+      .level-card__title {
+        font-size: var(--font-size-lg);
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .level-card__tagline {
+        font-size: var(--font-size-xs);
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .level-card__body {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .level-card__example {
+        margin-top: 14px;
+        padding: 12px 16px;
+        background: rgba(210, 105, 30, 0.06);
+        border-radius: var(--radius-md);
+        font-size: var(--font-size-xs);
+        color: var(--text-secondary);
+        border-left: 3px solid var(--color-accent);
+        line-height: 1.6;
+      }
+
+      .level-card__example strong {
+        color: var(--color-primary-dark);
+      }
+
+      .level-card__badge-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 4px 10px;
+        border-radius: var(--radius-full);
+        background: rgba(210, 105, 30, 0.1);
+        color: var(--color-primary-dark);
+        border: 1px solid rgba(210, 105, 30, 0.2);
+      }
+
+      /* ============================================================
+       Insight Section (Homophily fact)
+       ============================================================ */
+      .insight-section {
+        background: linear-gradient(
+          135deg,
+          #0d0705 0%,
+          #1a0f0a 60%,
+          #2d1810 100%
+        );
+        padding: 80px 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .insight-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(210, 105, 30, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .insight-inner {
+        max-width: 760px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .insight-section .section-tag {
+        background: rgba(210, 105, 30, 0.2);
+        color: var(--color-accent-light);
+        border: 1px solid rgba(210, 105, 30, 0.3);
+      }
+
+      .insight-section .section-title {
+        color: white;
+      }
+
+      .insight-section .section-subtitle {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .comparison-table {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(210, 105, 30, 0.2);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        margin-top: 40px;
+      }
+
+      .comparison-table__header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        background: rgba(210, 105, 30, 0.15);
+        border-bottom: 1px solid rgba(210, 105, 30, 0.2);
+      }
+
+      .comparison-table__cell {
+        padding: 14px 20px;
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.9);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .comparison-table__cell:last-child {
+        border-right: none;
+      }
+
+      .comparison-table__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .comparison-table__row:last-child {
+        border-bottom: none;
+      }
+
+      .comparison-table__row .comparison-table__cell {
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .comparison-table__row .comparison-table__cell:first-child {
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+      }
+
+      .comparison-table__row .comparison-table__cell:last-child {
+        color: var(--color-accent-light);
+        font-weight: 600;
+      }
+
+      /* ============================================================
+       Timeline Scenario (6-month simulation)
+       ============================================================ */
+      .scenario-section {
+        padding: 80px 24px;
+        background: var(--bg-section);
+      }
+
+      .scenario-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        max-width: 760px;
+        margin: 40px auto 0;
+      }
+
+      .scenario-card {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 28px;
+        border: 1px solid var(--border-subtle);
+      }
+
+      .scenario-card--now .scenario-card__header {
+        color: var(--text-muted);
+      }
+
+      .scenario-card--future .scenario-card__header {
+        color: var(--color-primary-dark);
+      }
+
+      .scenario-card__header {
+        font-size: var(--font-size-xs);
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+
+      .scenario-card__title {
+        font-size: var(--font-size-sm);
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 16px;
+      }
+
+      .scenario-metric {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+
+      .scenario-metric__label {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        flex: 1;
+      }
+
+      .scenario-metric__value {
+        font-weight: 700;
+        font-size: var(--font-size-sm);
+        color: var(--text-primary);
+        white-space: nowrap;
+      }
+
+      .scenario-card--future .scenario-metric__value {
+        color: var(--color-primary-dark);
+      }
+
+      .scenario-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--color-primary);
+        padding: 8px 0;
+        align-self: center;
+      }
+
+      /* ============================================================
+       Self-Check Section
+       ============================================================ */
+      .selfcheck-section {
+        padding: 80px 24px;
+        background: var(--bg-light);
+      }
+
+      .selfcheck-wrapper {
+        max-width: 640px;
+        margin: 0 auto;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-2xl);
+        padding: 40px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .selfcheck-title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .selfcheck-subtitle {
+        font-size: var(--font-size-xs);
+        color: var(--text-muted);
+        margin-bottom: 32px;
+      }
+
+      .check-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+      }
+
+      .check-item:last-of-type {
+        border-bottom: none;
+      }
+
+      .check-box {
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        flex-shrink: 0;
+        margin-top: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all var(--transition-base);
+      }
+
+      .check-item.checked .check-box {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .check-item.checked .check-box::after {
+        content: "✓";
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .check-content {
+      }
+
+      .check-label {
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .check-consequence {
+        font-size: var(--font-size-xs);
+        color: #b84040;
+        line-height: 1.5;
+      }
+
+      .check-item.checked .check-consequence {
+        color: var(--color-primary-dark);
+      }
+
+      .check-progress {
+        margin-top: 28px;
+        padding: 20px;
+        background: var(--bg-section);
+        border-radius: var(--radius-lg);
+        text-align: center;
+        display: none;
+      }
+
+      .check-progress.visible {
+        display: block;
+      }
+
+      .check-progress__text {
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        color: var(--color-primary-dark);
+      }
+
+      /* ============================================================
+       CTA Section
+       ============================================================ */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-dark),
+          var(--color-primary),
+          var(--color-accent)
+        );
+        padding: 80px 24px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.03) 0,
+          rgba(255, 255, 255, 0.03) 1px,
+          transparent 1px,
+          transparent 20px
+        );
+      }
+
+      .cta-inner {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .cta-eyebrow {
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+      }
+
+      .cta-title {
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: white;
+        margin-bottom: 16px;
+        line-height: 1.3;
+      }
+
+      .cta-desc {
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 36px;
+        line-height: 1.7;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all var(--transition-base);
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn--white {
+        background: white;
+        color: var(--color-primary-dark);
+      }
+
+      .btn--white:hover {
+        background: var(--bg-section);
+        color: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn--outline {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .btn--outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .next-article {
+        max-width: 760px;
+        margin: 40px auto 0;
+        padding: 24px 28px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-xl);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        color: white;
+        text-decoration: none;
+        transition: background var(--transition-base);
+        position: relative;
+      }
+
+      .next-article:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+      }
+
+      .next-article__label {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 4px;
+      }
+
+      .next-article__title {
+        font-size: var(--font-size-sm);
+        font-weight: 700;
+        color: white;
+      }
+
+      .next-article__arrow {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        opacity: 0.7;
+      }
+
+      /* ============================================================
+       Footer
+       ============================================================ */
+      .footer {
+        background: var(--bg-dark);
+        padding: 48px 24px;
+        text-align: center;
+      }
+
+      .footer__logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .footer__logo-dot {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+      }
+
+      .footer__brand {
+        font-weight: 700;
+        color: white;
+      }
+
+      .footer__desc {
+        font-size: var(--font-size-xs);
+        color: rgba(255, 255, 255, 0.35);
+        max-width: 400px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ============================================================
+       Scroll Progress
+       ============================================================ */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: var(--color-primary);
+        z-index: 200;
+        width: 0%;
+        transition: width 0.1s linear;
+        box-shadow: 0 0 8px rgba(210, 105, 30, 0.6);
+      }
+
+      /* ============================================================
+       RWD — Tablet (768px)
+       ============================================================ */
+      @media (max-width: 900px) {
+        .mistakes-grid {
+          grid-template-columns: 1fr;
+          max-width: 560px;
+        }
+
+        .stats-bar__inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-item:nth-child(2) {
+          border-right: none;
+        }
+
+        .stat-item:nth-child(3),
+        .stat-item:nth-child(4) {
+          border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav__series {
+          display: none;
+        }
+
+        .level-card {
+          grid-template-columns: 60px 1fr;
+          gap: 16px;
+          padding: 24px 20px;
+        }
+
+        .level-card__number {
+          width: 52px;
+          height: 52px;
+        }
+
+        .comparison {
+          grid-template-columns: 1fr;
+        }
+
+        .scenario-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .scenario-divider {
+          transform: rotate(90deg);
+          padding: 0;
+          margin: -4px 0;
+        }
+
+        .comparison-table__header,
+        .comparison-table__row {
+          grid-template-columns: 1.2fr 1fr 1fr;
+        }
+
+        .comparison-table__cell {
+          padding: 12px 14px;
+          font-size: 0.8rem;
+        }
+
+        .selfcheck-wrapper {
+          padding: 28px 20px;
+        }
+
+        .next-article {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .next-article__arrow {
+          display: none;
+        }
+      }
+
+      /* ============================================================
+       RWD — Mobile (480px)
+       ============================================================ */
+      @media (max-width: 480px) {
+        .article-hero {
+          padding: 90px 20px 56px;
+        }
+
+        .article-hero__meta {
+          gap: 12px;
+        }
+
+        .stats-bar__inner {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat-item {
+          padding: 20px 14px;
+        }
+
+        .article-body {
+          padding: 44px 20px 60px;
+        }
+
+        .mistakes-section,
+        .levels-section,
+        .insight-section,
+        .scenario-section,
+        .selfcheck-section,
+        .cta-section {
+          padding: 56px 20px;
+        }
+
+        .mistake-card {
+          padding: 24px 20px;
+        }
+
+        .level-card {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .level-card__number {
+          width: 52px;
+          height: 52px;
+        }
+
+        .comparison-table__header,
+        .comparison-table__row {
+          grid-template-columns: 1fr;
+        }
+
+        .comparison-table__cell {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          font-size: 0.85rem;
+        }
+
+        .comparison-table__row .comparison-table__cell:first-child {
+          background: rgba(255, 255, 255, 0.04);
+          font-size: 0.75rem;
+          letter-spacing: 1px;
+          color: var(--color-accent-light);
+          font-weight: 700;
+          padding-bottom: 4px;
+        }
+
+        .btn {
+          padding: 12px 22px;
+          font-size: var(--font-size-xs);
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .quote-block {
+          padding: 20px 20px;
+          margin: 1.5rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">
+          <div class="nav__logo-dot"></div>
+          <span>AI 智能大腦</span>
+          <span class="nav__series">｜網站行銷系列</span>
+        </a>
+        <a href="index.html#contact" class="nav__cta">免費諮詢 →</a>
+      </div>
+    </nav>
+
+    <!-- Article Hero -->
+    <section class="article-hero">
+      <div class="article-hero__series-tag">
+        網站行銷 12 篇系列文章 · 第 10 篇
+      </div>
+      <div class="article-hero__number">ARTICLE 10 / 12</div>
+      <h1 class="article-hero__title">
+        好客人會帶來好客人，<br /><span>壞客人會帶來壞客人</span>
+      </h1>
+      <p class="article-hero__subtitle">
+        讓老客人介紹新客人，不是請吃小菜就好——口碑可以系統化做，而且成本接近零
+      </p>
+      <div class="article-hero__meta">
+        <span class="article-hero__meta-item">閱讀約 8 分鐘</span>
+        <div class="article-hero__meta-dot"></div>
+        <span class="article-hero__meta-item">口碑行銷</span>
+        <div class="article-hero__meta-dot"></div>
+        <span class="article-hero__meta-item">推薦系統</span>
+      </div>
+    </section>
+
+    <!-- Key Stats Bar -->
+    <div class="stats-bar">
+      <div class="stats-bar__inner container--wide">
+        <div class="stat-item">
+          <div class="stat-item__number">3–5×</div>
+          <div class="stat-item__label">推薦客成交率<br />高於廣告客</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">1/10</div>
+          <div class="stat-item__label">推薦客獲取成本<br />只有廣告客</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">40%</div>
+          <div class="stat-item__label">系統化後的<br />推薦比例上限</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-item__number">2–3×</div>
+          <div class="stat-item__label">推薦客終身<br />價值 LTV 倍數</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article Body — Opening -->
+    <section class="article-body">
+      <div class="container">
+        <div class="prose">
+          <p class="lead">
+            你去吃過超讚的牛肉麵，你會跟幾個朋友推薦？平均 5 個。<br />
+            如果店家給你一個「推薦碼」——你朋友打 8 折，你下次也打 8
+            折，你會推薦幾個？<br /><strong>平均 12 個。</strong>
+          </p>
+
+          <p>差別在哪？差別在於<strong>系統</strong>。</p>
+
+          <div class="quote-block">
+            <p>
+              「自然口碑」會發生在「真的非常驚艷」的情況下，比例約 5–10%
+              的客人。「系統化口碑」可以把這個比例提升到
+              30–50%，而且帶來的客人品質遠高於廣告帶來的客人。
+            </p>
+          </div>
+
+          <p>
+            這篇文章要講的，是台灣中小企業最大的隱形資產——你的客人就是你的最強業務員，只是
+            99% 的老闆從來沒系統化經營。
+          </p>
+
+          <h2>為什麼「客人推薦」比「廣告」強 10 倍</h2>
+
+          <p>
+            行銷學有一個共識：推薦來的客人，品質遠高於廣告來的客人。下面這些數字，你可能沒有完整看過：
+          </p>
+
+          <div class="comparison">
+            <div class="comparison__item comparison__item--bad">
+              <div class="comparison__icon">📢</div>
+              <div class="comparison__title">廣告客</div>
+              <div class="comparison__desc">
+                看到廣告→點擊→轉換率低<br />獲取成本高、忠誠度低<br />帶來的客群品質參差不齊
+              </div>
+            </div>
+            <div class="comparison__item comparison__item--good">
+              <div class="comparison__icon">🤝</div>
+              <div class="comparison__title">推薦客</div>
+              <div class="comparison__desc">
+                朋友介紹→天然信任→成交率高<br />獲取成本接近零、忠誠度高<br />客群品質與介紹人相近
+              </div>
+            </div>
+          </div>
+
+          <p>
+            也就是說，一個推薦客的價值，可能是 10 個廣告客的價值。但 99%
+            的中小企業把預算花在廣告，完全沒投資推薦系統——這是最反直覺、但最普遍的錯誤。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Mistakes Section -->
+    <section class="mistakes-section">
+      <div class="section-header">
+        <span class="section-tag">三個常見錯誤</span>
+        <h2 class="section-title">多數老闆在「口碑」這件事做錯的三件事</h2>
+        <p class="section-subtitle">
+          在設計推薦系統之前，先看看你現在是否正在犯這些錯
+        </p>
+      </div>
+      <div class="mistakes-grid container--wide">
+        <div class="mistake-card">
+          <div class="mistake-card__badge">❌ 錯誤一</div>
+          <div class="mistake-card__title">「東西好客人就會推薦」</div>
+          <div class="mistake-card__body">
+            這是最致命的迷思。實際上，只有 5–10%
+            的客人會「主動」推薦——即使他們真的覺得你超棒。
+            <br /><br />
+            原因很簡單：「推薦」對客人有心理成本。「推薦了如果朋友覺得不好怎麼辦？」「主動推薦看起來像業配？」這些障礙讓推薦門檻很高。
+          </div>
+          <div class="mistake-card__insight">
+            💡 給一個「推薦的理由」，可以把推薦比例從 10% 跳到 40%——4
+            倍的差距，而且你付出的成本只是一個折扣碼。
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-card__badge">❌ 錯誤二</div>
+          <div class="mistake-card__title">推薦活動只在實體店做</div>
+          <div class="mistake-card__body">
+            很多老闆有做推薦活動，但只在「實體店面」執行——印了傳單、做了海報，放在櫃台。
+            <br /><br />
+            問題是：客人只能跟「現在身邊的朋友」推薦；沒有追蹤，不知道誰推薦了誰；客人離開店後就忘記推薦這件事。
+          </div>
+          <div class="mistake-card__insight">
+            💡 正確做法：推薦系統要在網路上運作——客人有專屬推薦碼，可以分享到
+            LINE、FB，系統自動追蹤。成本一樣，規模差 10 倍。
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-card__badge">❌ 錯誤三</div>
+          <div class="mistake-card__title">給的好處太複雜</div>
+          <div class="mistake-card__body">
+            有些老闆設計推薦活動很有誠意，但條件太複雜：「消費滿 1,500 才能折抵
+            200，需先成為會員，限新會員，有效期三個月...」
+            <br /><br />
+            讀完這段話，客人已經放棄推薦了。
+          </div>
+          <div class="mistake-card__insight">
+            💡 正確設計：3 句話內讓客人懂、3
+            步驟內讓他完成。例：「分享這個連結，朋友消費你下次打 8 折，他這次打
+            8 折。就這樣。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Levels System -->
+    <section class="levels-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">系統化口碑</span>
+          <h2 class="section-title">推薦系統的 4 個層級</h2>
+          <p class="section-subtitle">
+            不是「有就好」，是「設計得對」。從最簡單到最進階，按你的業務規模選擇
+          </p>
+        </div>
+
+        <div class="levels-list">
+          <div class="level-card">
+            <div class="level-card__number">
+              <span class="level-card__num-text">1</span>
+              <span class="level-card__num-label">基礎</span>
+            </div>
+            <div class="level-card__content">
+              <div class="level-card__title">基礎推薦碼</div>
+              <div class="level-card__tagline">
+                適合所有業種 · 最快 1 天可以上線
+              </div>
+              <div class="level-card__body">
+                每個客人有專屬推薦碼，推薦朋友後雙方都得好處。設計重點：好處要雙向（推薦人
+                +
+                被推薦人都拿到）、流程要簡單（一鍵分享）、追蹤要明確（系統知道誰推薦了誰）。
+              </div>
+              <div class="level-card__example">
+                <strong>範例：</strong>「分享這個連結，朋友打 8 折，你下次也打 8
+                折。」
+              </div>
+              <div class="level-card__badge-group">
+                <span class="badge">雙向獎勵</span>
+                <span class="badge">一鍵分享</span>
+                <span class="badge">自動追蹤</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="level-card">
+            <div class="level-card__number">
+              <span class="level-card__num-text">2</span>
+              <span class="level-card__num-label">揪團</span>
+            </div>
+            <div class="level-card__content">
+              <div class="level-card__title">揪團優惠</div>
+              <div class="level-card__tagline">
+                餐廳、課程、體驗型服務最適合
+              </div>
+              <div class="level-card__body">
+                不是「推薦一個朋友」，是「揪團一起來」——3 人打 9 折、5 人打 8
+                折、10 人打 7
+                折。它把「推薦」從「個別動作」變成「集體行為」——客人會主動拉群組、號召朋友，因為人多越划算。
+              </div>
+              <div class="level-card__example">
+                <strong>威力：</strong
+                >客人變成你的招募者，主動解決「怎麼拉人」這個問題。
+              </div>
+              <div class="level-card__badge-group">
+                <span class="badge">群組效應</span>
+                <span class="badge">自主推廣</span>
+                <span class="badge">複利增長</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="level-card">
+            <div class="level-card__number">
+              <span class="level-card__num-text">3</span>
+              <span class="level-card__num-label">轉介</span>
+            </div>
+            <div class="level-card__content">
+              <div class="level-card__title">轉介獎金</div>
+              <div class="level-card__tagline">
+                高客單價服務（NT$10,000 以上）首選
+              </div>
+              <div class="level-card__body">
+                對於高客單價的服務，推薦獎勵從「折扣」升級到「現金回饋」。當金額足夠大，客人會「主動」幫你找客戶——你等於擁有一群「兼職業務員」，而成本只是業績的
+                10%。
+              </div>
+              <div class="level-card__example">
+                <strong>範例：</strong>「推薦朋友報名 NT$30,000 課程，你獲得
+                NT$3,000 現金回饋。」
+              </div>
+              <div class="level-card__badge-group">
+                <span class="badge">現金回饋</span>
+                <span class="badge">業績 10%</span>
+                <span class="badge">兼職業務員</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="level-card">
+            <div class="level-card__number">
+              <span class="level-card__num-text">4</span>
+              <span class="level-card__num-label">VIP</span>
+            </div>
+            <div class="level-card__content">
+              <div class="level-card__title">推薦人專屬 VIP 待遇</div>
+              <div class="level-card__tagline">建立長期品牌大使 · 進階做法</div>
+              <div class="level-card__body">
+                對推薦最多人的客人，給予 VIP
+                級特殊待遇——專屬優惠、提前體驗新品、私訊老闆直接聯繫。讓「會推薦的客人」感受到「被特別對待」，從而推薦更多。
+              </div>
+              <div class="level-card__example">
+                <strong>正向循環：</strong>推薦多 → 待遇好 → 更願意推薦 →
+                待遇更好。把「客人」升級成「合作夥伴」。
+              </div>
+              <div class="level-card__badge-group">
+                <span class="badge">品牌大使</span>
+                <span class="badge">正向循環</span>
+                <span class="badge">合作夥伴</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Insight: Homophily -->
+    <section class="insight-section">
+      <div class="insight-inner container">
+        <div class="section-header" style="text-align: left; max-width: 100%">
+          <span class="section-tag">你可能不知道的事實</span>
+          <h2 class="section-title" style="margin-bottom: 12px">
+            好客人帶來好客人，壞客人帶來壞客人
+          </h2>
+          <p class="section-subtitle">
+            社會學叫這個現象「同質性社交網絡」（Homophily）——人的朋友圈 80%
+            跟自己性格、收入、價值觀相近。這讓推薦系統變成「客群自動優化系統」。
+          </p>
+        </div>
+
+        <div class="comparison-table">
+          <div class="comparison-table__header">
+            <div class="comparison-table__cell">客人類型</div>
+            <div class="comparison-table__cell">廣告客</div>
+            <div class="comparison-table__cell">推薦客</div>
+          </div>
+          <div class="comparison-table__row">
+            <div class="comparison-table__cell">成交率</div>
+            <div class="comparison-table__cell">基準值</div>
+            <div class="comparison-table__cell">高 3–5 倍</div>
+          </div>
+          <div class="comparison-table__row">
+            <div class="comparison-table__cell">平均消費</div>
+            <div class="comparison-table__cell">基準值</div>
+            <div class="comparison-table__cell">高 25–30%</div>
+          </div>
+          <div class="comparison-table__row">
+            <div class="comparison-table__cell">回頭率</div>
+            <div class="comparison-table__cell">基準值</div>
+            <div class="comparison-table__cell">高 4 倍</div>
+          </div>
+          <div class="comparison-table__row">
+            <div class="comparison-table__cell">獲取成本</div>
+            <div class="comparison-table__cell">基準值</div>
+            <div class="comparison-table__cell">1/5 到 1/10</div>
+          </div>
+          <div class="comparison-table__row">
+            <div class="comparison-table__cell">客群品質</div>
+            <div class="comparison-table__cell">良莠不齊</div>
+            <div class="comparison-table__cell">自動過濾優化</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scenario Section -->
+    <section class="scenario-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">思想實驗</span>
+          <h2 class="section-title">
+            推薦系統 6 個月後，你的客戶結構會長什麼樣
+          </h2>
+          <p class="section-subtitle">
+            假設一家店，目前每月 100 個新客全部來自廣告
+          </p>
+        </div>
+
+        <div class="scenario-cards">
+          <div class="scenario-card scenario-card--now">
+            <div class="scenario-card__header">▌ 現在（全靠廣告）</div>
+            <div class="scenario-card__title">每月 100 個新客</div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">一次性消費即走</span>
+              <span class="scenario-metric__value">30%</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">偶爾回來</span>
+              <span class="scenario-metric__value">50%</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">成為熟客</span>
+              <span class="scenario-metric__value">20%</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">廣告費依賴</span>
+              <span class="scenario-metric__value">100%</span>
+            </div>
+          </div>
+
+          <div class="scenario-divider">→</div>
+
+          <div class="scenario-card scenario-card--future">
+            <div class="scenario-card__header">▌ 6 個月後（加入推薦系統）</div>
+            <div class="scenario-card__title">每月 100 個新客</div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">來自推薦</span>
+              <span class="scenario-metric__value">40 人</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">推薦客成熟客率</span>
+              <span class="scenario-metric__value">50%</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">廣告費可以砍</span>
+              <span class="scenario-metric__value">30–50%</span>
+            </div>
+            <div class="scenario-metric">
+              <span class="scenario-metric__label">客戶平均素質</span>
+              <span class="scenario-metric__value">提升一個檔次</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Self-Check Section -->
+    <section class="selfcheck-section">
+      <div class="selfcheck-wrapper">
+        <h2 class="selfcheck-title">你正在浪費你的「最強業務員」嗎？</h2>
+        <p class="selfcheck-subtitle">點擊下方問題，誠實評估你的現況</p>
+
+        <div class="check-item" onclick="toggleCheck(this, 0)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-label">你目前有任何方式鼓勵客人推薦嗎？</div>
+            <div class="check-consequence" id="consequence-0">
+              沒有 → 你正在浪費 80% 客人的推薦潛力
+            </div>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 1)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-label">
+              你有辦法知道「這個客人是誰介紹來的」嗎？
+            </div>
+            <div class="check-consequence" id="consequence-1">
+              沒有 → 即使有人在幫你介紹，你也不知道，沒辦法感謝、更無法持續鼓勵
+            </div>
+          </div>
+        </div>
+
+        <div class="check-item" onclick="toggleCheck(this, 2)">
+          <div class="check-box"></div>
+          <div class="check-content">
+            <div class="check-label">你給推薦人的好處，夠讓他主動開口嗎？</div>
+            <div class="check-consequence" id="consequence-2">
+              沒有設計 → 推薦不會自動發生，因為心理成本沒被抵消
+            </div>
+          </div>
+        </div>
+
+        <div class="check-progress" id="checkProgress">
+          <div class="check-progress__text" id="progressText"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-inner">
+        <p class="cta-eyebrow">設計一次，跑一輩子</p>
+        <h2 class="cta-title">做推薦系統的成本接近零<br />你只差一個開始</h2>
+        <p class="cta-desc">
+          一個推薦碼系統、一個雙向獎勵機制、一個分享連結。你的客人就是你最強的業務員——而你完全沒有在用他們。
+        </p>
+        <div class="cta-buttons">
+          <a href="index.html#contact" class="btn btn--white"
+            >免費諮詢，看適合哪個層級 →</a
+          >
+          <a href="index.html" class="btn btn--outline">回主頁</a>
+        </div>
+
+        <a
+          href="#"
+          class="next-article"
+          style="pointer-events: none; opacity: 0.7"
+        >
+          <div>
+            <div class="next-article__label">下一篇 · 第 11 篇</div>
+            <div class="next-article__title">
+              信任與證據 — 客人在網路上不認識你，你要替他找理由相信你
+            </div>
+          </div>
+          <div class="next-article__arrow">→</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__logo">
+        <div class="footer__logo-dot"></div>
+        <span class="footer__brand">AI 智能大腦</span>
+      </div>
+      <p class="footer__desc">企業級 AI 導入專家 · 網站行銷系列文章</p>
+    </footer>
+
+    <script>
+      // Scroll Progress
+      const progressBar = document.getElementById("scrollProgress");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const scrollTop = document.documentElement.scrollTop;
+          const docHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const progress = (scrollTop / docHeight) * 100;
+          progressBar.style.width = progress + "%";
+        },
+        { passive: true },
+      );
+
+      // Interactive Checklist
+      const checks = [false, false, false];
+      const messages = [
+        [
+          "單向廣告依賴，你的客人沒有任何理由幫你帶人",
+          "✅ 好！你有基礎推薦機制",
+        ],
+        [
+          "即使有人在推薦，你也無法感謝或強化這個行為",
+          "✅ 好！你有追蹤推薦來源",
+        ],
+        [
+          "好處不夠大，心理成本沒有被抵消，推薦就不會發生",
+          "✅ 好！你的推薦誘因夠強",
+        ],
+      ];
+
+      function toggleCheck(el, index) {
+        el.classList.toggle("checked");
+        checks[index] = el.classList.contains("checked");
+        const consequence = document.getElementById("consequence-" + index);
+        consequence.textContent = checks[index]
+          ? messages[index][1]
+          : messages[index][0];
+
+        const checked = checks.filter(Boolean).length;
+        const progress = document.getElementById("checkProgress");
+        const progressText = document.getElementById("progressText");
+
+        if (checked === 0) {
+          progress.classList.remove("visible");
+        } else {
+          progress.classList.add("visible");
+          if (checked === 3) {
+            progressText.textContent =
+              "🎉 三項都有！你已經在正確的路上——可以考慮升級到更進階的推薦系統層級";
+          } else if (checked === 2) {
+            progressText.textContent = `✅ ${checked}/3 項具備。還有 ${3 - checked} 項可以補強，推薦系統效果就會完整`;
+          } else {
+            progressText.textContent = `還有 ${3 - checked} 個環節沒有——這些正是你今天的行動項目`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

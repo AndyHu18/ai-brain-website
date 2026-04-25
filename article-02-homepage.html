@@ -1,0 +1,2641 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>訪客打開你的網站，3 秒鐘決定走還是留｜網站經營 12 篇系列</title>
+    <meta
+      name="description"
+      content="首頁的前 3 秒決定 80% 的訪客去留——清楚 > 美感。你的網站可能此刻就是「美但無效」。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* =============================================
+       DESIGN TOKENS — ai-brain Hermès 配色系統
+       ============================================= */
+      :root {
+        --bg-light: oklch(0.99 0.003 80);
+        --bg-section: oklch(0.95 0.02 78);
+        --bg-card: oklch(0.98 0.012 78);
+        --bg-input: oklch(0.97 0.012 78);
+
+        --tech-titanium: oklch(0.18 0.03 50);
+        --tech-midnight: oklch(0.13 0.025 50);
+
+        --color-primary: oklch(0.557 0.166 45);
+        --color-primary-light: oklch(0.6 0.17 46);
+        --color-primary-dark: oklch(0.5 0.15 43);
+        --color-accent-light: oklch(0.72 0.12 62);
+        --color-error: oklch(0.43 0.135 27);
+        --bg-warm-blush: oklch(0.98 0.01 72);
+
+        --text-primary: oklch(0.12 0.02 50);
+        --text-secondary: oklch(0.18 0.025 50);
+        --text-muted: oklch(0.38 0.04 40);
+        --text-light: oklch(1 0.015 80);
+
+        --border-subtle: oklch(0.27 0.035 25 / 0.1);
+        --border-default: oklch(0.27 0.035 25 / 0.2);
+        --border-accent: oklch(0.557 0.166 45 / 0.3);
+
+        --shadow-sm: 0 1px 2px oklch(0.27 0.035 25 / 0.05);
+        --shadow-md: 0 4px 6px oklch(0.27 0.035 25 / 0.07);
+        --shadow-lg: 0 10px 15px oklch(0.27 0.035 25 / 0.1);
+        --shadow-xl: 0 20px 25px oklch(0.27 0.035 25 / 0.15);
+        --shadow-card: 0 4px 20px oklch(0.557 0.166 45 / 0.08);
+
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 12px;
+        --radius-xl: 16px;
+        --radius-2xl: 24px;
+        --radius-full: 9999px;
+
+        --transition-fast: 0.15s ease;
+        --transition-base: 0.3s ease;
+
+        --container-max: 1200px;
+      }
+
+      /* =============================================
+       RESET & BASE
+       ============================================= */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family:
+          "Noto Sans TC",
+          -apple-system,
+          sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        color: var(--text-primary);
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      p {
+        margin-bottom: 1.25rem;
+      }
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+        transition: var(--transition-fast);
+      }
+      a:hover {
+        color: var(--color-primary-light);
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* =============================================
+       READING PROGRESS BAR
+       ============================================= */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          var(--color-accent-light)
+        );
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+
+      /* =============================================
+       NAVBAR
+       ============================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(64px + env(safe-area-inset-top));
+        padding-top: env(safe-area-inset-top);
+        background: oklch(0.99 0.003 80 / 0.97);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .nav-logo {
+        font-weight: 900;
+        font-size: 1rem;
+        color: var(--text-primary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .nav-logo span {
+        color: var(--color-primary);
+      }
+
+      .nav-series-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        background: var(--bg-section);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-full);
+        padding: 4px 12px;
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .nav-series-label:hover {
+        color: var(--color-primary);
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light) !important;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 11px 18px;
+        min-height: 44px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--color-primary-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       ARTICLE HERO
+       ============================================= */
+      .article-hero {
+        padding-top: 100px;
+        padding-bottom: 64px;
+        background: linear-gradient(
+          160deg,
+          oklch(0.972 0.018 78) 0%,
+          var(--bg-light) 60%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-hero::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: 32px;
+        align-items: end;
+      }
+
+      .article-breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb-sep {
+        opacity: 0.4;
+      }
+
+      .article-category-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: var(--radius-full);
+        margin-bottom: 20px;
+        letter-spacing: 0.06em;
+      }
+
+      .article-num {
+        display: inline-block;
+        background: oklch(1 0.015 80 / 0.25);
+        border-radius: var(--radius-full);
+        padding: 1px 8px;
+        font-size: 0.7rem;
+      }
+
+      .article-hero h1 {
+        font-size: clamp(1.75rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1.25;
+        margin-bottom: 16px;
+        letter-spacing: -0.01em;
+      }
+
+      .article-hero h1 em {
+        font-style: normal;
+        color: var(--color-primary);
+      }
+
+      .article-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 680px;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding-top: 24px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .meta-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        opacity: 0.5;
+      }
+
+      .article-key-stats {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr 1px 1fr;
+        gap: 16px;
+        margin-top: 40px;
+        padding: 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+      }
+
+      .key-stat {
+        text-align: center;
+      }
+
+      .key-stat-num {
+        display: block;
+        font-size: clamp(1.5rem, 4vw, 2.25rem);
+        font-weight: 900;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .key-stat-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+
+      .key-stat-divider {
+        width: 1px;
+        background: var(--border-default);
+        align-self: stretch;
+      }
+
+      /* =============================================
+       LAYOUT — 主內容 + 側欄
+       ============================================= */
+      .article-layout {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 0 24px 80px;
+        display: grid;
+        grid-template-columns: 1fr 280px;
+        gap: 56px;
+        align-items: start;
+      }
+
+      /* =============================================
+       ARTICLE BODY
+       ============================================= */
+      .article-body {
+        min-width: 0;
+      }
+
+      /* Section 標題 */
+      .section-title {
+        font-size: clamp(1.25rem, 3vw, 1.75rem);
+        font-weight: 900;
+        margin: 56px 0 24px;
+        color: var(--text-primary);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .section-title::before {
+        content: "";
+        flex-shrink: 0;
+        display: block;
+        width: 4px;
+        height: 1.4em;
+        background: var(--color-primary);
+        border-radius: var(--radius-full);
+        margin-top: 0.1em;
+      }
+
+      .section-intro {
+        font-size: 1.0625rem;
+        color: var(--text-secondary);
+        margin-bottom: 32px;
+      }
+
+      /* Pull quote */
+      .pull-quote {
+        border-left: 4px solid var(--color-primary);
+        background: linear-gradient(
+          135deg,
+          var(--bg-section) 0%,
+          var(--bg-card) 100%
+        );
+        border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+        padding: 24px 28px;
+        margin: 32px 0;
+        position: relative;
+      }
+
+      .pull-quote::before {
+        content: '"';
+        position: absolute;
+        top: -12px;
+        left: 16px;
+        font-size: 4rem;
+        color: var(--color-primary);
+        opacity: 0.2;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+
+      .pull-quote p {
+        font-size: clamp(1rem, 2.5vw, 1.1875rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .pull-quote cite {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-style: normal;
+      }
+
+      /* Highlight box */
+      .highlight-box {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 32px 0;
+        box-shadow: var(--shadow-card);
+      }
+
+      .highlight-box-title {
+        font-size: 1rem;
+        font-weight: 900;
+        color: var(--color-primary);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* 錯誤卡片 */
+      .mistake-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 32px 0;
+      }
+
+      .mistake-card {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.557 0.166 45 / 0.15);
+        border-left: 4px solid var(--color-error);
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        padding: 20px 24px;
+      }
+
+      .mistake-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-error);
+        background: oklch(0.43 0.135 27 / 0.08);
+        border-radius: var(--radius-full);
+        padding: 3px 10px;
+        margin-bottom: 10px;
+      }
+
+      .mistake-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .mistake-card p {
+        margin: 0;
+        font-size: 0.9375rem;
+      }
+
+      /* 序列卡片 */
+      .sequence-list {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin: 32px 0;
+      }
+
+      .sequence-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px;
+        box-shadow: var(--shadow-card);
+        transition: var(--transition-base);
+      }
+
+      .sequence-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .sequence-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .sequence-num {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 8px oklch(0.557 0.166 45 / 0.25);
+      }
+
+      .sequence-title {
+        font-size: 1.0625rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .sequence-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-weight: 400;
+      }
+
+      .sequence-body {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.7;
+      }
+
+      .sequence-tag {
+        display: inline-block;
+        background: oklch(0.557 0.166 45 / 0.1);
+        color: var(--color-primary-dark);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 2px 10px;
+        border-radius: var(--radius-full);
+        margin-bottom: 8px;
+      }
+
+      /* 時間軸步驟 */
+      .timeline {
+        background: linear-gradient(
+          135deg,
+          oklch(0.977 0.012 72) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 24px 28px;
+        margin: 16px 0;
+      }
+
+      .timeline-step {
+        display: flex;
+        gap: 16px;
+        padding: 10px 0;
+        border-bottom: 1px dashed var(--border-default);
+        align-items: flex-start;
+      }
+
+      .timeline-step:last-child {
+        border-bottom: none;
+      }
+
+      .timeline-day {
+        flex-shrink: 0;
+        min-width: 64px;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        padding-top: 2px;
+      }
+
+      .timeline-content {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 統計數字對比 */
+      .comparison-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 32px 0;
+      }
+
+      .comparison-side {
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        text-align: center;
+      }
+
+      .comparison-side.bad {
+        background: var(--bg-warm-blush);
+        border: 1px solid oklch(0.43 0.135 27 / 0.2);
+      }
+
+      .comparison-side.good {
+        background: linear-gradient(
+          135deg,
+          oklch(0.557 0.166 45 / 0.05) 0%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border-accent);
+      }
+
+      .comparison-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        margin-bottom: 12px;
+      }
+
+      .comparison-side.bad .comparison-label {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-label {
+        color: var(--color-primary);
+      }
+
+      .comparison-big-num {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .comparison-side.bad .comparison-big-num {
+        color: var(--color-error);
+      }
+      .comparison-side.good .comparison-big-num {
+        color: var(--color-primary);
+      }
+
+      .comparison-desc {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* 心理學 highlight */
+      .psychology-box {
+        background: linear-gradient(
+          135deg,
+          var(--tech-midnight) 0%,
+          var(--tech-titanium) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .psychology-box::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(0.557 0.166 45 / 0.3) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .psychology-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 16px;
+        display: block;
+        color: var(--color-accent-light);
+      }
+
+      .psychology-box h3 {
+        color: var(--text-light);
+        font-size: 1.1875rem;
+        margin-bottom: 16px;
+      }
+
+      .psychology-box p {
+        color: oklch(1 0.015 80 / 0.8);
+        font-size: 0.9375rem;
+        margin-bottom: 12px;
+      }
+
+      .psychology-box p:last-child {
+        margin: 0;
+      }
+
+      .psychology-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: oklch(0.557 0.166 45 / 0.2);
+        border: 1px solid oklch(0.557 0.166 45 / 0.4);
+        border-radius: var(--radius-lg);
+        padding: 10px 16px;
+        margin-top: 16px;
+        font-weight: 700;
+        color: var(--color-accent-light);
+        font-size: 0.9375rem;
+      }
+
+      /* 自我診斷 */
+      .diagnosis-box {
+        background: var(--bg-section);
+        border: 2px solid var(--border-accent);
+        border-radius: var(--radius-2xl);
+        padding: 32px;
+        margin: 40px 0;
+      }
+
+      .diagnosis-title {
+        font-size: 1.1875rem;
+        font-weight: 900;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .diagnosis-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+      }
+
+      .diagnosis-item:last-of-type {
+        border-bottom: none;
+      }
+
+      .diagnosis-checkbox {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border: 2px solid var(--border-default);
+        border-radius: var(--radius-sm);
+        background: var(--text-light);
+        margin-top: 3px;
+        transition: var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox {
+        background: var(--color-primary);
+        border-color: var(--color-primary);
+      }
+
+      .diagnosis-item.checked .diagnosis-checkbox::after {
+        content: "✓";
+        color: var(--text-light);
+        font-size: 0.75rem;
+        font-weight: 900;
+      }
+
+      .diagnosis-text {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .diagnosis-text strong {
+        color: var(--text-primary);
+      }
+
+      .diagnosis-verdict {
+        margin-top: 20px;
+        padding: 16px 20px;
+        background: oklch(0.557 0.166 45 / 0.08);
+        border-radius: var(--radius-lg);
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+      }
+
+      /* 結尾 CTA */
+      .article-cta {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary) 0%,
+          var(--color-primary-dark) 100%
+        );
+        border-radius: var(--radius-2xl);
+        padding: 40px 36px;
+        margin: 48px 0 32px;
+        text-align: center;
+        color: var(--text-light);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-cta::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          oklch(1 0.015 80 / 0.15) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .cta-eyebrow {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: oklch(1 0.015 80 / 0.7);
+        margin-bottom: 12px;
+      }
+
+      .article-cta h3 {
+        color: var(--text-light);
+        font-size: clamp(1.25rem, 3vw, 1.625rem);
+        margin-bottom: 12px;
+      }
+
+      .article-cta p {
+        color: oklch(1 0.015 80 / 0.85);
+        font-size: 0.9375rem;
+        margin-bottom: 24px;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-btn-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--text-light);
+        color: var(--color-primary);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        transition: var(--transition-fast);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-white:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        color: var(--color-primary-dark);
+      }
+
+      .btn-outline-white {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        color: oklch(1 0.015 80 / 0.9);
+        font-weight: 700;
+        font-size: 0.9375rem;
+        padding: 12px 24px;
+        border-radius: var(--radius-full);
+        border: 1.5px solid oklch(1 0.015 80 / 0.4);
+        transition: var(--transition-fast);
+      }
+
+      .btn-outline-white:hover {
+        background: oklch(1 0.015 80 / 0.1);
+        color: var(--text-light);
+      }
+
+      /* 下一篇預告 */
+      .next-article {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px 24px;
+        transition: var(--transition-base);
+      }
+
+      .next-article:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .next-label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+        margin-bottom: 4px;
+      }
+
+      .next-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.4;
+      }
+
+      .next-arrow {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        background: var(--bg-section);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-primary);
+        font-size: 1.25rem;
+        margin-left: auto;
+      }
+
+      /* =============================================
+       SIDEBAR
+       ============================================= */
+      .sidebar {
+        position: sticky;
+        top: 80px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+
+      .sidebar-widget {
+        background: var(--bg-card);
+        border: 1px solid var(--border-accent);
+        border-radius: var(--radius-xl);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .widget-title {
+        font-size: 0.8125rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      /* TOC */
+      .toc-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .toc-item a {
+        display: block;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding: 6px 10px;
+        border-radius: var(--radius-md);
+        line-height: 1.4;
+        transition: var(--transition-fast);
+      }
+
+      .toc-item a:hover,
+      .toc-item.active a {
+        background: oklch(0.557 0.166 45 / 0.08);
+        color: var(--color-primary);
+      }
+
+      /* 系列篇章 */
+      .series-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .series-item a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 10px;
+        border-radius: var(--radius-md);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        transition: var(--transition-fast);
+      }
+
+      .series-item a:hover {
+        color: var(--color-primary);
+        background: oklch(0.557 0.166 45 / 0.06);
+      }
+
+      .series-item.current a {
+        color: var(--color-primary);
+        font-weight: 700;
+        background: oklch(0.557 0.166 45 / 0.1);
+      }
+
+      .series-num {
+        flex-shrink: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 900;
+      }
+
+      .series-item .series-num {
+        background: var(--bg-section);
+        color: var(--text-muted);
+      }
+      .series-item.current .series-num {
+        background: var(--color-primary);
+        color: var(--text-light);
+      }
+
+      /* CTA widget */
+      .cta-widget {
+        background: linear-gradient(
+          135deg,
+          oklch(0.97 0.025 75) 0%,
+          oklch(0.94 0.04 68) 100%
+        );
+        border: 1.5px solid oklch(0.82 0.07 62);
+      }
+
+      .cta-widget .widget-title {
+        color: oklch(0.45 0.09 52);
+        border-color: oklch(0.88 0.05 65);
+      }
+
+      .cta-widget p {
+        font-size: 0.875rem;
+        color: oklch(0.38 0.05 52);
+        margin-bottom: 16px;
+        line-height: 1.6;
+      }
+
+      .btn-cta-sm {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 0.9375rem;
+        padding: 12px;
+        min-height: 44px;
+        border-radius: var(--radius-lg);
+        transition: var(--transition-fast);
+      }
+
+      .btn-cta-sm:hover {
+        background: var(--color-primary-light);
+        color: var(--text-light);
+        transform: translateY(-1px);
+      }
+
+      /* =============================================
+       FOOTER
+       ============================================= */
+      .article-footer {
+        background: var(--tech-midnight);
+        padding: 48px 24px;
+        text-align: center;
+        color: oklch(1 0.015 80 / 0.5);
+        font-size: 0.875rem;
+      }
+
+      .footer-logo {
+        font-weight: 900;
+        font-size: 1.125rem;
+        color: var(--text-light);
+        margin-bottom: 8px;
+      }
+
+      .footer-logo span {
+        color: var(--color-accent-light);
+      }
+
+      /* =============================================
+       MOBILE FLOAT CTA
+       ============================================= */
+      .float-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(24px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 900;
+        width: calc(100% - 32px);
+        max-width: 420px;
+      }
+
+      .float-cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: var(--color-primary);
+        color: var(--text-light);
+        font-weight: 900;
+        font-size: 1rem;
+        padding: 16px 24px;
+        border-radius: var(--radius-full);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.5);
+        width: 100%;
+        text-align: center;
+      }
+
+      /* =============================================
+       RWD — Tablet ≤ 1024px
+       ============================================= */
+      @media (max-width: 1024px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 0;
+          padding-bottom: 140px;
+        }
+
+        .sidebar {
+          display: none;
+        }
+        .float-cta {
+          display: block;
+        }
+      }
+
+      /* =============================================
+       RWD — Mobile ≤ 768px
+       ============================================= */
+      @media (max-width: 768px) {
+        body {
+          font-size: 1rem;
+        }
+
+        .nav-series-label {
+          display: none;
+        }
+
+        .article-hero {
+          padding-top: 88px;
+          padding-bottom: 40px;
+        }
+
+        .article-key-stats {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .key-stat {
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border-subtle);
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          text-align: left;
+        }
+
+        .key-stat:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .key-stat:first-child {
+          padding-top: 0;
+        }
+
+        .key-stat-num {
+          font-size: 1.75rem;
+        }
+        .key-stat-divider {
+          display: none;
+        }
+
+        .section-title {
+          margin-top: 40px;
+        }
+
+        .comparison-box {
+          grid-template-columns: 1fr;
+        }
+
+        .psychology-box {
+          padding: 24px 20px;
+        }
+
+        .article-cta {
+          padding: 28px 20px;
+        }
+
+        .next-article {
+          flex-wrap: wrap;
+        }
+      }
+
+      /* =============================================
+       RWD — Small Mobile ≤ 480px
+       ============================================= */
+      @media (max-width: 480px) {
+        .article-layout {
+          padding: 0 16px 140px;
+        }
+        .hero-inner {
+          padding: 0 16px;
+        }
+
+        .pull-quote {
+          padding: 18px 20px;
+        }
+        .highlight-box {
+          padding: 18px 20px;
+        }
+        .sequence-card {
+          padding: 18px;
+        }
+        .diagnosis-box {
+          padding: 20px;
+        }
+        .article-cta {
+          padding: 24px 16px;
+        }
+        .psychology-box {
+          padding: 20px 16px;
+        }
+        .timeline {
+          padding: 18px 16px;
+        }
+
+        .cta-btn-group {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .btn-white,
+        .btn-outline-white {
+          justify-content: center;
+        }
+
+        .article-meta {
+          gap: 8px;
+          font-size: 0.8125rem;
+        }
+        .meta-dot {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="progress-bar"></div>
+    <nav class="navbar">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+        <a href="系列總覽/#article-02" class="nav-series-label"
+          >網站經營 12 篇系列</a
+        >
+        <a href="#contact" class="nav-cta">免費診斷 →</a>
+      
+      <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    </nav>
+    <!-- 手機漢堡抽屜 -->
+    <div class="nav-drawer-overlay" id="navOverlay"></div>
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <div class="nd-header">
+        <span class="nd-logo">AI 智能大腦<span class="nd-dot">.</span></span>
+        <button class="nd-close" id="navClose" aria-label="關閉選單">✕</button>
+      </div>
+      <div class="nd-section-title">12 篇系列文章</div>
+      <nav class="nd-list">
+      <a href="article-01-exposure.html" class="nd-item">
+        <span class="nd-num">01</span>
+        <span class="nd-title">曝光與導流</span>
+      </a>
+      <a href="article-02-homepage.html" class="nd-item">
+        <span class="nd-num">02</span>
+        <span class="nd-title">首頁印象</span>
+      </a>
+      <a href="article-03.html" class="nd-item">
+        <span class="nd-num">03</span>
+        <span class="nd-title">差異化定位</span>
+      </a>
+      <a href="article-04.html" class="nd-item">
+        <span class="nd-num">04</span>
+        <span class="nd-title">產品介紹</span>
+      </a>
+      <a href="article-05-conversion.html" class="nd-item">
+        <span class="nd-num">05</span>
+        <span class="nd-title">成交路徑</span>
+      </a>
+      <a href="article-06-contact.html" class="nd-item">
+        <span class="nd-num">06</span>
+        <span class="nd-title">留下聯絡方式</span>
+      </a>
+      <a href="article-07-automation.html" class="nd-item">
+        <span class="nd-num">07</span>
+        <span class="nd-title">自動化訊息</span>
+      </a>
+      <a href="article-08-upsell.html" class="nd-item">
+        <span class="nd-num">08</span>
+        <span class="nd-title">加購與升級</span>
+      </a>
+      <a href="article-09-retention.html" class="nd-item">
+        <span class="nd-num">09</span>
+        <span class="nd-title">回頭客機制</span>
+      </a>
+      <a href="article-10-referral.html" class="nd-item">
+        <span class="nd-num">10</span>
+        <span class="nd-title">口碑系統</span>
+      </a>
+      <a href="article-11-trust.html" class="nd-item">
+        <span class="nd-num">11</span>
+        <span class="nd-title">信任與證據</span>
+      </a>
+      <a href="article-12.html" class="nd-item">
+        <span class="nd-num">12</span>
+        <span class="nd-title">整合策略</span>
+      </a>
+      </nav>
+      <div class="nd-footer">
+        <a href="系列總覽/index.html" class="nd-overview">← 系列總覽</a>
+        <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="nd-cta">加 LINE 免費諮詢 →</a>
+      </div>
+    </div>
+
+    <header class="article-hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+        <nav class="article-breadcrumb" aria-label="breadcrumb">
+          <a href="#">AI 智能大腦</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="系列總覽/">網站經營系列</a>
+          <span class="breadcrumb-sep">›</span>
+          <span>第 02 篇</span>
+        </nav>
+        <div class="article-category-badge">
+          <span class="article-num">02 / 12</span>
+          首頁印象
+        </div>
+        <h1>訪客打開你的網站，<em>3 秒鐘</em>決定走還是留</h1>
+        <p class="article-subtitle">
+          你的首頁就是你的店門口，但 90% 的店門口都關著
+        </p>
+        <div class="article-meta">
+          <span>閱讀時間約 8 分鐘</span>
+          <span class="meta-dot"></span>
+          <span>適合：所有想改善網站留存率的店家</span>
+          <span class="meta-dot"></span>
+          <span>難度：★★☆☆☆</span>
+        </div>
+        <div class="article-key-stats">
+          <div class="key-stat">
+            <span class="key-stat-num">3 秒</span
+            ><span class="key-stat-label">訪客決定去留的時間</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">80%</span
+            ><span class="key-stat-label">只看頁面前半段就離開</span>
+          </div>
+          <div class="key-stat-divider"></div>
+          <div class="key-stat">
+            <span class="key-stat-num">2.6×</span
+            ><span class="key-stat-label">改好首頁後訂單倍增</span>
+          </div>
+        </div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-photo-glow"></div>
+          <img
+            src="andy-photo.png"
+            alt="AI 智能大腦 Andy"
+            class="hero-photo-img"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </header>
+    <main class="article-layout">
+      <article class="article-body" id="article-top">
+        <p>
+          你進一家從沒去過的店，前 5
+          秒會做什麼判斷？「這家賣什麼？」「看起來貴不貴？」「我會不會喜歡？」「適不適合我？」
+        </p>
+        <p>
+          5
+          秒內你已經決定要不要繼續走進去。如果答案是「不知道」、「沒感覺」、「看不懂」——你會掉頭走。
+        </p>
+
+        <div class="pull-quote">
+          <p>網站一模一樣，而且更殘酷——只有 3 秒。</p>
+        </div>
+
+        <p>
+          3
+          秒鐘內，訪客的大腦會做完判斷：這個網站適不適合我繼續看。如果答案不夠清楚，他會按右上角的
+          X，永遠離開。而台灣 SMB 的網站首頁，90% 都通不過這 3 秒測試。
+        </p>
+
+        <h2 class="section-title" id="s1">
+          你不在場的那 3 秒，大腦問了哪三件事？
+        </h2>
+
+        <p>
+          訪客打開網站的前 3 秒，大腦會自動掃描三件事：<strong
+            >這個網站在賣什麼（我來對地方了嗎）、這對我有什麼好處（我為什麼要繼續看）、下一步該做什麼（我能不能立刻採取行動）</strong
+          >
+        </p>
+        <p>
+          3
+          秒內如果這三個問題都得到清楚的答案，訪客會留下來繼續看。任何一個沒得到清楚答案，他就會跳出。
+        </p>
+        <p>
+          但 SMB
+          的首頁通常是這樣的：一張很美的大圖，但看不出在賣什麼；一句模糊的標題：「歡迎光臨」、「品質第一」；不知道該點哪裡才能進入下一步。<strong
+            >3 秒內，訪客的大腦得不到任何答案，於是就走了。</strong
+          >
+        </p>
+        <p>
+          而老闆完全不知道，因為他覺得「網站做得很美」——但「美」不等於「有效」。首頁不是設計師的作品集，是在
+          3 秒內幫客戶完成判斷的工具。
+        </p>
+
+        <h2 class="section-title" id="s2">
+          做得很用心，但客人還是沒感覺——為什麼？
+        </h2>
+
+        <p class="section-intro">
+          這裡是 SMB 首頁最常犯的三個錯誤，每一個都在無聲無息地把訪客趕走。
+        </p>
+
+        <div class="mistake-list">
+          <div class="mistake-card">
+            <span class="mistake-label">✕ 錯誤一</span>
+            <h4>那張你花錢做的美圖，正在每秒幫你趕走訪客</h4>
+            <p>
+              最常見的設計：一張很美的風景圖／食物圖，中間寫著「歡迎光臨」、「品質第一」。<br /><br />等於什麼都沒講。訪客的大腦在前
+              3 秒問「這在賣什麼」，但這張圖＋這句話沒回答。<br /><br />正確做法：「給上班族的
+              60 分鐘深層按摩——專治肩頸痠痛＋即時預約」。3
+              秒內訪客就懂：這家是按摩店、適合上班族、可以馬上預約。<strong
+                >清楚 &gt; 美感。</strong
+              >
+            </p>
+          </div>
+          <div class="mistake-card">
+            <span class="mistake-label">✕ 錯誤二</span>
+            <h4>輪播圖第 2 到第 5 張——幾乎沒有人看到</h4>
+            <p>
+              老闆覺得「資訊量多」，但實際上：每張圖只被看到 3–5
+              秒，沒有深度印象；訪客眼睛追著圖跑，沒辦法閱讀文字；重要訊息會被「跑過去」。<br /><br />研究顯示，輪播圖第一張的點擊率是後面幾張的
+              <strong>5–10 倍</strong>——也就是說，第 2–5 張幾乎沒人看。<br /><br />正確做法：第一屏只用一張固定圖＋一句強而有力的標題。
+            </p>
+          </div>
+          <div class="mistake-card">
+            <span class="mistake-label">✕ 錯誤三</span>
+            <h4>你最重要的話，放在 80% 訪客從未滑到的地方</h4>
+            <p>
+              很多老闆把首頁設計成：第一屏大圖＋歡迎詞 → 第二屏公司簡介 →
+              第三屏服務介紹 → 第四屏聯絡方式。<br /><br />問題是，訪客根本滑不到第三屏。<strong
+                >研究顯示，80% 的訪客只看頁面前 50%</strong
+              >——也就是前 1–2 屏。<br /><br />正確做法：第一屏就要有「核心賣點＋主要
+              CTA」。
+            </p>
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s3">
+          少一個就在漏客：首頁這 5 個位置你現在都有嗎？
+        </h2>
+
+        <p class="section-intro">
+          不需要複雜設計，只要這 5 個元素到位，跳出率立刻下降一半：
+        </p>
+
+        <div class="sequence-list">
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">1</div>
+              <div>
+                <div class="sequence-tag">元素 1 · 黃金開場</div>
+                <div class="sequence-title">
+                  開場第一句，決定訪客繼續看還是 3 秒內關掉
+                </div>
+                <div class="sequence-subtitle">
+                  讓對的人一眼說「這就是我要找的」
+                </div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>公式：「給 [誰] 的 [什麼產品／服務]——[核心好處]」</p>
+              <p>具體到讓目標客戶「對號入座」，模糊到讓所有人都不對號入座。</p>
+              <p>
+                <svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
+                  <line
+                    x1="8"
+                    y1="8"
+                    x2="16"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="16"
+                    y1="8"
+                    x2="8"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                「歡迎來到 OO 民宿，放鬆心靈的地方」<br /><svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
+                  <polyline
+                    points="7,12 10.5,15.5 17,9"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                「給情侶慶生的山景民宿，送氣泡酒＋巧克力，每週五前訂位享 9 折」
+              </p>
+            </div>
+          </div>
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">2</div>
+              <div>
+                <div class="sequence-tag">元素 2 · 立刻給選擇理由</div>
+                <div class="sequence-title">
+                  沒給明確理由，訪客就去你的競爭對手那裡找答案
+                </div>
+                <div class="sequence-subtitle">
+                  說出具體差異，競爭對手就從訪客腦中消失
+                </div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                第一屏可見的位置，要有「為什麼選你不選別人」的明確答案——不是「品質好」這種空話，是具體的差異點。
+              </p>
+              <p>
+                <svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
+                  <line
+                    x1="8"
+                    y1="8"
+                    x2="16"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="16"
+                    y1="8"
+                    x2="8"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                「我們提供專業服務、品質保證」<br /><svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
+                  <polyline
+                    points="7,12 10.5,15.5 17,9"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                「全台唯一不收諮詢費的會計師事務所」 ／ 「24
+                小時內回覆，做不到全額退費」
+              </p>
+            </div>
+          </div>
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">3</div>
+              <div>
+                <div class="sequence-tag">元素 3 · 第三方背書</div>
+                <div class="sequence-title">
+                  見證埋在頁面底部——8 成訪客從未滑到那裡
+                </div>
+                <div class="sequence-subtitle">
+                  陌生人信任你，是因為先看到別人信任了你
+                </div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                不要把見證放到頁面底部——首屏就要看到。形式可以是：「累計服務
+                12,000 家客戶」、「Google 4.8 顆星 200
+                則評論」、一兩個短的客戶見證、媒體 logo 牆。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <div class="highlight-box-title">
+            <svg
+              style="
+                display: inline;
+                vertical-align: -3px;
+                width: 1.1em;
+                height: 1.1em;
+              "
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="oklch(0.557 0.166 45)"
+                stroke-width="2"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="5"
+                stroke="oklch(0.557 0.166 45)"
+                stroke-width="2"
+              />
+              <circle cx="12" cy="12" r="1.5" fill="oklch(0.557 0.166 45)" />
+            </svg>
+            關鍵提醒
+          </div>
+          <p style="margin: 0">
+            這 3 個元素做對，跳出率通常就能下降一半。剩下 2
+            個，是讓「留下來的訪客」變成「真的採取行動的客人」。
+          </p>
+        </div>
+
+        <div class="sequence-list">
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">4</div>
+              <div>
+                <div class="sequence-tag">元素 4 · 行動引導</div>
+                <div class="sequence-title">
+                  訪客有興趣、找不到按鈕——他不等你，直接走了
+                </div>
+                <div class="sequence-subtitle">
+                  有興趣的訪客，不能因找不到按鈕而白白流失
+                </div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>99% 的老闆把 CTA 放在頁面底部、寫「聯絡我們」——這等於沒放。</p>
+              <p>
+                <svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
+                  <line
+                    x1="8"
+                    y1="8"
+                    x2="16"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <line
+                    x1="16"
+                    y1="8"
+                    x2="8"
+                    y2="16"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                頁面底部 · 「聯絡我們」<br /><svg
+                  style="
+                    display: inline;
+                    vertical-align: -3px;
+                    width: 1.1em;
+                    height: 1.1em;
+                  "
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
+                  <polyline
+                    points="7,12 10.5,15.5 17,9"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                第一屏可見 ·
+                「立刻預約」／「免費諮詢」（顏色跳出來，手機版浮動）
+              </p>
+            </div>
+          </div>
+          <div class="sequence-card">
+            <div class="sequence-header">
+              <div class="sequence-num">5</div>
+              <div>
+                <div class="sequence-tag">元素 5 · 真實感</div>
+                <div class="sequence-title">
+                  Stock photo 一眼就被識破——訪客覺得「這家不是真的」
+                </div>
+                <div class="sequence-subtitle">
+                  老闆的真實照片，比 200 張 stock photo 更能讓人信任
+                </div>
+              </div>
+            </div>
+            <div class="sequence-body">
+              <p>
+                不要用 stock
+                photo——客人現在看得出來那是假的。用真實的：老闆真人照片、店面工作環境的實拍、真實的工作過程照片。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s4">
+          同樣的產品，首頁改一版，留客率差 40%
+        </h2>
+
+        <p class="section-intro">這不是理論，是真實的 A/B 測試數字。</p>
+
+        <div class="comparison-box">
+          <div class="comparison-side bad">
+            <div class="comparison-label">✕ 沒做的店家</div>
+            <div class="comparison-big-num">78%</div>
+            <div class="comparison-desc">
+              <strong>版本 A（美但無效）</strong><br />大張山景圖＋「歡迎來到 OO
+              民宿」<br />跳出率：78%<br />平均停留：32 秒
+            </div>
+          </div>
+          <div class="comparison-side good">
+            <div class="comparison-label">✓ 做了的店家</div>
+            <div class="comparison-big-num">42%</div>
+            <div class="comparison-desc">
+              <strong>版本 B（3 秒清楚）</strong
+              ><br />民宿外觀清晰圖＋「給情侶慶生的山景民宿，9
+              折」＋「立刻訂房」按鈕＋ Google 4.8 星<br />跳出率：42%<br />平均停留：1
+              分 50 秒
+            </div>
+          </div>
+        </div>
+
+        <div class="psychology-box">
+          <h3>結果：版本 B 的訂房率是版本 A 的 2.6 倍</h3>
+          <p>
+            而這只是首頁差異，後面的內容一模一樣。每個訂單背後是一個本來會跳出但被留下的訪客——而留住他的成本是「設計師花
+            2 小時重新規劃首頁」。
+          </p>
+          <span class="psychology-stat">一次性改版 → 每天持續回報</span>
+        </div>
+
+        <h2 class="section-title" id="s5">
+          現在打開你的首頁——這三題你能答「有」嗎？
+        </h2>
+
+        <div class="diagnosis-box">
+          <div class="diagnosis-title">📋 首頁 3 秒測試</div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong
+                >第一題：你的首頁第一屏，有沒有讓陌生人在 3
+                秒內知道「你在賣什麼」？</strong
+              ><br />
+              如果只有「歡迎光臨」→ 沒通過 3 秒測試
+            </div>
+          </div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong
+                >第二題：把首頁文字遮住只留圖片，看得出你的店有什麼特色嗎？</strong
+              ><br />
+              如果看不出 → 你的視覺沒在傳達差異化
+            </div>
+          </div>
+
+          <div
+            class="diagnosis-item"
+            onclick="this.classList.toggle('checked')"
+          >
+            <div class="diagnosis-checkbox"></div>
+            <div class="diagnosis-text">
+              <strong>第三題：第一屏有沒有清楚的「下一步動作」按鈕？</strong
+              ><br />
+              如果沒有 → 即使訪客有興趣，也不知道該怎麼前進
+            </div>
+          </div>
+
+          <div class="diagnosis-verdict">
+            如果三題都答「沒有」，你的網站此刻就是「3
+            秒就被關掉的網站」——前面花的所有 SEO 和廣告費，都在這 3 秒內被浪費。
+          </div>
+        </div>
+
+        <h2 class="section-title" id="s6">
+          大多數老闆知道這個問題存在——但還沒動
+        </h2>
+
+        <p>
+          你會同意：首頁的前 3 秒決定 80% 的訪客去留——<strong
+            >清楚 &gt; 美感</strong
+          >。
+        </p>
+        <p>
+          但你的網站此刻可能就是「美但無效」——一張漂亮的大圖、一句歡迎詞、然後重要訊息埋在後面。<strong>而最諷刺的是：改善這件事不需要重做整個網站、不需要花大錢</strong>——只需要重新設計第一屏的核心訊息。一次性的工作，但會在你的網站存活的每一天持續產生回報。
+        </p>
+
+        <div class="article-cta" id="contact">
+          <div class="cta-eyebrow">下一步</div>
+          <h3>想知道你的首頁 3 秒印象打幾分？</h3>
+          <p>加我 LINE，30 分鐘免費診斷你的首頁，告訴你哪裡讓客人跑掉。</p>
+          <div class="cta-btn-group">
+            <a href="#" class="btn-white">免費預約 30 分鐘診斷</a>
+            <a href="系列總覽/" class="btn-outline-white">繼續讀系列文章</a>
+          </div>
+        </div>
+
+        <!-- 上下篇導航 -->
+        <nav class="article-pagination" aria-label="文章導航">
+          <a href="article-01-exposure.html" class="pag-card prev-card">
+            <span class="pag-dir">← 上一篇</span>
+            <span class="pag-title"
+              >你的店明明很好，為什麼網路上沒人找得到？</span
+            >
+          </a>
+          <a href="article-03.html" class="pag-card next-card">
+            <span class="pag-dir">下一篇 →</span>
+            <span class="pag-title">為什麼要選你不選別人</span>
+          </a>
+        </nav>
+
+        <!-- 你可能也有興趣 -->
+        <section class="related-articles">
+          <h3 class="related-heading">你可能也有興趣</h3>
+          <div class="related-grid">
+            <a href="article-01-exposure.html" class="related-card">
+              <span class="related-num">第 01 篇</span>
+              <span class="related-title"
+                >你的店明明很好，為什麼網路上沒人找得到？</span
+              >
+            </a>
+            <a href="article-03.html" class="related-card">
+              <span class="related-num">第 03 篇</span>
+              <span class="related-title">為什麼要選你不選別人</span>
+            </a>
+            <a href="article-05-conversion.html" class="related-card">
+              <span class="related-num">第 05 篇</span>
+              <span class="related-title"
+                >客人想下單的那個瞬間最熱，過了 30 秒就涼了</span
+              >
+            </a>
+          </div>
+        </section>
+      </article>
+
+      <aside class="sidebar" aria-label="文章導覽">
+        <div class="sidebar-widget">
+          <div class="widget-title">本文目錄</div>
+          <ul class="toc-list">
+            <li class="toc-item"><a href="#s1">大腦在 3 秒問的三件事</a></li>
+            <li class="toc-item"><a href="#s2">常見三大錯誤</a></li>
+            <li class="toc-item"><a href="#s3">首頁 5 個必備元素</a></li>
+            <li class="toc-item"><a href="#s4">A/B 測試：留客率差 40%</a></li>
+            <li class="toc-item"><a href="#s5">首頁 3 秒自我診斷</a></li>
+            <li class="toc-item"><a href="#s6">知道但還沒動？</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <div class="widget-title">12 篇系列</div>
+          <ul class="series-list">
+            <li class="series-item">
+              <a href="./article-01-exposure.html"
+                ><span class="series-num">01</span>曝光與導流</a
+              >
+            </li>
+            <li class="series-item current">
+              <a href="./article-02-homepage.html"
+                ><span class="series-num">02</span>首頁印象</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-03.html"
+                ><span class="series-num">03</span>差異化定位</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-04.html"
+                ><span class="series-num">04</span>產品介紹</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-05-conversion.html"
+                ><span class="series-num">05</span>成交路徑</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-06-contact.html"
+                ><span class="series-num">06</span>留下聯絡方式</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-07-automation.html"
+                ><span class="series-num">07</span>自動化訊息</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-08-upsell.html"
+                ><span class="series-num">08</span>加購與升級</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-09-retention.html"
+                ><span class="series-num">09</span>回頭客機制</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-10-referral.html"
+                ><span class="series-num">10</span>口碑系統</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-11-trust.html"
+                ><span class="series-num">11</span>信任與證據</a
+              >
+            </li>
+            <li class="series-item">
+              <a href="./article-12.html"
+                ><span class="series-num">12</span>成效追蹤</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-widget cta-widget">
+          <div class="widget-title">免費診斷</div>
+          <p>不知道從哪裡開始？30 分鐘免費諮詢，告訴你首頁哪裡最該先改。</p>
+          <a href="#contact" class="btn-cta-sm">立刻預約 →</a>
+        </div>
+      </aside>
+    </main>
+    <div class="float-cta">
+      <a href="#contact" class="float-cta-btn">免費 30 分鐘診斷</a>
+    </div>
+    <footer class="article-footer">
+      <div class="footer-logo">AI 智能大腦<span>.</span></div>
+      <p>網站經營 12 篇系列 · 第 02 篇：首頁印象</p>
+      <p style="margin-top: 8px; font-size: 0.8125rem; opacity: 0.4">
+        © 2026 AI 智能大腦 · 保留所有權利
+      </p>
+    </footer>
+    <a
+      href="系列總覽/#article-02"
+      class="back-to-overview"
+      aria-label="回到系列總覽"
+    >
+      <span class="bto-arrow" aria-hidden="true">←</span>
+      <span class="bto-text">系列總覽</span>
+      <span class="bto-meta">12 篇導讀</span>
+    </a>
+    <style>
+      .back-to-overview {
+        position: fixed;
+        top: calc(14px + env(safe-area-inset-top));
+        left: calc(14px + env(safe-area-inset-left));
+        z-index: 9999;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px 8px 12px;
+        background: oklch(0.14 0.025 50 / 0.92);
+        color: var(--bg-card);
+        border: 1px solid oklch(0.76 0.12 75 / 0.45);
+        border-radius: 9999px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+        transition: all 0.25s ease;
+        font-family: "Noto Sans TC", sans-serif;
+        line-height: 1;
+      }
+      .back-to-overview:hover {
+        background: linear-gradient(
+          135deg,
+          oklch(0.5 0.16 50) 0%,
+          oklch(0.52 0.12 72) 100%
+        );
+        border-color: oklch(0.84 0.14 85 / 0.7);
+        transform: translateX(-2px);
+        color: var(--text-light);
+        box-shadow: 0 6px 24px oklch(0.47 0.15 50 / 0.45);
+      }
+      .back-to-overview .bto-arrow {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .back-to-overview .bto-meta {
+        opacity: 0.55;
+        font-size: 11px;
+        font-weight: 500;
+        padding-left: 6px;
+        border-left: 1px solid oklch(0.76 0.12 75 / 0.3);
+        margin-left: 2px;
+      }
+      .back-to-overview:hover .bto-meta {
+        opacity: 0.85;
+        border-left-color: oklch(0.84 0.14 85 / 0.5);
+      }
+      @media (max-width: 768px) {
+        .back-to-overview {
+          top: calc(72px + env(safe-area-inset-top));
+          bottom: auto;
+          left: 12px;
+          padding: 8px 12px 8px 10px;
+          font-size: 12px;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+        .back-to-overview .bto-meta {
+          display: none;
+        }
+      }
+
+      /* LINE 浮動按鈕 */
+      .fab-line {
+        position: fixed;
+        bottom: 88px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        background: #06c755;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
+        z-index: 9998;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        text-decoration: none;
+      }
+      .fab-line:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 24px rgba(6, 199, 85, 0.5);
+      }
+      .fab-line svg {
+        width: 28px;
+        height: 28px;
+      }
+      @media (max-width: 768px) {
+        .fab-line {
+          bottom: 80px;
+          right: 16px;
+          width: 46px;
+          height: 46px;
+        }
+      }
+
+      /* 相關文章 */
+      .related-articles {
+        margin: 60px 0 40px;
+        padding: 40px;
+        background: var(--bg-section, oklch(0.95 0.02 78));
+        border-radius: 16px;
+      }
+      .related-heading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--color-primary, oklch(0.557 0.166 45));
+        display: inline-block;
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .related-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid oklch(0.9 0.01 80);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        position: relative;
+      }
+      .related-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px oklch(0.557 0.166 45 / 0.12);
+      }
+      .related-num {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+      }
+      .related-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+      }
+      .related-arrow {
+        font-size: 1rem;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        margin-top: auto;
+      }
+      @media (max-width: 768px) {
+        .related-articles {
+          padding: 24px 16px;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* 上下篇導航 */
+      .article-pagination {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 40px 0;
+      }
+      .article-pagination.no-prev {
+        grid-template-columns: 1fr;
+      }
+      .article-pagination.no-next {
+        grid-template-columns: 1fr;
+      }
+      .pag-card {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 20px 24px;
+        background: var(--bg-card, white);
+        border: 1px solid var(--border-default, oklch(0.27 0.035 25 / 0.2));
+        border-radius: 12px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s;
+      }
+      .pag-card:hover {
+        border-color: var(--color-primary, oklch(0.557 0.166 45));
+        box-shadow: 0 4px 16px oklch(0.557 0.166 45 / 0.12);
+        transform: translateY(-2px);
+      }
+      .pag-card.next-card {
+        text-align: right;
+      }
+      .pag-dir {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .pag-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-primary, oklch(0.12 0.02 50));
+        line-height: 1.4;
+      }
+      @media (max-width: 600px) {
+        .article-pagination {
+          grid-template-columns: 1fr;
+        }
+        .pag-card.next-card {
+          text-align: left;
+        }
+      }
+    
+      /* =============================================
+         HAMBURGER MENU
+         ============================================= */
+      .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        border-radius: 2px;
+        transition: all 0.25s ease;
+        transform-origin: center;
+      }
+      .nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      .nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .nav-drawer-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: oklch(0.1 0 0 / 0.45);
+        z-index: 1998;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .nav-drawer-overlay.is-open { opacity: 1; }
+
+      .nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(320px, 88vw);
+        background: oklch(0.99 0.008 78);
+        z-index: 1999;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+        box-shadow: -4px 0 32px oklch(0.1 0 0 / 0.12);
+        overflow-y: auto;
+      }
+      .nav-drawer.is-open { transform: translateX(0); }
+
+      .nd-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-logo {
+        font-weight: 900;
+        font-size: 1.0625rem;
+        color: oklch(0.2 0.02 50);
+        letter-spacing: 0.02em;
+      }
+      .nd-dot { color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-close {
+        background: none;
+        border: none;
+        font-size: 1.125rem;
+        color: oklch(0.5 0.02 60);
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: background 0.15s;
+      }
+      .nd-close:hover { background: oklch(0.93 0.03 75); }
+
+      .nd-section-title {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: oklch(0.6 0.04 60);
+        padding: 14px 20px 8px;
+        flex-shrink: 0;
+      }
+
+      .nd-list {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+      }
+      .nd-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 11px 20px;
+        text-decoration: none;
+        color: oklch(0.3 0.03 55);
+        border-bottom: 1px solid oklch(0.94 0.015 78);
+        transition: background 0.15s;
+      }
+      .nd-item:hover { background: oklch(0.96 0.02 75); color: var(--color-primary, oklch(0.557 0.166 45)); }
+      .nd-item.is-current { background: oklch(0.94 0.04 72); color: var(--color-primary, oklch(0.557 0.166 45)); font-weight: 700; }
+      .nd-num {
+        font-size: 0.6875rem;
+        font-weight: 900;
+        color: var(--color-primary, oklch(0.557 0.166 45));
+        background: oklch(0.94 0.04 72);
+        border-radius: 6px;
+        padding: 2px 6px;
+        flex-shrink: 0;
+        min-width: 28px;
+        text-align: center;
+      }
+      .nd-title { font-size: 0.9375rem; line-height: 1.4; }
+
+      .nd-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 20px;
+        border-top: 1px solid oklch(0.9 0.02 75);
+        flex-shrink: 0;
+      }
+      .nd-overview {
+        text-align: center;
+        padding: 10px;
+        color: oklch(0.45 0.05 55);
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid oklch(0.85 0.04 68);
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-overview:hover { background: oklch(0.95 0.03 75); }
+      .nd-cta {
+        display: block;
+        text-align: center;
+        padding: 12px;
+        background: var(--color-primary, oklch(0.557 0.166 45));
+        color: #fff;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: background 0.15s;
+      }
+      .nd-cta:hover { background: oklch(0.6 0.17 46); }
+
+      @media (max-width: 768px) {
+        .nav-hamburger { display: flex; }
+      }
+    
+      /* ─── Hero 照片 ───────────────────────────────── */
+      .hero-photo-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        align-self: end;
+      }
+      .hero-photo-glow {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 220px;
+        height: 110px;
+        background: radial-gradient(
+          ellipse,
+          oklch(0.557 0.166 45 / 0.2) 0%,
+          transparent 70%
+        );
+        filter: blur(24px);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-photo-img {
+        width: 100%;
+        max-width: 240px;
+        object-fit: contain;
+        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        position: relative;
+        z-index: 1;
+        filter: contrast(1.04) brightness(1.02);
+        display: block;
+      }
+      @media (max-width: 1024px) {
+        .hero-photo-wrap { display: none; }
+      }
+    </style>
+    <script>
+      const progressBar = document.getElementById("progress-bar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          const scrollTop = window.scrollY;
+          const docHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+          progressBar.style.width = progress + "%";
+        },
+        { passive: true },
+      );
+      const sections = document.querySelectorAll('[id^="s"]');
+      const tocLinks = document.querySelectorAll(".toc-item");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((li) => li.classList.remove("active"));
+              const activeLink = document.querySelector(
+                `.toc-item a[href="#${entry.target.id}"]`,
+              );
+              if (activeLink)
+                activeLink.closest(".toc-item").classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      sections.forEach((s) => observer.observe(s));
+      const floatCta = document.querySelector(".float-cta");
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (window.innerWidth <= 1024) {
+            floatCta.style.display = window.scrollY > 400 ? "block" : "none";
+          }
+        },
+        { passive: true },
+      );
+    </script>
+
+    <a
+      href="https://line.me/ti/p/5gW0er9baG"
+      target="_blank"
+      rel="noopener"
+      class="fab-line"
+      aria-label="LINE 諮詢"
+    >
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="20" fill="#06C755" />
+        <path
+          d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z"
+          fill="white"
+        />
+        <path
+          d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z"
+          fill="#06C755"
+        />
+      </svg>
+    </a>
+  
+    <script>
+    (function() {
+      const btn = document.getElementById('navHamburger');
+      const drawer = document.getElementById('navDrawer');
+      const overlay = document.getElementById('navOverlay');
+      const closeBtn = document.getElementById('navClose');
+      if (!btn || !drawer) return;
+
+      function openDrawer() {
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          drawer.classList.add('is-open');
+        });
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        overlay.classList.remove('is-open');
+        drawer.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlay.style.display = 'none'; }, 300);
+      }
+
+      btn.addEventListener('click', openDrawer);
+      closeBtn.addEventListener('click', closeDrawer);
+      overlay.addEventListener('click', closeDrawer);
+
+      // 點選單裡的連結自動關閉
+      drawer.querySelectorAll('.nd-item, .nd-overview').forEach(a => {
+        a.addEventListener('click', closeDrawer);
+      });
+
+      // 標記目前頁面
+      const cur = location.pathname.split('/').pop() || 'index.html';
+      drawer.querySelectorAll('.nd-item').forEach(a => {
+        if (a.getAttribute('href').includes(cur)) a.classList.add('is-current');
+      });
+    })();
+    </script>
+  </body>
+</html>

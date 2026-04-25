@@ -1,0 +1,2988 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMB 網站賺錢健檢表 | AI 智能大腦</title>
+    <meta
+      name="description"
+      content="12 個老闆都該問自己的問題。測完你會知道：你的網站是 24 小時店員，還是擺好看的型錄？"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================
+       設計系統 — ai-brain 暖橘系
+       ============================ */
+      :root {
+        --bg: #fcfcfc;
+        --bg-section: #f5efe6;
+        --bg-card: #fffaf5;
+        --bg-input: #faf7f2;
+        --primary: #d2691e;
+        --primary-l: #e07b3a;
+        --primary-d: #b85a15;
+        --accent: #cd853f;
+        --accent-l: #dda15e;
+        --green: #2e7d32;
+        --green-bg: #e8f5e9;
+        --yellow: #e65100;
+        --yellow-bg: #fff3e0;
+        --red: #c62828;
+        --red-bg: #fdecea;
+        --text: #1a0f0a;
+        --text-sec: #2d1810;
+        --text-muted: #5d4037;
+        --border: rgba(62, 39, 35, 0.15);
+        --shadow-sm: 0 1px 4px rgba(62, 39, 35, 0.06);
+        --shadow-md: 0 4px 16px rgba(62, 39, 35, 0.1);
+        --shadow-lg: 0 10px 32px rgba(62, 39, 35, 0.14);
+        --radius: 12px;
+        --radius-lg: 20px;
+        --font: "Noto Sans TC", system-ui, sans-serif;
+        --max-w: 760px;
+        --progress-h: 56px;
+      }
+
+      /* ============================
+       Reset & Base
+       ============================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+      body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text-sec);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+      }
+
+      /* ============================
+       Sticky Progress Bar
+       ============================ */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        height: var(--progress-h);
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        gap: 16px;
+      }
+      .progress-bar .logo {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--primary);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .progress-track {
+        flex: 1;
+        height: 6px;
+        background: var(--bg-section);
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary) 0%,
+          var(--accent-l) 100%
+        );
+        border-radius: 99px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+      .progress-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        font-size: 0.85rem;
+      }
+      .progress-score {
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1rem;
+      }
+      .progress-sections {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+
+      /* ============================
+       Hero / Cover
+       ============================ */
+      .hero {
+        margin-top: var(--progress-h);
+        background: linear-gradient(
+          135deg,
+          #1a0f0a 0%,
+          #2d1810 50%,
+          #3d2314 100%
+        );
+        color: #fff;
+        text-align: center;
+        padding: 72px 24px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 30% 50%,
+            rgba(210, 105, 30, 0.18) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 50% 60% at 70% 50%,
+            rgba(205, 133, 63, 0.12) 0%,
+            transparent 70%
+          );
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(210, 105, 30, 0.2);
+        border: 1px solid rgba(210, 105, 30, 0.4);
+        color: var(--accent-l);
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 4px 14px;
+        border-radius: 99px;
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+      }
+      .hero h1 {
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 900;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+      .hero h1 span {
+        background: linear-gradient(90deg, #e07b3a, #dda15e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 500px;
+        margin: 0 auto 32px;
+      }
+      .hero-meta {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 36px;
+      }
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+      .hero-meta-item .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-l);
+        flex-shrink: 0;
+      }
+      .btn-start {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--accent) 100%
+        );
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.05rem;
+        padding: 14px 36px;
+        border-radius: 99px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(210, 105, 30, 0.4);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+        text-decoration: none;
+      }
+      .btn-start:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(210, 105, 30, 0.5);
+      }
+      .btn-start:active {
+        transform: translateY(0);
+      }
+
+      /* ============================
+       Usage Instruction
+       ============================ */
+      .instruction {
+        background: var(--bg-section);
+        padding: 48px 24px;
+      }
+      .instruction-inner {
+        max-width: var(--max-w);
+        margin: 0 auto;
+      }
+      .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: var(--primary);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .instruction h2 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+      .instruction-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+      .inst-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 20px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .inst-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(210, 105, 30, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+      .inst-text strong {
+        display: block;
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 2px;
+      }
+      .inst-text span {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* Score ranges */
+      .score-ranges {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 28px;
+      }
+      .score-ranges h3 {
+        font-size: 1rem;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+      .range-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .range-item:last-child {
+        border-bottom: none;
+      }
+      .range-badge {
+        min-width: 72px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.8rem;
+        padding: 4px 8px;
+        border-radius: 6px;
+      }
+      .range-badge.r0 {
+        background: #fdecea;
+        color: var(--red);
+      }
+      .range-badge.r31 {
+        background: #fff3e0;
+        color: var(--yellow);
+      }
+      .range-badge.r51 {
+        background: #e8f5e9;
+        color: var(--green);
+      }
+      .range-badge.r71 {
+        background: rgba(210, 105, 30, 0.12);
+        color: var(--primary-d);
+      }
+      .range-badge.r91 {
+        background: rgba(205, 133, 63, 0.15);
+        color: #7b3f00;
+      }
+      .range-desc {
+        font-size: 0.9rem;
+        color: var(--text-sec);
+      }
+
+      .honest-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: rgba(210, 105, 30, 0.07);
+        border-left: 3px solid var(--primary);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        padding: 14px 18px;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+      }
+      .honest-note strong {
+        color: var(--primary-d);
+      }
+
+      /* ============================
+       Main Quiz Area
+       ============================ */
+      .quiz-wrap {
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 40px 24px 80px;
+      }
+
+      /* Section Card */
+      .section-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        margin-bottom: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: box-shadow 0.2s ease;
+      }
+      .section-card:target,
+      .section-card.active {
+        box-shadow: var(--shadow-md);
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 20px 24px;
+        background: linear-gradient(
+          135deg,
+          rgba(210, 105, 30, 0.06) 0%,
+          rgba(205, 133, 63, 0.04) 100%
+        );
+        border-bottom: 1px solid var(--border);
+      }
+      .section-num {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .section-num.done {
+        background: var(--green);
+      }
+      .section-title-wrap {
+        flex: 1;
+      }
+      .section-title-wrap h3 {
+        font-size: 1.05rem;
+        color: var(--text);
+        margin-bottom: 2px;
+      }
+      .section-question {
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+      .section-score-badge {
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 4px 12px;
+        border-radius: 99px;
+        background: var(--bg-section);
+        color: var(--primary-d);
+        flex-shrink: 0;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .section-score-badge.full {
+        background: var(--green-bg);
+        color: var(--green);
+      }
+
+      /* Question rows */
+      .questions-body {
+        padding: 8px 24px 20px;
+      }
+      .question-row {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .question-row:last-child {
+        border-bottom: none;
+      }
+      .q-num {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--bg-section);
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .q-text {
+        flex: 1;
+        font-size: 0.9rem;
+        color: var(--text-sec);
+        line-height: 1.6;
+      }
+      .q-options {
+        display: flex;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      /* Radio button as chip */
+      .q-options input[type="radio"] {
+        display: none;
+      }
+      .q-options label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 36px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1.5px solid var(--border);
+        background: var(--bg);
+        color: var(--text-muted);
+        transition: all 0.15s ease;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .q-options label:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+      .q-options input[value="2"]:checked + label {
+        background: var(--green-bg);
+        border-color: var(--green);
+        color: var(--green);
+      }
+      .q-options input[value="1"]:checked + label {
+        background: #fff3e0;
+        border-color: #e65100;
+        color: #e65100;
+      }
+      .q-options input[value="0"]:checked + label {
+        background: var(--red-bg);
+        border-color: var(--red);
+        color: var(--red);
+      }
+
+      /* Common mistake tip */
+      .section-tip {
+        margin: 0 24px 20px;
+        background: rgba(210, 105, 30, 0.06);
+        border-left: 3px solid var(--accent-l);
+        border-radius: 0 var(--radius) var(--radius) 0;
+        padding: 12px 16px;
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+      .section-tip .tip-icon {
+        flex-shrink: 0;
+      }
+      .section-tip strong {
+        color: var(--primary-d);
+        display: block;
+        margin-bottom: 2px;
+        font-size: 0.82rem;
+      }
+
+      /* Scoring legend in header */
+      .score-legend {
+        padding: 8px 24px;
+        background: var(--bg-section);
+        display: flex;
+        gap: 16px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        flex-wrap: wrap;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .legend-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+      }
+      .legend-dot.g {
+        background: var(--green);
+      }
+      .legend-dot.y {
+        background: #e65100;
+      }
+      .legend-dot.r {
+        background: var(--red);
+      }
+
+      /* ============================
+       Total Score Summary
+       ============================ */
+      .score-summary {
+        background: linear-gradient(135deg, #1a0f0a 0%, #2d1810 100%);
+        color: #fff;
+        border-radius: var(--radius-lg);
+        padding: 36px 28px;
+        margin-bottom: 24px;
+        text-align: center;
+        box-shadow: var(--shadow-lg);
+      }
+      .score-summary .sum-label {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .total-score-display {
+        font-size: clamp(3rem, 10vw, 5rem);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(90deg, #e07b3a, #dda15e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 4px;
+      }
+      .score-max {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 20px;
+      }
+      .score-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 24px;
+      }
+      .score-cell {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 10px 6px;
+        font-size: 0.75rem;
+      }
+      .score-cell .c-name {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 4px;
+        font-size: 0.7rem;
+      }
+      .score-cell .c-val {
+        font-weight: 700;
+        color: var(--accent-l);
+        font-size: 0.95rem;
+      }
+
+      /* ============================
+       Result Section
+       ============================ */
+      .result-section {
+        display: none;
+      }
+      .result-section.visible {
+        display: block;
+      }
+
+      .result-card {
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        margin-bottom: 20px;
+        border: 2px solid transparent;
+      }
+      .result-card.tier-0 {
+        background: var(--red-bg);
+        border-color: rgba(198, 40, 40, 0.2);
+      }
+      .result-card.tier-31 {
+        background: var(--yellow-bg);
+        border-color: rgba(230, 81, 0, 0.2);
+      }
+      .result-card.tier-51 {
+        background: var(--green-bg);
+        border-color: rgba(46, 125, 50, 0.2);
+      }
+      .result-card.tier-71 {
+        background: rgba(210, 105, 30, 0.07);
+        border-color: rgba(210, 105, 30, 0.25);
+      }
+      .result-card.tier-91 {
+        background: rgba(205, 133, 63, 0.09);
+        border-color: rgba(205, 133, 63, 0.3);
+      }
+      .result-tier {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+      .result-card.tier-0 .result-tier {
+        color: var(--red);
+      }
+      .result-card.tier-31 .result-tier {
+        color: var(--yellow);
+      }
+      .result-card.tier-51 .result-tier {
+        color: var(--green);
+      }
+      .result-card.tier-71 .result-tier {
+        color: var(--primary-d);
+      }
+      .result-card.tier-91 .result-tier {
+        color: #7b3f00;
+      }
+      .result-card h3 {
+        font-size: 1.3rem;
+        color: var(--text);
+        margin-bottom: 10px;
+      }
+      .result-card p {
+        font-size: 0.92rem;
+        color: var(--text-sec);
+        margin-bottom: 0;
+        line-height: 1.7;
+      }
+
+      /* Priority list */
+      .priority-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .priority-card h3 {
+        font-size: 1.1rem;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+      .priority-list {
+        list-style: none;
+      }
+      .priority-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+      }
+      .priority-list li:last-child {
+        border-bottom: none;
+      }
+      .priority-rank {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        background: rgba(210, 105, 30, 0.12);
+        color: var(--primary-d);
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .priority-name {
+        flex: 1;
+        color: var(--text-sec);
+      }
+      .priority-score {
+        font-weight: 700;
+        color: var(--red);
+        font-size: 0.9rem;
+      }
+
+      /* Next Steps */
+      .next-steps {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .next-steps h3 {
+        font-size: 1.1rem;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+      .next-option {
+        display: flex;
+        gap: 14px;
+        padding: 16px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 12px;
+        background: var(--bg);
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s;
+      }
+      .next-option:last-child {
+        margin-bottom: 0;
+      }
+      .next-option:hover {
+        border-color: var(--primary);
+        box-shadow: var(--shadow-sm);
+      }
+      .next-option-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(210, 105, 30, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+      .next-option-text h4 {
+        font-size: 0.95rem;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .next-option-text p {
+        font-size: 0.83rem;
+        color: var(--text-muted);
+        margin-bottom: 0;
+      }
+
+      /* CTA */
+      .cta-block {
+        background: linear-gradient(135deg, var(--primary) 0%, #7b3f00 100%);
+        border-radius: var(--radius-lg);
+        padding: 36px 28px;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 24px;
+      }
+      .cta-block h3 {
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .cta-block p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+      }
+      .btn-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff;
+        color: var(--primary-d);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 13px 32px;
+        border-radius: 99px;
+        border: none;
+        cursor: pointer;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        text-decoration: none;
+      }
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      /* ============================
+       Floating Result Button
+       ============================ */
+      .float-btn {
+        display: none;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 14px 32px;
+        border-radius: 99px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 24px rgba(210, 105, 30, 0.45);
+        white-space: nowrap;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        text-decoration: none;
+      }
+      .float-btn.visible {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .float-btn:hover {
+        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 10px 32px rgba(210, 105, 30, 0.5);
+      }
+
+      /* ============================
+       Footer
+       ============================ */
+      .footer {
+        text-align: center;
+        padding: 32px 24px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border);
+      }
+      .footer a {
+        color: var(--primary);
+      }
+
+      /* ============================
+       RWD — Tablet 768px
+       ============================ */
+      @media (max-width: 768px) {
+        .hero {
+          padding: 56px 20px 64px;
+        }
+        .instruction-grid {
+          grid-template-columns: 1fr;
+        }
+        .score-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .question-row {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .q-options {
+          flex-direction: row;
+        }
+        .q-options label {
+          flex: 1;
+          height: 40px;
+          font-size: 0.78rem;
+        }
+        .progress-bar .logo {
+          display: none;
+        }
+      }
+
+      /* ============================
+       RWD — Mobile 480px
+       ============================ */
+      @media (max-width: 480px) {
+        :root {
+          --progress-h: 50px;
+        }
+        .hero {
+          padding: 44px 16px 52px;
+        }
+        .hero h1 {
+          font-size: 1.6rem;
+        }
+        .hero-sub {
+          font-size: 0.95rem;
+        }
+        .hero-meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .quiz-wrap {
+          padding: 28px 16px 100px;
+        }
+        .section-header {
+          padding: 16px 16px;
+          gap: 10px;
+        }
+        .section-num {
+          width: 34px;
+          height: 34px;
+          font-size: 0.8rem;
+          border-radius: 10px;
+        }
+        .section-title-wrap h3 {
+          font-size: 0.95rem;
+        }
+        .questions-body {
+          padding: 4px 16px 16px;
+        }
+        .q-text {
+          font-size: 0.85rem;
+        }
+        .q-options label {
+          width: 46px;
+          font-size: 0.73rem;
+        }
+        .score-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .score-summary {
+          padding: 28px 16px;
+        }
+        .section-tip {
+          padding: 10px 12px;
+          font-size: 0.8rem;
+        }
+        .instruction {
+          padding: 36px 16px;
+        }
+        .score-ranges {
+          padding: 16px;
+        }
+        .priority-card,
+        .next-steps {
+          padding: 20px 16px;
+        }
+        .cta-block {
+          padding: 28px 16px;
+        }
+        .progress-sections {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sticky Progress -->
+    <div class="progress-bar" role="progressbar" aria-label="填答進度">
+      <div class="logo">AI 智能大腦</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-meta">
+        <span class="progress-score" id="liveScore">0 分</span>
+        <span class="progress-sections" id="liveSections">0 / 12 環節</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">完全免費 · 不留聯絡方式也能看結果</div>
+      <h1>SMB 網站賺錢<span>健檢表</span></h1>
+      <p class="hero-sub">
+        12 個老闆都該問自己的問題<br />測完你會知道——你的網站是 24
+        小時店員，還是擺好看的型錄？
+      </p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="dot"></span>填寫時間約 15 分鐘
+        </div>
+        <div class="hero-meta-item">
+          <span class="dot"></span>12 個環節 × 5 題 = 60 題
+        </div>
+        <div class="hero-meta-item">
+          <span class="dot"></span>Andy — 專為 SMB 老闆設計的網站賺錢系統
+        </div>
+      </div>
+      <a href="#quiz-area" class="btn-start">開始健檢 →</a>
+    </section>
+
+    <!-- Instructions -->
+    <section class="instruction">
+      <div class="instruction-inner">
+        <span class="section-label">使用說明</span>
+        <h2>這份健檢表怎麼用？</h2>
+        <div class="instruction-grid">
+          <div class="inst-card">
+            <div class="inst-icon">✓</div>
+            <div class="inst-text">
+              <strong>三個選項</strong>
+              <span>每題只有「✓ 有 / △ 部分有 / ✗ 沒有」</span>
+            </div>
+          </div>
+          <div class="inst-card">
+            <div class="inst-icon">⚡</div>
+            <div class="inst-text">
+              <strong>即時計分</strong>
+              <span>填完每題自動更新分數</span>
+            </div>
+          </div>
+          <div class="inst-card">
+            <div class="inst-icon">🎯</div>
+            <div class="inst-text">
+              <strong>不要想太久</strong>
+              <span>憑直覺勾選最接近的答案</span>
+            </div>
+          </div>
+          <div class="inst-card">
+            <div class="inst-icon">📊</div>
+            <div class="inst-text">
+              <strong>看優先順序</strong>
+              <span>最低分的 3 個環節最該先補強</span>
+            </div>
+          </div>
+        </div>
+        <div class="score-ranges">
+          <h3>分數代表什麼？（填完下方會自動解讀）</h3>
+          <div class="range-item">
+            <span class="range-badge r0">0–30 分</span>
+            <span class="range-desc"
+              >網站基本上是「擺好看」狀態——但空間最大，改善後成長最明顯</span
+            >
+          </div>
+          <div class="range-item">
+            <span class="range-badge r31">31–50 分</span>
+            <span class="range-desc">已比一半同行強，但還有大量機會沒抓住</span>
+          </div>
+          <div class="range-item">
+            <span class="range-badge r51">51–70 分</span>
+            <span class="range-desc"
+              >你已經是「會經營網站的老闆」，精準優化帶來複利效應</span
+            >
+          </div>
+          <div class="range-item">
+            <span class="range-badge r71">71–90 分</span>
+            <span class="range-desc"
+              >高手組，細節層級調整帶來不成比例的回報</span
+            >
+          </div>
+          <div class="range-item">
+            <span class="range-badge r91">91+ 分</span>
+            <span class="range-desc">你不需要看這個系列，你應該來教我</span>
+          </div>
+        </div>
+        <div class="honest-note">
+          ⚠️
+          <span
+            ><strong>老實一點。</strong
+            >這份表給你自己看，作弊只會浪費自己時間。<br />實話告訴你：多數老闆會卡在
+            25–45 分之間。這不是壞事——空間越大，改善後的成長越大。</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <div id="quiz-area" class="quiz-wrap">
+      <!-- Section 1 -->
+      <div class="section-card" id="sec1">
+        <div class="section-header">
+          <div class="section-num" id="num1">01</div>
+          <div class="section-title-wrap">
+            <h3>曝光與導流</h3>
+            <div class="section-question">你的店「網路上找得到」嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge1">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              用 Google 搜「你的服務 +
+              你的地區」（例：「礁溪合菜餐廳」），第一頁有沒有你？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s1q1" id="s1q1-2" value="2" /><label
+                for="s1q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s1q1" id="s1q1-1" value="1" /><label
+                for="s1q1-1"
+                >△</label
+              >
+              <input type="radio" name="s1q1" id="s1q1-0" value="0" /><label
+                for="s1q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">你的 Google 我的商家有沒有 10 張以上照片？</div>
+            <div class="q-options">
+              <input type="radio" name="s1q2" id="s1q2-2" value="2" /><label
+                for="s1q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s1q2" id="s1q2-1" value="1" /><label
+                for="s1q2-1"
+                >△</label
+              >
+              <input type="radio" name="s1q2" id="s1q2-0" value="0" /><label
+                for="s1q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              你的 Google 我的商家最近 3 個月，有回覆過客戶評論嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s1q3" id="s1q3-2" value="2" /><label
+                for="s1q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s1q3" id="s1q3-1" value="1" /><label
+                for="s1q3-1"
+                >△</label
+              >
+              <input type="radio" name="s1q3" id="s1q3-0" value="0" /><label
+                for="s1q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              你的 FB / IG 個人簡介，點得進去你的網站嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s1q4" id="s1q4-2" value="2" /><label
+                for="s1q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s1q4" id="s1q4-1" value="1" /><label
+                for="s1q4-1"
+                >△</label
+              >
+              <input type="radio" name="s1q4" id="s1q4-0" value="0" /><label
+                for="s1q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">你有沒有針對「在地關鍵字」做過 SEO 設計？</div>
+            <div class="q-options">
+              <input type="radio" name="s1q5" id="s1q5-2" value="2" /><label
+                for="s1q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s1q5" id="s1q5-1" value="1" /><label
+                for="s1q5-1"
+                >△</label
+              >
+              <input type="radio" name="s1q5" id="s1q5-0" value="0" /><label
+                for="s1q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>Google
+            我的商家「有開但沒填完整」——這等於開了店但沒掛招牌，Google
+            不會把你排上去。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="section-card" id="sec2">
+        <div class="section-header">
+          <div class="section-num" id="num2">02</div>
+          <div class="section-title-wrap">
+            <h3>首頁印象</h3>
+            <div class="section-question">訪客 3 秒鐘決定走還是留？</div>
+          </div>
+          <div class="section-score-badge" id="badge2">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              你的首頁第一屏，有沒有讓陌生人在 3 秒內知道「你在賣什麼」？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s2q1" id="s2q1-2" value="2" /><label
+                for="s2q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s2q1" id="s2q1-1" value="1" /><label
+                for="s2q1-1"
+                >△</label
+              >
+              <input type="radio" name="s2q1" id="s2q1-0" value="0" /><label
+                for="s2q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              把首頁文字遮住只留圖片，看得出你的店有什麼特色嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s2q2" id="s2q2-2" value="2" /><label
+                for="s2q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s2q2" id="s2q2-1" value="1" /><label
+                for="s2q2-1"
+                >△</label
+              >
+              <input type="radio" name="s2q2" id="s2q2-0" value="0" /><label
+                for="s2q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              第一屏有沒有清楚的「下一步動作」按鈕（例如「立刻預約」）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s2q3" id="s2q3-2" value="2" /><label
+                for="s2q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s2q3" id="s2q3-1" value="1" /><label
+                for="s2q3-1"
+                >△</label
+              >
+              <input type="radio" name="s2q3" id="s2q3-0" value="0" /><label
+                for="s2q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">手機版第一屏看起來，跟桌機版一樣清楚嗎？</div>
+            <div class="q-options">
+              <input type="radio" name="s2q4" id="s2q4-2" value="2" /><label
+                for="s2q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s2q4" id="s2q4-1" value="1" /><label
+                for="s2q4-1"
+                >△</label
+              >
+              <input type="radio" name="s2q4" id="s2q4-0" value="0" /><label
+                for="s2q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              第一屏有沒有任何「社會證明」（例如「200 則 Google
+              評價」、「累計服務 X 客戶」）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s2q5" id="s2q5-2" value="2" /><label
+                for="s2q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s2q5" id="s2q5-1" value="1" /><label
+                for="s2q5-1"
+                >△</label
+              >
+              <input type="radio" name="s2q5" id="s2q5-0" value="0" /><label
+                for="s2q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>第一屏放抽象大圖配「歡迎光臨」——3
+            秒內訪客看不出在賣什麼，直接跳出。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="section-card" id="sec3">
+        <div class="section-header">
+          <div class="section-num" id="num3">03</div>
+          <div class="section-title-wrap">
+            <h3>差異化呈現</h3>
+            <div class="section-question">客人為什麼選你不選別人？</div>
+          </div>
+          <div class="section-score-badge" id="badge3">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              把你的網站文案複製到同行網站，讀起來會違和嗎？（會違和 = ✓）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s3q1" id="s3q1-2" value="2" /><label
+                for="s3q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s3q1" id="s3q1-1" value="1" /><label
+                for="s3q1-1"
+                >△</label
+              >
+              <input type="radio" name="s3q1" id="s3q1-0" value="0" /><label
+                for="s3q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你的網站有沒有「只有你寫得出來」的具體故事？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s3q2" id="s3q2-2" value="2" /><label
+                for="s3q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s3q2" id="s3q2-1" value="1" /><label
+                for="s3q2-1"
+                >△</label
+              >
+              <input type="radio" name="s3q2" id="s3q2-0" value="0" /><label
+                for="s3q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你的網站有沒有「只有你做得到」的具體方法？</div>
+            <div class="q-options">
+              <input type="radio" name="s3q3" id="s3q3-2" value="2" /><label
+                for="s3q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s3q3" id="s3q3-1" value="1" /><label
+                for="s3q3-1"
+                >△</label
+              >
+              <input type="radio" name="s3q3" id="s3q3-0" value="0" /><label
+                for="s3q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              你的網站有沒有「敢給的具體承諾」（例如 30 天無條件調整）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s3q4" id="s3q4-2" value="2" /><label
+                for="s3q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s3q4" id="s3q4-1" value="1" /><label
+                for="s3q4-1"
+                >△</label
+              >
+              <input type="radio" name="s3q4" id="s3q4-0" value="0" /><label
+                for="s3q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              客人讀完你的網站，他能用一句話跟朋友介紹你嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s3q5" id="s3q5-2" value="2" /><label
+                for="s3q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s3q5" id="s3q5-1" value="1" /><label
+                for="s3q5-1"
+                >△</label
+              >
+              <input type="radio" name="s3q5" id="s3q5-0" value="0" /><label
+                for="s3q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong
+            >把「服務好、品質好、用心做」當差異化——但 99%
+            的同行都這樣寫，等於沒寫。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="section-card" id="sec4">
+        <div class="section-header">
+          <div class="section-num" id="num4">04</div>
+          <div class="section-title-wrap">
+            <h3>產品 / 服務介紹</h3>
+            <div class="section-question">
+              你的產品頁是「目錄」還是「業務員」？
+            </div>
+          </div>
+          <div class="section-score-badge" id="badge4">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              每個產品 / 服務，有沒有具體寫「適合誰」？（不是「適合所有人」）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s4q1" id="s4q1-2" value="2" /><label
+                for="s4q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s4q1" id="s4q1-1" value="1" /><label
+                for="s4q1-1"
+                >△</label
+              >
+              <input type="radio" name="s4q1" id="s4q1-0" value="0" /><label
+                for="s4q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              每個產品 / 服務，有沒有寫「解決什麼具體問題」？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s4q2" id="s4q2-2" value="2" /><label
+                for="s4q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s4q2" id="s4q2-1" value="1" /><label
+                for="s4q2-1"
+                >△</label
+              >
+              <input type="radio" name="s4q2" id="s4q2-0" value="0" /><label
+                for="s4q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              你有沒有「主推商品」？還是所有商品看起來一樣重要？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s4q3" id="s4q3-2" value="2" /><label
+                for="s4q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s4q3" id="s4q3-1" value="1" /><label
+                for="s4q3-1"
+                >△</label
+              >
+              <input type="radio" name="s4q3" id="s4q3-0" value="0" /><label
+                for="s4q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              客人讀完一個品項，知不知道下一步該怎麼下單？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s4q4" id="s4q4-2" value="2" /><label
+                for="s4q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s4q4" id="s4q4-1" value="1" /><label
+                for="s4q4-1"
+                >△</label
+              >
+              <input type="radio" name="s4q4" id="s4q4-0" value="0" /><label
+                for="s4q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              你的產品描述，客人讀得懂嗎？（沒有過多術語？）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s4q5" id="s4q5-2" value="2" /><label
+                for="s4q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s4q5" id="s4q5-1" value="1" /><label
+                for="s4q5-1"
+                >△</label
+              >
+              <input type="radio" name="s4q5" id="s4q5-0" value="0" /><label
+                for="s4q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong
+            >寫「規格」不寫「使用情境」——客人讀完知道是什麼，但不知道為什麼要買。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="section-card" id="sec5">
+        <div class="section-header">
+          <div class="section-num" id="num5">05</div>
+          <div class="section-title-wrap">
+            <h3>成交路徑</h3>
+            <div class="section-question">想買的客人能 3 秒內下單嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge5">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              打開你的網站手機版，從首頁點到下單需要 3 下以內嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s5q1" id="s5q1-2" value="2" /><label
+                for="s5q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s5q1" id="s5q1-1" value="1" /><label
+                for="s5q1-1"
+                >△</label
+              >
+              <input type="radio" name="s5q1" id="s5q1-0" value="0" /><label
+                for="s5q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你的訂位 / 預約是「線上即時」還是要打電話 / 留言 / 等回覆？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s5q2" id="s5q2-2" value="2" /><label
+                for="s5q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s5q2" id="s5q2-1" value="1" /><label
+                for="s5q2-1"
+                >△</label
+              >
+              <input type="radio" name="s5q2" id="s5q2-0" value="0" /><label
+                for="s5q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              手機螢幕滑到一半，還看得到下單 / 預約按鈕嗎？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s5q3" id="s5q3-2" value="2" /><label
+                for="s5q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s5q3" id="s5q3-1" value="1" /><label
+                for="s5q3-1"
+                >△</label
+              >
+              <input type="radio" name="s5q3" id="s5q3-0" value="0" /><label
+                for="s5q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              客人按下「送出」後，3 秒內有沒有立刻顯示確認訊息？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s5q4" id="s5q4-2" value="2" /><label
+                for="s5q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s5q4" id="s5q4-1" value="1" /><label
+                for="s5q4-1"
+                >△</label
+              >
+              <input type="radio" name="s5q4" id="s5q4-0" value="0" /><label
+                for="s5q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">你有沒有「LINE 即時客服」串接？</div>
+            <div class="q-options">
+              <input type="radio" name="s5q5" id="s5q5-2" value="2" /><label
+                for="s5q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s5q5" id="s5q5-1" value="1" /><label
+                for="s5q5-1"
+                >△</label
+              >
+              <input type="radio" name="s5q5" id="s5q5-0" value="0" /><label
+                for="s5q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong
+            >把訂位電話放在「聯絡我們」頁——客人想下單時找不到，衝動 30
+            秒內就涼了。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="section-card" id="sec6">
+        <div class="section-header">
+          <div class="section-num" id="num6">06</div>
+          <div class="section-title-wrap">
+            <h3>留下聯絡方式</h3>
+            <div class="section-question">沒下單的客人，你還能再找到嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge6">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              你的網站上有沒有任何一個地方在收集 LINE 或 Email？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s6q1" id="s6q1-2" value="2" /><label
+                for="s6q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s6q1" id="s6q1-1" value="1" /><label
+                for="s6q1-1"
+                >△</label
+              >
+              <input type="radio" name="s6q1" id="s6q1-0" value="0" /><label
+                for="s6q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你給的「換聯絡方式的好處」夠不夠具體？（不是「歡迎加 LINE」）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s6q2" id="s6q2-2" value="2" /><label
+                for="s6q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s6q2" id="s6q2-1" value="1" /><label
+                for="s6q2-1"
+                >△</label
+              >
+              <input type="radio" name="s6q2" id="s6q2-0" value="0" /><label
+                for="s6q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              你的「換聯絡方式」設計是「送禮」（增加）還是「打折」（減少）？（送禮
+              = ✓）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s6q3" id="s6q3-2" value="2" /><label
+                for="s6q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s6q3" id="s6q3-1" value="1" /><label
+                for="s6q3-1"
+                >△</label
+              >
+              <input type="radio" name="s6q3" id="s6q3-0" value="0" /><label
+                for="s6q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">收集表單在手機版上好不好填？</div>
+            <div class="q-options">
+              <input type="radio" name="s6q4" id="s6q4-2" value="2" /><label
+                for="s6q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s6q4" id="s6q4-1" value="1" /><label
+                for="s6q4-1"
+                >△</label
+              >
+              <input type="radio" name="s6q4" id="s6q4-0" value="0" /><label
+                for="s6q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              你目前累積的 LINE 好友 / Email 名單有沒有超過 100 人？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s6q5" id="s6q5-2" value="2" /><label
+                for="s6q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s6q5" id="s6q5-1" value="1" /><label
+                for="s6q5-1"
+                >△</label
+              >
+              <input type="radio" name="s6q5" id="s6q5-0" value="0" /><label
+                for="s6q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>用「加 LINE 折 50
+            元」當誘因——其實「加 LINE 送 X（小禮物）」的轉換率是前者的 2–4 倍。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="section-card" id="sec7">
+        <div class="section-header">
+          <div class="section-num" id="num7">07</div>
+          <div class="section-title-wrap">
+            <h3>自動化訊息</h3>
+            <div class="section-question">你的「金牌服務生」開始上班了嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge7">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              新好友加 LINE 後，有沒有自動的歡迎序列（前 7 天）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s7q1" id="s7q1-2" value="2" /><label
+                for="s7q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s7q1" id="s7q1-1" value="1" /><label
+                for="s7q1-1"
+                >△</label
+              >
+              <input type="radio" name="s7q1" id="s7q1-0" value="0" /><label
+                for="s7q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              客人購買後，有沒有自動的「使用指南 / 感謝 / 邀請評論」訊息？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s7q2" id="s7q2-2" value="2" /><label
+                for="s7q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s7q2" id="s7q2-1" value="1" /><label
+                for="s7q2-1"
+                >△</label
+              >
+              <input type="radio" name="s7q2" id="s7q2-0" value="0" /><label
+                for="s7q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">
+              客人 30 / 60 / 90 天沒回來，有沒有自動的關懷喚醒訊息？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s7q3" id="s7q3-2" value="2" /><label
+                for="s7q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s7q3" id="s7q3-1" value="1" /><label
+                for="s7q3-1"
+                >△</label
+              >
+              <input type="radio" name="s7q3" id="s7q3-0" value="0" /><label
+                for="s7q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">客人生日當月，有沒有自動的生日訊息？</div>
+            <div class="q-options">
+              <input type="radio" name="s7q4" id="s7q4-2" value="2" /><label
+                for="s7q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s7q4" id="s7q4-1" value="1" /><label
+                for="s7q4-1"
+                >△</label
+              >
+              <input type="radio" name="s7q4" id="s7q4-0" value="0" /><label
+                for="s7q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              你目前的 LINE
+              訊息，是「群發同一則」還是「不同人收到不同內容」？（個人化 = ✓）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s7q5" id="s7q5-2" value="2" /><label
+                for="s7q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s7q5" id="s7q5-1" value="1" /><label
+                for="s7q5-1"
+                >△</label
+              >
+              <input type="radio" name="s7q5" id="s7q5-0" value="0" /><label
+                for="s7q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>LINE
+            訊息「不發或亂發」——不發名單會冷掉，亂發群發訊息會被封鎖。要有結構化的自動序列。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="section-card" id="sec8">
+        <div class="section-header">
+          <div class="section-num" id="num8">08</div>
+          <div class="section-title-wrap">
+            <h3>加購與升級</h3>
+            <div class="section-question">
+              客人都已經要買了，你有沒有讓他多買一點？
+            </div>
+          </div>
+          <div class="section-score-badge" id="badge8">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              你的結帳 / 訂位流程，有沒有「加購建議」的設計？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s8q1" id="s8q1-2" value="2" /><label
+                for="s8q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s8q1" id="s8q1-1" value="1" /><label
+                for="s8q1-1"
+                >△</label
+              >
+              <input type="radio" name="s8q1" id="s8q1-0" value="0" /><label
+                for="s8q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              加購建議是出現在「付款前」還是「付款後」？（付款前 = ✓）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s8q2" id="s8q2-2" value="2" /><label
+                for="s8q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s8q2" id="s8q2-1" value="1" /><label
+                for="s8q2-1"
+                >△</label
+              >
+              <input type="radio" name="s8q2" id="s8q2-0" value="0" /><label
+                for="s8q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你有沒有「主商品 + 配套商品」的組合包？</div>
+            <div class="q-options">
+              <input type="radio" name="s8q3" id="s8q3-2" value="2" /><label
+                for="s8q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s8q3" id="s8q3-1" value="1" /><label
+                for="s8q3-1"
+                >△</label
+              >
+              <input type="radio" name="s8q3" id="s8q3-0" value="0" /><label
+                for="s8q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              加購選項是 1–3 個還是 5+ 個？（1–3 個 = ✓，過多反而失敗）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s8q4" id="s8q4-2" value="2" /><label
+                for="s8q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s8q4" id="s8q4-1" value="1" /><label
+                for="s8q4-1"
+                >△</label
+              >
+              <input type="radio" name="s8q4" id="s8q4-0" value="0" /><label
+                for="s8q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              加購的好處夠不夠具體？（例如「比單買省 100 元」）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s8q5" id="s8q5-2" value="2" /><label
+                for="s8q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s8q5" id="s8q5-1" value="1" /><label
+                for="s8q5-1"
+                >△</label
+              >
+              <input type="radio" name="s8q5" id="s8q5-0" value="0" /><label
+                for="s8q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>加購放在「付款後」（寄 Email
+            推銷）——這時候客人已經完成「心理結帳」，接受率低 5–10 倍。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 9 -->
+      <div class="section-card" id="sec9">
+        <div class="section-header">
+          <div class="section-num" id="num9">09</div>
+          <div class="section-title-wrap">
+            <h3>回頭客機制</h3>
+            <div class="section-question">你的客人「來一次就消失」嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge9">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              你有沒有任何方式知道「每個客人多久沒回來」？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s9q1" id="s9q1-2" value="2" /><label
+                for="s9q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s9q1" id="s9q1-1" value="1" /><label
+                for="s9q1-1"
+                >△</label
+              >
+              <input type="radio" name="s9q1" id="s9q1-0" value="0" /><label
+                for="s9q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你有沒有「會員制」（數位化的，不是紙本集點卡）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s9q2" id="s9q2-2" value="2" /><label
+                for="s9q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s9q2" id="s9q2-1" value="1" /><label
+                for="s9q2-1"
+                >△</label
+              >
+              <input type="radio" name="s9q2" id="s9q2-0" value="0" /><label
+                for="s9q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你有沒有「沉睡客人自動喚醒」的機制？</div>
+            <div class="q-options">
+              <input type="radio" name="s9q3" id="s9q3-2" value="2" /><label
+                for="s9q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s9q3" id="s9q3-1" value="1" /><label
+                for="s9q3-1"
+                >△</label
+              >
+              <input type="radio" name="s9q3" id="s9q3-0" value="0" /><label
+                for="s9q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              你有沒有把客人分層（VIP / 一般 / 新客）做不同維護？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s9q4" id="s9q4-2" value="2" /><label
+                for="s9q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s9q4" id="s9q4-1" value="1" /><label
+                for="s9q4-1"
+                >△</label
+              >
+              <input type="radio" name="s9q4" id="s9q4-0" value="0" /><label
+                for="s9q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              你有沒有「訂閱型」或「套票型」的方案，讓客人預設會回來？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s9q5" id="s9q5-2" value="2" /><label
+                for="s9q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s9q5" id="s9q5-1" value="1" /><label
+                for="s9q5-1"
+                >△</label
+              >
+              <input type="radio" name="s9q5" id="s9q5-0" value="0" /><label
+                for="s9q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong
+            >覺得「客人滿意自然會回來」——錯，客人很忙會忘記，沒提醒就流失。「沉默流失」是
+            SMB 最大的隱形殺手。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 10 -->
+      <div class="section-card" id="sec10">
+        <div class="section-header">
+          <div class="section-num" id="num10">10</div>
+          <div class="section-title-wrap">
+            <h3>口碑系統</h3>
+            <div class="section-question">你的客人會幫你介紹新客嗎？</div>
+          </div>
+          <div class="section-score-badge" id="badge10">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">你有沒有任何方式鼓勵客人推薦？</div>
+            <div class="q-options">
+              <input type="radio" name="s10q1" id="s10q1-2" value="2" /><label
+                for="s10q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s10q1" id="s10q1-1" value="1" /><label
+                for="s10q1-1"
+                >△</label
+              >
+              <input type="radio" name="s10q1" id="s10q1-0" value="0" /><label
+                for="s10q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你有沒有「個人推薦碼」或「推薦連結」可以分享？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s10q2" id="s10q2-2" value="2" /><label
+                for="s10q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s10q2" id="s10q2-1" value="1" /><label
+                for="s10q2-1"
+                >△</label
+              >
+              <input type="radio" name="s10q2" id="s10q2-0" value="0" /><label
+                for="s10q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你有沒有「揪團優惠」（3 人成行打折這類）？</div>
+            <div class="q-options">
+              <input type="radio" name="s10q3" id="s10q3-2" value="2" /><label
+                for="s10q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s10q3" id="s10q3-1" value="1" /><label
+                for="s10q3-1"
+                >△</label
+              >
+              <input type="radio" name="s10q3" id="s10q3-0" value="0" /><label
+                for="s10q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">你給推薦人的好處，3 句話內講得清楚嗎？</div>
+            <div class="q-options">
+              <input type="radio" name="s10q4" id="s10q4-2" value="2" /><label
+                for="s10q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s10q4" id="s10q4-1" value="1" /><label
+                for="s10q4-1"
+                >△</label
+              >
+              <input type="radio" name="s10q4" id="s10q4-0" value="0" /><label
+                for="s10q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">你有沒有方式知道「這個新客是誰介紹來的」？</div>
+            <div class="q-options">
+              <input type="radio" name="s10q5" id="s10q5-2" value="2" /><label
+                for="s10q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s10q5" id="s10q5-1" value="1" /><label
+                for="s10q5-1"
+                >△</label
+              >
+              <input type="radio" name="s10q5" id="s10q5-0" value="0" /><label
+                for="s10q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>覺得「東西好客人就會推薦」——只有
+            5–10% 的客人會自發推薦，但有系統可以提升到 30–50%。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 11 -->
+      <div class="section-card" id="sec11">
+        <div class="section-header">
+          <div class="section-num" id="num11">11</div>
+          <div class="section-title-wrap">
+            <h3>信任與證據</h3>
+            <div class="section-question">客人在網路上憑什麼相信你？</div>
+          </div>
+          <div class="section-score-badge" id="badge11">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">
+              你的網站有沒有具體的客人見證（不是「老闆人好」這種空話）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s11q1" id="s11q1-2" value="2" /><label
+                for="s11q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s11q1" id="s11q1-1" value="1" /><label
+                for="s11q1-1"
+                >△</label
+              >
+              <input type="radio" name="s11q1" id="s11q1-0" value="0" /><label
+                for="s11q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你的網站第一屏可見的位置，有沒有任何「社會證明」？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s11q2" id="s11q2-2" value="2" /><label
+                for="s11q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s11q2" id="s11q2-1" value="1" /><label
+                for="s11q2-1"
+                >△</label
+              >
+              <input type="radio" name="s11q2" id="s11q2-0" value="0" /><label
+                for="s11q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你有沒有把 Google 評價串接到網站？</div>
+            <div class="q-options">
+              <input type="radio" name="s11q3" id="s11q3-2" value="2" /><label
+                for="s11q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s11q3" id="s11q3-1" value="1" /><label
+                for="s11q3-1"
+                >△</label
+              >
+              <input type="radio" name="s11q3" id="s11q3-0" value="0" /><label
+                for="s11q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              你的網站有沒有真實的老闆 / 團隊 / 店面照片（不是 stock photo）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s11q4" id="s11q4-2" value="2" /><label
+                for="s11q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s11q4" id="s11q4-1" value="1" /><label
+                for="s11q4-1"
+                >△</label
+              >
+              <input type="radio" name="s11q4" id="s11q4-0" value="0" /><label
+                for="s11q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">你有沒有「主動跟滿意客人收集見證」的機制？</div>
+            <div class="q-options">
+              <input type="radio" name="s11q5" id="s11q5-2" value="2" /><label
+                for="s11q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s11q5" id="s11q5-1" value="1" /><label
+                for="s11q5-1"
+                >△</label
+              >
+              <input type="radio" name="s11q5" id="s11q5-0" value="0" /><label
+                for="s11q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>見證放在頁面最底下——80%
+            的訪客根本滑不到那裡，等於沒放。
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 12 -->
+      <div class="section-card" id="sec12">
+        <div class="section-header">
+          <div class="section-num" id="num12">12</div>
+          <div class="section-title-wrap">
+            <h3>成效追蹤</h3>
+            <div class="section-question">你的網站到底有沒有賺錢？</div>
+          </div>
+          <div class="section-score-badge" id="badge12">0 / 10</div>
+        </div>
+        <div class="score-legend">
+          <span class="legend-item"
+            ><span class="legend-dot g"></span>✓ 有（2分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot y"></span>△ 部分有（1分）</span
+          >
+          <span class="legend-item"
+            ><span class="legend-dot r"></span>✗ 沒有（0分）</span
+          >
+        </div>
+        <div class="questions-body">
+          <div class="question-row">
+            <div class="q-num">1</div>
+            <div class="q-text">你知道你的網站上個月有多少訪客嗎？</div>
+            <div class="q-options">
+              <input type="radio" name="s12q1" id="s12q1-2" value="2" /><label
+                for="s12q1-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s12q1" id="s12q1-1" value="1" /><label
+                for="s12q1-1"
+                >△</label
+              >
+              <input type="radio" name="s12q1" id="s12q1-0" value="0" /><label
+                for="s12q1-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">2</div>
+            <div class="q-text">
+              你知道訪客都從哪裡來嗎？（Google、社群、廣告、其他）
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s12q2" id="s12q2-2" value="2" /><label
+                for="s12q2-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s12q2" id="s12q2-1" value="1" /><label
+                for="s12q2-1"
+                >△</label
+              >
+              <input type="radio" name="s12q2" id="s12q2-0" value="0" /><label
+                for="s12q2-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">3</div>
+            <div class="q-text">你知道哪個頁面最多人看、哪個頁面沒人看嗎？</div>
+            <div class="q-options">
+              <input type="radio" name="s12q3" id="s12q3-2" value="2" /><label
+                for="s12q3-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s12q3" id="s12q3-1" value="1" /><label
+                for="s12q3-1"
+                >△</label
+              >
+              <input type="radio" name="s12q3" id="s12q3-0" value="0" /><label
+                for="s12q3-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">4</div>
+            <div class="q-text">
+              你有沒有定期收到「網站成績單」（月報告 / 季報告）？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s12q4" id="s12q4-2" value="2" /><label
+                for="s12q4-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s12q4" id="s12q4-1" value="1" /><label
+                for="s12q4-1"
+                >△</label
+              >
+              <input type="radio" name="s12q4" id="s12q4-0" value="0" /><label
+                for="s12q4-0"
+                >✗</label
+              >
+            </div>
+          </div>
+          <div class="question-row">
+            <div class="q-num">5</div>
+            <div class="q-text">
+              你過去 3 個月，有沒有根據數據做過任何網站調整？
+            </div>
+            <div class="q-options">
+              <input type="radio" name="s12q5" id="s12q5-2" value="2" /><label
+                for="s12q5-2"
+                >✓ 有</label
+              >
+              <input type="radio" name="s12q5" id="s12q5-1" value="1" /><label
+                for="s12q5-1"
+                >△</label
+              >
+              <input type="radio" name="s12q5" id="s12q5-0" value="0" /><label
+                for="s12q5-0"
+                >✗</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="section-tip">
+          <span class="tip-icon">💡</span>
+          <div>
+            <strong>老闆們最常踩的雷</strong>做完網站就放著，3
+            年沒看過任何數據——等於開了店但從不看帳，賺賠都靠運氣。
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Score Summary -->
+      <div class="score-summary" id="scoreSummary">
+        <div class="sum-label">你的總分</div>
+        <div class="total-score-display" id="totalDisplay">0</div>
+        <div class="score-max">/ 120 分</div>
+        <div class="score-grid" id="scoreGrid">
+          <div class="score-cell">
+            <div class="c-name">曝光導流</div>
+            <div class="c-val" id="c1">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">首頁印象</div>
+            <div class="c-val" id="c2">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">差異化</div>
+            <div class="c-val" id="c3">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">產品介紹</div>
+            <div class="c-val" id="c4">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">成交路徑</div>
+            <div class="c-val" id="c5">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">留聯絡</div>
+            <div class="c-val" id="c6">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">自動化</div>
+            <div class="c-val" id="c7">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">加購升級</div>
+            <div class="c-val" id="c8">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">回頭客</div>
+            <div class="c-val" id="c9">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">口碑系統</div>
+            <div class="c-val" id="c10">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">信任證據</div>
+            <div class="c-val" id="c11">0/10</div>
+          </div>
+          <div class="score-cell">
+            <div class="c-name">成效追蹤</div>
+            <div class="c-val" id="c12">0/10</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="result-section" id="resultSection">
+        <div id="resultCard"></div>
+        <div class="priority-card" id="priorityCard">
+          <h3>你最該優先補強的 3 個環節</h3>
+          <ul class="priority-list" id="priorityList"></ul>
+        </div>
+        <div class="next-steps">
+          <h3>接下來怎麼做？</h3>
+          <div class="next-option">
+            <div class="next-option-icon">📖</div>
+            <div class="next-option-text">
+              <h4>選擇 1：自己學</h4>
+              <p>
+                12 篇深度文章已經寫好，先讀你最低分的 3 個環節對應的文章，摸索
+                3–5 年可以做到 50–60 分。
+              </p>
+            </div>
+          </div>
+          <div class="next-option">
+            <div class="next-option-icon">💬</div>
+            <div class="next-option-text">
+              <h4>選擇 2：找 Andy 聊 30 分鐘（免費）</h4>
+              <p>
+                根據你的健檢結果，告訴你具體的補強順序和預期效益。不推銷、不強迫——就是給你一份針對性的「優先順序清單」。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="cta-block">
+          <h3>預約 30 分鐘免費諮詢</h3>
+          <p>
+            聽完你覺得有道理就再聊，沒道理你拿著清單去找別人做也可以。<br />兩個選擇沒對錯，看你的時間值多少錢。
+          </p>
+          <a href="#" class="btn-cta">加 Andy LINE 預約 →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating CTA button -->
+    <a href="#resultSection" class="float-btn" id="floatBtn">
+      查看我的結果 ↓
+    </a>
+
+    <footer class="footer">
+      <p>
+        © 2025 AI 智能大腦 · <a href="index.html">回首頁</a> · 專為 SMB
+        老闆設計的網站賺錢系統
+      </p>
+    </footer>
+
+    <script>
+      const SECTION_NAMES = [
+        "曝光與導流",
+        "首頁印象",
+        "差異化呈現",
+        "產品/服務介紹",
+        "成交路徑",
+        "留下聯絡方式",
+        "自動化訊息",
+        "加購與升級",
+        "回頭客機制",
+        "口碑系統",
+        "信任與證據",
+        "成效追蹤",
+      ];
+
+      const TIERS = [
+        {
+          min: 91,
+          cls: "tier-91",
+          label: "教練組（91–120 分）",
+          title: "你不需要看這個系列，你應該來教我",
+          desc: "你的網站運作已經非常成熟。仍有「最後一哩」可以優化——通常是細節層級的調整，而這些調整會帶來不成比例的回報。",
+        },
+        {
+          min: 71,
+          cls: "tier-71",
+          label: "高手組（71–90 分）",
+          title: "你的網站運作已相當成熟",
+          desc: "通常還有 3–5 個關鍵環節沒做透，而且做透了會帶來複利效應。你需要的不是「補基礎」，是「優化精度」。",
+        },
+        {
+          min: 51,
+          cls: "tier-51",
+          label: "進階組（51–70 分）",
+          title: "你已經是「會經營網站的老闆」",
+          desc: "但通常還有 3–5 個關鍵環節沒做透。做透了會帶來複利效應——你需要的不是補基礎，是優化精度。做到 70 分以上的店家，通常已經是該行業的隱形冠軍。",
+        },
+        {
+          min: 31,
+          cls: "tier-31",
+          label: "中段班（31–50 分）",
+          title: "已比一半同行強，但還有大量機會沒抓住",
+          desc: "你通常會發現自己「該做的都知道，但沒系統化做」。每補一個環節，業績就會跳一階——這是回報最高的階段。從 30 分到 60 分，通常是「半年內可以做到」的事，只要方法對、優先順序對。",
+        },
+        {
+          min: 0,
+          cls: "tier-0",
+          label: "殘酷現實組（0–30 分）",
+          title: "你的網站基本上是「擺好看」狀態",
+          desc: "但這不是壞事——空間最大，改善後的成長最明顯。你不需要重做網站，需要的是「重新設計運作邏輯」。從 0 開始，反而可以直接用對的方式建立，跳過大多數老闆的試錯期。",
+        },
+      ];
+
+      const scores = new Array(12).fill(0);
+      const answered = new Array(12).fill(0); // how many questions answered in each section
+
+      function getSectionScore(sIdx) {
+        let total = 0;
+        for (let q = 1; q <= 5; q++) {
+          const checked = document.querySelector(
+            `input[name="s${sIdx}q${q}"]:checked`,
+          );
+          if (checked) total += parseInt(checked.value);
+        }
+        return total;
+      }
+
+      function getAnsweredCount(sIdx) {
+        let count = 0;
+        for (let q = 1; q <= 5; q++) {
+          if (document.querySelector(`input[name="s${sIdx}q${q}"]:checked`))
+            count++;
+        }
+        return count;
+      }
+
+      function updateUI() {
+        let total = 0;
+        let sectionsCompleted = 0;
+        let totalAnswered = 0;
+
+        for (let i = 1; i <= 12; i++) {
+          const s = getSectionScore(i);
+          const a = getAnsweredCount(i);
+          scores[i - 1] = s;
+          answered[i - 1] = a;
+          total += s;
+          if (a === 5) sectionsCompleted++;
+          totalAnswered += a;
+
+          // badge
+          const badge = document.getElementById(`badge${i}`);
+          badge.textContent = `${s} / 10`;
+          badge.classList.toggle("full", s === 10);
+
+          // num circle
+          const numEl = document.getElementById(`num${i}`);
+          numEl.classList.toggle("done", a === 5);
+
+          // score grid
+          const cell = document.getElementById(`c${i}`);
+          if (cell) cell.textContent = `${s}/10`;
+        }
+
+        // progress bar
+        const pct = (totalAnswered / 60) * 100;
+        document.getElementById("progressFill").style.width = pct + "%";
+        document.getElementById("liveScore").textContent = total + " 分";
+        document.getElementById("liveSections").textContent =
+          sectionsCompleted + " / 12 環節";
+
+        // total score
+        document.getElementById("totalDisplay").textContent = total;
+
+        // float btn
+        const floatBtn = document.getElementById("floatBtn");
+        if (sectionsCompleted >= 12) {
+          floatBtn.classList.add("visible");
+          showResult(total);
+        } else if (sectionsCompleted >= 6) {
+          floatBtn.classList.add("visible");
+        } else {
+          floatBtn.classList.remove("visible");
+        }
+      }
+
+      function showResult(total) {
+        const resultSection = document.getElementById("resultSection");
+        resultSection.classList.add("visible");
+
+        // Which tier
+        const tier = TIERS.find((t) => total >= t.min);
+        const cardHTML = `
+      <div class="result-card ${tier.cls}">
+        <div class="result-tier">${tier.label}</div>
+        <h3>${tier.title}</h3>
+        <p>${tier.desc}</p>
+      </div>
+    `;
+        document.getElementById("resultCard").innerHTML = cardHTML;
+
+        // Priority: sort sections by score asc
+        const ranked = scores
+          .map((s, i) => ({ idx: i + 1, name: SECTION_NAMES[i], score: s }))
+          .sort((a, b) => a.score - b.score);
+        const top3 = ranked.slice(0, 3);
+        let listHTML = "";
+        top3.forEach((item, rank) => {
+          listHTML += `
+        <li>
+          <span class="priority-rank">${rank + 1}</span>
+          <span class="priority-name">第 ${item.idx} 環節：${item.name}</span>
+          <span class="priority-score">${item.score} / 10</span>
+        </li>
+      `;
+        });
+        document.getElementById("priorityList").innerHTML = listHTML;
+      }
+
+      // Attach listeners to all radio inputs
+      document
+        .querySelectorAll('.q-options input[type="radio"]')
+        .forEach((input) => {
+          input.addEventListener("change", updateUI);
+        });
+
+      // Initial call
+      updateUI();
+    </script>
+  </body>
+</html>
