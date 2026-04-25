@@ -1048,11 +1048,12 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 52px;
-          height: 52px;
-          background: rgba(210, 105, 30, 0.07);
-          border-radius: 14px;
+          width: 56px;
+          height: 56px;
+          background: #181210;
+          border-radius: 12px;
           flex-shrink: 0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
         }
         .s12-card-icon img {
           width: 34px;
@@ -1129,49 +1130,184 @@
         }
         .s12-cta-row {
           display: flex;
-          gap: 12px;
+          gap: 16px;
           justify-content: center;
           flex-wrap: wrap;
+          align-items: center;
         }
+
+        /* ══ 主按鈕：黃金立體壓印材質 ══ */
         .s12-btn-primary {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: linear-gradient(135deg, #d2691e, #cd853f);
-          color: #fff;
+          gap: 10px;
+          /* 多層金屬漸層：亮點 → 深琥珀 → 暗金 → 亮金 → 底部反光 */
+          background: linear-gradient(
+            180deg,
+            #f7e27a 0%,
+            #d4980c 12%,
+            #9a6500 35%,
+            #7a4e00 50%,
+            #a07010 65%,
+            #d4a020 80%,
+            #f0cc50 92%,
+            #c08808 100%
+          );
+          color: #1a0800;
           font-size: 15px;
-          font-weight: 700;
-          padding: 14px 28px;
-          border-radius: 100px;
+          font-weight: 800;
+          letter-spacing: 0.06em;
+          text-shadow: 0 1px 0 rgba(255, 230, 120, 0.5);
+          padding: 17px 36px;
+          border-radius: 6px;
           text-decoration: none;
-          transition:
-            opacity 0.2s,
-            transform 0.2s;
-          box-shadow: 0 6px 20px rgba(210, 105, 30, 0.3);
+          border-top: 1px solid #f5df80;
+          border-left: 1px solid #e0b830;
+          border-right: 1px solid #8a5e00;
+          border-bottom: 1px solid #5a3a00;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.15s ease;
+          /* 3D 立體感：頂部高光 + 底部厚重陰影 + 環境光暈 */
+          box-shadow:
+            inset 0 1px 0 rgba(255, 240, 140, 0.7),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.4),
+            0 4px 0 #4a2e00,
+            0 6px 0 #3a2200,
+            0 10px 24px rgba(80, 50, 0, 0.55),
+            0 0 40px rgba(212, 160, 20, 0.18);
+        }
+        /* 掃光動畫 */
+        .s12-btn-primary::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -80%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 245, 180, 0.35) 50%,
+            transparent 100%
+          );
+          transform: skewX(-20deg);
+          transition: left 0.55s ease;
+        }
+        .s12-btn-primary:hover::before {
+          left: 160%;
         }
         .s12-btn-primary:hover {
-          opacity: 0.9;
-          transform: translateY(-1px);
+          background: linear-gradient(
+            180deg,
+            #fff07a 0%,
+            #dba010 12%,
+            #a86e00 35%,
+            #855400 50%,
+            #aa7818 65%,
+            #daa828 80%,
+            #f8d858 92%,
+            #c89010 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(255, 240, 140, 0.8),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.4),
+            0 6px 0 #4a2e00,
+            0 8px 0 #3a2200,
+            0 14px 32px rgba(80, 50, 0, 0.6),
+            0 0 50px rgba(212, 160, 20, 0.25);
+          transform: translateY(-2px);
         }
+        .s12-btn-primary:active {
+          transform: translateY(3px);
+          box-shadow:
+            inset 0 2px 4px rgba(0, 0, 0, 0.35),
+            0 1px 0 #4a2e00,
+            0 4px 12px rgba(80, 50, 0, 0.4);
+        }
+        .s12-btn-primary svg {
+          flex-shrink: 0;
+        }
+
+        /* ══ 次按鈕：壓花香檳銀材質 ══ */
         .s12-btn-secondary {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          background: rgba(210, 105, 30, 0.08);
-          color: #d2691e;
+          gap: 10px;
+          background: linear-gradient(
+            180deg,
+            #f5efe4 0%,
+            #d8cbb8 18%,
+            #b8a890 45%,
+            #cabb9e 70%,
+            #ede0cc 88%,
+            #d0b890 100%
+          );
+          color: #2a1800;
           font-size: 15px;
           font-weight: 700;
-          padding: 14px 28px;
-          border-radius: 100px;
+          letter-spacing: 0.05em;
+          text-shadow: 0 1px 0 rgba(255, 245, 220, 0.6);
+          padding: 17px 36px;
+          border-radius: 6px;
           text-decoration: none;
-          border: 1.5px solid rgba(210, 105, 30, 0.25);
-          transition:
-            background 0.2s,
-            transform 0.2s;
+          border-top: 1px solid #f0e8d8;
+          border-left: 1px solid #d8c8a8;
+          border-right: 1px solid #9a8060;
+          border-bottom: 1px solid #7a6040;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.15s ease;
+          box-shadow:
+            inset 0 1px 0 rgba(255, 250, 235, 0.8),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+            0 3px 0 #6a5030,
+            0 5px 0 #503c20,
+            0 8px 20px rgba(60, 40, 10, 0.35);
+        }
+        .s12-btn-secondary::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -80%;
+          width: 50%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 250, 235, 0.3),
+            transparent
+          );
+          transform: skewX(-20deg);
+          transition: left 0.55s ease;
+        }
+        .s12-btn-secondary:hover::before {
+          left: 160%;
         }
         .s12-btn-secondary:hover {
-          background: rgba(210, 105, 30, 0.14);
-          transform: translateY(-1px);
+          background: linear-gradient(
+            180deg,
+            #fdf5e6 0%,
+            #e0d0b8 18%,
+            #c0aa90 45%,
+            #d4c2a8 70%,
+            #f0e4d0 88%,
+            #d8c098 100%
+          );
+          box-shadow:
+            inset 0 1px 0 rgba(255, 250, 235, 0.9),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+            0 5px 0 #6a5030,
+            0 7px 0 #503c20,
+            0 12px 28px rgba(60, 40, 10, 0.4);
+          transform: translateY(-2px);
+        }
+        .s12-btn-secondary:active {
+          transform: translateY(3px);
+          box-shadow:
+            inset 0 2px 4px rgba(0, 0, 0, 0.2),
+            0 1px 0 #6a5030,
+            0 3px 10px rgba(60, 40, 10, 0.3);
         }
       </style>
 
@@ -1192,73 +1328,169 @@
           <div class="s12-grid">
             <div class="s12-card">
               <div class="s12-card-num">01</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-01.png" alt="曝光" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-01.png"
+                  alt="曝光"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">曝光</div>
               <div class="s12-card-tagline">讓對的人找得到你</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">02</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-02.png" alt="首頁設計" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-02.png"
+                  alt="首頁設計"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">首頁設計</div>
               <div class="s12-card-tagline">5 秒讓訪客看懂你賣什麼</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">03</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-03.png" alt="差異化" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-03.png"
+                  alt="差異化"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">差異化</div>
               <div class="s12-card-tagline">說清楚為什麼選你</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">04</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-04.png" alt="產品頁" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-04.png"
+                  alt="產品頁"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">產品頁</div>
               <div class="s12-card-tagline">介紹變成說服工具</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">05</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-05.png" alt="轉換路徑" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-05.png"
+                  alt="轉換路徑"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">轉換路徑</div>
               <div class="s12-card-tagline">降低購買摩擦力</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">06</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-06.png" alt="留資訊" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-06.png"
+                  alt="留資訊"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">留資訊</div>
               <div class="s12-card-tagline">抓住還沒買的訪客</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">07</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-07.png" alt="自動化" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-07.png"
+                  alt="自動化"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">自動化</div>
               <div class="s12-card-tagline">大規模維繫客戶關係</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">08</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-08.png" alt="加購升單" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-08.png"
+                  alt="加購升單"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">加購升單</div>
               <div class="s12-card-tagline">提高每筆交易金額</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">09</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-09.png" alt="回購" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-09.png"
+                  alt="回購"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">回購</div>
               <div class="s12-card-tagline">讓客人再次消費</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">10</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-10.png" alt="轉介紹" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-10.png"
+                  alt="轉介紹"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">轉介紹</div>
               <div class="s12-card-tagline">讓客戶幫你帶新客</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">11</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-11.png" alt="信任感" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-11.png"
+                  alt="信任感"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">信任感</div>
               <div class="s12-card-tagline">讓陌生人相信你</div>
             </div>
             <div class="s12-card">
               <div class="s12-card-num">12</div>
-              <div class="s12-card-icon"><img src="images/s12-icons/icon-12.png" alt="整合策略" loading="lazy" width="34" height="34"></div>
+              <div class="s12-card-icon">
+                <img
+                  src="images/s12-icons/icon-12.png"
+                  alt="整合策略"
+                  loading="lazy"
+                  width="34"
+                  height="34"
+                />
+              </div>
               <div class="s12-card-name">整合策略</div>
               <div class="s12-card-tagline">衡量並持續優化</div>
             </div>
@@ -1284,26 +1516,6 @@
               target="_blank"
             >
               免費讀完整系列文章
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-            <a
-              href="https://line.me/ti/p/5gW0er9baG"
-              class="s12-btn-primary"
-              target="_blank"
-            >
-              免費健診：我卡在哪個環節？
               <svg
                 width="16"
                 height="16"
