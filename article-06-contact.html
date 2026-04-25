@@ -2,19 +2,18 @@
 <html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
-    <title>訪客打開你的網站，3 秒鐘決定走還是留｜網站經營 12 篇系列</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      90%的訪客當下不會買，你怎麼讓他下次再回來？ | 網站經營 12 篇系列
+    </title>
     <meta
       name="description"
-      content="首頁的前 3 秒決定 80% 的訪客去留——清楚 > 美感。你的網站可能此刻就是「美但無效」。"
+      content="沒留下聯絡方式的客人，等於從你眼前消失。台灣 99% 的店家正在每天浪費這些客人，而且渾然不知。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -153,17 +152,10 @@
         z-index: 1000;
         display: flex;
         align-items: center;
-      }
-
-      .nav-inner {
-        max-width: var(--container-max);
-        margin: 0 auto;
-        padding: 0 24px;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        padding-left: 24px;
+        padding-right: 24px;
         gap: 16px;
+        justify-content: space-between;
       }
 
       .nav-logo {
@@ -172,9 +164,6 @@
         color: var(--text-primary);
         letter-spacing: 0.02em;
         white-space: nowrap;
-      }
-      .nav-logo span {
-        color: var(--color-primary);
       }
 
       .nav-series-label {
@@ -186,9 +175,6 @@
         padding: 4px 12px;
         white-space: nowrap;
         text-decoration: none;
-      }
-      .nav-series-label:hover {
-        color: var(--color-primary);
       }
 
       .nav-cta {
@@ -250,17 +236,19 @@
         align-items: end;
       }
 
-      .article-breadcrumb {
+      .breadcrumb {
         display: flex;
         align-items: center;
         gap: 8px;
         font-size: 0.8125rem;
         color: var(--text-muted);
         margin-bottom: 24px;
-        flex-wrap: wrap;
       }
-      .breadcrumb-sep {
-        opacity: 0.4;
+      .breadcrumb a {
+        color: var(--text-muted);
+      }
+      .breadcrumb a:hover {
+        color: var(--color-primary);
       }
 
       .article-category-badge {
@@ -275,14 +263,6 @@
         border-radius: var(--radius-full);
         margin-bottom: 20px;
         letter-spacing: 0.06em;
-      }
-
-      .article-num {
-        display: inline-block;
-        background: oklch(1 0.015 80 / 0.25);
-        border-radius: var(--radius-full);
-        padding: 1px 8px;
-        font-size: 0.7rem;
       }
 
       .article-hero h1 {
@@ -315,14 +295,7 @@
         color: var(--text-muted);
         padding-top: 24px;
         border-top: 1px solid var(--border-subtle);
-      }
-
-      .meta-dot {
-        width: 4px;
-        height: 4px;
-        background: var(--color-primary);
-        border-radius: 50%;
-        opacity: 0.5;
+        margin-bottom: 0;
       }
 
       .article-key-stats {
@@ -864,15 +837,7 @@
         pointer-events: none;
       }
 
-      .cta-eyebrow {
-        font-size: 0.8125rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        color: oklch(1 0.015 80 / 0.7);
-        margin-bottom: 12px;
-      }
-
-      .article-cta h3 {
+      .article-cta h2 {
         color: var(--text-light);
         font-size: clamp(1.25rem, 3vw, 1.625rem);
         margin-bottom: 12px;
@@ -887,14 +852,7 @@
         margin-right: auto;
       }
 
-      .cta-btn-group {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .btn-white {
+      .cta-button {
         display: inline-flex;
         align-items: center;
         gap: 8px;
@@ -908,29 +866,10 @@
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
       }
 
-      .btn-white:hover {
+      .cta-button:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         color: var(--color-primary-dark);
-      }
-
-      .btn-outline-white {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: transparent;
-        color: oklch(1 0.015 80 / 0.9);
-        font-weight: 700;
-        font-size: 0.9375rem;
-        padding: 12px 24px;
-        border-radius: var(--radius-full);
-        border: 1.5px solid oklch(1 0.015 80 / 0.4);
-        transition: var(--transition-fast);
-      }
-
-      .btn-outline-white:hover {
-        background: oklch(1 0.015 80 / 0.1);
-        color: var(--text-light);
       }
 
       /* 下一篇預告 */
@@ -943,6 +882,7 @@
         border-radius: var(--radius-xl);
         padding: 20px 24px;
         transition: var(--transition-base);
+        text-decoration: none;
       }
 
       .next-article:hover {
@@ -955,6 +895,7 @@
         font-weight: 700;
         color: var(--text-muted);
         letter-spacing: 0.06em;
+        display: block;
         margin-bottom: 4px;
       }
 
@@ -985,9 +926,9 @@
       .sidebar {
         position: sticky;
         top: 80px;
-        max-height: calc(100vh - 100px);
-        overflow-y: auto;
-        scroll-behavior: smooth;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scroll-behavior: smooth;
       }
 
       .sidebar-widget {
@@ -1011,14 +952,14 @@
       }
 
       /* TOC */
-      .toc-list {
+      .toc {
         list-style: none;
         display: flex;
         flex-direction: column;
         gap: 4px;
       }
 
-      .toc-item a {
+      .toc-item {
         display: block;
         font-size: 0.875rem;
         color: var(--text-muted);
@@ -1026,23 +967,23 @@
         border-radius: var(--radius-md);
         line-height: 1.4;
         transition: var(--transition-fast);
+        text-decoration: none;
       }
 
-      .toc-item a:hover,
-      .toc-item.active a {
+      .toc-item:hover,
+      .toc-item.active {
         background: oklch(0.557 0.166 45 / 0.08);
         color: var(--color-primary);
       }
 
       /* 系列篇章 */
       .series-list {
-        list-style: none;
         display: flex;
         flex-direction: column;
         gap: 2px;
       }
 
-      .series-item a {
+      .series-item {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -1051,47 +992,23 @@
         font-size: 0.8125rem;
         color: var(--text-muted);
         transition: var(--transition-fast);
+        text-decoration: none;
       }
 
-      .series-item a:hover {
+      .series-item:hover {
         color: var(--color-primary);
         background: oklch(0.557 0.166 45 / 0.06);
       }
 
-      .series-item.current a {
+      .series-item.current {
         color: var(--color-primary);
         font-weight: 700;
         background: oklch(0.557 0.166 45 / 0.1);
       }
 
-      .series-num {
-        flex-shrink: 0;
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.7rem;
-        font-weight: 900;
-      }
-
-      .series-item .series-num {
-        background: var(--bg-section);
-        color: var(--text-muted);
-      }
-      .series-item.current .series-num {
-        background: var(--color-primary);
-        color: var(--text-light);
-      }
-
       /* CTA widget */
       .cta-widget {
-        background: linear-gradient(
-          135deg,
-          oklch(0.97 0.025 75) 0%,
-          oklch(0.94 0.04 68) 100%
-        );
+        background: linear-gradient(135deg, oklch(0.97 0.025 75) 0%, oklch(0.94 0.04 68) 100%);
         border: 1.5px solid oklch(0.82 0.07 62);
       }
 
@@ -1119,6 +1036,7 @@
         min-height: 44px;
         border-radius: var(--radius-lg);
         transition: var(--transition-fast);
+        text-decoration: none;
       }
 
       .btn-cta-sm:hover {
@@ -1138,15 +1056,8 @@
         font-size: 0.875rem;
       }
 
-      .footer-logo {
-        font-weight: 900;
-        font-size: 1.125rem;
-        color: var(--text-light);
-        margin-bottom: 8px;
-      }
-
-      .footer-logo span {
-        color: var(--color-accent-light);
+      .article-footer a {
+        color: oklch(1 0.015 80 / 0.7);
       }
 
       /* =============================================
@@ -1161,15 +1072,21 @@
         z-index: 900;
         width: calc(100% - 32px);
         max-width: 420px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
-      .float-cta-btn {
+      .float-cta.visible {
+        opacity: 1;
+      }
+
+      .float-cta a {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
         background: var(--color-primary);
-        color: var(--text-light);
+        color: var(--text-light) !important;
         font-weight: 900;
         font-size: 1rem;
         padding: 16px 24px;
@@ -1186,7 +1103,7 @@
         .article-layout {
           grid-template-columns: 1fr;
           gap: 0;
-          padding-bottom: 140px;
+          padding-bottom: 100px;
         }
 
         .sidebar {
@@ -1269,7 +1186,7 @@
        ============================================= */
       @media (max-width: 480px) {
         .article-layout {
-          padding: 0 16px 140px;
+          padding: 0 16px 100px;
         }
         .hero-inner {
           padding: 0 16px;
@@ -1297,39 +1214,88 @@
           padding: 18px 16px;
         }
 
-        .cta-btn-group {
-          flex-direction: column;
-          align-items: stretch;
-        }
-        .btn-white,
-        .btn-outline-white {
-          justify-content: center;
-        }
-
         .article-meta {
           gap: 8px;
           font-size: 0.8125rem;
         }
-        .meta-dot {
-          display: none;
+      }
+
+      /* =============================================
+       RATE TABLE（轉換率比較）
+       ============================================= */
+      .rate-table {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 20px 0;
+      }
+
+      .rate-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--bg-input);
+        border-radius: var(--radius-md);
+        padding: 10px 14px;
+        font-size: 0.9rem;
+      }
+
+      .rate-row.highlight {
+        background: oklch(0.557 0.166 45 / 0.08);
+        border: 1px solid var(--border-accent);
+      }
+
+      .rate-row-label {
+        color: var(--text-secondary);
+        flex: 1;
+      }
+
+      .rate-row-value {
+        font-weight: 700;
+        color: var(--color-primary);
+        white-space: nowrap;
+      }
+
+      /* 產業格子 */
+      .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .industry-item {
+        background: var(--bg-input);
+        border-radius: var(--radius-md);
+        padding: 12px 14px;
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        border-left: 3px solid var(--color-primary);
+        line-height: 1.6;
+      }
+
+      .industry-item strong {
+        display: block;
+        color: var(--text-primary);
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      @media (max-width: 480px) {
+        .industry-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
     <div id="progress-bar"></div>
+
     <nav class="navbar">
-      <div class="nav-inner">
-        <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
-        <a href="系列總覽/#article-02" class="nav-series-label"
-          >網站經營 12 篇系列</a
-        >
-        <a href="#contact" class="nav-cta">免費診斷 →</a>
-      
-      <button class="nav-hamburger" id="navHamburger" aria-label="開啟選單" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+      <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
+      <a href="系列總覽/#article-06" class="nav-series-label">網站經營 12 篇系列</a>
+      <a href="#contact" class="nav-cta">免費診斷 →</a>
     </nav>
     <!-- 手機漢堡抽屜 -->
     <div class="nav-drawer-overlay" id="navOverlay"></div>
@@ -1395,45 +1361,34 @@
       </div>
     </div>
 
+
     <header class="article-hero">
       <div class="hero-inner">
         <div class="hero-text">
-        <nav class="article-breadcrumb" aria-label="breadcrumb">
-          <a href="#">AI 智能大腦</a>
-          <span class="breadcrumb-sep">›</span>
-          <a href="系列總覽/">網站經營系列</a>
-          <span class="breadcrumb-sep">›</span>
-          <span>第 02 篇</span>
-        </nav>
-        <div class="article-category-badge">
-          <span class="article-num">02 / 12</span>
-          首頁印象
+        <div class="breadcrumb">
+          <a href="../系列總覽/">系列總覽</a> / 第06篇
         </div>
-        <h1>訪客打開你的網站，<em>3 秒鐘</em>決定走還是留</h1>
+        <div class="article-category-badge">留下聯絡方式</div>
+        <h1>90% 的訪客當下不會買<br /><em>你怎麼讓他下次再回來？</em></h1>
         <p class="article-subtitle">
-          你的首頁就是你的店門口，但 90% 的店門口都關著
+          沒留下聯絡方式的客人，等於從你眼前消失。而台灣 99%
+          的店家，正在每天安靜地浪費這些客人。
         </p>
-        <div class="article-meta">
-          <span>閱讀時間約 8 分鐘</span>
-          <span class="meta-dot"></span>
-          <span>適合：所有想改善網站留存率的店家</span>
-          <span class="meta-dot"></span>
-          <span>難度：★★☆☆☆</span>
-        </div>
+        <div class="article-meta">第06篇・共12篇・閱讀約8分鐘</div>
         <div class="article-key-stats">
           <div class="key-stat">
-            <span class="key-stat-num">3 秒</span
-            ><span class="key-stat-label">訪客決定去留的時間</span>
+            <span class="key-stat-num">90%</span>
+            <span class="key-stat-label">訪客當下不會<br />立刻購買</span>
           </div>
           <div class="key-stat-divider"></div>
           <div class="key-stat">
-            <span class="key-stat-num">80%</span
-            ><span class="key-stat-label">只看頁面前半段就離開</span>
+            <span class="key-stat-num">2–4×</span>
+            <span class="key-stat-label">送禮誘因比<br />折扣效果倍數</span>
           </div>
           <div class="key-stat-divider"></div>
           <div class="key-stat">
-            <span class="key-stat-num">2.6×</span
-            ><span class="key-stat-label">改好首頁後訂單倍增</span>
+            <span class="key-stat-num">3–7次</span>
+            <span class="key-stat-label">客戶平均接觸<br />次數才會成交</span>
           </div>
         </div>
         </div>
@@ -1448,653 +1403,566 @@
         </div>
       </div>
     </header>
-    <main class="article-layout">
-      <article class="article-body" id="article-top">
-        <p>
-          你進一家從沒去過的店，前 5
-          秒會做什麼判斷？「這家賣什麼？」「看起來貴不貴？」「我會不會喜歡？」「適不適合我？」
-        </p>
-        <p>
-          5
-          秒內你已經決定要不要繼續走進去。如果答案是「不知道」、「沒感覺」、「看不懂」——你會掉頭走。
-        </p>
 
-        <div class="pull-quote">
-          <p>網站一模一樣，而且更殘酷——只有 3 秒。</p>
-        </div>
+    <div class="article-layout">
+      <main class="article-body">
+        <!-- S1 -->
+        <section id="s1">
+          <h2 class="section-title" id="s1">
+            那 90% 走掉的人——你以為永遠失去了，其實沒有
+          </h2>
 
-        <p>
-          3
-          秒鐘內，訪客的大腦會做完判斷：這個網站適不適合我繼續看。如果答案不夠清楚，他會按右上角的
-          X，永遠離開。而台灣 SMB 的網站首頁，90% 都通不過這 3 秒測試。
-        </p>
-
-        <h2 class="section-title" id="s1">
-          你不在場的那 3 秒，大腦問了哪三件事？
-        </h2>
-
-        <p>
-          訪客打開網站的前 3 秒，大腦會自動掃描三件事：<strong
-            >這個網站在賣什麼（我來對地方了嗎）、這對我有什麼好處（我為什麼要繼續看）、下一步該做什麼（我能不能立刻採取行動）</strong
-          >
-        </p>
-        <p>
-          3
-          秒內如果這三個問題都得到清楚的答案，訪客會留下來繼續看。任何一個沒得到清楚答案，他就會跳出。
-        </p>
-        <p>
-          但 SMB
-          的首頁通常是這樣的：一張很美的大圖，但看不出在賣什麼；一句模糊的標題：「歡迎光臨」、「品質第一」；不知道該點哪裡才能進入下一步。<strong
-            >3 秒內，訪客的大腦得不到任何答案，於是就走了。</strong
-          >
-        </p>
-        <p>
-          而老闆完全不知道，因為他覺得「網站做得很美」——但「美」不等於「有效」。首頁不是設計師的作品集，是在
-          3 秒內幫客戶完成判斷的工具。
-        </p>
-
-        <h2 class="section-title" id="s2">
-          做得很用心，但客人還是沒感覺——為什麼？
-        </h2>
-
-        <p class="section-intro">
-          這裡是 SMB 首頁最常犯的三個錯誤，每一個都在無聲無息地把訪客趕走。
-        </p>
-
-        <div class="mistake-list">
-          <div class="mistake-card">
-            <span class="mistake-label">✕ 錯誤一</span>
-            <h4>那張你花錢做的美圖，正在每秒幫你趕走訪客</h4>
-            <p>
-              最常見的設計：一張很美的風景圖／食物圖，中間寫著「歡迎光臨」、「品質第一」。<br /><br />等於什麼都沒講。訪客的大腦在前
-              3 秒問「這在賣什麼」，但這張圖＋這句話沒回答。<br /><br />正確做法：「給上班族的
-              60 分鐘深層按摩——專治肩頸痠痛＋即時預約」。3
-              秒內訪客就懂：這家是按摩店、適合上班族、可以馬上預約。<strong
-                >清楚 &gt; 美感。</strong
-              >
-            </p>
-          </div>
-          <div class="mistake-card">
-            <span class="mistake-label">✕ 錯誤二</span>
-            <h4>輪播圖第 2 到第 5 張——幾乎沒有人看到</h4>
-            <p>
-              老闆覺得「資訊量多」，但實際上：每張圖只被看到 3–5
-              秒，沒有深度印象；訪客眼睛追著圖跑，沒辦法閱讀文字；重要訊息會被「跑過去」。<br /><br />研究顯示，輪播圖第一張的點擊率是後面幾張的
-              <strong>5–10 倍</strong>——也就是說，第 2–5 張幾乎沒人看。<br /><br />正確做法：第一屏只用一張固定圖＋一句強而有力的標題。
-            </p>
-          </div>
-          <div class="mistake-card">
-            <span class="mistake-label">✕ 錯誤三</span>
-            <h4>你最重要的話，放在 80% 訪客從未滑到的地方</h4>
-            <p>
-              很多老闆把首頁設計成：第一屏大圖＋歡迎詞 → 第二屏公司簡介 →
-              第三屏服務介紹 → 第四屏聯絡方式。<br /><br />問題是，訪客根本滑不到第三屏。<strong
-                >研究顯示，80% 的訪客只看頁面前 50%</strong
-              >——也就是前 1–2 屏。<br /><br />正確做法：第一屏就要有「核心賣點＋主要
-              CTA」。
-            </p>
-          </div>
-        </div>
-
-        <h2 class="section-title" id="s3">
-          少一個就在漏客：首頁這 5 個位置你現在都有嗎？
-        </h2>
-
-        <p class="section-intro">
-          不需要複雜設計，只要這 5 個元素到位，跳出率立刻下降一半：
-        </p>
-
-        <div class="sequence-list">
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">1</div>
-              <div>
-                <div class="sequence-tag">元素 1 · 黃金開場</div>
-                <div class="sequence-title">
-                  開場第一句，決定訪客繼續看還是 3 秒內關掉
-                </div>
-                <div class="sequence-subtitle">
-                  讓對的人一眼說「這就是我要找的」
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>公式：「給 [誰] 的 [什麼產品／服務]——[核心好處]」</p>
-              <p>具體到讓目標客戶「對號入座」，模糊到讓所有人都不對號入座。</p>
-              <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                「歡迎來到 OO 民宿，放鬆心靈的地方」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                「給情侶慶生的山景民宿，送氣泡酒＋巧克力，每週五前訂位享 9 折」
-              </p>
-            </div>
-          </div>
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">2</div>
-              <div>
-                <div class="sequence-tag">元素 2 · 立刻給選擇理由</div>
-                <div class="sequence-title">
-                  沒給明確理由，訪客就去你的競爭對手那裡找答案
-                </div>
-                <div class="sequence-subtitle">
-                  說出具體差異，競爭對手就從訪客腦中消失
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>
-                第一屏可見的位置，要有「為什麼選你不選別人」的明確答案——不是「品質好」這種空話，是具體的差異點。
-              </p>
-              <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                「我們提供專業服務、品質保證」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                「全台唯一不收諮詢費的會計師事務所」 ／ 「24
-                小時內回覆，做不到全額退費」
-              </p>
-            </div>
-          </div>
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">3</div>
-              <div>
-                <div class="sequence-tag">元素 3 · 第三方背書</div>
-                <div class="sequence-title">
-                  見證埋在頁面底部——8 成訪客從未滑到那裡
-                </div>
-                <div class="sequence-subtitle">
-                  陌生人信任你，是因為先看到別人信任了你
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>
-                不要把見證放到頁面底部——首屏就要看到。形式可以是：「累計服務
-                12,000 家客戶」、「Google 4.8 顆星 200
-                則評論」、一兩個短的客戶見證、媒體 logo 牆。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="highlight-box">
-          <div class="highlight-box-title">
-            <svg
-              style="
-                display: inline;
-                vertical-align: -3px;
-                width: 1.1em;
-                height: 1.1em;
-              "
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="9"
-                stroke="oklch(0.557 0.166 45)"
-                stroke-width="2"
-              />
-              <circle
-                cx="12"
-                cy="12"
-                r="5"
-                stroke="oklch(0.557 0.166 45)"
-                stroke-width="2"
-              />
-              <circle cx="12" cy="12" r="1.5" fill="oklch(0.557 0.166 45)" />
-            </svg>
-            關鍵提醒
-          </div>
-          <p style="margin: 0">
-            這 3 個元素做對，跳出率通常就能下降一半。剩下 2
-            個，是讓「留下來的訪客」變成「真的採取行動的客人」。
-          </p>
-        </div>
-
-        <div class="sequence-list">
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">4</div>
-              <div>
-                <div class="sequence-tag">元素 4 · 行動引導</div>
-                <div class="sequence-title">
-                  訪客有興趣、找不到按鈕——他不等你，直接走了
-                </div>
-                <div class="sequence-subtitle">
-                  有興趣的訪客，不能因找不到按鈕而白白流失
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>99% 的老闆把 CTA 放在頁面底部、寫「聯絡我們」——這等於沒放。</p>
-              <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                頁面底部 · 「聯絡我們」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                第一屏可見 ·
-                「立刻預約」／「免費諮詢」（顏色跳出來，手機版浮動）
-              </p>
-            </div>
-          </div>
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">5</div>
-              <div>
-                <div class="sequence-tag">元素 5 · 真實感</div>
-                <div class="sequence-title">
-                  Stock photo 一眼就被識破——訪客覺得「這家不是真的」
-                </div>
-                <div class="sequence-subtitle">
-                  老闆的真實照片，比 200 張 stock photo 更能讓人信任
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>
-                不要用 stock
-                photo——客人現在看得出來那是假的。用真實的：老闆真人照片、店面工作環境的實拍、真實的工作過程照片。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <h2 class="section-title" id="s4">
-          同樣的產品，首頁改一版，留客率差 40%
-        </h2>
-
-        <p class="section-intro">這不是理論，是真實的 A/B 測試數字。</p>
-
-        <div class="comparison-box">
-          <div class="comparison-side bad">
-            <div class="comparison-label">✕ 沒做的店家</div>
-            <div class="comparison-big-num">78%</div>
-            <div class="comparison-desc">
-              <strong>版本 A（美但無效）</strong><br />大張山景圖＋「歡迎來到 OO
-              民宿」<br />跳出率：78%<br />平均停留：32 秒
-            </div>
-          </div>
-          <div class="comparison-side good">
-            <div class="comparison-label">✓ 做了的店家</div>
-            <div class="comparison-big-num">42%</div>
-            <div class="comparison-desc">
-              <strong>版本 B（3 秒清楚）</strong
-              ><br />民宿外觀清晰圖＋「給情侶慶生的山景民宿，9
-              折」＋「立刻訂房」按鈕＋ Google 4.8 星<br />跳出率：42%<br />平均停留：1
-              分 50 秒
-            </div>
-          </div>
-        </div>
-
-        <div class="psychology-box">
-          <h3>結果：版本 B 的訂房率是版本 A 的 2.6 倍</h3>
           <p>
-            而這只是首頁差異，後面的內容一模一樣。每個訂單背後是一個本來會跳出但被留下的訪客——而留住他的成本是「設計師花
-            2 小時重新規劃首頁」。
+            你的店裡今天進來 100 個客人，90
+            個沒買就走了。你會難過嗎？多數老闆會反省、會檢討、會想下次怎麼留住更多人。
           </p>
-          <span class="psychology-stat">一次性改版 → 每天持續回報</span>
-        </div>
 
-        <h2 class="section-title" id="s5">
-          現在打開你的首頁——這三題你能答「有」嗎？
-        </h2>
+          <p>
+            但你的網站每天進來 100 個訪客，<strong>90 個沒下單就離開</strong
+            >，多數老闆完全沒感覺。因為他們看不到那 90
+            個人。網站的訪客流失是看不見的——沒有失望的眼神、沒有空蕩的座位。他們默默來、默默走，老闆連他們存在過都不知道。
+          </p>
 
-        <div class="diagnosis-box">
-          <div class="diagnosis-title">📋 首頁 3 秒測試</div>
+          <div class="pull-quote">
+            <p>
+              這 90%
+              的人，可能就是你接下來十年最值錢的資產——只要你做對一件事：在他們離開之前，讓他們留下聯絡方式。
+            </p>
+          </div>
 
-          <div
-            class="diagnosis-item"
-            onclick="this.classList.toggle('checked')"
-          >
-            <div class="diagnosis-checkbox"></div>
-            <div class="diagnosis-text">
-              <strong
-                >第一題：你的首頁第一屏，有沒有讓陌生人在 3
-                秒內知道「你在賣什麼」？</strong
-              ><br />
-              如果只有「歡迎光臨」→ 沒通過 3 秒測試
+          <p>
+            我們先要破除一個多數老闆的迷思：訪客沒當下下單，不代表他沒興趣。實際情況是，網站訪客的購買決策，<strong
+              >平均要經過 3–7 次接觸才會發生</strong
+            >。
+          </p>
+
+          <div class="sequence-list">
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">1</div>
+                <div>
+                  <div class="sequence-title">第一次來訪：了解階段</div>
+                  <div class="sequence-subtitle">
+                    認識你是誰、賣什麼、跟別家有什麼不同
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段的訪客幾乎不會下單。他只是在「掃描」，評估你是否值得進一步了解。這完全正常。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">2</div>
+                <div>
+                  <div class="sequence-title">第二次來訪：比較階段</div>
+                  <div class="sequence-subtitle">
+                    你跟別家的差異在哪，價格、服務、品質怎麼比
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段他已經把你列入候選名單。如果你沒有留住他，他可能從此就去看其他家了。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">3–4</div>
+                <div>
+                  <div class="sequence-title">第三、四次來訪：準備階段</div>
+                  <div class="sequence-subtitle">
+                    預算評估、問家人意見、等待合適時機
+                  </div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                這個階段他幾乎已經決定要買了，只差一個觸發點。這是你最應該「接住」他的時刻。
+              </div>
+            </div>
+            <div class="sequence-card">
+              <div class="sequence-header">
+                <div class="sequence-num">5+</div>
+                <div>
+                  <div class="sequence-title">第五次以後：決定階段</div>
+                  <div class="sequence-subtitle">這時才會真正下單成交</div>
+                </div>
+              </div>
+              <div class="sequence-body">
+                如果你沒有在前幾次收集到他的聯絡方式，這個人不知道從哪個時間點起，就已經不記得你了。
+              </div>
             </div>
           </div>
 
-          <div
-            class="diagnosis-item"
-            onclick="this.classList.toggle('checked')"
-          >
-            <div class="diagnosis-checkbox"></div>
-            <div class="diagnosis-text">
-              <strong
-                >第二題：把首頁文字遮住只留圖片，看得出你的店有什麼特色嗎？</strong
-              ><br />
-              如果看不出 → 你的視覺沒在傳達差異化
-            </div>
-          </div>
+          <p>
+            換句話說，<strong
+              >90%
+              當下不買的訪客，其實大多數人是「還在比較」，不是「沒興趣」</strong
+            >。你不知道他是誰、不知道怎麼聯絡他——所以即使他下個月回來想買，他可能早就忘記你，直接買了別家。
+          </p>
 
-          <div
-            class="diagnosis-item"
-            onclick="this.classList.toggle('checked')"
-          >
-            <div class="diagnosis-checkbox"></div>
-            <div class="diagnosis-text">
-              <strong>第三題：第一屏有沒有清楚的「下一步動作」按鈕？</strong
-              ><br />
-              如果沒有 → 即使訪客有興趣，也不知道該怎麼前進
-            </div>
-          </div>
-
-          <div class="diagnosis-verdict">
-            如果三題都答「沒有」，你的網站此刻就是「3
-            秒就被關掉的網站」——前面花的所有 SEO 和廣告費，都在這 3 秒內被浪費。
-          </div>
-        </div>
-
-        <h2 class="section-title" id="s6">
-          大多數老闆知道這個問題存在——但還沒動
-        </h2>
-
-        <p>
-          你會同意：首頁的前 3 秒決定 80% 的訪客去留——<strong
-            >清楚 &gt; 美感</strong
-          >。
-        </p>
-        <p>
-          但你的網站此刻可能就是「美但無效」——一張漂亮的大圖、一句歡迎詞、然後重要訊息埋在後面。<strong>而最諷刺的是：改善這件事不需要重做整個網站、不需要花大錢</strong>——只需要重新設計第一屏的核心訊息。一次性的工作，但會在你的網站存活的每一天持續產生回報。
-        </p>
-
-        <div class="article-cta" id="contact">
-          <div class="cta-eyebrow">下一步</div>
-          <h3>想知道你的首頁 3 秒印象打幾分？</h3>
-          <p>加我 LINE，30 分鐘免費診斷你的首頁，告訴你哪裡讓客人跑掉。</p>
-          <div class="cta-btn-group">
-            <a href="#" class="btn-white">免費預約 30 分鐘診斷</a>
-            <a href="系列總覽/" class="btn-outline-white">繼續讀系列文章</a>
-          </div>
-        </div>
-
-        <!-- 上下篇導航 -->
-        <nav class="article-pagination" aria-label="文章導航">
-          <a href="article-01-exposure.html" class="pag-card prev-card">
-            <span class="pag-dir">← 上一篇</span>
-            <span class="pag-title"
-              >你的店明明很好，為什麼網路上沒人找得到？</span
-            >
-          </a>
-          <a href="article-03.html" class="pag-card next-card">
-            <span class="pag-dir">下一篇 →</span>
-            <span class="pag-title">為什麼要選你不選別人</span>
-          </a>
-        </nav>
-
-        <!-- 你可能也有興趣 -->
-        <section class="related-articles">
-          <h3 class="related-heading">你可能也有興趣</h3>
-          <div class="related-grid">
-            <a href="article-01-exposure.html" class="related-card">
-              <span class="related-num">第 01 篇</span>
-              <span class="related-title"
-                >你的店明明很好，為什麼網路上沒人找得到？</span
-              >
-            </a>
-            <a href="article-03.html" class="related-card">
-              <span class="related-num">第 03 篇</span>
-              <span class="related-title">為什麼要選你不選別人</span>
-            </a>
-            <a href="article-05-conversion.html" class="related-card">
-              <span class="related-num">第 05 篇</span>
-              <span class="related-title"
-                >客人想下單的那個瞬間最熱，過了 30 秒就涼了</span
-              >
-            </a>
+          <div class="highlight-box">
+            <div class="highlight-box-title">關鍵洞察</div>
+            <p style="margin: 0">
+              「留下聯絡方式」這件事，本質上是把「失去的客人」變成「可以隨時聯絡的潛在客戶」——這是任何單次成交都比不上的長期資產。做到的店家，三年後手上有幾千個能直接溝通的潛在客，任何時候發一則訊息就有業績。
+            </p>
           </div>
         </section>
-      </article>
 
-      <aside class="sidebar" aria-label="文章導覽">
-        <div class="sidebar-widget">
+        <!-- S2 -->
+        <section id="s2">
+          <h2 class="section-title" id="s2">
+            你正在犯的三個錯，可能不是你以為的那個
+          </h2>
+
+          <p>
+            每次我看到一個店家的網站，幾乎都能找到同樣的問題。不是沒放 LINE QR
+            Code，而是放了卻沒有人掃。原因在於這三個常見錯誤：
+          </p>
+
+          <div class="mistake-list">
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤一</div>
+              <h4>以為訪客沒興趣——其實他只是還沒準備好</h4>
+              <p>
+                這是最致命的迷思。很多人需要
+                <strong>2–8 週</strong
+                >才會完成決策（高單價服務、需要諮詢家人的決定都是這樣）。你以為的「沒興趣」，可能只是「還沒準備好」。如果你不留下聯絡方式，你等於放棄了所有需要時間決策的客戶——而這群人通常是單價最高、最不殺價、最忠誠的優質客戶。
+              </p>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤二</div>
+              <h4>不是加 LINE 會嚇跑客人，是你給的「理由」出了問題</h4>
+              <p>
+                問題不在「加
+                LINE」這個動作，問題在「<strong>為什麼要加</strong>」。看看轉換率的差距：
+              </p>
+              <div class="rate-table">
+                <div class="rate-row">
+                  <span class="rate-row-label">只寫「歡迎加 LINE」</span>
+                  <span class="rate-row-value">轉換率 &lt;2%</span>
+                </div>
+                <div class="rate-row">
+                  <span class="rate-row-label"
+                    >「加 LINE 享首次體驗 8 折優惠」</span
+                  >
+                  <span class="rate-row-value">10–15%</span>
+                </div>
+                <div class="rate-row highlight">
+                  <span class="rate-row-label"
+                    >「加 LINE 立刻領《餐廳5個踩雷指南》」</span
+                  >
+                  <span class="rate-row-value">20–30% ↑</span>
+                </div>
+              </div>
+              <p style="margin-top: 12px; margin-bottom: 0">
+                差別在「換」的概念——你不是要客人「加
+                LINE」，你是要跟客人<strong>交換</strong>：他給聯絡方式，你給立刻拿得到的好處。
+              </p>
+            </div>
+
+            <div class="mistake-card">
+              <div class="mistake-label">❌ 常見錯誤三</div>
+              <h4>「我沒東西給」——這句話每天讓你放走最好轉換的那群人</h4>
+              <p>
+                幾乎每個老闆第一次聽到「設計加 LINE
+                的誘因」都這樣說。但實際上，你絕對有東西可以給，只是沒想過：
+              </p>
+              <div class="industry-grid">
+                <div class="industry-item">
+                  <strong>餐飲業</strong>加 LINE 送開胃菜、飲料或優惠券
+                </div>
+                <div class="industry-item">
+                  <strong>電商</strong>首購 9 折、免運券
+                </div>
+                <div class="industry-item">
+                  <strong>服務業</strong>免費 30 分鐘諮詢、首次體驗價
+                </div>
+                <div class="industry-item">
+                  <strong>線上課程</strong>1 堂試聽課、必看重點指南
+                </div>
+                <div class="industry-item">
+                  <strong>B2B</strong>趨勢報告、預約專屬諮詢
+                </div>
+                <div class="industry-item">
+                  <strong>醫美／健身</strong>1 堂體驗課、免費首次評估
+                </div>
+              </div>
+              <p style="margin-top: 14px; margin-bottom: 0">
+                重點不在「給什麼」，重點在——<strong>給的東西必須客人現在就拿得到，而且有具體感受到價值</strong>。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- S3 -->
+        <section id="s3">
+          <h2 class="section-title" id="s3">
+            同樣花 50 元，哪種方式讓人立刻加、哪種讓人「再想想」
+          </h2>
+
+          <p>
+            這裡有一個 99%
+            的老闆都不知道的事實，而且它完全影響你設計誘因的方式：
+          </p>
+
+          <div class="psychology-box">
+            <h3>為什麼送禮比打折有效 2–4 倍？大腦的秘密</h3>
+            <p>
+              當你說「加 LINE 折 50
+              元」，客人的大腦會啟動「得失計算」模式——他會冷靜下來想：「折扣划算嗎？我真的要加嗎？」這讓他進入理性分析，結果是「讓我再想想」。
+            </p>
+            <p>
+              但當你說「加 LINE
+              送開胃菜」，客人的大腦會啟動「獎勵迴路」——他會立刻興奮，想著「這個我現在就能拿到！」這讓他進入情感反應，結果是「好，我要加！」
+            </p>
+            <p>
+              兩者花的成本可能一樣（都是 50 元），但效果相差 2–4
+              倍。這就是行為科學在銷售上的應用。
+            </p>
+            <div class="psychology-stat">
+              送禮誘因的轉換率是折扣誘因的 2–4 倍，成本相同
+            </div>
+          </div>
+
+          <div class="comparison-box">
+            <div class="comparison-side bad">
+              <div class="comparison-label">效果較差</div>
+              <div class="comparison-big-num">&lt;15%</div>
+              <div class="comparison-desc">
+                「加 LINE 折 50 元」<br />啟動理性計算，讓人猶豫
+              </div>
+            </div>
+            <div class="comparison-side good">
+              <div class="comparison-label">效果較好</div>
+              <div class="comparison-big-num">20–30%</div>
+              <div class="comparison-desc">
+                「加 LINE 送開胃菜」<br />啟動獎勵迴路，讓人立刻想要
+              </div>
+            </div>
+          </div>
+
+          <p>
+            還有另一個關鍵：誘因必須是「<strong>立即可得</strong>」的，不是「下次來才能用」。研究顯示，延遲的獎勵轉換效果會下降
+            60% 以上。客人當下掃描 QR Code、立刻在 LINE
+            上收到兌換方式——這個「即時回饋」才是讓他按下加好友的真正動力。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">設計誘因的三個原則</div>
+            <p style="margin: 0">
+              1. <strong>立即可得</strong>——加完馬上能用，不要等到下次<br />
+              2.
+              <strong>具體有形</strong
+              >——「開胃菜」比「優惠」好，因為更有畫面<br />
+              3. <strong>低門檻</strong>——不要要求填太多資料，只需要加好友就夠
+            </p>
+          </div>
+        </section>
+
+        <!-- S4 -->
+        <section id="s4">
+          <h2 class="section-title" id="s4">
+            我把帳算給你看：兩家店三個月後的差距
+          </h2>
+
+          <p>
+            讓我們用具體數字來說明，這件事的長期價值有多大。假設你的網站每天有
+            50 個訪客（中小型網站正常數字），每月
+            <strong>1,500 個訪客</strong>。
+          </p>
+
+          <div class="comparison-box">
+            <div class="comparison-side bad">
+              <div class="comparison-label">情境 A：沒有收集機制</div>
+              <div class="comparison-big-num">30–45</div>
+              <div class="comparison-desc">
+                筆訂單/月（2–3% 即時成交）<br /><br />其餘 1,455–1,470
+                個訪客，離開後再也找不到。每個月都要付廣告費找新客人。
+              </div>
+            </div>
+            <div class="comparison-side good">
+              <div class="comparison-label">情境 B：有「加 LINE 送 X」</div>
+              <div class="comparison-big-num">+33</div>
+              <div class="comparison-desc">
+                筆額外訂單（三個月後）<br /><br />15% 加 LINE = 225
+                人/月。三個月累積 675 個 LINE 好友，培育轉換 5% = 額外 33
+                筆訂單，不需再付廣告費。
+              </div>
+            </div>
+          </div>
+
+          <div class="pull-quote">
+            <p>
+              情境 A 跟 B
+              的差距，不是這三個月的訂單差距，是接下來十年的累積差距。B
+              老闆三年後手上有 8,000 個 LINE
+              好友，任何時候發一則訊息就有業績，廣告費砍半。
+            </p>
+          </div>
+
+          <p>
+            這筆帳還沒算到「名單的複利效應」：你的 LINE
+            好友名單每個月都在成長，而你接觸他們的成本幾乎是零。反觀持續打廣告的對手，每個月都要花同樣的錢找新客人，永遠在原地踏步。
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-day">第1個月</div>
+              <div class="timeline-content">
+                累積 225 個 LINE 好友，開始建立名單基礎
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第3個月</div>
+              <div class="timeline-content">
+                675 人名單，可以發第一波活動訊息，預期額外 33 筆訂單
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第1年</div>
+              <div class="timeline-content">
+                2,700 人名單，廣告費需求開始下降，老客回購率提升
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-day">第3年</div>
+              <div class="timeline-content">
+                8,000+ 人名單，每次活動不需依賴廣告，業績自行推動
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- S5 -->
+        <section id="s5">
+          <h2 class="section-title" id="s5">
+            三個問題，你的網站現在每天漏掉幾個人
+          </h2>
+
+          <p>
+            掃過下面三個問題，在心裡誠實打勾。這是一個快速的自我診斷，讓你知道現在的問題有多嚴重：
+          </p>
+
+          <div class="diagnosis-box">
+            <div class="diagnosis-title">自我診斷清單</div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第一題：你的網站上有沒有任何一個地方在收集 LINE 或
+                  Email？</strong
+                ><br />
+                沒有 → 你正在每天漏掉 80–95% 的潛在客戶。每 1,000
+                個訪客，你只接住了 20–50 個，其他 950–980 個人永遠消失了。
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第二題：如果有，你給的「換聯絡方式的好處」具體嗎？客人看了會立刻想加嗎？</strong
+                ><br />
+                只寫「歡迎加 LINE」→ 轉換率 &lt;2%；有具體誘因且立即可得 →
+                轉換率 10–30%。差距是 10–15 倍。
+              </div>
+            </div>
+
+            <div
+              class="diagnosis-item"
+              onclick="this.classList.toggle('checked')"
+            >
+              <div class="diagnosis-checkbox"></div>
+              <div class="diagnosis-text">
+                <strong
+                  >第三題：你目前的 LINE 好友 / Email 名單有幾個人？</strong
+                ><br />
+                少於 100 人 → 你的長期資產接近零。按每月 1,500
+                訪客計算，一年應該能累積至少 2,000+
+                名單，如果差距太大代表機制有問題。
+              </div>
+            </div>
+
+            <div class="diagnosis-verdict">
+              如果你三題都答「沒有／不及格」，代表你的網站此刻正在每天浪費機會——而且這個浪費是看不見的、安靜的、會持續到你做改變為止。<strong
+                >好消息是：做這件事的成本接近零。</strong
+              >
+            </div>
+          </div>
+
+          <p>
+            很多老闆看到這裡會說「好，我知道了，我回去加個 LINE QR
+            Code。」但這樣還不夠。一個沒有誘因的 QR Code，轉換率只有
+            1–2%，跟沒放沒什麼差別。
+          </p>
+
+          <p>
+            真正要做的是：<strong
+              >設計一個「誘因 + 即時回饋 + 後續培育」的完整系統</strong
+            >。光收到名單還不夠，後續要怎麼跟這群人保持關係、在對的時間送對的訊息，才是讓名單變成業績的關鍵——這就是下一篇要講的自動化行銷系統。
+          </p>
+        </section>
+
+        <!-- S6 -->
+        <section id="s6">
+          <h2 class="section-title" id="s6">
+            你今天讀完會同意，但你的網站可能就是反例
+          </h2>
+
+          <p>
+            你會同意：90%
+            當下不買的訪客，如果留下聯絡方式，有機會變成未來的客戶；沒留下，永遠失去。
+          </p>
+
+          <p>
+            但你的網站此刻可能完全沒有任何收集機制——你正在每天讓 90%
+            的訪客從你眼前消失。
+          </p>
+
+          <div class="highlight-box">
+            <div class="highlight-box-title">最諷刺的事實</div>
+            <p style="margin: 0">
+              做這件事的成本接近零。一個誘因設計、一個簡單的 LINE
+              加好友入口、一套自動回應——但長期累積的價值可能是你接下來十年最值錢的資產。而你的競爭對手，99%
+              都還沒做。
+            </p>
+          </div>
+
+          <p>
+            這件事不需要等「網站大改版」才做，不需要等「預算充裕」才做。今天就可以在你的網站上加一個有誘因的加
+            LINE
+            入口，明天就開始累積名單。一年後，當你的對手還在每個月燒廣告費找新客人的時候，你手上的名單已經是一台不需要廣告費就能自動出單的機器。
+          </p>
+
+          <p>
+            問題不是「要不要做」，而是「現在就做還是再等等」。每一天你沒有收集名單，就是讓
+            80–95%
+            的訪客從你眼前消失。這個損失是靜默的、累積的、而且完全可以避免。
+          </p>
+
+          <div class="pull-quote">
+            <p>
+              三年後，同行老闆還在說「廣告費越來越貴」的時候，做了名單的你，廣告費是他們的一半，業績是他們的兩倍。
+            </p>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="article-cta" id="contact">
+          <h2>想讓你的網站也做到這些？</h2>
+          <p>
+            免費診斷你的網站現況，30分鐘找出3個立即可改善的點，包含聯絡方式收集機制的設計建議。
+          </p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="cta-button">加 LINE 免費諮詢 →</a>
+          </section>
+    <!-- 上下篇導航 -->
+    <nav class="article-pagination" aria-label="文章導航">
+      <a href="article-05-conversion.html" class="pag-card prev-card">
+        <span class="pag-dir">← 上一篇</span>
+        <span class="pag-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</span>
+      </a>
+      <a href="article-07-automation.html" class="pag-card next-card">
+        <span class="pag-dir">下一篇 →</span>
+        <span class="pag-title">你不可能記得每個客人的生日，但網站可以</span>
+      </a>
+    </nav>
+
+    <!-- 你可能也有興趣 -->
+    <section class="related-articles">
+      <h3 class="related-heading">你可能也有興趣</h3>
+      <div class="related-grid">
+        <a href="article-05-conversion.html" class="related-card">
+          <span class="related-num">第 05 篇</span>
+          <span class="related-title">客人想下單的那個瞬間最熱，過了 30 秒就涼了</span>
+        </a>
+        <a href="article-07-automation.html" class="related-card">
+          <span class="related-num">第 07 篇</span>
+          <span class="related-title">你不可能記得每個客人的生日，但網站可以</span>
+        </a>
+        <a href="article-09-retention.html" class="related-card">
+          <span class="related-num">第 09 篇</span>
+          <span class="related-title">你店裡賺最多錢的，是不是那 20% 的熟客？</span>
+        </a>
+      </div>
+    </section>
+
+
+
+
+
+
+
+        
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-widget toc-widget">
           <div class="widget-title">本文目錄</div>
-          <ul class="toc-list">
-            <li class="toc-item"><a href="#s1">大腦在 3 秒問的三件事</a></li>
-            <li class="toc-item"><a href="#s2">常見三大錯誤</a></li>
-            <li class="toc-item"><a href="#s3">首頁 5 個必備元素</a></li>
-            <li class="toc-item"><a href="#s4">A/B 測試：留客率差 40%</a></li>
-            <li class="toc-item"><a href="#s5">首頁 3 秒自我診斷</a></li>
-            <li class="toc-item"><a href="#s6">知道但還沒動？</a></li>
-          </ul>
+          <nav class="toc">
+            <a href="#s1" class="toc-item active">1. 那 90% 其實沒有消失</a>
+            <a href="#s2" class="toc-item">2. 你正在犯的三個錯</a>
+            <a href="#s3" class="toc-item">3. 送禮 vs 打折的心理學</a>
+            <a href="#s4" class="toc-item">4. 兩家店三個月後的差距</a>
+            <a href="#s5" class="toc-item">5. 自我診斷三個問題</a>
+            <a href="#s6" class="toc-item">6. 現在就做還是再等？</a>
+          </nav>
         </div>
-        <div class="sidebar-widget">
-          <div class="widget-title">12 篇系列</div>
-          <ul class="series-list">
-            <li class="series-item">
-              <a href="./article-01-exposure.html"
-                ><span class="series-num">01</span>曝光與導流</a
-              >
-            </li>
-            <li class="series-item current">
-              <a href="./article-02-homepage.html"
-                ><span class="series-num">02</span>首頁印象</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-03.html"
-                ><span class="series-num">03</span>差異化定位</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-04.html"
-                ><span class="series-num">04</span>產品介紹</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-05-conversion.html"
-                ><span class="series-num">05</span>成交路徑</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-06-contact.html"
-                ><span class="series-num">06</span>留下聯絡方式</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-07-automation.html"
-                ><span class="series-num">07</span>自動化訊息</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-08-upsell.html"
-                ><span class="series-num">08</span>加購與升級</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-09-retention.html"
-                ><span class="series-num">09</span>回頭客機制</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-10-referral.html"
-                ><span class="series-num">10</span>口碑系統</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-11-trust.html"
-                ><span class="series-num">11</span>信任與證據</a
-              >
-            </li>
-            <li class="series-item">
-              <a href="./article-12.html"
-                ><span class="series-num">12</span>成效追蹤</a
-              >
-            </li>
-          </ul>
+
+        <div class="sidebar-widget series-widget">
+          <div class="widget-title">系列文章</div>
+          <div class="series-list">
+            <a href="article-01-exposure.html" class="series-item"
+              >01 曝光問題</a
+            >
+            <a href="article-02-homepage.html" class="series-item"
+              >02 首頁設計</a
+            >
+            <a href="article-03.html" class="series-item">03 菜單設計</a>
+            <a href="article-04.html" class="series-item">04 視覺設計</a>
+            <a href="article-05-conversion.html" class="series-item"
+              >05 成交路徑</a
+            >
+            <a href="article-06-contact.html" class="series-item current"
+              >06 留下聯絡</a
+            >
+            <a href="article-07-automation.html" class="series-item"
+              >07 自動化</a
+            >
+            <a href="article-08-upsell.html" class="series-item">08 加購升級</a>
+            <a href="article-09-retention.html" class="series-item"
+              >09 回頭客</a
+            >
+            <a href="article-10-referral.html" class="series-item"
+              >10 口碑轉介</a
+            >
+            <a href="article-11-trust.html" class="series-item">11 信任建立</a>
+            <a href="article-12.html" class="series-item">12 整合策略</a>
+          </div>
         </div>
+
         <div class="sidebar-widget cta-widget">
           <div class="widget-title">免費診斷</div>
-          <p>不知道從哪裡開始？30 分鐘免費諮詢，告訴你首頁哪裡最該先改。</p>
-          <a href="#contact" class="btn-cta-sm">立刻預約 →</a>
-        </div>
-      </aside>
-    </main>
-    <div class="float-cta">
-      <a href="#contact" class="float-cta-btn">免費 30 分鐘診斷</a>
+          <p>30 分鐘找出你網站最大的流失點</p>
+          <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="btn-cta-sm">加 LINE 諮詢 →</a>
     </div>
+
     <footer class="article-footer">
-      <div class="footer-logo">AI 智能大腦<span>.</span></div>
-      <p>網站經營 12 篇系列 · 第 02 篇：首頁印象</p>
-      <p style="margin-top: 8px; font-size: 0.8125rem; opacity: 0.4">
-        © 2026 AI 智能大腦 · 保留所有權利
+      <p>
+        © 2025 AI 智能大腦 |
+        <a href="系列總覽/" class="btn-outline">系列總覽</a>
       </p>
     </footer>
-    <a
-      href="系列總覽/#article-02"
-      class="back-to-overview"
-      aria-label="回到系列總覽"
-    >
-      <span class="bto-arrow" aria-hidden="true">←</span>
+
+    <a href="../系列總覽/" class="back-to-overview">
+      <span class="bto-arrow">←</span>
       <span class="bto-text">系列總覽</span>
       <span class="bto-meta">12 篇導讀</span>
     </a>
@@ -2160,7 +2028,7 @@
           display: none;
         }
       }
-
+    
       /* LINE 浮動按鈕 */
       .fab-line {
         position: fixed;
@@ -2168,33 +2036,23 @@
         right: 24px;
         width: 52px;
         height: 52px;
-        background: #06c755;
+        background: #06C755;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 16px rgba(6, 199, 85, 0.4);
+        box-shadow: 0 4px 16px rgba(6,199,85,0.4);
         z-index: 9998;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
         text-decoration: none;
       }
       .fab-line:hover {
         transform: scale(1.1);
-        box-shadow: 0 6px 24px rgba(6, 199, 85, 0.5);
+        box-shadow: 0 6px 24px rgba(6,199,85,0.5);
       }
-      .fab-line svg {
-        width: 28px;
-        height: 28px;
-      }
+      .fab-line svg { width: 28px; height: 28px; }
       @media (max-width: 768px) {
-        .fab-line {
-          bottom: 80px;
-          right: 16px;
-          width: 46px;
-          height: 46px;
-        }
+        .fab-line { bottom: 80px; right: 16px; width: 46px; height: 46px; }
       }
 
       /* 相關文章 */
@@ -2228,9 +2086,7 @@
         text-decoration: none;
         color: inherit;
         border: 1px solid oklch(0.9 0.01 80);
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
         position: relative;
       }
       .related-card:hover {
@@ -2255,12 +2111,8 @@
         margin-top: auto;
       }
       @media (max-width: 768px) {
-        .related-articles {
-          padding: 24px 16px;
-        }
-        .related-grid {
-          grid-template-columns: 1fr;
-        }
+        .related-articles { padding: 24px 16px; }
+        .related-grid { grid-template-columns: 1fr; }
       }
 
       /* 上下篇導航 */
@@ -2270,12 +2122,8 @@
         gap: 16px;
         margin: 40px 0;
       }
-      .article-pagination.no-prev {
-        grid-template-columns: 1fr;
-      }
-      .article-pagination.no-next {
-        grid-template-columns: 1fr;
-      }
+      .article-pagination.no-prev { grid-template-columns: 1fr; }
+      .article-pagination.no-next { grid-template-columns: 1fr; }
       .pag-card {
         display: flex;
         flex-direction: column;
@@ -2286,19 +2134,14 @@
         border-radius: 12px;
         text-decoration: none;
         color: inherit;
-        transition:
-          border-color 0.2s,
-          box-shadow 0.2s,
-          transform 0.2s;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
       }
       .pag-card:hover {
         border-color: var(--color-primary, oklch(0.557 0.166 45));
         box-shadow: 0 4px 16px oklch(0.557 0.166 45 / 0.12);
         transform: translateY(-2px);
       }
-      .pag-card.next-card {
-        text-align: right;
-      }
+      .pag-card.next-card { text-align: right; }
       .pag-dir {
         font-size: 0.75rem;
         font-weight: 700;
@@ -2313,13 +2156,10 @@
         line-height: 1.4;
       }
       @media (max-width: 600px) {
-        .article-pagination {
-          grid-template-columns: 1fr;
-        }
-        .pag-card.next-card {
-          text-align: left;
-        }
+        .article-pagination { grid-template-columns: 1fr; }
+        .pag-card.next-card { text-align: left; }
       }
+
     
       /* =============================================
          HAMBURGER MENU
@@ -2540,69 +2380,48 @@
         }
       }
     </style>
+
     <script>
-      const progressBar = document.getElementById("progress-bar");
-      window.addEventListener(
-        "scroll",
-        () => {
-          const scrollTop = window.scrollY;
-          const docHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-          progressBar.style.width = progress + "%";
-        },
-        { passive: true },
-      );
-      const sections = document.querySelectorAll('[id^="s"]');
-      const tocLinks = document.querySelectorAll(".toc-item");
+      window.addEventListener("scroll", () => {
+        const scrolled =
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      });
+
+      const tocItems = document.querySelectorAll(".toc-item");
+      const sections = document.querySelectorAll(".article-body section[id]");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              tocLinks.forEach((li) => li.classList.remove("active"));
-              const activeLink = document.querySelector(
-                `.toc-item a[href="#${entry.target.id}"]`,
+              tocItems.forEach((item) => item.classList.remove("active"));
+              const active = document.querySelector(
+                `.toc-item[href="#${entry.target.id}"]`,
               );
-              if (activeLink)
-                activeLink.closest(".toc-item").classList.add("active");
+              if (active) active.classList.add("active");
             }
           });
         },
         { rootMargin: "-20% 0px -70% 0px" },
       );
       sections.forEach((s) => observer.observe(s));
-      const floatCta = document.querySelector(".float-cta");
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (window.innerWidth <= 1024) {
-            floatCta.style.display = window.scrollY > 400 ? "block" : "none";
-          }
-        },
-        { passive: true },
-      );
-    </script>
 
-    <a
-      href="https://line.me/ti/p/5gW0er9baG"
-      target="_blank"
-      rel="noopener"
-      class="fab-line"
-      aria-label="LINE 諮詢"
-    >
+      const floatCta = document.querySelector(".float-cta");
+      window.addEventListener("scroll", () => {
+        floatCta.classList.toggle("visible", window.scrollY > 400);
+      });
+    </script>
+  
+    <a href="https://line.me/ti/p/5gW0er9baG" target="_blank" rel="noopener" class="fab-line" aria-label="LINE 諮詢">
       <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="20" fill="#06C755" />
-        <path
-          d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z"
-          fill="white"
-        />
-        <path
-          d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z"
-          fill="#06C755"
-        />
+        <rect width="40" height="40" rx="20" fill="#06C755"/>
+        <path d="M32 18.9c0-6.1-6.1-11-13.5-11S5 12.8 5 18.9c0 5.4 4.8 9.9 11.3 10.8.4.1 1 .3 1.2.7.2.4.1.9.1 1.3l-.2 1.2c-.1.4-.4 1.7 1.5.9 1.9-.8 10-5.9 13.7-10.1 2.5-2.7 3.4-5.5 3.4-4.7z" fill="white"/>
+        <path d="M27.8 21.8h-3.5a.3.3 0 01-.3-.3v-5.4a.3.3 0 01.3-.3h3.5c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3h-2.4v.8h2.4c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3zM14 21.8a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v4.2h2.3c.2 0 .3.1.3.3v.9c0 .2-.1.3-.3.3H14zM19.5 21.8h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3zM23.5 21.8h-.9c-.2 0-.3-.1-.3-.3V18l-2.1 3.6c-.1.1-.2.2-.3.2h-.9a.3.3 0 01-.3-.3v-5.4c0-.2.1-.3.3-.3h.9c.2 0 .3.1.3.3v3.5l2.1-3.6c.1-.2.2-.2.3-.2h.9c.2 0 .3.1.3.3v5.4c0 .2-.1.3-.3.3z" fill="#06C755"/>
       </svg>
     </a>
-  
+
     <script>
     (function() {
       const btn = document.getElementById('navHamburger');

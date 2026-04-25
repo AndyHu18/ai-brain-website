@@ -237,8 +237,8 @@
         margin: 0 auto;
         padding: 0 24px;
         display: grid;
-        grid-template-columns: 1fr 240px;
-        gap: 32px;
+        grid-template-columns: 1fr 300px;
+        gap: 0;
         align-items: end;
       }
 
@@ -2307,44 +2307,55 @@
       @media (max-width: 768px) {
         .nav-hamburger { display: flex; }
       }
-    
-      /* ─── Hero 照片 ───────────────────────────────── */
+      /* ─── Hero 照片（對齊 landing page 設計）─────────────── */
       .hero-photo-wrap {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
+        flex: 0 0 300px;
+        width: 300px;
+        height: 420px;
+        overflow: hidden;
         align-self: end;
       }
       .hero-photo-glow {
         position: absolute;
-        bottom: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 220px;
-        height: 110px;
-        background: radial-gradient(
-          ellipse,
-          oklch(0.557 0.166 45 / 0.2) 0%,
-          transparent 70%
-        );
-        filter: blur(24px);
-        border-radius: 50%;
+        inset: -20%;
+        background: radial-gradient(circle, oklch(0.557 0.166 45 / 0.3) 0%, transparent 60%);
+        filter: blur(40px);
         pointer-events: none;
+        z-index: 0;
       }
       .hero-photo-img {
-        width: 100%;
-        max-width: 240px;
-        object-fit: contain;
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
         position: relative;
         z-index: 1;
-        filter: contrast(1.04) brightness(1.02);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
         display: block;
+        mask-image:
+          linear-gradient(to bottom, transparent 0%, black 5%, black 82%, transparent 100%),
+          linear-gradient(to right, transparent 0%, black 18%, black 100%);
+        mask-composite: intersect;
+        -webkit-mask-image:
+          linear-gradient(to bottom, transparent 0%, black 5%, black 82%, transparent 100%),
+          linear-gradient(to right, transparent 0%, black 18%, black 100%);
+        -webkit-mask-composite: source-in;
+        filter: brightness(1.05) contrast(1.05);
       }
       @media (max-width: 1024px) {
-        .hero-photo-wrap { display: none; }
+        .hero-inner {
+          grid-template-columns: 1fr;
+        }
+        .hero-photo-wrap {
+          width: 200px;
+          height: 280px;
+          margin: 24px auto 0;
+          flex: none;
+        }
+        .hero-photo-img {
+          mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 80%, transparent 100%);
+        }
       }
     </style>
 

@@ -6,10 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
-    <title>訪客打開你的網站，3 秒鐘決定走還是留｜網站經營 12 篇系列</title>
+    <title>
+      第 04 篇｜你的「商品介紹」是一份目錄，還是一個業務員？ — 網站經營 12
+      篇系列
+    </title>
     <meta
       name="description"
-      content="首頁的前 3 秒決定 80% 的訪客去留——清楚 > 美感。你的網站可能此刻就是「美但無效」。"
+      content="會賣的產品頁讓客人看了想買，死目錄只讓客人按右上角的 X。了解如何讓你的產品頁從「列出商品」變成「讓客人想買」。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -513,6 +516,33 @@
         font-size: 0.9375rem;
       }
 
+      .mistake-card p + p {
+        margin-top: 10px;
+      }
+
+      .mistake-card ul {
+        margin: 10px 0 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .mistake-card ul li {
+        font-size: 0.9375rem;
+        color: var(--text-secondary);
+        padding-left: 16px;
+        position: relative;
+        margin-bottom: 6px;
+        line-height: 1.65;
+      }
+
+      .mistake-card ul li::before {
+        content: "·";
+        position: absolute;
+        left: 4px;
+        color: var(--color-error);
+        font-weight: 900;
+      }
+
       /* 序列卡片 */
       .sequence-list {
         display: flex;
@@ -585,6 +615,33 @@
         padding: 2px 10px;
         border-radius: var(--radius-full);
         margin-bottom: 8px;
+      }
+
+      /* 比較行 */
+      .compare-row {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .compare-item {
+        font-size: 0.9rem;
+        padding: 7px 12px;
+        border-radius: var(--radius-md);
+        line-height: 1.5;
+      }
+
+      .compare-item.bad {
+        background: oklch(0.43 0.135 27 / 0.07);
+        color: var(--color-error);
+        border-left: 3px solid oklch(0.43 0.135 27 / 0.3);
+      }
+
+      .compare-item.good {
+        background: oklch(0.557 0.166 45 / 0.07);
+        color: var(--color-primary-dark);
+        border-left: 3px solid var(--border-accent);
       }
 
       /* 時間軸步驟 */
@@ -1186,7 +1243,7 @@
         .article-layout {
           grid-template-columns: 1fr;
           gap: 0;
-          padding-bottom: 140px;
+          padding-bottom: 100px;
         }
 
         .sidebar {
@@ -1269,7 +1326,7 @@
        ============================================= */
       @media (max-width: 480px) {
         .article-layout {
-          padding: 0 16px 140px;
+          padding: 0 16px 100px;
         }
         .hero-inner {
           padding: 0 16px;
@@ -1321,7 +1378,7 @@
     <nav class="navbar">
       <div class="nav-inner">
         <a href="#" class="nav-logo">AI 智能大腦<span>.</span></a>
-        <a href="系列總覽/#article-02" class="nav-series-label"
+        <a href="系列總覽/#article-04" class="nav-series-label"
           >網站經營 12 篇系列</a
         >
         <a href="#contact" class="nav-cta">免費診斷 →</a>
@@ -1395,45 +1452,47 @@
       </div>
     </div>
 
+
     <header class="article-hero">
       <div class="hero-inner">
         <div class="hero-text">
         <nav class="article-breadcrumb" aria-label="breadcrumb">
-          <a href="#">AI 智能大腦</a>
-          <span class="breadcrumb-sep">›</span>
-          <a href="系列總覽/">網站經營系列</a>
-          <span class="breadcrumb-sep">›</span>
-          <span>第 02 篇</span>
+          <a href="#">AI 智能大腦</a><span class="breadcrumb-sep">›</span>
+          <a href="系列總覽/">網站經營系列</a
+          ><span class="breadcrumb-sep">›</span>
+          <span>第 04 篇</span>
         </nav>
         <div class="article-category-badge">
-          <span class="article-num">02 / 12</span>
-          首頁印象
+          <span class="article-num">04 / 12</span> 產品介紹
         </div>
-        <h1>訪客打開你的網站，<em>3 秒鐘</em>決定走還是留</h1>
+        <h1>你的「商品介紹」是一份<em>目錄</em>，還是一個<em>業務員</em>？</h1>
         <p class="article-subtitle">
-          你的首頁就是你的店門口，但 90% 的店門口都關著
+          會賣的產品頁讓客人看了想買，死目錄只讓客人按右上角的
+          X。讀完這篇，你會知道讓產品頁從「列出商品」變成「讓客人想買」的 4
+          個必要元素。
         </p>
         <div class="article-meta">
-          <span>閱讀時間約 8 分鐘</span>
-          <span class="meta-dot"></span>
-          <span>適合：所有想改善網站留存率的店家</span>
-          <span class="meta-dot"></span>
+          <span>閱讀時間約 8 分鐘</span><span class="meta-dot"></span>
+          <span>適合：需要讓客人讀懂服務的店家</span
+          ><span class="meta-dot"></span>
           <span>難度：★★☆☆☆</span>
         </div>
         <div class="article-key-stats">
           <div class="key-stat">
-            <span class="key-stat-num">3 秒</span
-            ><span class="key-stat-label">訪客決定去留的時間</span>
+            <span class="key-stat-num">3秒</span
+            ><span class="key-stat-label">客人決定<br />要不要繼續看</span>
           </div>
           <div class="key-stat-divider"></div>
           <div class="key-stat">
             <span class="key-stat-num">80%</span
-            ><span class="key-stat-label">只看頁面前半段就離開</span>
+            ><span class="key-stat-label"
+              >的購買決策在<br />看產品頁時決定</span
+            >
           </div>
           <div class="key-stat-divider"></div>
           <div class="key-stat">
-            <span class="key-stat-num">2.6×</span
-            ><span class="key-stat-label">改好首頁後訂單倍增</span>
+            <span class="key-stat-num">4個</span
+            ><span class="key-stat-label">必備的產品<br />介紹頁元素</span>
           </div>
         </div>
         </div>
@@ -1448,446 +1507,294 @@
         </div>
       </div>
     </header>
+
     <main class="article-layout">
       <article class="article-body" id="article-top">
-        <p>
-          你進一家從沒去過的店，前 5
-          秒會做什麼判斷？「這家賣什麼？」「看起來貴不貴？」「我會不會喜歡？」「適不適合我？」
-        </p>
-        <p>
-          5
-          秒內你已經決定要不要繼續走進去。如果答案是「不知道」、「沒感覺」、「看不懂」——你會掉頭走。
-        </p>
-
-        <div class="pull-quote">
-          <p>網站一模一樣，而且更殘酷——只有 3 秒。</p>
+        <!-- 開場 -->
+        <div class="highlight-box">
+          <div class="highlight-box-title">💡 先想想這個場景</div>
+          <p>
+            你開店時，如果只在櫃台貼一張價目表——「服務 A：NT$1,000、服務
+            B：NT$2,000、服務 C：NT$3,000」——客人會買單嗎？
+          </p>
+          <p>不會。客人會走進來、看一眼、然後走出去。</p>
+          <p style="margin: 0">
+            <strong>但你的網站可能就是這樣。</strong
+            >打開多數小店的網站，點進「產品」或「服務」頁面，看到的是一份冷冰冰的目錄：項目名稱、規格、價格，結束。沒有故事、沒有情境、沒有理由——客人讀完不知道為什麼要買、為誰而買、跟別家差在哪。然後老闆納悶：「我的網站訪客流量也不少，為什麼下單的人這麼少？」
+          </p>
         </div>
 
-        <p>
-          3
-          秒鐘內，訪客的大腦會做完判斷：這個網站適不適合我繼續看。如果答案不夠清楚，他會按右上角的
-          X，永遠離開。而台灣 SMB 的網站首頁，90% 都通不過這 3 秒測試。
-        </p>
-
+        <!-- Section 1 -->
         <h2 class="section-title" id="s1">
-          你不在場的那 3 秒，大腦問了哪三件事？
+          你不在場的時候，產品頁是你唯一的業務員
         </h2>
 
         <p>
-          訪客打開網站的前 3 秒，大腦會自動掃描三件事：<strong
-            >這個網站在賣什麼（我來對地方了嗎）、這對我有什麼好處（我為什麼要繼續看）、下一步該做什麼（我能不能立刻採取行動）</strong
-          >
-        </p>
-        <p>
-          3
-          秒內如果這三個問題都得到清楚的答案，訪客會留下來繼續看。任何一個沒得到清楚答案，他就會跳出。
-        </p>
-        <p>
-          但 SMB
-          的首頁通常是這樣的：一張很美的大圖，但看不出在賣什麼；一句模糊的標題：「歡迎光臨」、「品質第一」；不知道該點哪裡才能進入下一步。<strong
-            >3 秒內，訪客的大腦得不到任何答案，於是就走了。</strong
-          >
-        </p>
-        <p>
-          而老闆完全不知道，因為他覺得「網站做得很美」——但「美」不等於「有效」。首頁不是設計師的作品集，是在
-          3 秒內幫客戶完成判斷的工具。
+          很多老闆對產品頁的定義是：「把我們提供什麼東西列出來」。這個定義從一開始就錯了。
         </p>
 
+        <p>
+          正確的定義是：<strong>產品頁是替客人完成決策的地方</strong>——客人讀完應該得出三個結論：「我為什麼需要這個」、「為什麼是你做的」、「我下一步該怎麼做」。
+        </p>
+
+        <p>如果三個結論都沒得到，客人就會關掉頁面去看下一家。</p>
+
+        <div class="highlight-box">
+          <div class="highlight-box-title">⚡ 關鍵理解</div>
+          <p style="margin: 0">
+            你的產品頁是在賣「<strong>決策信心</strong>」，不是在陳列商品。多數產品頁只回答了第三個結論的一半（告訴客人怎麼下單），完全沒回答第一個和第二個。這就像店裡的服務生只會說「這個
+            1,500
+            元」，卻不會說「這個適合什麼樣的客人、為什麼這麼設計、跟別家的差別在哪」——你會買單嗎？
+          </p>
+        </div>
+
+        <!-- Section 2 -->
         <h2 class="section-title" id="s2">
-          做得很用心，但客人還是沒感覺——為什麼？
+          有人看、沒人買——問題通常藏在這三個地方
         </h2>
-
-        <p class="section-intro">
-          這裡是 SMB 首頁最常犯的三個錯誤，每一個都在無聲無息地把訪客趕走。
-        </p>
 
         <div class="mistake-list">
           <div class="mistake-card">
             <span class="mistake-label">✕ 錯誤一</span>
-            <h4>那張你花錢做的美圖，正在每秒幫你趕走訪客</h4>
+            <h4>只寫「功能規格」，不寫「使用情境」</h4>
+            <p>「26 平方米、雙人床、附電視」——這是規格，客人讀完毫無感覺。</p>
             <p>
-              最常見的設計：一張很美的風景圖／食物圖，中間寫著「歡迎光臨」、「品質第一」。<br /><br />等於什麼都沒講。訪客的大腦在前
-              3 秒問「這在賣什麼」，但這張圖＋這句話沒回答。<br /><br />正確做法：「給上班族的
-              60 分鐘深層按摩——專治肩頸痠痛＋即時預約」。3
-              秒內訪客就懂：這家是按摩店、適合上班族、可以馬上預約。<strong
-                >清楚 &gt; 美感。</strong
+              「適合情侶慶生的房型，有獨立陽台可以看夕陽，送一瓶氣泡酒」——這是情境，客人讀完有畫面、有理由、有情緒。
+            </p>
+            <p>
+              規格只回答「這是什麼」，情境回答「這是給誰的、什麼時候用的、為什麼值得」。<strong
+                >規格是冷的，情境是熱的——而人是被熱的東西打動的。</strong
               >
             </p>
           </div>
+
           <div class="mistake-card">
             <span class="mistake-label">✕ 錯誤二</span>
-            <h4>輪播圖第 2 到第 5 張——幾乎沒有人看到</h4>
+            <h4>用客人聽不懂的術語</h4>
             <p>
-              老闆覺得「資訊量多」，但實際上：每張圖只被看到 3–5
-              秒，沒有深度印象；訪客眼睛追著圖跑，沒辦法閱讀文字；重要訊息會被「跑過去」。<br /><br />研究顯示，輪播圖第一張的點擊率是後面幾張的
-              <strong>5–10 倍</strong>——也就是說，第 2–5 張幾乎沒人看。<br /><br />正確做法：第一屏只用一張固定圖＋一句強而有力的標題。
+              每個行業都有自己的術語，而老闆在自己的行業久了，會忘記「這對外行人來說是天書」：
+            </p>
+            <ul>
+              <li>做裝潢的寫「系統櫃 + 卡扣式企口板」（客人不懂）</li>
+              <li>做按摩的寫「淋巴排毒 + 經絡疏通」（客人不懂）</li>
+              <li>做課程的寫「翻轉教學 + 混合式學習」（客人不懂）</li>
+              <li>做設計的寫「響應式設計 + 使用者體驗最佳化」（客人不懂）</li>
+            </ul>
+            <p>
+              客人聽不懂的東西，等於沒講。聽不懂就會跳出去看下一家——而下一家可能用人話寫，於是訂單就跑了。
             </p>
           </div>
+
           <div class="mistake-card">
             <span class="mistake-label">✕ 錯誤三</span>
-            <h4>你最重要的話，放在 80% 訪客從未滑到的地方</h4>
+            <h4>所有商品的呈現方式一模一樣</h4>
             <p>
-              很多老闆把首頁設計成：第一屏大圖＋歡迎詞 → 第二屏公司簡介 →
-              第三屏服務介紹 → 第四屏聯絡方式。<br /><br />問題是，訪客根本滑不到第三屏。<strong
-                >研究顯示，80% 的訪客只看頁面前 50%</strong
-              >——也就是前 1–2 屏。<br /><br />正確做法：第一屏就要有「核心賣點＋主要
-              CTA」。
+              多數產品頁是這樣的：每個商品配一張圖、一段相同格式的描述、一個價錢。所有商品平等待遇。
+            </p>
+            <p>
+              但實際上你應該有「主推商品」、「配套商品」、「次要商品」三個層級，引導客人「先看主推、再看配套、最後選次要」。
+            </p>
+            <p>
+              如果所有商品都長得一樣，客人會被選擇癱瘓。心理學的「選擇悖論」研究告訴我們，<strong>選項越多，決策越痛苦，最終越多人放棄選擇</strong>——結果就是：他什麼都沒買就走了。
             </p>
           </div>
         </div>
 
+        <!-- Section 3 -->
         <h2 class="section-title" id="s3">
-          少一個就在漏客：首頁這 5 個位置你現在都有嗎？
+          少了這 4 個元素，你的產品頁再漂亮也沒用
         </h2>
 
-        <p class="section-intro">
-          不需要複雜設計，只要這 5 個元素到位，跳出率立刻下降一半：
-        </p>
+        <p>不需要太複雜，只要每個產品都有這 4 個元素，你的轉換率會立刻提升：</p>
 
         <div class="sequence-list">
           <div class="sequence-card">
             <div class="sequence-header">
               <div class="sequence-num">1</div>
               <div>
-                <div class="sequence-tag">元素 1 · 黃金開場</div>
                 <div class="sequence-title">
-                  開場第一句，決定訪客繼續看還是 3 秒內關掉
+                  客人的第一個問題：「這是給我的嗎？」
                 </div>
                 <div class="sequence-subtitle">
-                  讓對的人一眼說「這就是我要找的」
+                  具體到讓客人讀完想：「對，這就是在講我」
                 </div>
               </div>
             </div>
             <div class="sequence-body">
-              <p>公式：「給 [誰] 的 [什麼產品／服務]——[核心好處]」</p>
-              <p>具體到讓目標客戶「對號入座」，模糊到讓所有人都不對號入座。</p>
               <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                「歡迎來到 OO 民宿，放鬆心靈的地方」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                「給情侶慶生的山景民宿，送氣泡酒＋巧克力，每週五前訂位享 9 折」
+                不是「誰可以用」，是「誰最適合用」。具體到讓客人讀完想：「對，這就是在講我」。
               </p>
+              <div class="compare-row">
+                <div class="compare-item bad">✕ 弱：適合所有想學英文的人</div>
+                <div class="compare-item good">
+                  ✓ 強：適合每天上班 8 小時、只能用通勤時間學英文、想 6
+                  個月內能跟外國客戶溝通的上班族
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="sequence-card">
             <div class="sequence-header">
               <div class="sequence-num">2</div>
               <div>
-                <div class="sequence-tag">元素 2 · 立刻給選擇理由</div>
                 <div class="sequence-title">
-                  沒給明確理由，訪客就去你的競爭對手那裡找答案
+                  客人不是來買商品，是來解決一件事
                 </div>
                 <div class="sequence-subtitle">
-                  說出具體差異，競爭對手就從訪客腦中消失
+                  直接點出這個商品解決什麼具體的痛
                 </div>
               </div>
             </div>
             <div class="sequence-body">
               <p>
-                第一屏可見的位置，要有「為什麼選你不選別人」的明確答案——不是「品質好」這種空話，是具體的差異點。
+                客人不是來買「商品」，是來解決「問題」。直接點出這個商品/服務解決什麼具體的痛。
               </p>
-              <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                「我們提供專業服務、品質保證」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                「全台唯一不收諮詢費的會計師事務所」 ／ 「24
-                小時內回覆，做不到全額退費」
-              </p>
+              <div class="compare-row">
+                <div class="compare-item bad">✕ 弱：我們提供專業攝影服務</div>
+                <div class="compare-item good">
+                  ✓
+                  強：給那些「重要場合來了才發現自己沒有一張像樣大頭照」的人——24
+                  小時內交件，3 分鐘搞定
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="sequence-card">
             <div class="sequence-header">
               <div class="sequence-num">3</div>
               <div>
-                <div class="sequence-tag">元素 3 · 第三方背書</div>
                 <div class="sequence-title">
-                  見證埋在頁面底部——8 成訪客從未滑到那裡
+                  「品質好、服務佳」——每家都這樣寫，沒用
                 </div>
                 <div class="sequence-subtitle">
-                  陌生人信任你，是因為先看到別人信任了你
+                  說出你跟別人真正不一樣的地方
                 </div>
               </div>
             </div>
             <div class="sequence-body">
               <p>
-                不要把見證放到頁面底部——首屏就要看到。形式可以是：「累計服務
-                12,000 家客戶」、「Google 4.8 顆星 200
-                則評論」、一兩個短的客戶見證、媒體 logo 牆。
+                不是空泛的「品質好」，是具體的「我們做這件事跟別人不一樣的地方」。
               </p>
+              <div class="compare-row">
+                <div class="compare-item bad">✕ 弱：精選食材</div>
+                <div class="compare-item good">
+                  ✓
+                  強：所有海鮮每日從基隆港直送，當天進貨當天賣完，沒賣完寧可丟也不冷凍
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="highlight-box">
-          <div class="highlight-box-title">
-            <svg
-              style="
-                display: inline;
-                vertical-align: -3px;
-                width: 1.1em;
-                height: 1.1em;
-              "
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="9"
-                stroke="oklch(0.557 0.166 45)"
-                stroke-width="2"
-              />
-              <circle
-                cx="12"
-                cy="12"
-                r="5"
-                stroke="oklch(0.557 0.166 45)"
-                stroke-width="2"
-              />
-              <circle cx="12" cy="12" r="1.5" fill="oklch(0.557 0.166 45)" />
-            </svg>
-            關鍵提醒
-          </div>
-          <p style="margin: 0">
-            這 3 個元素做對，跳出率通常就能下降一半。剩下 2
-            個，是讓「留下來的訪客」變成「真的採取行動的客人」。
-          </p>
-        </div>
-
-        <div class="sequence-list">
           <div class="sequence-card">
             <div class="sequence-header">
               <div class="sequence-num">4</div>
               <div>
-                <div class="sequence-tag">元素 4 · 行動引導</div>
                 <div class="sequence-title">
-                  訪客有興趣、找不到按鈕——他不等你，直接走了
+                  少了這句話，客人就算想買也會離開
                 </div>
                 <div class="sequence-subtitle">
-                  有興趣的訪客，不能因找不到按鈕而白白流失
-                </div>
-              </div>
-            </div>
-            <div class="sequence-body">
-              <p>99% 的老闆把 CTA 放在頁面底部、寫「聯絡我們」——這等於沒放。</p>
-              <p>
-                <svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.43 0.135 27)" />
-                  <line
-                    x1="8"
-                    y1="8"
-                    x2="16"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                  <line
-                    x1="16"
-                    y1="8"
-                    x2="8"
-                    y2="16"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                頁面底部 · 「聯絡我們」<br /><svg
-                  style="
-                    display: inline;
-                    vertical-align: -3px;
-                    width: 1.1em;
-                    height: 1.1em;
-                  "
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle cx="12" cy="12" r="9" fill="oklch(0.55 0.16 145)" />
-                  <polyline
-                    points="7,12 10.5,15.5 17,9"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                第一屏可見 ·
-                「立刻預約」／「免費諮詢」（顏色跳出來，手機版浮動）
-              </p>
-            </div>
-          </div>
-          <div class="sequence-card">
-            <div class="sequence-header">
-              <div class="sequence-num">5</div>
-              <div>
-                <div class="sequence-tag">元素 5 · 真實感</div>
-                <div class="sequence-title">
-                  Stock photo 一眼就被識破——訪客覺得「這家不是真的」
-                </div>
-                <div class="sequence-subtitle">
-                  老闆的真實照片，比 200 張 stock photo 更能讓人信任
+                  每個產品都需要一個明確的行動指令
                 </div>
               </div>
             </div>
             <div class="sequence-body">
               <p>
-                不要用 stock
-                photo——客人現在看得出來那是假的。用真實的：老闆真人照片、店面工作環境的實拍、真實的工作過程照片。
+                看完這個商品，客人應該知道「我現在該做什麼」——立刻下單？加 LINE
+                詢問？預約諮詢？
               </p>
+              <div class="compare-row">
+                <div class="compare-item bad">✕ 弱：了解更多</div>
+                <div class="compare-item good">
+                  ✓ 強：立刻預約 8 月 15 日（具體有威力 5 倍）
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        <!-- Section 4 -->
         <h2 class="section-title" id="s4">
-          同樣的產品，首頁改一版，留客率差 40%
+          設計漂亮但賣不動？問題通常不是設計
         </h2>
 
-        <p class="section-intro">這不是理論，是真實的 A/B 測試數字。</p>
+        <p>
+          很多老闆把錢花在「網站設計要漂亮」上——選漂亮的字體、做精美的排版、用高品質的照片。但實際上，影響轉換率的順序是這樣的：
+        </p>
 
         <div class="comparison-box">
           <div class="comparison-side bad">
-            <div class="comparison-label">✕ 沒做的店家</div>
-            <div class="comparison-big-num">78%</div>
+            <div class="comparison-label">你最在意的這個</div>
+            <div class="comparison-big-num">5–10%</div>
             <div class="comparison-desc">
-              <strong>版本 A（美但無效）</strong><br />大張山景圖＋「歡迎來到 OO
-              民宿」<br />跳出率：78%<br />平均停留：32 秒
+              視覺設計對轉換率的影響<br />出乎意料地小
             </div>
           </div>
           <div class="comparison-side good">
-            <div class="comparison-label">✓ 做了的店家</div>
-            <div class="comparison-big-num">42%</div>
+            <div class="comparison-label">真正決定客人買不買的</div>
+            <div class="comparison-big-num">50–60%</div>
             <div class="comparison-desc">
-              <strong>版本 B（3 秒清楚）</strong
-              ><br />民宿外觀清晰圖＋「給情侶慶生的山景民宿，9
-              折」＋「立刻訂房」按鈕＋ Google 4.8 星<br />跳出率：42%<br />平均停留：1
-              分 50 秒
+              文字內容對轉換率的影響<br />遠超過設計
             </div>
           </div>
         </div>
 
-        <div class="psychology-box">
-          <h3>結果：版本 B 的訂房率是版本 A 的 2.6 倍</h3>
+        <p>
+          也就是說，<strong>一個用爛文字寫的精美網站，轉換率會輸給一個用好文字寫的醜網站</strong>——但
+          99% 的老闆把錢花在後者，而不是前者。
+        </p>
+
+        <div class="pull-quote">
           <p>
-            而這只是首頁差異，後面的內容一模一樣。每個訂單背後是一個本來會跳出但被留下的訪客——而留住他的成本是「設計師花
-            2 小時重新規劃首頁」。
+            多數老闆寧可花 5 萬請設計師，也不願意花 5
+            小時把文字寫清楚——但最後讓客人掏錢的，是文字，不是設計。
           </p>
-          <span class="psychology-stat">一次性改版 → 每天持續回報</span>
         </div>
 
+        <!-- Section 5 — 案例 -->
         <h2 class="section-title" id="s5">
-          現在打開你的首頁——這三題你能答「有」嗎？
+          只改文字描述，三個月多賺 70 萬到 100 萬
+        </h2>
+
+        <p>
+          假設一家民宿有 5 個房型，原本網站每個房型的描述是：「雙人房 NT$3,500 /
+          四人房 NT$5,500」——只有名稱跟價錢。
+        </p>
+
+        <p>老闆花了一個下午，把每個房型重寫成情境描述：</p>
+
+        <div class="psychology-box">
+          <h3>真實案例思想實驗：民宿房型改寫</h3>
+          <p>
+            「<strong>面海雙人房</strong>」：適合情侶/夫妻紀念日，陽台直接看到日落，送氣泡酒+巧克力
+          </p>
+          <p>
+            「<strong>家庭四人房</strong>」：適合帶小孩出遊的家庭，有兒童遊戲區、嬰兒床、浴缸，送早餐券
+            4 份
+          </p>
+          <p>
+            「<strong>親子主題房</strong>」：適合 5-10
+            歲兒童，房內有故事屋、繪本牆、扮裝服，小孩會尖叫的那種房型
+          </p>
+          <div class="psychology-stat">
+            結果：只改文字，入住率從 60% → 88%，週末全訂滿，年營收估算多
+            NT$700,000–1,000,000
+          </div>
+        </div>
+
+        <p>
+          沒改價錢、沒換房間、沒重新裝潢。成本只有「重寫文字」的時間。把「規格」改成「情境
+          + 附加好處 + 具體畫面」，就是這樣的威力。
+        </p>
+
+        <!-- Section 6 — 自我診斷 -->
+        <h2 class="section-title" id="s6">
+          自我診斷：你的產品頁是「目錄」還是「業務員」？
         </h2>
 
         <div class="diagnosis-box">
-          <div class="diagnosis-title">📋 首頁 3 秒測試</div>
+          <div class="diagnosis-title">🔍 自我診斷</div>
 
           <div
             class="diagnosis-item"
@@ -1895,11 +1802,10 @@
           >
             <div class="diagnosis-checkbox"></div>
             <div class="diagnosis-text">
-              <strong
-                >第一題：你的首頁第一屏，有沒有讓陌生人在 3
-                秒內知道「你在賣什麼」？</strong
+              <strong>你的每個產品/服務，有沒有具體寫出「適合誰」？</strong
               ><br />
-              如果只有「歡迎光臨」→ 沒通過 3 秒測試
+              只寫「適合所有人」→ 等於沒寫，客人不會對號入座。有寫具體對象 →
+              讓客人讀完心裡說「對，這就是我」。
             </div>
           </div>
 
@@ -1910,9 +1816,11 @@
             <div class="diagnosis-checkbox"></div>
             <div class="diagnosis-text">
               <strong
-                >第二題：把首頁文字遮住只留圖片，看得出你的店有什麼特色嗎？</strong
+                >客人讀完一個產品介紹，知不知道「我下一步該怎麼買」？</strong
               ><br />
-              如果看不出 → 你的視覺沒在傳達差異化
+              沒有明確行動按鈕 →
+              即使他想買，也會猶豫，然後忘記。每個產品都有具體的行動指令 →
+              衝動不流失。
             </div>
           </div>
 
@@ -1922,35 +1830,35 @@
           >
             <div class="diagnosis-checkbox"></div>
             <div class="diagnosis-text">
-              <strong>第三題：第一屏有沒有清楚的「下一步動作」按鈕？</strong
+              <strong
+                >你有沒有「主推商品」？還是所有商品都長得一樣大、一樣重要？</strong
               ><br />
-              如果沒有 → 即使訪客有興趣，也不知道該怎麼前進
+              沒有主推 → 客人會被選擇癱瘓，最後什麼都沒選。有明確的主推+配套層級
+              → 引導客人自然走向最好的選項。
             </div>
           </div>
 
           <div class="diagnosis-verdict">
-            如果三題都答「沒有」，你的網站此刻就是「3
-            秒就被關掉的網站」——前面花的所有 SEO 和廣告費，都在這 3 秒內被浪費。
+            如果三題都答「沒有」，你的產品頁此刻就是一份冷冰冰的目錄——客人讀完無感，然後關掉頁面去看下一家。改善這件事不需要重做網站、不需要找新設計師、<strong
+              >只需要你願意花幾小時，把每個商品重新「翻譯成客人聽得懂、有畫面、有情緒的語言」。</strong
+            >
           </div>
         </div>
 
-        <h2 class="section-title" id="s6">
-          大多數老闆知道這個問題存在——但還沒動
-        </h2>
-
-        <p>
-          你會同意：首頁的前 3 秒決定 80% 的訪客去留——<strong
-            >清楚 &gt; 美感</strong
-          >。
-        </p>
-        <p>
-          但你的網站此刻可能就是「美但無效」——一張漂亮的大圖、一句歡迎詞、然後重要訊息埋在後面。<strong>而最諷刺的是：改善這件事不需要重做整個網站、不需要花大錢</strong>——只需要重新設計第一屏的核心訊息。一次性的工作，但會在你的網站存活的每一天持續產生回報。
-        </p>
+        <div class="highlight-box">
+          <div class="highlight-box-title">⚡ 讀完這篇，你會同意一件事</div>
+          <p><strong>產品頁不是「列出商品」，是「替客人完成決策」。</strong></p>
+          <p style="margin: 0">
+            你的產品頁此刻可能就是一份規格表——只有名稱、規格、價格，沒有情境、沒有差異、沒有引導。但這件事需要的不是技術，是對客戶心理的理解——而這正是多數工程師做不到的地方。
+          </p>
+        </div>
 
         <div class="article-cta" id="contact">
           <div class="cta-eyebrow">下一步</div>
-          <h3>想知道你的首頁 3 秒印象打幾分？</h3>
-          <p>加我 LINE，30 分鐘免費診斷你的首頁，告訴你哪裡讓客人跑掉。</p>
+          <h3>想知道你的產品介紹頁少了什麼？</h3>
+          <p>
+            加我 LINE，30 分鐘免費診斷你的產品頁，告訴你哪個元素缺失最影響成交。
+          </p>
           <div class="cta-btn-group">
             <a href="#" class="btn-white">免費預約 30 分鐘診斷</a>
             <a href="系列總覽/" class="btn-outline-white">繼續讀系列文章</a>
@@ -1959,15 +1867,15 @@
 
         <!-- 上下篇導航 -->
         <nav class="article-pagination" aria-label="文章導航">
-          <a href="article-01-exposure.html" class="pag-card prev-card">
+          <a href="article-03.html" class="pag-card prev-card">
             <span class="pag-dir">← 上一篇</span>
-            <span class="pag-title"
-              >你的店明明很好，為什麼網路上沒人找得到？</span
-            >
-          </a>
-          <a href="article-03.html" class="pag-card next-card">
-            <span class="pag-dir">下一篇 →</span>
             <span class="pag-title">為什麼要選你不選別人</span>
+          </a>
+          <a href="article-05-conversion.html" class="pag-card next-card">
+            <span class="pag-dir">下一篇 →</span>
+            <span class="pag-title"
+              >客人想下單的那個瞬間最熱，過了 30 秒就涼了</span
+            >
           </a>
         </nav>
 
@@ -1975,12 +1883,6 @@
         <section class="related-articles">
           <h3 class="related-heading">你可能也有興趣</h3>
           <div class="related-grid">
-            <a href="article-01-exposure.html" class="related-card">
-              <span class="related-num">第 01 篇</span>
-              <span class="related-title"
-                >你的店明明很好，為什麼網路上沒人找得到？</span
-              >
-            </a>
             <a href="article-03.html" class="related-card">
               <span class="related-num">第 03 篇</span>
               <span class="related-title">為什麼要選你不選別人</span>
@@ -1991,6 +1893,12 @@
                 >客人想下單的那個瞬間最熱，過了 30 秒就涼了</span
               >
             </a>
+            <a href="article-08-upsell.html" class="related-card">
+              <span class="related-num">第 08 篇</span>
+              <span class="related-title"
+                >客人都已經要買了，順便讓他多買一點點</span
+              >
+            </a>
           </div>
         </section>
       </article>
@@ -1999,12 +1907,12 @@
         <div class="sidebar-widget">
           <div class="widget-title">本文目錄</div>
           <ul class="toc-list">
-            <li class="toc-item"><a href="#s1">大腦在 3 秒問的三件事</a></li>
-            <li class="toc-item"><a href="#s2">常見三大錯誤</a></li>
-            <li class="toc-item"><a href="#s3">首頁 5 個必備元素</a></li>
-            <li class="toc-item"><a href="#s4">A/B 測試：留客率差 40%</a></li>
-            <li class="toc-item"><a href="#s5">首頁 3 秒自我診斷</a></li>
-            <li class="toc-item"><a href="#s6">知道但還沒動？</a></li>
+            <li class="toc-item"><a href="#s1">產品頁是你唯一的業務員</a></li>
+            <li class="toc-item"><a href="#s2">有人看、沒人買的三個原因</a></li>
+            <li class="toc-item"><a href="#s3">4 個必備元素</a></li>
+            <li class="toc-item"><a href="#s4">設計漂亮但賣不動</a></li>
+            <li class="toc-item"><a href="#s5">只改文字多賺 70 萬案例</a></li>
+            <li class="toc-item"><a href="#s6">自我診斷</a></li>
           </ul>
         </div>
         <div class="sidebar-widget">
@@ -2015,7 +1923,7 @@
                 ><span class="series-num">01</span>曝光與導流</a
               >
             </li>
-            <li class="series-item current">
+            <li class="series-item">
               <a href="./article-02-homepage.html"
                 ><span class="series-num">02</span>首頁印象</a
               >
@@ -2025,7 +1933,7 @@
                 ><span class="series-num">03</span>差異化定位</a
               >
             </li>
-            <li class="series-item">
+            <li class="series-item current">
               <a href="./article-04.html"
                 ><span class="series-num">04</span>產品介紹</a
               >
@@ -2074,30 +1982,33 @@
         </div>
         <div class="sidebar-widget cta-widget">
           <div class="widget-title">免費診斷</div>
-          <p>不知道從哪裡開始？30 分鐘免費諮詢，告訴你首頁哪裡最該先改。</p>
+          <p>產品頁寫完沒人轉換？30 分鐘我幫你找出問題。</p>
           <a href="#contact" class="btn-cta-sm">立刻預約 →</a>
         </div>
       </aside>
     </main>
+
     <div class="float-cta">
       <a href="#contact" class="float-cta-btn">免費 30 分鐘診斷</a>
     </div>
+
     <footer class="article-footer">
       <div class="footer-logo">AI 智能大腦<span>.</span></div>
-      <p>網站經營 12 篇系列 · 第 02 篇：首頁印象</p>
+      <p>網站經營 12 篇系列 · 第 04 篇：產品介紹</p>
       <p style="margin-top: 8px; font-size: 0.8125rem; opacity: 0.4">
         © 2026 AI 智能大腦 · 保留所有權利
       </p>
     </footer>
+
     <a
-      href="系列總覽/#article-02"
+      href="系列總覽/#article-04"
       class="back-to-overview"
       aria-label="回到系列總覽"
     >
-      <span class="bto-arrow" aria-hidden="true">←</span>
-      <span class="bto-text">系列總覽</span>
-      <span class="bto-meta">12 篇導讀</span>
+      <span class="bto-arrow">←</span><span class="bto-text">系列總覽</span
+      ><span class="bto-meta">12 篇導讀</span>
     </a>
+
     <style>
       .back-to-overview {
         position: fixed;
@@ -2540,44 +2451,41 @@
         }
       }
     </style>
+
     <script>
       const progressBar = document.getElementById("progress-bar");
       window.addEventListener(
         "scroll",
         () => {
-          const scrollTop = window.scrollY;
-          const docHeight =
-            document.documentElement.scrollHeight - window.innerHeight;
-          const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-          progressBar.style.width = progress + "%";
+          const s = window.scrollY,
+            d = document.documentElement.scrollHeight - window.innerHeight;
+          progressBar.style.width = (d > 0 ? (s / d) * 100 : 0) + "%";
         },
         { passive: true },
       );
       const sections = document.querySelectorAll('[id^="s"]');
       const tocLinks = document.querySelectorAll(".toc-item");
-      const observer = new IntersectionObserver(
+      const obs = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              tocLinks.forEach((li) => li.classList.remove("active"));
-              const activeLink = document.querySelector(
-                `.toc-item a[href="#${entry.target.id}"]`,
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove("active"));
+              const a = document.querySelector(
+                `.toc-item a[href="#${e.target.id}"]`,
               );
-              if (activeLink)
-                activeLink.closest(".toc-item").classList.add("active");
+              if (a) a.closest(".toc-item").classList.add("active");
             }
           });
         },
         { rootMargin: "-20% 0px -70% 0px" },
       );
-      sections.forEach((s) => observer.observe(s));
-      const floatCta = document.querySelector(".float-cta");
+      sections.forEach((s) => obs.observe(s));
+      const fc = document.querySelector(".float-cta");
       window.addEventListener(
         "scroll",
         () => {
-          if (window.innerWidth <= 1024) {
-            floatCta.style.display = window.scrollY > 400 ? "block" : "none";
-          }
+          if (window.innerWidth <= 1024)
+            fc.style.display = window.scrollY > 400 ? "block" : "none";
         },
         { passive: true },
       );
