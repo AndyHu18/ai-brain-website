@@ -2863,6 +2863,45 @@
     <!-- NAV -->
     <nav>
       <div class="nav-inner">
+        <a
+          href="/"
+          class="nav-back-btn"
+          onclick="
+            if (window.history.length > 1) {
+              history.back();
+              return false;
+            }
+          "
+          title="返回上一頁"
+          style="
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            margin-right: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            background: rgba(210, 105, 30, 0.08);
+            border: 1px solid rgba(210, 105, 30, 0.3);
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.2s;
+          "
+          onmouseover="
+            this.style.background = 'var(--orange)';
+            this.style.color = '#fff';
+            this.style.borderColor = 'var(--orange)';
+          "
+          onmouseout="
+            this.style.background = 'rgba(210,105,30,0.08)';
+            this.style.color = '';
+            this.style.borderColor = 'rgba(210,105,30,0.3)';
+          "
+        >
+          <span aria-hidden="true">←</span>
+          <span>返回</span>
+        </a>
         <a href="#hero" class="nav-brand" aria-label="回到首頁">
           <span class="nav-mark" aria-hidden="true">FD</span>
           <span class="nav-logo"
