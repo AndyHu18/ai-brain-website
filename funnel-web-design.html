@@ -2861,43 +2861,55 @@
     </svg>
 
     <!-- NAV -->
+    <style>
+      /* 返回按鈕 — RWD 優化(360 / 768 / 1280) */
+      .nav-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        margin-right: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #fff;
+        background: var(--orange);
+        border: 1px solid var(--orange);
+        border-radius: 9999px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+      .nav-back-btn:hover {
+        background: var(--orange-h, #b85a1a);
+        border-color: var(--orange-h, #b85a1a);
+        transform: translateY(-1px);
+      }
+      .nav-back-btn:active {
+        transform: scale(0.97);
+      }
+      @media (max-width: 768px) {
+        .nav-back-btn {
+          padding: 7px 12px;
+          font-size: 12px;
+          margin-right: 8px;
+          gap: 4px;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav-back-btn {
+          padding: 6px 10px;
+          font-size: 12px;
+          margin-right: 6px;
+        }
+      }
+    </style>
     <nav>
       <div class="nav-inner">
         <a
-          href="/"
+          href="https://ai-brain-website.vercel.app/landing-page-v2.html#funnel-method"
           class="nav-back-btn"
-          onclick="
-            if (window.history.length > 1) {
-              history.back();
-              return false;
-            }
-          "
-          title="返回上一頁"
-          style="
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 14px;
-            margin-right: 12px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text);
-            background: rgba(210, 105, 30, 0.08);
-            border: 1px solid rgba(210, 105, 30, 0.3);
-            border-radius: 9999px;
-            text-decoration: none;
-            transition: all 0.2s;
-          "
-          onmouseover="
-            this.style.background = 'var(--orange)';
-            this.style.color = '#fff';
-            this.style.borderColor = 'var(--orange)';
-          "
-          onmouseout="
-            this.style.background = 'rgba(210,105,30,0.08)';
-            this.style.color = '';
-            this.style.borderColor = 'rgba(210,105,30,0.3)';
-          "
+          title="返回 v2 完整漏斗方法論段落"
         >
           <span aria-hidden="true">←</span>
           <span>返回</span>
