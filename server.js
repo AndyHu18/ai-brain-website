@@ -225,6 +225,8 @@ http
       }
     });
   })
-  .listen(3103, () =>
-    console.log("Server on 3103 with Range support + /api/chat proxy"),
+  .listen(process.env.PORT || 3103, "0.0.0.0", () =>
+    console.log(
+      `Server listening on ${process.env.PORT || 3103} with Range support + /api proxy`,
+    ),
   );

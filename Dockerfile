@@ -15,7 +15,7 @@ RUN apk add --no-cache \
     g++
 
 COPY package.json package-lock.json* ./
-RUN npm install --omit=dev express && npm cache clean --force
+RUN npm install --omit=optional && npm cache clean --force
 
 COPY . .
 
