@@ -176,6 +176,13 @@ http
 
     // API proxy for local dev
     const urlPath = decodeURIComponent(req.url.split("?")[0]);
+
+    // Fly health check
+    if (urlPath === "/healthz") {
+      res.writeHead(200, { "Content-Type": "text/plain" });
+      return res.end("ok");
+    }
+
     if (urlPath === "/api/chat" && req.method === "POST") {
       return handleApiChat(req, res);
     }

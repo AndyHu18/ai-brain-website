@@ -1499,11 +1499,49 @@
         </a>
       </section>
 
-      <!-- 3. 鮮果工坊 -->
+      <!-- 3. 我的月老 -->
+      <section class="pf-project">
+        <a
+          href="https://matchmaker-demo-ten.vercel.app/"
+          class="pf-project-inner pf-reverse js-demo-link"
+          data-demo-title="我的月老"
+        >
+          <div class="pf-project-image">
+            <img
+              src="images/portfolio/matchmaker-demo.jpg"
+              alt="我的月老 高端婚戀媒合網站"
+            />
+          </div>
+          <div class="pf-project-body">
+            <span class="portfolio-badge">高端婚戀</span>
+            <h2 class="pf-project-title">我的月老</h2>
+            <p class="pf-project-tagline">Where Destiny Meets True Love</p>
+            <p class="pf-project-desc">
+              為高端及專業人士打造的精品婚戀媒合網站。整合四大服務系列、旗艦活動報名、會員福利、FAQ
+              與預約諮詢流程，讓品牌從第一眼就傳達審核制、客製化與高信任感。
+            </p>
+            <span class="pf-project-link"
+              >探索專案
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" /></svg
+            ></span>
+          </div>
+        </a>
+      </section>
+
+      <!-- 4. 鮮果工坊 -->
       <section class="pf-project">
         <a
           href="https://juice-shop-website-andyhu18s-projects.vercel.app"
-          class="pf-project-inner pf-reverse js-demo-link"
+          class="pf-project-inner js-demo-link"
           data-demo-title="果日和 鮮果汁冰品"
         >
           <div class="pf-project-image">
@@ -1537,11 +1575,11 @@
         </a>
       </section>
 
-      <!-- 4. BLOOM -->
+      <!-- 5. BLOOM -->
       <section class="pf-project">
         <a
           href="https://pigment-brand-cms.vercel.app"
-          class="pf-project-inner js-demo-link"
+          class="pf-project-inner pf-reverse js-demo-link"
           data-demo-title="BLOOM 色料品牌"
         >
           <div class="pf-project-image">
@@ -1573,11 +1611,11 @@
         </a>
       </section>
 
-      <!-- 5. ETERNEL -->
+      <!-- 6. ETERNEL -->
       <section class="pf-project">
         <a
           href="https://eternel-cms.vercel.app"
-          class="pf-project-inner pf-reverse js-demo-link"
+          class="pf-project-inner js-demo-link"
           data-demo-title="ETERNEL 珠寶行銷"
         >
           <div class="pf-project-image">
@@ -1607,11 +1645,11 @@
         </a>
       </section>
 
-      <!-- 6. 逗點貓旅 -->
+      <!-- 7. 逗點貓旅 -->
       <section class="pf-project">
         <a
           href="https://www.comma-catinn.com"
-          class="pf-project-inner js-demo-link"
+          class="pf-project-inner pf-reverse js-demo-link"
           data-demo-title="逗點貓旅 Comma CatInn"
         >
           <div class="pf-project-image">
@@ -1649,11 +1687,11 @@
         </a>
       </section>
 
-      <!-- 7. 璞御 SPA -->
+      <!-- 8. 璞御 SPA -->
       <section class="pf-project">
         <a
           href="https://puyu-spa.vercel.app"
-          class="pf-project-inner pf-reverse js-demo-link"
+          class="pf-project-inner js-demo-link"
           data-demo-title="璞御 SPA"
         >
           <div class="pf-project-image">
@@ -1685,11 +1723,11 @@
         </a>
       </section>
 
-      <!-- 8. LINE AI -->
+      <!-- 9. LINE AI -->
       <section class="pf-project">
         <a
           href="https://lib-detector-lime-sunshine.trycloudflare.com"
-          class="pf-project-inner js-demo-link"
+          class="pf-project-inner pf-reverse js-demo-link"
           data-demo-title="官方 LINE 智能AI客服"
         >
           <div class="pf-project-image">
@@ -2571,6 +2609,7 @@
         document.addEventListener("click", (e) => {
           const link = e.target.closest(".js-demo-link");
           if (!link) return;
+          if (link.classList.contains("pf-project-inner")) return;
           e.preventDefault();
           openModal(link.href, link.dataset.demoTitle || "Demo");
         });
